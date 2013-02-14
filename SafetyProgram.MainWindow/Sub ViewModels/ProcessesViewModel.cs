@@ -6,7 +6,7 @@ namespace SafetyProgram.MainWindow
     {
         private new ProcessModel model;
 
-        public ProcessViewModel(ProcessModel model) : base(model)
+        public ProcessViewModel(CoshhProcessModel model) : base(model)
         {
             this.model = model;
         }

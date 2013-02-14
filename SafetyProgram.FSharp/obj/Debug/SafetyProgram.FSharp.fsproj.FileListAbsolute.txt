@@ -6,3 +6,11 @@ U:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.Models.pdb
 U:\SafetyProgram\SafetyProgram.FSharp\obj\Debug\ResolveAssemblyReference.cache
 U:\SafetyProgram\SafetyProgram.FSharp\obj\Debug\SafetyProgram.FSharp.dll
 U:\SafetyProgram\SafetyProgram.FSharp\obj\Debug\SafetyProgram.FSharp.pdb
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Library1.XML
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.FSharp.dll
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.FSharp.pdb
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.Models.dll
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.Models.pdb
+V:\SafetyProgram\SafetyProgram.FSharp\obj\Debug\ResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.FSharp\obj\Debug\SafetyProgram.FSharp.dll
+V:\SafetyProgram\SafetyProgram.FSharp\obj\Debug\SafetyProgram.FSharp.pdb

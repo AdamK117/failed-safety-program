@@ -65,6 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoshhData\CoshhFileService.cs" />
+    <Compile Include="CoshhData\ICoshhDataService.cs" />
     <Compile Include="StoredData\IModelHolder.cs" />
     <Compile Include="StoredData\IModelsHolder.cs" />
     <Compile Include="StoredData\LoadedChemical.cs" />

@@ -7,6 +7,7 @@ using Microsoft.Practices.ServiceLocation;
 
 using SafetyProgram.Models.DataModels;
 using SafetyProgram.Data;
+using System.Collections.Generic;
 
 namespace SafetyProgram.MainWindow
 {
@@ -18,48 +19,104 @@ namespace SafetyProgram.MainWindow
         {     
             currentlyOpen = ServiceLocator.Current.GetInstance<ActiveCoshhData>();
             currentlyOpen.PropertyChanged += filePropertyChanged;
+            PopulateData();
         }
 
         void filePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
-                case "Data":
-                    PopulateData();
-                    break;
-
                 case "IsOpen":
+                    PopulateData();
                     RaisePropertyChanged("IsOpen");
                     break;
 
                 case "Selected":
                     CurrentSelectionChanged();
                     break;
+            }
+        }
 
-                case "FileChanged":
-                    this.RaisePropertyChanged(e.PropertyName);
+        #region ViewModel plumbing
+
+        public void PopulateData()
+        {
+            currentlyOpen.Data.Chemicals.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Chemicals_CollectionChanged);
+            Chemicals = populateViewModels(Chemicals, currentlyOpen.Data.Chemicals, x => new ChemicalViewModel(x));
+            
+            currentlyOpen.Data.Apparatuses.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Apparatuses_CollectionChanged);
+            Apparatuses = populateViewModels(Apparatuses, currentlyOpen.Data.Apparatuses, x => new ApparatusViewModel(x));
+
+            currentlyOpen.Data.Processes.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Processes_CollectionChanged);
+            Processes = populateViewModels(Processes, currentlyOpen.Data.Processes, x => new ProcessViewModel(x));
+        }
+
+        ObservableCollection<ViewModel> populateViewModels<ViewModel, Model>(ObservableCollection<ViewModel> viewModels, ObservableCollection<Model> models, Func<Model,ViewModel> converter)
+        {
+            foreach (Model model in models)
+            {
+                viewModels.Add(converter(model));
+            }
+            return viewModels;
+        }
+
+        void Processes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            genericCollectionChanged<ProcessViewModel, CoshhProcessModel>
+                (
+                    sender,
+                    e,
+                    Processes,
+                    x => new ProcessViewModel(x)
+                );
+        }
+
+        void Apparatuses_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            genericCollectionChanged<ApparatusViewModel, CoshhApparatusModel>
+                (
+                    sender,
+                    e,
+                    Apparatuses,
+                    x => new ApparatusViewModel(x)
+                );
+        }
+
+        void Chemicals_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            genericCollectionChanged<ChemicalViewModel,CoshhChemicalModel>
+                (
+                    sender, 
+                    e, 
+                    Chemicals,
+                    x => new ChemicalViewModel(x)
+                );
+        }
+
+        void genericCollectionChanged<ViewModel, Model>(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e, ObservableCollection<ViewModel> viewModels, Func<Model, ViewModel> converter) where ViewModel : BaseViewModel
+        {
+            switch (e.Action)
+            {
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
+                    foreach (ViewModel vm in viewModels)
+                    {
+                        if (e.OldItems.Contains(vm.GetModel()))
+                        {
+                            viewModels.Remove(vm);                            
+                            break;
+                        }
+                    }
+                    break;
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
+                    foreach (Model model in e.NewItems)
+                    {
+                        viewModels.Insert(e.NewStartingIndex, converter(model));
+                    }
                     break;
             }
         }
 
-        public void PopulateData()
-        {
-            RaisePropertyChanged("Title");
-
-            Chemicals = new ObservableCollection<ChemicalViewModel>();
-            currentlyOpen.Data.Chemicals.ForEach(x => Chemicals.Add(new ChemicalViewModel(x)));
-            RaisePropertyChanged("Chemicals");
-
-            Apparatuses = new ObservableCollection<ApparatusViewModel>();
-            currentlyOpen.Data.Apparatuses.ForEach(x => Apparatuses.Add(new ApparatusViewModel(x)));
-            RaisePropertyChanged("Apparatuses");
-
-            Processes = new ObservableCollection<ProcessViewModel>();
-            currentlyOpen.Data.Processes.ForEach(x => Processes.Add(new ProcessViewModel(x)));
-            RaisePropertyChanged("Processes");
-
-            RaisePropertyChanged("AdditionalComments");
-        }
+        #endregion
 
         public string IsOpen
         {
@@ -138,17 +195,45 @@ namespace SafetyProgram.MainWindow
             }
         }
 
-        public ObservableCollection<ChemicalViewModel> Chemicals { get; set; }
-        public ObservableCollection<ApparatusViewModel> Apparatuses { get; set; }
-        public ObservableCollection<ProcessViewModel> Processes { get; set; }
-
-        public string AdditionalComments
+        private ObservableCollection<ChemicalViewModel> chemicals = new ObservableCollection<ChemicalViewModel>();
+        public ObservableCollection<ChemicalViewModel> Chemicals 
         {
             get
             {
-                if (String.IsNullOrWhiteSpace(currentlyOpen.Data.AdditionalComments)) { return "No additional comments"; }
-                return currentlyOpen.Data.AdditionalComments;
+                return chemicals;
             }
+            set
+            {
+                chemicals = value;
+                RaisePropertyChanged("Chemicals");
+            }
+        }
+
+        private ObservableCollection<ApparatusViewModel> apparatuses = new ObservableCollection<ApparatusViewModel>();
+        public ObservableCollection<ApparatusViewModel> Apparatuses
+        {
+            get { return apparatuses; }
+            set
+            {
+                apparatuses = value;
+                RaisePropertyChanged("Apparatuses");
+            }
+        }
+
+        private ObservableCollection<ProcessViewModel> processes = new ObservableCollection<ProcessViewModel>();
+        public ObservableCollection<ProcessViewModel> Processes
+        {
+            get { return processes; }
+            set
+            {
+                processes = value;
+                RaisePropertyChanged("Processes");
+            }
+        }
+
+        public string AdditionalComments
+        {
+            get { return currentlyOpen.Data.AdditionalComments; }
             set
             { 
                 currentlyOpen.Data.AdditionalComments = value;

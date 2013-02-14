@@ -44,7 +44,7 @@
         
         //Hazard list parser
         member private this.hazardsListParser (hazardsNode : XmlNode) =
-            let hazList = new System.Collections.Generic.List<HazardModel>()
+            let hazList = new System.Collections.ObjectModel.ObservableCollection<HazardModel>()
             hazardsNode.SelectNodes("hazard")
                 |> Seq.cast<XmlNode>
                 |> Seq.map(this.hazardParser)

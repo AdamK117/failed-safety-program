@@ -5,7 +5,7 @@
         Title="EditCoshhChemical" Width="300" Height="150"
         Name="EditCoshhChemicalWindow">
     <StackPanel>
-        <hazards:HazardList Hazards="{Binding Path=Model.Hazards}" />
+        <hazards:HazardList Hazards="{Binding Path=Model.Hazards, Mode=TwoWay}" />
         <TextBox Text="{Binding Path=Model.Name}" />
         <StackPanel Orientation="Horizontal">
             <TextBox Text="{Binding Path=Model.Value}" />

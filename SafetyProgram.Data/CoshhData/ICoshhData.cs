@@ -7,12 +7,6 @@ namespace SafetyProgram.Data
 {
     interface ICoshhData
     {
-        bool Save();
-
-        bool Load();
-
-        bool SaveAs();
-
-        bool Close();
+        bool Clear();
     }
 }

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 
 using SafetyProgram.Models.DataModels;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace SafetyProgram.Data
 {
-    public class CoshhData : ICoshhData
+    public class CoshhData : BaseINPC
     {
         #region Data Held
 
@@ -13,35 +15,55 @@ namespace SafetyProgram.Data
         public string Title
         {
             get { return title; }
-            set { title = value; }
+            set 
+            { 
+                title = value;
+                RaisePropertyChanged("Title");
+            }
         }
 
-        private List<CoshhChemicalModel> chemicals = new List<CoshhChemicalModel>();
-        public List<CoshhChemicalModel> Chemicals
+        private ObservableCollection<CoshhChemicalModel> chemicals = new ObservableCollection<CoshhChemicalModel>();
+        public ObservableCollection<CoshhChemicalModel> Chemicals
         {
             get { return chemicals; }
-            set { chemicals = value; }
+            set
+            { 
+                chemicals = value;
+                RaisePropertyChanged("Chemicals");
+            }
         }
 
-        private List<CoshhApparatusModel> apparatuses = new List<CoshhApparatusModel>();
-        public List<CoshhApparatusModel> Apparatuses
+        private ObservableCollection<CoshhApparatusModel> apparatuses = new ObservableCollection<CoshhApparatusModel>();
+        public ObservableCollection<CoshhApparatusModel> Apparatuses
         {
             get { return apparatuses; }
-            set { apparatuses = value; }
+            set
+            {
+                apparatuses = value;
+                RaisePropertyChanged("Apparatuses");
+            }
         }
 
-        private List<CoshhProcessModel> processes = new List<CoshhProcessModel>();
-        public List<CoshhProcessModel> Processes
+        private ObservableCollection<CoshhProcessModel> processes = new ObservableCollection<CoshhProcessModel>();
+        public ObservableCollection<CoshhProcessModel> Processes
         {
             get { return processes; }
-            set { processes = value; }
+            set 
+            { 
+                processes = value;
+                RaisePropertyChanged("Processes");
+            }
         }
 
         private string additionalComments = "No additional comments.";
         public string AdditionalComments
         {
             get { return additionalComments; }
-            set { additionalComments = value; }
+            set 
+            { 
+                additionalComments = value;
+                RaisePropertyChanged("AdditionalComments");
+            }
         }
 
         #endregion

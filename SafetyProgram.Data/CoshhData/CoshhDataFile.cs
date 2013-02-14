@@ -140,6 +140,7 @@ namespace SafetyProgram.Data
             else if (!Load(Path())) { return false; }
             return true;
         }
+
         public bool Load(string path)
         {
             XmlDocument xdoc = new XmlDocument();
@@ -149,9 +150,9 @@ namespace SafetyProgram.Data
 
             CoshhXmlReader.XmlParser parser = new CoshhXmlReader.XmlParser();
 
-            Chemicals = parser.GetCoshhChemicalModels(xdoc).ToList();
-            Apparatuses = parser.GetCoshhApparatusModels(xdoc).ToList();
-            Processes = parser.GetCoshhProcessModels(xdoc).ToList();
+            parser.GetCoshhChemicalModels(xdoc).ToList().ForEach(model => Chemicals.Add(model));
+            parser.GetCoshhApparatusModels(xdoc).ToList().ForEach(model => Apparatuses.Add(model));
+            parser.GetCoshhProcessModels(xdoc).ToList().ForEach(model => Processes.Add(model));
 
             AdditionalComments = xdoc.SelectSingleNode("/coshh/additionalcomments/text()") == null ? AdditionalComments : xdoc.SelectSingleNode("/coshh/additionalcomments/text()").InnerText;
 

@@ -11,7 +11,14 @@ namespace SafetyProgram.MainWindow
         public BaseViewModel(BaseElementModel model) 
         { 
             this.model = model;
+
             this.model.PropertyChanged += new PropertyChangedEventHandler(modelChanged);
+            this.model.Hazards.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Hazards_CollectionChanged);
+        }
+
+        void Hazards_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            RaisePropertyChanged("Hazards");
         }
 
         public virtual object GetModel() { return model; }
@@ -41,12 +48,6 @@ namespace SafetyProgram.MainWindow
                     return hazards;
                 }
                 return "No hazards found";
-            }
-            set
-            {
-                //BUG: Need to split with space after comma
-                model.Hazards = value.Split(',').ToList().ConvertAll(x => new HazardModel(x));
-                RaisePropertyChanged("Hazards");
             }
         }
 

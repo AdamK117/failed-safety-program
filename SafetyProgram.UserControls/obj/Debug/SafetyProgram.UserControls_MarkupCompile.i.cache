@@ -4,7 +4,7 @@
 library
 C#
 .cs
-U:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\
 SafetyProgram.UserControls
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 2-351093089
 
 11-1347858431
-201974411957
+201426226777
 Controls\Hazards\HazardList.xaml;EditCoshhChemical\EditCoshhChemical.xaml;
 
 True

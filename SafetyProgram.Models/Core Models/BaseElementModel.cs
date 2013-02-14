@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SafetyProgram.Models.DataModels
 {
@@ -15,8 +16,8 @@ namespace SafetyProgram.Models.DataModels
             }
         }
 
-        private IList<HazardModel> hazards;
-        public IList<HazardModel> Hazards
+        private ObservableCollection<HazardModel> hazards;
+        public ObservableCollection<HazardModel> Hazards
         {
             get { return hazards; }
             set

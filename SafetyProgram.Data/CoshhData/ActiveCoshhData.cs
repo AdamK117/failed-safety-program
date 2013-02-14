@@ -88,8 +88,8 @@ namespace SafetyProgram.Data
 
             private void FactoryEvent()
             {
-                parent.FileChanged(true);
-                parent.DataChanged();
+                //parent.FileChanged(true);
+                //parent.DataChanged();
             }
         }
 
