@@ -1,0 +1,5 @@
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Model\bin\Debug\Model.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Model\bin\Debug\Model.pdb
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Model\obj\Debug\ResolveAssemblyReference.cache
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Model\obj\Debug\Model.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Model\obj\Debug\Model.pdb

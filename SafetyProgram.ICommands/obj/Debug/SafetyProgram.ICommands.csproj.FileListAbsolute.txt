@@ -1,0 +1,81 @@
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\obj\Debug\ResolveAssemblyReference.cache
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.ICommands.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.ICommands.pdb
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Infrastructure.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Unity.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Model.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Infrastructure.pdb
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Model.pdb
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.pdb
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.xml
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.pdb
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.pdb
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.xml
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.pdb
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.xml
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Unity.xml
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\obj\Debug\SafetyProgram.ICommands.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\obj\Debug\SafetyProgram.ICommands.pdb
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Windows.Chemical.dll
+E:\Users\AdamK117\Sync Folder\Creative\C_Sharp\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Windows.Chemical.pdb
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\obj\Debug\ResolveAssemblyReference.cache
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.ICommands.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.ICommands.pdb
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Unity.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Data.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Models.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Models.pdb
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Data.pdb
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.pdb
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.xml
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.pdb
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.pdb
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.xml
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.pdb
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.xml
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Unity.xml
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\obj\Debug\SafetyProgram.ICommands.dll
+U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\SafetyProgram.ICommands\obj\Debug\SafetyProgram.ICommands.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.ICommands.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.ICommands.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Unity.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Data.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Models.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Models.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Data.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.xml
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.xml
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.xml
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Unity.xml
+U:\SafetyProgram\SafetyProgram.ICommands\obj\Debug\ResolveAssemblyReference.cache
+U:\SafetyProgram\SafetyProgram.ICommands\obj\Debug\SafetyProgram.ICommands.dll
+U:\SafetyProgram\SafetyProgram.ICommands\obj\Debug\SafetyProgram.ICommands.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.FSharp.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.FSharp.pdb
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.UserControls.dll
+U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.UserControls.pdb
