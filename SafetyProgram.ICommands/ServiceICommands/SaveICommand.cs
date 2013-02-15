@@ -22,7 +22,7 @@ namespace SafetyProgram.ICommands
         {
             if (CanExecute(parameter))
             {
-                currentlyOpen.Service.Save();
+                currentlyOpen.Save();
             }
         }        
     }

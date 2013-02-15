@@ -7,11 +7,30 @@ using System.ComponentModel;
 
 namespace SafetyProgram.Data
 {
-    public class CoshhData : BaseINPC
+    public class CoshhData : BaseINPC, ICoshhData
     {
-        #region Data Held
+        public CoshhData()
+        {
+            Chemicals = new ObservableCollection<CoshhChemicalModel>();
+            Apparatuses = new ObservableCollection<CoshhApparatusModel>();
+            Processes = new ObservableCollection<CoshhProcessModel>();
+            Clear();
+        }
 
-        private string title = "Untitled Safety Document";
+        public bool Clear()
+        {
+            Title = "Untitled Safety Document";
+            Chemicals.Clear();
+            Apparatuses.Clear();
+            Processes.Clear();
+            AdditionalComments = "No additional comments.";
+
+            return true;
+        }
+
+        #region Data Structure
+
+        private string title;
         public string Title
         {
             get { return title; }
@@ -22,7 +41,7 @@ namespace SafetyProgram.Data
             }
         }
 
-        private ObservableCollection<CoshhChemicalModel> chemicals = new ObservableCollection<CoshhChemicalModel>();
+        private ObservableCollection<CoshhChemicalModel> chemicals;
         public ObservableCollection<CoshhChemicalModel> Chemicals
         {
             get { return chemicals; }
@@ -33,7 +52,7 @@ namespace SafetyProgram.Data
             }
         }
 
-        private ObservableCollection<CoshhApparatusModel> apparatuses = new ObservableCollection<CoshhApparatusModel>();
+        private ObservableCollection<CoshhApparatusModel> apparatuses;
         public ObservableCollection<CoshhApparatusModel> Apparatuses
         {
             get { return apparatuses; }
@@ -44,7 +63,7 @@ namespace SafetyProgram.Data
             }
         }
 
-        private ObservableCollection<CoshhProcessModel> processes = new ObservableCollection<CoshhProcessModel>();
+        private ObservableCollection<CoshhProcessModel> processes;
         public ObservableCollection<CoshhProcessModel> Processes
         {
             get { return processes; }
@@ -55,7 +74,7 @@ namespace SafetyProgram.Data
             }
         }
 
-        private string additionalComments = "No additional comments.";
+        private string additionalComments;
         public string AdditionalComments
         {
             get { return additionalComments; }
@@ -66,20 +85,6 @@ namespace SafetyProgram.Data
             }
         }
 
-        #endregion
-
-        #region Methods
-
-        public virtual bool Save() { throw new Exception("Save without type"); }
-
-        public virtual bool Load() { throw new Exception("Loading without type"); }
-
-        public virtual bool SaveAs() { throw new Exception("SaveAs without type"); }
-
-        public void SaveAsPDF() { throw new Exception("Can't save as PDF"); }
-
-        public virtual bool Close() { return true; }
-
-        #endregion
+        #endregion        
     }
 }

@@ -9,7 +9,7 @@
 
         public override void Execute(object parameter)
         {
-            currentlyOpen.Service.NewFile();
+            currentlyOpen.New();
         }
 
     }

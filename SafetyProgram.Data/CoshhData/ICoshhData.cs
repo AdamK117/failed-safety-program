@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SafetyProgram.Data
 {
-    interface ICoshhData
+    public interface ICoshhData
     {
         bool Clear();
     }

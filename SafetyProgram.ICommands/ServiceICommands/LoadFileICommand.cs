@@ -11,7 +11,7 @@
         {
             if (CanExecute(parameter))
             {
-                currentlyOpen.Service.LoadFile();
+                currentlyOpen.Load();
             }            
         }
     }

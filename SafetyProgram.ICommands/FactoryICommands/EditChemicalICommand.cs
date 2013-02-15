@@ -12,19 +12,15 @@ namespace SafetyProgram.ICommands
     {
         public EditChemicalICommand()
         {
-            currentlyOpen.PropertyChanged += filePropertyChanged;
+            currentlyOpen.SelectionChangedEvent += new Data.ActiveCoshhData.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
         }
 
-        void filePropertyChanged(object sender, PropertyChangedEventArgs e)
+        void currentlyOpen_SelectionChangedEvent(object selection)
         {
-            if (e.PropertyName == "Selected")
+            if (canExecute != (selection != null))
             {
-                if (canExecute != (currentlyOpen.Selected != null))
-                {
-                    canExecute = (currentlyOpen.Selected != null);
-                    RaiseCanExecuteChanged();
-                }
-
+                canExecute = (selection != null);
+                RaiseCanExecuteChanged();
             }
         }
 

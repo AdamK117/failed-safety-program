@@ -1,5 +1,4 @@
 ﻿using Microsoft.Practices.ServiceLocation;
-using System.ComponentModel;
 
 using SafetyProgram.ICommands;
 using SafetyProgram.Models.DataModels;
@@ -17,37 +16,31 @@ namespace SafetyProgram.RibbonView
         {
             currentlyOpen = ServiceLocator.Current.GetInstance<ActiveCoshhData>();
 
-            currentlyOpen.PropertyChanged += filePropertyChanged;
+            currentlyOpen.SelectionChangedEvent += new ActiveCoshhData.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
+            currentlyOpen.IsOpenChangedEvent += new ActiveCoshhData.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
 
             LoadedChemicals = new LoadedChemicals();
             RaisePropertyChanged("LoadedChemicals");
         }
 
-        void filePropertyChanged(object sender, PropertyChangedEventArgs e)
+        void currentlyOpen_IsOpenChangedEvent(bool isOpen)
         {
-            switch (e.PropertyName)
-            {
-                case "IsOpen":
-                    HideBackstage();
-                    RaisePropertyChanged("RibbonVisibility");
-                    break;
+            HideBackstage();
+            RaisePropertyChanged("RibbonVisibility");
+        }
 
-                case "Data":
-                    break;
-
-                case "Selected":
-                    RaisePropertyChanged("ChemicalContextTabVisibility");
-                    RaisePropertyChanged("ApparatusContextTabVisibility");
-                    RaisePropertyChanged("ProcessContextTabVisibility");
-                    RaisePropertyChanged("CurrentSelection");
-                    break;
-            }
+        void currentlyOpen_SelectionChangedEvent(object selection)
+        {
+            RaisePropertyChanged("ChemicalContextTabVisibility");
+            RaisePropertyChanged("ApparatusContextTabVisibility");
+            RaisePropertyChanged("ProcessContextTabVisibility");
+            RaisePropertyChanged("CurrentSelection");
         }
 
         public object CurrentSelection
         {
-            get { return currentlyOpen.Selected; }
-            set { currentlyOpen.Selected = value; }
+            get { return currentlyOpen.Selected(); }
+            set { currentlyOpen.Selected(value); }
         }
 
         public bool RibbonVisibility { get { return currentlyOpen.IsOpen(); } }

@@ -23,7 +23,7 @@ namespace SafetyProgram.ICommands
         {
             if (CanExecute(parameter))
             {
-                currentlyOpen.Service.SaveAsPDF();
+                currentlyOpen.SaveAsPDF();
             }
         }
     }

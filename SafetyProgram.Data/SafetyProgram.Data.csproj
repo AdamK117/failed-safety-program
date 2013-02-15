@@ -65,8 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoshhData\CoshhFileService.cs" />
+    <Compile Include="CoshhData\CoshhLocalFileService.cs" />
     <Compile Include="CoshhData\ICoshhDataService.cs" />
+    <Compile Include="CoshhData\SelectionLogic\SelectableCollectionMember.cs" />
+    <Compile Include="CoshhData\SelectionLogic\ISelectable.cs" />
     <Compile Include="StoredData\IModelHolder.cs" />
     <Compile Include="StoredData\IModelsHolder.cs" />
     <Compile Include="StoredData\LoadedChemical.cs" />
@@ -74,7 +76,6 @@
     <Compile Include="CoshhData\ActiveCoshhData.cs" />
     <Compile Include="BaseINPC.cs" />
     <Compile Include="CoshhData\CoshhData.cs" />
-    <Compile Include="CoshhData\CoshhDataFile.cs" />
     <Compile Include="CoshhData\ICoshhData.cs" />
     <Compile Include="DataIModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +90,7 @@
       <Name>SafetyProgram.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

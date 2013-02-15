@@ -3,53 +3,94 @@ using Microsoft.Practices.Prism.Events;
 
 using SafetyProgram.Models.DataModels;
 using System.Windows.Forms;
+using System;
 
 namespace SafetyProgram.Data
 {
     public class ActiveCoshhData : BaseINPC
     {
         public FactoryObj Factory;
-        public ServiceObj Service;
         public CoshhData Data;
+        private ICoshhDataService service;
 
         public ActiveCoshhData()
         {
             Data = new CoshhData();
             Factory = new FactoryObj(this);
-            Service = new ServiceObj(this);
+            service = new CoshhLocalFile();
+            dataChangedMonitor();
         }
 
-        public void DataChanged() { RaisePropertyChanged("Data"); }
-        public void FileChange() { RaisePropertyChanged("File"); }
+        #region Metadata & Plumbing
 
-        private bool isOpen = false;
-        public bool IsOpen() { return isOpen; }
-        public bool IsOpen(bool setter)
+        private void dataChangedMonitor()
         {
-            isOpen = setter;
-            RaisePropertyChanged("IsOpen");
+            Data.Apparatuses.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Data_CollectionChanged);
+            Data.Chemicals.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Data_CollectionChanged);
+            Data.Processes.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Data_CollectionChanged);
+            Data.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Data_PropertyChanged);
+        }
+
+        private void Data_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            dataChangedHandler();
+        }
+
+        private void Data_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            dataChangedHandler();
+        }
+
+        private void dataChangedHandler()
+        {
+            FileChanged(true);
+        }
+
+        private bool isOpen;
+        public bool IsOpen(bool isOpen)
+        {
+            if (this.isOpen != isOpen)
+            {
+                this.isOpen = isOpen;
+                if (IsOpenChangedEvent != null) { IsOpenChangedEvent(isOpen); }
+            }
             return isOpen;
         }
+        public bool IsOpen() { return isOpen; }
+        public delegate void isOpenChangedDelegate(bool isOpen);
+        public event isOpenChangedDelegate IsOpenChangedEvent;
 
-        private bool fileChanged = false;
-        public bool FileChanged() { return fileChanged; }
-        public bool FileChanged(bool changed)
+        private bool fileChanged;
+        public bool FileChanged(bool fileChanged)
         {
-            fileChanged = changed;
-            RaisePropertyChanged("FileChanged");
+            if (this.fileChanged != fileChanged)
+            {
+                this.fileChanged = fileChanged;
+                if (FileChangedEvent != null) { FileChangedEvent(fileChanged); }
+            }
             return fileChanged;
         }
+        public bool FileChanged() { return fileChanged; }
+        public delegate void fileChangedDelegate(bool fileChanged);
+        public event fileChangedDelegate FileChangedEvent;
 
         private object selected;
-        public object Selected
+        public object Selected(object selected)
         {
-            get { return selected; }
-            set
+            if (this.selected != selected)
             {
-                selected = value;
-                RaisePropertyChanged("Selected");
+                this.selected = selected;
+                if (SelectionChangedEvent != null) { SelectionChangedEvent(selected); }
             }
+            return selected;            
         }
+        public object Selected() { return selected; }
+        public delegate void selectionChangedDelegate(object selection);
+        public event selectionChangedDelegate SelectionChangedEvent;
+
+        #endregion
+
+        #region Factory Commands
 
         public class FactoryObj
         {
@@ -59,11 +100,9 @@ namespace SafetyProgram.Data
 
             public void DeleteSelected()
             {
-                parent.Data.Apparatuses.Remove(parent.Selected as CoshhApparatusModel);
-                parent.Data.Processes.Remove(parent.Selected as CoshhProcessModel);
-                parent.Data.Chemicals.Remove(parent.Selected as CoshhChemicalModel);
-
-                FactoryEvent();
+                parent.Data.Apparatuses.Remove(parent.Selected() as CoshhApparatusModel);
+                parent.Data.Processes.Remove(parent.Selected() as CoshhProcessModel);
+                parent.Data.Chemicals.Remove(parent.Selected() as CoshhChemicalModel);
             }
 
             public bool Add(object model)
@@ -73,7 +112,6 @@ namespace SafetyProgram.Data
                 else if (model is CoshhChemicalModel) { parent.Data.Chemicals.Add(model as CoshhChemicalModel); }
                 else { return false; }
 
-                FactoryEvent();
                 return true;
             }
 
@@ -82,107 +120,96 @@ namespace SafetyProgram.Data
                 parent.Data.Apparatuses.Remove(model as CoshhApparatusModel);
                 parent.Data.Processes.Remove(model as CoshhProcessModel);
                 parent.Data.Chemicals.Remove(model as CoshhChemicalModel);
-
-                FactoryEvent();
-            }
-
-            private void FactoryEvent()
-            {
-                //parent.FileChanged(true);
-                //parent.DataChanged();
             }
         }
 
-        public class ServiceObj
+        #endregion
+
+        #region Service Commands
+
+        public bool Save()
         {
-            private ActiveCoshhData parent;
-
-            public ServiceObj(ActiveCoshhData parent) { this.parent = parent; }
-
-            public bool Save()
+            if (service.Save(Data))
             {
-                if (parent.Data.Save())
-                {
-                    parent.FileChanged(false);
-                    return true;
-                }
-                else { return false; }
-            }
-
-            public bool SaveAs()
-            {
-                if (parent.Data.SaveAs())
-                {
-                    parent.FileChanged(false);
-                    return true;
-                }
-                else { return false; }
-            }
-
-            public void SaveAsPDF()
-            {
-                parent.Data.SaveAsPDF();
-            }
-
-            public bool LoadFile()
-            {
-                if (Close())
-                {
-                    parent.Data = new CoshhDataFile();
-                    if (parent.Data.Load())
-                    {
-                        parent.IsOpen(true);
-                        parent.FileChanged(false);
-                        parent.Selected = null;
-                        parent.DataChanged();
-                        return true;
-                    }
-                    else { return false; }
-                }
-                else { return false; }
-            }
-
-            public bool Close()
-            {
-                if (parent.FileChanged())
-                {
-                    DialogResult dialogResult = MessageBox.Show("Do you want to save changes you made to " + parent.Data.Title + "?", "Save changes.", MessageBoxButtons.YesNoCancel);
-
-                    switch (dialogResult)
-                    {
-                        case DialogResult.Yes:
-                            if (!Save()) { goto case DialogResult.Cancel; }
-                            break;
-
-                        case DialogResult.No:
-                            break;
-
-                        case DialogResult.Cancel:
-                            return false;
-                    }
-                }
-
-                parent.Data.Close();
-                parent.IsOpen(false);
-                parent.Selected = null;
-                parent.FileChanged(false);
-                parent.DataChanged();
+                FileChanged(false);
                 return true;
             }
+            else { return false; }                
+        }
 
-            public bool NewFile()
+        public bool SaveAs()
+        {
+            if (service.SaveAs(Data))
             {
-                if (Close())
+                FileChanged(false);
+                return true;                    
+            }
+            else { return false; }
+        }
+
+        public void SaveAsPDF()
+        {
+            throw new Exception("Placeholder Command, PDF's not yet implemented");
+        }
+
+        public bool Load()
+        {
+            if (Close())
+            {
+                if (service.Load(Data))
                 {
-                    parent.Data = new CoshhDataFile();
-                    parent.IsOpen(true);
-                    parent.Selected = null;
-                    parent.FileChanged(true);
-                    parent.DataChanged();
+                    IsOpen(true);
+                    FileChanged(false);
+                    Selected(null);
                     return true;
                 }
                 else { return false; }
             }
+            else { return false; }
         }
+
+        public bool Close()
+        {
+            if (FileChanged())
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you want to save changes you made to " + Data.Title + "?", "Save changes.", MessageBoxButtons.YesNoCancel);
+
+                switch (dialogResult)
+                {
+                    case DialogResult.Yes:
+                        if (!Save()) { goto case DialogResult.Cancel; }
+                        break;
+
+                    case DialogResult.No:
+                        break;
+
+                    case DialogResult.Cancel:
+                        return false;
+                }
+            }
+            Data.Clear();
+            service.Close();
+
+            IsOpen(false);
+            Selected(null);
+            FileChanged(false);
+
+            return true;
+        }
+
+        public bool New()
+        {
+            if (Close())
+            {
+                Data.Clear();
+                IsOpen(true);
+                Selected(null);
+                FileChanged(true);
+                return true;
+            }
+            else { return false; }
+        }
+
+        #endregion
     }
 }

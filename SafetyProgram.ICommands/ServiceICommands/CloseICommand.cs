@@ -20,7 +20,7 @@ namespace SafetyProgram.ICommands
 
         public override void Execute(object parameter)
         {
-            currentlyOpen.Service.Close();
+            currentlyOpen.Close();
         }
     }
 }
