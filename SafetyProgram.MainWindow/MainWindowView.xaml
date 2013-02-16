@@ -49,7 +49,7 @@
                         <GridViewColumn Header="Chemical Name" Width="213">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBox Text="{Binding Name}" HorizontalAlignment="Center" Width="Auto" />
+                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Width="Auto" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>                        
@@ -58,8 +58,8 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBox Text="{Binding Value}" HorizontalAlignment="Center" Width="Auto" />
-                                        <TextBox Text="{Binding Unit}" HorizontalAlignment="Center" Width="Auto" />
+                                        <TextBlock Text="{Binding Value}" HorizontalAlignment="Center" Width="Auto" />
+                                        <TextBlock Text="{Binding Unit}" HorizontalAlignment="Center" Width="Auto" />
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>

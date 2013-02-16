@@ -11,9 +11,9 @@ namespace SafetyProgram.Data
     {
         public CoshhData()
         {
-            Chemicals = new ObservableCollection<CoshhChemicalModel>();
-            Apparatuses = new ObservableCollection<CoshhApparatusModel>();
-            Processes = new ObservableCollection<CoshhProcessModel>();
+            Chemicals = new ObservableCollection<CoshhObject<CoshhChemicalModel>>();
+            Apparatuses = new ObservableCollection<CoshhObject<CoshhApparatusModel>>();
+            Processes = new ObservableCollection<CoshhObject<CoshhProcessModel>>();
             Clear();
         }
 
@@ -41,8 +41,8 @@ namespace SafetyProgram.Data
             }
         }
 
-        private ObservableCollection<CoshhChemicalModel> chemicals;
-        public ObservableCollection<CoshhChemicalModel> Chemicals
+        private ObservableCollection<CoshhObject<CoshhChemicalModel>> chemicals;
+        public ObservableCollection<CoshhObject<CoshhChemicalModel>> Chemicals
         {
             get { return chemicals; }
             set
@@ -52,8 +52,8 @@ namespace SafetyProgram.Data
             }
         }
 
-        private ObservableCollection<CoshhApparatusModel> apparatuses;
-        public ObservableCollection<CoshhApparatusModel> Apparatuses
+        private ObservableCollection<CoshhObject<CoshhApparatusModel>> apparatuses;
+        public ObservableCollection<CoshhObject<CoshhApparatusModel>> Apparatuses
         {
             get { return apparatuses; }
             set
@@ -63,8 +63,8 @@ namespace SafetyProgram.Data
             }
         }
 
-        private ObservableCollection<CoshhProcessModel> processes;
-        public ObservableCollection<CoshhProcessModel> Processes
+        private ObservableCollection<CoshhObject<CoshhProcessModel>> processes;
+        public ObservableCollection<CoshhObject<CoshhProcessModel>> Processes
         {
             get { return processes; }
             set 

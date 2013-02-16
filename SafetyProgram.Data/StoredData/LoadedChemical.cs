@@ -12,7 +12,8 @@ namespace SafetyProgram.Data.ChemicalData
         public bool AddToActiveData()
         {
             ActiveCoshhData currentlyOpen = ServiceLocator.Current.GetInstance<ActiveCoshhData>();
-            return currentlyOpen.Factory.Add(Model);
+            return true;
+            //return currentlyOpen.Factory.Add(Model);
         }
 
         public void Edit()

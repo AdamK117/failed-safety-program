@@ -1,20 +1,22 @@
 ﻿using System.ComponentModel;
 
 using SafetyProgram.Models.DataModels;
+using SafetyProgram.Data;
 
 namespace SafetyProgram.MainWindow
 {
     public class ChemicalViewModel : BaseViewModel
     {
         private new CoshhChemicalModel model;
+        private new ICoshhObject<CoshhChemicalModel> coshhObjectModel;
 
-        //Create viewmodel based on model, add handler to propertychanged handler to model
-        public ChemicalViewModel(CoshhChemicalModel model) : base(model)
+        public ChemicalViewModel(ICoshhObject<CoshhChemicalModel> model)
+            : base(model)
         {
-            this.model = model;
+            this.model = model.Data();
+            this.coshhObjectModel = model;
         }
 
-        //Expose model readonly
         public CoshhChemicalModel Model { get { return model; } }
 
         public float Value

@@ -18,15 +18,6 @@ namespace SafetyProgram.RibbonView
 
             currentlyOpen.SelectionChangedEvent += new ActiveCoshhData.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
             currentlyOpen.IsOpenChangedEvent += new ActiveCoshhData.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
-
-            LoadedChemicals = new LoadedChemicals();
-            RaisePropertyChanged("LoadedChemicals");
-        }
-
-        void currentlyOpen_IsOpenChangedEvent(bool isOpen)
-        {
-            HideBackstage();
-            RaisePropertyChanged("RibbonVisibility");
         }
 
         void currentlyOpen_SelectionChangedEvent(object selection)
@@ -37,26 +28,32 @@ namespace SafetyProgram.RibbonView
             RaisePropertyChanged("CurrentSelection");
         }
 
-        public object CurrentSelection
+        public ICoshhObject<object> CurrentSelection
         {
             get { return currentlyOpen.Selected(); }
             set { currentlyOpen.Selected(value); }
         }
 
-        public bool RibbonVisibility { get { return currentlyOpen.IsOpen(); } }
-
         public string ChemicalContextTabVisibility
         {
-            get { return CurrentSelection is CoshhChemicalModel ? "Visible" : "Collapsed"; }
+            get { return CurrentSelection is ICoshhObject<CoshhChemicalModel> ? "Visible" : "Collapsed"; }
         }
         public string ApparatusContextTabVisibility
         {
-            get { return CurrentSelection is CoshhApparatusModel ? "Visible" : "Collapsed"; }
+            get { return CurrentSelection is ICoshhObject<CoshhApparatusModel> ? "Visible" : "Collapsed"; }
         }
         public string ProcessContextTabVisibility
         {
-            get { return CurrentSelection is CoshhProcessModel ? "Visible" : "Collapsed"; }
+            get { return CurrentSelection is ICoshhObject<CoshhProcessModel> ? "Visible" : "Collapsed"; }
         }
+
+        void currentlyOpen_IsOpenChangedEvent(bool isOpen)
+        {
+            HideBackstage();
+            RaisePropertyChanged("RibbonVisibility");
+        }
+
+        public bool RibbonVisibility { get { return currentlyOpen.IsOpen(); } }
 
         public void HideBackstage()
         {
@@ -69,8 +66,6 @@ namespace SafetyProgram.RibbonView
             get { return backstageVisibility; }
             set { backstageVisibility = value; }
         }
-
-        public LoadedChemicals LoadedChemicals { get; set; }
 
         #region ICommands (Buttons etc.)
 

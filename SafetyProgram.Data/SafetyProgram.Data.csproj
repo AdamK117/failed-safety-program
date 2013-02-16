@@ -67,8 +67,8 @@
   <ItemGroup>
     <Compile Include="CoshhData\CoshhLocalFileService.cs" />
     <Compile Include="CoshhData\ICoshhDataService.cs" />
-    <Compile Include="CoshhData\SelectionLogic\SelectableCollectionMember.cs" />
-    <Compile Include="CoshhData\SelectionLogic\ISelectable.cs" />
+    <Compile Include="CoshhData\SelectionLogic\CoshhObject.cs" />
+    <Compile Include="CoshhData\SelectionLogic\ICoshhObject.cs" />
     <Compile Include="StoredData\IModelHolder.cs" />
     <Compile Include="StoredData\IModelsHolder.cs" />
     <Compile Include="StoredData\LoadedChemical.cs" />

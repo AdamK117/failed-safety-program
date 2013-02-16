@@ -20,71 +20,54 @@ namespace SafetyProgram.MainWindow
             currentlyOpen.IsOpenChangedEvent += new ActiveCoshhData.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
             currentlyOpen.SelectionChangedEvent += new ActiveCoshhData.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
 
-            PopulateData();
+            currentlyOpen.Data.Chemicals.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler
+                (
+                    (sender, e) => genericCollectionChanged
+                        (
+                            sender,
+                            e,
+                            Chemicals,
+                            (
+                                (ICoshhObject<CoshhChemicalModel> x) => new ChemicalViewModel(x)
+                            )
+                        )
+                );
+
+            currentlyOpen.Data.Apparatuses.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler
+                (
+                    (sender, e) => genericCollectionChanged
+                        (
+                            sender,
+                            e,
+                            Apparatuses,
+                            (
+                                (ICoshhObject<CoshhApparatusModel> x) => new ApparatusViewModel(x)
+                            )
+                        )
+                );
+
+            currentlyOpen.Data.Processes.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler
+                (
+                    (sender, e) => genericCollectionChanged
+                        (
+                            sender,
+                            e,
+                            Processes, 
+                            (
+                                (ICoshhObject<CoshhProcessModel> x) => new ProcessViewModel(x)
+                            )
+                        )
+                );
         }
 
-        void currentlyOpen_SelectionChangedEvent(object selection)
-        {
-            CurrentSelectionChanged();
-        }
-
-        void currentlyOpen_IsOpenChangedEvent(bool isOpen)
-        {
-            RaisePropertyChanged("IsOpen");
-        }
+        
 
         #region ViewModel plumbing
 
-        public void PopulateData()
-        {
-            currentlyOpen.Data.Chemicals.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Chemicals_CollectionChanged);            
-            currentlyOpen.Data.Apparatuses.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Apparatuses_CollectionChanged);
-            currentlyOpen.Data.Processes.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Processes_CollectionChanged);
-        }
-
-        ObservableCollection<ViewModel> populateViewModels<ViewModel, Model>(ObservableCollection<ViewModel> viewModels, ObservableCollection<Model> models, Func<Model,ViewModel> converter)
-        {
-            foreach (Model model in models)
-            {
-                viewModels.Add(converter(model));
-            }
-            return viewModels;
-        }
-
-        void Processes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            genericCollectionChanged<ProcessViewModel, CoshhProcessModel>
-                (
-                    sender,
-                    e,
-                    Processes,
-                    x => new ProcessViewModel(x)
-                );
-        }
-
-        void Apparatuses_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            genericCollectionChanged<ApparatusViewModel, CoshhApparatusModel>
-                (
-                    sender,
-                    e,
-                    Apparatuses,
-                    x => new ApparatusViewModel(x)
-                );
-        }
-
-        void Chemicals_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            genericCollectionChanged<ChemicalViewModel,CoshhChemicalModel>
-                (
-                    sender, 
-                    e, 
-                    Chemicals,
-                    x => new ChemicalViewModel(x)
-                );
-        }
-
-        void genericCollectionChanged<ViewModel, Model>(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e, ObservableCollection<ViewModel> viewModels, Func<Model, ViewModel> converter) where ViewModel : BaseViewModel
+        void genericCollectionChanged
+            <ViewModel, ICoshhObjectModel>
+            (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e, ObservableCollection<ViewModel> viewModels, Func<ICoshhObjectModel, ViewModel> converter) 
+            where ViewModel : BaseViewModel
         {
             switch (e.Action)
             {
@@ -98,12 +81,14 @@ namespace SafetyProgram.MainWindow
                         }
                     }
                     break;
+
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
-                    foreach (Model model in e.NewItems)
+                    foreach (ICoshhObjectModel model in e.NewItems)
                     {
                         viewModels.Insert(e.NewStartingIndex, converter(model));
                     }
                     break;
+
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Reset:
                     viewModels.Clear();
                     break;
@@ -112,47 +97,32 @@ namespace SafetyProgram.MainWindow
 
         #endregion
 
+        void currentlyOpen_IsOpenChangedEvent(bool isOpen)
+        {
+            RaisePropertyChanged("IsOpen");
+        }
         public string IsOpen
         {
             get { return currentlyOpen.IsOpen() ? "Visible" : "Hidden"; }
         }
 
         #region Selection logic
-        
-        public void CurrentSelectionChanged()
-        {
-            if (currentlyOpen.Selected() is CoshhChemicalModel)
-            {
-                selectedViewModel = Chemicals.Single(i => i.Model == currentlyOpen.Selected() as CoshhChemicalModel);
-            }
-            else if (currentlyOpen.Selected() is CoshhApparatusModel)
-            {
-                selectedViewModel = Apparatuses.Single(i => i.Model == currentlyOpen.Selected() as CoshhApparatusModel);
-            }
-            else if (currentlyOpen.Selected() is CoshhProcessModel)
-            {
-                selectedViewModel = Processes.Single(i => i.Model == currentlyOpen.Selected() as CoshhProcessModel);
-            }
-            else if (currentlyOpen.Selected() == null) { selectedViewModel = null; }
 
-            RaisePropertyChanged("ChemicalSelection");
-            RaisePropertyChanged("ApparatusSelection");
-            RaisePropertyChanged("ProcessSelection");
+        void currentlyOpen_SelectionChangedEvent(ICoshhObject<object> selection)
+        {
+            if (selection is ICoshhObject<CoshhChemicalModel>) { Selected = Chemicals.Single(x => x.GetICoshhObject() == selection as ICoshhObject<CoshhChemicalModel>); }
+            else if (selection is ICoshhObject<CoshhApparatusModel>) { Selected = Chemicals.Single(x => x.GetICoshhObject() == selection as ICoshhObject<CoshhApparatusModel>); }
+            else if (selection is ICoshhObject<CoshhProcessModel>) { Selected = Chemicals.Single(x => x.GetICoshhObject() == selection as ICoshhObject<CoshhProcessModel>); }
         }
 
-        private object selectedViewModel;
-        public object Selected
+        private BaseViewModel selectedViewModel;
+        public BaseViewModel Selected
         {
             get { return selectedViewModel; }
             set
             {
                 selectedViewModel = value;
-
-                if (value != null)
-                {
-                    IMainWindowViewModel a = (IMainWindowViewModel)value;
-                    currentlyOpen.Selected(a.GetModel());
-                }
+                if (value != null) { currentlyOpen.Selected(value.GetICoshhObject()); }
                 
                 RaisePropertyChanged("ChemicalSelection");
                 RaisePropertyChanged("ApparatusSelection");
@@ -168,17 +138,18 @@ namespace SafetyProgram.MainWindow
         public ApparatusViewModel ApparatusSelection
         {
             get { return Selected as ApparatusViewModel; }
-            set { Selected = value as object; }
+            set { Selected = value; }
         }
         public ProcessViewModel ProcessSelection
         {
             get { return Selected as ProcessViewModel; }
-            set { Selected = value as object; }
+            set { Selected = value; }
         }
 
         #endregion
 
-        //Exposes ViewModels to the View
+        #region Data
+
         public string Title
         {
             get { return currentlyOpen.Data.Title; }
@@ -234,5 +205,7 @@ namespace SafetyProgram.MainWindow
                 RaisePropertyChanged("AdditionalComments");
             }
         }
+
+        #endregion
     }
 }

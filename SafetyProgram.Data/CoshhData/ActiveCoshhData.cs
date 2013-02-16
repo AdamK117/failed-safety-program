@@ -74,18 +74,21 @@ namespace SafetyProgram.Data
         public delegate void fileChangedDelegate(bool fileChanged);
         public event fileChangedDelegate FileChangedEvent;
 
-        private object selected;
-        public object Selected(object selected)
+        private ICoshhObject<object> selected;
+        public ICoshhObject<object> Selected(ICoshhObject<object> selected)
         {
             if (this.selected != selected)
             {
                 this.selected = selected;
                 if (SelectionChangedEvent != null) { SelectionChangedEvent(selected); }
             }
-            return selected;            
+            return selected;
         }
-        public object Selected() { return selected; }
-        public delegate void selectionChangedDelegate(object selection);
+        public ICoshhObject<object> Selected()
+        {
+            return selected;
+        }
+        public delegate void selectionChangedDelegate(ICoshhObject<object> selection);
         public event selectionChangedDelegate SelectionChangedEvent;
 
         #endregion
@@ -98,29 +101,14 @@ namespace SafetyProgram.Data
 
             public FactoryObj(ActiveCoshhData parent) { this.parent = parent; }
 
-            public void DeleteSelected()
+            public void DeleteSelected() { parent.selected.Remove(); }
+
+            public bool Add(ICoshhObject<object> model)
             {
-                parent.Data.Apparatuses.Remove(parent.Selected() as CoshhApparatusModel);
-                parent.Data.Processes.Remove(parent.Selected() as CoshhProcessModel);
-                parent.Data.Chemicals.Remove(parent.Selected() as CoshhChemicalModel);
+                throw new Exception();
             }
 
-            public bool Add(object model)
-            {
-                if (model is CoshhApparatusModel) { parent.Data.Apparatuses.Add(model as CoshhApparatusModel); }
-                else if (model is CoshhProcessModel) { parent.Data.Processes.Add(model as CoshhProcessModel); }
-                else if (model is CoshhChemicalModel) { parent.Data.Chemicals.Add(model as CoshhChemicalModel); }
-                else { return false; }
-
-                return true;
-            }
-
-            public void Remove(object model)
-            {
-                parent.Data.Apparatuses.Remove(model as CoshhApparatusModel);
-                parent.Data.Processes.Remove(model as CoshhProcessModel);
-                parent.Data.Chemicals.Remove(model as CoshhChemicalModel);
-            }
+            public void Remove(ICoshhObject<object> model) { model.Remove(); }
         }
 
         #endregion

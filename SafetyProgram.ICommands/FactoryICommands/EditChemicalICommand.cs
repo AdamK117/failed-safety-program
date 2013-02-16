@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using SafetyProgram.UserControls;
 using SafetyProgram.Models.DataModels;
+using SafetyProgram.Data;
 
 namespace SafetyProgram.ICommands
 {
@@ -28,7 +29,8 @@ namespace SafetyProgram.ICommands
         {
             if (canExecute)
             {
-                EditCoshhChemical a = new EditCoshhChemical(parameter as CoshhChemicalModel);
+                ICoshhObject<CoshhChemicalModel> b = parameter as ICoshhObject<CoshhChemicalModel>;
+                EditCoshhChemical a = new EditCoshhChemical(b.Data());
                 a.ShowDialog();
             }
         }

@@ -1,7 +1,10 @@
-﻿namespace SafetyProgram.MainWindow
+﻿using SafetyProgram.Models.DataModels;
+using SafetyProgram.Data;
+namespace SafetyProgram.MainWindow
 {
     interface IMainWindowViewModel
     {
-        object GetModel();
+        BaseElementModel GetModel();
+        ICoshhObject<BaseElementModel> GetICoshhObject();
     }
 }

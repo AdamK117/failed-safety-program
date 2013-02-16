@@ -1,16 +1,19 @@
 ﻿using System.Linq;
 using SafetyProgram.Models.DataModels;
 using System.ComponentModel;
+using SafetyProgram.Data;
 
 namespace SafetyProgram.MainWindow
 {
     public abstract class BaseViewModel : BaseINPC, IMainWindowViewModel
     {
         protected BaseElementModel model;
+        protected ICoshhObject<BaseElementModel> coshhObjectModel;
 
-        public BaseViewModel(BaseElementModel model) 
-        { 
-            this.model = model;
+        public BaseViewModel(ICoshhObject<BaseElementModel> iCoshhObject) 
+        {
+            this.model = iCoshhObject.Data();
+            this.coshhObjectModel = iCoshhObject;
 
             this.model.PropertyChanged += new PropertyChangedEventHandler(modelChanged);
             this.model.Hazards.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Hazards_CollectionChanged);
@@ -21,7 +24,9 @@ namespace SafetyProgram.MainWindow
             RaisePropertyChanged("Hazards");
         }
 
-        public virtual object GetModel() { return model; }
+        public virtual BaseElementModel GetModel() { return model; }
+
+        public virtual ICoshhObject<BaseElementModel> GetICoshhObject() { return coshhObjectModel; }
 
         public string Name
         {
