@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:SafetyProgram.MainWindow"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:chemicaltable="clr-namespace:SafetyProgram.MainWindow.UserControls.ChemicalTable"
+             xmlns:apparatustable="clr-namespace:SafetyProgram.MainWindow.UserControls.ApparatusTable"
+             xmlns:processestable="clr-namespace:SafetyProgram.MainWindow.UserControls.ProcessesTable"
              mc:Ignorable="d" d:DesignHeight="380" d:DesignWidth="793">
 
     <UserControl.Resources>
@@ -16,140 +19,12 @@
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
         
-        <!-- General List Style -->
-        <Style TargetType="ListView" x:Key="SafetyListStyle">
-            
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListView}">
-                        <StackPanel>
-                            <GridViewHeaderRowPresenter />
-                            <ItemsPresenter x:Name="ItemsPresenter" DockPanel.Dock="Bottom" />
-                        </StackPanel>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            
-            <Setter Property="ItemContainerStyle">
-                <Setter.Value>
-                    <Style TargetType="{x:Type ListViewItem}">
-                        <Setter Property="FontSize" Value="16" />
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    </Style>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
-        <!-- Chemical List Style -->
-        <Style TargetType="ListView" x:Key="ChemicalListStyle" BasedOn="{StaticResource SafetyListStyle}">
-            <Setter Property="View">
-                <Setter.Value>
-                    <GridView>
-                        <!-- Chemical Name -->
-                        <GridViewColumn Header="Chemical Name" Width="213">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Width="Auto" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>                        
-                        <!-- Amount -->
-                        <GridViewColumn Header="Amount" Width="100" >
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Value}" HorizontalAlignment="Center" Width="Auto" />
-                                        <TextBlock Text="{Binding Unit}" HorizontalAlignment="Center" Width="Auto" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <!-- Hazards -->
-                        <GridViewColumn Width="450" Header="Hazards">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                            <WrapPanel MaxWidth="{Binding RelativeSource={RelativeSource AncestorType={x:Type GridViewColumn}}}">
-                                                <Image Source="Images\edit.jpg" Width="50" Height="50" Margin="0,0,10,0" />
-                                                <Image Source="Images\edit.jpg" Width="50" Height="50" Margin="0,0,10,0" />
-                                                <Image Source="Images\edit.jpg" Width="50" Height="50" Margin="0,0,10,0" />
-                                            </WrapPanel>
-                                        </StackPanel>
-                                        
-                                        <TextBlock Text="{Binding Hazards}" Width="Auto" HorizontalAlignment="Left" TextWrapping="Wrap" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
-        <!-- Apparatus List Style -->
-        <Style TargetType="ListView" x:Key="ApparatusListStyle" BasedOn="{StaticResource SafetyListStyle}">
-            <Setter Property="View">
-                <Setter.Value>
-                    <GridView>
-                        <!-- Chemical Name -->
-                        <GridViewColumn Header="Apparatus Name" Width="313">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox Text="{Binding Name}" HorizontalAlignment="Center" Width="Auto" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <!-- Hazards -->
-                        <GridViewColumn Width="450" Header="Apparatus Hazards">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Hazards}" Width="Auto" HorizontalAlignment="Left" TextWrapping="Wrap" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- Processes List Style -->
-        <Style TargetType="ListView" x:Key="ProcessesListStyle" BasedOn="{StaticResource SafetyListStyle}">
-            <Setter Property="View">
-                <Setter.Value>
-                    <GridView>
-                        <!-- Chemical Name -->
-                        <GridViewColumn Header="Process Name" Width="313">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox Text="{Binding Name}" HorizontalAlignment="Center" Width="Auto" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <!-- Hazards -->
-                        <GridViewColumn Width="450" Header="Process Hazards">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding Hazards}" Width="Auto" HorizontalAlignment="Left" TextWrapping="Wrap" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </UserControl.Resources>
     
     <ScrollViewer Visibility="{Binding IsOpen}">
         <Border Padding="15" Width="793" Background="White">
-            <StackPanel Background="White">
-            
+            <StackPanel Background="White" x:Name="LayoutRoot">
+                
                 <TextBox HorizontalAlignment="Center" FontSize="24" FontStyle="Italic" TextWrapping="Wrap" TextAlignment="Center" Text="{Binding Title, Mode=TwoWay}" />
                 
                 <TextBox TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center">Experimenter name </TextBox>
@@ -157,13 +32,15 @@
 
                 <!-- Chemicals List -->
                 <TextBlock Style="{StaticResource SectionHeader}">Chemicals used in this experiment</TextBlock>
-                <ListView Name="ChemicalListView" Style="{StaticResource ChemicalListStyle}" ItemsSource="{Binding Chemicals, Mode=TwoWay}" SelectedItem="{Binding ChemicalSelection, Mode=TwoWay}" />
+                <chemicaltable:ChemicalTableView />
+                
                 <!-- Apparatus List -->
                 <TextBlock Style="{StaticResource SectionHeader}">Apparatus used in this experiment</TextBlock>
-                <ListView Name="ApparatusListView" Style="{StaticResource ApparatusListStyle}" ItemsSource="{Binding Apparatuses, Mode=TwoWay}" SelectedItem="{Binding ApparatusSelection, Mode=TwoWay}" />
+                <apparatustable:ApparatusTableView />
+                
                 <!-- Process List -->
                 <TextBlock Style="{StaticResource SectionHeader}">Processes used in this experiment</TextBlock>
-                <ListView Name="ProcessesListView" Style="{StaticResource ProcessesListStyle}" ItemsSource="{Binding Processes, Mode=TwoWay}" SelectedItem="{Binding ProcessSelection, Mode=TwoWay}" />
+                <processestable:ProcessesTableView />
 
                 <!-- Comments Section -->
                 <TextBlock Style="{StaticResource SectionHeader}">Additional Comments</TextBlock>

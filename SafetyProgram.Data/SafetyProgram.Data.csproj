@@ -55,20 +55,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PrismAggregatorDesignTest\bin\Bin\Desktop\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoshhData\CoshhLocalFileService.cs" />
     <Compile Include="CoshhData\ICoshhDataService.cs" />
-    <Compile Include="CoshhData\SelectionLogic\CoshhObject.cs" />
-    <Compile Include="CoshhData\SelectionLogic\ICoshhObject.cs" />
+    <Compile Include="CoshhData\CoshhObject.cs" />
+    <Compile Include="CoshhData\ICoshhObject.cs" />
     <Compile Include="StoredData\IModelHolder.cs" />
     <Compile Include="StoredData\IModelsHolder.cs" />
     <Compile Include="StoredData\LoadedChemical.cs" />
@@ -90,7 +94,6 @@
       <Name>SafetyProgram.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -123,3 +123,10 @@ V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.FSharp.pdb
 V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\MainWindowView.baml
 V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\SafetyProgram.MainWindow.g.resources
 V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\SafetyProgram.MainWindow.pdb
+V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ChemicalTable\ChemicalTableView.baml
+V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ChemicalTable\ChemicalTableView.g.cs
+V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\GeneratedInternalTypeHelper.g.cs
+V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ApparatusTable\ApparatusTableView.baml
+V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ApparatusTable\ApparatusTableView.g.cs
+V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ProcessesTable\ProcessesTableView.baml
+V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ProcessesTable\ProcessesTableView.g.cs

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-1681675654
-1-1659869822
-111556448895
+4-860742096
+
+171284377868
 20-811799080
-MainWindowView.xaml;
+UserControls\ProcessesTable\ProcessesTableView.xaml;MainWindowView.xaml;UserControls\ApparatusTable\ApparatusTableView.xaml;UserControls\ChemicalTable\ChemicalTableView.xaml;
 
 True
 
