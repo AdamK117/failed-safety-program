@@ -1,12 +1,10 @@
-﻿using System.ComponentModel;
-
-namespace SafetyProgram.ICommands
+﻿namespace SafetyProgram.ICommands
 {
     public class DeleteSelectedICommand : ActiveDataICommandsBase
     {
         public DeleteSelectedICommand()
         {
-            currentlyOpen.SelectionChangedEvent += new Data.ActiveCoshhData.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
+            currentlyOpen.SelectionChangedEvent +=new Data.CoshhFile.CurrentlyOpen.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
         }
 
         void currentlyOpen_SelectionChangedEvent(object selection)
@@ -20,7 +18,7 @@ namespace SafetyProgram.ICommands
 
         public override void Execute(object parameter)
         {
-            if (canExecute) { currentlyOpen.Factory.DeleteSelected(); }
+            if (canExecute) { currentlyOpen.DeleteSelected(); }
         }
     }
 }

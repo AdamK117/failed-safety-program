@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
-using SafetyProgram.UserControls;
+﻿using SafetyProgram.UserControls;
 using SafetyProgram.Models.DataModels;
 using SafetyProgram.Data;
 
@@ -13,7 +8,7 @@ namespace SafetyProgram.ICommands
     {
         public EditChemicalICommand()
         {
-            currentlyOpen.SelectionChangedEvent += new Data.ActiveCoshhData.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
+            currentlyOpen.SelectionChangedEvent +=new Data.CoshhFile.CurrentlyOpen.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
         }
 
         void currentlyOpen_SelectionChangedEvent(object selection)

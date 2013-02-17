@@ -1,22 +1,16 @@
-﻿using System;
-using System.Linq;
-using System.Collections.ObjectModel;
-
-using Microsoft.Practices.ServiceLocation;
-
-using SafetyProgram.Models.DataModels;
-using SafetyProgram.Data;
+﻿using Microsoft.Practices.ServiceLocation;
+using SafetyProgram.Data.CoshhFile;
 
 namespace SafetyProgram.MainWindow
 {
     public class MainWindowViewModel : BaseINPC
     {
-        private ActiveCoshhData currentlyOpen;
+        private CurrentlyOpen currentlyOpen;
 
         public MainWindowViewModel()
         {     
-            currentlyOpen = ServiceLocator.Current.GetInstance<ActiveCoshhData>();
-            currentlyOpen.IsOpenChangedEvent += new ActiveCoshhData.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
+            currentlyOpen = ServiceLocator.Current.GetInstance<CurrentlyOpen>();
+            currentlyOpen.IsOpenChangedEvent += new CurrentlyOpen.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
         }
 
         void currentlyOpen_IsOpenChangedEvent(bool isOpen)

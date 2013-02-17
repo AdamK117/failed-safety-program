@@ -6,16 +6,13 @@ namespace SafetyProgram.ICommands
     {
         public CloseICommand()
         {
-            currentlyOpen.PropertyChanged += filePropertyChanged;
+            currentlyOpen.IsOpenChangedEvent +=new Data.CoshhFile.CurrentlyOpen.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
         }
 
-        void filePropertyChanged(object sender, PropertyChangedEventArgs e)
+        void currentlyOpen_IsOpenChangedEvent(bool isOpen)
         {
-            if (e.PropertyName == "IsOpen")
-            {
-                canExecute = currentlyOpen.IsOpen();
-                RaiseCanExecuteChanged();
-            }
+            canExecute = currentlyOpen.IsOpen();
+            RaiseCanExecuteChanged();
         }
 
         public override void Execute(object parameter)

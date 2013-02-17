@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cal="http://www.codeplex.com/CompositeWPF"
         xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
-        Title="Shellz" Height="500" Width="700">
+        Title="Shellz" Height="1000" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <!-- Main Content -->

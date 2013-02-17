@@ -69,18 +69,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoshhData\CoshhLocalFileService.cs" />
-    <Compile Include="CoshhData\ICoshhDataService.cs" />
-    <Compile Include="CoshhData\CoshhObject.cs" />
-    <Compile Include="CoshhData\ICoshhObject.cs" />
-    <Compile Include="StoredData\IModelHolder.cs" />
-    <Compile Include="StoredData\IModelsHolder.cs" />
-    <Compile Include="StoredData\LoadedChemical.cs" />
-    <Compile Include="StoredData\LoadedChemicals.cs" />
-    <Compile Include="CoshhData\ActiveCoshhData.cs" />
+    <Compile Include="CoshhFile\CoshhLocalFileService.cs" />
+    <Compile Include="CoshhFile\ICoshhDataService.cs" />
+    <Compile Include="CoshhFile\CoshhObject.cs" />
+    <Compile Include="ICoshhObject.cs" />
+    <Compile Include="CoshhFile\CurrentlyOpen.cs" />
     <Compile Include="BaseINPC.cs" />
-    <Compile Include="CoshhData\CoshhData.cs" />
-    <Compile Include="CoshhData\ICoshhData.cs" />
+    <Compile Include="CoshhFile\CoshhFileData.cs" />
+    <Compile Include="ICoshhData.cs" />
     <Compile Include="DataIModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

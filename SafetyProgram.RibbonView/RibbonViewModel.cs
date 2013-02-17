@@ -4,20 +4,20 @@ using SafetyProgram.ICommands;
 using SafetyProgram.Models.DataModels;
 using SafetyProgram.Data;
 
-using SafetyProgram.Data.ChemicalData;
+using SafetyProgram.Data.CoshhFile;
 
 namespace SafetyProgram.RibbonView
 {
     public class RibbonViewModel : BaseINPC
     {
-        private ActiveCoshhData currentlyOpen;
+        private CurrentlyOpen currentlyOpen;
 
         public RibbonViewModel()
         {
-            currentlyOpen = ServiceLocator.Current.GetInstance<ActiveCoshhData>();
+            currentlyOpen = ServiceLocator.Current.GetInstance<CurrentlyOpen>();
 
-            currentlyOpen.SelectionChangedEvent += new ActiveCoshhData.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
-            currentlyOpen.IsOpenChangedEvent += new ActiveCoshhData.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
+            currentlyOpen.SelectionChangedEvent += new CurrentlyOpen.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
+            currentlyOpen.IsOpenChangedEvent += new CurrentlyOpen.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
         }
 
         void currentlyOpen_SelectionChangedEvent(object selection)

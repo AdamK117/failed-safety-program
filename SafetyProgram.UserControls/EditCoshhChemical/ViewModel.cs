@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SafetyProgram.Models.DataModels;
-using SafetyProgram.Data;
+﻿using SafetyProgram.Models.DataModels;
 using Microsoft.Practices.ServiceLocation;
+using SafetyProgram.Data.CoshhFile;
 
 namespace SafetyProgram.UserControls
 {
     public class ViewModel : BaseINPC
     {
         private CoshhChemicalModel model;
-        protected ActiveCoshhData currentlyOpen;
+        protected CurrentlyOpen currentlyOpen;
 
         private void baseCtor()
         {
-            currentlyOpen = ServiceLocator.Current.GetInstance<ActiveCoshhData>();
+            currentlyOpen = ServiceLocator.Current.GetInstance<CurrentlyOpen>();
             RaisePropertyChanged("Model");
         }
 

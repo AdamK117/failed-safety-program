@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using Microsoft.Practices.Prism.Modularity;
+using SafetyProgram.Data.CoshhFile;
 
 namespace SafetyProgram.Data
 {
@@ -15,7 +16,7 @@ namespace SafetyProgram.Data
 
         public void Initialize()
         {
-            container.RegisterType<ActiveCoshhData>(new ContainerControlledLifetimeManager());
+            container.RegisterType<CurrentlyOpen>(new ContainerControlledLifetimeManager());
         }
     }
 }

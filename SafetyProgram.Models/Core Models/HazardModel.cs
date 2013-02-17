@@ -2,7 +2,6 @@
 {
     public class HazardModel : BaseINPC
     {
-        public HazardModel(string hazard) { this.hazard = hazard; }
         public HazardModel() { }
 
         private string hazard;
