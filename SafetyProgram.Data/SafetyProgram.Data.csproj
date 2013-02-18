@@ -71,8 +71,6 @@
   <ItemGroup>
     <Compile Include="CoshhFile\CoshhLocalFileService.cs" />
     <Compile Include="CoshhFile\ICoshhDataService.cs" />
-    <Compile Include="CoshhFile\CoshhObject.cs" />
-    <Compile Include="ICoshhObject.cs" />
     <Compile Include="CoshhFile\CurrentlyOpen.cs" />
     <Compile Include="BaseINPC.cs" />
     <Compile Include="CoshhFile\CoshhFileData.cs" />
@@ -88,6 +86,10 @@
     <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
       <Project>{0150A546-807A-4D76-88EB-3C3F3C46A43B}</Project>
       <Name>SafetyProgram.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
+      <Project>{69416B92-32EA-4F2A-B3D4-5FC8389090BB}</Project>
+      <Name>SafetyProgram.UserControls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

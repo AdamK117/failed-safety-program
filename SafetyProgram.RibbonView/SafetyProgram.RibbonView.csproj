@@ -96,6 +96,10 @@
       <Project>{00593F4B-DA37-453F-8F25-4D62D5E69318}</Project>
       <Name>SafetyProgram.ICommands</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
+      <Project>{69416B92-32EA-4F2A-B3D4-5FC8389090BB}</Project>
+      <Name>SafetyProgram.UserControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -130,3 +130,5 @@ V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ApparatusTable\
 V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ApparatusTable\ApparatusTableView.g.cs
 V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ProcessesTable\ProcessesTableView.baml
 V:\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\UserControls\ProcessesTable\ProcessesTableView.g.cs
+V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.UserControls.dll
+V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.UserControls.pdb

@@ -71,3 +71,5 @@ V:\SafetyProgram\SafetyProgram.Data\bin\Debug\Microsoft.Practices.Unity.xml
 V:\SafetyProgram\SafetyProgram.Data\obj\Debug\ResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.Data\obj\Debug\SafetyProgram.Data.dll
 V:\SafetyProgram\SafetyProgram.Data\obj\Debug\SafetyProgram.Data.pdb
+V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.UserControls.dll
+V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.UserControls.pdb

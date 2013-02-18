@@ -5,6 +5,7 @@ using SafetyProgram.Models.DataModels;
 using SafetyProgram.Data;
 
 using SafetyProgram.Data.CoshhFile;
+using SafetyProgram.UserControls;
 
 namespace SafetyProgram.RibbonView
 {

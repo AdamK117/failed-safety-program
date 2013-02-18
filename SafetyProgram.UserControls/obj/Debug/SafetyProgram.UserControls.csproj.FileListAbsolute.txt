@@ -44,10 +44,7 @@ V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Prism.
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.dll
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Unity.dll
-V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\SafetyProgram.Data.dll
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\SafetyProgram.Models.dll
-V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\SafetyProgram.FSharp.dll
-V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\SafetyProgram.Data.pdb
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\SafetyProgram.Models.pdb
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Prism.pdb
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Prism.xml
@@ -59,7 +56,6 @@ V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Prism.
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.xml
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Unity.xml
-V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\SafetyProgram.FSharp.pdb
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\ResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\Controls\Hazards\HazardList.baml
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\Controls\Hazards\HazardList.g.cs
@@ -74,3 +70,10 @@ V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\GenerateResource.read.1.tl
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\GenerateResource.write.1.tlog
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\SafetyProgram.UserControls.dll
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\SafetyProgram.UserControls.pdb
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Styles\TableStyle.baml
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ApparatusTable\ApparatusTableView.baml
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ChemicalTable\ChemicalTableView.baml
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ProcessesTable\ProcessesTableView.baml
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ApparatusTable\ApparatusTableView.g.cs
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ChemicalTable\ChemicalTableView.g.cs
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ProcessesTable\ProcessesTableView.g.cs
