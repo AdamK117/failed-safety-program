@@ -19,7 +19,7 @@ namespace SafetyProgram.MainWindow
             currentlyOpen = ServiceLocator.Current.GetInstance<CurrentlyOpen>();
             currentlyOpen.Data.DocObject.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(DocObject_CollectionChanged);
 
-            foreach (IDocObject doc in currentlyOpen.Data.DocObject)
+            foreach (IDocUserControl doc in currentlyOpen.Data.DocObject)
             {
                 LayoutRoot.Children.Add(doc.Display());
             }
@@ -27,7 +27,7 @@ namespace SafetyProgram.MainWindow
 
         void DocObject_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            foreach (IDocObject doc in currentlyOpen.Data.DocObject)
+            foreach (IDocUserControl doc in currentlyOpen.Data.DocObject)
             {
                 LayoutRoot.Children.Add(doc.Display());
             }

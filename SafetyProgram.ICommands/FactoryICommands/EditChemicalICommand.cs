@@ -24,7 +24,7 @@ namespace SafetyProgram.ICommands
         {
             if (canExecute)
             {
-                ICoshhObject<CoshhChemicalModel> b = parameter as ICoshhObject<CoshhChemicalModel>;
+                IDocDataHolder<CoshhChemicalModel> b = parameter as IDocDataHolder<CoshhChemicalModel>;
                 EditCoshhChemical a = new EditCoshhChemical(b.Data());
                 a.ShowDialog();
             }

@@ -29,7 +29,7 @@ namespace SafetyProgram.RibbonView
             RaisePropertyChanged("CurrentSelection");
         }
 
-        public ICoshhObject<object> CurrentSelection
+        public IDocDataHolder<object> CurrentSelection
         {
             get { return currentlyOpen.Selected(); }
             set { currentlyOpen.Selected(value); }
@@ -37,15 +37,15 @@ namespace SafetyProgram.RibbonView
 
         public string ChemicalContextTabVisibility
         {
-            get { return CurrentSelection is ICoshhObject<CoshhChemicalModel> ? "Visible" : "Collapsed"; }
+            get { return CurrentSelection is IDocDataHolder<CoshhChemicalModel> ? "Visible" : "Collapsed"; }
         }
         public string ApparatusContextTabVisibility
         {
-            get { return CurrentSelection is ICoshhObject<CoshhApparatusModel> ? "Visible" : "Collapsed"; }
+            get { return CurrentSelection is IDocDataHolder<CoshhApparatusModel> ? "Visible" : "Collapsed"; }
         }
         public string ProcessContextTabVisibility
         {
-            get { return CurrentSelection is ICoshhObject<CoshhProcessModel> ? "Visible" : "Collapsed"; }
+            get { return CurrentSelection is IDocDataHolder<CoshhProcessModel> ? "Visible" : "Collapsed"; }
         }
 
         void currentlyOpen_IsOpenChangedEvent(bool isOpen)

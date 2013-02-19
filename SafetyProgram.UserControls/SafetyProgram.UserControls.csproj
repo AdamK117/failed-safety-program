@@ -79,15 +79,16 @@
     </Compile>
     <Compile Include="Controls\Hazards\HazardListViewModel.cs" />
     <Compile Include="Controls\Hazards\RemoveHazardICommand.cs" />
-    <Compile Include="CoshhObject.cs" />
+    <Compile Include="CoshhDocDataObject.cs" />
     <Compile Include="EditCoshhChemical\Bootstrapper.cs" />
     <Compile Include="EditCoshhChemical\EditCoshhChemical.xaml.cs">
       <DependentUpon>EditCoshhChemical.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditCoshhChemical\ViewModel.cs" />
-    <Compile Include="ICoshhObject.cs" />
-    <Compile Include="IDocObject.cs" />
-    <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableIDocObject.cs" />
+    <Compile Include="IDocDataHolder.cs" />
+    <Compile Include="IDocInteractable.cs" />
+    <Compile Include="IDocUserControl.cs" />
+    <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableIDocUserControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
