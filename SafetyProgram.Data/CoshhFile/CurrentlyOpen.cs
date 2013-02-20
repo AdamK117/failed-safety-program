@@ -21,9 +21,6 @@ namespace SafetyProgram.Data.CoshhFile
         //Ugly event handlers
         private void dataChangedMonitor()
         {
-            Data.Apparatuses.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Data_CollectionChanged);
-            Data.Chemicals.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Data_CollectionChanged);
-            Data.Processes.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Data_CollectionChanged);
             Data.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Data_PropertyChanged);
         }
 

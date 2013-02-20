@@ -58,8 +58,15 @@ V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Servic
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Unity.xml
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\ResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\Controls\Hazards\HazardList.baml
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ApparatusTable\ApparatusTableView.baml
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ChemicalTable\ChemicalTableView.baml
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ProcessesTable\ProcessesTableView.baml
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Styles\TableStyle.baml
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\Controls\Hazards\HazardList.g.cs
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\EditCoshhChemical\EditCoshhChemical.g.cs
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ApparatusTable\ApparatusTableView.g.cs
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ChemicalTable\ChemicalTableView.g.cs
+V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ProcessesTable\ProcessesTableView.g.cs
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\GeneratedInternalTypeHelper.g.cs
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\SafetyProgram.UserControls_MarkupCompile.cache
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\SafetyProgram.UserControls_MarkupCompile.lref
@@ -70,10 +77,3 @@ V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\GenerateResource.read.1.tl
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\GenerateResource.write.1.tlog
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\SafetyProgram.UserControls.dll
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\SafetyProgram.UserControls.pdb
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Styles\TableStyle.baml
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ApparatusTable\ApparatusTableView.baml
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ChemicalTable\ChemicalTableView.baml
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ProcessesTable\ProcessesTableView.baml
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ApparatusTable\ApparatusTableView.g.cs
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ChemicalTable\ChemicalTableView.g.cs
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ProcessesTable\ProcessesTableView.g.cs

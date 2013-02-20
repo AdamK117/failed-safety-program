@@ -9,9 +9,6 @@ namespace SafetyProgram.Data.CoshhFile
     {
         public CoshhFileData()
         {
-            Chemicals = new ObservableCollection<CoshhDocDataObject<CoshhChemicalModel>>();
-            Apparatuses = new ObservableCollection<CoshhDocDataObject<CoshhApparatusModel>>();
-            Processes = new ObservableCollection<CoshhDocDataObject<CoshhProcessModel>>();
             DocObject = new ObservableCollection<IDocUserControl>();
             Clear();
         }
@@ -19,9 +16,6 @@ namespace SafetyProgram.Data.CoshhFile
         public bool Clear()
         {
             Title = "Untitled Safety Document";
-            Chemicals.Clear();
-            Apparatuses.Clear();
-            Processes.Clear();
             AdditionalComments = "No additional comments.";
 
             return true;
@@ -47,39 +41,6 @@ namespace SafetyProgram.Data.CoshhFile
             { 
                 title = value;
                 RaisePropertyChanged("Title");
-            }
-        }
-
-        private ObservableCollection<CoshhDocDataObject<CoshhChemicalModel>> chemicals;
-        public ObservableCollection<CoshhDocDataObject<CoshhChemicalModel>> Chemicals
-        {
-            get { return chemicals; }
-            set
-            { 
-                chemicals = value;
-                RaisePropertyChanged("Chemicals");
-            }
-        }
-
-        private ObservableCollection<CoshhDocDataObject<CoshhApparatusModel>> apparatuses;
-        public ObservableCollection<CoshhDocDataObject<CoshhApparatusModel>> Apparatuses
-        {
-            get { return apparatuses; }
-            set
-            {
-                apparatuses = value;
-                RaisePropertyChanged("Apparatuses");
-            }
-        }
-
-        private ObservableCollection<CoshhDocDataObject<CoshhProcessModel>> processes;
-        public ObservableCollection<CoshhDocDataObject<CoshhProcessModel>> Processes
-        {
-            get { return processes; }
-            set 
-            { 
-                processes = value;
-                RaisePropertyChanged("Processes");
             }
         }
 

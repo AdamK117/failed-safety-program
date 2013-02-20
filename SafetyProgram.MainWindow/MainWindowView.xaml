@@ -4,48 +4,11 @@
              xmlns:local="clr-namespace:SafetyProgram.MainWindow"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:chemicaltable="clr-namespace:SafetyProgram.MainWindow.UserControls.ChemicalTable"
-             xmlns:apparatustable="clr-namespace:SafetyProgram.MainWindow.UserControls.ApparatusTable"
-             xmlns:processestable="clr-namespace:SafetyProgram.MainWindow.UserControls.ProcessesTable"
              mc:Ignorable="d" d:DesignHeight="380" d:DesignWidth="793">
-
-    <UserControl.Resources>
-        
-        <!-- Header Style -->
-        <Style TargetType="TextBlock" x:Key="SectionHeader">
-            <Setter Property="Margin" Value="0,20,0,5" />
-            <Setter Property="FontSize" Value="24" />
-            <Setter Property="FontStyle" Value="Italic" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-        </Style>
-        
-    </UserControl.Resources>
     
     <ScrollViewer Visibility="{Binding IsOpen}">
         <Border Padding="15" Width="793" Background="White">
-            <StackPanel Background="White" x:Name="LayoutRoot">
-                
-                <TextBox HorizontalAlignment="Center" FontSize="24" FontStyle="Italic" TextWrapping="Wrap" TextAlignment="Center" Text="{Binding Title, Mode=TwoWay}" />
-                
-                <TextBox TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center">Experimenter name </TextBox>
-                <TextBox TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center">Experimental Date (Form Created: 01/01/01)</TextBox>
-
-                <!-- Chemicals List -->
-                <TextBlock Style="{StaticResource SectionHeader}">Chemicals used in this experiment</TextBlock>
-                <chemicaltable:ChemicalTableView />
-                
-                <!-- Apparatus List -->
-                <TextBlock Style="{StaticResource SectionHeader}">Apparatus used in this experiment</TextBlock>
-                <apparatustable:ApparatusTableView />
-                
-                <!-- Process List -->
-                <TextBlock Style="{StaticResource SectionHeader}">Processes used in this experiment</TextBlock>
-                <processestable:ProcessesTableView />
-
-                <!-- Comments Section -->
-                <TextBlock Style="{StaticResource SectionHeader}">Additional Comments</TextBlock>
-                <TextBox Margin="0,0,0,50" FontSize="16" TextWrapping="Wrap" Text="{Binding AdditionalComments}" />
-            </StackPanel>
+            <StackPanel Background="White" x:Name="LayoutRoot" />
         </Border>
     </ScrollViewer>
 </UserControl>

@@ -21,29 +21,5 @@ namespace SafetyProgram.MainWindow
         {
             get { return currentlyOpen.IsOpen() ? "Visible" : "Hidden"; }
         }
-
-        #region Data
-
-        public string Title
-        {
-            get { return currentlyOpen.Data.Title; }
-            set
-            {
-                currentlyOpen.Data.Title = value;
-                RaisePropertyChanged("Title");
-            }
-        }
-
-        public string AdditionalComments
-        {
-            get { return currentlyOpen.Data.AdditionalComments; }
-            set
-            { 
-                currentlyOpen.Data.AdditionalComments = value;
-                RaisePropertyChanged("AdditionalComments");
-            }
-        }
-
-        #endregion
     }
 }

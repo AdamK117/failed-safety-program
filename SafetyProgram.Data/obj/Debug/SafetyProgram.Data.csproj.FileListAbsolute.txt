@@ -56,8 +56,10 @@ V:\SafetyProgram\SafetyProgram.Data\bin\Debug\Microsoft.Practices.ServiceLocatio
 V:\SafetyProgram\SafetyProgram.Data\bin\Debug\Microsoft.Practices.Unity.dll
 V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.FSharp.dll
 V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.Models.dll
+V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.UserControls.dll
 V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.FSharp.pdb
 V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.Models.pdb
+V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.UserControls.pdb
 V:\SafetyProgram\SafetyProgram.Data\bin\Debug\Microsoft.Practices.Prism.pdb
 V:\SafetyProgram\SafetyProgram.Data\bin\Debug\Microsoft.Practices.Prism.xml
 V:\SafetyProgram\SafetyProgram.Data\bin\Debug\Microsoft.Practices.Prism.Interactivity.pdb
@@ -71,5 +73,3 @@ V:\SafetyProgram\SafetyProgram.Data\bin\Debug\Microsoft.Practices.Unity.xml
 V:\SafetyProgram\SafetyProgram.Data\obj\Debug\ResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.Data\obj\Debug\SafetyProgram.Data.dll
 V:\SafetyProgram\SafetyProgram.Data\obj\Debug\SafetyProgram.Data.pdb
-V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.UserControls.dll
-V:\SafetyProgram\SafetyProgram.Data\bin\Debug\SafetyProgram.UserControls.pdb

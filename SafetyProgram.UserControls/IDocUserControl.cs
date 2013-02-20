@@ -9,5 +9,7 @@ namespace SafetyProgram.UserControls
     public interface IDocUserControl : IDocInteractable
     {
         UserControl Display();
+
+        IEnumerable<IDocDataHolder<object>> Data();
     }
 }

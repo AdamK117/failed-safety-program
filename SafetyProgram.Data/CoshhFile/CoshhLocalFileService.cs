@@ -88,16 +88,43 @@ namespace SafetyProgram.Data.CoshhFile
 
             XElement titlexml = new XElement("title", data.Title);
 
-            XElement chemicalxml = chemicalXml(data.Chemicals);
-            XElement apparatusesxml = apparatusesXml(data.Apparatuses);
-            XElement processesxml = processesXml(data.Processes);
+            ICollection<XElement> docXml = new List<XElement>();
+            foreach (IDocUserControl uc in data.DocObject)
+            {
+                if (uc.Data() is IEnumerable<IDocDataHolder<CoshhChemicalModel>>)
+                {
+                    docXml.Add(chemicalXml
+                        (
+                            uc.Data() as IEnumerable<CoshhDocDataObject<CoshhChemicalModel>>
+                        )
+                    );
+                }
+            }
 
             XElement additionalCommentsXml = new XElement("additionalcomments", data.AdditionalComments);
 
-            XElement completedxml = new XElement("coshh", titlexml, chemicalxml, apparatusesxml, processesxml, additionalCommentsXml);
+            XElement completedxml = new XElement
+                (
+                    "coshh",
+                    titlexml,
+                    from c in docXml
+                    select
+                        c,
+                    additionalCommentsXml
+                );
             completedxml.Save(path);
 
             return true;
+        }
+
+        private IEnumerable<model> modelGenerator<model>(IEnumerable<IDocDataHolder<model>> input)
+        {
+            List<model> tempList = new List<model>();
+            foreach (IDocDataHolder<model> mod in input)
+            {
+                tempList.Add(mod.Data());
+            }
+            return tempList;
         }
 
         public bool Load(CoshhFileData data)
@@ -119,15 +146,9 @@ namespace SafetyProgram.Data.CoshhFile
             XmlDocument xdoc = new XmlDocument();
             xdoc.Load(path);
 
-            coshhData.Title = xdoc.SelectSingleNode("/coshh/title/text()") == null ? coshhData.Title : xdoc.SelectSingleNode("/coshh/title/text()").InnerText;
+            //coshhData.Title = xdoc.SelectSingleNode("/coshh/title/text()") == null ? coshhData.Title : xdoc.SelectSingleNode("/coshh/title/text()").InnerText;
 
             CoshhXmlReader.XmlParser parser = new CoshhXmlReader.XmlParser();
-
-            createCollection<CoshhChemicalModel>
-                (
-                    parser.GetCoshhChemicalModels(xdoc),
-                    coshhData.Chemicals
-                );
 
             coshhData.DocObject.Add
                 (
@@ -138,19 +159,7 @@ namespace SafetyProgram.Data.CoshhFile
                         )
                 );
 
-            createCollection<CoshhApparatusModel>
-                (
-                    parser.GetCoshhApparatusModels(xdoc),
-                    coshhData.Apparatuses
-                );
-
-            createCollection<CoshhProcessModel>
-                (
-                    parser.GetCoshhProcessModels(xdoc),
-                    coshhData.Processes
-                );
-
-            coshhData.AdditionalComments = xdoc.SelectSingleNode("/coshh/additionalcomments/text()") == null ? coshhData.AdditionalComments : xdoc.SelectSingleNode("/coshh/additionalcomments/text()").InnerText;
+            //coshhData.AdditionalComments = xdoc.SelectSingleNode("/coshh/additionalcomments/text()") == null ? coshhData.AdditionalComments : xdoc.SelectSingleNode("/coshh/additionalcomments/text()").InnerText;
 
             return true;
         }

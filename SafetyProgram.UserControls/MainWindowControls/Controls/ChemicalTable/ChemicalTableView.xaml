@@ -9,7 +9,7 @@
         <ResourceDictionary>
             
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/SafetyProgram.MainWindow;component/UserControls/Styles/TableStyle.xaml" />
+                <ResourceDictionary Source="/SafetyProgram.UserControls;component/MainWindowControls/Styles/TableStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!-- Chemical List Style -->

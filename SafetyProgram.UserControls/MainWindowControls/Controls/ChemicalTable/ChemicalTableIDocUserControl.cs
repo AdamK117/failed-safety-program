@@ -60,5 +60,11 @@ namespace SafetyProgram.UserControls.MainWindowControls.ChemicalTable
         {
             return false;
         }
+
+
+        public IEnumerable<IDocDataHolder<object>> Data()
+        {
+            return data;
+        }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System.Windows.Controls;
-using SafetyProgram.Data.CoshhFile;
+
 using Microsoft.Practices.ServiceLocation;
-using SafetyProgram.Data;
+
 using SafetyProgram.UserControls;
+using SafetyProgram.Data.CoshhFile;
 
 namespace SafetyProgram.MainWindow
 {
@@ -21,6 +22,7 @@ namespace SafetyProgram.MainWindow
 
             foreach (IDocUserControl doc in currentlyOpen.Data.DocObject)
             {
+                LayoutRoot.Children.Clear();
                 LayoutRoot.Children.Add(doc.Display());
             }
         }
