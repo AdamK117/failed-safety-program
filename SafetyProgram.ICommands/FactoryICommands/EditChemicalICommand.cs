@@ -1,4 +1,5 @@
 ﻿using SafetyProgram.UserControls;
+using SafetyProgram.UserControls.DialogControls;
 using SafetyProgram.Models.DataModels;
 using SafetyProgram.Data;
 

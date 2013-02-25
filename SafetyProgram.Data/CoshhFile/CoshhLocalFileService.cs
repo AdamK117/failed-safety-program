@@ -86,51 +86,36 @@ namespace SafetyProgram.Data.CoshhFile
         {
             if (String.IsNullOrWhiteSpace(path)) { return false; }
 
-            XElement titlexml = new XElement("title", data.Title);
-
             ICollection<XElement> docXml = new List<XElement>();
             foreach (IDocUserControl uc in data.DocObject)
             {
-                if (uc.Data() is IEnumerable<IDocDataHolder<CoshhChemicalModel>>)
+                if (uc is ChemicalTableIDocUserControl)
                 {
-                    docXml.Add(chemicalXml
-                        (
-                            uc.Data() as IEnumerable<CoshhDocDataObject<CoshhChemicalModel>>
-                        )
-                    );
+                    docXml.Add(chemicalTableXmlGenerator(uc as ChemicalTableIDocUserControl));
                 }
             }
-
-            XElement additionalCommentsXml = new XElement("additionalcomments", data.AdditionalComments);
 
             XElement completedxml = new XElement
                 (
                     "coshh",
-                    titlexml,
                     from c in docXml
                     select
-                        c,
-                    additionalCommentsXml
+                        c
                 );
             completedxml.Save(path);
 
             return true;
         }
 
-        private IEnumerable<model> modelGenerator<model>(IEnumerable<IDocDataHolder<model>> input)
+        private XElement chemicalTableXmlGenerator(ChemicalTableIDocUserControl iDoc)
         {
-            List<model> tempList = new List<model>();
-            foreach (IDocDataHolder<model> mod in input)
-            {
-                tempList.Add(mod.Data());
-            }
-            return tempList;
+            return chemicalXml(iDoc.Data() as IEnumerable<CoshhDocDataObject<CoshhChemicalModel>>);
         }
 
         public bool Load(CoshhFileData data)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "XML Files (.xml)|*.xml";
+            openFileDialog1.Filter = "Coshh Documents (.xml)|*.xml";
             openFileDialog1.Multiselect = false;
 
             DialogResult dialogResult = openFileDialog1.ShowDialog();
@@ -146,8 +131,6 @@ namespace SafetyProgram.Data.CoshhFile
             XmlDocument xdoc = new XmlDocument();
             xdoc.Load(path);
 
-            //coshhData.Title = xdoc.SelectSingleNode("/coshh/title/text()") == null ? coshhData.Title : xdoc.SelectSingleNode("/coshh/title/text()").InnerText;
-
             CoshhXmlReader.XmlParser parser = new CoshhXmlReader.XmlParser();
 
             coshhData.DocObject.Add
@@ -158,8 +141,6 @@ namespace SafetyProgram.Data.CoshhFile
                             createCoshhDocDataObjectCollection<CoshhChemicalModel>(parser.GetCoshhChemicalModels(xdoc))
                         )
                 );
-
-            //coshhData.AdditionalComments = xdoc.SelectSingleNode("/coshh/additionalcomments/text()") == null ? coshhData.AdditionalComments : xdoc.SelectSingleNode("/coshh/additionalcomments/text()").InnerText;
 
             return true;
         }
@@ -173,14 +154,6 @@ namespace SafetyProgram.Data.CoshhFile
                 oc.Add(new CoshhDocDataObject<T>(oc, model));
             }
             return oc;
-        }
-
-        private void createCollection<T>(IEnumerable<T> data, ObservableCollection<CoshhDocDataObject<T>> parent)
-        {            
-            foreach (T model in data)
-            {
-                parent.Add(new CoshhDocDataObject<T>(parent, model));
-            }
         }
 
         public bool SaveAs(CoshhFileData data)

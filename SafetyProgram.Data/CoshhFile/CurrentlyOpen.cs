@@ -135,7 +135,7 @@ namespace SafetyProgram.Data.CoshhFile
         {
             if (FileChanged())
             {
-                DialogResult dialogResult = MessageBox.Show("Do you want to save changes you made to " + Data.Title + "?", "Save changes.", MessageBoxButtons.YesNoCancel);
+                DialogResult dialogResult = MessageBox.Show("Do you want to save changes you made to NEEDMETADATAHERE?", "Save changes.", MessageBoxButtons.YesNoCancel);
 
                 switch (dialogResult)
                 {

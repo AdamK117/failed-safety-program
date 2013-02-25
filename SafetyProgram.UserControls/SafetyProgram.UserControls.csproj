@@ -74,17 +74,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseINPC.cs" />
-    <Compile Include="Controls\Hazards\HazardList.xaml.cs">
+    <Compile Include="GenericControls\Hazards\HazardList.xaml.cs">
       <DependentUpon>HazardList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Hazards\HazardListViewModel.cs" />
-    <Compile Include="Controls\Hazards\RemoveHazardICommand.cs" />
+    <Compile Include="GenericControls\Hazards\HazardListViewModel.cs" />
+    <Compile Include="GenericControls\Hazards\RemoveHazardICommand.cs" />
     <Compile Include="CoshhDocDataObject.cs" />
-    <Compile Include="EditCoshhChemical\Bootstrapper.cs" />
-    <Compile Include="EditCoshhChemical\EditCoshhChemical.xaml.cs">
+    <Compile Include="DialogControls\EditCoshhChemical\Bootstrapper.cs" />
+    <Compile Include="DialogControls\EditCoshhChemical\EditCoshhChemical.xaml.cs">
       <DependentUpon>EditCoshhChemical.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditCoshhChemical\ViewModel.cs" />
+    <Compile Include="DialogControls\EditCoshhChemical\ViewModel.cs" />
     <Compile Include="IDocDataHolder.cs" />
     <Compile Include="IDocInteractable.cs" />
     <Compile Include="IDocUserControl.cs" />
@@ -110,11 +110,11 @@
       <DependentUpon>ChemicalTableView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableViewModel.cs" />
-    <Compile Include="MainWindowControls\Classes\ApparatusViewModel.cs" />
+    <Compile Include="MainWindowControls\Controls\ApparatusTable\ApparatusViewModel.cs" />
     <Compile Include="MainWindowControls\Classes\BaseViewModel.cs" />
-    <Compile Include="MainWindowControls\Classes\ChemicalViewModel.cs" />
+    <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalViewModel.cs" />
     <Compile Include="MainWindowControls\Classes\MVVMPlumbers.cs" />
-    <Compile Include="MainWindowControls\Classes\ProcessesViewModel.cs" />
+    <Compile Include="MainWindowControls\Controls\ProcessesTable\ProcessesViewModel.cs" />
     <Compile Include="MainWindowControls\Controls\ProcessesTable\ProcessesTableView.xaml.cs">
       <DependentUpon>ProcessesTableView.xaml</DependentUpon>
     </Compile>
@@ -130,11 +130,11 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Controls\Hazards\HazardList.xaml">
+    <Page Include="GenericControls\Hazards\HazardList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditCoshhChemical\EditCoshhChemical.xaml">
+    <Page Include="DialogControls\EditCoshhChemical\EditCoshhChemical.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,7 +162,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\Tooltip\" />
+    <Folder Include="GenericControls\Tooltip\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

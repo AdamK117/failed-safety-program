@@ -2,6 +2,9 @@
 <doc>
 <assembly><name>SafetyProgram.FSharp</name></assembly>
 <members>
+<member name="T:CoshhFileWriter">
+
+</member>
 <member name="">
 
 </member>

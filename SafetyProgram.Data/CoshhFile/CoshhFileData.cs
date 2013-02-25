@@ -7,22 +7,13 @@ namespace SafetyProgram.Data.CoshhFile
 {
     public class CoshhFileData : BaseINPC, ICoshhData
     {
-        public CoshhFileData()
-        {
-            DocObject = new ObservableCollection<IDocUserControl>();
-            Clear();
-        }
-
         public bool Clear()
         {
-            Title = "Untitled Safety Document";
-            AdditionalComments = "No additional comments.";
-
+            DocObject.Clear();
             return true;
         }
 
-        #region Data Structure
-        private ObservableCollection<IDocUserControl> docObject;
+        private ObservableCollection<IDocUserControl> docObject = new ObservableCollection<IDocUserControl>();
         public ObservableCollection<IDocUserControl> DocObject
         {
             get { return docObject; }
@@ -31,30 +22,6 @@ namespace SafetyProgram.Data.CoshhFile
                 docObject = value;
                 RaisePropertyChanged("DocObject");
             }
-        }
-
-        private string title;
-        public string Title
-        {
-            get { return title; }
-            set 
-            { 
-                title = value;
-                RaisePropertyChanged("Title");
-            }
-        }
-
-        private string additionalComments;
-        public string AdditionalComments
-        {
-            get { return additionalComments; }
-            set 
-            { 
-                additionalComments = value;
-                RaisePropertyChanged("AdditionalComments");
-            }
-        }
-
-        #endregion        
+        }      
     }
 }
