@@ -1,7 +1,7 @@
 ﻿using SafetyProgram.Models.DataModels;
 using Microsoft.Practices.ServiceLocation;
 
-namespace SafetyProgram.UserControls
+namespace SafetyProgram.UserControls.DialogControls
 {
     public class ViewModel : BaseINPC
     {

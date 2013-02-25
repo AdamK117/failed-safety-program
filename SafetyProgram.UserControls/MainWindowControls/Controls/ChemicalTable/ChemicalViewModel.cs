@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel;
 
 using SafetyProgram.Models.DataModels;
-using SafetyProgram.Data;
-using SafetyProgram.UserControls;
+using SafetyProgram.UserControls.MainWindowControls.ClassLibrary;
 
-namespace SafetyProgram.MainWindow.UserControls.ClassLibrary
+namespace SafetyProgram.UserControls.MainWindowControls.ChemicalTable
 {
     public class ChemicalViewModel : BaseViewModel
     {

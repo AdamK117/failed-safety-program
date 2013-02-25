@@ -1,6 +1,7 @@
 ﻿using SafetyProgram.Models.DataModels;
+using SafetyProgram.UserControls.MainWindowControls.ClassLibrary;
 
-namespace SafetyProgram.UserControls.MainWindowControls.ClassLibrary
+namespace SafetyProgram.UserControls.MainWindowControls.ProcessesTable
 {
     public class ProcessViewModel : BaseViewModel
     {

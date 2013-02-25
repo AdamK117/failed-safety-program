@@ -14,7 +14,7 @@ using SafetyProgram.Models.DataModels;
 using SafetyProgram.UserControls.Controls;
 using SafetyProgram.UserControls.Controls.Hazards;
 
-namespace SafetyProgram.UserControls
+namespace SafetyProgram.UserControls.DialogControls
 {
     /// <summary>
     /// Interaction logic for EditCoshhChemical.xaml

@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.Prism.Modularity;
 
-namespace SafetyProgram.UserControls.CoshhChemical
+namespace SafetyProgram.UserControls.DialogControls
 {
     class Bootstrapper : UnityBootstrapper
     {

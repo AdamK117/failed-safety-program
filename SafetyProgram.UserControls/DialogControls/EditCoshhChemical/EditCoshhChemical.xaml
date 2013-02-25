@@ -1,4 +1,4 @@
-﻿<Window x:Class="SafetyProgram.UserControls.EditCoshhChemical"
+﻿<Window x:Class="SafetyProgram.UserControls.DialogControls.EditCoshhChemical"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:hazards="clr-namespace:SafetyProgram.UserControls.Controls.Hazards"
