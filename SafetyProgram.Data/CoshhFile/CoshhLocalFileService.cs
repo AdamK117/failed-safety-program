@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using SafetyProgram.UserControls;
 using SafetyProgram.UserControls.MainWindowControls.ChemicalTable;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace SafetyProgram.Data.CoshhFile
 {
@@ -82,6 +84,15 @@ namespace SafetyProgram.Data.CoshhFile
 
             return hazardxml;
         }
+
+        private void serializeTest()
+        {
+            XmlSerializer a = new XmlSerializer(typeof(CoshhChemicalModel));
+            TextWriter b = new StreamWriter(@"C:\serializethis.xml");
+            a.Serialize(b, new CoshhChemicalModel());
+            b.Close();
+        }
+
         public bool Save(CoshhFileData data)
         {
             if (String.IsNullOrWhiteSpace(path)) { return false; }

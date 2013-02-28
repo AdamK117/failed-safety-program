@@ -5,7 +5,7 @@ using SafetyProgram.UserControls.MainWindowControls.ChemicalTable;
 
 namespace SafetyProgram.Data.CoshhFile
 {
-    public class CoshhFileData : BaseINPC, ICoshhData
+    public class CoshhFileData : BaseINPC
     {
         public bool Clear()
         {

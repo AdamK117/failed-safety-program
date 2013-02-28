@@ -51,6 +51,11 @@
       <Project>{0150a546-807a-4d76-88eb-3c3f3c46a43b}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
+      <Name>SafetyProgram.UserControls</Name>
+      <Project>{69416b92-32ea-4f2a-b3d4-5fc8389090bb}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	     Other similar extension points exist, see Microsoft.Common.targets.

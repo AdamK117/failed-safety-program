@@ -74,7 +74,6 @@
     <Compile Include="CoshhFile\CurrentlyOpen.cs" />
     <Compile Include="BaseINPC.cs" />
     <Compile Include="CoshhFile\CoshhFileData.cs" />
-    <Compile Include="ICoshhData.cs" />
     <Compile Include="DataIModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
