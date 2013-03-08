@@ -23,30 +23,6 @@
 <member name="">
 
 </member>
-<member name="T:CoshhFileWriter">
-
-</member>
-<member name="">
-
-</member>
-<member name="">
-
-</member>
-<member name="">
-
-</member>
-<member name="">
-
-</member>
-<member name="">
-
-</member>
-<member name="">
-
-</member>
-<member name="">
-
-</member>
 <member name="">
 
 </member>
@@ -96,6 +72,18 @@
 
 </member>
 <member name="T:SafetyProgram.FSharp.CoshhXmlReader">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:SafetyProgram.FSharp.CoshhXmlWriter">
 
 </member>
 </members>

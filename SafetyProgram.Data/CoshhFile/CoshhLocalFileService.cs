@@ -97,6 +97,12 @@ namespace SafetyProgram.Data.CoshhFile
         {
             if (String.IsNullOrWhiteSpace(path)) { return false; }
 
+            CoshhXmlWriter.XmlWrite writer = new CoshhXmlWriter.XmlWrite();
+            foreach (IDocUserControl uc in data.DocObject)
+            {
+                writer.writeIt(@"C:\FSharpWriterA.xml", uc);
+            }
+
             ICollection<XElement> docXml = new List<XElement>();
             foreach (IDocUserControl uc in data.DocObject)
             {

@@ -14,3 +14,15 @@ V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.Models.pdb
 V:\SafetyProgram\SafetyProgram.FSharp\obj\Debug\ResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.FSharp\obj\Debug\SafetyProgram.FSharp.dll
 V:\SafetyProgram\SafetyProgram.FSharp\obj\Debug\SafetyProgram.FSharp.pdb
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.UserControls.dll
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.dll
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Prism.dll
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Unity.dll
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.UserControls.pdb
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.pdb
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.xml
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Prism.pdb
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Prism.xml
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Unity.xml
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.ServiceLocation.xml
