@@ -7,8 +7,16 @@ namespace SafetyProgram.UserControls.MainWindowControls.ChemicalTable
 {
     public class ChemicalTableViewModel : BaseINPC
     {
+        //Underlying model data
         private ObservableCollection<CoshhDocDataObject<CoshhChemicalModel>> chemicals;
 
+        //Constructed ViewModel data
+        private ObservableCollection<ChemicalViewModel> tableItems = new ObservableCollection<ChemicalViewModel>();
+
+        /// <summary>
+        /// Constructs a ViewModel for the chemical table. Takes an IEnumerable of CoshhDocDataObjects.
+        /// </summary>
+        /// <param name="chemicals"></param>
         public ChemicalTableViewModel(ObservableCollection<CoshhDocDataObject<CoshhChemicalModel>> chemicals)
         {
             this.chemicals = chemicals;
@@ -19,12 +27,19 @@ namespace SafetyProgram.UserControls.MainWindowControls.ChemicalTable
             this.chemicals.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Chemicals_CollectionChanged);
         }
 
+        /// <summary>
+        /// Event that fires when the underlying data collection is changed (e.g. an item is deleted from the collection).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Chemicals_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             MVVMPlumbers.genericCollectionChanged(sender, e, TableItems, (CoshhDocDataObject<CoshhChemicalModel> x) => new ChemicalViewModel(x));
         }
 
-        private ObservableCollection<ChemicalViewModel> tableItems = new ObservableCollection<ChemicalViewModel>();
+        /// <summary>
+        /// Exposes the constructed viewmodels. The view (Chemical Table) will digest this data in order to display the desired properties.
+        /// </summary>
         public ObservableCollection<ChemicalViewModel> TableItems
         {
             get { return tableItems; }
@@ -35,5 +50,9 @@ namespace SafetyProgram.UserControls.MainWindowControls.ChemicalTable
             }
         }
 
+        public ChemicalViewModel Selected
+        {
+            set { }
+        }
     }
 }
