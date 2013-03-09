@@ -6,7 +6,6 @@ namespace SafetyProgram.Data.CoshhFile
 {
     public class CurrentlyOpen : BaseINPC
     {
-        public CoshhFileData Data;
         private ICoshhDataService service;
 
         public CurrentlyOpen()
@@ -15,6 +14,11 @@ namespace SafetyProgram.Data.CoshhFile
             service = new CoshhLocalFile();
             dataChangedMonitor();
         }
+
+        /// <summary>
+        /// The data of the currently open file
+        /// </summary>
+        public CoshhFileData Data;        
 
         #region Metadata & Plumbing
 
