@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
 using System.Xml;
 
 using SafetyProgram.Models.DataModels;
@@ -10,28 +8,38 @@ using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using SafetyProgram.UserControls;
 using SafetyProgram.UserControls.MainWindowControls.ChemicalTable;
-using System.Xml.Serialization;
 using System.IO;
+using SafetyProgram.Data.DOM;
 
-namespace SafetyProgram.Data.CoshhFile
+namespace SafetyProgram.Data.IO
 {
     class CoshhLocalFile : ICoshhDataService
     {
         private string path;
 
-        public bool Save(CoshhFileData data)
+        /// <summary>
+        /// Saves the CoshhDocument to the location it was loaded from.
+        /// </summary>
+        /// <param name="data">The CoshhDocument to be saved.</param>
+        /// <returns>If the file sucessfully saved.</returns>
+        public bool Save(CoshhDocument data)
         {
             if (String.IsNullOrWhiteSpace(path)) { return false; }
 
             CoshhXmlWriter.XmlWrite writer = new CoshhXmlWriter.XmlWrite();
-            writer.writeDocument(path, data.DocObject);
+            writer.writeDocument(path, data);
 
             setPath(path);
 
             return true;
         }
 
-        public bool Load(CoshhFileData data)
+        /// <summary>
+        /// Loads a User specified file into the CoshhDocument supplied.
+        /// </summary>
+        /// <param name="data">A CoshhDocument to fill with loaded data.</param>
+        /// <returns>If the file has sucessfully loaded.</returns>
+        public bool Load(CoshhDocument data)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "Coshh Documents (.xml)|*.xml";
@@ -39,43 +47,30 @@ namespace SafetyProgram.Data.CoshhFile
 
             DialogResult dialogResult = openFileDialog1.ShowDialog();
 
+            //If the user didn't press OK to leave the dialog.
             if (dialogResult != DialogResult.OK) { return false; }
+            //If the selected file is invalid (doesn't exist, inaccessable, etc.)
             else if (!setPath(openFileDialog1.FileName)) { return false; }
+            //If the selected file can be loaded
             else if (!loadFile(Path(), data)) { return false; }
+
             return true;
         }
 
-        private bool loadFile(string path, CoshhFileData coshhData)
+        private bool loadFile(string path, CoshhDocument doc)
         {
-            XmlDocument xdoc = new XmlDocument();
-            xdoc.Load(path);
-
             CoshhXmlReader.XmlParser parser = new CoshhXmlReader.XmlParser();
-
-            coshhData.DocObject.Add
-                (
-                    new ChemicalTableIDocUserControl
-                        (
-                            coshhData.DocObject,
-                            createCoshhDocDataObjectCollection<CoshhChemicalModel>(parser.GetCoshhChemicalModels(xdoc))
-                        )
-                );
+            parser.GetChemicalTable(path, doc.Body);
 
             return true;
         }
 
-        private ObservableCollection<CoshhDocDataObject<T>> createCoshhDocDataObjectCollection<T>(IEnumerable<T> data)
-        {
-            ObservableCollection<CoshhDocDataObject<T>> oc = new ObservableCollection<CoshhDocDataObject<T>>();
-
-            foreach (T model in data)
-            {
-                oc.Add(new CoshhDocDataObject<T>(oc, model));
-            }
-            return oc;
-        }
-
-        public bool SaveAs(CoshhFileData data)
+        /// <summary>
+        /// Saves the CoshhDocument to the user specified location.
+        /// </summary>
+        /// <param name="data">The data to be saved.</param>
+        /// <returns>If the file was sucessfully saved.</returns>
+        public bool SaveAs(CoshhDocument data)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Coshh Safety Document|*.xml";
@@ -92,12 +87,20 @@ namespace SafetyProgram.Data.CoshhFile
             else { return false; }
         }
 
+        /// <summary>
+        /// Closes the current file.
+        /// </summary>
+        /// <returns>If the file sucessfully closed.</returns>
         public bool Close()
         {
             //Disconnect etc here
             return true;
         }
 
+        /// <summary>
+        /// Returns the path of the file.
+        /// </summary>
+        /// <returns>Local filesystem path.</returns>
         public string Path()
         {
             return path;

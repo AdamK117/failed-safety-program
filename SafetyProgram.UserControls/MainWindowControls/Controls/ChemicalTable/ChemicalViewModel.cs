@@ -8,19 +8,20 @@ namespace SafetyProgram.UserControls.MainWindowControls.ChemicalTable
     public class ChemicalViewModel : BaseViewModel
     {
         private new CoshhChemicalModel model;
-        private new IDocDataHolder<CoshhChemicalModel> CoshhDocDataObjectModel;
+        private bool selected;
 
-        public ChemicalViewModel(IDocDataHolder<CoshhChemicalModel> model)
+        public ChemicalViewModel(CoshhChemicalModel model)
             : base(model)
         {
-            this.model = model.Data();
-            this.CoshhDocDataObjectModel = model;
+            this.model = model;
         }
 
         public override BaseElementModel GetModel()
         {
             return model;
-        } 
+        }
+
+        #region Data
 
         public CoshhChemicalModel Model { get { return model; } }
 
@@ -44,6 +45,34 @@ namespace SafetyProgram.UserControls.MainWindowControls.ChemicalTable
             }
         }
 
+        #endregion
+
+        /// <summary>
+        /// Shows if the ViewModel is currently selected (will highlight it in the View).
+        /// </summary>
+        /// <returns></returns>
+        public bool Selected()
+        {
+            return selected;
+        }
+
+        /// <summary>
+        /// Sets the Chemical View Model as selected, also sets the underlying data as selected.
+        /// </summary>
+        /// <param name="selected"></param>
+        /// <returns></returns>
+        public bool Selected(bool selected)
+        {
+            this.selected = selected;
+            RaisePropertyChanged("Selected");
+            return selected;
+        }
+
+        /// <summary>
+        /// Event that fires if data in the underlying model changes (i.e. from another view/control)
+        /// </summary>
+        /// <param name="sender">The model that has changed</param>
+        /// <param name="e">The property changed (from RaisePropertyChanged("PropertyName");)</param>
         protected override void modelChanged(object sender, PropertyChangedEventArgs e)
         {
             base.modelChanged(sender, e);

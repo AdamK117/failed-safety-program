@@ -57,13 +57,9 @@ V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Prism.
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\Microsoft.Practices.Unity.xml
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\ResolveAssemblyReference.cache
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ApparatusTable\ApparatusTableView.baml
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ChemicalTable\ChemicalTableView.baml
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ProcessesTable\ProcessesTableView.baml
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Styles\TableStyle.baml
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ApparatusTable\ApparatusTableView.g.cs
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ChemicalTable\ChemicalTableView.g.cs
-V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\MainWindowControls\Controls\ProcessesTable\ProcessesTableView.g.cs
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\GeneratedInternalTypeHelper.g.cs
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\SafetyProgram.UserControls_MarkupCompile.cache
 V:\SafetyProgram\SafetyProgram.UserControls\obj\Debug\SafetyProgram.UserControls_MarkupCompile.lref

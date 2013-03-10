@@ -71,7 +71,7 @@
     <Compile Include="FactoryICommands\DeleteSelectedICommand.cs" />
     <Compile Include="FactoryICommands\EditChemicalICommand.cs" />
     <Compile Include="Hotkeys.cs" />
-    <Compile Include="ActiveDataICommandsBase.cs" />
+    <Compile Include="DOMBase.cs" />
     <Compile Include="ICommandsHolder.cs" />
     <Compile Include="ICommandsIModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

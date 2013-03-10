@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Windows.Controls;
 
 namespace SafetyProgram.UserControls
 {
-    public interface IDocInteractable
+    public interface IDocObject
     {
+        UserControl Display();
+
         bool canRemove();
         bool Remove();
 
@@ -15,6 +14,6 @@ namespace SafetyProgram.UserControls
 
         bool CanSelect();
         bool Selected();
-        bool Selected(bool isSelected);
+        bool Selected(bool selected);
     }
 }

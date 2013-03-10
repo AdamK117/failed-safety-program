@@ -79,16 +79,13 @@
     </Compile>
     <Compile Include="GenericControls\Hazards\HazardListViewModel.cs" />
     <Compile Include="GenericControls\Hazards\RemoveHazardICommand.cs" />
-    <Compile Include="CoshhDocDataObject.cs" />
+    <Compile Include="IDocObject.cs" />
     <Compile Include="DialogControls\EditCoshhChemical\Bootstrapper.cs" />
     <Compile Include="DialogControls\EditCoshhChemical\EditCoshhChemical.xaml.cs">
       <DependentUpon>EditCoshhChemical.xaml</DependentUpon>
     </Compile>
     <Compile Include="DialogControls\EditCoshhChemical\ViewModel.cs" />
-    <Compile Include="IDocDataHolder.cs" />
-    <Compile Include="IDocInteractable.cs" />
-    <Compile Include="IDocUserControl.cs" />
-    <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableIDocUserControl.cs" />
+    <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableDocObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -102,23 +99,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="MainWindowControls\Controls\ApparatusTable\ApparatusTableView.xaml.cs">
-      <DependentUpon>ApparatusTableView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindowControls\Controls\ApparatusTable\ApparatusTableViewModel.cs" />
     <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableView.xaml.cs">
       <DependentUpon>ChemicalTableView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableViewModel.cs" />
-    <Compile Include="MainWindowControls\Controls\ApparatusTable\ApparatusViewModel.cs" />
     <Compile Include="MainWindowControls\Classes\BaseViewModel.cs" />
     <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalViewModel.cs" />
-    <Compile Include="MainWindowControls\Classes\MVVMPlumbers.cs" />
-    <Compile Include="MainWindowControls\Controls\ProcessesTable\ProcessesViewModel.cs" />
-    <Compile Include="MainWindowControls\Controls\ProcessesTable\ProcessesTableView.xaml.cs">
-      <DependentUpon>ProcessesTableView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindowControls\Controls\ProcessesTable\ProcessesTableViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -138,15 +124,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindowControls\Controls\ApparatusTable\ApparatusTableView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindowControls\Controls\ProcessesTable\ProcessesTableView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

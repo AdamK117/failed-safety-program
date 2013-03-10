@@ -3,7 +3,7 @@
 using Microsoft.Practices.ServiceLocation;
 
 using SafetyProgram.UserControls;
-using SafetyProgram.Data.CoshhFile;
+using SafetyProgram.Data.DOM;
 
 namespace SafetyProgram.MainWindow
 {
@@ -12,26 +12,26 @@ namespace SafetyProgram.MainWindow
     /// </summary>
     public partial class MainWindowView : UserControl
     {
-        private CurrentlyOpen currentlyOpen;
+        private CoshhDocument currentlyOpen;
         public MainWindowView(MainWindowViewModel viewModel)
         {
             InitializeComponent();
             this.DataContext = viewModel;
-            currentlyOpen = ServiceLocator.Current.GetInstance<CurrentlyOpen>();
-            currentlyOpen.Data.DocObject.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(DocObject_CollectionChanged);
+            currentlyOpen = ServiceLocator.Current.GetInstance<CoshhDocument>();
+            currentlyOpen.Body.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(DocObject_CollectionChanged);
 
-            foreach (IDocUserControl doc in currentlyOpen.Data.DocObject)
+            foreach (IDocObject docObject in currentlyOpen.Body)
             {
                 LayoutRoot.Children.Clear();
-                LayoutRoot.Children.Add(doc.Display());
+                LayoutRoot.Children.Add(docObject.Display());
             }
         }
 
         void DocObject_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            foreach (IDocUserControl doc in currentlyOpen.Data.DocObject)
+            foreach (IDocObject docObject in currentlyOpen.Body)
             {
-                LayoutRoot.Children.Add(doc.Display());
+                LayoutRoot.Children.Add(docObject.Display());
             }
         }
     }

@@ -4,21 +4,21 @@ using SafetyProgram.ICommands;
 using SafetyProgram.Models.DataModels;
 using SafetyProgram.Data;
 
-using SafetyProgram.Data.CoshhFile;
+using SafetyProgram.Data.DOM;
 using SafetyProgram.UserControls;
 
 namespace SafetyProgram.RibbonView
 {
     public class RibbonViewModel : BaseINPC
     {
-        private CurrentlyOpen currentlyOpen;
+        private CoshhDocument currentlyOpen;
 
         public RibbonViewModel()
         {
-            currentlyOpen = ServiceLocator.Current.GetInstance<CurrentlyOpen>();
+            currentlyOpen = ServiceLocator.Current.GetInstance<CoshhDocument>();
 
-            currentlyOpen.SelectionChangedEvent += new CurrentlyOpen.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
-            currentlyOpen.IsOpenChangedEvent += new CurrentlyOpen.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
+            currentlyOpen.SelectionChanged += new CoshhDocument.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
+            currentlyOpen.IsOpenChanged += new CoshhDocument.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
         }
 
         void currentlyOpen_SelectionChangedEvent(object selection)
@@ -29,23 +29,23 @@ namespace SafetyProgram.RibbonView
             RaisePropertyChanged("CurrentSelection");
         }
 
-        public IDocDataHolder<object> CurrentSelection
+        public object CurrentSelection
         {
             get { return currentlyOpen.Selected(); }
-            set { currentlyOpen.Selected(value); }
+            set { currentlyOpen.Selected(value as IDocObject); }
         }
 
         public string ChemicalContextTabVisibility
         {
-            get { return CurrentSelection is IDocDataHolder<CoshhChemicalModel> ? "Visible" : "Collapsed"; }
+            get { return CurrentSelection is CoshhChemicalModel ? "Visible" : "Collapsed"; }
         }
         public string ApparatusContextTabVisibility
         {
-            get { return CurrentSelection is IDocDataHolder<CoshhApparatusModel> ? "Visible" : "Collapsed"; }
+            get { return CurrentSelection is CoshhApparatusModel ? "Visible" : "Collapsed"; }
         }
         public string ProcessContextTabVisibility
         {
-            get { return CurrentSelection is IDocDataHolder<CoshhProcessModel> ? "Visible" : "Collapsed"; }
+            get { return CurrentSelection is CoshhProcessModel ? "Visible" : "Collapsed"; }
         }
 
         void currentlyOpen_IsOpenChangedEvent(bool isOpen)

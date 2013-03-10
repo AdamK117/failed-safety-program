@@ -1,6 +1,6 @@
 ﻿namespace SafetyProgram.ICommands
 {
-    public class LoadFileICommand : ActiveDataICommandsBase
+    public class LoadFileICommand : DOMBase
     {
         public LoadFileICommand() : base()
         {
@@ -11,7 +11,7 @@
         {
             if (CanExecute(parameter))
             {
-                currentlyOpen.Load();
+                coshhWindow.Load();
             }            
         }
     }

@@ -6,12 +6,10 @@ namespace SafetyProgram.UserControls.MainWindowControls.ClassLibrary
     public abstract class BaseViewModel : BaseINPC
     {
         protected BaseElementModel model;
-        protected IDocDataHolder<BaseElementModel> CoshhDocDataObjectModel;
 
-        public BaseViewModel(IDocDataHolder<BaseElementModel> iCoshhDocDataObject) 
+        public BaseViewModel(BaseElementModel model) 
         {
-            this.model = iCoshhDocDataObject.Data();
-            this.CoshhDocDataObjectModel = iCoshhDocDataObject;
+            this.model = model;
 
             this.model.PropertyChanged += new PropertyChangedEventHandler(modelChanged);
             this.model.Hazards.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Hazards_CollectionChanged);
@@ -23,8 +21,6 @@ namespace SafetyProgram.UserControls.MainWindowControls.ClassLibrary
         }
 
         public virtual BaseElementModel GetModel() { return model; }
-
-        public virtual IDocDataHolder<BaseElementModel> GetICoshhDocDataObject() { return CoshhDocDataObjectModel; }
 
         public string Name
         {

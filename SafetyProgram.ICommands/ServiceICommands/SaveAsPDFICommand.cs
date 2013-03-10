@@ -2,28 +2,25 @@
 
 namespace SafetyProgram.ICommands
 {
-    public class SaveAsPDFICommand : ActiveDataICommandsBase
+    public class SaveAsPDFICommand : DOMBase
     {
 
         public SaveAsPDFICommand() : base()
         {
-            currentlyOpen.PropertyChanged += filePropertyChanged;
+            coshhWindow.Document.IsOpenChanged += new Data.DOM.CoshhDocument.isOpenChangedDelegate(Document_IsOpenChanged);
         }
 
-        void filePropertyChanged(object sender, PropertyChangedEventArgs e)
+        void Document_IsOpenChanged(bool isOpen)
         {
-            if (e.PropertyName == "IsOpen")
-            {
-                canExecute = currentlyOpen.IsOpen();
-                RaiseCanExecuteChanged();
-            }
+            canExecute = isOpen;
+            RaiseCanExecuteChanged();
         }
 
         public override void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
-                currentlyOpen.SaveAsPDF();
+                coshhWindow.SaveAsPDF();
             }
         }
     }

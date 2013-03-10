@@ -1,6 +1,6 @@
 ﻿namespace SafetyProgram.ICommands
 {
-    public class NewFileICommand : ActiveDataICommandsBase
+    public class NewFileICommand : DOMBase
     {
         public NewFileICommand() : base() 
         {
@@ -9,7 +9,7 @@
 
         public override void Execute(object parameter)
         {
-            currentlyOpen.New();
+            coshhWindow.New();
         }
 
     }

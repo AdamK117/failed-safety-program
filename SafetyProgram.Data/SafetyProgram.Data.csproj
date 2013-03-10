@@ -69,11 +69,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoshhFile\CoshhLocalFileService.cs" />
-    <Compile Include="CoshhFile\ICoshhDataService.cs" />
-    <Compile Include="CoshhFile\CurrentlyOpen.cs" />
+    <Compile Include="DOM\CoshhDocument.cs" />
+    <Compile Include="IO\CoshhLocalFileService.cs" />
+    <Compile Include="DOM\CoshhWindow.cs" />
+    <Compile Include="IO\ICoshhDataService.cs" />
     <Compile Include="BaseINPC.cs" />
-    <Compile Include="CoshhFile\CoshhFileData.cs" />
     <Compile Include="DataIModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

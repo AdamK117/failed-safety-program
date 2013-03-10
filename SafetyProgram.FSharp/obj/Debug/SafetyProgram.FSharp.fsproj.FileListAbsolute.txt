@@ -26,3 +26,5 @@ V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Prism.pdb
 V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Prism.xml
 V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.Unity.xml
 V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.Data.dll
+V:\SafetyProgram\SafetyProgram.FSharp\bin\Debug\SafetyProgram.Data.pdb

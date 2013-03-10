@@ -1,17 +1,17 @@
-﻿using SafetyProgram.Data.CoshhFile;
+﻿using SafetyProgram.Data.DOM;
 
 namespace SafetyProgram.ICommands
 {
-    public class SaveICommand : ActiveDataICommandsBase
+    public class SaveICommand : DOMBase
     {
         public SaveICommand() : base()
         {
-            currentlyOpen.IsOpenChangedEvent +=new CurrentlyOpen.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
+            coshhWindow.Document.IsOpenChanged +=new CoshhDocument.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
         }
 
         void currentlyOpen_IsOpenChangedEvent(bool isOpen)
         {
-            canExecute = currentlyOpen.IsOpen();
+            canExecute = coshhWindow.Document.IsOpen();
             RaiseCanExecuteChanged();
         }
 
@@ -19,7 +19,7 @@ namespace SafetyProgram.ICommands
         {
             if (CanExecute(parameter))
             {
-                currentlyOpen.Save();
+                coshhWindow.Save();
             }
         }        
     }

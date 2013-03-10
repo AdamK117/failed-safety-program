@@ -40,12 +40,21 @@
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Data\SafetyProgram.Data.csproj">
+      <Name>SafetyProgram.Data</Name>
+      <Project>{6b64427f-41e8-492c-9f7a-e08823ce0b8d}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
       <Name>SafetyProgram.Models</Name>
       <Project>{0150a546-807a-4d76-88eb-3c3f3c46a43b}</Project>

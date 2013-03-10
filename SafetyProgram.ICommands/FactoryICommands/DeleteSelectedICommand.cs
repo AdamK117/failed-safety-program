@@ -1,10 +1,12 @@
-﻿namespace SafetyProgram.ICommands
+﻿using SafetyProgram.UserControls;
+
+namespace SafetyProgram.ICommands
 {
-    public class DeleteSelectedICommand : ActiveDataICommandsBase
+    public class DeleteSelectedICommand : DOMBase
     {
         public DeleteSelectedICommand()
         {
-            currentlyOpen.SelectionChangedEvent +=new Data.CoshhFile.CurrentlyOpen.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
+            coshhWindow.Document.SelectionChanged +=new Data.DOM.CoshhDocument.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
         }
 
         void currentlyOpen_SelectionChangedEvent(object selection)
@@ -18,7 +20,7 @@
 
         public override void Execute(object parameter)
         {
-            if (canExecute) { currentlyOpen.DeleteSelected(); }
+            if (canExecute) { coshhWindow.Document.Selected().Remove(); }
         }
     }
 }

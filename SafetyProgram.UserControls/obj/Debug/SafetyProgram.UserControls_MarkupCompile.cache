@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-6-311431735
+41023079824
 
-261848819639
+16-1218949384
 191209423807
-GenericControls\Hazards\HazardList.xaml;DialogControls\EditCoshhChemical\EditCoshhChemical.xaml;MainWindowControls\Controls\ApparatusTable\ApparatusTableView.xaml;MainWindowControls\Controls\ChemicalTable\ChemicalTableView.xaml;MainWindowControls\Controls\ProcessesTable\ProcessesTableView.xaml;MainWindowControls\Styles\TableStyle.xaml;
+GenericControls\Hazards\HazardList.xaml;DialogControls\EditCoshhChemical\EditCoshhChemical.xaml;MainWindowControls\Controls\ChemicalTable\ChemicalTableView.xaml;MainWindowControls\Styles\TableStyle.xaml;
 
 False
 

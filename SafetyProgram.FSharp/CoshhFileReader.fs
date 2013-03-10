@@ -5,6 +5,9 @@
     #endif
 
     open SafetyProgram.Models.DataModels
+    open SafetyProgram.UserControls.MainWindowControls.ChemicalTable
+    open SafetyProgram.UserControls
+    open System.Collections.ObjectModel
     open System.Xml
 
     type public XmlParser() = 
@@ -44,7 +47,7 @@
         
         //Hazard list parser
         member private this.hazardsListParser (hazardsNode : XmlNode) =
-            let hazList = new System.Collections.ObjectModel.ObservableCollection<HazardModel>()
+            let hazList = new ObservableCollection<HazardModel>()
             hazardsNode.SelectNodes("hazard")
                 |> Seq.cast<XmlNode>
                 |> Seq.map(this.hazardParser)
@@ -101,7 +104,16 @@
             model.UsageComments <- getInnerText(xmlNode, "usagecomments")
             model
         
+        member private this.makeChemicalTable(parent : ObservableCollection<IDocObject>) (chemicals : seq<CoshhChemicalModel>) = 
+            let chemTab = new ChemicalTableDocObject(parent, chemicals)
+            parent.Add(chemTab)
+            chemTab
+
         //Exposed members
+        member this.GetChemicalTable(path : string, parent : ObservableCollection<IDocObject>) = 
+            this.GetCoshhChemicalModels(path)
+            |> this.makeChemicalTable(parent)
+
         member this.GetCoshhChemicalModels(xmlDocument : XmlDocument) =
             xmlDocumentNodeParse(xmlDocument, "/coshh/chemicals/chemical", this.coshhchemicalModelParser)
 

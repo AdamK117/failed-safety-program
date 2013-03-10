@@ -7,6 +7,10 @@
 
     open SafetyProgram.Models.DataModels
     open SafetyProgram.UserControls
+    open SafetyProgram.Data.DOM
+    open SafetyProgram.UserControls.MainWindowControls.ChemicalTable
+    open System.Windows.Controls
+    open System.Windows
     open System.Collections.Generic
     open System.Xml
 
@@ -35,44 +39,44 @@
             if title <> "" then xmlWriter.WriteElementString("title", title)
 
         //CoshhChemicalModel Writer
-        let coshhChemicalWriter (xmlWriter : XmlWriter) (model : IDocDataHolder<CoshhChemicalModel>) = 
+        let coshhChemicalWriter (xmlWriter : XmlWriter) (model : CoshhChemicalModel) = 
             if model <> null then
                 xmlWriter.WriteStartElement("chemical") //a
 
-                if model.Data().Name <> null then xmlWriter.WriteElementString("name", model.Data().Name)
+                if model.Name <> null then xmlWriter.WriteElementString("name", model.Name)
 
                 xmlWriter.WriteStartElement("amount") //b
-                if model.Data().Value.ToString() <> null then xmlWriter.WriteElementString("value", model.Data().Value.ToString())
-                if model.Data().Unit <> null then xmlWriter.WriteElementString("unit", model.Data().Unit)
+                if model.Value.ToString() <> null then xmlWriter.WriteElementString("value", model.Value.ToString())
+                if model.Unit <> null then xmlWriter.WriteElementString("unit", model.Unit)
                 xmlWriter.WriteEndElement() //b
 
-                if model.Data().Hazards <> null then hazardsWriter(xmlWriter, model.Data().Hazards)
+                if model.Hazards <> null then hazardsWriter(xmlWriter, model.Hazards)
 
                 xmlWriter.WriteEndElement() //a
         
         //CoshhApparatusModel Writer
-        let cosshApparatusWriter(xmlWriter : XmlWriter) (model : IDocDataHolder<CoshhApparatusModel>) = 
+        let cosshApparatusWriter(xmlWriter : XmlWriter) (model : CoshhApparatusModel) = 
             if model <> null then
                 xmlWriter.WriteStartElement("apparatus") //a
 
-                if model.Data().Name <> null then xmlWriter.WriteElementString("name", model.Data().Name)
+                if model.Name <> null then xmlWriter.WriteElementString("name", model.Name)
 
-                if model.Data().Hazards <> null then hazardsWriter(xmlWriter, model.Data().Hazards)
+                if model.Hazards <> null then hazardsWriter(xmlWriter, model.Hazards)
 
-                if model.Data().UsageComments <> null then xmlWriter.WriteElementString("usagecomments", model.Data().UsageComments)
+                if model.UsageComments <> null then xmlWriter.WriteElementString("usagecomments", model.UsageComments)
 
                 xmlWriter.WriteEndElement() //a
         
         //CoshhProcessModelWriter
-        let coshhProcessWriter(xmlWriter : XmlWriter) (model : IDocDataHolder<CoshhProcessModel>) =
+        let coshhProcessWriter(xmlWriter : XmlWriter) (model : CoshhProcessModel) =
             if model <> null then
                 xmlWriter.WriteStartElement("process") //a
 
-                if model.Data().Name <> null then xmlWriter.WriteElementString("name", model.Data().Name)
+                if model.Name <> null then xmlWriter.WriteElementString("name", model.Name)
 
-                if model.Data().Hazards <> null then hazardsWriter(xmlWriter, model.Data().Hazards)
+                if model.Hazards <> null then hazardsWriter(xmlWriter, model.Hazards)
 
-                if model.Data().UsageComments <> null then xmlWriter.WriteElementString("usagecomments", model.Data().UsageComments)
+                if model.UsageComments <> null then xmlWriter.WriteElementString("usagecomments", model.UsageComments)
 
                 xmlWriter.WriteEndElement()
         
@@ -83,7 +87,7 @@
             xmlWriter.WriteEndElement() //a
         
         //Coshh Document Writer
-        member public this.writeDocument(path : string, iDocs : seq<IDocUserControl>) = 
+        member public this.writeDocument(path : string, doc : CoshhDocument) = 
             let xmlWriterSettings = new XmlWriterSettings()
             xmlWriterSettings.Indent <- true
             use xmlWriter = XmlWriter.Create(path, xmlWriterSettings)
@@ -91,17 +95,21 @@
             xmlWriter.WriteStartDocument() //a
             xmlWriter.WriteStartElement("coshh") //b
 
-            iDocs |> Seq.iter(fun x -> this.writeIDocUserControl(path, xmlWriter, x))
+            doc.Body |> Seq.iter(fun x -> this.writeIDocObject(path, xmlWriter, x))
 
             xmlWriter.WriteEndElement() //b
             xmlWriter.WriteEndDocument() //a
 
             xmlWriter.Flush()
-        
+
+        //Write Chemical Table Xml
+        member public this.ChemicalTableWriter(chemicalTable : ChemicalTableView, xmlWriter : XmlWriter) = 
+            xmlWriter.WriteStartElement("chemicals") //a
+            chemicalTable.Data |> Seq.iter(coshhChemicalWriter(xmlWriter))
+            xmlWriter.WriteEndElement() //a
+            
         //Document Object Writer
-        member public this.writeIDocUserControl(path : string, xmlWriter : XmlWriter, iDoc : IDocUserControl) = 
-            match iDoc.Data() with
-            | :? IEnumerable<IDocDataHolder<CoshhChemicalModel>> as models -> modelSeqHandler(models, "chemicals", xmlWriter, coshhChemicalWriter)
-            | :? IEnumerable<IDocDataHolder<CoshhApparatusModel>> as models -> modelSeqHandler(models, "apparatuses", xmlWriter, cosshApparatusWriter)
-            | :? IEnumerable<IDocDataHolder<CoshhProcessModel>> as models -> modelSeqHandler(models, "processes", xmlWriter, coshhProcessWriter)
+        member public this.writeIDocObject(path : string, xmlWriter : XmlWriter, iDocObject : IDocObject) = 
+            match iDocObject.Display() with
+            | :? ChemicalTableView as chemicalTable -> this.ChemicalTableWriter(chemicalTable, xmlWriter)
             | _ -> ()

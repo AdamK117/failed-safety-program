@@ -5,11 +5,11 @@ using SafetyProgram.Data;
 
 namespace SafetyProgram.ICommands
 {
-    public class EditChemicalICommand : ActiveDataICommandsBase
+    public class EditChemicalICommand : DOMBase
     {
         public EditChemicalICommand()
         {
-            currentlyOpen.SelectionChangedEvent +=new Data.CoshhFile.CurrentlyOpen.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
+            coshhWindow.Document.SelectionChanged +=new Data.DOM.CoshhDocument.selectionChangedDelegate(currentlyOpen_SelectionChangedEvent);
         }
 
         void currentlyOpen_SelectionChangedEvent(object selection)
@@ -25,8 +25,8 @@ namespace SafetyProgram.ICommands
         {
             if (canExecute)
             {
-                IDocDataHolder<CoshhChemicalModel> b = parameter as IDocDataHolder<CoshhChemicalModel>;
-                EditCoshhChemical a = new EditCoshhChemical(b.Data());
+                CoshhChemicalModel b = parameter as CoshhChemicalModel;
+                EditCoshhChemical a = new EditCoshhChemical(b);
                 a.ShowDialog();
             }
         }

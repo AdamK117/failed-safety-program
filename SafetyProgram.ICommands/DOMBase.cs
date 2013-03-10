@@ -4,16 +4,16 @@ using System.Windows.Input;
 using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.ServiceLocation;
 using SafetyProgram.Data;
-using SafetyProgram.Data.CoshhFile;
+using SafetyProgram.Data.DOM;
 
 namespace SafetyProgram.ICommands
 {
-    public class ActiveDataICommandsBase : ICommand
+    public class DOMBase : ICommand
     {
         protected bool canExecute;
-        protected CurrentlyOpen currentlyOpen;
+        protected CoshhWindow coshhWindow;
 
-        public ActiveDataICommandsBase() { currentlyOpen = ServiceLocator.Current.GetInstance<CurrentlyOpen>(); }
+        public DOMBase() { coshhWindow = ServiceLocator.Current.GetInstance<CoshhWindow>(); }
 
         public virtual bool CanExecute(object parameter)
         {

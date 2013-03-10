@@ -1,16 +1,16 @@
 ﻿using Microsoft.Practices.ServiceLocation;
-using SafetyProgram.Data.CoshhFile;
+using SafetyProgram.Data.DOM;
 
 namespace SafetyProgram.MainWindow
 {
     public class MainWindowViewModel : BaseINPC
     {
-        private CurrentlyOpen currentlyOpen;
+        private CoshhDocument currentlyOpen;
 
         public MainWindowViewModel()
         {     
-            currentlyOpen = ServiceLocator.Current.GetInstance<CurrentlyOpen>();
-            currentlyOpen.IsOpenChangedEvent += new CurrentlyOpen.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
+            currentlyOpen = ServiceLocator.Current.GetInstance<CoshhDocument>();
+            currentlyOpen.IsOpenChanged += new CoshhDocument.isOpenChangedDelegate(currentlyOpen_IsOpenChangedEvent);
         }
 
         void currentlyOpen_IsOpenChangedEvent(bool isOpen)

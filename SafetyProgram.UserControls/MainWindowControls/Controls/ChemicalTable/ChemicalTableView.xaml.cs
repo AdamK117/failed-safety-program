@@ -21,13 +21,21 @@ namespace SafetyProgram.UserControls.MainWindowControls.ChemicalTable
     /// </summary>
     public partial class ChemicalTableView : UserControl
     {
-        private ChemicalTableViewModel vm;
+        protected ChemicalTableViewModel vm;
 
-        public ChemicalTableView(ObservableCollection<CoshhDocDataObject<CoshhChemicalModel>> chemicals)
+        public ChemicalTableView(IEnumerable<CoshhChemicalModel> chemicals)
         {
             InitializeComponent();
-            vm = new ChemicalTableViewModel(chemicals);
+            //vm = new ChemicalTableViewModel(chemicals);
             LayoutRoot.DataContext = vm;
+            this.data = chemicals;
+        }
+
+        private IEnumerable<CoshhChemicalModel> data;
+        public IEnumerable<CoshhChemicalModel> Data
+        {
+            get { return data; }
+            set { data = value; }
         }
     }
 }
