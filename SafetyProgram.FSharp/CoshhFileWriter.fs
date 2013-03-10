@@ -6,11 +6,6 @@
     #endif
 
     open SafetyProgram.Models.DataModels
-    open SafetyProgram.UserControls
-    open SafetyProgram.Data.DOM
-    open SafetyProgram.UserControls.MainWindowControls.ChemicalTable
-    open System.Windows.Controls
-    open System.Windows
     open System.Collections.Generic
     open System.Xml
 
@@ -87,29 +82,29 @@
             xmlWriter.WriteEndElement() //a
         
         //Coshh Document Writer
-        member public this.writeDocument(path : string, doc : CoshhDocument) = 
-            let xmlWriterSettings = new XmlWriterSettings()
-            xmlWriterSettings.Indent <- true
-            use xmlWriter = XmlWriter.Create(path, xmlWriterSettings)
+        //member public this.writeDocument(path : string, doc : CoshhDocument) = 
+            //let xmlWriterSettings = new XmlWriterSettings()
+            //xmlWriterSettings.Indent <- true
+            //use xmlWriter = XmlWriter.Create(path, xmlWriterSettings)
 
-            xmlWriter.WriteStartDocument() //a
-            xmlWriter.WriteStartElement("coshh") //b
+            //xmlWriter.WriteStartDocument() //a
+            //xmlWriter.WriteStartElement("coshh") //b
 
-            doc.Body |> Seq.iter(fun x -> this.writeIDocObject(path, xmlWriter, x))
+            //doc.Body |> Seq.iter(fun x -> this.writeIDocObject(path, xmlWriter, x))
 
-            xmlWriter.WriteEndElement() //b
-            xmlWriter.WriteEndDocument() //a
+            //xmlWriter.WriteEndElement() //b
+            //xmlWriter.WriteEndDocument() //a
 
-            xmlWriter.Flush()
+            //xmlWriter.Flush()
 
         //Write Chemical Table Xml
-        member public this.ChemicalTableWriter(chemicalTable : ChemicalTableView, xmlWriter : XmlWriter) = 
-            xmlWriter.WriteStartElement("chemicals") //a
-            chemicalTable.Data |> Seq.iter(coshhChemicalWriter(xmlWriter))
-            xmlWriter.WriteEndElement() //a
+        //member public this.ChemicalTableWriter(chemicalTable : ChemicalTableView, xmlWriter : XmlWriter) = 
+            //xmlWriter.WriteStartElement("chemicals") //a
+            //chemicalTable.Data |> Seq.iter(coshhChemicalWriter(xmlWriter))
+            //xmlWriter.WriteEndElement() //a
             
         //Document Object Writer
-        member public this.writeIDocObject(path : string, xmlWriter : XmlWriter, iDocObject : IDocObject) = 
-            match iDocObject.Display() with
-            | :? ChemicalTableView as chemicalTable -> this.ChemicalTableWriter(chemicalTable, xmlWriter)
-            | _ -> ()
+        //member public this.writeIDocObject(path : string, xmlWriter : XmlWriter, iDocObject : IDocObject) = 
+            //match iDocObject.Display() with
+            //| :? ChemicalTableView as chemicalTable -> this.ChemicalTableWriter(chemicalTable, xmlWriter)
+            //| _ -> ()

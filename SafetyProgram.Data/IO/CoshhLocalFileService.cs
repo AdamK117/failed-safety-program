@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Xml;
 
-using SafetyProgram.Models.DataModels;
 using SafetyProgram.FSharp;
 using System.Windows.Forms;
-using System.Collections.ObjectModel;
-using SafetyProgram.UserControls;
-using SafetyProgram.UserControls.MainWindowControls.ChemicalTable;
 using System.IO;
 using SafetyProgram.Data.DOM;
+using SafetyProgram.Models.DataModels;
+using System.Collections.Generic;
 
 namespace SafetyProgram.Data.IO
 {
@@ -27,7 +23,7 @@ namespace SafetyProgram.Data.IO
             if (String.IsNullOrWhiteSpace(path)) { return false; }
 
             CoshhXmlWriter.XmlWrite writer = new CoshhXmlWriter.XmlWrite();
-            writer.writeDocument(path, data);
+            //writer.writeDocument(path, data);
 
             setPath(path);
 
@@ -60,7 +56,7 @@ namespace SafetyProgram.Data.IO
         private bool loadFile(string path, CoshhDocument doc)
         {
             CoshhXmlReader.XmlParser parser = new CoshhXmlReader.XmlParser();
-            parser.GetChemicalTable(path, doc.Body);
+            IEnumerable<CoshhChemicalModel> models = parser.GetCoshhChemicalModels(path);
 
             return true;
         }
