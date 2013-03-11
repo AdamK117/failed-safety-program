@@ -70,11 +70,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DOM\CoshhDocument.cs" />
-    <Compile Include="IO\CoshhLocalFileService.cs" />
+    <Compile Include="IO\LocalFile\CoshhLocalFileService.cs" />
     <Compile Include="DOM\CoshhWindow.cs" />
     <Compile Include="IO\ICoshhDataService.cs" />
     <Compile Include="BaseINPC.cs" />
     <Compile Include="DataIModule.cs" />
+    <Compile Include="IO\LocalFile\xmlReader.cs" />
+    <Compile Include="IO\LocalFile\xmlWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
