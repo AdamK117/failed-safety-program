@@ -8,12 +8,13 @@ namespace SafetyProgram.Data.DOM
     public class CoshhDocument
     {
         protected CoshhWindow parent;
-        protected ObservableCollection<IDocObject> body;
+        protected ObservableCollection<IDocObject> body = new ObservableCollection<IDocObject>();
 
-        public CoshhDocument(CoshhWindow parent)
-        {
-            this.parent = parent;
-        }
+        /// <summary>
+        /// Constructs a new CoshhDocument.
+        /// </summary>
+        /// <param name="parent">The window housing the CoshhDocument</param>
+        public CoshhDocument(CoshhWindow parent) { this.parent = parent; }
 
         /// <summary>
         /// Returns the body (contents) of the document.

@@ -81,16 +81,11 @@ U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.UserControls.dl
 U:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.UserControls.pdb
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.ICommands.dll
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.ICommands.pdb
-V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.dll
-V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
-V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.dll
-V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.dll
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Unity.dll
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Data.dll
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Models.dll
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.UserControls.dll
-V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.FSharp.dll
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Models.pdb
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.Data.pdb
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.UserControls.pdb
@@ -102,9 +97,8 @@ V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.Mef
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.MefExtensions.xml
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.pdb
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Prism.UnityExtensions.xml
-V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Unity.xml
-V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\SafetyProgram.FSharp.pdb
 V:\SafetyProgram\SafetyProgram.ICommands\obj\Debug\ResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.ICommands\obj\Debug\SafetyProgram.ICommands.dll
 V:\SafetyProgram\SafetyProgram.ICommands\obj\Debug\SafetyProgram.ICommands.pdb
+V:\SafetyProgram\SafetyProgram.ICommands\bin\Debug\Microsoft.Practices.Unity.pdb

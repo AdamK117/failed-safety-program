@@ -17,7 +17,10 @@ namespace SafetyProgram.Data.DOM
         /// <summary>
         /// Makes an instance of the CoshhWindow object.
         /// </summary>
-        public CoshhWindow() { }
+        public CoshhWindow() 
+        {
+            service = new CoshhLocalFileService();
+        }
 
         /// <summary>
         /// Returns/Sets the document object.

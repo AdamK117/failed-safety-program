@@ -8,11 +8,11 @@ namespace SafetyProgram.Data.IO
 {
     public interface ICoshhDataService
     {
-        bool Save(CoshhDocument data);
+        bool Save(CoshhDocument document);
 
-        bool Load(CoshhDocument data);
+        bool Load(CoshhDocument document);
 
-        bool SaveAs(CoshhDocument data);
+        bool SaveAs(CoshhDocument document);
 
         bool Close();
 

@@ -87,10 +87,6 @@
       <Project>{0150A546-807A-4D76-88EB-3C3F3C46A43B}</Project>
       <Name>SafetyProgram.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Data\SafetyProgram.Data.csproj">
-      <Project>{6B64427F-41E8-492C-9F7A-E08823CE0B8D}</Project>
-      <Name>SafetyProgram.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
       <Project>{69416B92-32EA-4F2A-B3D4-5FC8389090BB}</Project>
       <Name>SafetyProgram.UserControls</Name>

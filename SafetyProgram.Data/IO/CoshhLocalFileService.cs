@@ -1,41 +1,33 @@
 ﻿using System;
-
-using SafetyProgram.FSharp;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections.Generic;
+
 using SafetyProgram.Data.DOM;
 using SafetyProgram.Models.DataModels;
-using System.Collections.Generic;
 
 namespace SafetyProgram.Data.IO
 {
-    class CoshhLocalFile : ICoshhDataService
+    class CoshhLocalFileService : ICoshhDataService
     {
         private string path;
 
         /// <summary>
         /// Saves the CoshhDocument to the location it was loaded from.
         /// </summary>
-        /// <param name="data">The CoshhDocument to be saved.</param>
+        /// <param name="document">The CoshhDocument to be saved.</param>
         /// <returns>If the file sucessfully saved.</returns>
-        public bool Save(CoshhDocument data)
+        public bool Save(CoshhDocument document)
         {
-            if (String.IsNullOrWhiteSpace(path)) { return false; }
-
-            CoshhXmlWriter.XmlWrite writer = new CoshhXmlWriter.XmlWrite();
-            //writer.writeDocument(path, data);
-
-            setPath(path);
-
-            return true;
+            throw new NotImplementedException();
         }
 
         /// <summary>
         /// Loads a User specified file into the CoshhDocument supplied.
         /// </summary>
-        /// <param name="data">A CoshhDocument to fill with loaded data.</param>
+        /// <param name="document">A CoshhDocument to fill with loaded data.</param>
         /// <returns>If the file has sucessfully loaded.</returns>
-        public bool Load(CoshhDocument data)
+        public bool Load(CoshhDocument document)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "Coshh Documents (.xml)|*.xml";
@@ -48,25 +40,22 @@ namespace SafetyProgram.Data.IO
             //If the selected file is invalid (doesn't exist, inaccessable, etc.)
             else if (!setPath(openFileDialog1.FileName)) { return false; }
             //If the selected file can be loaded
-            else if (!loadFile(Path(), data)) { return false; }
+            else if (!loadFile(Path(), document)) { return false; }
 
             return true;
         }
 
         private bool loadFile(string path, CoshhDocument doc)
         {
-            CoshhXmlReader.XmlParser parser = new CoshhXmlReader.XmlParser();
-            IEnumerable<CoshhChemicalModel> models = parser.GetCoshhChemicalModels(path);
-
-            return true;
+            throw new NotImplementedException();
         }
 
         /// <summary>
         /// Saves the CoshhDocument to the user specified location.
         /// </summary>
-        /// <param name="data">The data to be saved.</param>
+        /// <param name="document">The data to be saved.</param>
         /// <returns>If the file was sucessfully saved.</returns>
-        public bool SaveAs(CoshhDocument data)
+        public bool SaveAs(CoshhDocument document)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Coshh Safety Document|*.xml";
@@ -77,7 +66,7 @@ namespace SafetyProgram.Data.IO
             if (userResponse == DialogResult.OK)
             {
                 path = saveFileDialog.FileName;
-                Save(data);
+                Save(document);
                 return true;
             }
             else { return false; }

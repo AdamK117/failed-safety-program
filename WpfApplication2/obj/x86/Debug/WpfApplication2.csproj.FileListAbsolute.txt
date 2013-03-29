@@ -1,0 +1,14 @@
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\ResolveAssemblyReference.cache
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\MainWindow.baml
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\MainWindow.g.cs
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\App.g.cs
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\WpfApplication2_MarkupCompile.cache
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\WpfApplication2.g.resources
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\WpfApplication2.Properties.Resources.resources
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\GenerateResource.read.1.tlog
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\GenerateResource.write.1.tlog
+V:\SafetyProgram\WpfApplication2\bin\Debug\WpfApplication2.exe
+V:\SafetyProgram\WpfApplication2\bin\Debug\WpfApplication2.pdb
+V:\SafetyProgram\WpfApplication2\bin\Debug\Fluent.dll
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\WpfApplication2.exe
+V:\SafetyProgram\WpfApplication2\obj\x86\Debug\WpfApplication2.pdb

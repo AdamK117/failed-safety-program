@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fluent" />
     <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PrismAggregatorDesignTest\bin\Bin\Desktop\Microsoft.Practices.Prism.dll</HintPath>
@@ -70,20 +71,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DOM\CoshhDocument.cs" />
-    <Compile Include="IO\LocalFile\CoshhLocalFileService.cs" />
     <Compile Include="DOM\CoshhWindow.cs" />
+    <Compile Include="IO\CoshhLocalFileService.cs" />
     <Compile Include="IO\ICoshhDataService.cs" />
     <Compile Include="BaseINPC.cs" />
     <Compile Include="DataIModule.cs" />
-    <Compile Include="IO\LocalFile\xmlReader.cs" />
-    <Compile Include="IO\LocalFile\xmlWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.FSharp\SafetyProgram.FSharp.fsproj">
-      <Project>{B7F2A568-8520-497B-9927-6D6084F80D97}</Project>
-      <Name>SafetyProgram.FSharp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
       <Project>{0150A546-807A-4D76-88EB-3C3F3C46A43B}</Project>
       <Name>SafetyProgram.Models</Name>

@@ -1,0 +1,9 @@
+﻿<Window x:Class="SafetyProgram.DOM.Window.CoshhWindow"
+        xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CoshhWindow" Height="300" Width="300">
+    <Grid>
+        
+    </Grid>
+</Window>

@@ -15,6 +15,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -50,36 +50,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SafetyProgram.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluent">
-      <HintPath>..\..\..\working\WpfApplication4\bin\Release\Fluent.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Fluent, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Bin\Desktop\Microsoft.Practices.Prism.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Bin\Desktop\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.MefExtensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Bin\Desktop\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.UnityExtensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Bin\Desktop\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Bin\Desktop\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Bin\Desktop\Microsoft.Practices.Unity.dll</HintPath>
+      <HintPath>..\Fluent Ribbon Control Suite 2.0\.NET 4.0\Assembly\Release\Fluent.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -97,20 +79,54 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Bootstrapper.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Shell.xaml.cs">
-      <DependentUpon>Shell.xaml</DependentUpon>
+    <Compile Include="Window\Commands\Close.cs" />
+    <Compile Include="Window\Commands\WindowHotkeys.cs" />
+    <Compile Include="Window\Commands\New.cs" />
+    <Compile Include="Window\Commands\Open.cs" />
+    <Compile Include="Window\Commands\Save.cs" />
+    <Compile Include="Window\Commands\SaveAs.cs" />
+    <Compile Include="Window\Commands\WindowCommandBase.cs" />
+    <Compile Include="Window\Commands\WindowCommands.cs" />
+    <Compile Include="Window\CoshhWindow.cs" />
+    <Compile Include="Window\Document\Controls\IDocObject.cs" />
+    <Compile Include="Window\Document\Controls\StringUc\StringUc.xaml.cs">
+      <DependentUpon>StringUc.xaml</DependentUpon>
     </Compile>
-    <Page Include="Shell.xaml">
+    <Compile Include="Window\Document\CoshhDocument.cs" />
+    <Compile Include="Window\Document\CoshhDocumentView.xaml.cs">
+      <DependentUpon>CoshhDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window\IO\CoshhLocalFileService.cs" />
+    <Compile Include="Window\IO\ICoshhDataService.cs" />
+    <Compile Include="Window\CoshhWindowView.xaml.cs">
+      <DependentUpon>CoshhWindowView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Window\Document\Controls\StringUc\StringUc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window\Document\CoshhDocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window\CoshhWindowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window\Ribbon\CoshhRibbonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Window\Ribbon\CoshhRibbon.cs" />
+    <Compile Include="Window\Ribbon\CoshhRibbonView.xaml.cs">
+      <DependentUpon>CoshhRibbonView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -135,21 +151,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.MainWindow\SafetyProgram.MainWindow.csproj">
-      <Project>{E5D31D49-DDCB-4FF3-8D19-B130B715A4A0}</Project>
-      <Name>SafetyProgram.MainWindow</Name>
+    <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
+      <Project>{0150A546-807A-4D76-88EB-3C3F3C46A43B}</Project>
+      <Name>SafetyProgram.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Data\SafetyProgram.Data.csproj">
-      <Project>{6B64427F-41E8-492C-9F7A-E08823CE0B8D}</Project>
-      <Name>SafetyProgram.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.ICommands\SafetyProgram.ICommands.csproj">
-      <Project>{00593F4B-DA37-453F-8F25-4D62D5E69318}</Project>
-      <Name>SafetyProgram.ICommands</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.RibbonView\SafetyProgram.RibbonView.csproj">
-      <Project>{E26397B4-2A29-4F16-8DF9-D9D5DB5F8BE4}</Project>
-      <Name>SafetyProgram.RibbonView</Name>
+    <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
+      <Project>{69416B92-32EA-4F2A-B3D4-5FC8389090BB}</Project>
+      <Name>SafetyProgram.UserControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +181,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Window\Document\Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

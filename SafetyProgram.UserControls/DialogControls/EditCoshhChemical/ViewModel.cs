@@ -1,5 +1,4 @@
 ﻿using SafetyProgram.Models.DataModels;
-using Microsoft.Practices.ServiceLocation;
 
 namespace SafetyProgram.UserControls.DialogControls
 {
