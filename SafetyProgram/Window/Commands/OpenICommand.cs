@@ -5,9 +5,9 @@ using System.Text;
 
 namespace SafetyProgram.Window.Commands
 {
-    public class Open : WindowCommandBase
+    public class OpenICommand : WindowICommandBase
     {
-        public Open(CoshhWindow window)
+        public OpenICommand(CoshhWindow window)
             : base(window)
         { canExecute = false; RaiseCanExecuteChanged(); }
 
@@ -23,7 +23,7 @@ namespace SafetyProgram.Window.Commands
 
         public override void Execute(object parameter)
         {
-            window.Load();
+            window.Commands.Load();
         }
     }
 }

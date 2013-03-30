@@ -83,13 +83,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Window\Commands\Close.cs" />
-    <Compile Include="Window\Commands\WindowHotkeys.cs" />
-    <Compile Include="Window\Commands\New.cs" />
-    <Compile Include="Window\Commands\Open.cs" />
-    <Compile Include="Window\Commands\Save.cs" />
-    <Compile Include="Window\Commands\SaveAs.cs" />
-    <Compile Include="Window\Commands\WindowCommandBase.cs" />
+    <Compile Include="BaseINPC.cs" />
+    <Compile Include="Window\Commands\CloseICommand.cs" />
+    <Compile Include="Window\Commands\NewICommand.cs" />
+    <Compile Include="Window\Commands\OpenICommand.cs" />
+    <Compile Include="Window\Commands\SaveICommand.cs" />
+    <Compile Include="Window\Commands\SaveAsICommand.cs" />
+    <Compile Include="Window\Commands\WindowICommandBase.cs" />
     <Compile Include="Window\Commands\WindowCommands.cs" />
     <Compile Include="Window\CoshhWindow.cs" />
     <Compile Include="Window\Document\Controls\IDocObject.cs" />

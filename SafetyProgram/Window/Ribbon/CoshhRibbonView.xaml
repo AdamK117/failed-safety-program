@@ -12,15 +12,15 @@
             <!-- Ribbon: File Button -->
             <Fluent:Ribbon.Menu>
                 <!-- File Menu -->
-                <Fluent:Backstage x:Name="RibbonBackstage" IsEnabled="True" IsOpen="{Binding}">
+                <Fluent:Backstage x:Name="RibbonBackstage" IsEnabled="True" IsOpen="{Binding BackstageVisibility, Mode=TwoWay}">
                     <Fluent:BackstageTabControl>
                         <!-- File Menu options-->
-                        <Fluent:Button Header="Save" Command="{Binding Commands.SaveCommand}" />
-                        <Fluent:Button Header="Save As" Command="{Binding Commands.SaveAsCommand}" />
-                        <Fluent:Button Header="Save As PDF" Command="{Binding Commands.SaveCommand}" />
-                        <Fluent:Button Header="Open" Command="{Binding Commands.OpenCommand}" />
-                        <Fluent:Button Header="Close" Command="{Binding Commands.CloseCommand}" />
-                        <Fluent:Button Header="New" Command="{Binding Commands.NewCommand}" />
+                        <Fluent:Button Header="Save" Command="{Binding Commands.ICommands.Save}" />
+                        <Fluent:Button Header="Save As" Command="{Binding Commands.ICommands.SaveAs}" />
+                        <Fluent:Button Header="Save As PDF" Command="{Binding Commands.ICommands.Save}" />
+                        <Fluent:Button Header="Open" Command="{Binding Commands.ICommands.Open}" />
+                        <Fluent:Button Header="Close" Command="{Binding Commands.ICommands.Close}" />
+                        <Fluent:Button Header="New" Command="{Binding Commands.ICommands.New}" />
                         <Fluent:BackstageTabItem Header="Recent" >
                             <Fluent:Button Header="Work In Progress" />
                         </Fluent:BackstageTabItem>

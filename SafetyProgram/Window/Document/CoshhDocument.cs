@@ -1,23 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.ObjectModel;
-using SafetyProgram.MainWindow.Document.Controls;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using SafetyProgram.MainWindow.Document.Controls;
 
 namespace SafetyProgram.MainWindow.Document
 {
-    public class CoshhDocument
+    public class CoshhDocument : BaseINPC
     {
-        protected CoshhDocumentView view;
-        protected ObservableCollection<IDocObject> body = new ObservableCollection<IDocObject>();
+        protected ObservableCollection<IDocObject> body;
+        protected string title;
+        protected IDocObject selected;
+        protected bool edited;
+        protected readonly CoshhDocumentView view;
 
         /// <summary>
         /// Constructs a new CoshhDocument.
         /// </summary>
         public CoshhDocument() 
         {
+            body = new ObservableCollection<IDocObject>();
+            title = "Untitled Document";
+            selected = null;
+            edited = false;
+
             view = new CoshhDocumentView(this);
         }
 
@@ -31,112 +35,78 @@ namespace SafetyProgram.MainWindow.Document
         }
 
         /// <summary>
-        /// Returns the body (contents) of the document.
+        /// Gets/Sets the body of the document.
         /// </summary>
         public ObservableCollection<IDocObject> Body
         {
             get { return body; }
-            set { body = value; }
+            set 
+            { 
+                body = value;
+                RaisePropertyChanged("Body");
+            }
         }
 
-        protected string title = "Untitled Document";
         /// <summary>
-        /// Returns the Title of the document.
+        /// Gets/Sets the Title of the document.
         /// </summary>
         public string Title
         {
             get { return title; }
-            set { title = value; }
-        }
-
-        #region Selection Logic
-
-        private IDocObject selected;
-        /// <summary>
-        /// Set the document object as selected.
-        /// </summary>
-        /// <param name="selected">The selected document object</param>
-        /// <returns></returns>
-        public IDocObject Selected(IDocObject selected)
-        {
-            if (this.selected != selected)
-            {
-                this.selected = selected;
-                if (SelectionChanged != null) { SelectionChanged(selected); }
+            set 
+            { 
+                title = value;
+                RaisePropertyChanged("Title");
             }
-            return selected;
         }
-        /// <summary>
-        /// Returns the currently selected (if any) object.
-        /// </summary>
-        /// <returns></returns>
-        public IDocObject Selected() { return selected; }
-        public delegate void selectionChangedDelegate(IDocObject selection);
+
+        public IDocObject Selected
+        {
+            get
+            {
+                return selected;
+            }
+            set
+            {
+                if (this.selected != value)
+                {
+                    this.selected = value;
+                    if (SelectionChanged != null) { SelectionChanged(value); }
+                    RaisePropertyChanged("Selected");
+                }
+            }
+        }
+        
         /// <summary>
         /// Event that fires if a new selection is made within the document.
         /// </summary>
         public event selectionChangedDelegate SelectionChanged;
+        public delegate void selectionChangedDelegate(IDocObject selection);
 
-        #endregion
-
-        #region IsOpen logic
-
-        private bool isOpen;
         /// <summary>
-        /// Sets if the document is open (displayed) or not.
+        /// Gets/Sets the document edited flag
         /// </summary>
-        /// <param name="isOpen"></param>
-        /// <returns></returns>
-        public bool IsOpen(bool isOpen)
+        public bool Edited
         {
-            if (this.isOpen != isOpen)
+            get
             {
-                this.isOpen = isOpen;
-                if (IsOpenChanged != null) { IsOpenChanged(isOpen); }
+                return edited;
             }
-            return isOpen;
-        }
-        /// <summary>
-        /// Returns the open state of the document
-        /// </summary>
-        /// <returns></returns>
-        public bool IsOpen() { return isOpen; }
-        public delegate void isOpenChangedDelegate(bool isOpen);
-        /// <summary>
-        /// Event that fires if the open state (isOpen) of the document changes
-        /// </summary>
-        public event isOpenChangedDelegate IsOpenChanged;
-
-        #endregion
-
-        #region (Document) Edited logic
-
-        private bool edited;
-        /// <summary>
-        /// Sets if the file has been edited or not.
-        /// </summary>
-        /// <param name="edited"></param>
-        /// <returns></returns>
-        public bool Edited(bool edited)
-        {
-            if (this.edited != edited)
+            set
             {
-                this.edited = edited;
-                if (EditedChanged != null) { EditedChanged(edited); }
+                if (value != edited)
+                {
+                    edited = value;
+                    if (EditedChanged != null) { EditedChanged(value); }
+                    RaisePropertyChanged("Edited");
+                }
             }
-            return edited;
         }
-        /// <summary>
-        /// Returns if the document has been edited.
-        /// </summary>
-        /// <returns></returns>
-        public bool Edited() { return edited; }
-        public delegate void editedDelegate(bool edited);
+        
         /// <summary>
         /// Event that fires when the document is edited.
         /// </summary>
         public event editedDelegate EditedChanged;
-
-        #endregion
+        public delegate void editedDelegate(bool edited);
     }
 }

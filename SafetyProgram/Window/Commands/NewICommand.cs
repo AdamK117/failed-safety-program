@@ -5,21 +5,20 @@ using System.Text;
 
 namespace SafetyProgram.Window.Commands
 {
-    public class SaveAs : WindowCommandBase
+    public class NewICommand : WindowICommandBase
     {
-        public SaveAs(CoshhWindow window)
+        public NewICommand(CoshhWindow window)
             : base(window)
         { }
 
         public override bool CanExecute(object parameter)
         {
-            if (window.Document == null) return false;
-            else return true;
+            return true;
         }
 
         public override void Execute(object parameter)
         {
-            window.SaveAs();
+            window.Commands.New();
         }
     }
 }

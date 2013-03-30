@@ -1,18 +1,19 @@
 ﻿using SafetyProgram.MainWindow.Document;
 using SafetyProgram.MainWindow.IO;
-using SafetyProgram.Window.Ribbon;
-using System;
-using System.Windows.Forms;
 using SafetyProgram.Window.Commands;
+using SafetyProgram.Window.Ribbon;
 
 namespace SafetyProgram.Window
 {
-    public partial class CoshhWindow
+    public class CoshhWindow : BaseINPC
     {
-        private CoshhWindowView view;
-        private WindowCommands commands;
+        //Can't be changed once a window is instantiated
+        private readonly CoshhWindowView view;
+        private readonly WindowCommands commands;        
+        private readonly CoshhRibbon ribbon;
+
+        //Can be changed throughout the course of runtime
         private CoshhDocument document;
-        private CoshhRibbon ribbon;        
         private ICoshhDataService service;
 
         /// <summary>
@@ -25,28 +26,30 @@ namespace SafetyProgram.Window
             commands = new WindowCommands(this);
 
             //Create a new (blank) document
-            document = new CoshhDocument();
+            Document = new CoshhDocument();
 
             //Create a new ribbon
             ribbon = new CoshhRibbon(this);
 
             //Default to saving locally
-            service = new CoshhLocalFileService();
+            service = new CoshhLocalFileService(Document);
 
             //Create a new window, this is its ViewModel.
             view = new CoshhWindowView(this);
 
             //Give the window some hotkeys
-            view.InputBindings.AddRange(commands.Hotkeys);
+            view.InputBindings.AddRange(commands.Hotkeys.All);
 
             //Show the window
             view.Show();
         }
 
+        /// <summary>
+        /// The commands available to the window.
+        /// </summary>
         public WindowCommands Commands
         {
             get { return commands; }
-            set { commands = value; }
         }
 
         /// <summary>
@@ -55,7 +58,11 @@ namespace SafetyProgram.Window
         public CoshhDocument Document
         {
             get { return document; }
-            set { document = value; }
+            set 
+            { 
+                document = value;
+                RaisePropertyChanged("Document");
+            }
         }
 
         /// <summary>
@@ -66,125 +73,13 @@ namespace SafetyProgram.Window
             get { return ribbon; }
         }
 
+        /// <summary>
+        /// The current I/O service used by the window.
+        /// </summary>
         public ICoshhDataService Service
         {
             get { return service; }
             set { service = value; }
-        }
-
-        /// <summary>
-        /// Saves the document.
-        /// </summary>
-        /// <returns>If the document was sucessfully saved.</returns>
-        public bool Save()
-        {
-            
-            if (service.Save(Document))
-            {
-                Document.Edited(false);
-                return true;
-            }
-            else { return false; }
-             
-        }
-
-        /// <summary>
-        /// Saves the document where specified.
-        /// </summary>
-        /// <returns>If the operation sucessfully saved the document.</returns>
-        public bool SaveAs()
-        {
-            if (service.SaveAs(Document))
-            {
-                Document.Edited(false);
-                return true;
-            }
-            else { return false; }
-        }
-
-        /// <summary>
-        /// Saves the document as a PDF.
-        /// </summary>
-        public void SaveAsPDF()
-        {
-            throw new Exception("Placeholder Command, PDF's not yet implemented");
-        }
-
-        /// <summary>
-        /// Loads a new document.
-        /// </summary>
-        /// <returns>If the document successfully loaded.</returns>
-        public bool Load()
-        {
-            if (Close())
-            {
-                if (service.Load(Document))
-                {
-                    Document.IsOpen(true);
-                    Document.Edited(false);
-                    Document.Selected(null);
-                    return true;
-                }
-                else { return false; }
-            }
-            else { return false; }
-        }
-
-        /// <summary>
-        /// Closes the current document.
-        /// </summary>
-        /// <returns>If the document sucessfully closed.</returns>
-        public bool Close()
-        {
-            if (Document.Edited())
-            {
-                DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Do you want to save changes you made to " + Document.Title + "?", "Save changes.", MessageBoxButtons.YesNoCancel);
-
-                switch (dialogResult)
-                {
-                    //Save changes and close the document
-                    case System.Windows.Forms.DialogResult.Yes:
-                        if (!Save()) { goto case System.Windows.Forms.DialogResult.Cancel; }
-                        break;
-
-                    //Don't Save changes and close the document
-                    case System.Windows.Forms.DialogResult.No:
-                        break;
-
-                    //Don't close the document
-                    case System.Windows.Forms.DialogResult.Cancel:
-                        return false;
-                }
-            }
-
-            //Create a new (blank) placeholder document
-            Document = new CoshhDocument();
-            Document.IsOpen(false);
-            Document.Selected(null);
-            Document.Edited(false);
-
-            //Close the file on the fileservice
-            service.Close();
-            return true;
-        }
-
-        /// <summary>
-        /// Creates a new document.
-        /// </summary>
-        /// <returns>If a new document was sucessfully created.</returns>
-        public bool New()
-        {
-            //If the current document is closed
-            if (Close())
-            {
-                Document = new CoshhDocument();
-                Document.IsOpen(true);
-                Document.Selected(null);
-                Document.Edited(true);
-                return true;
-            }
-            else { return false; }
-
         }
     }
 }

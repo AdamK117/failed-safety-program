@@ -6,12 +6,12 @@ using System.Windows.Input;
 
 namespace SafetyProgram.Window.Commands
 {
-    public abstract class WindowCommandBase : ICommand
+    public abstract class WindowICommandBase : ICommand
     {
         protected bool canExecute;
         protected CoshhWindow window;
 
-        public WindowCommandBase(CoshhWindow window)
+        public WindowICommandBase(CoshhWindow window)
         {
             this.window = window;
         }

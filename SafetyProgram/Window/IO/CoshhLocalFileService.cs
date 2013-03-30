@@ -5,19 +5,26 @@ using System.Collections.Generic;
 
 using SafetyProgram.MainWindow.Document;
 using SafetyProgram.Models.DataModels;
+using SafetyProgram.Window;
 
 namespace SafetyProgram.MainWindow.IO
 {
-    class CoshhLocalFileService : ICoshhDataService
+    public class CoshhLocalFileService : ICoshhDataService
     {
         private string path;
+        private CoshhWindow window;
+
+        public CoshhLocalFileService(CoshhWindow window)
+        {
+            this.window = window;
+        }
 
         /// <summary>
         /// Saves the CoshhDocument to the location it was loaded from.
         /// </summary>
         /// <param name="document">The CoshhDocument to be saved.</param>
         /// <returns>If the file sucessfully saved.</returns>
-        public bool Save(CoshhDocument document)
+        public bool Save()
         {
             throw new NotImplementedException();
         }
@@ -27,7 +34,7 @@ namespace SafetyProgram.MainWindow.IO
         /// </summary>
         /// <param name="document">A CoshhDocument to fill with loaded data.</param>
         /// <returns>If the file has sucessfully loaded.</returns>
-        public bool Load(CoshhDocument document)
+        public CoshhDocument Load()
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "Coshh Documents (.xml)|*.xml";
@@ -55,7 +62,7 @@ namespace SafetyProgram.MainWindow.IO
         /// </summary>
         /// <param name="document">The data to be saved.</param>
         /// <returns>If the file was sucessfully saved.</returns>
-        public bool SaveAs(CoshhDocument document)
+        public bool SaveAs()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Coshh Safety Document|*.xml";
