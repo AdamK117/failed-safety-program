@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="SafetyProgram.MainWindow.Document.Controls.ChemicalTable.ChemicalTableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="295" d:DesignWidth="723"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SafetyProgram;component/MainWindow/Document/Controls/Styles/TableListStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Chemical List Style -->
+            <Style TargetType="ListView" x:Key="ChemicalListStyle" BasedOn="{StaticResource SafetyListStyle}">
+                <Setter Property="View">
+                    <Setter.Value>
+                        <GridView>
+                            <!-- Chemical Name -->
+                            <GridViewColumn Header="Chemical Name" Width="213">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Width="Auto" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <!-- Amount -->
+                            <GridViewColumn Header="Amount" Width="100" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Value}" HorizontalAlignment="Center" Width="Auto" />
+                                            <TextBlock Text="{Binding Unit}" HorizontalAlignment="Center" Width="Auto" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <!-- Hazards -->
+                            <GridViewColumn Width="450" Header="Hazards">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <WrapPanel MaxWidth="{Binding RelativeSource={RelativeSource AncestorType={x:Type GridViewColumn}}}">
+                                                    <Image Width="50" Height="50" Margin="0,0,10,0" />
+                                                    <Image Width="50" Height="50" Margin="0,0,10,0" />
+                                                    <Image Width="50" Height="50" Margin="0,0,10,0" />
+                                                </WrapPanel>
+                                            </StackPanel>
+
+                                            <TextBlock Text="{Binding Hazards}" Width="Auto" HorizontalAlignment="Left" TextWrapping="Wrap" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <StackPanel x:Name="LayoutRoot">
+        
+        <TextBlock HorizontalAlignment="Center" FontSize="32">Chemicals used in this experiment.</TextBlock>
+        
+        <ListView 
+            x:Name="Chemicals"
+            Style="{StaticResource ChemicalListStyle}"
+            ItemsSource="{Binding Chemicals}"
+            SelectedItem="{Binding SelectedChemical, Mode=TwoWay}"
+            ContextMenu="{Binding ContextMenu.View}"
+            />
+        
+    </StackPanel>
+
+</UserControl>

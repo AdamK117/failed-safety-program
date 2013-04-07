@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 V:\SafetyProgram\SafetyProgram\App.xaml
-4147491155
+81931180920
 
-23-768087339
-16-1390203445
-Window\Document\Controls\StringUc\StringUc.xaml;Window\Document\CoshhDocumentView.xaml;Window\CoshhWindowView.xaml;Window\Ribbon\CoshhRibbonView.xaml;
+4446182431
+16-827894576
+MainWindow\Document\ContextMenus\DocumentContextMenuView.xaml;MainWindow\Document\Controls\ChemicalTable\ChemicalTableView.xaml;MainWindow\Document\Controls\ChemicalTable\ContextMenus\ChemicalTableContextMenuView.xaml;MainWindow\Document\Controls\ChemicalTable\Ribbon\ChemicalTableRibbonView.xaml;MainWindow\Document\Controls\Styles\TableListStyle.xaml;MainWindow\Document\CoshhDocumentView.xaml;MainWindow\CoshhWindowView.xaml;MainWindow\Ribbons\CoshhRibbonView.xaml;
 
 False
 

@@ -56,8 +56,7 @@
   <ItemGroup>
     <Reference Include="Fluent, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Fluent Ribbon Control Suite 2.0\.NET 4.0\Assembly\Release\Fluent.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\Fluent.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -83,48 +82,91 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BaseICommand.cs" />
     <Compile Include="BaseINPC.cs" />
-    <Compile Include="Window\Commands\CloseICommand.cs" />
-    <Compile Include="Window\Commands\NewICommand.cs" />
-    <Compile Include="Window\Commands\OpenICommand.cs" />
-    <Compile Include="Window\Commands\SaveICommand.cs" />
-    <Compile Include="Window\Commands\SaveAsICommand.cs" />
-    <Compile Include="Window\Commands\WindowICommandBase.cs" />
-    <Compile Include="Window\Commands\WindowCommands.cs" />
-    <Compile Include="Window\CoshhWindow.cs" />
-    <Compile Include="Window\Document\Controls\IDocObject.cs" />
-    <Compile Include="Window\Document\Controls\StringUc\StringUc.xaml.cs">
-      <DependentUpon>StringUc.xaml</DependentUpon>
+    <Compile Include="MainWindow\Commands\CloseICommand.cs" />
+    <Compile Include="MainWindow\Commands\ExitICommand.cs" />
+    <Compile Include="MainWindow\Commands\NewICommand.cs" />
+    <Compile Include="MainWindow\Commands\OpenICommand.cs" />
+    <Compile Include="MainWindow\Commands\SaveICommand.cs" />
+    <Compile Include="MainWindow\Commands\SaveAsICommand.cs" />
+    <Compile Include="MainWindow\Commands\WindowICommandBase.cs" />
+    <Compile Include="MainWindow\Commands\WindowCommandsHolder.cs" />
+    <Compile Include="MainWindow\CoshhWindow.cs" />
+    <Compile Include="MainWindow\Document\Commands\DeleteDocObjectICommand.cs" />
+    <Compile Include="MainWindow\Document\Commands\DocumentCommandsHolder.cs" />
+    <Compile Include="MainWindow\Document\Commands\InsertChemicalTableICommand.cs" />
+    <Compile Include="MainWindow\Document\Commands\DocumentCommandsBase.cs" />
+    <Compile Include="MainWindow\Document\ContextMenus\DocumentContextMenu.cs" />
+    <Compile Include="MainWindow\Document\ContextMenus\DocumentContextMenuView.xaml.cs">
+      <DependentUpon>DocumentContextMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window\Document\CoshhDocument.cs" />
-    <Compile Include="Window\Document\CoshhDocumentView.xaml.cs">
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\ChemicalTable.cs" />
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\ChemicalTableView.xaml.cs">
+      <DependentUpon>ChemicalTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\AddNewChemicalICommand.cs" />
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\ChemicalTableCommandsBase.cs" />
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\ChemicalTableCommandsHolder.cs" />
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\DeleteSelectedICommand.cs" />
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\DeleteTableICommand.cs" />
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\ContextMenus\ChemicalTableContextMenu.cs" />
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
+      <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Ribbon\ChemicalTableRibbon.cs" />
+    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Ribbon\ChemicalTableRibbonView.xaml.cs">
+      <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow\Document\Controls\DocObject.cs" />
+    <Compile Include="MainWindow\Document\Controls\DocObjectContextMenu.cs" />
+    <Compile Include="MainWindow\Document\Controls\DocObjectRibbon.cs" />
+    <Compile Include="MainWindow\Document\CoshhDocument.cs" />
+    <Compile Include="MainWindow\Document\CoshhDocumentView.xaml.cs">
       <DependentUpon>CoshhDocumentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window\IO\CoshhLocalFileService.cs" />
-    <Compile Include="Window\IO\ICoshhDataService.cs" />
-    <Compile Include="Window\CoshhWindowView.xaml.cs">
+    <Compile Include="MainWindow\Document\DocFormat.cs" />
+    <Compile Include="MainWindow\Services\CoshhLocalFileService.cs" />
+    <Compile Include="MainWindow\Services\ICoshhDataService.cs" />
+    <Compile Include="MainWindow\CoshhWindowView.xaml.cs">
       <DependentUpon>CoshhWindowView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Window\Document\Controls\StringUc\StringUc.xaml">
+    <Page Include="MainWindow\Document\ContextMenus\DocumentContextMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window\Document\CoshhDocumentView.xaml">
+    <Page Include="MainWindow\Document\Controls\ChemicalTable\ChemicalTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow\Document\Controls\ChemicalTable\ContextMenus\ChemicalTableContextMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow\Document\Controls\ChemicalTable\Ribbon\ChemicalTableRibbonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow\Document\Controls\Styles\TableListStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow\Document\CoshhDocumentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window\CoshhWindowView.xaml">
+    <Page Include="MainWindow\CoshhWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Window\Ribbon\CoshhRibbonView.xaml">
+    <Page Include="MainWindow\Ribbons\CoshhRibbonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Window\Ribbon\CoshhRibbon.cs" />
-    <Compile Include="Window\Ribbon\CoshhRibbonView.xaml.cs">
+    <Compile Include="MainWindow\Ribbons\CoshhRibbon.cs" />
+    <Compile Include="MainWindow\Ribbons\CoshhRibbonView.xaml.cs">
       <DependentUpon>CoshhRibbonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -183,7 +225,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Window\Document\Commands\" />
+    <Folder Include="MainWindow\Document\Controls\ApparatusTable\" />
+    <Folder Include="MainWindow\Document\Controls\ChemicalTable\IO\" />
+    <Folder Include="MainWindow\Document\Controls\ProcessesTable\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

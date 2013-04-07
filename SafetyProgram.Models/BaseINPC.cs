@@ -2,10 +2,10 @@
 
 namespace SafetyProgram.Models
 {
-    public class BaseINPC : INotifyPropertyChanged
+    public abstract class BaseINPC : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void RaisePropertyChanged(string propertyName)
+        public virtual void RaisePropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {

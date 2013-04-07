@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using SafetyProgram.Window;
+using SafetyProgram.MainWindow;
 
 namespace SafetyProgram
 {
@@ -14,6 +14,7 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
             CoshhWindow window = new CoshhWindow();
+            window.View.Show();
         }
 
         /// <summary>

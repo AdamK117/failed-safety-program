@@ -5,7 +5,7 @@ namespace SafetyProgram
     public abstract class BaseINPC : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public void RaisePropertyChanged(string propertyName)
+        public virtual void RaisePropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {

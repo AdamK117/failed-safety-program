@@ -1,0 +1,53 @@
+﻿<Fluent:Ribbon x:Class="SafetyProgram.MainWindow.Ribbons.CoshhRibbonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+             mc:Ignorable="d" d:DesignHeight="143" d:DesignWidth="738">
+
+            <!-- Ribbon: File Button -->
+            <Fluent:Ribbon.Menu>
+                <!-- File Menu -->
+                <Fluent:Backstage x:Name="Backstage">
+                    <Fluent:BackstageTabControl>
+                        <!-- File Menu options-->
+                        <Fluent:Button Header="Save" Command="{Binding WindowCommands.Save}" />
+                        <Fluent:Button Header="Save As" Command="{Binding WindowCommands.SaveAs}" />
+                        <Fluent:Button Header="Save As PDF" Command="{Binding WindowCommands.Save}" />
+                        <Fluent:Button Header="Open" Command="{Binding WindowCommands.Open}" />
+                        <Fluent:Button Header="Close" Command="{Binding WindowCommands.Close}" />
+                        <Fluent:Button Header="New" Command="{Binding WindowCommands.New}" />
+                        
+                        <Fluent:BackstageTabItem Header="Recent" >
+                            <Fluent:Button Header="Work In Progress (Show recently opened documents here)" />
+                        </Fluent:BackstageTabItem>
+                        <Fluent:BackstageTabItem Header="Print"/>
+                        <Fluent:BackstageTabItem Header="Help"/>
+                        
+                        <Fluent:Button Header="Exit" Command="{Binding WindowCommands.Exit}" />
+                    </Fluent:BackstageTabControl>
+                </Fluent:Backstage>
+            </Fluent:Ribbon.Menu>
+
+            <!-- Ribbon Tabs -->
+
+            <!-- Tab 1: Insert -->
+            <Fluent:RibbonTabItem Header="Insert">
+
+                <!-- GroupBox 1: Chemicals -->
+                <Fluent:RibbonGroupBox Header="Tables" IsEnabled="{Binding RibbonVisibility}">
+                    <Fluent:Button Header="Chemicals" Command="{Binding DocumentCommands.InsertChemicalTable}" />
+                </Fluent:RibbonGroupBox>
+ 
+            </Fluent:RibbonTabItem>
+
+            <!--Quick Access Toolbar Items-->
+            <Fluent:Ribbon.QuickAccessItems>
+                <!--Use Content or Target Property to set QAT item-->
+                <Fluent:QuickAccessMenuItem IsChecked="true">
+                    <TextBox>Hi</TextBox>
+                </Fluent:QuickAccessMenuItem>
+            </Fluent:Ribbon.QuickAccessItems>
+
+</Fluent:Ribbon>
