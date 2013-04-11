@@ -1,8 +1,14 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using System.Xml.Linq;
 
-using SafetyProgram.MainWindow.Document;
+using SafetyProgram.Document;
+using SafetyProgram.DocObjects;
+using SafetyProgram.DocObjects.ChemicalTable;
+using SafetyProgram.Models.DataModels;
 
 namespace SafetyProgram.MainWindow.Services
 {
@@ -29,6 +35,7 @@ namespace SafetyProgram.MainWindow.Services
         {
             if (window.Document == null || Close())
             {
+                path = "";
                 window.Document = new CoshhDocument();
                 return true;
             }
@@ -41,7 +48,7 @@ namespace SafetyProgram.MainWindow.Services
         /// <returns>If the file sucessfully saved.</returns>
         public bool Save()
         {
-            throw new NotImplementedException();
+            return saveFile(path);
         }
 
         /// <summary>
@@ -73,24 +80,28 @@ namespace SafetyProgram.MainWindow.Services
         {
             bool loaded = false;
 
-            if (Close())
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Coshh Documents (.xml)|*.xml";
+            openFileDialog1.Multiselect = false;
+
+            DialogResult dialogResult = openFileDialog1.ShowDialog();
+
+            switch (dialogResult)
             {
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Filter = "Coshh Documents (.xml)|*.xml";
-                openFileDialog1.Multiselect = false;
+                case DialogResult.OK:
+                    if (
+                        Close() 
+                        && setPath(openFileDialog1.FileName) 
+                        && loadFile(Path())
+                    )
+                    {
+                        loaded = true;
+                    }
+                    break;
 
-                DialogResult dialogResult = openFileDialog1.ShowDialog();
-
-                switch (dialogResult)
-                {
-                    case DialogResult.OK:
-                        if (setPath(openFileDialog1.FileName) && loadFile(Path())) loaded = true;
-                        break;
-
-                    default:
-                        loaded = false;
-                        break;
-                }
+                default:
+                    loaded = false;
+                    break;
             }
 
             return loaded;
@@ -141,6 +152,7 @@ namespace SafetyProgram.MainWindow.Services
             else { return false; }
         }        
 
+        //Private members (implementation specific)
         private bool setPath(string path)
         {
             if (File.Exists(path))
@@ -158,16 +170,119 @@ namespace SafetyProgram.MainWindow.Services
         /// <returns>If the document sucessfully loaded (no parsing errors etc.).</returns>
         private bool loadFile(string path)
         {
-            throw new NotImplementedException();
+            //Flag that goes false if theres a load error.
+            bool noError = true;
+
+            //Create a blank CoshhDocObject
+            CoshhDocument loadedDoc = new CoshhDocument();
+
+            loadedDoc.Title = path;
+
+            //Pass all the data into an xDoc for easier parsing
+            XDocument xDoc = XDocument.Load(path);
+          
+            XElement chemTable = xDoc.Element("coshh").Element("chemicals");
+
+            loadedDoc.Body.Add(
+                new ChemicalTable(readChemicalTable(chemTable))
+            );
+
+            window.Document = loadedDoc;
+
+            return noError;
+        }
+
+        /// <summary>
+        /// Provies the actual (localfile) implementation for saving a file.
+        /// </summary>
+        /// <param name="path">Location where the file is to be saved</param>
+        /// <returns>If the file sucessfully saved</returns>
+        private bool saveFile(string path)
+        {
+            bool noError = true;
+
+            //Create a new xDoc to be populated with document data
+            XDocument xDoc = new XDocument();
+            XElement coshh = new XElement("coshh");
+
+            foreach (DocObject docObject in window.Document.Body)
+            {
+                if (docObject is ChemicalTable)
+                {
+                    ChemicalTable chemTable = (ChemicalTable)docObject;
+                    xDoc.Add(new XElement("coshh", writeChemicalTable(chemTable.Chemicals)));
+                }
+            }
+
+            xDoc.Save(path);
+
+            return noError;
         }
 
         /// <summary>
         /// Returns the path of the file.
         /// </summary>
         /// <returns>Local filesystem path.</returns>
-        public string Path()
+        private string Path()
         {
             return path;
         }
+
+        private IEnumerable<CoshhChemicalModel> readChemicalTable(XElement chemicalTable)
+        {
+            return (
+                from XElement chemical in chemicalTable.Elements("chemical")
+                    select new CoshhChemicalModel()
+                    {
+                        Name = chemical.Element("name").Value,
+                        Value = float.Parse(chemical.Element("amount").Element("value").Value),
+                        Unit = chemical.Element("amount").Element("unit").Value,
+                        Hazards = new ObservableCollection<HazardModel>(readHazardNode(chemical.Element("hazards")))
+                    }
+            );
+        }
+
+        private IEnumerable<HazardModel> readHazardNode(XElement hazardNode)
+        {
+            return (
+                from XElement hazard in hazardNode.Elements("hazard")
+                select new HazardModel()
+                {
+                    Hazard = hazard.Value,
+                    SignalWord = hazard.Attribute("signalword") == null ? null : hazard.Attribute("signalword").Value,
+                    Symbol = hazard.Attribute("symbol") == null ? null : hazard.Attribute("symbol").Value
+                }
+            );
+        }
+
+        private XElement writeChemicalTable(IEnumerable<CoshhChemicalModel> chemicals)
+        {
+            return (
+                new XElement("chemicals",
+                    from chemical in chemicals
+                    select new XElement("chemical",
+                        new XElement("name", chemical.Name),
+                        new XElement("amount",
+                            new XElement("value", chemical.Value),
+                            new XElement("unit", chemical.Unit)
+                        ),
+                        writeHazards(chemical.Hazards)                        
+                    )
+                )
+            );
+        }
+
+        private XElement writeHazards(IEnumerable<HazardModel> hazards)
+        {
+            return (
+                new XElement("hazards",
+                    from hazard in hazards
+                    select new XElement("hazard", hazard.Hazard,
+                        new XAttribute("signalword", hazard.SignalWord ?? ""),
+                        new XAttribute("symbol", hazard.Symbol ?? "")
+                    )
+                )
+            );
+        }        
     }
 }

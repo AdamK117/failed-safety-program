@@ -1,5 +1,5 @@
 ﻿using SafetyProgram.MainWindow.Commands;
-using SafetyProgram.MainWindow.Document;
+using SafetyProgram.Document;
 using SafetyProgram.MainWindow.Services;
 using SafetyProgram.MainWindow.Ribbons;
 

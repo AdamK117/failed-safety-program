@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
+using System;
 
 namespace SafetyProgram.Models
 {
+    [Serializable]
     public abstract class BaseINPC : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

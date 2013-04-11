@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System;
 
 namespace SafetyProgram.Models.DataModels
 {
+    [Serializable]
     public class BaseElementModel : BaseINPC
     {
         private string name;

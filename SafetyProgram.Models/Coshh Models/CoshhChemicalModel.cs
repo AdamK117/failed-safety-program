@@ -1,5 +1,7 @@
-﻿namespace SafetyProgram.Models.DataModels
+﻿using System;
+namespace SafetyProgram.Models.DataModels
 {
+    [Serializable]
     public class CoshhChemicalModel : ChemicalModel
     {
         private float value;

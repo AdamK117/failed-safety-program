@@ -54,7 +54,7 @@
     <StartupObject>SafetyProgram.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluent, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
+    <Reference Include="Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Fluent.dll</HintPath>
     </Reference>
@@ -93,68 +93,11 @@
     <Compile Include="MainWindow\Commands\WindowICommandBase.cs" />
     <Compile Include="MainWindow\Commands\WindowCommandsHolder.cs" />
     <Compile Include="MainWindow\CoshhWindow.cs" />
-    <Compile Include="MainWindow\Document\Commands\DeleteDocObjectICommand.cs" />
-    <Compile Include="MainWindow\Document\Commands\DocumentCommandsHolder.cs" />
-    <Compile Include="MainWindow\Document\Commands\InsertChemicalTableICommand.cs" />
-    <Compile Include="MainWindow\Document\Commands\DocumentCommandsBase.cs" />
-    <Compile Include="MainWindow\Document\ContextMenus\DocumentContextMenu.cs" />
-    <Compile Include="MainWindow\Document\ContextMenus\DocumentContextMenuView.xaml.cs">
-      <DependentUpon>DocumentContextMenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\ChemicalTable.cs" />
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\ChemicalTableView.xaml.cs">
-      <DependentUpon>ChemicalTableView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\AddNewChemicalICommand.cs" />
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\ChemicalTableCommandsBase.cs" />
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\ChemicalTableCommandsHolder.cs" />
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\DeleteSelectedICommand.cs" />
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Commands\DeleteTableICommand.cs" />
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\ContextMenus\ChemicalTableContextMenu.cs" />
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
-      <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Ribbon\ChemicalTableRibbon.cs" />
-    <Compile Include="MainWindow\Document\Controls\ChemicalTable\Ribbon\ChemicalTableRibbonView.xaml.cs">
-      <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow\Document\Controls\DocObject.cs" />
-    <Compile Include="MainWindow\Document\Controls\DocObjectContextMenu.cs" />
-    <Compile Include="MainWindow\Document\Controls\DocObjectRibbon.cs" />
-    <Compile Include="MainWindow\Document\CoshhDocument.cs" />
-    <Compile Include="MainWindow\Document\CoshhDocumentView.xaml.cs">
-      <DependentUpon>CoshhDocumentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow\Document\DocFormat.cs" />
     <Compile Include="MainWindow\Services\CoshhLocalFileService.cs" />
     <Compile Include="MainWindow\Services\ICoshhDataService.cs" />
     <Compile Include="MainWindow\CoshhWindowView.xaml.cs">
       <DependentUpon>CoshhWindowView.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow\Document\ContextMenus\DocumentContextMenuView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow\Document\Controls\ChemicalTable\ChemicalTableView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow\Document\Controls\ChemicalTable\ContextMenus\ChemicalTableContextMenuView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow\Document\Controls\ChemicalTable\Ribbon\ChemicalTableRibbonView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow\Document\Controls\Styles\TableListStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow\Document\CoshhDocumentView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MainWindow\CoshhWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -193,13 +136,17 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.DocObjects\SafetyProgram.DocObjects.csproj">
+      <Project>{60FE19F7-74B8-4D02-9AED-77AC986FF3A1}</Project>
+      <Name>SafetyProgram.DocObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Document\SafetyProgram.Document.csproj">
+      <Project>{0385FB46-CEFE-4542-8F47-DBAAD96E5BAB}</Project>
+      <Name>SafetyProgram.Document</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
       <Project>{0150A546-807A-4D76-88EB-3C3F3C46A43B}</Project>
       <Name>SafetyProgram.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
-      <Project>{69416B92-32EA-4F2A-B3D4-5FC8389090BB}</Project>
-      <Name>SafetyProgram.UserControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -224,11 +171,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MainWindow\Document\Controls\ApparatusTable\" />
-    <Folder Include="MainWindow\Document\Controls\ChemicalTable\IO\" />
-    <Folder Include="MainWindow\Document\Controls\ProcessesTable\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,4 @@
-﻿using SafetyProgram.MainWindow.Document;
+﻿using SafetyProgram.Document;
 
 namespace SafetyProgram.MainWindow.Commands
 {

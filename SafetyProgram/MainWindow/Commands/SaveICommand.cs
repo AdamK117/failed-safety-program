@@ -12,7 +12,6 @@
         public SaveICommand(CoshhWindow window)
             : base(window) 
         {
-            //Add a handler that checks if the document has changed
             window.DocumentChanged += (document) => RaiseCanExecuteChanged();
         }
 
@@ -23,8 +22,6 @@
 
         public override void Execute(object parameter)
         {
-            //window.Commands.Save();
-
             if (window.Service.Save())
             {
                 window.Document.Edited = false;

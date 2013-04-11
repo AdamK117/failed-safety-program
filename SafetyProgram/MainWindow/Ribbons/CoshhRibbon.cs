@@ -1,8 +1,8 @@
 ﻿using Fluent;
 using SafetyProgram.MainWindow.Commands;
-using SafetyProgram.MainWindow.Document;
-using SafetyProgram.MainWindow.Document.Commands;
-using SafetyProgram.MainWindow.Document.Controls;
+using SafetyProgram.Document;
+using SafetyProgram.Document.Commands;
+using SafetyProgram.DocObjects;
 
 namespace SafetyProgram.MainWindow.Ribbons
 {
@@ -70,7 +70,7 @@ namespace SafetyProgram.MainWindow.Ribbons
             //If the document isn't null (i.e. closed).
             if (document != null)
             {
-                //Event Handler: Added to the new document if the selection changes.
+                //Add an event handler to monitor documents selection.
                 document.SelectionChanged += (DocObject selection) =>
                 {
                     View.Tabs.Remove(currentContextualTab);

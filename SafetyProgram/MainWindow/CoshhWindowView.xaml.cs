@@ -16,6 +16,7 @@ namespace SafetyProgram.MainWindow
         public CoshhWindowView(CoshhWindow viewModel)
         {
             this.viewModel = viewModel;
+
             DataContext = viewModel;
             InitializeComponent();
         }
