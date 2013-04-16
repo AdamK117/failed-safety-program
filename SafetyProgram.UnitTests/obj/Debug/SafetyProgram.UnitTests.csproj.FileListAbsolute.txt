@@ -1,0 +1,13 @@
+V:\SafetyProgram\SafetyProgram.UnitTests\obj\Debug\ResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.UnitTests.dll
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.UnitTests.pdb
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.DocObjects.dll
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.Document.dll
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.exe
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.Models.dll
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.DocObjects.pdb
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.Document.pdb
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.Models.pdb
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.pdb
+V:\SafetyProgram\SafetyProgram.UnitTests\obj\Debug\SafetyProgram.UnitTests.dll
+V:\SafetyProgram\SafetyProgram.UnitTests\obj\Debug\SafetyProgram.UnitTests.pdb

@@ -16,7 +16,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\Users\AdamK117\Desktop\SafetyApp\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,9 +26,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -52,6 +53,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>SafetyProgram.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>1AC90454600A0EEBF0ADB567B7A7C8E3BA26E9E0</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SafetyProgram_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
@@ -82,34 +95,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseICommand.cs" />
-    <Compile Include="BaseINPC.cs" />
-    <Compile Include="MainWindow\Commands\CloseICommand.cs" />
-    <Compile Include="MainWindow\Commands\ExitICommand.cs" />
-    <Compile Include="MainWindow\Commands\NewICommand.cs" />
-    <Compile Include="MainWindow\Commands\OpenICommand.cs" />
-    <Compile Include="MainWindow\Commands\SaveICommand.cs" />
-    <Compile Include="MainWindow\Commands\SaveAsICommand.cs" />
-    <Compile Include="MainWindow\Commands\WindowICommandBase.cs" />
-    <Compile Include="MainWindow\Commands\WindowCommandsHolder.cs" />
-    <Compile Include="MainWindow\CoshhWindow.cs" />
-    <Compile Include="MainWindow\Services\CoshhLocalFileService.cs" />
-    <Compile Include="MainWindow\Services\ICoshhDataService.cs" />
-    <Compile Include="MainWindow\CoshhWindowView.xaml.cs">
+    <Compile Include="Commands\CloseICommand.cs" />
+    <Compile Include="Commands\ExitICommand.cs" />
+    <Compile Include="Commands\NewICommand.cs" />
+    <Compile Include="Commands\OpenICommand.cs" />
+    <Compile Include="Commands\SaveICommand.cs" />
+    <Compile Include="Commands\SaveAsICommand.cs" />
+    <Compile Include="Commands\CoshhWindowICommand.cs" />
+    <Compile Include="Commands\WindowCommandsHolder.cs" />
+    <Compile Include="CoshhWindow.cs" />
+    <Compile Include="CoshhWindowView.xaml.cs">
       <DependentUpon>CoshhWindowView.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow\CoshhWindowView.xaml">
+    <Page Include="CoshhWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow\Ribbons\CoshhRibbonView.xaml">
+    <Page Include="Ribbons\CoshhRibbonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindow\Ribbons\CoshhRibbon.cs" />
-    <Compile Include="MainWindow\Ribbons\CoshhRibbonView.xaml.cs">
+    <Compile Include="Ribbons\CoshhRibbon.cs" />
+    <Compile Include="Ribbons\CoshhRibbonView.xaml.cs">
       <DependentUpon>CoshhRibbonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -136,6 +145,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.BaseClasses\SafetyProgram.BaseClasses.csproj">
+      <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
+      <Name>SafetyProgram.BaseClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.DocObjects\SafetyProgram.DocObjects.csproj">
       <Project>{60FE19F7-74B8-4D02-9AED-77AC986FF3A1}</Project>
       <Name>SafetyProgram.DocObjects</Name>
@@ -143,10 +156,6 @@
     <ProjectReference Include="..\SafetyProgram.Document\SafetyProgram.Document.csproj">
       <Project>{0385FB46-CEFE-4542-8F47-DBAAD96E5BAB}</Project>
       <Name>SafetyProgram.Document</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
-      <Project>{0150A546-807A-4D76-88EB-3C3F3C46A43B}</Project>
-      <Name>SafetyProgram.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

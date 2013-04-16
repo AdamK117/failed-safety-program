@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System;
+using SafetyProgram.BaseClasses;
 
 namespace SafetyProgram.Models.DataModels
 {

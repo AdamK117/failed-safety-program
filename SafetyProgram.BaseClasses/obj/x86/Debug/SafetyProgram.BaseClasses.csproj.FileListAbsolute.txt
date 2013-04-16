@@ -1,0 +1,8 @@
+V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\ResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\SafetyProgram.BaseClasses.Properties.Resources.resources
+V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\GenerateResource.read.1.tlog
+V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\GenerateResource.write.1.tlog
+V:\SafetyProgram\SafetyProgram.BaseClasses\bin\Debug\SafetyProgram.BaseClasses.dll
+V:\SafetyProgram\SafetyProgram.BaseClasses\bin\Debug\SafetyProgram.BaseClasses.pdb
+V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\SafetyProgram.BaseClasses.dll
+V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\SafetyProgram.BaseClasses.pdb

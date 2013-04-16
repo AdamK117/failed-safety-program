@@ -1,5 +1,8 @@
 ﻿using System.Windows;
-using SafetyProgram.MainWindow;
+
+using SafetyProgram.Document;
+using SafetyProgram.Document.Services;
+using SafetyProgram;
 
 namespace SafetyProgram
 {
@@ -13,7 +16,13 @@ namespace SafetyProgram
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            CoshhWindow window = new CoshhWindow();
+
+            //DI
+            ICoshhDocumentService service = new CoshhDocumentLocalFileService();
+            CoshhDocument document = service.New();
+
+            CoshhWindow window = new CoshhWindow(service, document);
+
             window.View.Show();
         }
 

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="1963c48f-5c3d-4c7f-b710-0654892181b6" name="AdamK117@ADAMK117-PC 2013-04-11 19:11:22" runUser="AdamK117-PC\AdamK117" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="003826a5-a045-4c04-9e0a-eb37b7bf6aff">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="AdamK117_ADAMK117-PC 2013-04-11 19_11_22">
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.DocObjects\bin\Debug\SafetyProgram.DocObjects.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.Document.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.UserControls\bin\Debug\SafetyProgram.UserControls.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.Models\bin\Debug\SafetyProgram.Models.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-04-11T19:11:22.5303771+01:00" queuing="2013-04-11T19:11:23.4024270+01:00" start="2013-04-11T19:11:23.4464295+01:00" finish="2013-04-11T19:11:42.7015308+01:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="6" executed="2" error="0" failed="1" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="4" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="ADAMK117-PC" outcome="Error" timestamp="2013-04-11T19:11:42.7005308+01:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ViewTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="8c2a5155-8228-92ec-f366-f03d57ef7d98">
+      <Execution id="f3c67943-e9c0-44f8-8704-01ecc5c0d2de" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhWindowTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ViewTest" />
+    </UnitTest>
+    <UnitTest name="RibbonTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="c7d694eb-9ca8-3672-1fde-0998cf91dab8">
+      <Execution id="46d8fedd-17dd-44a9-a4f1-6d6aec727e81" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhWindowTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RibbonTest" />
+    </UnitTest>
+    <UnitTest name="CommandsTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="44850128-99d4-0339-a78c-f742182cb935">
+      <Execution id="02c43ff7-0684-4ebd-b62d-d5fd59ce714f" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhWindowTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CommandsTest" />
+    </UnitTest>
+    <UnitTest name="ServiceTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="d5dbe430-f88b-6e24-d53e-bac5531ce0f5">
+      <Execution id="a72ee037-b08b-4eff-9c4d-e934a6d20553" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhWindowTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ServiceTest" />
+    </UnitTest>
+    <UnitTest name="DocumentTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="437eeeea-99b3-29b0-b7d8-8c2d884d1099">
+      <Execution id="87f445de-5135-4478-b2ea-efe4b5dff2b4" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhWindowTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DocumentTest" />
+    </UnitTest>
+    <UnitTest name="CoshhWindowConstructorTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="fcb1b691-7dc0-902d-e515-7e674b259b92">
+      <Execution id="457b14b0-0f5e-4b4e-b591-cbad89092edf" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhWindowTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindowConstructorTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="fcb1b691-7dc0-902d-e515-7e674b259b92" executionId="457b14b0-0f5e-4b4e-b591-cbad89092edf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="44850128-99d4-0339-a78c-f742182cb935" executionId="02c43ff7-0684-4ebd-b62d-d5fd59ce714f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="437eeeea-99b3-29b0-b7d8-8c2d884d1099" executionId="87f445de-5135-4478-b2ea-efe4b5dff2b4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c7d694eb-9ca8-3672-1fde-0998cf91dab8" executionId="46d8fedd-17dd-44a9-a4f1-6d6aec727e81" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d5dbe430-f88b-6e24-d53e-bac5531ce0f5" executionId="a72ee037-b08b-4eff-9c4d-e934a6d20553" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8c2a5155-8228-92ec-f366-f03d57ef7d98" executionId="f3c67943-e9c0-44f8-8704-01ecc5c0d2de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="457b14b0-0f5e-4b4e-b591-cbad89092edf" testId="fcb1b691-7dc0-902d-e515-7e674b259b92" testName="CoshhWindowConstructorTest" computerName="ADAMK117-PC" duration="00:00:00.0694095" startTime="2013-04-11T19:11:23.4914321+01:00" endTime="2013-04-11T19:11:24.0624647+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="457b14b0-0f5e-4b4e-b591-cbad89092edf">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SafetyProgram.UnitTests.CoshhWindowTest.CoshhWindowConstructorTest threw exception: 
+System.IO.FileNotFoundException: Could not load file or assembly 'Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f' or one of its dependencies. The system cannot find the file specified.=== Pre-bind state information ===
+LOG: User = AdamK117-PC\AdamK117
+LOG: DisplayName = Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f
+ (Fully-specified)
+LOG: Appbase = file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug
+LOG: Initial PrivatePath = NULL
+Calling assembly : SafetyProgram, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\QTAgent32.exe.Config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/Fluent/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/Fluent/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PublicAssemblies/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PublicAssemblies/Fluent/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/DataCollectors/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/DataCollectors/Fluent/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/DataCollectors/x86/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/DataCollectors/x86/Fluent/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/DataCollectors/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/DataCollectors/Fluent/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/DataCollectors/x86/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/DataCollectors/x86/Fluent/Fluent.DLL.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/Fluent/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/Fluent/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PublicAssemblies/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PublicAssemblies/Fluent/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/DataCollectors/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/DataCollectors/Fluent/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/DataCollectors/x86/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/DataCollectors/x86/Fluent/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/DataCollectors/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/DataCollectors/Fluent/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/DataCollectors/x86/Fluent.EXE.
+LOG: Attempting download of new URL file:///V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/PrivateAssemblies/DataCollectors/x86/Fluent/Fluent.EXE.
+</Message>
+          <StackTrace>    at SafetyProgram.UnitTests.CoshhWindowTest.CoshhWindowConstructorTest()
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="02c43ff7-0684-4ebd-b62d-d5fd59ce714f" testId="44850128-99d4-0339-a78c-f742182cb935" testName="CommandsTest" computerName="ADAMK117-PC" duration="00:00:18.6350658" startTime="2013-04-11T19:11:24.0664650+01:00" endTime="2013-04-11T19:11:42.7015308+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="02c43ff7-0684-4ebd-b62d-d5fd59ce714f">
+    </UnitTestResult>
+    <UnitTestResult executionId="87f445de-5135-4478-b2ea-efe4b5dff2b4" testId="437eeeea-99b3-29b0-b7d8-8c2d884d1099" testName="DocumentTest" computerName="ADAMK117-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="87f445de-5135-4478-b2ea-efe4b5dff2b4">
+    </UnitTestResult>
+    <UnitTestResult executionId="46d8fedd-17dd-44a9-a4f1-6d6aec727e81" testId="c7d694eb-9ca8-3672-1fde-0998cf91dab8" testName="RibbonTest" computerName="ADAMK117-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46d8fedd-17dd-44a9-a4f1-6d6aec727e81">
+    </UnitTestResult>
+    <UnitTestResult executionId="a72ee037-b08b-4eff-9c4d-e934a6d20553" testId="d5dbe430-f88b-6e24-d53e-bac5531ce0f5" testName="ServiceTest" computerName="ADAMK117-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a72ee037-b08b-4eff-9c4d-e934a6d20553">
+    </UnitTestResult>
+    <UnitTestResult executionId="f3c67943-e9c0-44f8-8704-01ecc5c0d2de" testId="8c2a5155-8228-92ec-f366-f03d57ef7d98" testName="ViewTest" computerName="ADAMK117-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f3c67943-e9c0-44f8-8704-01ecc5c0d2de">
+    </UnitTestResult>
+  </Results>
+</TestRun>

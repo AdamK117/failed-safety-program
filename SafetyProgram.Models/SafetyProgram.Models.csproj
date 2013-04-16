@@ -38,7 +38,6 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseINPC.cs" />
     <Compile Include="Core Models\ApparatusModel.cs" />
     <Compile Include="Core Models\ChemicalModel.cs" />
     <Compile Include="Core Models\BaseElementModel.cs" />
@@ -48,6 +47,12 @@
     <Compile Include="Core Models\HazardModel.cs" />
     <Compile Include="Core Models\ProcessModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.BaseClasses\SafetyProgram.BaseClasses.csproj">
+      <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
+      <Name>SafetyProgram.BaseClasses</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,5 +1,9 @@
-﻿namespace SafetyProgram.Models.DataModels
+﻿using SafetyProgram.BaseClasses;
+using System;
+
+namespace SafetyProgram.Models.DataModels
 {
+    [Serializable]
     public class HazardModel : BaseINPC
     {
         public HazardModel() { }
