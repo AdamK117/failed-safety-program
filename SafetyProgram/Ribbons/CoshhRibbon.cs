@@ -81,23 +81,23 @@ namespace SafetyProgram.Ribbons
         /// Handler that is called if the CoshhDocument contained within the CoshhWindow changes.
         /// </summary>
         /// <param name="document">The new CoshhDocument (or lack of).</param>
-        private void documentChanged(CoshhDocument document)
+        private void documentChanged(ICoshhDocument document)
         {
             //If the new document is not closed.
             if (document != null)
             {
                 //Add an event handler to monitor the new documents selections.
-                document.SelectionChanged += (DocObject selection) =>
+                document.SelectionChanged += (IDocObject selection) =>
                 {
                     //If the selection is null (i.e. deselected) or if the new Ribbon tab is new, remove the old RibbonTab.
-                    if (selection == null || currentContextualTab != selection.Ribbon.View)
+                    if (selection == null || currentContextualTab != selection.RibbonTab.View)
                     {
                         View.Tabs.Remove(currentContextualTab);
                     }
                     
                     if (selection != null)
                     {
-                        View.Tabs.Add(currentContextualTab = selection.Ribbon.View);
+                        View.Tabs.Add(currentContextualTab = selection.RibbonTab.View);
                     }  
                 };
 

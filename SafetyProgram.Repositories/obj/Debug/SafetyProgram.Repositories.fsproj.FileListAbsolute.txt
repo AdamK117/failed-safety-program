@@ -1,0 +1,6 @@
+V:\SafetyProgram\SafetyProgram.Repositories\bin\Debug\SafetyProgram.Repositories.XML
+V:\SafetyProgram\SafetyProgram.Repositories\bin\Debug\SafetyProgram.Repositories.dll
+V:\SafetyProgram\SafetyProgram.Repositories\bin\Debug\SafetyProgram.Repositories.pdb
+V:\SafetyProgram\SafetyProgram.Repositories\obj\Debug\ResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.Repositories\obj\Debug\SafetyProgram.Repositories.dll
+V:\SafetyProgram\SafetyProgram.Repositories\obj\Debug\SafetyProgram.Repositories.pdb

@@ -1,9 +1,10 @@
 ﻿using Fluent;
+using SafetyProgram.BaseClasses;
 using SafetyProgram.DocObjects.ChemicalTable.Commands;
 
 namespace SafetyProgram.DocObjects.ChemicalTable.Ribbon
 {
-    public class ChemicalTableRibbonTab : IDocObjectRibbonTab
+    public class ChemicalTableRibbonTab : IRibbonTabItem
     {
         private readonly ChemicalTable table;
         private readonly ChemicalTableCommandsHolder commands;

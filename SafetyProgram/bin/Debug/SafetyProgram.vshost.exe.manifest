@@ -61,31 +61,31 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>J0OoXIGcY6UQVE8nnpWiHxwg8OQ=</dsig:DigestValue>
+        <dsig:DigestValue>Jirk2SFLjV2/fF/2fcCU+DC6XN8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.BaseClasses.dll" size="7680">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.BaseClasses.dll" size="9216">
       <assemblyIdentity name="SafetyProgram.BaseClasses" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4Yud68gWgEtAA7LwxNiUEULl0Wg=</dsig:DigestValue>
+        <dsig:DigestValue>NKmzgxaE+KjrUMregYcdl5dDLoQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.DocObjects.dll" size="31232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.DocObjects.dll" size="30720">
       <assemblyIdentity name="SafetyProgram.DocObjects" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ILaQqsCgzLa5wCNx9nnuT21K1OI=</dsig:DigestValue>
+        <dsig:DigestValue>QJDCnY3cMTdzXrXwQtPfv/dqbo8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,7 +97,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>jkQNBRtAint5FcxbSBqhvZstp+o=</dsig:DigestValue>
+        <dsig:DigestValue>jOJ548YPCOp/7RQEmbg7FzEgCw4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,7 +109,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>g9S4bNwOdKjSem/Eze9UGJ30RjQ=</dsig:DigestValue>
+        <dsig:DigestValue>w3W4ignhybtUKMACHab16uOTatM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="38572d1e-bad5-4867-bad4-3627fe4ba3e7" name="AdamK117@ADAMK117-PC 2013-04-18 19:05:10" runUser="AdamK117-PC\AdamK117" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="003826a5-a045-4c04-9e0a-eb37b7bf6aff">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="AdamK117_ADAMK117-PC 2013-04-18 19_05_10">
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.exe" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.Document.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\Moq.4.0.10827\NET40\Moq.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.BaseClasses\bin\Debug\SafetyProgram.BaseClasses.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\Fluent.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-04-18T19:05:10.6076138+01:00" queuing="2013-04-18T19:05:10.6288641+01:00" start="2013-04-18T19:05:10.6326141+01:00" finish="2013-04-18T19:05:11.0638708+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="CoshhWindow_ChangeDocument" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="df889819-eb8d-5692-fb30-5757c6f0bc18">
+      <Execution id="ac17453f-993c-4a2f-904b-d05e831fa7da" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.UnitTest1, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindow_ChangeDocument" />
+    </UnitTest>
+    <UnitTest name="CoshhWindow_TestConstruction" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="d9cc4aff-edae-676f-47f0-47e1cca33231">
+      <Execution id="1c235dee-8e2a-423e-904d-319112158429" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.UnitTest1, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindow_TestConstruction" />
+    </UnitTest>
+    <UnitTest name="CoshhWindow_ChangeService" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="bdd91995-8006-0fd6-0e1e-419106fc07b3">
+      <Execution id="1a7ac28d-54ab-477e-bca8-8a97ff861812" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.UnitTest1, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindow_ChangeService" />
+    </UnitTest>
+    <UnitTest name="CoshhWindow_SetDocumentNull" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="063ab738-f76a-6b26-2235-c0d5ff5b1865">
+      <Execution id="0aebfc1b-6b79-4247-9b9c-d6bdb37d335a" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.UnitTest1, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindow_SetDocumentNull" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="063ab738-f76a-6b26-2235-c0d5ff5b1865" executionId="0aebfc1b-6b79-4247-9b9c-d6bdb37d335a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bdd91995-8006-0fd6-0e1e-419106fc07b3" executionId="1a7ac28d-54ab-477e-bca8-8a97ff861812" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d9cc4aff-edae-676f-47f0-47e1cca33231" executionId="1c235dee-8e2a-423e-904d-319112158429" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="df889819-eb8d-5692-fb30-5757c6f0bc18" executionId="ac17453f-993c-4a2f-904b-d05e831fa7da" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0aebfc1b-6b79-4247-9b9c-d6bdb37d335a" testId="063ab738-f76a-6b26-2235-c0d5ff5b1865" testName="CoshhWindow_SetDocumentNull" computerName="ADAMK117-PC" duration="00:00:00.2573623" startTime="2013-04-18T19:05:10.6351142+01:00" endTime="2013-04-18T19:05:11.0138700+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0aebfc1b-6b79-4247-9b9c-d6bdb37d335a">
+    </UnitTestResult>
+    <UnitTestResult executionId="1a7ac28d-54ab-477e-bca8-8a97ff861812" testId="bdd91995-8006-0fd6-0e1e-419106fc07b3" testName="CoshhWindow_ChangeService" computerName="ADAMK117-PC" duration="00:00:00.0081049" startTime="2013-04-18T19:05:11.0151200+01:00" endTime="2013-04-18T19:05:11.0263702+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1a7ac28d-54ab-477e-bca8-8a97ff861812">
+    </UnitTestResult>
+    <UnitTestResult executionId="1c235dee-8e2a-423e-904d-319112158429" testId="d9cc4aff-edae-676f-47f0-47e1cca33231" testName="CoshhWindow_TestConstruction" computerName="ADAMK117-PC" duration="00:00:00.0078352" startTime="2013-04-18T19:05:11.0276202+01:00" endTime="2013-04-18T19:05:11.0388704+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1c235dee-8e2a-423e-904d-319112158429">
+    </UnitTestResult>
+    <UnitTestResult executionId="ac17453f-993c-4a2f-904b-d05e831fa7da" testId="df889819-eb8d-5692-fb30-5757c6f0bc18" testName="CoshhWindow_ChangeDocument" computerName="ADAMK117-PC" duration="00:00:00.0085256" startTime="2013-04-18T19:05:11.0401204+01:00" endTime="2013-04-18T19:05:11.0513706+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ac17453f-993c-4a2f-904b-d05e831fa7da">
+    </UnitTestResult>
+  </Results>
+</TestRun>

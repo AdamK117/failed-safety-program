@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="536b022a-0901-4433-a341-bd4ef4d74fdd" name="AdamK117@ADAMK117-PC 2013-04-18 19:29:37" runUser="AdamK117-PC\AdamK117" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="003826a5-a045-4c04-9e0a-eb37b7bf6aff">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="AdamK117_ADAMK117-PC 2013-04-18 19_29_37">
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.Document.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.BaseClasses\bin\Debug\SafetyProgram.BaseClasses.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\Fluent.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.exe" />
+      <DeploymentItem filename="V:\SafetyProgram\Moq.4.0.10827\NET40\Moq.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.DocObjects\bin\Debug\SafetyProgram.DocObjects.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-04-18T19:29:37.5438366+01:00" queuing="2013-04-18T19:29:37.5663369+01:00" start="2013-04-18T19:29:37.5713370+01:00" finish="2013-04-18T19:29:38.1238455+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="11" executed="11" passed="5" error="0" failed="6" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="ADAMK117-PC" outcome="Warning" timestamp="2013-04-18T19:29:37.5650869+01:00">
+        <Text>Deployment is currently disabled. The deployment item 'SafetyProgram.exe' on test 'SafetyProgram.UnitTests.CoshhRibbonTest.documentChangedTest' was not deployed.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="documentChangedTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="b5cfc279-d810-274e-b350-7b236383d2bf">
+      <DeploymentItems>
+        <DeploymentItem filename="SafetyProgram.exe" />
+      </DeploymentItems>
+      <Execution id="12f3b558-baf7-4a60-9398-3b5ddb75003c" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhRibbonTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="documentChangedTest" />
+    </UnitTest>
+    <UnitTest name="WindowCommandsTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="2dc15571-cdfc-84e6-2adb-38c757828f4e">
+      <Execution id="654cf8f7-2d68-4bb7-b38e-3074e194c4ae" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhRibbonTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WindowCommandsTest" />
+    </UnitTest>
+    <UnitTest name="DocumentCommandsTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="b0ca187d-77c3-fd8a-5a3b-e484e100771e">
+      <Execution id="a5d23ad9-93fd-438b-b4db-f10dbdd8cf45" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhRibbonTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DocumentCommandsTest" />
+    </UnitTest>
+    <UnitTest name="CoshhWindow_TestConstruction" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="5689a082-2bda-b771-35ad-7ad98384552d">
+      <Execution id="3e9e96e8-83f3-434b-8768-0fc017af3b6e" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhDocumentApiTests, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindow_TestConstruction" />
+    </UnitTest>
+    <UnitTest name="CoshhWindow_SetDocumentNull" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="056f6d2d-14aa-9904-d44f-b569b71765ec">
+      <Execution id="37ca0a7e-a405-4a5f-b8f1-ec3857e91bf7" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhDocumentApiTests, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindow_SetDocumentNull" />
+    </UnitTest>
+    <UnitTest name="CoshhWindow_SetServiceToNull" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="2c6b6b18-31bc-f724-aa79-7eb4ede324c1">
+      <Execution id="71e44ac4-ab64-414b-a29d-993d76584c16" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhDocumentApiTests, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindow_SetServiceToNull" />
+    </UnitTest>
+    <UnitTest name="CoshhRibbonConstructorTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="de7f3a6e-702d-2131-6c3c-0c58059b65b0">
+      <Execution id="250ac78d-e7a0-4fdd-a333-56205059133e" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhRibbonTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhRibbonConstructorTest" />
+    </UnitTest>
+    <UnitTest name="ViewTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="d025d492-8365-fbb8-2bc2-5b20876b8619">
+      <Execution id="97298fb5-5bdd-4789-b9b7-7e0143213546" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhRibbonTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ViewTest" />
+    </UnitTest>
+    <UnitTest name="CoshhWindow_ChangeDocument" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="01136a85-a76c-626a-1c31-adabe0be87a0">
+      <Execution id="690cf943-074a-4348-9868-b9c0fac6a469" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhDocumentApiTests, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindow_ChangeDocument" />
+    </UnitTest>
+    <UnitTest name="RibbonVisibilityTest" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="a68867b2-b747-5e1c-a518-accc8a31d973">
+      <Execution id="11187c48-9401-4c6c-a5c0-6c79230b7cbc" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhRibbonTest, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RibbonVisibilityTest" />
+    </UnitTest>
+    <UnitTest name="CoshhWindow_ChangeService" storage="v:\safetyprogram\safetyprogram.unittests\bin\debug\safetyprogram.unittests.dll" id="5d8f056a-4dd2-f5f6-ab85-d120b30931b5">
+      <Execution id="f932520b-034d-4403-b020-c5246045a5d1" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.UnitTests/bin/Debug/SafetyProgram.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.UnitTests.CoshhDocumentApiTests, SafetyProgram.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoshhWindow_ChangeService" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="01136a85-a76c-626a-1c31-adabe0be87a0" executionId="690cf943-074a-4348-9868-b9c0fac6a469" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="056f6d2d-14aa-9904-d44f-b569b71765ec" executionId="37ca0a7e-a405-4a5f-b8f1-ec3857e91bf7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c6b6b18-31bc-f724-aa79-7eb4ede324c1" executionId="71e44ac4-ab64-414b-a29d-993d76584c16" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2dc15571-cdfc-84e6-2adb-38c757828f4e" executionId="654cf8f7-2d68-4bb7-b38e-3074e194c4ae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5689a082-2bda-b771-35ad-7ad98384552d" executionId="3e9e96e8-83f3-434b-8768-0fc017af3b6e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5d8f056a-4dd2-f5f6-ab85-d120b30931b5" executionId="f932520b-034d-4403-b020-c5246045a5d1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a68867b2-b747-5e1c-a518-accc8a31d973" executionId="11187c48-9401-4c6c-a5c0-6c79230b7cbc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b0ca187d-77c3-fd8a-5a3b-e484e100771e" executionId="a5d23ad9-93fd-438b-b4db-f10dbdd8cf45" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b5cfc279-d810-274e-b350-7b236383d2bf" executionId="12f3b558-baf7-4a60-9398-3b5ddb75003c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d025d492-8365-fbb8-2bc2-5b20876b8619" executionId="97298fb5-5bdd-4789-b9b7-7e0143213546" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="de7f3a6e-702d-2131-6c3c-0c58059b65b0" executionId="250ac78d-e7a0-4fdd-a333-56205059133e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="690cf943-074a-4348-9868-b9c0fac6a469" testId="01136a85-a76c-626a-1c31-adabe0be87a0" testName="CoshhWindow_ChangeDocument" computerName="ADAMK117-PC" duration="00:00:00.2604384" startTime="2013-04-18T19:29:37.5738370+01:00" endTime="2013-04-18T19:29:37.9563429+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="690cf943-074a-4348-9868-b9c0fac6a469">
+    </UnitTestResult>
+    <UnitTestResult executionId="37ca0a7e-a405-4a5f-b8f1-ec3857e91bf7" testId="056f6d2d-14aa-9904-d44f-b569b71765ec" testName="CoshhWindow_SetDocumentNull" computerName="ADAMK117-PC" duration="00:00:00.0093296" startTime="2013-04-18T19:29:37.9588429+01:00" endTime="2013-04-18T19:29:37.9700931+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="37ca0a7e-a405-4a5f-b8f1-ec3857e91bf7">
+    </UnitTestResult>
+    <UnitTestResult executionId="71e44ac4-ab64-414b-a29d-993d76584c16" testId="2c6b6b18-31bc-f724-aa79-7eb4ede324c1" testName="CoshhWindow_SetServiceToNull" computerName="ADAMK117-PC" duration="00:00:00.0084727" startTime="2013-04-18T19:29:37.9725932+01:00" endTime="2013-04-18T19:29:37.9838433+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="71e44ac4-ab64-414b-a29d-993d76584c16">
+    </UnitTestResult>
+    <UnitTestResult executionId="654cf8f7-2d68-4bb7-b38e-3074e194c4ae" testId="2dc15571-cdfc-84e6-2adb-38c757828f4e" testName="WindowCommandsTest" computerName="ADAMK117-PC" duration="00:00:00.0191157" startTime="2013-04-18T19:29:37.9850933+01:00" endTime="2013-04-18T19:29:38.0063437+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="654cf8f7-2d68-4bb7-b38e-3074e194c4ae">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SafetyProgram.UnitTests.CoshhRibbonTest.WindowCommandsTest threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at SafetyProgram.Ribbons.CoshhRibbon..ctor(CoshhWindow window) in V:\SafetyProgram\SafetyProgram\Ribbons\CoshhRibbon.cs:line 30
+   at SafetyProgram.UnitTests.CoshhRibbonTest.WindowCommandsTest() in V:\SafetyProgram\SafetyProgram.UnitTests\CoshhRibbonTest.cs:line 153
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3e9e96e8-83f3-434b-8768-0fc017af3b6e" testId="5689a082-2bda-b771-35ad-7ad98384552d" testName="CoshhWindow_TestConstruction" computerName="ADAMK117-PC" duration="00:00:00.0074943" startTime="2013-04-18T19:29:38.0088437+01:00" endTime="2013-04-18T19:29:38.0200939+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3e9e96e8-83f3-434b-8768-0fc017af3b6e">
+    </UnitTestResult>
+    <UnitTestResult executionId="f932520b-034d-4403-b020-c5246045a5d1" testId="5d8f056a-4dd2-f5f6-ab85-d120b30931b5" testName="CoshhWindow_ChangeService" computerName="ADAMK117-PC" duration="00:00:00.0087572" startTime="2013-04-18T19:29:38.0213439+01:00" endTime="2013-04-18T19:29:38.0325941+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f932520b-034d-4403-b020-c5246045a5d1">
+    </UnitTestResult>
+    <UnitTestResult executionId="11187c48-9401-4c6c-a5c0-6c79230b7cbc" testId="a68867b2-b747-5e1c-a518-accc8a31d973" testName="RibbonVisibilityTest" computerName="ADAMK117-PC" duration="00:00:00.0071694" startTime="2013-04-18T19:29:38.0338441+01:00" endTime="2013-04-18T19:29:38.0438443+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="11187c48-9401-4c6c-a5c0-6c79230b7cbc">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SafetyProgram.UnitTests.CoshhRibbonTest.RibbonVisibilityTest threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at SafetyProgram.Ribbons.CoshhRibbon..ctor(CoshhWindow window) in V:\SafetyProgram\SafetyProgram\Ribbons\CoshhRibbon.cs:line 30
+   at SafetyProgram.UnitTests.CoshhRibbonTest.RibbonVisibilityTest() in V:\SafetyProgram\SafetyProgram.UnitTests\CoshhRibbonTest.cs:line 127
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a5d23ad9-93fd-438b-b4db-f10dbdd8cf45" testId="b0ca187d-77c3-fd8a-5a3b-e484e100771e" testName="DocumentCommandsTest" computerName="ADAMK117-PC" duration="00:00:00.0074119" startTime="2013-04-18T19:29:38.0463443+01:00" endTime="2013-04-18T19:29:38.0563444+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a5d23ad9-93fd-438b-b4db-f10dbdd8cf45">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SafetyProgram.UnitTests.CoshhRibbonTest.DocumentCommandsTest threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at SafetyProgram.Ribbons.CoshhRibbon..ctor(CoshhWindow window) in V:\SafetyProgram\SafetyProgram\Ribbons\CoshhRibbon.cs:line 30
+   at SafetyProgram.UnitTests.CoshhRibbonTest.DocumentCommandsTest() in V:\SafetyProgram\SafetyProgram.UnitTests\CoshhRibbonTest.cs:line 114
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="12f3b558-baf7-4a60-9398-3b5ddb75003c" testId="b5cfc279-d810-274e-b350-7b236383d2bf" testName="documentChangedTest" computerName="ADAMK117-PC" duration="00:00:00.0112711" startTime="2013-04-18T19:29:38.0575945+01:00" endTime="2013-04-18T19:29:38.0713447+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="12f3b558-baf7-4a60-9398-3b5ddb75003c">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SafetyProgram.UnitTests.CoshhRibbonTest.documentChangedTest threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>   at SafetyProgram.Ribbons.CoshhRibbon_Accessor.documentChanged(CoshhDocument document)
+   at SafetyProgram.UnitTests.CoshhRibbonTest.documentChangedTest() in V:\SafetyProgram\SafetyProgram.UnitTests\CoshhRibbonTest.cs:line 103
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="97298fb5-5bdd-4789-b9b7-7e0143213546" testId="d025d492-8365-fbb8-2bc2-5b20876b8619" testName="ViewTest" computerName="ADAMK117-PC" duration="00:00:00.0073490" startTime="2013-04-18T19:29:38.0725947+01:00" endTime="2013-04-18T19:29:38.0825948+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="97298fb5-5bdd-4789-b9b7-7e0143213546">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SafetyProgram.UnitTests.CoshhRibbonTest.ViewTest threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at SafetyProgram.Ribbons.CoshhRibbon..ctor(CoshhWindow window) in V:\SafetyProgram\SafetyProgram\Ribbons\CoshhRibbon.cs:line 30
+   at SafetyProgram.UnitTests.CoshhRibbonTest.ViewTest() in V:\SafetyProgram\SafetyProgram.UnitTests\CoshhRibbonTest.cs:line 140
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="250ac78d-e7a0-4fdd-a333-56205059133e" testId="de7f3a6e-702d-2131-6c3c-0c58059b65b0" testName="CoshhRibbonConstructorTest" computerName="ADAMK117-PC" duration="00:00:00.0226276" startTime="2013-04-18T19:29:38.0850949+01:00" endTime="2013-04-18T19:29:38.1100953+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="250ac78d-e7a0-4fdd-a333-56205059133e">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SafetyProgram.UnitTests.CoshhRibbonTest.CoshhRibbonConstructorTest threw exception: 
+System.NotSupportedException: Invalid setup on a non-virtual (overridable in VB) member: window =&gt; window.Commands</Message>
+          <StackTrace>    at Moq.Mock.ThrowIfCantOverride(Expression setup, MethodInfo method)
+   at Moq.Mock.&lt;&gt;c__DisplayClass1f`2.&lt;SetupGet&gt;b__1e()
+   at Moq.PexProtector.Invoke[T](Func`1 function)
+   at Moq.Mock.SetupGet[T,TProperty](Mock mock, Expression`1 expression, Func`1 condition)
+   at Moq.Mock.&lt;&gt;c__DisplayClass1c`2.&lt;Setup&gt;b__1b()
+   at Moq.PexProtector.Invoke[T](Func`1 function)
+   at Moq.Mock.Setup[T,TResult](Mock mock, Expression`1 expression, Func`1 condition)
+   at Moq.Mock`1.Setup[TResult](Expression`1 expression)
+   at SafetyProgram.UnitTests.CoshhRibbonTest.CoshhRibbonConstructorTest() in V:\SafetyProgram\SafetyProgram.UnitTests\CoshhRibbonTest.cs:line 82
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

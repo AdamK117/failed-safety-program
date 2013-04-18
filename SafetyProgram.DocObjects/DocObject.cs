@@ -1,13 +1,12 @@
 ﻿using System.Windows.Controls;
 using System.Xml.Linq;
 using SafetyProgram.BaseClasses;
+using System;
 
 namespace SafetyProgram.DocObjects
 {
-    public abstract class DocObject : BaseINPC
+    public abstract class DocObject : BaseINPC, IDocObject
     {
-        private bool selectedFlag, removeFlag, editedFlag;
-
         /// <summary>
         /// Gets the UserControl view for the DocObject.
         /// </summary>
@@ -16,14 +15,16 @@ namespace SafetyProgram.DocObjects
         /// <summary>
         /// Gets the contextual ribbon for the DocObject.
         /// </summary>
-        public abstract IDocObjectRibbonTab Ribbon { get; }
+        public abstract IRibbonTabItem RibbonTab { get; }
 
         /// <summary>
         /// Gets the context menu for the DocObject.
         /// </summary>
-        public abstract IDocObjectContextMenu ContextMenu { get; }
+        public abstract IContextMenu ContextMenu { get; }
 
         #region Selection Logic
+        
+        private bool selectedFlag;
 
         /// <summary>
         /// Selects the DocObject.
@@ -65,19 +66,15 @@ namespace SafetyProgram.DocObjects
             get { return selectedFlag; }
         }
         /// <summary>
-        /// Delegate for SelectionChanged event.
-        /// </summary>
-        /// <param name="docObject">DocObject that triggered the SelectionChanged event</param>
-        /// <param name="selected">If the DocObject is selected.</param>
-        public delegate void SelectedChangedDelegate(DocObject docObject, bool selected);
-        /// <summary>
         /// Event that fires if the DocObject Selected state has changed.
         /// </summary>
-        public event SelectedChangedDelegate SelectedChanged;
+        public event Action<IDocObject, bool> SelectedChanged;
 
         #endregion
 
         #region Edited Logic
+
+        private bool editedFlag;
 
         /// <summary>
         /// Marks the DocObject as edited.
@@ -105,19 +102,15 @@ namespace SafetyProgram.DocObjects
             }
         }
         /// <summary>
-        /// Delegate for the EditedChanged event.
-        /// </summary>
-        /// <param name="docObject">DocObject that called EditedChanged.</param>
-        /// <param name="edited">Indicates if the DocObject has been edited.</param>
-        public delegate void EditedChangedDelegate(DocObject docObject, bool edited);
-        /// <summary>
         /// Event that fires if the DocObjects EditedFlag has changed.
         /// </summary>
-        public event EditedChangedDelegate EditedChanged;
+        public event Action<IDocObject, bool> EditedChanged;
 
         #endregion
 
         #region Removal Logic
+
+        private bool removeFlag;
 
         /// <summary>
         /// Flags the DocObject for removal. Will set RemoveFlag to true and call RemoveFlagChanged.
@@ -144,19 +137,19 @@ namespace SafetyProgram.DocObjects
             }
         }
         /// <summary>
-        /// Delegate for the RemoveFlagChanged event.
-        /// </summary>
-        /// <param name="docObject">DocObject that has been flagged for removal.</param>
-        /// <param name="removalFlag">Removal flag for the DocObject.</param>
-        public delegate void removeFlagDelegate(DocObject docObject, bool removalFlag);
-        /// <summary>
         /// Event that fires if the state of RemoveFlag changes.
         /// </summary>
-        public event removeFlagDelegate RemoveFlagChanged;
+        public event Action<IDocObject, bool> RemoveFlagChanged;
 
         #endregion
 
-        #region Output (IO) logic
+        #region Input/Output (IO) logic
+
+        /// <summary>
+        /// Loads Xml (as an XElement) data into the DocObject
+        /// </summary>
+        /// <param name="data">XElement representation of the DocObject</param>
+        public abstract void Load(XElement data);
 
         /// <summary>
         /// Saves the DocObject to an XElement.

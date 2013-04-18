@@ -5,6 +5,8 @@ using System.Xml.Linq;
 
 using SafetyProgram.DocObjects;
 using SafetyProgram.DocObjects.ChemicalTable;
+using SafetyProgram.BaseClasses.DocumentFormats;
+using SafetyProgram.BaseClasses;
 
 namespace SafetyProgram.Document.Services
 {
@@ -18,10 +20,10 @@ namespace SafetyProgram.Document.Services
         /// Creates a new CoshhDocument
         /// </summary>
         /// <returns>A new CoshhDocument</returns>
-        public CoshhDocument New()
+        public ICoshhDocument New()
         {
             path = "";
-            return new CoshhDocument();
+            return new CoshhDocument(new A4DocFormat());
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace SafetyProgram.Document.Services
         /// <returns>The loaded CoshhDocument.</returns>
         /// <exception cref="FileNotFoundException">Thrown if the user specified file could not be found</exception>
         /// <exception cref="ArgumentException">Thrown if the user cancels out of loading a file</exception>
-        public CoshhDocument Load()
+        public ICoshhDocument Load()
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog()
             {
@@ -77,7 +79,7 @@ namespace SafetyProgram.Document.Services
         /// <param name="document">Document to be saved</param>
         /// <exception cref="System.UnauthorizedAccessException">Thrown if the specified path has access restrictions</exception>
         /// <exception cref="System.ArgumentException">Thrown if the user cancels out of saving</exception>
-        public void Save(CoshhDocument document)
+        public void Save(ICoshhDocument document)
         {
             if (String.IsNullOrWhiteSpace(path))
             {
@@ -115,7 +117,7 @@ namespace SafetyProgram.Document.Services
         /// <param name="document">CoshhDocument to save.</param>
         /// <exception cref="System.UnauthorizedAccessException">Thrown when user selects a directory with no write permissions.</exception>
         /// <exception cref="System.ArgumentException">Thrown if the user cancels out of a SaveAs dialog.</exception>
-        public void SaveAs(CoshhDocument document)
+        public void SaveAs(ICoshhDocument document)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Coshh Safety Document|*.xml";
@@ -143,7 +145,7 @@ namespace SafetyProgram.Document.Services
         /// Closes the CoshhDocument. Performs checks on edited etc. to save locally if necessay.
         /// </summary>
         /// <exception cref="System.ArgumentException">Thrown if the user cancels out of closing the CoshhDocument.</exception>
-        public void Close(CoshhDocument document)
+        public void Close(ICoshhDocument document)
         {
             //Ask to save changes (if applicable)
             if (document.EditedFlag == true)
@@ -171,9 +173,9 @@ namespace SafetyProgram.Document.Services
         /// <param name="path">Path to the document.</param>
         /// <returns>Loaded CoshhDocument</returns>
         /// <exception cref="System.InvalidDataException">Thrown if invalid data is found</exception>
-        private CoshhDocument loadFile(string path)
+        private ICoshhDocument loadFile(string path)
         {
-            CoshhDocument loadedDoc = new CoshhDocument();
+            CoshhDocument loadedDoc = new CoshhDocument(new A4DocFormat());
 
             loadedDoc.Title = path;
 
@@ -191,9 +193,9 @@ namespace SafetyProgram.Document.Services
                 {
                     XElement chemTable = xDoc.Element("coshh").Element("chemicals");
 
-                    loadedDoc.Body.Add(
-                        new ChemicalTable(chemTable)
-                    );
+                    DocObject docObj = new ChemicalTable();
+                    docObj.Load(chemTable);
+                    loadedDoc.Body.Add(docObj);
                 }
 
                 return loadedDoc;

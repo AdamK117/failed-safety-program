@@ -4,10 +4,10 @@ using SafetyProgram.Models.DataModels;
 
 namespace SafetyProgram.DocObjects.ChemicalTable
 {
-    public class ChemicalTableComObject : DocObjectComObject<IEnumerable<CoshhChemicalModel>>
+    public class ChemicalTableComHelper : DocObjectComHelper<IEnumerable<CoshhChemicalModel>>
     {
-        public ChemicalTableComObject(IEnumerable<CoshhChemicalModel> chemicals, string identifier)
-            : base(chemicals, identifier)
+        public ChemicalTableComHelper(string comIdentifier)
+            : base(comIdentifier)
         { }
 
         protected override string getTextFormat(IEnumerable<CoshhChemicalModel> data)
@@ -56,7 +56,7 @@ namespace SafetyProgram.DocObjects.ChemicalTable
 \cellx1
 \cellx2
 \cellx3";
-                //Populate its data
+                //Populate the row with chemical data
                 rtfTable += "{";
                 rtfTable += chemical.Name + @"\cell ";
                 rtfTable += chemical.Value.ToString() + " " + chemical.Unit + @"\cell ";
@@ -64,6 +64,7 @@ namespace SafetyProgram.DocObjects.ChemicalTable
                 {
                     rtfTable += hazard.Hazard + ", ";
                 }
+                rtfTable += rtfTable.Substring(0, rtfTable.Length - 2);
                 rtfTable += @"\cell ";
                 rtfTable += "}";
 

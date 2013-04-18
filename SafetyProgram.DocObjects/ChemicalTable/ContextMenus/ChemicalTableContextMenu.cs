@@ -1,9 +1,10 @@
 ﻿using System.Windows.Controls;
 using SafetyProgram.DocObjects.ChemicalTable.Commands;
+using SafetyProgram.BaseClasses;
 
 namespace SafetyProgram.DocObjects.ChemicalTable.ContextMenus
 {
-    public class ChemicalTableContextMenu : IDocObjectContextMenu
+    public class ChemicalTableContextMenu : IContextMenu
     {
         private readonly ChemicalTable table;
         private readonly ContextMenu view;

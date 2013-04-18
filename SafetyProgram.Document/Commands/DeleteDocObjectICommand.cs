@@ -13,7 +13,7 @@ namespace SafetyProgram.Document.Commands
             : base(document)
         {
             //Monitor changes in the CoshhDocument's selection (can't delete if there isn't a selection).
-            document.SelectionChanged += (DocObject docObject) => RaiseCanExecuteChanged();
+            document.SelectionChanged += (IDocObject docObject) => RaiseCanExecuteChanged();
         }        
 
         /// <summary>

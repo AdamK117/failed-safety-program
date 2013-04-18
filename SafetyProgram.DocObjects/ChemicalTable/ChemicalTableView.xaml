@@ -65,7 +65,7 @@
 
     <StackPanel x:Name="LayoutRoot">
         
-        <TextBlock HorizontalAlignment="Center" FontSize="32">Chemicals used in this experiment.</TextBlock>
+        <TextBlock HorizontalAlignment="Center" FontSize="24">Chemicals used in this experiment.</TextBlock>
         
         <ListView 
             x:Name="Chemicals"

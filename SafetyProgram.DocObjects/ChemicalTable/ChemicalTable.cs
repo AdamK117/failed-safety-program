@@ -9,6 +9,7 @@ using SafetyProgram.DocObjects.ChemicalTable.Ribbon;
 
 using SafetyProgram.DocObjects.ServiceHelpers;
 using SafetyProgram.Models.DataModels;
+using SafetyProgram.BaseClasses;
 
 namespace SafetyProgram.DocObjects.ChemicalTable
 {
@@ -16,10 +17,11 @@ namespace SafetyProgram.DocObjects.ChemicalTable
     {
         private readonly ObservableCollection<CoshhChemicalModel> chemicals;
         private readonly ChemicalTableCommandsHolder commands;
-        private readonly IDocObjectContextMenu contextMenu;
-        private readonly IDocObjectRibbonTab ribbon;
+        private readonly IContextMenu contextMenu;
+        private readonly IRibbonTabItem ribbon;
         private readonly UserControl view;
         private readonly ObservableCollection<CoshhChemicalModel> selectedChemicals;
+        private readonly ChemicalTableComHelper comHelper;
 
         /// <summary>
         /// Constructs a ChemicalTable DocObject containing no data (blank table).
@@ -34,30 +36,10 @@ namespace SafetyProgram.DocObjects.ChemicalTable
             contextMenu = new ChemicalTableContextMenu(this);
             ribbon = new ChemicalTableRibbonTab(this);
 
+            comHelper = new ChemicalTableComHelper("CoshhChemicalModels");
+
             view = new ChemicalTableView(this);
             view.InputBindings.AddRange(commands.Hotkeys);
-        }
-
-        /// <summary>
-        /// Construct a ChemicalTable from an XElement (Xml) input.
-        /// </summary>
-        /// <param name="chemicalTable">Xml data for ChemicalTable</param>
-        public ChemicalTable(XElement chemicalTable)
-            : this()
-        {
-            chemicals.Concat( 
-                from XElement chemical in chemicalTable.Elements("chemical")
-                select new CoshhChemicalModel()
-                {
-                    Name = chemical.Element("name").Value,
-                    Value = float.Parse(chemical.Element("amount").Element("value").Value),
-                    Unit = chemical.Element("amount").Element("unit").Value,
-                    Hazards = new ObservableCollection<HazardModel>
-                        (
-                            Hazards.ReadXElement(chemical.Element("hazards"))
-                        )
-                }
-            );
         }
 
         /// <summary>
@@ -74,7 +56,7 @@ namespace SafetyProgram.DocObjects.ChemicalTable
         /// <summary>
         /// Gets the ribbon assosciated with a ChemicalTable.
         /// </summary>
-        public override IDocObjectRibbonTab Ribbon
+        public override IRibbonTabItem RibbonTab
         {
             get
             {
@@ -85,7 +67,7 @@ namespace SafetyProgram.DocObjects.ChemicalTable
         /// <summary>
         /// Gets the ChemicalTable's context menu.
         /// </summary>
-        public override IDocObjectContextMenu ContextMenu
+        public override IContextMenu ContextMenu
         {
             get 
             { 
@@ -101,6 +83,17 @@ namespace SafetyProgram.DocObjects.ChemicalTable
             get 
             { 
                 return commands; 
+            }
+        }
+
+        /// <summary>
+        /// Gets a Com Helper for the chemical table.
+        /// </summary>
+        public ChemicalTableComHelper ComHelper
+        {
+            get
+            {
+                return comHelper;
             }
         }
 
@@ -153,6 +146,27 @@ namespace SafetyProgram.DocObjects.ChemicalTable
                         Hazards.WriteXElement(chemical.Hazards)
                     )
                 )
+            );
+        }
+
+        /// <summary>
+        /// Loads chemicals from an XElement into the ChemicalTable
+        /// </summary>
+        /// <param name="data">ChemicalTable data in XElement format</param>
+        public override void Load(XElement data)
+        {
+            chemicals.Concat(
+                from XElement chemical in data.Elements("chemical")
+                select new CoshhChemicalModel()
+                {
+                    Name = chemical.Element("name").Value,
+                    Value = float.Parse(chemical.Element("amount").Element("value").Value),
+                    Unit = chemical.Element("amount").Element("unit").Value,
+                    Hazards = new ObservableCollection<HazardModel>
+                        (
+                            Hazards.ReadXElement(chemical.Element("hazards"))
+                        )
+                }
             );
         }
     }

@@ -1,8 +1,10 @@
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.Document.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.Document.pdb
+V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.BaseClasses.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.DocObjects.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\Fluent.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.Models.dll
+V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.BaseClasses.pdb
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.DocObjects.pdb
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.Models.pdb
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\ResolveAssemblyReference.cache
@@ -17,5 +19,3 @@ V:\SafetyProgram\SafetyProgram.Document\obj\Debug\GenerateResource.read.1.tlog
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\GenerateResource.write.1.tlog
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\SafetyProgram.Document.dll
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\SafetyProgram.Document.pdb
-V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.BaseClasses.dll
-V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.BaseClasses.pdb

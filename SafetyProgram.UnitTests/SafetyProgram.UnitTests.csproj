@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3DC5AF5A-0641-4636-9F00-0084FFD13DEB}</ProjectGuid>
+    <ProjectGuid>{61D2498D-4839-45B7-8E11-823E132875D3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SafetyProgram.UnitTests</RootNamespace>
@@ -33,9 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluent" />
+    <Reference Include="Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Fluent.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\Moq.4.0.10827\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -56,10 +62,15 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoshhWindowTest.cs" />
+    <Compile Include="CoshhRibbonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CoshhDocumentApiTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.BaseClasses\SafetyProgram.BaseClasses.csproj">
+      <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
+      <Name>SafetyProgram.BaseClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.DocObjects\SafetyProgram.DocObjects.csproj">
       <Project>{60FE19F7-74B8-4D02-9AED-77AC986FF3A1}</Project>
       <Name>SafetyProgram.DocObjects</Name>
@@ -68,14 +79,13 @@
       <Project>{0385FB46-CEFE-4542-8F47-DBAAD96E5BAB}</Project>
       <Name>SafetyProgram.Document</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
-      <Project>{0150A546-807A-4D76-88EB-3C3F3C46A43B}</Project>
-      <Name>SafetyProgram.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram\SafetyProgram.csproj">
       <Project>{BEEA81AD-8CA8-431F-9B62-C7329DDE2021}</Project>
       <Name>SafetyProgram</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="Test References\SafetyProgram.accessor" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

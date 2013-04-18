@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>SafetyProgram.Repositories</name></assembly>
+<members>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:SafetyProgram.Repositories.LocalFileRepository`1">
+<summary>Creates a new LocalFileRepository designed to read data (of type T)</summary>
+<param name="path">Local file system path to the repository</param>
+<exception cref="System.IO.FileNotFoundException">Thrown when path cannot be found</exception>
+</member>
+</members>
+</doc>

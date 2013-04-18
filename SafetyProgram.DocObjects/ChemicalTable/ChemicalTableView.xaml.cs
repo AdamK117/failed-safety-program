@@ -1,8 +1,8 @@
-﻿using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using SafetyProgram.Models.DataModels;
-using System.Collections.Generic;
 
 namespace SafetyProgram.DocObjects.ChemicalTable
 {
@@ -28,6 +28,8 @@ namespace SafetyProgram.DocObjects.ChemicalTable
 
             InitializeComponent();
         }
+
+        #region Selection logic
 
         /// <summary>
         /// Handles the selection of chemicals in the ChemicalTable ListView (needed because ListView doesn't have a multiselect XAML Dependancy property
@@ -57,6 +59,11 @@ namespace SafetyProgram.DocObjects.ChemicalTable
             viewModel.Select();
         }
 
+        #endregion
+
+        #region Drag&Drop logic
+
+        //Does the DragDrop
         private void Chemicals_MouseMove(object sender, MouseEventArgs e)
         {
             //If the user is left clicking on the ChemicalTable ListView.
@@ -67,43 +74,34 @@ namespace SafetyProgram.DocObjects.ChemicalTable
                 //Try and do a DragDrop operation
                 DragDrop.DoDragDrop(
                     chemicalTable, 
-                    new ChemicalTableComObject(
-                        viewModel.SelectedChemicals,
-                        "CoshhChemicalModels"
-                    ).GetDataObject(),
+                    viewModel.ComHelper.MakeDataObject(viewModel.SelectedChemicals),
                     DragDropEffects.Move
                 );
             }
         }
 
+        //Provides effects when drag enters (preview etc.)
         private void Chemicals_DragEnter(object sender, DragEventArgs e)
         {
-            e.Effects = DragDropEffects.All;
-            if (e.Data.GetDataPresent("CoshhChemicalModels"))
-            {
-            }
         }
 
+        //Generally used to revert Chemicals_DragEnter
         private void Chemicals_DragLeave(object sender, DragEventArgs e)
+        {
+        }
+
+        //Gives feedback while dragging over
+        private void Chemicals_DragOver(object sender, DragEventArgs e)
         {
             e.Effects = DragDropEffects.None;
         }
 
-        private void Chemicals_DragOver(object sender, DragEventArgs e)
-        {
-            e.Effects = DragDropEffects.All;
-
-            if (e.Data.GetDataPresent("CoshhChemicalModels"))
-            {
-            }
-        }
-
+        //Performs the drop
         private void Chemicals_Drop(object sender, DragEventArgs e)
         {
-            e.Effects = DragDropEffects.All;
-            if (e.Data.GetDataPresent("CoshhChemicalModels"))
+            if (e.Data.GetDataPresent(viewModel.ComHelper.ComIdentifier))
             {
-                List<CoshhChemicalModel> draggedChemicals = (List<CoshhChemicalModel>)e.Data.GetData("CoshhChemicalModels");
+                List<CoshhChemicalModel> draggedChemicals = (List<CoshhChemicalModel>)e.Data.GetData(viewModel.ComHelper.ComIdentifier);
 
                 foreach (CoshhChemicalModel chemical in draggedChemicals)
                 {
@@ -111,5 +109,7 @@ namespace SafetyProgram.DocObjects.ChemicalTable
                 }
             }
         }
+
+        #endregion
     }
 }

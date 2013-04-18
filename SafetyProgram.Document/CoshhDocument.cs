@@ -4,37 +4,38 @@ using System.Collections.Specialized;
 using System.Windows.Controls;
 
 using SafetyProgram.BaseClasses;
+using SafetyProgram.BaseClasses.DocumentFormats;
 using SafetyProgram.DocObjects;
 using SafetyProgram.Document.Commands;
 using SafetyProgram.Document.ContextMenus;
 
 namespace SafetyProgram.Document
 {
-    public class CoshhDocument : BaseINPC
+    public class CoshhDocument : BaseINPC, ICoshhDocument
     {
         private readonly DocumentCommandsHolder commands;
         private readonly DocumentContextMenu contextMenu;
         private readonly CoshhDocumentView view;
-        private readonly ObservableCollection<DocObject> body;
+        private readonly ObservableCollection<IDocObject> body;
 
         private string title;
-        private DocFormat format;        
+        private IDocFormat format;        
 
-        private DocObject selected;
+        private IDocObject selected;
         private bool edited;
 
         /// <summary>
         /// Constructs a new CoshhDocument.
         /// </summary>
-        public CoshhDocument()
+        public CoshhDocument(IDocFormat format)
         {
-            body = new ObservableCollection<DocObject>();
+            this.format = format;
 
-            //Monitor changes in the CoshhDocument's body (for selections, ribbons, etc.)
+            body = new ObservableCollection<IDocObject>();
             body.CollectionChanged += bodyChanged;
 
             title = "Untitled Document";
-            format = new DocFormat("630", "891");
+            
             selected = null;
             edited = false;
 
@@ -67,7 +68,7 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Gets the body (content) of the CoshhDocument
         /// </summary>
-        public ObservableCollection<DocObject> Body
+        public ObservableCollection<IDocObject> Body
         {
             get 
             { 
@@ -109,49 +110,43 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Event that fires if the Title of the CoshhDocument changes.
         /// </summary>
-        public event titleChangedDelegate TitleChanged;
-        /// <summary>
-        /// Delegate for TitleChanged
-        /// </summary>
-        /// <param name="title">The new Title of the CoshhDocument</param>
-        public delegate void titleChangedDelegate(string title);
+        public event Action<string> TitleChanged;
 
         /// <summary>
         /// Gets/Sets the format (A4 etc.) of the CoshhDocument.
         /// </summary>
-        public DocFormat Format
+        public IDocFormat Format
         {
             get 
             {
                 return format; 
             }
-            set
-            {
-                format = value;
+        }
+        /// <summary>
+        /// Change the format of the CoshhDocument
+        /// </summary>
+        /// <param name="newFormat">The new format</param>
+        public void ChangeFormat(IDocFormat newFormat)
+        {
+            format = newFormat;
 
-                if (FormatChanged != null)
-                {
-                    FormatChanged(format);
-                }
-                RaisePropertyChanged("Format");
+            if (FormatChanged != null)
+            {
+                FormatChanged(format);
             }
+            RaisePropertyChanged("Format");
         }
         /// <summary>
         /// Event that triggers if the Format of the CoshhDocument changes.
         /// </summary>
-        public event docFormatChangedDelegate FormatChanged;
-        /// <summary>
-        /// Delegate for FormatChanged.
-        /// </summary>
-        /// <param name="format">The new CoshhDocument format.</param>
-        public delegate void docFormatChangedDelegate(DocFormat format);
+        public event Action<IDocFormat> FormatChanged;
 
         /// <summary>
         /// Selects a DocObject within the CoshhDocument
         /// </summary>
         /// <param name="docObject">The DocObject to be selected.</param>
         /// <exception cref="System.ArgumentNullException">Thrown if a null selection is attempted. Use ClearSelection() instead.</exception>
-        public void Select(DocObject docObject)
+        public void Select(IDocObject docObject)
         {
             //If the selection isn't null (i.e. attempting to select nothing)
             if (docObject != null)
@@ -190,7 +185,7 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Gets the currently selected DocObject in the CoshhDocument.
         /// </summary>
-        public DocObject Selected
+        public IDocObject Selected
         {
             get
             { 
@@ -200,12 +195,7 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Event that fires if the Selection of the CoshhDocument changes.
         /// </summary>
-        public event selectionChangedDelegate SelectionChanged;
-        /// <summary>
-        /// Delegate for SelectionChanged
-        /// </summary>
-        /// <param name="selection">The selection of the CoshhDocument.</param>
-        public delegate void selectionChangedDelegate(DocObject selection);
+        public event Action<IDocObject> SelectionChanged;
 
         /// <summary>
         /// Marks the CoshhDocument as edited
@@ -236,12 +226,7 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Event that fires if the edited state of the CoshhDocument changes.
         /// </summary>
-        public event editedFlagDelegate EditedFlagChanged;
-        /// <summary>
-        /// Delegate for EditedChanged.
-        /// </summary>
-        /// <param name="edited">The edited state of the CoshhDocument (true = document has been edited)</param>
-        public delegate void editedFlagDelegate(bool edited);
+        public event Action<bool> EditedFlagChanged;
 
         /// <summary>
         /// Handler that monitors when the body changes
@@ -250,47 +235,7 @@ namespace SafetyProgram.Document
         /// <param name="e"></param>
         private void bodyChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            switch (e.Action)
-            {
-                #region Add
-                //If new DocObject(s) were added to the CoshhDocument.
-                case NotifyCollectionChangedAction.Add:
-                    foreach (DocObject control in e.NewItems)
-                    {
-                        //Monitor the new DocObject's Remove flag
-                        control.RemoveFlagChanged += (DocObject docObject, bool flag) =>
-                            {
-                                if (flag == true)
-                                {
-                                    ClearSelection();
-                                    body.Remove(docObject);
-                                }
-                            };
-                        //Monitor the DocObjet's Selected flag.
-                        control.SelectedChanged += (DocObject docObject, bool flag) =>
-                            {
-                                if (flag == true)
-                                {
-                                    Select(docObject);
-                                }
-                            };
-                    }
-                    break;
-                #endregion
-
-                #region Remove
-                //If DocObject(s) are removed from the CoshhDocument.
-                case NotifyCollectionChangedAction.Remove:
-                    foreach (DocObject control in e.OldItems)
-                    {
-                        if (Selected == control)
-                        {
-                            ClearSelection();
-                        }
-                    }
-                    break;
-                #endregion
-            }
+            
             Edited();
         }
     }

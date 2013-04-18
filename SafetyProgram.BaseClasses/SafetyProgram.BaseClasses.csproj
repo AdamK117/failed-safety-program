@@ -39,6 +39,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fluent">
+      <HintPath>..\Fluent.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,7 +59,14 @@
   <ItemGroup>
     <Compile Include="BaseICommand.cs" />
     <Compile Include="BaseINPC.cs" />
-    <Compile Include="DocFormat.cs" />
+    <Compile Include="DocumentFormats\A4DocFormat.cs" />
+    <Compile Include="DocumentFormats\CustomDocFormat.cs" />
+    <Compile Include="IContextMenu.cs" />
+    <Compile Include="DocumentFormats\IDocFormat.cs" />
+    <Compile Include="IInteractable.cs" />
+    <Compile Include="IRibbonTabItem.cs" />
+    <Compile Include="ISelectable.cs" />
+    <Compile Include="IViewable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -80,6 +90,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

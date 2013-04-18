@@ -31,9 +31,8 @@ namespace SafetyProgram.DocObjects.ChemicalTable.Commands
             {
                 try
                 {
-                    ChemicalTableComObject cObj = new ChemicalTableComObject(table.SelectedChemicals, "CoshhChemicalModels");
-
-                    Clipboard.SetDataObject(cObj.GetDataObject(), true);
+                    //Make a DataObject from table.SelectedChemicals using the table.ComHelper
+                    Clipboard.SetDataObject(table.ComHelper.MakeDataObject(table.SelectedChemicals), true);
                 }
                 catch (COMException)
                 {

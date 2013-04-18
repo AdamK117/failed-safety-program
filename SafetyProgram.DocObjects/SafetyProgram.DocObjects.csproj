@@ -69,14 +69,13 @@
     <Compile Include="ChemicalTable\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
       <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DocObjectComObject.cs" />
+    <Compile Include="DocObjectComHelper.cs" />
     <Compile Include="ChemicalTable\Ribbon\ChemicalTableRibbon.cs" />
     <Compile Include="ChemicalTable\Ribbon\ChemicalTableRibbonView.xaml.cs">
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DocObject.cs" />
-    <Compile Include="IDocObjectContextMenu.cs" />
-    <Compile Include="IDocObjectRibbonTab.cs" />
+    <Compile Include="IDocObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

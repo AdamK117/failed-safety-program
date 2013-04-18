@@ -19,7 +19,7 @@ namespace SafetyProgram
 
             //DI
             ICoshhDocumentService service = new CoshhDocumentLocalFileService();
-            CoshhDocument document = service.New();
+            ICoshhDocument document = service.New();
 
             CoshhWindow window = new CoshhWindow(service, document);
 
