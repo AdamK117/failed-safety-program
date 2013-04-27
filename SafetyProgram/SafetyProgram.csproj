@@ -95,18 +95,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\CloseICommand.cs" />
-    <Compile Include="Commands\ExitICommand.cs" />
-    <Compile Include="Commands\NewICommand.cs" />
-    <Compile Include="Commands\OpenICommand.cs" />
-    <Compile Include="Commands\SaveICommand.cs" />
-    <Compile Include="Commands\SaveAsICommand.cs" />
-    <Compile Include="Commands\CoshhWindowICommand.cs" />
-    <Compile Include="Commands\WindowCommandsHolder.cs" />
+    <Compile Include="Commands\CloseICom.cs" />
+    <Compile Include="Commands\ExitICom.cs" />
+    <Compile Include="Commands\NewICom.cs" />
+    <Compile Include="Commands\OpenICom.cs" />
+    <Compile Include="Commands\SaveICom.cs" />
+    <Compile Include="Commands\SaveAsICom.cs" />
+    <Compile Include="Commands\WindowICommands.cs" />
     <Compile Include="CoshhWindow.cs" />
     <Compile Include="CoshhWindowView.xaml.cs">
       <DependentUpon>CoshhWindowView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\DocumentLocalFileService.cs" />
     <Page Include="CoshhWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -145,17 +145,17 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.BaseClasses\SafetyProgram.BaseClasses.csproj">
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
       <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
-      <Name>SafetyProgram.BaseClasses</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.DocObjects\SafetyProgram.DocObjects.csproj">
-      <Project>{60FE19F7-74B8-4D02-9AED-77AC986FF3A1}</Project>
-      <Name>SafetyProgram.DocObjects</Name>
+      <Name>SafetyProgram.Base</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Document\SafetyProgram.Document.csproj">
       <Project>{0385FB46-CEFE-4542-8F47-DBAAD96E5BAB}</Project>
       <Name>SafetyProgram.Document</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
+      <Project>{69416B92-32EA-4F2A-B3D4-5FC8389090BB}</Project>
+      <Name>SafetyProgram.UserControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

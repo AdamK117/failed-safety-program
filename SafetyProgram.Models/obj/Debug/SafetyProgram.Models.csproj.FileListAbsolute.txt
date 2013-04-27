@@ -63,9 +63,6 @@ U:\SafetyProgram\SafetyProgram.Models\obj\Debug\SafetyProgram.Models.dll
 U:\SafetyProgram\SafetyProgram.Models\obj\Debug\SafetyProgram.Models.pdb
 V:\SafetyProgram\SafetyProgram.Models\bin\Debug\SafetyProgram.Models.dll
 V:\SafetyProgram\SafetyProgram.Models\bin\Debug\SafetyProgram.Models.pdb
-V:\SafetyProgram\SafetyProgram.Models\bin\Debug\SafetyProgram.BaseClasses.dll
-V:\SafetyProgram\SafetyProgram.Models\bin\Debug\SafetyProgram.BaseClasses.pdb
 V:\SafetyProgram\SafetyProgram.Models\obj\Debug\ResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.Models\obj\Debug\SafetyProgram.Models.dll
 V:\SafetyProgram\SafetyProgram.Models\obj\Debug\SafetyProgram.Models.pdb
-V:\SafetyProgram\SafetyProgram.Models\bin\Debug\Fluent.dll

@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
-using SafetyProgram.DocObjects;
+using SafetyProgram.DocumentObjects;
 
 namespace SafetyProgram.Document
 {
     /// <summary>
     /// Interaction logic for CoshhDocumentView.xaml
     /// </summary>
-    public partial class CoshhDocumentView : UserControl
+    internal partial class CoshhDocumentView : UserControl
     {
         private readonly CoshhDocument viewModel;
 
@@ -27,10 +27,10 @@ namespace SafetyProgram.Document
                 switch (control.Name)
                 {
                     case "DocumentWrapper":
-                        viewModel.ClearSelection();
+                        viewModel.Body.DeSelectAll();
                         break;
                     case "DocumentHolder":
-                        viewModel.ClearSelection();
+                        viewModel.Body.DeSelectAll();
                         break;
                     default:
                         break;
@@ -42,8 +42,8 @@ namespace SafetyProgram.Document
         private void DocObjectClicked(object sender, MouseButtonEventArgs e)
         {
             ContentControl contentControl = (ContentControl)sender;
-            DocObject docObject = (DocObject)contentControl.DataContext;
-            viewModel.Select(docObject);
+            DocumentObject docObject = (DocumentObject)contentControl.DataContext;
+            viewModel.Body.Select(docObject);
         }
     }
 }

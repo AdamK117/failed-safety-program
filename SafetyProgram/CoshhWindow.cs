@@ -1,66 +1,76 @@
-﻿using SafetyProgram.BaseClasses;
-using SafetyProgram.Document;
-using SafetyProgram.Document.Services;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Commands;
 using SafetyProgram.Ribbons;
-using System;
-
 
 namespace SafetyProgram
 {
-    public class CoshhWindow : BaseINPC
+    public sealed class CoshhWindow : BaseINPC, IWindow<IDocument>, IRibbonWindow
     {
-        private readonly CoshhWindowView view;
-        private readonly WindowCommandsHolder commands;
-        private readonly CoshhRibbon ribbon;
+        private readonly Window view;
+        private readonly IWindowCommands commands;
+        private readonly IRibbon ribbon;
 
-        private ICoshhDocumentService service;
-        private ICoshhDocument document;        
+        private IService<IDocument> service;
+        private IDocument document;
 
         /// <summary>
-        /// Constructs a ViewModel for the main window. Acts as the holder for the document, ribbon, save commands, etc.
+        /// Constructs a CoshhWindow IRibbonWindow.
         /// </summary>
-        /// <param name="window"></param>
-        public CoshhWindow(ICoshhDocumentService service, ICoshhDocument document)
+        /// <param name="service">The service used by the IRibbonWindow to load IDocuments into it</param>
+        /// <param name="document">The IDocument shown by the IRibbonWindow on construction</param>
+        public CoshhWindow(IService<IDocument> service, IDocument document)
         {
             this.service = service;
             this.document = document;
 
-            commands = new WindowCommandsHolder(this);
+            commands = new WindowICommands(this);
             ribbon = new CoshhRibbon(this);
             view = new CoshhWindowView(this);
-
             view.InputBindings.AddRange(commands.Hotkeys);
         }
 
         /// <summary>
-        /// Gets the CoshhWindow view.
+        /// Get the CoshhWindow view.
         /// </summary>
-        public CoshhWindowView View
+        public Window View
         {
             get { return view; }
         }
 
         /// <summary>
-        /// The commands available to the window.
+        /// Gets the CoshhWindow control (IViewable)
         /// </summary>
-        public WindowCommandsHolder Commands
+        Control IViewable.View
+        {
+            get { return view; }
+        }
+
+        /// <summary>
+        /// The ICommands (and hotkeys) available to this CoshhWindow
+        /// </summary>
+        public IWindowCommands Commands
         {
             get { return commands; }
         }
 
         /// <summary>
-        /// Holds the ribbon of the MainWindow
+        /// Gets the IRibbon viewable for the CoshhWindow
         /// </summary>
-        public CoshhRibbon Ribbon
+        public IRibbon Ribbon
         {
             get { return ribbon; }
         }
 
         /// <summary>
-        /// Holds the current document of the MainWindow
+        /// Gets the ICoshhDocument in this CoshhWindow.
         /// </summary>
-        public ICoshhDocument Document
+        /// <remarks>Nullable: IRibbonWindow may contain no IDocument</remarks>
+        public IDocument Document
         {
             get { return document; }
             set 
@@ -74,38 +84,39 @@ namespace SafetyProgram
             }
         }
         /// <summary>
-        /// Event that triggers if he CoshhDocument in the CoshhWindow changes.
+        /// Event that triggers when its IDocument changes.
         /// </summary>
-        public event Action<ICoshhDocument> DocumentChanged;
+        public event Action<IDocument> DocumentChanged;
 
         /// <summary>
-        /// Gets the ICoshhDocumentService I/O service used by the CoshhWindow
+        /// Gets the IDocumentService I/O service used by this CoshhWindow
         /// </summary>
-        public ICoshhDocumentService Service
+        public IService<IDocument> Service
         {
             get { return service; }
         }
         /// <summary>
-        /// Changes the CoshhWindow's service to a new ICoshhDocumentService
+        /// Changes the CoshhWindow's I/O service to a new ICoshhDocumentService
         /// </summary>
         /// <param name="newService">The new ICoshhDocumentService</param>
         /// <exception cref="System.ArgumentNullException">Thrown if try to change to a null service</exception>
-        public void ChangeService(ICoshhDocumentService newService)
+        public void ChangeService(IService<IDocument> newService)
         {
-            if (newService == null)
+            if (newService != null)
             {
-                throw new ArgumentNullException("newService", "The CoshhWindow's service cannot be set to null, a valid service must be set");
+                service = newService;
+                if (ServiceChanged != null)
+                {
+                    ServiceChanged(service);
+                }
+                RaisePropertyChanged("Service");
+                RaisePropertyChanged("Commands");
             }
-            service = newService;
-            if (ServiceChanged != null)
-            {
-                ServiceChanged(service);
-            }
-            RaisePropertyChanged("Service");
+            else throw new ArgumentNullException("newService", "The CoshhWindow's service cannot be set to null, a valid service must be set");
         }        
         /// <summary>
-        /// Event that triggers if the CoshhWindows service changes.
+        /// Event that triggers if the CoshhWindow's IDocumentService changes.
         /// </summary>
-        public event Action<ICoshhDocumentService> ServiceChanged;
+        public event Action<IService<IDocument>> ServiceChanged;
     }
 }

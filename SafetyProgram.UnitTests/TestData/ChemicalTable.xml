@@ -1,0 +1,41 @@
+﻿<chemicaltable>
+  <header>Hazardous chemicals used in this experiment.</header>
+  <layout>
+    <width>500</width>
+    <height>300</height>
+    <display>box</display>
+  </layout>
+
+    <coshhchemical>
+      <amount unit="mgs">10</amount>
+      <chemical>
+        <name>Nitromethane</name>
+        <mr>106.5</mr>        
+        <hazards>
+          <hazard signalword="H206" symbol="Flammable">Flammable, burns your skin, etc.</hazard>
+          <hazard signalword="H108" symbol="Corrosive">Corrosive, rusts stuff.</hazard>
+        </hazards>        
+      </chemical>
+    </coshhchemical>
+
+  <coshhchemical>
+    <amount unit="mL">500</amount>
+    <chemical>
+      <name>Chloroform</name>
+      <mr>60.5</mr>
+      <hazards>
+        <hazard signalword="H08" symbol="Toxic">Toxic, will kill you</hazard>
+        <hazard signalword="H95" symbol="Carcinogenic">Carcinogenic, will cast cancer on you, it's super effective!</hazard>
+      </hazards>
+    </chemical>
+  </coshhchemical>
+
+  <coshhchemical>
+    <amount unit="mL">50</amount>
+    <chemical>
+      <name>Water</name>
+      <mr>50.5</mr>
+    </chemical>
+  </coshhchemical>
+  
+</chemicaltable>

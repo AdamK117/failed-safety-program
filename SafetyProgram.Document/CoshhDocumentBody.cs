@@ -2,46 +2,48 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using SafetyProgram.BaseClasses;
-using SafetyProgram.DocObjects;
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.Document
+namespace SafetyProgram.Document.Body
 {
-    public class CoshhDocumentBody : BaseINPC, ICoshhDocumentBody
+    public sealed class CoshhDocumentBody : BaseINPC, IDocumentBody
     {
-        private readonly ObservableCollection<IDocObject> items;
-        private IDocObject selection;
+        private readonly ObservableCollection<IDocumentObject> items;
+        private IDocumentObject selection;
 
         /// <summary>
         /// Construct a blank CoshhDocumentBody
         /// </summary>
         public CoshhDocumentBody()
         {
-            items = new ObservableCollection<IDocObject>();
+            items = new ObservableCollection<IDocumentObject>();
             items.CollectionChanged += items_CollectionChanged;
+            selection = null;
         }
 
         /// <summary>
         /// Construct a CoshhDocumentBody containing the supplied IDocObject items
         /// </summary>
         /// <param name="items">Items to populate into this CoshhDocumentBody</param>
-        public CoshhDocumentBody(IEnumerable<IDocObject> items)
+        public CoshhDocumentBody(IEnumerable<IDocumentObject> items)
         {
-            this.items = new ObservableCollection<IDocObject>(items);
+            this.items = new ObservableCollection<IDocumentObject>(items);
             this.items.CollectionChanged += items_CollectionChanged;
+            selection = null;
         }
 
-        public ObservableCollection<IDocObject> Items
+        public ObservableCollection<IDocumentObject> Items
         {
             get { return items; }
         }
 
-        public IDocObject Selection
+        public IDocumentObject Selection
         {
             get { return selection; }
         }
 
-        public void Select(IDocObject item)
+        public void Select(IDocumentObject item)
         {
             if (item != null)
             {
@@ -56,7 +58,7 @@ namespace SafetyProgram.Document
             else throw new ArgumentNullException("Attempted to select nothing, use ClearSelection instead when attempting to clear a CoshhDocuments selection");
         }
 
-        public void DeSelect(IDocObject item)
+        public void DeSelect(IDocumentObject item)
         {
             //TODO: Multiselection logic so it can deselect the item provided.
             DeSelectAll();
@@ -79,7 +81,7 @@ namespace SafetyProgram.Document
             RaisePropertyChanged("Selection");
         }
 
-        public event Action<IDocObject> SelectionChanged;
+        public event Action<IDocumentObject> SelectionChanged;
 
         void items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -88,27 +90,27 @@ namespace SafetyProgram.Document
                 #region Add
                 //If new DocObject(s) were added to the Body.
                 case NotifyCollectionChangedAction.Add:
-                    foreach (IDocObject control in e.NewItems)
+                    foreach (IDocumentObject control in e.NewItems)
                     {
                         //Monitor the new DocObject's Remove flag
-                        control.RemoveFlagChanged += (IDocObject docObject, bool flag) =>
+                        control.RemoveFlagChanged += (object docObject, bool flag) =>
                         {
                             if (flag == true)
                             {
-                                DeSelect(docObject);
-                                items.Remove(docObject);
+                                DeSelect(control);
+                                items.Remove(control);
                             }
                         };
                         //Monitor the DocObjet's Selected flag.
-                        control.SelectedChanged += (IDocObject docObject, bool flag) =>
+                        control.SelectedChanged += (object docObject, bool flag) =>
                         {
                             if (flag == true)
                             {
-                                Select(docObject);
+                                Select(control);
                             }
                             if (flag == false)
                             {
-                                DeSelect(docObject);
+                                DeSelect(control);
                             }
                         };
                     }
@@ -118,7 +120,7 @@ namespace SafetyProgram.Document
                 #region Remove
                 //If DocObject(s) are removed from the CoshhDocument.
                 case NotifyCollectionChangedAction.Remove:
-                    foreach (IDocObject control in e.OldItems)
+                    foreach (IDocumentObject control in e.OldItems)
                     {
                         DeSelect(control);
                     }

@@ -49,18 +49,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseINPC.cs" />
-    <Compile Include="GenericControls\Hazards\HazardList.xaml.cs">
-      <DependentUpon>HazardList.xaml</DependentUpon>
+    <Compile Include="TagList\ITagListItem.cs" />
+    <Compile Include="TagList\RemoveTagListItem.cs" />
+    <Compile Include="TagList\StandardTagList\StandardTagList.cs" />
+    <Compile Include="TagList\TagListView.xaml.cs">
+      <DependentUpon>TagListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GenericControls\Hazards\HazardListViewModel.cs" />
-    <Compile Include="GenericControls\Hazards\RemoveHazardICommand.cs" />
-    <Compile Include="IDocObject.cs" />
-    <Compile Include="DialogControls\EditCoshhChemical\EditCoshhChemical.xaml.cs">
-      <DependentUpon>EditCoshhChemical.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DialogControls\EditCoshhChemical\ViewModel.cs" />
-    <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableDocObject.cs" />
+    <Compile Include="TagList\ITagList.cs" />
+    <Compile Include="TagList\TagListItem.cs" />
+    <Compile Include="TagList\EnhancedTagList\EnhancedTagList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -74,12 +71,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableView.xaml.cs">
-      <DependentUpon>ChemicalTableView.xaml</DependentUpon>
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableViewModel.cs" />
-    <Compile Include="MainWindowControls\Classes\BaseViewModel.cs" />
-    <Compile Include="MainWindowControls\Controls\ChemicalTable\ChemicalViewModel.cs" />
+    <Compile Include="Tooltips\DefaultToolTip.cs" />
+    <Compile Include="Tooltips\DefaultToolTipView.xaml.cs">
+      <DependentUpon>DefaultToolTipView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tooltips\IToolTip.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -91,32 +90,34 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="GenericControls\Hazards\HazardList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DialogControls\EditCoshhChemical\EditCoshhChemical.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindowControls\Controls\ChemicalTable\ChemicalTableView.xaml">
+    <Page Include="TagList\TagListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindowControls\Styles\TableStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="TagList\Style.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tooltips\DefaultToolTipView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
-      <Project>{0150A546-807A-4D76-88EB-3C3F3C46A43B}</Project>
-      <Name>SafetyProgram.Models</Name>
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
+      <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
+      <Name>SafetyProgram.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.ModelObjects\SafetyProgram.ModelObjects.csproj">
+      <Project>{7C2C454D-A1D9-4355-976C-08582E07CD31}</Project>
+      <Name>SafetyProgram.ModelObjects</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GenericControls\Tooltip\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

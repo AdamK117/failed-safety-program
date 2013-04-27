@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 
-using SafetyProgram.Document;
-using SafetyProgram.Document.Services;
-using SafetyProgram;
+using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Services;
+using SafetyProgram.UserControls;
 
 namespace SafetyProgram
 {
@@ -18,12 +18,15 @@ namespace SafetyProgram
             base.OnStartup(e);
 
             //DI
-            ICoshhDocumentService service = new CoshhDocumentLocalFileService();
-            ICoshhDocument document = service.New();
+            IService<IDocument> service = new DocumentLocalFileService();
+            IDocument document = service.New();
 
-            CoshhWindow window = new CoshhWindow(service, document);
+            IWindow window = new CoshhWindow(service, document);
 
             window.View.Show();
+
+            //TestWindow tw = new TestWindow();
+            //tw.Show();
         }
 
         /// <summary>

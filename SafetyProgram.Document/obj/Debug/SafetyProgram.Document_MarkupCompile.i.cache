@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-21521506018
+374913815
 
-171050535559
-15979238130
-ContextMenus\DocumentContextMenuView.xaml;CoshhDocumentView.xaml;
+15-1063202352
+16-811513076
+ContextMenus\DocumentContextMenuView.xaml;Ribbons\CoshhDocumentRibbonTabView.xaml;CoshhDocumentView.xaml;
 
 False
 

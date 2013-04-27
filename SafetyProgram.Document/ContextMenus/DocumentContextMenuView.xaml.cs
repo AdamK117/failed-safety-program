@@ -5,7 +5,7 @@ namespace SafetyProgram.Document.ContextMenus
     /// <summary>
     /// Interaction logic for DocumentContextMenuView.xaml
     /// </summary>
-    public partial class DocumentContextMenuView : ContextMenu
+    internal sealed partial class DocumentContextMenuView : ContextMenu
     {
         private readonly DocumentContextMenu viewModel;
 

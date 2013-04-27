@@ -19,3 +19,5 @@ V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\Moq.pdb
 V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\Moq.xml
 V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram_Accessor.exe
 V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram_Accessor.pdb
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.ModelObjects.dll
+V:\SafetyProgram\SafetyProgram.UnitTests\bin\Debug\SafetyProgram.ModelObjects.pdb

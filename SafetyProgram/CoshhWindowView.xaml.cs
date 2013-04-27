@@ -1,19 +1,20 @@
 ﻿using System;
 using Fluent;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram
 {
     /// <summary>
     /// Interaction logic for CoshhWindow.xaml
     /// </summary>
-    public partial class CoshhWindowView : RibbonWindow
+    internal sealed partial class CoshhWindowView : RibbonWindow
     {
-        private readonly CoshhWindow viewModel;
+        private readonly IWindow<IDocument> viewModel;
 
         /// <summary>
         /// Makes an instance of the CoshhWindow object.
         /// </summary>
-        public CoshhWindowView(CoshhWindow viewModel)
+        public CoshhWindowView(IWindow<IDocument> viewModel)
         {
             this.viewModel = viewModel;
 
@@ -21,6 +22,7 @@ namespace SafetyProgram
             InitializeComponent();
         }
 
+        //TODO: Make it so the closed dialog shows up without de-focusing the window
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);

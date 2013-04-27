@@ -1,0 +1,17 @@
+﻿<Fluent:RibbonTabItem x:Class="SafetyProgram.Document.Ribbons.CoshhDocumentRibbonTabView"
+                      x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+             mc:Ignorable="d" 
+             Header="Insert"
+             >
+
+    <!-- GroupBox 1: Chemicals -->
+    <Fluent:RibbonGroupBox Header="Tables">
+        <Fluent:Button Header="Chemicals" Command="{Binding DocumentCommands.InsertChemicalTable}" />
+    </Fluent:RibbonGroupBox>
+
+</Fluent:RibbonTabItem>

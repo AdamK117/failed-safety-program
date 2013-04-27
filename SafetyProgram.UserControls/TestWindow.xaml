@@ -1,0 +1,12 @@
+﻿<Window x:Class="SafetyProgram.UserControls.TestWindow"
+        xmlns:generic="clr-namespace:SafetyProgram.UserControls.TagList.StandardTagList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TestWindow" Height="300" Width="300">
+    <Grid x:Name="LayoutRoot">
+        <StackPanel>
+            <ContentControl Content="{Binding ConsBoxList.View}" />
+            <generic:StandardTagList BoxItems="{Binding SomeStrings}" />
+        </StackPanel>        
+    </Grid>
+</Window>

@@ -1,46 +1,54 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Controls;
+using System.Xml.Linq;
 
-using SafetyProgram.BaseClasses;
-using SafetyProgram.BaseClasses.DocumentFormats;
-using SafetyProgram.DocObjects;
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
+using SafetyProgram.DocumentObjects;
+using SafetyProgram.Document.Body;
 using SafetyProgram.Document.Commands;
 using SafetyProgram.Document.ContextMenus;
+using SafetyProgram.Document.Ribbons;
 
 namespace SafetyProgram.Document
 {
-    public class CoshhDocument : BaseINPC, ICoshhDocument
+    public sealed class CoshhDocument : BaseINPC, IDocument
     {
-        private readonly DocumentCommandsHolder commands;
-        private readonly DocumentContextMenu contextMenu;
+        private readonly DocumentICommands commands;
+        private readonly IContextMenu contextMenu;
         private readonly CoshhDocumentView view;
-        private readonly ObservableCollection<IDocObject> body;
+        private readonly ObservableCollection<IRibbonTabItem> ribbonTabItems;
 
+        private readonly IDocumentBody body;
         private string title;
-        private IDocFormat format;        
+        private IDocFormat format;      
 
-        private IDocObject selected;
         private bool edited;
 
         /// <summary>
         /// Constructs a new CoshhDocument.
         /// </summary>
-        public CoshhDocument(IDocFormat format)
+        public CoshhDocument(string title, IDocFormat format)
         {
             this.format = format;
-
-            body = new ObservableCollection<IDocObject>();
-            body.CollectionChanged += bodyChanged;
-
-            title = "Untitled Document";
-            
-            selected = null;
+            this.title = title;
+            this.body = body = new CoshhDocumentBody();
+            this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
+            this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection); 
+           
             edited = false;
 
-            commands = new DocumentCommandsHolder(this);
+            commands = new DocumentICommands(this);
             contextMenu = new DocumentContextMenu(commands);
+
+            ribbonTabItems = new ObservableCollection<IRibbonTabItem>();
+
+            //Insert tab
+            ribbonTabItems.Add(new CoshhDocumentRibbonTab(this));
 
             view = new CoshhDocumentView(this);
             view.InputBindings.AddRange(commands.Hotkeys);
@@ -49,26 +57,15 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Gets the CoshhDocument's view
         /// </summary>
-        public UserControl View
+        public Control View
         {
             get { return view; }
         }
 
         /// <summary>
-        /// Gets the general ContextMenu for the CoshhDocument
-        /// </summary>
-        public DocumentContextMenu ContextMenu
-        {
-            get 
-            { 
-                return contextMenu; 
-            }
-        }
-
-        /// <summary>
         /// Gets the body (content) of the CoshhDocument
         /// </summary>
-        public ObservableCollection<IDocObject> Body
+        public IDocumentBody Body
         {
             get 
             { 
@@ -79,7 +76,7 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Gets the ICommands (and hotkeys associated with) for the CoshhDocument.
         /// </summary>
-        public DocumentCommandsHolder Commands
+        public DocumentICommands Commands
         {
             get 
             { 
@@ -141,66 +138,99 @@ namespace SafetyProgram.Document
         /// </summary>
         public event Action<IDocFormat> FormatChanged;
 
+        #region IStorable (Input/Output) Implementation
+
         /// <summary>
-        /// Selects a DocObject within the CoshhDocument
+        /// Loads data (Xml format) into the CoshhDocument
         /// </summary>
-        /// <param name="docObject">The DocObject to be selected.</param>
-        /// <exception cref="System.ArgumentNullException">Thrown if a null selection is attempted. Use ClearSelection() instead.</exception>
-        public void Select(IDocObject docObject)
+        /// <param name="data">The data to be loaded into the CoshhDocument</param>
+        public void LoadData(XElement data)
         {
-            //If the selection isn't null (i.e. attempting to select nothing)
-            if (docObject != null)
+            XElement coshhData = data;
+
+            if (coshhData != null)
             {
-                if (selected != docObject)
+                if (coshhData.Attribute("title") != null)
                 {
-                    if (selected != null) 
-                    {
-                        selected.DeSelect();
-                    }
+                    Title = coshhData.Attribute("title").Value;
+                }
+                else
+                {
+                    Debug.Write("WARNING: When loading a CoshhDocument a title could not be found, set to default");
+                    Title = "Untitled CoshhDocument";
+                }
 
-                    selected = docObject;
-
-                    if (SelectionChanged != null)
-                    {
-                        SelectionChanged(selected);
-                    }
-                    RaisePropertyChanged("Selected");
+                foreach (IDocumentObject docObject in DocObjectRegistry.GetDocObjects(data))
+                {
+                    body.Items.Add(docObject);
                 }
             }
-            else throw new ArgumentNullException("Attempted to select nothing, use ClearSelection instead when attempting to clear a CoshhDocuments selection");            
+            else throw new InvalidDataException("No CoshhDocument root could be found (<coshh></coshh>)");
         }
-        /// <summary>
-        /// Clears the current selection of the CoshhDocument.
-        /// </summary>
-        public void ClearSelection()
-        {
-            selected = null;
 
-            if (SelectionChanged != null)
-            {
-                SelectionChanged(null);
-            }
-            RaisePropertyChanged("Selected");
-        }
         /// <summary>
-        /// Gets the currently selected DocObject in the CoshhDocument.
+        /// Writes the CoshhDocument to an XElement
         /// </summary>
-        public IDocObject Selected
+        /// <returns></returns>
+        public XElement WriteToXElement()
+        {
+            //TODO: Validation checks
+            ICollection<XElement> content = new List<XElement>();
+
+            foreach (IDocumentObject docObject in Body.Items)
+            {
+                content.Add(docObject.WriteToXElement());
+            }
+
+            XElement xDoc = new XElement("coshh", content);
+
+            return xDoc;
+        }
+
+        #endregion
+
+        #region IInteractable (ContextMenu, Removable, Editable) implementation
+
+        /// <summary>
+        /// Gets the general ContextMenu for the CoshhDocument
+        /// </summary>
+        public IContextMenu ContextMenu
         {
             get
-            { 
-                return selected; 
+            {
+                return contextMenu;
             }
         }
+
+        private bool removeFlag;
+
         /// <summary>
-        /// Event that fires if the Selection of the CoshhDocument changes.
+        /// Flag the CoshhDocument for removal
         /// </summary>
-        public event Action<IDocObject> SelectionChanged;
+        public void FlagForRemoval()
+        {
+            if (removeFlag != true)
+            {
+                removeFlag = true;
+                if (RemoveFlagChanged != null)
+                {
+                    RemoveFlagChanged(this, removeFlag);
+                }
+                RaisePropertyChanged("RemoveFlag");
+            }
+        }
+
+        public bool RemoveFlag
+        {
+            get { return removeFlag; }
+        }
+
+        public event Action<object, bool> RemoveFlagChanged;
 
         /// <summary>
         /// Marks the CoshhDocument as edited
         /// </summary>
-        public void Edited()
+        public void FlagAsEdited()
         {
             if (edited != true)
             {
@@ -208,10 +238,10 @@ namespace SafetyProgram.Document
 
                 if (EditedFlagChanged != null)
                 {
-                    EditedFlagChanged(true);
+                    EditedFlagChanged(this, true);
                 }
                 RaisePropertyChanged("Edited");
-            }            
+            }
         }
         /// <summary>
         /// Gets a flag that indicates if the CoshhDocument has been edited
@@ -226,17 +256,54 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Event that fires if the edited state of the CoshhDocument changes.
         /// </summary>
-        public event Action<bool> EditedFlagChanged;
+        public event Action<object, bool> EditedFlagChanged;
 
-        /// <summary>
-        /// Handler that monitors when the body changes
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void bodyChanged(object sender, NotifyCollectionChangedEventArgs e)
+        #endregion
+
+        public string Error
         {
-            
-            Edited();
+            get { throw new NotImplementedException(); }
         }
+
+        public string this[string columnName]
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public ObservableCollection<IRibbonTabItem> RibbonTabs
+        {
+            get { return ribbonTabItems; }
+        }
+
+        private ISelectable oldSelection;
+        private void documentSelectionChanged(IDocumentObject newSelection)
+        {
+            //3 Scenarios: 
+            //  The same ISelectable was re-selected: Do nothing
+            //  The selection is cleared (null): Ribbon needs to clear out redundant tabs
+            //  The selection is different: Remove any old tabs, add a new tab, focus it.
+
+            //The Selection is cleared
+            if (newSelection == null)
+            {
+                if (oldSelection != null)
+                {
+                    RibbonTabs.Remove(oldSelection.RibbonTab);
+                }                
+                oldSelection = null;
+            }
+            //The Selection is different
+            else if (newSelection != oldSelection)
+            {
+                if (oldSelection != null)
+                {
+                    RibbonTabs.Remove(oldSelection.RibbonTab);
+                    oldSelection = null;
+                }                
+                oldSelection = newSelection;
+
+                RibbonTabs.Add(newSelection.RibbonTab);
+            }
+        } 
     }
 }

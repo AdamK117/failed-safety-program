@@ -1,18 +1,20 @@
 ﻿using System.Windows.Controls;
 using SafetyProgram.Document.Commands;
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Document.ContextMenus
 {
-    public class DocumentContextMenu
+    public sealed class DocumentContextMenu : IContextMenu
     {
-        private readonly DocumentCommandsHolder documentCommands;
+        private readonly DocumentICommands documentCommands;
         private readonly ContextMenu view;
 
         /// <summary>
         /// Constructs an instance of a DocumentContextMenu for the CoshhDocument
         /// </summary>
         /// <param name="documentCommands"></param>
-        public DocumentContextMenu(DocumentCommandsHolder documentCommands)
+        public DocumentContextMenu(DocumentICommands documentCommands)
         {
             this.documentCommands = documentCommands;
 
@@ -27,12 +29,22 @@ namespace SafetyProgram.Document.ContextMenus
             get { return view; }
         }
 
+        Control IViewable.View
+        {
+            get 
+            {
+                return view; 
+            }
+        }
+
         /// <summary>
         /// Gets the CoshhDocument's DocumentCommandsHolder
         /// </summary>
-        public DocumentCommandsHolder DocumentCommands
+        public DocumentICommands DocumentCommands
         {
             get { return documentCommands; }
         }
+
+        
     }
 }

@@ -1,4 +1,5 @@
 ﻿<Fluent:Ribbon x:Class="SafetyProgram.Ribbons.CoshhRibbonView"
+               x:ClassModifier="internal"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -29,18 +30,8 @@
                     </Fluent:BackstageTabControl>
                 </Fluent:Backstage>
             </Fluent:Ribbon.Menu>
-
-            <!-- Ribbon Tabs -->
-
-            <!-- Tab 1: Insert -->
-            <Fluent:RibbonTabItem Header="Insert">
-
-                <!-- GroupBox 1: Chemicals -->
-                <Fluent:RibbonGroupBox Header="Tables" IsEnabled="{Binding RibbonVisibility}">
-                    <Fluent:Button Header="Chemicals" Command="{Binding DocumentCommands.InsertChemicalTable}" />
-                </Fluent:RibbonGroupBox>
- 
-            </Fluent:RibbonTabItem>
+    
+            <!-- Ribbon tab items are taken from the IDocument -->
     
             <!--Quick Access Toolbar Items-->
             <Fluent:Ribbon.QuickAccessItems>

@@ -5,7 +5,7 @@ namespace SafetyProgram.Ribbons
     /// <summary>
     /// Interaction logic for RibbonView.xaml
     /// </summary>
-    public partial class CoshhRibbonView : Ribbon
+    internal sealed partial class CoshhRibbonView : Ribbon
     {
         private readonly CoshhRibbon viewModel;
 

@@ -1,0 +1,18 @@
+﻿<Fluent:RibbonTabItem x:Class="SafetyProgram.DocumentObjects.ChemicalTable.Ribbon.ChemicalTableRibbonView"
+                      x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+             mc:Ignorable="d" 
+             Header="Chemical Table"
+             >
+    
+    <Fluent:RibbonGroupBox Header="Operations">
+        <Fluent:Button Header="Add random chemical" Command="{Binding Commands.AddNewChemical}" />
+        <Fluent:Button Header="Delete Selected" Command="{Binding Commands.DeleteSelected}" />
+        <Fluent:Button Header="Delete Table" Command="{Binding Commands.DeleteTable}" />
+    </Fluent:RibbonGroupBox>
+    
+</Fluent:RibbonTabItem>

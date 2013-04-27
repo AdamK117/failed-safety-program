@@ -62,9 +62,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoshhRibbonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CoshhDocumentApiTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.BaseClasses\SafetyProgram.BaseClasses.csproj">
@@ -86,6 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <Shadow Include="Test References\SafetyProgram.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TestData\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
