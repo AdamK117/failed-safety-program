@@ -74,9 +74,13 @@
     <Compile Include="TestWindow.xaml.cs">
       <DependentUpon>TestWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tooltips\DefaultToolTip.cs" />
-    <Compile Include="Tooltips\DefaultToolTipView.xaml.cs">
+    <Compile Include="Tooltips\Default\DefaultToolTip.cs" />
+    <Compile Include="Tooltips\Default\DefaultToolTipView.xaml.cs">
       <DependentUpon>DefaultToolTipView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tooltips\Fancy\FancyToolTip.cs" />
+    <Compile Include="Tooltips\Fancy\FancyToolTipView.xaml.cs">
+      <DependentUpon>FancyToolTipView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tooltips\IToolTip.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -102,7 +106,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Tooltips\DefaultToolTipView.xaml">
+    <Page Include="Tooltips\Default\DefaultToolTipView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tooltips\Fancy\FancyToolTipView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

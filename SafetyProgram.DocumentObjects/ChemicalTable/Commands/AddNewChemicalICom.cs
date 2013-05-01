@@ -39,6 +39,15 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable.Commands
                             Symbol = "Flammable"
                         }
                     );
+                chemical.Chemical.Hazards.Add
+                    (
+                        new HazardModelObject()
+                        {
+                            Hazard = "Harmful",
+                            SignalWord = "H25",
+                            Symbol = "Harmful"
+                        }
+                    );
                 data.Chemicals.Add(chemical);
             }            
         }        

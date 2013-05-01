@@ -20,7 +20,7 @@ namespace SafetyProgram.Commands
         /// <returns></returns>
         public override bool CanExecute(object parameter)
         {            
-            return data.Document == null ? false : true;
+            return data.Content == null ? false : true;
         }
 
         /// <summary>
@@ -37,8 +37,8 @@ namespace SafetyProgram.Commands
                 //  The service fails at closing the document (user presses cancel, data is invalid, etc.).
                 try
                 {
-                    data.Service.Close(data.Document);
-                    data.Document = null;
+                    data.Service.Close(data.Content);
+                    data.Content = null;
                 }
                 catch (ArgumentException)
                 {

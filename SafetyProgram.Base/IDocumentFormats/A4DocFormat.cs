@@ -2,8 +2,6 @@
 {
     public class A4DocFormat : IDocFormat
     {
-        public A4DocFormat() { }
-
         public string Width
         {
             get { return "630"; }

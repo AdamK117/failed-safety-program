@@ -25,13 +25,16 @@ namespace SafetyProgram
         /// <param name="document">The IDocument shown by the IRibbonWindow on construction</param>
         public CoshhWindow(IService<IDocument> service, IDocument document)
         {
+            if (service == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without a service");
+
             this.service = service;
             this.document = document;
 
             commands = new WindowICommands(this);
             ribbon = new CoshhRibbon(this);
+
             view = new CoshhWindowView(this);
-            view.InputBindings.AddRange(commands.Hotkeys);
+            view.InputBindings.AddRange(commands.Hotkeys);          
         }
 
         /// <summary>
@@ -67,10 +70,10 @@ namespace SafetyProgram
         }
 
         /// <summary>
-        /// Gets the ICoshhDocument in this CoshhWindow.
+        /// Gets the IDocument in this CoshhWindow.
         /// </summary>
         /// <remarks>Nullable: IRibbonWindow may contain no IDocument</remarks>
-        public IDocument Document
+        public IDocument Content
         {
             get { return document; }
             set 
@@ -80,7 +83,7 @@ namespace SafetyProgram
                 {
                     DocumentChanged(document);
                 }                
-                RaisePropertyChanged("Document");
+                RaisePropertyChanged("Content");
             }
         }
         /// <summary>

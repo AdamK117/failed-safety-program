@@ -4,15 +4,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:customUcs="clr-namespace:SafetyProgram.UserControls.TagList.StandardTagList;assembly=SafetyProgram.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="295" d:DesignWidth="723"
              >
     <UserControl.Resources>
         <ResourceDictionary>
+            
+            <!-- General style (from import) -->
+            <Style TargetType="ListView" x:Key="SafetyListStyle">
 
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/SafetyProgram.DocumentObjects;component/Styles/TableListStyle.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListView}">
+                            <StackPanel>
+                                <GridViewHeaderRowPresenter />
+                                <ItemsPresenter DockPanel.Dock="Bottom" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="ItemContainerStyle">
+                    <Setter.Value>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="FontSize" Value="16" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+
+            </Style>
 
             <!-- Chemical List Style -->
             <Style TargetType="ListView" x:Key="ChemicalListStyle" BasedOn="{StaticResource SafetyListStyle}">
@@ -23,10 +45,11 @@
                             <GridViewColumn Header="Chemical Name" Width="213">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox Text="{Binding Chemical.Name, ValidatesOnDataErrors=True}" HorizontalAlignment="Center" Width="Auto" />
+                                        <TextBlock Text="{Binding Chemical.Name}" HorizontalAlignment="Center" Width="Auto" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
+                            
                             <!-- Amount -->
                             <GridViewColumn Header="Amount" Width="100" >
                                 <GridViewColumn.CellTemplate>
@@ -38,21 +61,22 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
+                            
                             <!-- Hazards -->
                             <GridViewColumn Width="450" Header="Hazards">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <StackPanel>
-                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                                <WrapPanel MaxWidth="{Binding RelativeSource={RelativeSource AncestorType={x:Type GridViewColumn}}}">
-                                                    <Image Width="50" Height="50" Margin="0,0,10,0" />
-                                                    <Image Width="50" Height="50" Margin="0,0,10,0" />
-                                                    <Image Width="50" Height="50" Margin="0,0,10,0" />
-                                                </WrapPanel>
-                                            </StackPanel>
-
-                                            <TextBlock Text="{Binding Chemical.Hazards}" Width="Auto" HorizontalAlignment="Left" TextWrapping="Wrap" />
-                                        </StackPanel>
+                                        <WrapPanel MaxWidth="{Binding RelativeSource={RelativeSource AncestorType={x:Type GridViewColumn}}}">
+                                            <ItemsControl ItemsSource="{Binding Chemical.Hazards, Mode=OneWay}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <WrapPanel>
+                                                            <TextBlock Text="{Binding Hazard, Mode=OneWay}" />
+                                                        </WrapPanel>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </WrapPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

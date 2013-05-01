@@ -132,6 +132,10 @@
       <Project>{7C2C454D-A1D9-4355-976C-08582E07CD31}</Project>
       <Name>SafetyProgram.ModelObjects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
+      <Project>{69416B92-32EA-4F2A-B3D4-5FC8389090BB}</Project>
+      <Name>SafetyProgram.UserControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

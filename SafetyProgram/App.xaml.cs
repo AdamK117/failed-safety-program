@@ -17,7 +17,6 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
 
-            //DI
             IService<IDocument> service = new DocumentLocalFileService();
             IDocument document = service.New();
 

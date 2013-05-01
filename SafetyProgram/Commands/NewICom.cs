@@ -36,19 +36,19 @@ namespace SafetyProgram.Commands
         {
             if (CanExecute(parameter))
             {
-                if (data.Document != null)
+                if (data.Content != null)
                 {
                     try
                     {
-                        data.Service.Close(data.Document);
-                        data.Document = null;
+                        data.Service.Close(data.Content);
+                        data.Content = null;
                     }
                     catch(ArgumentException)
                     {
                         throw;
                     }                    
                 }
-                data.Document = data.Service.New();
+                data.Content = data.Service.New();
             }
             else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)");
         }

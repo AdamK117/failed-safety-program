@@ -20,7 +20,7 @@
         <ContentControl Content="{Binding Ribbon.View}" Grid.Row="0" />
         
         <!-- Document -->
-        <ContentControl Content="{Binding Document.View}" Grid.Row="1" />
+        <ContentControl Content="{Binding Content.View}" Grid.Row="1" />
 
     </Grid>
 </Fluent:RibbonWindow>

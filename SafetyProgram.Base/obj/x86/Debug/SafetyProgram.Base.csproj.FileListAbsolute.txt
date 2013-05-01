@@ -7,3 +7,12 @@ V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\GenerateResource.read.1
 V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\GenerateResource.write.1.tlog
 V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\SafetyProgram.Base.pdb
+V:\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Base.dll
+V:\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Base.pdb
+V:\SafetyProgram\SafetyProgram.Base\bin\Debug\Fluent.dll
+V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\ResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.Properties.Resources.resources
+V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\GenerateResource.read.1.tlog
+V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\GenerateResource.write.1.tlog
+V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.dll
+V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.pdb

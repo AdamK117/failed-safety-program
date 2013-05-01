@@ -9,7 +9,7 @@ using SafetyProgram.Document;
 
 namespace SafetyProgram.Services
 {
-    public sealed class DocumentLocalFileService : IService<IDocument>
+    internal sealed class DocumentLocalFileService : IService<IDocument>
     {
         private bool canNew = true, canLoad = true, canSave = true, canSaveAs = true;
 

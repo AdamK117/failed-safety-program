@@ -11,14 +11,16 @@ namespace SafetyProgram.UserControls.Generic.EnhancedTagList
     public sealed class EnhancedTagList<T> : BaseINPC, ITagList
     {
         private readonly ObservableCollection<T> rawItems;
-        private readonly Func<T, TagListItem> binder;
+        private readonly Func<T, ITagListItem> binder;
+
         public ICommand RemoveItemCommand { get; private set; }
         public Control View { get; private set; }
 
-        public EnhancedTagList(ObservableCollection<T> rawItems, Func<T, TagListItem> binder)
+        public EnhancedTagList(ObservableCollection<T> rawItems, Func<T, ITagListItem> binder)
         {
             this.rawItems = rawItems;
             this.binder = binder;
+
             RemoveItemCommand = new RemoveTagListItem();
 
             View = new TagListView(this);
@@ -29,11 +31,12 @@ namespace SafetyProgram.UserControls.Generic.EnhancedTagList
 
         public ObservableCollection<ITagListItem> Items
         {
-            get
+            get 
             {
                 return new ObservableCollection<ITagListItem>(
-                    rawItems.Select(binder)
-                );
+                    from tli in rawItems
+                    select binder(tli)
+                );                
             }
         }        
     }

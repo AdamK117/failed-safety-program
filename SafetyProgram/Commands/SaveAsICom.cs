@@ -28,7 +28,7 @@ namespace SafetyProgram.Commands
         /// <returns></returns>
         public override bool CanExecute(object parameter)
         {
-            return (data.Document != null && data.Service.CanSaveAs(data.Document)) ? true : false;
+            return (data.Content != null && data.Service.CanSaveAs(data.Content)) ? true : false;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace SafetyProgram.Commands
             {
                 try
                 {
-                    data.Service.SaveAs(data.Document);
+                    data.Service.SaveAs(data.Content);
                 }
                 catch (UnauthorizedAccessException)
                 {

@@ -39,12 +39,12 @@ namespace SafetyProgram.Commands
             if (CanExecute(parameter))
             {
                 //If theres a document open, close it.
-                if (data.Document != null)
+                if (data.Content != null)
                 {
                     try
                     {
-                        data.Service.Close(data.Document);
-                        data.Document = null;
+                        data.Service.Close(data.Content);
+                        data.Content = null;
                     }
                     catch (ArgumentException)
                     {
@@ -56,7 +56,7 @@ namespace SafetyProgram.Commands
                 //Try to load a CoshhDocument using the service.
                 try
                 {
-                    data.Document = data.Service.Load();
+                    data.Content = data.Service.Load();
                 }
                 catch (FileNotFoundException)
                 {

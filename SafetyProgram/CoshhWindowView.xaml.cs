@@ -28,9 +28,9 @@ namespace SafetyProgram
             base.OnClosed(e);
 
             //Close the current document (if possible)
-            if (viewModel.Document != null)
+            if (viewModel.Content != null)
             {
-                viewModel.Service.Close(viewModel.Document);
+                viewModel.Service.Close(viewModel.Content);
             }
             
             System.Windows.Application.Current.Shutdown();

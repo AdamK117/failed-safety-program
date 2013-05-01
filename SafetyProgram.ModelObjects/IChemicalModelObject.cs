@@ -8,6 +8,6 @@ namespace SafetyProgram.ModelObjects
         INotifyPropertyChanged, IStorable, ICopyPasteable, IDeepCloneable<IChemicalModelObject>
     {
         string Name { get; set; }
-        ObservableCollection<IHazardModelObject> Hazards { get; set; }
+        ObservableCollection<IHazardModelObject> Hazards { get; }
     }
 }

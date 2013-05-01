@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="bad9679c-aa4f-4fb4-a9c9-eb718922203b" name="AdamK117@ADAMK117-PC 2013-04-28 14:10:34" runUser="AdamK117-PC\AdamK117" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="003826a5-a045-4c04-9e0a-eb37b7bf6aff">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="AdamK117_ADAMK117-PC 2013-04-28 14_10_34">
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.ModelObjects\bin\Debug\SafetyProgram.ModelObjects.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Base.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-04-28T14:10:34.8576284+01:00" queuing="2013-04-28T14:10:34.9516337+01:00" start="2013-04-28T14:10:34.9856357+01:00" finish="2013-04-28T14:10:35.2376501+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="7" executed="7" passed="5" error="0" failed="2" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ResetMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="007c1aa1-b761-2c4d-8605-4399e559290d">
+      <Execution id="0999743e-e688-4e4b-9162-260a8c0ab647" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ResetMonadOc" />
+    </UnitTest>
+    <UnitTest name="MoveElementInMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="e8a9eb93-f989-312d-b315-2192089313b8">
+      <Execution id="7fccc38e-ee3d-41c2-8851-24d647c631f8" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveElementInMonadOc" />
+    </UnitTest>
+    <UnitTest name="AddElementToMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="dbaba95a-1acc-504e-ef52-7e8dfe085000">
+      <Execution id="fdfd5cbd-02da-431b-af85-2d916ad070cc" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AddElementToMonadOc" />
+    </UnitTest>
+    <UnitTest name="ConstructMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="fddc7002-5216-7174-e3dc-a857f9c37231">
+      <Execution id="a233fd91-d967-4ee5-8cb2-5fe447ed30bc" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ConstructMonadOc" />
+    </UnitTest>
+    <UnitTest name="ReplaceElementInMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="aafdef7b-6dfb-fef5-421a-a0ca5c7c5183">
+      <Execution id="a57e9c11-4bad-427e-81a0-a2e07fcbf1c9" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ReplaceElementInMonadOc" />
+    </UnitTest>
+    <UnitTest name="RemoveElementFromMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="42949265-b5a7-e6ed-f1af-c24e0fecf1df">
+      <Execution id="7dfd53d2-b1fa-4761-b1f4-891545eafe59" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RemoveElementFromMonadOc" />
+    </UnitTest>
+    <UnitTest name="AddElementToRaw" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="e9c01972-9bfd-b152-bff3-a1975c7ff12b">
+      <Execution id="06e9196e-4e87-4c17-8b2a-467e64b7eed4" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AddElementToRaw" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="007c1aa1-b761-2c4d-8605-4399e559290d" executionId="0999743e-e688-4e4b-9162-260a8c0ab647" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="42949265-b5a7-e6ed-f1af-c24e0fecf1df" executionId="7dfd53d2-b1fa-4761-b1f4-891545eafe59" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aafdef7b-6dfb-fef5-421a-a0ca5c7c5183" executionId="a57e9c11-4bad-427e-81a0-a2e07fcbf1c9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dbaba95a-1acc-504e-ef52-7e8dfe085000" executionId="fdfd5cbd-02da-431b-af85-2d916ad070cc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e8a9eb93-f989-312d-b315-2192089313b8" executionId="7fccc38e-ee3d-41c2-8851-24d647c631f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9c01972-9bfd-b152-bff3-a1975c7ff12b" executionId="06e9196e-4e87-4c17-8b2a-467e64b7eed4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fddc7002-5216-7174-e3dc-a857f9c37231" executionId="a233fd91-d967-4ee5-8cb2-5fe447ed30bc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0999743e-e688-4e4b-9162-260a8c0ab647" testId="007c1aa1-b761-2c4d-8605-4399e559290d" testName="ResetMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0136240" startTime="2013-04-28T14:10:34.9816354+01:00" endTime="2013-04-28T14:10:35.1786467+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0999743e-e688-4e4b-9162-260a8c0ab647">
+    </UnitTestResult>
+    <UnitTestResult executionId="7dfd53d2-b1fa-4761-b1f4-891545eafe59" testId="42949265-b5a7-e6ed-f1af-c24e0fecf1df" testName="RemoveElementFromMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0007847" startTime="2013-04-28T14:10:35.1806468+01:00" endTime="2013-04-28T14:10:35.1846471+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7dfd53d2-b1fa-4761-b1f4-891545eafe59">
+    </UnitTestResult>
+    <UnitTestResult executionId="a57e9c11-4bad-427e-81a0-a2e07fcbf1c9" testId="aafdef7b-6dfb-fef5-421a-a0ca5c7c5183" testName="ReplaceElementInMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0005224" startTime="2013-04-28T14:10:35.1856471+01:00" endTime="2013-04-28T14:10:35.1896473+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a57e9c11-4bad-427e-81a0-a2e07fcbf1c9">
+    </UnitTestResult>
+    <UnitTestResult executionId="fdfd5cbd-02da-431b-af85-2d916ad070cc" testId="dbaba95a-1acc-504e-ef52-7e8dfe085000" testName="AddElementToMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0126664" startTime="2013-04-28T14:10:35.1906474+01:00" endTime="2013-04-28T14:10:35.2066483+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fdfd5cbd-02da-431b-af85-2d916ad070cc">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;5&gt;. Actual:&lt;4&gt;. The Oc&lt;T&gt; is not in sync with MonadOc&lt;IMonad&lt;T&gt;&gt;, the add method for the MonadOc isn't echoing to the underlying Oc&lt;T&gt;</Message>
+          <StackTrace>   at SafetyProgram.Base.UnitTests.MonadOcTests.AddElementToMonadOc() in V:\SafetyProgram\SafetyProgram.Base.UnitTests\UnitTest1.cs:line 72
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7fccc38e-ee3d-41c2-8851-24d647c631f8" testId="e8a9eb93-f989-312d-b315-2192089313b8" testName="MoveElementInMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0057875" startTime="2013-04-28T14:10:35.2076484+01:00" endTime="2013-04-28T14:10:35.2166489+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7fccc38e-ee3d-41c2-8851-24d647c631f8">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SafetyProgram.Base.UnitTests.MonadOcTests.MoveElementInMonadOc threw exception: 
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index</Message>
+          <StackTrace>    at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at System.Collections.ObjectModel.Collection`1.get_Item(Int32 index)
+   at System.Collections.ObjectModel.ObservableCollection`1.MoveItem(Int32 oldIndex, Int32 newIndex)
+   at System.Collections.ObjectModel.ObservableCollection`1.Move(Int32 oldIndex, Int32 newIndex)
+   at SafetyProgram.Base.MonadOc`2.MonadOc_CollectionChanged(Object sender, NotifyCollectionChangedEventArgs e) in V:\SafetyProgram\SafetyProgram.Base\MonadOc.cs:line 74
+   at System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+   at SafetyProgram.Base.MonadOc`2.OnCollectionChanged(NotifyCollectionChangedEventArgs e) in V:\SafetyProgram\SafetyProgram.Base\MonadOc.cs:line 84
+   at System.Collections.ObjectModel.ObservableCollection`1.MoveItem(Int32 oldIndex, Int32 newIndex)
+   at System.Collections.ObjectModel.ObservableCollection`1.Move(Int32 oldIndex, Int32 newIndex)
+   at SafetyProgram.Base.UnitTests.MonadOcTests.MoveElementInMonadOc() in V:\SafetyProgram\SafetyProgram.Base.UnitTests\UnitTest1.cs:line 139
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="06e9196e-4e87-4c17-8b2a-467e64b7eed4" testId="e9c01972-9bfd-b152-bff3-a1975c7ff12b" testName="AddElementToRaw" computerName="ADAMK117-PC" duration="00:00:00.0003421" startTime="2013-04-28T14:10:35.2176489+01:00" endTime="2013-04-28T14:10:35.2216492+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06e9196e-4e87-4c17-8b2a-467e64b7eed4">
+    </UnitTestResult>
+    <UnitTestResult executionId="a233fd91-d967-4ee5-8cb2-5fe447ed30bc" testId="fddc7002-5216-7174-e3dc-a857f9c37231" testName="ConstructMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0003402" startTime="2013-04-28T14:10:35.2226492+01:00" endTime="2013-04-28T14:10:35.2256494+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a233fd91-d967-4ee5-8cb2-5fe447ed30bc">
+    </UnitTestResult>
+  </Results>
+</TestRun>

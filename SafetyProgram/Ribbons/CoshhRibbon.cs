@@ -8,7 +8,7 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Ribbons
 {
-    public sealed class CoshhRibbon : BaseINPC, IRibbon
+    internal sealed class CoshhRibbon : BaseINPC, IRibbon
     {
         private readonly CoshhWindow window;
         private readonly CoshhRibbonView view;
@@ -21,7 +21,7 @@ namespace SafetyProgram.Ribbons
         /// <param name="window">CoshhWindow the ribbon is a child of.</param>
         public CoshhRibbon(CoshhWindow window)
         {
-            this.window = window; 
+            this.window = window;
 
             view = new CoshhRibbonView(this);
 
@@ -29,7 +29,7 @@ namespace SafetyProgram.Ribbons
             window.DocumentChanged += documentChanged;
 
             //Prematurely trigger the handler if a CoshhDocument is already open in the CoshhWindow
-            if (window.Document != null) documentChanged(window.Document);
+            if (window.Content != null) documentChanged(window.Content);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace SafetyProgram.Ribbons
                     View.Tabs.Clear();
                     break;
             }
-            Debug.Assert(View.Tabs.Count == window.Document.RibbonTabs.Count, "WARNING: There's a difference between the ribbon tabs in the window vs the document");
+            Debug.Assert(View.Tabs.Count == window.Content.RibbonTabs.Count, "WARNING: There's a difference between the ribbon tabs in the window vs the document");
         }
     }
 }

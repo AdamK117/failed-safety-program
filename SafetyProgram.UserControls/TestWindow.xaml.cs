@@ -4,6 +4,7 @@ using SafetyProgram.ModelObjects;
 using SafetyProgram.UserControls.TagList;
 using SafetyProgram.UserControls.Generic.EnhancedTagList;
 using SafetyProgram.UserControls.Tooltips;
+using SafetyProgram.UserControls.Tooltips.Fancy;
 
 namespace SafetyProgram.UserControls
 {
@@ -38,7 +39,7 @@ namespace SafetyProgram.UserControls
                         return new TagListItem(
                             hazard.Hazard, 
                             () => someStrs.Remove(hazard),
-                            new DefaultToolTip("hey")
+                            new FancyToolTip(hazard.Hazard, hazard.Symbol, hazard.SignalWord)
                         );
                     }
                 );

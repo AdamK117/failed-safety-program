@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Xml.Linq;
@@ -9,14 +10,10 @@ namespace SafetyProgram.ModelObjects
     [Serializable]
     public sealed class HazardModelObject : BaseINPC, IHazardModelObject
     {
-        private string hazard;
-        private string signalWord;
-        private string symbol;
+        private readonly List<string> validationErrorList = new List<string>();
 
         public HazardModelObject()
-        {
-            hazard = "";
-        }
+        { }
 
         public HazardModelObject(IHazardModelObject data)
         {
@@ -25,6 +22,7 @@ namespace SafetyProgram.ModelObjects
             symbol = data.Symbol;
         }
 
+        private string hazard;
         public string Hazard
         {
             get { return hazard; }
@@ -35,6 +33,7 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
+        private string signalWord;
         public string SignalWord
         {
             get
@@ -48,12 +47,10 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
+        private string symbol;
         public string Symbol
         {
-            get
-            {
-                return symbol;
-            }
+            get { return symbol; }
             set
             {
                 symbol = value;
@@ -79,30 +76,54 @@ namespace SafetyProgram.ModelObjects
 
         public XElement WriteToXElement()
         {
-            //TODO: Pre-writing validation check.
-            return
-                new XElement("hazard", Hazard,
+            if (String.IsNullOrWhiteSpace(Error))
+            {
+                return new XElement("hazard", Hazard,
                     SignalWord == null ? null : new XAttribute("signalword", SignalWord),
                     Symbol == null ? null : new XAttribute("symbol", Symbol)
                 );
+            }
+            else throw new InvalidDataException("Errors found during save: " + Error);           
         }
 
         public string Error
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                if (validationErrorList.Count > 0)
+                {
+                    return String.Join(", ", validationErrorList);
+                }
+                else return null;
+            }
         }
 
-        //TODO: Implement this
         public string this[string columnName]
         {
-            get { return null; }
+            get
+            {
+                switch (columnName)
+                {
+                    //A hazard can't be blank, must have some sort of statement
+                    case "Hazard":
+                        if (String.IsNullOrWhiteSpace(Hazard))
+                        {
+                            const string ERR_MSG_NO_HAZARD = "No hazard statement was given for a hazard";
+                            validationErrorList.Add(ERR_MSG_NO_HAZARD);
+                            return ERR_MSG_NO_HAZARD;
+                        }
+                        break;
+                }
+
+                return null;
+            }
         }
 
         public IHazardModelObject DeepClone()
         {
             var hazardModel = new HazardModelObject();
 
-            //Copy fields
+            //Copy value fields
             hazardModel.SignalWord = signalWord;
             hazardModel.Symbol = symbol;
             hazardModel.Hazard = hazard;
@@ -117,11 +138,7 @@ namespace SafetyProgram.ModelObjects
 
         public IDataObject GetDataObject()
         {
-            DataObject dataObject = new DataObject();
-
-            dataObject.SetData(ComIdentity, DeepClone());
-
-            return dataObject;
+            return this.GetDataObject(ComIdentity);
         }
 
         public override string ToString()

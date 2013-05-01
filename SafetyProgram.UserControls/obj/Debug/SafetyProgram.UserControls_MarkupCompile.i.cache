@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-4985148013
+52798387
 
-15-590246737
+17949720324
 14-816734615
-TagList\TagListView.xaml;TagList\Style.xaml;TestWindow.xaml;Tooltips\DefaultToolTipView.xaml;
+TagList\TagListView.xaml;TagList\Style.xaml;TestWindow.xaml;Tooltips\Default\DefaultToolTipView.xaml;Tooltips\Fancy\FancyToolTipView.xaml;
 
 True
 

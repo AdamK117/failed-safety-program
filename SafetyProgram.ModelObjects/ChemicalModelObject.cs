@@ -13,10 +13,7 @@ namespace SafetyProgram.ModelObjects
     [Serializable]
     public sealed class ChemicalModelObject : BaseINPC, IChemicalModelObject
     {
-        private string name;
-        private ObservableCollection<IHazardModelObject> hazards;
-
-        private readonly IList<string> validationErrorList;
+        private readonly IList<string> validationErrorList = new List<string>();
 
         public ChemicalModelObject()
         {
@@ -26,9 +23,14 @@ namespace SafetyProgram.ModelObjects
         public ChemicalModelObject(IChemicalModelObject data)
         {
             name = data.Name;
-            hazards = data.Hazards;
+            if (data.Hazards != null)
+            {
+                hazards = data.Hazards;
+            }
+            else hazards = new ObservableCollection<IHazardModelObject>();
         }
 
+        private string name;
         public string Name
         {
             get
@@ -42,17 +44,10 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
+        private ObservableCollection<IHazardModelObject> hazards;
         public ObservableCollection<IHazardModelObject> Hazards
         {
-            get
-            {
-                return hazards;
-            }
-            set
-            {
-                hazards = value;
-                RaisePropertyChanged("Hazards");
-            }
+            get { return hazards; }
         }
 
         public void LoadData(XElement data)
@@ -85,8 +80,9 @@ namespace SafetyProgram.ModelObjects
 
         public XElement WriteToXElement()
         {
-            //TODO: Validation check
-            return new XElement("chemical",
+            if (String.IsNullOrWhiteSpace(Error))
+            {
+                return new XElement("chemical",
                 new XElement("name", Name),
                     Hazards.Count > 0 ?
                         new XElement("hazards",
@@ -95,19 +91,46 @@ namespace SafetyProgram.ModelObjects
                         )
                     :
                         null
-            );
+                );
+            }
+            else throw new InvalidDataException("Errors found when trying to save the document");
         }
 
-        //TODO: Implement this
         public string Error
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                if (validationErrorList.Count > 0)
+                {
+                    var errors = String.Join(", ", validationErrorList);
+                    return errors;
+                }
+                else return null;
+            }
         }
 
-        //TODO: Implement this
         public string this[string columnName]
         {
-            get { return null; }
+            get
+            {
+                validationErrorList.Clear();
+
+                //Rules for Name
+                //  Every chemical has a name. Must not be null.
+                if (columnName == "Name")
+                {
+                    if (Name.Length == 0)
+                    {
+                        const string errorMsg = "You must enter a name for this chemical";
+                        validationErrorList.Add(errorMsg);
+                        return errorMsg;
+                    }
+                }
+
+                //Validation for Hazards handled by internal IDataErrorInfo checks.
+
+                return null;                
+            }
         }
 
         public IChemicalModelObject DeepClone()
@@ -117,8 +140,7 @@ namespace SafetyProgram.ModelObjects
             //Clone fields
             chemModel.Name = name;
 
-            //Reference types, these are deep cloned
-            chemModel.Hazards = new ObservableCollection<IHazardModelObject>();
+            //Reference types, these are deep cloned into the new object from this.
             foreach (IHazardModelObject hazard in hazards)
             {
                 chemModel.Hazards.Add(hazard.DeepClone());
@@ -134,11 +156,7 @@ namespace SafetyProgram.ModelObjects
 
         public IDataObject GetDataObject()
         {
-            DataObject dataObject = new DataObject();
-
-            dataObject.SetData(ComIdentity, DeepClone());
-
-            return dataObject;
+            return this.GetDataObject(ComIdentity);
         }
     }
 }

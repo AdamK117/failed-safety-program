@@ -1,24 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 using System.Xml.Linq;
 using SafetyProgram.Base;
-using System.Windows;
 
 namespace SafetyProgram.ModelObjects
 {
     [Serializable]
     public sealed class CoshhChemicalObject : BaseINPC, ICoshhChemicalObject
     {
-        private decimal _value;
-        private string unit;
-        private IChemicalModelObject chemical;
-        private readonly List<string> validationErrorList;
+        private readonly List<string> validationErrorList = new List<string>();
 
         public CoshhChemicalObject()
         {
             chemical = new ChemicalModelObject();
-            validationErrorList = new List<string>();
         }
 
         public CoshhChemicalObject(ICoshhChemicalObject data)
@@ -28,12 +24,10 @@ namespace SafetyProgram.ModelObjects
             chemical = data.Chemical;
         }
 
+        private decimal _value;
         public decimal Value
         {
-            get
-            {
-                return _value;
-            }
+            get { return _value; }
             set
             {
                 _value = value;
@@ -41,12 +35,10 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
+        private string unit;
         public string Unit
         {
-            get
-            {
-                return unit;
-            }
+            get { return unit; }
             set
             {
                 unit = value;
@@ -54,12 +46,10 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
+        private IChemicalModelObject chemical;
         public IChemicalModelObject Chemical
         {
-            get
-            {
-                return chemical;
-            }
+            get { return chemical; }
             set
             {
                 chemical = value;
@@ -105,23 +95,55 @@ namespace SafetyProgram.ModelObjects
 
         public XElement WriteToXElement()
         {
-            //TODO: Validation checks pre-writing
-            return
+            if (String.IsNullOrWhiteSpace(Error))
+            {
+                return
                 new XElement("coshhchemical",
                     new XElement("amount", Value, new XAttribute("unit", Unit)),
                     Chemical.WriteToXElement()
                 );
+            }
+            else throw new InvalidDataException("Errors found during save: " + Error);
         }
 
         public string Error
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                if (validationErrorList.Count > 0)
+                {
+                    return String.Join(", ", validationErrorList);
+                }
+                else return null;
+            }
         }
 
-        //TODO: Implement this
         public string this[string columnName]
         {
-            get { return null; }
+            get
+            {
+                switch (columnName)
+                {
+                    case "Value":
+                        if (Value == 0)
+                        {
+                            const string ERR_MSG_NO_VALUE = "No amount of this entry has been given, there must be an amount!";
+                            validationErrorList.Add(ERR_MSG_NO_VALUE);
+                            return ERR_MSG_NO_VALUE;
+                        }
+                        break;
+                    case "Unit":
+                        if (String.IsNullOrWhiteSpace(unit))
+                        {
+                            const string ERR_MSG_NO_UNIT = "No units given for the amount of chemical, there must be units!";
+                            validationErrorList.Add(ERR_MSG_NO_UNIT);
+                            return ERR_MSG_NO_UNIT;
+                        }
+                        break;
+                }
+
+                return null;
+            }
         }
 
         public ICoshhChemicalObject DeepClone()
@@ -145,16 +167,9 @@ namespace SafetyProgram.ModelObjects
 
         public IDataObject GetDataObject()
         {
-            DataObject dataObject = new DataObject();
-
-            dataObject.SetData(ComIdentity, DeepClone());
-
-            return dataObject;
+            return this.GetDataObject(ComIdentity);
         }
 
-        public override string ToString()
-        {
-            return chemical.Name;
-        }
+        public override string ToString() { return chemical.Name; }
     }
 }

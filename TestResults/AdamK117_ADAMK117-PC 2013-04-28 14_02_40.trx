@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="c1f0b6f7-d28c-4a37-8990-c624f4d64496" name="AdamK117@ADAMK117-PC 2013-04-28 14:02:40" runUser="AdamK117-PC\AdamK117" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="003826a5-a045-4c04-9e0a-eb37b7bf6aff">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="AdamK117_ADAMK117-PC 2013-04-28 14_02_40">
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.ModelObjects\bin\Debug\SafetyProgram.ModelObjects.dll" />
+      <DeploymentItem filename="V:\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Base.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2013-04-28T14:02:40.3324871+01:00" queuing="2013-04-28T14:02:41.1065313+01:00" start="2013-04-28T14:02:41.2125374+01:00" finish="2013-04-28T14:02:54.7063092+01:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="7" executed="6" passed="5" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="1" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="ADAMK117-PC" outcome="Error" timestamp="2013-04-28T14:02:54.7053091+01:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ResetMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="007c1aa1-b761-2c4d-8605-4399e559290d">
+      <Execution id="9daf7c71-4785-4f9c-9e2b-c2c053796af7" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ResetMonadOc" />
+    </UnitTest>
+    <UnitTest name="MoveElementInMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="e8a9eb93-f989-312d-b315-2192089313b8">
+      <Execution id="4f23a081-61b7-42f5-89b3-83e15a53a773" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveElementInMonadOc" />
+    </UnitTest>
+    <UnitTest name="AddElementToMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="dbaba95a-1acc-504e-ef52-7e8dfe085000">
+      <Execution id="c0269b29-d1da-4bc1-a3d8-d7e15b233c52" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AddElementToMonadOc" />
+    </UnitTest>
+    <UnitTest name="ConstructMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="fddc7002-5216-7174-e3dc-a857f9c37231">
+      <Execution id="9aec3f2c-5238-4ab3-b8bf-15909e06cf80" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ConstructMonadOc" />
+    </UnitTest>
+    <UnitTest name="ReplaceElementInMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="aafdef7b-6dfb-fef5-421a-a0ca5c7c5183">
+      <Execution id="27666d03-ecab-47dc-8414-dc3c476b4f6e" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ReplaceElementInMonadOc" />
+    </UnitTest>
+    <UnitTest name="RemoveElementFromMonadOc" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="42949265-b5a7-e6ed-f1af-c24e0fecf1df">
+      <Execution id="5bad8f2e-6855-4552-9e31-84c1c34e18f7" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RemoveElementFromMonadOc" />
+    </UnitTest>
+    <UnitTest name="AddElementToRaw" storage="v:\safetyprogram\safetyprogram.base.unittests\bin\debug\safetyprogram.base.unittests.dll" id="e9c01972-9bfd-b152-bff3-a1975c7ff12b">
+      <Execution id="1cc42dc4-928f-412f-9f0e-b0f5f9e77bc6" />
+      <TestMethod codeBase="V:/SafetyProgram/SafetyProgram.Base.UnitTests/bin/Debug/SafetyProgram.Base.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SafetyProgram.Base.UnitTests.MonadOcTests, SafetyProgram.Base.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AddElementToRaw" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="007c1aa1-b761-2c4d-8605-4399e559290d" executionId="9daf7c71-4785-4f9c-9e2b-c2c053796af7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="42949265-b5a7-e6ed-f1af-c24e0fecf1df" executionId="5bad8f2e-6855-4552-9e31-84c1c34e18f7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aafdef7b-6dfb-fef5-421a-a0ca5c7c5183" executionId="27666d03-ecab-47dc-8414-dc3c476b4f6e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dbaba95a-1acc-504e-ef52-7e8dfe085000" executionId="c0269b29-d1da-4bc1-a3d8-d7e15b233c52" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e8a9eb93-f989-312d-b315-2192089313b8" executionId="4f23a081-61b7-42f5-89b3-83e15a53a773" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9c01972-9bfd-b152-bff3-a1975c7ff12b" executionId="1cc42dc4-928f-412f-9f0e-b0f5f9e77bc6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fddc7002-5216-7174-e3dc-a857f9c37231" executionId="9aec3f2c-5238-4ab3-b8bf-15909e06cf80" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="9daf7c71-4785-4f9c-9e2b-c2c053796af7" testId="007c1aa1-b761-2c4d-8605-4399e559290d" testName="ResetMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0117380" startTime="2013-04-28T14:02:41.3145432+01:00" endTime="2013-04-28T14:02:41.8395733+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9daf7c71-4785-4f9c-9e2b-c2c053796af7">
+    </UnitTestResult>
+    <UnitTestResult executionId="5bad8f2e-6855-4552-9e31-84c1c34e18f7" testId="42949265-b5a7-e6ed-f1af-c24e0fecf1df" testName="RemoveElementFromMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0009877" startTime="2013-04-28T14:02:41.8455736+01:00" endTime="2013-04-28T14:02:41.8535741+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5bad8f2e-6855-4552-9e31-84c1c34e18f7">
+    </UnitTestResult>
+    <UnitTestResult executionId="27666d03-ecab-47dc-8414-dc3c476b4f6e" testId="aafdef7b-6dfb-fef5-421a-a0ca5c7c5183" testName="ReplaceElementInMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0005942" startTime="2013-04-28T14:02:41.8565742+01:00" endTime="2013-04-28T14:02:41.8635746+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="27666d03-ecab-47dc-8414-dc3c476b4f6e">
+    </UnitTestResult>
+    <UnitTestResult executionId="c0269b29-d1da-4bc1-a3d8-d7e15b233c52" testId="dbaba95a-1acc-504e-ef52-7e8dfe085000" testName="AddElementToMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0006096" startTime="2013-04-28T14:02:41.8665748+01:00" endTime="2013-04-28T14:02:41.8725752+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c0269b29-d1da-4bc1-a3d8-d7e15b233c52">
+    </UnitTestResult>
+    <UnitTestResult executionId="4f23a081-61b7-42f5-89b3-83e15a53a773" testId="e8a9eb93-f989-312d-b315-2192089313b8" testName="MoveElementInMonadOc" computerName="ADAMK117-PC" duration="00:00:00.0003171" startTime="2013-04-28T14:02:41.8765754+01:00" endTime="2013-04-28T14:02:41.8815757+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4f23a081-61b7-42f5-89b3-83e15a53a773">
+    </UnitTestResult>
+    <UnitTestResult executionId="1cc42dc4-928f-412f-9f0e-b0f5f9e77bc6" testId="e9c01972-9bfd-b152-bff3-a1975c7ff12b" testName="AddElementToRaw" computerName="ADAMK117-PC" duration="00:00:12.8207333" startTime="2013-04-28T14:02:41.8855759+01:00" endTime="2013-04-28T14:02:54.7063092+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1cc42dc4-928f-412f-9f0e-b0f5f9e77bc6">
+    </UnitTestResult>
+    <UnitTestResult executionId="9aec3f2c-5238-4ab3-b8bf-15909e06cf80" testId="fddc7002-5216-7174-e3dc-a857f9c37231" testName="ConstructMonadOc" computerName="ADAMK117-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9aec3f2c-5238-4ab3-b8bf-15909e06cf80">
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -86,6 +86,13 @@ namespace SafetyProgram.Base
             }
         }
 
+        /// <summary>
+        /// Gets a plain DataObject for an ICloneable which only contains a clone of the item.
+        /// </summary>
+        /// <typeparam name="T">Type of IDeepCloneable to clone into the DataObject</typeparam>
+        /// <param name="item">The item to deepclone into an IDataObject</param>
+        /// <param name="comIdentity">The COM identity to use when retrieveing from the clipboard etc.</param>
+        /// <returns></returns>
         public static IDataObject GetDataObject<T>(this IDeepCloneable<T> item, string comIdentity)
         {
             DataObject dataObject = new DataObject();
