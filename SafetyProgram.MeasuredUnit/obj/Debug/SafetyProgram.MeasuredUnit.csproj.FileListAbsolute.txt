@@ -1,8 +1,0 @@
-V:\SafetyProgram\SafetyProgram.MeasuredUnit\bin\Debug\SafetyProgram.MeasuredUnit.dll
-V:\SafetyProgram\SafetyProgram.MeasuredUnit\bin\Debug\SafetyProgram.MeasuredUnit.pdb
-V:\SafetyProgram\SafetyProgram.MeasuredUnit\bin\Debug\SafetyProgram.Base.dll
-V:\SafetyProgram\SafetyProgram.MeasuredUnit\bin\Debug\Fluent.dll
-V:\SafetyProgram\SafetyProgram.MeasuredUnit\bin\Debug\SafetyProgram.Base.pdb
-V:\SafetyProgram\SafetyProgram.MeasuredUnit\obj\Debug\ResolveAssemblyReference.cache
-V:\SafetyProgram\SafetyProgram.MeasuredUnit\obj\Debug\SafetyProgram.MeasuredUnit.dll
-V:\SafetyProgram\SafetyProgram.MeasuredUnit\obj\Debug\SafetyProgram.MeasuredUnit.pdb

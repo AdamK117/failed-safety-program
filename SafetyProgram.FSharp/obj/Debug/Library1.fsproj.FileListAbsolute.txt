@@ -1,8 +1,0 @@
-U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Library1\bin\Debug\Library1.XML
-U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Library1\bin\Debug\Library1.dll
-U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Library1\bin\Debug\Library1.pdb
-U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Library1\obj\Debug\ResolveAssemblyReference.cache
-U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Library1\obj\Debug\Library1.dll
-U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Library1\obj\Debug\Library1.pdb
-U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Library1\bin\Debug\SafetyProgram.Models.dll
-U:\PrismAggreggatorDesignTest\PrismAggregatorDesignTest\Library1\bin\Debug\SafetyProgram.Models.pdb

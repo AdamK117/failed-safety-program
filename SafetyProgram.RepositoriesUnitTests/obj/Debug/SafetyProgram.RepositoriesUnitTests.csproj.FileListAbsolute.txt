@@ -1,8 +1,0 @@
-V:\SafetyProgram\SafetyProgram.RepositoriesUnitTests\obj\Debug\ResolveAssemblyReference.cache
-V:\SafetyProgram\SafetyProgram.RepositoriesUnitTests\bin\Debug\SafetyProgram.RepositoriesUnitTests.dll
-V:\SafetyProgram\SafetyProgram.RepositoriesUnitTests\bin\Debug\SafetyProgram.RepositoriesUnitTests.pdb
-V:\SafetyProgram\SafetyProgram.RepositoriesUnitTests\bin\Debug\SafetyProgram.Repositories.dll
-V:\SafetyProgram\SafetyProgram.RepositoriesUnitTests\bin\Debug\SafetyProgram.Repositories.pdb
-V:\SafetyProgram\SafetyProgram.RepositoriesUnitTests\bin\Debug\SafetyProgram.Repositories.xml
-V:\SafetyProgram\SafetyProgram.RepositoriesUnitTests\obj\Debug\SafetyProgram.RepositoriesUnitTests.dll
-V:\SafetyProgram\SafetyProgram.RepositoriesUnitTests\obj\Debug\SafetyProgram.RepositoriesUnitTests.pdb
