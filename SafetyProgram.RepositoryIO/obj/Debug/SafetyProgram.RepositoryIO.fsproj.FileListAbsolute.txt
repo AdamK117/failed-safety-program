@@ -1,0 +1,13 @@
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\SafetyProgram.RepositoryIO.XML
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\SafetyProgram.RepositoryIO.dll
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\SafetyProgram.RepositoryIO.pdb
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\SafetyProgram.Base.dll
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\SafetyProgram.Configuration.dll
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\SafetyProgram.ModelObjects.dll
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\Fluent.dll
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\SafetyProgram.Base.pdb
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\SafetyProgram.Configuration.pdb
+V:\SafetyProgram\SafetyProgram.RepositoryIO\bin\Debug\SafetyProgram.ModelObjects.pdb
+V:\SafetyProgram\SafetyProgram.RepositoryIO\obj\Debug\SafetyProgram.RepositoryIO.fsprojResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.RepositoryIO\obj\Debug\SafetyProgram.RepositoryIO.dll
+V:\SafetyProgram\SafetyProgram.RepositoryIO\obj\Debug\SafetyProgram.RepositoryIO.pdb

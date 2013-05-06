@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Xml.Linq;
 using SafetyProgram.Base;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.ModelObjects
 {
@@ -59,38 +60,47 @@ namespace SafetyProgram.ModelObjects
 
         public void LoadData(XElement data)
         {
-            //Get the amount of the chemical (Required)
-            if (data.Element("amount") != null)
+            //Required: Get the amount of chemical being used for this CoshhChemical entry.
             {
-                //Parse the amount (decimal) used in this Coshh entry
-                try
+                var amountElement = data.Element("amount");
+                if (amountElement != null)
                 {
-                    Value = decimal.Parse(data.Element("amount").Value);
-                }
-                catch (ArgumentNullException e)
-                {
-                    throw new InvalidDataException("Could not process the amount of chemical being used.", e);
-                }
-                catch (FormatException e)
-                {
-                    throw new InvalidDataException("Could not parse the amount of chemical into a decimal number", e);
-                }
+                    //Parse the amount (decimal) used in this Coshh entry
+                    try
+                    {
+                        Value = decimal.Parse(amountElement.Value);
+                    }
+                    catch (ArgumentNullException e)
+                    {
+                        throw new InvalidDataException("Could not process the amount of chemical being used.", e);
+                    }
+                    catch (FormatException e)
+                    {
+                        throw new InvalidDataException("Could not parse the amount of chemical into a decimal number", e);
+                    }
 
-                //Get the units of the amount (Required)
-                if (data.Element("amount").Attribute("unit") != null)
-                {
-                    Unit = data.Element("amount").Attribute("unit").Value;
+                    //Required: Get the units for the amount specified
+                    {
+                        var unitAttribute = amountElement.Attribute("unit");
+                        if (unitAttribute != null)
+                        {
+                            Unit = unitAttribute.Value;
+                        }
+                        else throw new InvalidDataException("No units were given for the amount of CoshhChemical being used");
+                    }
                 }
-                else throw new InvalidDataException("No units were given for the amount of CoshhChemical being used");
+                else throw new InvalidDataException("No amount of the CoshhChemical was found, CoshhChemicals (not raw chemicals) need an amount");
             }
-            else throw new InvalidDataException("No amount of the CoshhChemical was found, CoshhChemicals (not raw chemicals) need an amount");
 
-            //Get the chemical details (Required)
-            if (data.Element("chemical") != null)
+            //Required: Get the chemicals details
             {
-                Chemical.LoadData(data.Element("chemical"));
+                var chemicalElement = data.Element(XmlNodeNames.ChemicalModelObj);
+                if (chemicalElement != null)
+                {
+                    Chemical.LoadData(chemicalElement);
+                }
+                else throw new InvalidDataException("No chemical was defined for the CoshhChemical");
             }
-            else throw new InvalidDataException("No chemical was defined for the CoshhChemical");
         }
 
         public XElement WriteToXElement()
@@ -98,13 +108,15 @@ namespace SafetyProgram.ModelObjects
             if (String.IsNullOrWhiteSpace(Error))
             {
                 return
-                new XElement("coshhchemical",
+                new XElement(XmlNodeNames.CoshhChemicalObj,
                     new XElement("amount", Value, new XAttribute("unit", Unit)),
                     Chemical.WriteToXElement()
                 );
             }
             else throw new InvalidDataException("Errors found during save: " + Error);
         }
+
+        public string Identifier { get { return XmlNodeNames.CoshhChemicalObj; } }
 
         public string Error
         {

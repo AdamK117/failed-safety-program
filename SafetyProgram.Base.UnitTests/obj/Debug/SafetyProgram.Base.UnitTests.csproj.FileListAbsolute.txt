@@ -5,6 +5,6 @@ V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\Debug\SafetyProgram.ModelObjec
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\Debug\Fluent.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\Debug\SafetyProgram.Base.pdb
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\Debug\SafetyProgram.ModelObjects.pdb
-V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\Debug\ResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\Debug\SafetyProgram.Base.UnitTests.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\Debug\SafetyProgram.Base.UnitTests.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\Debug\SafetyProgram.Base.UnitTests.pdb

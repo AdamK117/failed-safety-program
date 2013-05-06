@@ -23,5 +23,11 @@ namespace SafetyProgram.Base.Interfaces
         /// <returns>The IStorable's data in an XElement format</returns>
         /// <exception cref="System.IO.InvalidDataException">Thrown if the data currently contained in the IStorable is invalid. Uses IDataErrorInfo checks</exception>
         XElement WriteToXElement();
+
+        /// <summary>
+        /// Gets a string that identifies the IStorable.
+        /// </summary>
+        /// <example>'chemical', 'hazard', 'chemicaltable'</example>
+        string Identifier { get; }
     }
 }

@@ -1,0 +1,12 @@
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Configuration.UnitTests.dll
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Configuration.UnitTests.pdb
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Base.dll
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Configuration.dll
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Static.dll
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\Fluent.dll
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Base.pdb
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Configuration.pdb
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Static.pdb
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\obj\x86\Debug\SafetyProgram.Configuration.UnitTests.csprojResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\obj\x86\Debug\SafetyProgram.Configuration.UnitTests.dll
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\obj\x86\Debug\SafetyProgram.Configuration.UnitTests.pdb

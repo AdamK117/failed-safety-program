@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<appconfig>
+  <documentlock>someInvalidProperty</documentlock>
+  <repositories>
+    <repository source="someUnknownSourceType" path="A really invalid path" />
+    <repository source="anotherUnknownSourceType" path="Another clearly invalid path" login="" password="" />
+  </repositories>
+  <locale>someUnusablyWrongLocale</locale>
+</appconfig>

@@ -61,6 +61,7 @@
     <Compile Include="BaseICommand.cs" />
     <Compile Include="BaseINPC.cs" />
     <Compile Include="ExtendedICommand.cs" />
+    <Compile Include="Interfaces\ICommandsHolder.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
     <Compile Include="Interfaces\Document\IDocumentObject.cs" />
     <Compile Include="IDocumentFormats\A4DocFormat.cs" />
@@ -80,8 +81,7 @@
     <Compile Include="Interfaces\IStorable.cs" />
     <Compile Include="Interfaces\IViewable.cs" />
     <Compile Include="Interfaces\Window\IWindow.cs" />
-    <Compile Include="Interfaces\Window\IWindowDocumentViewer.cs" />
-    <Compile Include="Interfaces\Window\IWindowCommands.cs" />
+    <Compile Include="Interfaces\Window\IWindowT.cs" />
     <Compile Include="ViewModelOc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

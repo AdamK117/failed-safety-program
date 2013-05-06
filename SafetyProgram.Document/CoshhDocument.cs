@@ -13,6 +13,7 @@ using SafetyProgram.Document.Body;
 using SafetyProgram.Document.Commands;
 using SafetyProgram.Document.ContextMenus;
 using SafetyProgram.Document.Ribbons;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.Document
 {
@@ -186,6 +187,8 @@ namespace SafetyProgram.Document
 
             return xDoc;
         }
+
+        public string Identifier { get { return XmlNodeNames.CoshhDocument; } }
 
         #endregion
 

@@ -1,8 +1,6 @@
 ﻿using System.Windows;
-
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Services;
-using SafetyProgram.UserControls;
 
 namespace SafetyProgram
 {
@@ -23,9 +21,6 @@ namespace SafetyProgram
             IWindow window = new CoshhWindow(service, document);
 
             window.View.Show();
-
-            //TestWindow tw = new TestWindow();
-            //tw.Show();
         }
 
         /// <summary>

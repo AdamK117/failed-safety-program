@@ -154,6 +154,8 @@ namespace SafetyProgram.DocumentObjects
         /// <returns>XElement containing the DocObjects data.</returns>
         public abstract XElement WriteToXElement();
 
+        public abstract string Identifier { get; }
+
         public abstract string Error { get; }
 
         public abstract string this[string columnName] { get; }

@@ -8,6 +8,7 @@ using SafetyProgram.DocumentObjects.ChemicalTable.Commands;
 using SafetyProgram.DocumentObjects.ChemicalTable.ContextMenus;
 using SafetyProgram.DocumentObjects.ChemicalTable.Ribbon;
 using SafetyProgram.ModelObjects;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTable
 {
@@ -130,8 +131,8 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         public override XElement WriteToXElement()
         {
             return (
-                new XElement("chemicaltable",
-                    new XElement("header", "Hazardous chemicals used in this experiment"),
+                new XElement(XmlNodeNames.ChemicalTableObj,
+                    new XElement("header", Header),
                     chemicals.Count > 0 ? 
                         from chemical in chemicals
                         select chemical.WriteToXElement()
@@ -147,26 +148,22 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         /// <param name="data">ChemicalTable data in XElement format</param>
         public override void LoadData(XElement data)
         {
-            if (data.Element("header") != null)
+            var headerElement = data.Element("header");
+            if (headerElement != null)
             {
+                Header = headerElement.Value;
+            }
 
-            }
-            if (data.Elements("coshhchemical").Count() > 0)
+            var coshhChemicalsElements = data.Elements(XmlNodeNames.CoshhChemicalObj);
+            foreach (XElement coshhChemicalElement in coshhChemicalsElements)
             {
-                foreach (XElement chemical in data.Elements("coshhchemical"))
-                {
-                    CoshhChemicalObject chemicalObject = new CoshhChemicalObject();
-                    chemicalObject.LoadData(chemical);
-                    chemicals.Add(chemicalObject);
-                }
-            }
-            foreach(XElement chemical in data.Elements("chemical"))
-            {
-                CoshhChemicalObject chemicalObject = new CoshhChemicalObject();
-                chemicalObject.LoadData(chemical);
+                var chemicalObject = new CoshhChemicalObject();
+                chemicalObject.LoadData(coshhChemicalElement);
                 chemicals.Add(chemicalObject);
             }
         }
+
+        public override string Identifier { get { return XmlNodeNames.ChemicalTableObj; } }
 
         public override string Error
         {

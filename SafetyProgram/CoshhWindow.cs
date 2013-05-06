@@ -26,6 +26,7 @@ namespace SafetyProgram
         public CoshhWindow(IService<IDocument> service, IDocument document)
         {
             if (service == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without a service");
+            if (document == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without a document");
 
             this.service = service;
             this.document = document;
@@ -42,7 +43,10 @@ namespace SafetyProgram
         /// </summary>
         public Window View
         {
-            get { return view; }
+            get 
+            { 
+                return view; 
+            }
         }
 
         /// <summary>
@@ -50,7 +54,10 @@ namespace SafetyProgram
         /// </summary>
         Control IViewable.View
         {
-            get { return view; }
+            get 
+            { 
+                return view; 
+            }
         }
 
         /// <summary>
@@ -58,7 +65,10 @@ namespace SafetyProgram
         /// </summary>
         public IWindowCommands Commands
         {
-            get { return commands; }
+            get 
+            { 
+                return commands; 
+            }
         }
 
         /// <summary>
@@ -66,7 +76,10 @@ namespace SafetyProgram
         /// </summary>
         public IRibbon Ribbon
         {
-            get { return ribbon; }
+            get 
+            { 
+                return ribbon; 
+            }
         }
 
         /// <summary>
@@ -75,7 +88,10 @@ namespace SafetyProgram
         /// <remarks>Nullable: IRibbonWindow may contain no IDocument</remarks>
         public IDocument Content
         {
-            get { return document; }
+            get 
+            { 
+                return document; 
+            }
             set 
             { 
                 document = value;
@@ -96,7 +112,10 @@ namespace SafetyProgram
         /// </summary>
         public IService<IDocument> Service
         {
-            get { return service; }
+            get 
+            { 
+                return service; 
+            }
         }
         /// <summary>
         /// Changes the CoshhWindow's I/O service to a new ICoshhDocumentService

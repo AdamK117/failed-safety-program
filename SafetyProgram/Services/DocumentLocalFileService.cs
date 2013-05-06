@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using SafetyProgram.Base.DocumentFormats;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Document;
+using SafetyProgram.Base;
 
 namespace SafetyProgram.Services
 {

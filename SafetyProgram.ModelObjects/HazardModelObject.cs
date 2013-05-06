@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Xml.Linq;
 using SafetyProgram.Base;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.ModelObjects
 {
@@ -60,31 +61,41 @@ namespace SafetyProgram.ModelObjects
 
         public void LoadData(XElement data)
         {
-            //Get the hazard statement (Required: Every hazard has a statement. Example: "Highly Flammable").
-            if (!String.IsNullOrWhiteSpace(data.Value))
+            //Required: Get the hazard statement for this hazard.
             {
-                Hazard = data.Value;
+                if (!String.IsNullOrWhiteSpace(data.Value))
+                {
+                    Hazard = data.Value;
+                }
+                else throw new InvalidDataException("No hazard was found inside a hazard statement (every hazard statement must state its hazard).");
             }
-            else throw new InvalidDataException("No hazard was found inside a hazard statement (every hazard statement must state its hazard).");
 
-            //Get the hazard signal word (Optional: Custom hazards won't have a signalword).
-            SignalWord = data.Attribute("signalword") == null ? null : data.Attribute("signalword").Value;
+            //Optional: Get the hazards signal word. Custom hazards may not have a signal word.
+            {
+                var signalWordAttr = data.Attribute("signalword");
+                SignalWord = (signalWordAttr == null) ? (null) : (signalWordAttr.Value);
+            }
 
-            //Get the hazard symbol (Optional: Not every hazard has a symbol).
-            Symbol = data.Attribute("symbol") == null ? null : data.Attribute("symbol").Value;
+            //Optional: Get the symbol associated with the hazard. Not every hazard has a symbol.
+            {
+                var symbolAttr = data.Attribute("symbol");
+                Symbol = (symbolAttr == null) ? (null) : (symbolAttr.Value);
+            }
         }
 
         public XElement WriteToXElement()
         {
             if (String.IsNullOrWhiteSpace(Error))
             {
-                return new XElement("hazard", Hazard,
-                    SignalWord == null ? null : new XAttribute("signalword", SignalWord),
-                    Symbol == null ? null : new XAttribute("symbol", Symbol)
+                return new XElement(XmlNodeNames.HazardModelObj, Hazard,
+                    (SignalWord == null) ? (null) : (new XAttribute("signalword", SignalWord)),
+                    (Symbol == null) ? (null) : (new XAttribute("symbol", Symbol))
                 );
             }
-            else throw new InvalidDataException("Errors found during save: " + Error);           
+            else throw new InvalidDataException("Errors found during save: " + Error);
         }
+
+        public string Identifier { get { return XmlNodeNames.HazardModelObj; } }
 
         public string Error
         {

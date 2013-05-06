@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Commands\CloseICom.cs" />
     <Compile Include="Commands\ExitICom.cs" />
+    <Compile Include="Commands\IWindowCommands.cs" />
     <Compile Include="Commands\NewICom.cs" />
     <Compile Include="Commands\OpenICom.cs" />
     <Compile Include="Commands\SaveICom.cs" />
@@ -153,9 +154,9 @@
       <Project>{0385FB46-CEFE-4542-8F47-DBAAD96E5BAB}</Project>
       <Name>SafetyProgram.Document</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
-      <Project>{69416B92-32EA-4F2A-B3D4-5FC8389090BB}</Project>
-      <Name>SafetyProgram.UserControls</Name>
+    <ProjectReference Include="..\SafetyProgram.Locale\SafetyProgram.Locale.csproj">
+      <Project>{125449EC-B19E-4006-94D6-6E298C09EAC7}</Project>
+      <Name>SafetyProgram.Locale</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

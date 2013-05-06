@@ -1,8 +1,10 @@
 V:\SafetyProgram\SafetyProgram.ModelObjects\bin\Debug\SafetyProgram.ModelObjects.dll
 V:\SafetyProgram\SafetyProgram.ModelObjects\bin\Debug\SafetyProgram.ModelObjects.pdb
 V:\SafetyProgram\SafetyProgram.ModelObjects\bin\Debug\SafetyProgram.Base.dll
+V:\SafetyProgram\SafetyProgram.ModelObjects\bin\Debug\SafetyProgram.Static.dll
 V:\SafetyProgram\SafetyProgram.ModelObjects\bin\Debug\Fluent.dll
 V:\SafetyProgram\SafetyProgram.ModelObjects\bin\Debug\SafetyProgram.Base.pdb
-V:\SafetyProgram\SafetyProgram.ModelObjects\obj\Debug\ResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.ModelObjects\bin\Debug\SafetyProgram.Static.pdb
+V:\SafetyProgram\SafetyProgram.ModelObjects\obj\Debug\SafetyProgram.ModelObjects.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.ModelObjects\obj\Debug\SafetyProgram.ModelObjects.dll
 V:\SafetyProgram\SafetyProgram.ModelObjects\obj\Debug\SafetyProgram.ModelObjects.pdb

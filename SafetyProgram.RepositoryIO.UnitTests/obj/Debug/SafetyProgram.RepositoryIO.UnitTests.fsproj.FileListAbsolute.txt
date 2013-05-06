@@ -1,0 +1,1 @@
+V:\SafetyProgram\SafetyProgram.RepositoryIO.UnitTests\obj\Debug\SafetyProgram.RepositoryIO.UnitTests.fsprojResolveAssemblyReference.cache

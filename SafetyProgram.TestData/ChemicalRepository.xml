@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repository type="chemical">
+  
+  <chemical>
+    <name>Acetonitrile</name>
+    <hazards>
+      <hazard signalword="H25" symbol="Flammable">Flammable</hazard>
+    </hazards>
+  </chemical>
+
+  <chemical>
+    <name>MyRandomChemical</name>
+    <hazards>
+      <hazard signalword="H25" symbol="Flammable">Flammable</hazard>
+    </hazards>
+  </chemical>
+
+  <chemical>
+    <name>MyRandomChemical</name>
+    <hazards>
+      <hazard signalword="H25" symbol="Flammable">Flammable</hazard>
+    </hazards>
+  </chemical>
+ 
+  <chemical>
+    <name>MyRandomChemical</name>
+    <hazards>
+      <hazard signalword="H25" symbol="Flammable">Flammable</hazard>
+    </hazards>
+  </chemical>
+
+  <chemical>
+    <name>MyRandomChemical</name>
+    <hazards>
+      <hazard signalword="H25" symbol="Flammable">Flammable</hazard>
+    </hazards>
+  </chemical>
+
+  <chemical>
+    <name>ayyy</name>
+    <hazards>
+      <hazard signalword="H25" symbol="Flammable">Flammable</hazard>
+    </hazards>
+  </chemical>
+
+</repository>

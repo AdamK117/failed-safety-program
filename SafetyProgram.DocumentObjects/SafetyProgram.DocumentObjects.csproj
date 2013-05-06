@@ -33,6 +33,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fluent">
       <HintPath>..\Fluent.dll</HintPath>
@@ -131,6 +149,10 @@
     <ProjectReference Include="..\SafetyProgram.ModelObjects\SafetyProgram.ModelObjects.csproj">
       <Project>{7C2C454D-A1D9-4355-976C-08582E07CD31}</Project>
       <Name>SafetyProgram.ModelObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Static\SafetyProgram.Static.csproj">
+      <Project>{365F96A4-1C7F-4C32-8DB9-A1385F2D109C}</Project>
+      <Name>SafetyProgram.Static</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UserControls\SafetyProgram.UserControls.csproj">
       <Project>{69416B92-32EA-4F2A-B3D4-5FC8389090BB}</Project>

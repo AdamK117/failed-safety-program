@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Xml.Linq;
 using SafetyProgram.Base;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.ModelObjects
 {
@@ -52,28 +53,36 @@ namespace SafetyProgram.ModelObjects
 
         public void LoadData(XElement data)
         {
-            //Get the name (Required: A BaseElementModel must have a name)
-            if (data.Element("name") != null)
+            //Required: Get the name. A chemical must have a name.
             {
-                Name = data.Element("name").Value;
-            }
-            else throw new InvalidDataException("The loaded chemical must have a name!");
-
-            //Get the hazards (Optional: A BaseElementModel may have no hazards)
-            if (data.Element("hazards") != null)
-            {
-                XElement hazardsData = data.Element("hazards");
-
-                Debug.Assert(
-                    hazardsData.Elements("hazard").Count() > 0,
-                    "WARNING: Empty <hazards></hazards> tags with no <hazard> in them found"
-                );
-
-                foreach (XElement hazardData in hazardsData.Elements("hazard"))
+                var chemicalNameElement = data.Element("name");
+                if (chemicalNameElement != null)
                 {
-                    IHazardModelObject hazardObject = new HazardModelObject();
-                    hazardObject.LoadData(hazardData);
-                    hazards.Add(hazardObject);
+                    Name = chemicalNameElement.Value;
+                }
+                else throw new InvalidDataException("The loaded chemical must have a name!");
+            }
+
+            //Optional: Get the hazards associated with the chemical. (A chemical may have no hazards).
+            {
+                var hazardsElement = data.Element("hazards");
+                if (hazardsElement != null)
+                {
+                    var hazardElements = hazardsElement.Elements(XmlNodeNames.HazardModelObj);
+
+                    //Redundancy check: Files shouldn't really be saved with empty <hazards></hazards> tags (although it won't cause a problem if it does).
+                    Debug.Assert(
+                        hazardElements.Count() > 0,
+                        "WARNING: Empty <hazards></hazards> tags with no <hazard> in them found"
+                    );
+                    //End redundancy check
+
+                    foreach (XElement hazardData in hazardElements)
+                    {
+                        var hazardObject = new HazardModelObject();
+                        hazardObject.LoadData(hazardData);
+                        hazards.Add(hazardObject);
+                    }
                 }
             }
         }
@@ -82,7 +91,7 @@ namespace SafetyProgram.ModelObjects
         {
             if (String.IsNullOrWhiteSpace(Error))
             {
-                return new XElement("chemical",
+                return new XElement(XmlNodeNames.ChemicalModelObj,
                 new XElement("name", Name),
                     Hazards.Count > 0 ?
                         new XElement("hazards",
@@ -95,6 +104,8 @@ namespace SafetyProgram.ModelObjects
             }
             else throw new InvalidDataException("Errors found when trying to save the document");
         }
+
+        public string Identifier { get { return XmlNodeNames.ChemicalModelObj; } }
 
         public string Error
         {

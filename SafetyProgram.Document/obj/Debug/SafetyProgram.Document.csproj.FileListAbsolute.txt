@@ -7,7 +7,7 @@ V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.ModelObjects.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.Base.pdb
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.DocumentObjects.pdb
 V:\SafetyProgram\SafetyProgram.Document\bin\Debug\SafetyProgram.ModelObjects.pdb
-V:\SafetyProgram\SafetyProgram.Document\obj\Debug\ResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.Document\obj\Debug\SafetyProgram.Document.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\ContextMenus\DocumentContextMenuView.baml
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\Ribbons\CoshhDocumentRibbonTabView.baml
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\CoshhDocumentView.baml
@@ -17,7 +17,6 @@ V:\SafetyProgram\SafetyProgram.Document\obj\Debug\CoshhDocumentView.g.cs
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\SafetyProgram.Document_MarkupCompile.cache
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\SafetyProgram.Document.g.resources
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\SafetyProgram.Document.Properties.Resources.resources
-V:\SafetyProgram\SafetyProgram.Document\obj\Debug\GenerateResource.read.1.tlog
-V:\SafetyProgram\SafetyProgram.Document\obj\Debug\GenerateResource.write.1.tlog
+V:\SafetyProgram\SafetyProgram.Document\obj\Debug\SafetyProgram.Document.csproj.GenerateResource.Cache
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\SafetyProgram.Document.dll
 V:\SafetyProgram\SafetyProgram.Document\obj\Debug\SafetyProgram.Document.pdb

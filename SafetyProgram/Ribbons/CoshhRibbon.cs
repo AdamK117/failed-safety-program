@@ -5,6 +5,7 @@ using Fluent;
 
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Commands;
 
 namespace SafetyProgram.Ribbons
 {
@@ -51,7 +52,7 @@ namespace SafetyProgram.Ribbons
         /// <summary>
         /// Gets the parent CoshhWindow's commands.
         /// </summary>
-        public IWindowCommands WindowCommands
+        public ICommandsHolder WindowCommands
         {
             get { return window.Commands; }
         }
