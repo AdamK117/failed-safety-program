@@ -38,8 +38,7 @@ namespace SafetyProgram.Configuration
             var configuration = configFile.Element("appconfig");
             if (configuration != null)
             {
-                var config = new AppConfiguration();
-                config.LoadData(configuration);
+                var config = new AppConfiguration().LoadFromXml(configuration);
                 return config;
             }
             else throw new InvalidDataException("No appconfig root found in the specified configuration file");

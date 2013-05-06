@@ -27,7 +27,7 @@ namespace SafetyProgram.Configuration.UnitTests
             var testRepos = configFile.Repositories[0];
 
             Assert.AreEqual<string>(testRepos.Source, "local", "An incorrect source type was serialized into the repository. Should be 'local'.");
-            Assert.AreEqual<string>(testRepos.Path, "C:\\repository.xml", "An incorrect path was serialized into the repository when compared with the test data");
+            Assert.AreEqual<string>(testRepos.Path, "V:\\SafetyProgram\\SafetyProgram.TestData\\ChemicalRepository.xml", "An incorrect path was serialized into the repository when compared with the test data");
             Assert.AreEqual<string>(testRepos.Login, "", "A login was serialized into the repository object. Local files (e.g. in the test data) shouldn't have a login");
             Assert.AreEqual<string>(testRepos.Password, "", "A password was serialized into the repository object. Local files (e.g. in the test data) shouldn't have a password");
 
@@ -52,7 +52,7 @@ namespace SafetyProgram.Configuration.UnitTests
                 var configService = new LocalConfigurationFile("SomeFakePath");
                 Assert.Fail("The service should throw a FileNotFound exception if constructed with an incorrect path");
             }
-            catch (FileNotFoundException e)
+            catch (FileNotFoundException)
             {
                 //The right exception, test passed.
             }            
@@ -71,7 +71,7 @@ namespace SafetyProgram.Configuration.UnitTests
                 configService.Load();
                 Assert.Fail("Invalid data should produce a System.IO.InvalidDataException, this invalid data does not");
             }
-            catch (InvalidDataException e)
+            catch (InvalidDataException)
             {
                 //The right exception, test passed.
             }

@@ -56,14 +56,9 @@ namespace SafetyProgram.Configuration
             private set;
         }
 
-        public void LoadData(XElement data)
+        public IRepositoryInfo LoadFromXml(XElement data)
         {
-            var loadedRepository = ConfigHelpers.GetRepository(data);
-            Source = loadedRepository.Source;
-            Path = loadedRepository.Path;
-            Login = loadedRepository.Login;
-            Password = loadedRepository.Password;
-            ContentType = loadedRepository.ContentType;
+            return ConfigHelpers.GetRepository(data);
         }
 
         public XElement WriteToXElement()

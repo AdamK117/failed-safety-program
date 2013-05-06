@@ -1,8 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using System.Xml.Linq;
-
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects.ChemicalTable.Commands;
 using SafetyProgram.DocumentObjects.ChemicalTable.ContextMenus;
@@ -29,10 +29,25 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         /// <param name="parent">The document in which the chemical table resides.</param>
         public ChemicalTable()
         {
-            chemicals = new ObservableCollection<ICoshhChemicalObject>();
-            selectedChemicals = new ObservableCollection<ICoshhChemicalObject>();
+            chemicals = new ObservableCollection<ICoshhChemicalObject>();            
             header = "Chemical Table";
 
+            selectedChemicals = new ObservableCollection<ICoshhChemicalObject>();
+
+            commands = new ChemicalTableCommands(this);
+            contextMenu = new ChemicalTableContextMenu(this);
+            contextualTab = new ChemicalTableRibbonTab(this);
+
+            view = new ChemicalTableView(this);
+            view.InputBindings.AddRange(commands.Hotkeys);
+        }
+
+        public ChemicalTable(ObservableCollection<ICoshhChemicalObject> chemicals, string header)
+        {
+            this.chemicals = chemicals;
+            this.header = header;
+
+            selectedChemicals = new ObservableCollection<ICoshhChemicalObject>();
             commands = new ChemicalTableCommands(this);
             contextMenu = new ChemicalTableContextMenu(this);
             contextualTab = new ChemicalTableRibbonTab(this);
@@ -146,21 +161,27 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         /// Loads chemicals from an XElement into the ChemicalTable
         /// </summary>
         /// <param name="data">ChemicalTable data in XElement format</param>
-        public override void LoadData(XElement data)
+        public override IDocumentObject LoadFromXml(XElement data)
         {
+            string loadedHeader = "";
+            ObservableCollection<ICoshhChemicalObject> loadedChemicals = new ObservableCollection<ICoshhChemicalObject>();            
+
             var headerElement = data.Element("header");
             if (headerElement != null)
             {
-                Header = headerElement.Value;
+                loadedHeader = headerElement.Value;
             }
 
             var coshhChemicalsElements = data.Elements(XmlNodeNames.CoshhChemicalObj);
+            Func<XElement, ICoshhChemicalObject> chemicalCtor = new CoshhChemicalObject().LoadFromXml;
+
             foreach (XElement coshhChemicalElement in coshhChemicalsElements)
             {
-                var chemicalObject = new CoshhChemicalObject();
-                chemicalObject.LoadData(coshhChemicalElement);
-                chemicals.Add(chemicalObject);
+                var chemicalObject = chemicalCtor(coshhChemicalElement);
+                loadedChemicals.Add(chemicalObject);
             }
+
+            return new ChemicalTable(loadedChemicals, loadedHeader);
         }
 
         public override string Identifier { get { return XmlNodeNames.ChemicalTableObj; } }

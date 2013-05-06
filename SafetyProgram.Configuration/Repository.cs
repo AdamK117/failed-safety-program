@@ -11,8 +11,15 @@ using System.Diagnostics;
 namespace SafetyProgram.Configuration
 {
     public class Repository<T> : IRepository<T>
-        where T : IStorable
+        where T : IStorable<T>
     {
+        public Repository(string entryType, IEnumerable<T> entries, Func<T> entryConstructor)
+        {
+            EntryType = entryType;
+            Entries = entries;
+            EntryConstructor = entryConstructor;
+        }
+
         public Repository(Func<T> ctor)
         {
             EntryConstructor = ctor;
@@ -36,24 +43,28 @@ namespace SafetyProgram.Configuration
             private set;
         }
 
-        public void LoadData(XElement data)
+        public IRepository<T> LoadFromXml(XElement data)
         {
-            var loadedEntries = new List<T>();
-            var referenceEntry = EntryConstructor();
+            string loadedEntryType;
+            List<T> loadedEntries = new List<T>();
+            Func<T> loadedEntryConstructor;
 
-            var entryElements = data.Elements(referenceEntry.Identifier);
+            loadedEntryConstructor = () => Activator.CreateInstance<T>();
 
-            Debug.Assert(entryElements.Count() > 0, "Empty repository found");
-           
+            var referenceEntry = loadedEntryConstructor();
+
+            var entryElements = data.Elements(referenceEntry.Identifier);         
             foreach (XElement entryElement in entryElements)
             {
                 var newEntry = EntryConstructor();
-                newEntry.LoadData(entryElement);
+                newEntry.LoadFromXml(entryElement);
                 loadedEntries.Add(newEntry);
             }
+            Debug.Assert(entryElements.Count() > 0, "Empty repository found");
 
-            Entries = loadedEntries;
-            EntryType = referenceEntry.Identifier;
+            loadedEntryType = referenceEntry.Identifier;
+
+            return new Repository<T>(loadedEntryType, loadedEntries, loadedEntryConstructor);
         }
 
         public XElement WriteToXElement()

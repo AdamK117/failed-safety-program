@@ -25,9 +25,9 @@ namespace Test
             IService<IConfiguration> configSvc = new LocalConfigurationFile(TestData.ConfigFile);
             IConfiguration config = configSvc.Load();
 
-            var c = ConfigFileGetter.RetrieveO<ChemicalModelObject>(
+            var c = ConfigFileGetter.RetrieveO<IChemicalModelObject>(
                 config,
-                FuncConvert.ToFSharpFunc<Unit,ChemicalModelObject>(someUnit => new ChemicalModelObject())
+                FuncConvert.ToFSharpFunc<Unit,IChemicalModelObject>(someUnit => new ChemicalModelObject())
             );
         
         }

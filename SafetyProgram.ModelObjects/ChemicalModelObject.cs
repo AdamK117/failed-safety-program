@@ -21,6 +21,12 @@ namespace SafetyProgram.ModelObjects
             hazards = new ObservableCollection<IHazardModelObject>();
         }
 
+        public ChemicalModelObject(string name, ObservableCollection<IHazardModelObject> hazards)
+        {
+            this.name = name;
+            this.hazards = hazards;
+        }
+
         public ChemicalModelObject(IChemicalModelObject data)
         {
             name = data.Name;
@@ -51,14 +57,17 @@ namespace SafetyProgram.ModelObjects
             get { return hazards; }
         }
 
-        public void LoadData(XElement data)
+        public IChemicalModelObject LoadFromXml(XElement data)
         {
+            string loadedName;
+            var loadedHazards = new ObservableCollection<IHazardModelObject>();
+
             //Required: Get the name. A chemical must have a name.
             {
                 var chemicalNameElement = data.Element("name");
                 if (chemicalNameElement != null)
                 {
-                    Name = chemicalNameElement.Value;
+                    loadedName = chemicalNameElement.Value;
                 }
                 else throw new InvalidDataException("The loaded chemical must have a name!");
             }
@@ -79,12 +88,13 @@ namespace SafetyProgram.ModelObjects
 
                     foreach (XElement hazardData in hazardElements)
                     {
-                        var hazardObject = new HazardModelObject();
-                        hazardObject.LoadData(hazardData);
-                        hazards.Add(hazardObject);
+                        var hazardObject = new HazardModelObject().LoadFromXml(hazardData);
+                        loadedHazards.Add(hazardObject);
                     }
                 }
             }
+
+            return new ChemicalModelObject(loadedName, loadedHazards);
         }
 
         public XElement WriteToXElement()

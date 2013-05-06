@@ -14,6 +14,7 @@ using SafetyProgram.Document.Commands;
 using SafetyProgram.Document.ContextMenus;
 using SafetyProgram.Document.Ribbons;
 using SafetyProgram.Static;
+using SafetyProgram.Base.DocumentFormats;
 
 namespace SafetyProgram.Document
 {
@@ -33,11 +34,12 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Constructs a new CoshhDocument.
         /// </summary>
-        public CoshhDocument(string title, IDocFormat format)
+        public CoshhDocument(string title, IDocFormat format, IDocumentBody body)
         {
             this.format = format;
             this.title = title;
-            this.body = body = new CoshhDocumentBody();
+            this.body = body;
+
             this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
             this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection); 
            
@@ -145,28 +147,31 @@ namespace SafetyProgram.Document
         /// Loads data (Xml format) into the CoshhDocument
         /// </summary>
         /// <param name="data">The data to be loaded into the CoshhDocument</param>
-        public void LoadData(XElement data)
+        public IDocument LoadFromXml(XElement data)
         {
-            XElement coshhData = data;
+            string loadedTitle;
+            IDocFormat loadedFormat;
+            IDocumentBody loadedBody;
 
-            if (coshhData != null)
+            if (data != null)
             {
-                if (coshhData.Attribute("title") != null)
+                if (data.Attribute("title") != null)
                 {
-                    Title = coshhData.Attribute("title").Value;
+                    loadedTitle = data.Attribute("title").Value;
                 }
                 else
                 {
                     Debug.Write("WARNING: When loading a CoshhDocument a title could not be found, set to default");
-                    Title = "Untitled CoshhDocument";
+                    loadedTitle = "Untitled CoshhDocument";
                 }
 
-                foreach (IDocumentObject docObject in DocObjectRegistry.GetDocObjects(data))
-                {
-                    body.Items.Add(docObject);
-                }
+                loadedFormat = new A4DocFormat();
+
+                loadedBody = new CoshhDocumentBody(DocObjectRegistry.GetDocObjects(data));
             }
             else throw new InvalidDataException("No CoshhDocument root could be found (<coshh></coshh>)");
+
+            return new CoshhDocument(loadedTitle, loadedFormat, loadedBody);
         }
 
         /// <summary>

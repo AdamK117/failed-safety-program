@@ -36,7 +36,7 @@ namespace SafetyProgram.DocumentObjects
                 {
                     //And make it if it is.
                     IDocumentObject docObject = registry[element.Name.LocalName]();
-                    docObject.LoadData(element);
+                    docObject.LoadFromXml(element);
                     foundIDocObjects.Add(docObject);
                 }
             }

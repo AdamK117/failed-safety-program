@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>hDp7Cuq5hreDSdgnBT6xREGsGWo=</dsig:DigestValue>
+        <dsig:DigestValue>YUWNd1oADpCxvCzyGbu0iklzAlg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -73,7 +73,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>gFKkd91dn48gAX3olihodeUb9Mk=</dsig:DigestValue>
+        <dsig:DigestValue>PfD+iNPJPzuG0PfwomoMApfQKBE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>iM6NdlVi7AidO0kLfJDg+EAI1hA=</dsig:DigestValue>
+        <dsig:DigestValue>Vc3oqgyn81KAubMa4PkXcbZ0mi8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,7 +97,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>32+yguEtd0fYXjBjHXpifcEArnw=</dsig:DigestValue>
+        <dsig:DigestValue>jSlGSi9JYgQxBwVJN+zYmD4QZ+s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -114,14 +114,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.ModelObjects.dll" size="13824">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.ModelObjects.dll" size="14336">
       <assemblyIdentity name="SafetyProgram.ModelObjects" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4AvPuJDUFKXZ6viegIG1lc6jLfc=</dsig:DigestValue>
+        <dsig:DigestValue>Y3SNw0DLBUZghaHobucLAPd7CpU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -146,7 +146,7 @@ namespace SafetyProgram.DocumentObjects
         /// Loads Xml (as an XElement) data into the DocObject
         /// </summary>
         /// <param name="data">XElement representation of the DocObject</param>
-        public abstract void LoadData(XElement data);
+        public abstract IDocumentObject LoadFromXml(XElement data);
 
         /// <summary>
         /// Saves the DocObject to an XElement.

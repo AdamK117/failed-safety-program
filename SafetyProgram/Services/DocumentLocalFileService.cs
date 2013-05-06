@@ -7,6 +7,7 @@ using SafetyProgram.Base.DocumentFormats;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Document;
 using SafetyProgram.Base;
+using SafetyProgram.Document.Body;
 
 namespace SafetyProgram.Services
 {
@@ -23,7 +24,7 @@ namespace SafetyProgram.Services
         public IDocument New()
         {
             path = "";
-            return new CoshhDocument("Untitled Document", new A4DocFormat());
+            return new CoshhDocument("Untitled Document", new A4DocFormat(), new CoshhDocumentBody());
         }
 
         /// <summary>
@@ -58,11 +59,11 @@ namespace SafetyProgram.Services
                     {
                         path = openFileDialog1.FileName;
 
-                        IDocument loadedDoc = new CoshhDocument("Untitled Document", new A4DocFormat());
+                        IDocument loadedDoc = new CoshhDocument("Untitled Document", new A4DocFormat(), new CoshhDocumentBody());
 
                         XElement xDoc = XElement.Load(path);
 
-                        loadedDoc.LoadData(xDoc);
+                        loadedDoc.LoadFromXml(xDoc);
 
                         return loadedDoc;
                     }

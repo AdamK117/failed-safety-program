@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace SafetyProgram.Base.Interfaces
 {
-    public interface IDocument : IViewable, IStorable, IInteractable
+    public interface IDocument : IViewable, IStorable<IDocument>, IInteractable
     {
         ObservableCollection<IRibbonTabItem> RibbonTabs { get; }
 

@@ -4,7 +4,7 @@ using SafetyProgram.Base.Interfaces;
 namespace SafetyProgram.ModelObjects
 {
     public interface ICoshhChemicalObject : 
-        INotifyPropertyChanged, IStorable, ICopyPasteable, IDeepCloneable<ICoshhChemicalObject>
+        INotifyPropertyChanged, IStorable<ICoshhChemicalObject>, ICopyPasteable, IDeepCloneable<ICoshhChemicalObject>
     {
         decimal Value { get; set; }
         string Unit { get; set; }

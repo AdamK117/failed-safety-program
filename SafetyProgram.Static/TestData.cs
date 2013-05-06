@@ -21,5 +21,10 @@ namespace SafetyProgram.Static
         /// File containing delibarately invalid data
         /// </summary>
         public static readonly string InvalidConfigFile = Path.Combine(TestFolder, "InvalidConfigurationFile.xml");
+
+        /// <summary>
+        /// A standard Coshh file
+        /// </summary>
+        public static readonly string CoshhFile = Path.Combine(TestFolder, "CoshhFile.xml");
     }
 }

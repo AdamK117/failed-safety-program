@@ -2,7 +2,7 @@
 
 namespace SafetyProgram.Configuration
 {
-    public interface IRepositoryInfo : IStorable
+    public interface IRepositoryInfo : IStorable<IRepositoryInfo>
     {
         string Source { get; }
         string ContentType { get; }

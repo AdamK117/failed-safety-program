@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Xml.Linq;
 
 namespace SafetyProgram.Base.Interfaces
@@ -8,14 +9,14 @@ namespace SafetyProgram.Base.Interfaces
     /// -It may be loaded/saved in an XmlFormat
     /// This interface is subject to extension with enhancements in storage (databases, etc.)
     /// </summary>
-    public interface IStorable : IDataErrorInfo
+    public interface IStorable<T> : IDataErrorInfo
     {
         /// <summary>
         /// Loads data into the IStorable from an XElement source. Generates Debug messages for data warnings.
         /// </summary>
         /// <param name="data">Raw, Xml format, data</param>
         /// <exception cref="System.IO.InvalidDataException">Thrown when the supplied data is invalid and cannot be loaded.</exception>
-        void LoadData(XElement data);
+        T LoadFromXml(XElement data);
 
         /// <summary>
         /// Writes the IStorable to an XElement for saving.

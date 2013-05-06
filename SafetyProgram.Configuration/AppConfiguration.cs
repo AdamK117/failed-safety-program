@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using SafetyProgram.Static;
-using System.Xml.Linq;
 using System.Linq;
-using System.IO;
+using System.Xml.Linq;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.Configuration
 {
@@ -13,6 +12,13 @@ namespace SafetyProgram.Configuration
             DocumentLock = false;
             Repositories = new List<IRepositoryInfo>();
             Locale = "en-GB";
+        }
+
+        public AppConfiguration(bool documentLock, IList<IRepositoryInfo> repositories, string locale)
+        {
+            this.DocumentLock = documentLock;
+            this.Repositories = repositories;
+            this.Locale = locale;
         }
 
         public bool DocumentLock
@@ -33,11 +39,13 @@ namespace SafetyProgram.Configuration
             private set;
         }
 
-        public void LoadData(XElement data)
+        public IConfiguration LoadFromXml(XElement data)
         {
-            DocumentLock = ConfigHelpers.GetDocumentLock(data);
-            Locale = ConfigHelpers.GetLocale(data);
-            Repositories = ConfigHelpers.GetRepositories(data);
+            bool documentLock = ConfigHelpers.GetDocumentLock(data);
+            IList<IRepositoryInfo> loadedRepositories = ConfigHelpers.GetRepositories(data);
+            string loadedLocale = ConfigHelpers.GetLocale(data);
+
+            return new AppConfiguration(documentLock, loadedRepositories, loadedLocale);
         }
 
         public XElement WriteToXElement()

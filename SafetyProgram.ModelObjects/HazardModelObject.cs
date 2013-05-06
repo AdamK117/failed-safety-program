@@ -16,6 +16,13 @@ namespace SafetyProgram.ModelObjects
         public HazardModelObject()
         { }
 
+        public HazardModelObject(string hazard, string signalWord, string symbol)
+        {
+            this.hazard = hazard;
+            this.signalWord = signalWord;
+            this.symbol = symbol;
+        }
+
         public HazardModelObject(IHazardModelObject data)
         {
             hazard = data.Hazard;
@@ -59,13 +66,14 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
-        public void LoadData(XElement data)
+        public IHazardModelObject LoadFromXml(XElement data)
         {
+            string loadedHazard, loadedSignalWord, loadedSymbol;
             //Required: Get the hazard statement for this hazard.
             {
                 if (!String.IsNullOrWhiteSpace(data.Value))
                 {
-                    Hazard = data.Value;
+                    loadedHazard = data.Value;
                 }
                 else throw new InvalidDataException("No hazard was found inside a hazard statement (every hazard statement must state its hazard).");
             }
@@ -73,14 +81,16 @@ namespace SafetyProgram.ModelObjects
             //Optional: Get the hazards signal word. Custom hazards may not have a signal word.
             {
                 var signalWordAttr = data.Attribute("signalword");
-                SignalWord = (signalWordAttr == null) ? (null) : (signalWordAttr.Value);
+                loadedSignalWord = (signalWordAttr == null) ? (null) : (signalWordAttr.Value);
             }
 
             //Optional: Get the symbol associated with the hazard. Not every hazard has a symbol.
             {
                 var symbolAttr = data.Attribute("symbol");
-                Symbol = (symbolAttr == null) ? (null) : (symbolAttr.Value);
+                loadedSymbol = (symbolAttr == null) ? (null) : (symbolAttr.Value);
             }
+
+            return new HazardModelObject(loadedHazard, loadedSignalWord, loadedSymbol);
         }
 
         public XElement WriteToXElement()

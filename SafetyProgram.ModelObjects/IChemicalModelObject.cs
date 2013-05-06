@@ -5,7 +5,7 @@ using SafetyProgram.Base.Interfaces;
 namespace SafetyProgram.ModelObjects
 {
     public interface IChemicalModelObject : 
-        INotifyPropertyChanged, IStorable, ICopyPasteable, IDeepCloneable<IChemicalModelObject>
+        INotifyPropertyChanged, IStorable<IChemicalModelObject>, ICopyPasteable, IDeepCloneable<IChemicalModelObject>
     {
         string Name { get; set; }
         ObservableCollection<IHazardModelObject> Hazards { get; }

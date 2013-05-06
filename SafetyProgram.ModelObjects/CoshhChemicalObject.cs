@@ -18,6 +18,13 @@ namespace SafetyProgram.ModelObjects
             chemical = new ChemicalModelObject();
         }
 
+        public CoshhChemicalObject(decimal _value, string unit, IChemicalModelObject chemical)
+        {
+            this._value = _value;
+            this.unit = unit;
+            this.chemical = chemical;
+        }
+
         public CoshhChemicalObject(ICoshhChemicalObject data)
         {
             _value = data.Value;
@@ -58,8 +65,12 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
-        public void LoadData(XElement data)
+        public ICoshhChemicalObject LoadFromXml(XElement data)
         {
+            decimal loadedValue;
+            string loadedUnit;
+            IChemicalModelObject loadedChemical;
+
             //Required: Get the amount of chemical being used for this CoshhChemical entry.
             {
                 var amountElement = data.Element("amount");
@@ -68,7 +79,7 @@ namespace SafetyProgram.ModelObjects
                     //Parse the amount (decimal) used in this Coshh entry
                     try
                     {
-                        Value = decimal.Parse(amountElement.Value);
+                        loadedValue = decimal.Parse(amountElement.Value);
                     }
                     catch (ArgumentNullException e)
                     {
@@ -84,7 +95,7 @@ namespace SafetyProgram.ModelObjects
                         var unitAttribute = amountElement.Attribute("unit");
                         if (unitAttribute != null)
                         {
-                            Unit = unitAttribute.Value;
+                            loadedUnit = unitAttribute.Value;
                         }
                         else throw new InvalidDataException("No units were given for the amount of CoshhChemical being used");
                     }
@@ -97,10 +108,12 @@ namespace SafetyProgram.ModelObjects
                 var chemicalElement = data.Element(XmlNodeNames.ChemicalModelObj);
                 if (chemicalElement != null)
                 {
-                    Chemical.LoadData(chemicalElement);
+                    loadedChemical = Chemical.LoadFromXml(chemicalElement);
                 }
                 else throw new InvalidDataException("No chemical was defined for the CoshhChemical");
             }
+
+            return new CoshhChemicalObject(loadedValue, loadedUnit, loadedChemical);
         }
 
         public XElement WriteToXElement()
@@ -160,16 +173,11 @@ namespace SafetyProgram.ModelObjects
 
         public ICoshhChemicalObject DeepClone()
         {
-            var coshhModel = new CoshhChemicalObject();
-
-            //Clone properties on the new object
-            coshhModel.Value = _value;
-            coshhModel.Unit = unit;
-
-            //Reference types, needs cloning
-            coshhModel.Chemical = chemical.DeepClone();
-
-            return coshhModel;
+            return new CoshhChemicalObject(
+                _value, 
+                unit, 
+                chemical.DeepClone()
+            );
         }
 
         public string ComIdentity
