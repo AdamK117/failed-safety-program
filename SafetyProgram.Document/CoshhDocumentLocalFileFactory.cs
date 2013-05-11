@@ -13,17 +13,24 @@ namespace SafetyProgram.Document
     public class CoshhDocumentLocalFileFactory
         : ILocalFileFactory<CoshhDocument>
     {
-        public static CoshhDocument StaticCreateNew()
+        private readonly IConfiguration appConfiguration;
+
+        public CoshhDocumentLocalFileFactory(IConfiguration appConfiguration)
         {
-            return new CoshhDocument();
+            this.appConfiguration = appConfiguration;
+        }
+
+        public static CoshhDocument StaticCreateNew(IConfiguration appConfiguration)
+        {
+            return new CoshhDocument(appConfiguration, "someDefaultTitle", new A4DocFormat(), new CoshhDocumentBody());
         }
 
         public CoshhDocument CreateNew()
         {
-            return StaticCreateNew();
+            return StaticCreateNew(appConfiguration);
         }
 
-        public static CoshhDocument StaticLoad(XElement data)
+        public static CoshhDocument StaticLoad(XElement data, IConfiguration appConfiguration)
         {
             string loadedTitle;
             IDocFormat loadedFormat;
@@ -50,26 +57,23 @@ namespace SafetyProgram.Document
 
                 //Required: Get the body of the document
                 loadedBody = new CoshhDocumentBody(
-                    AbstractDocObjectFactory.GetDocObjects(data)
+                    AbstractDocObjectFactory.GetDocObjects(data, appConfiguration)
                 );
             }
             else throw new InvalidDataException("No CoshhDocument root could be found (<coshh></coshh>)");
 
-            return new CoshhDocument(loadedTitle, loadedFormat, loadedBody);
+            return new CoshhDocument(appConfiguration, loadedTitle, loadedFormat, loadedBody);
         }
 
         public CoshhDocument Load(XElement data)
         {
-            return StaticLoad(data);
+            return StaticLoad(data, appConfiguration);
         }
 
-        public static XElement StaticStore(CoshhDocument item)
+        public static XElement StaticStore(CoshhDocument item, IConfiguration appConfiguration)
         {
-            //TODO: Validation checks
-
             XElement xDoc = new XElement("coshh",
-                from docObject in item.Body.Items
-                select AbstractDocObjectFactory.SaveDocObject(docObject)
+                AbstractDocObjectFactory.SaveDocObjects(item.Body.Items, appConfiguration)
             );
 
             return xDoc;
@@ -77,14 +81,14 @@ namespace SafetyProgram.Document
 
         public XElement Store(CoshhDocument item)
         {
-            return StaticStore(item);
+            return StaticStore(item, appConfiguration);
         }
 
-        public const string XmlIdentity = "coshhdocument";
+        public const string XML_IDENTIFIER = "coshhdocument";
 
         public string XmlIdentifier
         {
-            get { return XmlIdentity; }
+            get { return XML_IDENTIFIER; }
         }
     }
 }

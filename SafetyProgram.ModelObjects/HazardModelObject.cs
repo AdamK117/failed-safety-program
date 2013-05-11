@@ -107,7 +107,7 @@ namespace SafetyProgram.ModelObjects
 
         public IDataObject GetDataObject()
         {
-            return this.GetDataObject(ComIdentity);
+            return this.GetDataObject(COM_IDENTITY);
         }
 
         public override string ToString()

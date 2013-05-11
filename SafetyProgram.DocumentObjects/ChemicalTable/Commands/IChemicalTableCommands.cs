@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable.Commands
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     public interface IChemicalTableCommands
     {

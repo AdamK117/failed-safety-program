@@ -2,9 +2,9 @@
 using System.Windows;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects.ChemicalTable;
+using SafetyProgram.DocumentObjects.ChemicalTableNs;
 using SafetyProgram.ModelObjects;
-namespace SafetyProgram.DocumentObjects.ChemicalTable.Commands
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class CopySelectedICom : ExtendedICommand<ChemicalTable>
     {

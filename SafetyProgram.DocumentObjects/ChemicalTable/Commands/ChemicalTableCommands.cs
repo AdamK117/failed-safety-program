@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using SafetyProgram.DocumentObjects.GenericCommands;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable.Commands
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class ChemicalTableCommands : IChemicalTableCommands
     {

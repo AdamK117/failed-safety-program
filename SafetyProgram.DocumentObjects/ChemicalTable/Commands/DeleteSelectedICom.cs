@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using SafetyProgram.ModelObjects;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable.Commands
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     public sealed class DeleteSelectedICom : ExtendedICommand<ChemicalTable>
     {

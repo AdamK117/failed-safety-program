@@ -140,5 +140,14 @@ namespace SafetyProgram.Base
             }
             else return null;
         }
+
+        public static IEnumerable<T> DeepCloneList<T>(this IEnumerable<T> items)
+            where T : IDeepCloneable<T>
+        {
+            foreach (T item in items)
+            {
+                yield return item.DeepClone();
+            }
+        }
     }
 }

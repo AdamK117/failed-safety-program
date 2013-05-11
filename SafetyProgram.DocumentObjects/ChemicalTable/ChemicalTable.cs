@@ -1,54 +1,43 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
-using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects.ChemicalTable.Commands;
-using SafetyProgram.DocumentObjects.ChemicalTable.ContextMenus;
-using SafetyProgram.DocumentObjects.ChemicalTable.Ribbon;
+using SafetyProgram.DocumentObjects.ChemicalTableNs.Commands;
+using SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus;
+using SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon;
 using SafetyProgram.ModelObjects;
-using SafetyProgram.Static;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
     public sealed class ChemicalTable : DocumentObject
     {
         private readonly IChemicalTableCommands commands;
         private readonly IContextMenu contextMenu;
         private readonly IRibbonTabItem contextualTab;
+        private readonly IConfiguration appConfiguration;
         private readonly UserControl view;
 
-        /// <summary>
-        /// Constructs a ChemicalTable DocObject containing no data (blank table).
-        /// </summary>
-        /// <param name="parent">The document in which the chemical table resides.</param>
-        public ChemicalTable()
+        internal ChemicalTable (
+            IConfiguration appConfiguration, 
+            ObservableCollection<ICoshhChemicalObject> chemicals, 
+            string header,
+            Func<ChemicalTable, ChemicalTableRibbonTab> ribbonCreator,
+            Func<ChemicalTable, ChemicalTableView> viewCreator
+            )
         {
-            chemicals = new ObservableCollection<ICoshhChemicalObject>();            
-            header = "Chemical Table";
+            if (appConfiguration != null) this.appConfiguration = appConfiguration;
+            else throw new ArgumentNullException();
 
-            selectedChemicals = new ObservableCollection<ICoshhChemicalObject>();
+            if (chemicals != null) this.chemicals = chemicals;
+            else throw new ArgumentNullException();
 
-            commands = new ChemicalTableCommands(this);
-            contextMenu = new ChemicalTableContextMenu(this);
-            contextualTab = new ChemicalTableRibbonTab(this);
-
-            view = new ChemicalTableView(this);
-            view.InputBindings.AddRange(commands.Hotkeys);
-        }
-
-        public ChemicalTable(ObservableCollection<ICoshhChemicalObject> chemicals, string header)
-        {
-            this.chemicals = chemicals;
             this.header = header;
 
-            selectedChemicals = new ObservableCollection<ICoshhChemicalObject>();
             commands = new ChemicalTableCommands(this);
             contextMenu = new ChemicalTableContextMenu(this);
             contextualTab = new ChemicalTableRibbonTab(this);
 
-            view = new ChemicalTableView(this);
-            view.InputBindings.AddRange(commands.Hotkeys);
+            view = viewCreator(this);
         }
 
         /// <summary>
@@ -89,7 +78,10 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         /// </summary>
         public IChemicalTableCommands Commands
         {
-            get { return commands; }
+            get 
+            { 
+                return commands; 
+            }
         }
 
         private string header;
@@ -98,7 +90,10 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         /// </summary>
         public string Header
         {
-            get { return header; }
+            get 
+            { 
+                return header; 
+            }
             set
             {
                 header = value;
@@ -112,10 +107,13 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         /// </summary>
         public ObservableCollection<ICoshhChemicalObject> Chemicals
         {
-            get { return chemicals; }
+            get 
+            { 
+                return chemicals; 
+            }
         }
 
-        private readonly ObservableCollection<ICoshhChemicalObject> selectedChemicals;
+        private readonly ObservableCollection<ICoshhChemicalObject> selectedChemicals = new ObservableCollection<ICoshhChemicalObject>();
         /// <summary>
         /// Gets/Sets the chemical selected in the table.
         /// </summary>
@@ -138,12 +136,18 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
 
         public override string Error
         {
-            get { throw new System.NotImplementedException(); }
+            get 
+            { 
+                throw new System.NotImplementedException(); 
+            }
         }
 
         public override string this[string columnName]
         {
-            get { throw new System.NotImplementedException(); }
+            get 
+            { 
+                throw new System.NotImplementedException(); 
+            }
         }
     }
 }

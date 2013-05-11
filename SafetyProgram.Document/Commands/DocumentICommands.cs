@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects.ChemicalTable;
+using SafetyProgram.DocumentObjects.ChemicalTableNs;
 
 namespace SafetyProgram.Document.Commands
 {
@@ -9,7 +9,7 @@ namespace SafetyProgram.Document.Commands
     {
         public DocumentICommands(IDocument document)
         {
-            InsertChemicalTable = new InsertIDocumentObjectICom(document, () => new ChemicalTable());
+            //InsertChemicalTable = new InsertIDocumentObjectICom(document, () => new ChemicalTable());
             DeleteIDocObject = new DeleteIDocObjectICom(document);
 
             Hotkeys = setHotkeys();

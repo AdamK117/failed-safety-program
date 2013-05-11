@@ -1,10 +1,9 @@
 ﻿using System.Windows;
-using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Services;
-using SafetyProgram.Configuration;
-using SafetyProgram.Static;
 using SafetyProgram.Base;
-using SafetyProgram.ModelObjects;
+using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Configuration;
+using SafetyProgram.Services;
+using SafetyProgram.Static;
 
 namespace SafetyProgram
 {
@@ -24,7 +23,7 @@ namespace SafetyProgram
             IConfiguration configFile = configFileService.Load();
 
             //Load the document for the app
-            IService<IDocument> service = new DocumentLocalFileService();
+            IService<IDocument> service = new DocumentLocalFileService(configFile);
             IDocument document = service.New();
 
             IWindow window = new CoshhWindow(configFile, service, document);

@@ -2,9 +2,9 @@
 using Fluent;
 
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects.ChemicalTable.Commands;
+using SafetyProgram.DocumentObjects.ChemicalTableNs.Commands;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable.Ribbon
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon
 {
     internal sealed class ChemicalTableRibbonTab : IRibbonTabItem
     {

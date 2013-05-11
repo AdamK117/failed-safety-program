@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable.ContextMenus
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus
 {
     /// <summary>
     /// Interaction logic for ChemicalTableContextMenuView.xaml

@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Windows;
-using System.Xml.Linq;
 using SafetyProgram.Base;
-using SafetyProgram.Static;
 
 namespace SafetyProgram.ModelObjects
 {
@@ -94,12 +89,9 @@ namespace SafetyProgram.ModelObjects
 
         public IChemicalModelObject DeepClone()
         {
-            //TODO: Extension method for "this IEnumerable<T> where T : IDeepCloneable<T>"
-            var hazardsOc = new ObservableCollection<IHazardModelObject>();
-            foreach (IHazardModelObject hazard in hazards)
-            {
-                hazardsOc.Add(hazard.DeepClone());
-            }
+            var hazardsOc = new ObservableCollection<IHazardModelObject>(
+                this.hazards.DeepCloneList()
+            );
 
             return new ChemicalModelObject(
                 name,
@@ -119,7 +111,7 @@ namespace SafetyProgram.ModelObjects
 
         public IDataObject GetDataObject()
         {
-            return this.GetDataObject(ComIdentity);
+            return this.GetDataObject(COM_IDENTITY);
         }
     }
 }

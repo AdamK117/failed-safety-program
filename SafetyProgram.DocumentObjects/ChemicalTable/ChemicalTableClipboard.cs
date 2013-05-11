@@ -4,7 +4,7 @@ using System.Windows;
 using SafetyProgram.Base;
 using SafetyProgram.ModelObjects;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
     internal static class ChemicalTableClipboard
     {

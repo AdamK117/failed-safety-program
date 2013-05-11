@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using SafetyProgram.ModelObjects;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
     /// <summary>
     /// Interaction logic for ChemicalTableView.xaml
@@ -27,6 +27,8 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
                 };
 
             InitializeComponent();
+
+            this.InputBindings.AddRange(viewModel.Commands.Hotkeys);
         }
 
         #region Selection logic

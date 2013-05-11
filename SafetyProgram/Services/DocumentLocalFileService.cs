@@ -13,9 +13,18 @@ namespace SafetyProgram.Services
     /// </summary>
     internal sealed class DocumentLocalFileService : IService<IDocument>
     {
-        private bool canNew = true, canLoad = true, canSave = true, canSaveAs = true;
+        private readonly bool canNew = true, canLoad = true, canSave = true, canSaveAs = true;
 
         private string path;
+
+        private readonly IConfiguration appConfiguration;
+        private readonly CoshhDocumentLocalFileFactory factory;
+
+        public DocumentLocalFileService(IConfiguration appConfiguration)
+        {
+            this.appConfiguration = appConfiguration;
+            factory = new CoshhDocumentLocalFileFactory(appConfiguration);
+        }
 
         /// <summary>
         /// Creates a new IDocument
@@ -23,8 +32,12 @@ namespace SafetyProgram.Services
         /// <returns>A newly constructed IDocument</returns>
         public IDocument New()
         {
-            path = "";
-            return CoshhDocumentLocalFileFactory.StaticCreateNew();
+            if (CanNew())
+            {
+                path = "";
+                return factory.CreateNew();
+            }
+            else throw new InvalidOperationException("Cannot create a new document");
         }
 
         /// <summary>
@@ -45,29 +58,33 @@ namespace SafetyProgram.Services
         /// <exception cref="ArgumentException">Thrown if the user cancels out of loading a file</exception>
         public IDocument Load()
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog()
+            if (CanLoad())
             {
-                Filter = "Coshh Documents (.xml)|*.xml",
-                Multiselect = false,
-                CheckFileExists = true
-            };
+                OpenFileDialog openFileDialog1 = new OpenFileDialog()
+                {
+                    Filter = "Coshh Documents (.xml)|*.xml",
+                    Multiselect = false,
+                    CheckFileExists = true
+                };
 
-            switch (openFileDialog1.ShowDialog())
-            {
-                case DialogResult.OK:
-                    if(File.Exists(openFileDialog1.FileName))
-                    {
-                        path = openFileDialog1.FileName;
+                switch (openFileDialog1.ShowDialog())
+                {
+                    case DialogResult.OK:
+                        if (File.Exists(openFileDialog1.FileName))
+                        {
+                            path = openFileDialog1.FileName;
 
-                        XElement xDoc = XElement.Load(path);
+                            XElement xDoc = XElement.Load(path);
 
-                        return CoshhDocumentLocalFileFactory.StaticLoad(xDoc);
-                    }
-                    else throw new FileNotFoundException("The file selected does not exist", openFileDialog1.FileName);
+                            return factory.Load(xDoc);
+                        }
+                        else throw new FileNotFoundException("The file selected does not exist", openFileDialog1.FileName);
 
-                default:
-                    throw new ArgumentException("User cancelled out of selecting a file to load");
+                    default:
+                        throw new ArgumentException("User cancelled out of selecting a file to load");
+                }
             }
+            else throw new InvalidOperationException();            
         }
 
         /// <summary>
@@ -88,18 +105,23 @@ namespace SafetyProgram.Services
         /// <exception cref="System.IO.InvalidDataException">Thrown if something in the IDocument is invalid for saving</exception>
         public void Save(IDocument document)
         {
-            if (String.IsNullOrWhiteSpace(path))
+            if (CanSave(document))
             {
-                SaveAs(document);
+                if (String.IsNullOrWhiteSpace(path))
+                {
+                    SaveAs(document);
+                }
+                else
+                {
+                    XDocument xDoc = new XDocument();
+
+                    xDoc.Add(factory.Store(document as CoshhDocument));
+
+                    xDoc.Save(path);
+                }
             }
-            else
-            {
-                XDocument xDoc = new XDocument();
-
-                xDoc.Add(CoshhDocumentLocalFileFactory.StaticStore(document as CoshhDocument));
-
-                xDoc.Save(path);
-            }            
+            else throw new InvalidOperationException();
+                        
         }
 
         /// <summary>
@@ -120,18 +142,22 @@ namespace SafetyProgram.Services
         /// <exception cref="System.IO.InvalidDataException">Thrown if invalid data is present in the IDocument</exception>
         public void SaveAs(IDocument document)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Coshh Safety Document|*.xml";
-            saveFileDialog.Title = "Save As";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (CanSaveAs(document))
             {
-                //TODO: Figure out why this is blocking saving a file
-                //Directory.GetAccessControl(path);
-                path = saveFileDialog.FileName;
-                Save(document);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Coshh Safety Document|*.xml";
+                saveFileDialog.Title = "Save As";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //TODO: Figure out why this is blocking saving a file
+                    //Directory.GetAccessControl(path);
+                    path = saveFileDialog.FileName;
+                    Save(document);
+                }
+                else throw new ArgumentException("User cancelled out of SaveAs dialog");
             }
-            else throw new ArgumentException("User cancelled out of SaveAs dialog");
+            else throw new InvalidOperationException();            
         }
 
         /// <summary>

@@ -1,9 +1,9 @@
 ﻿using System.Windows.Controls;
 
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects.ChemicalTable.Commands;
+using SafetyProgram.DocumentObjects.ChemicalTableNs.Commands;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable.ContextMenus
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus
 {
     internal sealed class ChemicalTableContextMenu : IContextMenu
     {

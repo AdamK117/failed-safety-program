@@ -2,25 +2,38 @@
 using System.Linq;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon;
 using SafetyProgram.ModelObjects;
-using SafetyProgram.Static;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
     public class ChemicalTableLocalFileFactory
         : ILocalFileFactory<ChemicalTable>
     {
-        public static ChemicalTable StaticCreateNew()
+        private readonly IConfiguration appConfiguration;
+
+        public ChemicalTableLocalFileFactory(IConfiguration appConfiguration)
         {
-            return new ChemicalTable();
+            this.appConfiguration = appConfiguration;
+        }
+
+        public static ChemicalTable StaticCreateNew(IConfiguration appConfiguration)
+        {
+            return new ChemicalTable(
+                appConfiguration, 
+                new ObservableCollection<ICoshhChemicalObject>(), 
+                "Chemical Table",
+                (chemTable) => new ChemicalTableRibbonTab(chemTable),
+                (chemTable) => new ChemicalTableView(chemTable)
+            );
         }
 
         public ChemicalTable CreateNew()
         {
-            return StaticCreateNew();
+            return StaticCreateNew(appConfiguration);
         }
 
-        public static ChemicalTable StaticLoad(XElement data)
+        public static ChemicalTable StaticLoad(XElement data, IConfiguration appConfiguration)
         {
             string loadedHeader = "";
             var loadedChemicals = new ObservableCollection<ICoshhChemicalObject>();
@@ -38,15 +51,20 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
                 loadedChemicals.Add(chemicalObject);
             }
 
-            return new ChemicalTable(loadedChemicals, loadedHeader);
+            return new ChemicalTable(appConfiguration, 
+                loadedChemicals, 
+                loadedHeader,
+                (chemTable) => new ChemicalTableRibbonTab(chemTable),
+                (chemTable) => new ChemicalTableView(chemTable)
+                );
         }
 
         public ChemicalTable Load(XElement data)
         {
-            return StaticLoad(data);
+            return StaticLoad(data, appConfiguration);
         }
 
-        public static XElement StaticStore(ChemicalTable item)
+        public static XElement StaticStore(ChemicalTable item, IConfiguration appConfiguration)
         {
             return (
                 new XElement(XML_IDENTIFIER,
@@ -62,7 +80,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
 
         public XElement Store(ChemicalTable item)
         {
-            return StaticStore(item);
+            return StaticStore(item, appConfiguration);
         }
 
         public const string XML_IDENTIFIER = "chemicaltable";

@@ -17,38 +17,25 @@ namespace SafetyProgram.Document
         private readonly IContextMenu contextMenu;
         private readonly CoshhDocumentView view;
         private readonly ObservableCollection<IRibbonTabItem> ribbonTabItems;
-
-        public CoshhDocument()
-        {
-            this.format = new A4DocFormat();
-            this.title = "Untitled Document";
-            this.body = new CoshhDocumentBody();
-
-            this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
-            this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection);
-
-            edited = false;
-
-            commands = new DocumentICommands(this);
-            contextMenu = new DocumentContextMenu(commands);
-
-            ribbonTabItems = new ObservableCollection<IRibbonTabItem>();
-
-            //Insert tab
-            ribbonTabItems.Add(new CoshhDocumentRibbonTab(this));
-
-            view = new CoshhDocumentView(this);
-            view.InputBindings.AddRange(commands.Hotkeys);
-        }
+        private readonly IConfiguration appConfiguration;
 
         /// <summary>
         /// Constructs a new CoshhDocument.
         /// </summary>
-        public CoshhDocument(string title, IDocFormat format, IDocumentBody body)
+        public CoshhDocument
+            (IConfiguration appConfiguration, string title, IDocFormat format, IDocumentBody body)
         {
-            this.format = format;
-            this.title = title;
-            this.body = body;
+            if (appConfiguration != null) this.appConfiguration = appConfiguration;
+            else throw new ArgumentNullException();
+
+            if (format != null) this.format = format;
+            else throw new ArgumentNullException();
+
+            if (title != null) this.title = title;
+            else throw new ArgumentNullException();
+
+            if (body != null) this.body = body;
+            else throw new ArgumentNullException();
 
             this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
             this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection); 
@@ -57,7 +44,6 @@ namespace SafetyProgram.Document
 
             commands = new DocumentICommands(this);
             contextMenu = new DocumentContextMenu(commands);
-
             ribbonTabItems = new ObservableCollection<IRibbonTabItem>();
 
             //Insert tab
@@ -188,12 +174,10 @@ namespace SafetyProgram.Document
                 RaisePropertyChanged("RemoveFlag");
             }
         }
-
         public bool RemoveFlag
         {
             get { return removeFlag; }
         }
-
         public event Action<object, bool> RemoveFlagChanged;
 
         private bool edited;

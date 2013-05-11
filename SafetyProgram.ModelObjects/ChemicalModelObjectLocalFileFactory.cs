@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Static;
 
 namespace SafetyProgram.ModelObjects
 {

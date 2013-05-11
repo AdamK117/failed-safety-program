@@ -1,6 +1,6 @@
 ﻿using Fluent;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable.Ribbon
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon
 {
     /// <summary>
     /// Interaction logic for ChemicalTableRibbonView.xaml

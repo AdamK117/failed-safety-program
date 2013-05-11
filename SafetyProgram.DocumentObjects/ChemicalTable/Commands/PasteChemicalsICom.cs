@@ -4,7 +4,7 @@ using System.Windows;
 using SafetyProgram.ModelObjects;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.DocumentObjects.ChemicalTable.Commands
+namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     public sealed class PasteChemicalsICom : ExtendedICommand<ChemicalTable>
     {
