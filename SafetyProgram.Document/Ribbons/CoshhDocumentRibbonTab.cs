@@ -5,10 +5,9 @@ using SafetyProgram.Document.Commands;
 
 namespace SafetyProgram.Document.Ribbons
 {
-    public class CoshhDocumentRibbonTab : IRibbonTabItem
+    public sealed class CoshhDocumentRibbonTab : IRibbonTabItem
     {
-        private readonly CoshhDocument document;
-        private readonly CoshhDocumentRibbonTabView view;
+        private readonly CoshhDocument document;  
 
         public CoshhDocumentRibbonTab(CoshhDocument document)
         {
@@ -18,17 +17,27 @@ namespace SafetyProgram.Document.Ribbons
 
         public DocumentICommands DocumentCommands
         {
-            get { return document.Commands; }
+            get 
+            {
+                return document.Commands; 
+            }
         }
 
+        private readonly CoshhDocumentRibbonTabView view;
         public RibbonTabItem View
         {
-            get { return view; }
+            get 
+            { 
+                return view; 
+            }
         }
 
         Control IViewable.View
         {
-            get { return view; }
+            get 
+            { 
+                return view; 
+            }
         }
     }
 }

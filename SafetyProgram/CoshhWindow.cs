@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Commands;
@@ -11,33 +10,43 @@ namespace SafetyProgram
 {
     public sealed class CoshhWindow : BaseINPC, IWindow<IDocument>, IRibbonWindow
     {
-        private readonly Window view;
-        private readonly IWindowCommands commands;
-        private readonly IRibbon ribbon;
-
-        private IService<IDocument> service;
-        private IDocument document;
-
         /// <summary>
         /// Constructs a CoshhWindow IRibbonWindow.
         /// </summary>
-        /// <param name="service">The service used by the IRibbonWindow to load IDocuments into it</param>
+        /// <param name="documentService">The service used by the IRibbonWindow to load IDocuments into it</param>
         /// <param name="document">The IDocument shown by the IRibbonWindow on construction</param>
-        public CoshhWindow(IService<IDocument> service, IDocument document)
+        public CoshhWindow
+            (IConfiguration appConfiguration, IService<IDocument> documentService, IDocument document)
         {
-            if (service == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without a service");
+            if (appConfiguration == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without an app configuration");
+            else this.appConfiguration = appConfiguration;
+
+            if (documentService == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without a service");
+            else this.service = documentService;
+
             if (document == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without a document");
+            else this.document = document;
 
-            this.service = service;
-            this.document = document;
-
+            //TODO: Change to Func<IWindow<obj>> Dependancy injections?
             commands = new WindowICommands(this);
             ribbon = new CoshhRibbon(this);
-
             view = new CoshhWindowView(this);
-            view.InputBindings.AddRange(commands.Hotkeys);          
+            view.InputBindings.AddRange(commands.Hotkeys);
         }
 
+        private readonly IConfiguration appConfiguration;
+        /// <summary>
+        /// Gets the configuration used by this instance of the CoshhWindow.
+        /// </summary>
+        public IConfiguration AppConfiguration
+        {
+            get
+            {
+                return appConfiguration;
+            }
+        }
+
+        private readonly Window view;
         /// <summary>
         /// Get the CoshhWindow view.
         /// </summary>
@@ -48,7 +57,6 @@ namespace SafetyProgram
                 return view; 
             }
         }
-
         /// <summary>
         /// Gets the CoshhWindow control (IViewable)
         /// </summary>
@@ -60,6 +68,7 @@ namespace SafetyProgram
             }
         }
 
+        private readonly IWindowCommands commands;
         /// <summary>
         /// The ICommands (and hotkeys) available to this CoshhWindow
         /// </summary>
@@ -71,6 +80,7 @@ namespace SafetyProgram
             }
         }
 
+        private readonly IRibbon ribbon;
         /// <summary>
         /// Gets the IRibbon viewable for the CoshhWindow
         /// </summary>
@@ -82,6 +92,7 @@ namespace SafetyProgram
             }
         }
 
+        private IDocument document;
         /// <summary>
         /// Gets the IDocument in this CoshhWindow.
         /// </summary>
@@ -95,9 +106,9 @@ namespace SafetyProgram
             set 
             { 
                 document = value;
-                if (DocumentChanged != null)
+                if (ContentChanged != null)
                 {
-                    DocumentChanged(document);
+                    ContentChanged(document);
                 }                
                 RaisePropertyChanged("Content");
             }
@@ -105,8 +116,9 @@ namespace SafetyProgram
         /// <summary>
         /// Event that triggers when its IDocument changes.
         /// </summary>
-        public event Action<IDocument> DocumentChanged;
+        public event Action<IDocument> ContentChanged;
 
+        private IService<IDocument> service;
         /// <summary>
         /// Gets the IDocumentService I/O service used by this CoshhWindow
         /// </summary>

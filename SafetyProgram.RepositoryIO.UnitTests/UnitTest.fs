@@ -1,10 +1,11 @@
-﻿namespace UnitTestProject1
+﻿namespace SafetyProgram.RepositoryIO
 
 open System
 open Microsoft.VisualStudio.TestTools.UnitTesting
+open ConfigFileGetter
 
 [<TestClass>]
 type UnitTest() = 
     [<TestMethod>]
-    member x.TestMethod1 () = 
+    member this.TestMethod1 () = 
         Assert.AreEqual(1,1)

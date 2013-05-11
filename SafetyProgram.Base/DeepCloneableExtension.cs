@@ -63,7 +63,7 @@ namespace SafetyProgram.Base
         /// <exception cref="System.Runtime.InteropServices.COMException">Thrown if the COM (clipboard etc.) cannot be accessed</exception>
         /// <exception cref="System.OutOfMemoryException">Thrown when the items, T, aren't [Serializable].</exception>
         /// <exception cref="System.InvalidCastException"></exception>
-        public static void TryPaste<T>(this ICollection<T> target, string comIdentity)
+        public static void TryPasteInto<T>(this ICollection<T> target, string comIdentity)
             where T : IDeepCloneable<T>
         {
             if (Clipboard.ContainsData(comIdentity))

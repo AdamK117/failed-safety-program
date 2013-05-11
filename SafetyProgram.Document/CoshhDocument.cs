@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Controls;
 using System.Xml.Linq;
-
 using SafetyProgram.Base;
+using SafetyProgram.Base.DocumentFormats;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects;
 using SafetyProgram.Document.Body;
 using SafetyProgram.Document.Commands;
 using SafetyProgram.Document.ContextMenus;
 using SafetyProgram.Document.Ribbons;
+using SafetyProgram.DocumentObjects;
 using SafetyProgram.Static;
-using SafetyProgram.Base.DocumentFormats;
 
 namespace SafetyProgram.Document
 {
@@ -25,11 +24,28 @@ namespace SafetyProgram.Document
         private readonly CoshhDocumentView view;
         private readonly ObservableCollection<IRibbonTabItem> ribbonTabItems;
 
-        private readonly IDocumentBody body;
-        private string title;
-        private IDocFormat format;      
+        public CoshhDocument()
+        {
+            this.format = new A4DocFormat();
+            this.title = "Untitled Document";
+            this.body = new CoshhDocumentBody();
 
-        private bool edited;
+            this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
+            this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection);
+
+            edited = false;
+
+            commands = new DocumentICommands(this);
+            contextMenu = new DocumentContextMenu(commands);
+
+            ribbonTabItems = new ObservableCollection<IRibbonTabItem>();
+
+            //Insert tab
+            ribbonTabItems.Add(new CoshhDocumentRibbonTab(this));
+
+            view = new CoshhDocumentView(this);
+            view.InputBindings.AddRange(commands.Hotkeys);
+        }
 
         /// <summary>
         /// Constructs a new CoshhDocument.
@@ -62,9 +78,13 @@ namespace SafetyProgram.Document
         /// </summary>
         public Control View
         {
-            get { return view; }
+            get 
+            { 
+                return view; 
+            }
         }
 
+        private readonly IDocumentBody body;
         /// <summary>
         /// Gets the body (content) of the CoshhDocument
         /// </summary>
@@ -87,6 +107,7 @@ namespace SafetyProgram.Document
             }
         }
 
+        private string title;
         /// <summary>
         /// Gets/Sets the Title of the CoshhDocument.
         /// </summary>
@@ -112,6 +133,7 @@ namespace SafetyProgram.Document
         /// </summary>
         public event Action<string> TitleChanged;
 
+        private IDocFormat format;
         /// <summary>
         /// Gets/Sets the format (A4 etc.) of the CoshhDocument.
         /// </summary>
@@ -128,26 +150,24 @@ namespace SafetyProgram.Document
         /// <param name="newFormat">The new format</param>
         public void ChangeFormat(IDocFormat newFormat)
         {
-            format = newFormat;
-
-            if (FormatChanged != null)
+            if (newFormat != null)
             {
-                FormatChanged(format);
+                format = newFormat;
+
+                if (FormatChanged != null)
+                {
+                    FormatChanged(format);
+                }
+                RaisePropertyChanged("Format");
             }
-            RaisePropertyChanged("Format");
+            else throw new ArgumentNullException("The IDocumentFormat supplied must not be null (A document must have a format)");
         }
         /// <summary>
         /// Event that triggers if the Format of the CoshhDocument changes.
         /// </summary>
         public event Action<IDocFormat> FormatChanged;
 
-        #region IStorable (Input/Output) Implementation
-
-        /// <summary>
-        /// Loads data (Xml format) into the CoshhDocument
-        /// </summary>
-        /// <param name="data">The data to be loaded into the CoshhDocument</param>
-        public IDocument LoadFromXml(XElement data)
+        public static IDocument ConstructFromXml(XElement data)
         {
             string loadedTitle;
             IDocFormat loadedFormat;
@@ -155,23 +175,39 @@ namespace SafetyProgram.Document
 
             if (data != null)
             {
-                if (data.Attribute("title") != null)
-                {
-                    loadedTitle = data.Attribute("title").Value;
-                }
-                else
-                {
-                    Debug.Write("WARNING: When loading a CoshhDocument a title could not be found, set to default");
-                    loadedTitle = "Untitled CoshhDocument";
+                //Optional: Get the title of the document
+                {                    
+                    var titleAttr = data.Attribute("title");
+                    if (titleAttr != null)
+                    {
+                        loadedTitle = titleAttr.Value;
+                    }
+                    else
+                    {
+                        Debug.Write("WARNING: When loading a CoshhDocument a title could not be found, set to default");
+                        loadedTitle = "Untitled CoshhDocument";
+                    }
                 }
 
+                //Optional: Get the format of the document
                 loadedFormat = new A4DocFormat();
 
-                loadedBody = new CoshhDocumentBody(DocObjectRegistry.GetDocObjects(data));
+                //Required: Get the body of the document
+                loadedBody = new CoshhDocumentBody(
+                    DocObjectRegistry.GetDocObjects(data)
+                );
             }
             else throw new InvalidDataException("No CoshhDocument root could be found (<coshh></coshh>)");
 
             return new CoshhDocument(loadedTitle, loadedFormat, loadedBody);
+        }
+        /// <summary>
+        /// Loads data (Xml format) into the CoshhDocument
+        /// </summary>
+        /// <param name="data">The data to be loaded into the CoshhDocument</param>
+        public IDocument LoadFromXml(XElement data)
+        {
+            return ConstructFromXml(data);
         }
 
         /// <summary>
@@ -181,21 +217,22 @@ namespace SafetyProgram.Document
         public XElement WriteToXElement()
         {
             //TODO: Validation checks
-            ICollection<XElement> content = new List<XElement>();
 
-            foreach (IDocumentObject docObject in Body.Items)
-            {
-                content.Add(docObject.WriteToXElement());
-            }
-
-            XElement xDoc = new XElement("coshh", content);
+            XElement xDoc = new XElement("coshh",
+                from docObject in Body.Items
+                    select docObject.WriteToXElement()
+            );
 
             return xDoc;
         }
 
-        public string Identifier { get { return XmlNodeNames.CoshhDocument; } }
-
-        #endregion
+        public string Identifier 
+        { 
+            get 
+            { 
+                return XmlNodeNames.COSHH_DOCUMENT; 
+            } 
+        }
 
         #region IInteractable (ContextMenu, Removable, Editable) implementation
 
@@ -211,7 +248,6 @@ namespace SafetyProgram.Document
         }
 
         private bool removeFlag;
-
         /// <summary>
         /// Flag the CoshhDocument for removal
         /// </summary>
@@ -235,6 +271,7 @@ namespace SafetyProgram.Document
 
         public event Action<object, bool> RemoveFlagChanged;
 
+        private bool edited;
         /// <summary>
         /// Marks the CoshhDocument as edited
         /// </summary>
@@ -248,7 +285,7 @@ namespace SafetyProgram.Document
                 {
                     EditedFlagChanged(this, true);
                 }
-                RaisePropertyChanged("Edited");
+                RaisePropertyChanged("EditedFlag");
             }
         }
         /// <summary>
@@ -280,7 +317,10 @@ namespace SafetyProgram.Document
 
         public ObservableCollection<IRibbonTabItem> RibbonTabs
         {
-            get { return ribbonTabItems; }
+            get 
+            { 
+                return ribbonTabItems; 
+            }
         }
 
         private ISelectable oldSelection;

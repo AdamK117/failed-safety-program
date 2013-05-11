@@ -24,7 +24,7 @@ namespace SafetyProgram.Configuration.UnitTests
             Assert.AreEqual<string>(configFile.Locale, "en-GB");
 
             //First repository entry in the test data: local, C:\repository.xml.
-            var testRepos = configFile.Repositories[0];
+            var testRepos = configFile.RepositoriesInfo[0];
 
             Assert.AreEqual<string>(testRepos.Source, "local", "An incorrect source type was serialized into the repository. Should be 'local'.");
             Assert.AreEqual<string>(testRepos.Path, "V:\\SafetyProgram\\SafetyProgram.TestData\\ChemicalRepository.xml", "An incorrect path was serialized into the repository when compared with the test data");
@@ -32,7 +32,7 @@ namespace SafetyProgram.Configuration.UnitTests
             Assert.AreEqual<string>(testRepos.Password, "", "A password was serialized into the repository object. Local files (e.g. in the test data) shouldn't have a password");
 
             //Second repository entry in the test data: database, \\myserver\sqlAddr, Admin, password
-            var testDbRepos = configFile.Repositories[1];
+            var testDbRepos = configFile.RepositoriesInfo[1];
 
             Assert.AreEqual<string>(testDbRepos.Source, "database");
             Assert.AreEqual<string>(testDbRepos.Path, "\\\\myserver\\sqlAddr");

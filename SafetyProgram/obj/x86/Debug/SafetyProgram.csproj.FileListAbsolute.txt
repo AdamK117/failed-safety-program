@@ -167,3 +167,10 @@ V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.exe.manifest
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.application
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.exe
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.pdb
+V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Configuration.dll
+V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.RepositoryIO.dll
+V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Static.dll
+V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Configuration.pdb
+V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.RepositoryIO.pdb
+V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.RepositoryIO.xml
+V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Static.pdb

@@ -24,17 +24,12 @@ namespace SafetyProgram.ModelObjects
         public ChemicalModelObject(string name, ObservableCollection<IHazardModelObject> hazards)
         {
             this.name = name;
-            this.hazards = hazards;
-        }
 
-        public ChemicalModelObject(IChemicalModelObject data)
-        {
-            name = data.Name;
-            if (data.Hazards != null)
+            if (hazards != null)
             {
-                hazards = data.Hazards;
+                this.hazards = hazards;
             }
-            else hazards = new ObservableCollection<IHazardModelObject>();
+            else throw new ArgumentNullException("The hazards supplied must not be null");
         }
 
         private string name;
@@ -51,18 +46,22 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
-        private ObservableCollection<IHazardModelObject> hazards;
+        private readonly ObservableCollection<IHazardModelObject> hazards;
         public ObservableCollection<IHazardModelObject> Hazards
         {
-            get { return hazards; }
+            get 
+            { 
+                return hazards; 
+            }
         }
 
-        public IChemicalModelObject LoadFromXml(XElement data)
+        public static IChemicalModelObject ConstructFromXml(XElement data)
         {
+            //Declare variables that are populated when reading the XML
             string loadedName;
             var loadedHazards = new ObservableCollection<IHazardModelObject>();
 
-            //Required: Get the name. A chemical must have a name.
+            //Required: Get the chemicals name. A chemical must have a name.
             {
                 var chemicalNameElement = data.Element("name");
                 if (chemicalNameElement != null)
@@ -77,7 +76,7 @@ namespace SafetyProgram.ModelObjects
                 var hazardsElement = data.Element("hazards");
                 if (hazardsElement != null)
                 {
-                    var hazardElements = hazardsElement.Elements(XmlNodeNames.HazardModelObj);
+                    var hazardElements = hazardsElement.Elements(XmlNodeNames.HAZARD_MODEL_OBJ);
 
                     //Redundancy check: Files shouldn't really be saved with empty <hazards></hazards> tags (although it won't cause a problem if it does).
                     Debug.Assert(
@@ -88,21 +87,26 @@ namespace SafetyProgram.ModelObjects
 
                     foreach (XElement hazardData in hazardElements)
                     {
-                        var hazardObject = new HazardModelObject().LoadFromXml(hazardData);
+                        var hazardObject = HazardModelObject.ConstructFromXml(hazardData);
                         loadedHazards.Add(hazardObject);
                     }
                 }
             }
 
+            //Return the fully populated object
             return new ChemicalModelObject(loadedName, loadedHazards);
+        }
+        public IChemicalModelObject LoadFromXml(XElement data)
+        {
+            return ConstructFromXml(data);
         }
 
         public XElement WriteToXElement()
         {
             if (String.IsNullOrWhiteSpace(Error))
             {
-                return new XElement(XmlNodeNames.ChemicalModelObj,
-                new XElement("name", Name),
+                return new XElement(XmlNodeNames.CHEMICAL_MODEL_OBJ,
+                    new XElement("name", Name),
                     Hazards.Count > 0 ?
                         new XElement("hazards",
                             from hazard in hazards
@@ -115,7 +119,13 @@ namespace SafetyProgram.ModelObjects
             else throw new InvalidDataException("Errors found when trying to save the document");
         }
 
-        public string Identifier { get { return XmlNodeNames.ChemicalModelObj; } }
+        public string Identifier 
+        { 
+            get 
+            {
+                return XmlNodeNames.CHEMICAL_MODEL_OBJ; 
+            } 
+        }
 
         public string Error
         {
@@ -156,23 +166,25 @@ namespace SafetyProgram.ModelObjects
 
         public IChemicalModelObject DeepClone()
         {
-            ChemicalModelObject chemModel = new ChemicalModelObject();
-
-            //Clone fields
-            chemModel.Name = name;
-
-            //Reference types, these are deep cloned into the new object from this.
+            //TODO: Extension method for "this IEnumerable<T> where T : IDeepCloneable<T>"
+            var hazardsOc = new ObservableCollection<IHazardModelObject>();
             foreach (IHazardModelObject hazard in hazards)
             {
-                chemModel.Hazards.Add(hazard.DeepClone());
+                hazardsOc.Add(hazard.DeepClone());
             }
 
-            return chemModel;
+            return new ChemicalModelObject(
+                name,
+                hazardsOc
+            );
         }
 
         public string ComIdentity
         {
-            get { return "ChemicalModel"; }
+            get
+            {
+                return ComIdentities.CHEMICAL_MODEL;
+            }
         }
 
         public IDataObject GetDataObject()

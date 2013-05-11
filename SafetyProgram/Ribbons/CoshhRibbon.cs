@@ -5,16 +5,12 @@ using Fluent;
 
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Commands;
 
 namespace SafetyProgram.Ribbons
 {
     internal sealed class CoshhRibbon : BaseINPC, IRibbon
     {
         private readonly CoshhWindow window;
-        private readonly CoshhRibbonView view;
-
-        private bool ribbonVisibility;
 
         /// <summary>
         /// Constructs the CoshhWindow's ribbon. This is the primary ribbon for the CoshhWindow.
@@ -27,18 +23,22 @@ namespace SafetyProgram.Ribbons
             view = new CoshhRibbonView(this);
 
             //Monitor if the CoshhDocument in the CoshhWindow changes.
-            window.DocumentChanged += documentChanged;
+            window.ContentChanged += documentChanged;
 
             //Prematurely trigger the handler if a CoshhDocument is already open in the CoshhWindow
             if (window.Content != null) documentChanged(window.Content);
         }
 
+        private readonly CoshhRibbonView view;
         /// <summary>
         /// Gets the CoshhRibbon view.
         /// </summary>
         public Ribbon View
         {
-            get { return view; }
+            get 
+            {
+                return view; 
+            }
         }
 
         /// <summary>
@@ -46,7 +46,10 @@ namespace SafetyProgram.Ribbons
         /// </summary>
         Control IViewable.View
         {
-            get { return view; }
+            get 
+            { 
+                return view; 
+            }
         }
 
         /// <summary>
@@ -54,15 +57,22 @@ namespace SafetyProgram.Ribbons
         /// </summary>
         public ICommandsHolder WindowCommands
         {
-            get { return window.Commands; }
+            get 
+            { 
+                return window.Commands; 
+            }
         }
 
+        private bool ribbonVisibility;
         /// <summary>
         /// Gets the visibility state of the CoshhRibbon. False if there is no CoshhDocument present in the CoshhWindow.
         /// </summary>
         public bool RibbonVisibility 
         {
-            get { return ribbonVisibility; }
+            get 
+            { 
+                return ribbonVisibility; 
+            }
             private set
             {
                 ribbonVisibility = value;

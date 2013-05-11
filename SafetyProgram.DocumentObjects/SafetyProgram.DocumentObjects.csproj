@@ -71,8 +71,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractDocObjectFactory.cs" />
     <Compile Include="ChemicalTable\ChemicalTable.cs" />
     <Compile Include="ChemicalTable\ChemicalTableClipboard.cs" />
+    <Compile Include="ChemicalTable\ChemicalTableLocalFileFactory.cs" />
     <Compile Include="ChemicalTable\ChemicalTableView.xaml.cs">
       <DependentUpon>ChemicalTableView.xaml</DependentUpon>
     </Compile>

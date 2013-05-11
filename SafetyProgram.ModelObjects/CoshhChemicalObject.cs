@@ -22,20 +22,21 @@ namespace SafetyProgram.ModelObjects
         {
             this._value = _value;
             this.unit = unit;
-            this.chemical = chemical;
-        }
 
-        public CoshhChemicalObject(ICoshhChemicalObject data)
-        {
-            _value = data.Value;
-            unit = data.Unit;
-            chemical = data.Chemical;
+            if(chemical != null)
+            {
+                this.chemical = chemical;
+            }
+            else throw new ArgumentNullException("The chemical supplied to the CoshhChemicalObject must not be null");            
         }
 
         private decimal _value;
         public decimal Value
         {
-            get { return _value; }
+            get 
+            { 
+                return _value; 
+            }
             set
             {
                 _value = value;
@@ -46,7 +47,10 @@ namespace SafetyProgram.ModelObjects
         private string unit;
         public string Unit
         {
-            get { return unit; }
+            get 
+            { 
+                return unit; 
+            }
             set
             {
                 unit = value;
@@ -54,18 +58,16 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
-        private IChemicalModelObject chemical;
+        private readonly IChemicalModelObject chemical;
         public IChemicalModelObject Chemical
         {
-            get { return chemical; }
-            set
-            {
-                chemical = value;
-                RaisePropertyChanged("Chemical");
+            get 
+            { 
+                return chemical; 
             }
         }
 
-        public ICoshhChemicalObject LoadFromXml(XElement data)
+        public static ICoshhChemicalObject ConstructFromXml(XElement data)
         {
             decimal loadedValue;
             string loadedUnit;
@@ -105,15 +107,19 @@ namespace SafetyProgram.ModelObjects
 
             //Required: Get the chemicals details
             {
-                var chemicalElement = data.Element(XmlNodeNames.ChemicalModelObj);
+                var chemicalElement = data.Element(XmlNodeNames.CHEMICAL_MODEL_OBJ);
                 if (chemicalElement != null)
                 {
-                    loadedChemical = Chemical.LoadFromXml(chemicalElement);
+                    loadedChemical = ChemicalModelObject.ConstructFromXml(chemicalElement);
                 }
                 else throw new InvalidDataException("No chemical was defined for the CoshhChemical");
             }
 
             return new CoshhChemicalObject(loadedValue, loadedUnit, loadedChemical);
+        }
+        public ICoshhChemicalObject LoadFromXml(XElement data)
+        {
+            return ConstructFromXml(data);
         }
 
         public XElement WriteToXElement()
@@ -121,15 +127,24 @@ namespace SafetyProgram.ModelObjects
             if (String.IsNullOrWhiteSpace(Error))
             {
                 return
-                new XElement(XmlNodeNames.CoshhChemicalObj,
-                    new XElement("amount", Value, new XAttribute("unit", Unit)),
-                    Chemical.WriteToXElement()
-                );
+                    new XElement(XmlNodeNames.COSHH_CHEMICAL_MODEL_OBJ,
+                        new XElement("amount", 
+                            Value, 
+                            new XAttribute("unit", Unit)
+                        ),
+                        Chemical.WriteToXElement()
+                    );
             }
             else throw new InvalidDataException("Errors found during save: " + Error);
         }
 
-        public string Identifier { get { return XmlNodeNames.CoshhChemicalObj; } }
+        public string Identifier 
+        { 
+            get 
+            { 
+                return XmlNodeNames.COSHH_CHEMICAL_MODEL_OBJ; 
+            } 
+        }
 
         public string Error
         {
@@ -173,6 +188,7 @@ namespace SafetyProgram.ModelObjects
 
         public ICoshhChemicalObject DeepClone()
         {
+            //Pass value types into new Ctor. DeepClone IDeepCloneable members
             return new CoshhChemicalObject(
                 _value, 
                 unit, 
@@ -182,14 +198,21 @@ namespace SafetyProgram.ModelObjects
 
         public string ComIdentity
         {
-            get { return "CoshhChemicalObject"; }
+            get 
+            { 
+                return ComIdentities.COSHH_CHEMICAL; 
+            }
         }
 
         public IDataObject GetDataObject()
         {
+            //Uses an IStorable extension method
             return this.GetDataObject(ComIdentity);
         }
 
-        public override string ToString() { return chemical.Name; }
+        public override string ToString() 
+        { 
+            return chemical.Name; 
+        }
     }
 }

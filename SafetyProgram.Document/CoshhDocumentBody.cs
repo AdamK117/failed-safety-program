@@ -9,17 +9,12 @@ namespace SafetyProgram.Document.Body
 {
     public sealed class CoshhDocumentBody : BaseINPC, IDocumentBody
     {
-        private readonly ObservableCollection<IDocumentObject> items;
-        private IDocumentObject selection;
-
         /// <summary>
         /// Construct a blank CoshhDocumentBody
         /// </summary>
         public CoshhDocumentBody()
         {
-            items = new ObservableCollection<IDocumentObject>();
             items.CollectionChanged += items_CollectionChanged;
-            selection = null;
         }
 
         /// <summary>
@@ -28,19 +23,29 @@ namespace SafetyProgram.Document.Body
         /// <param name="items">Items to populate into this CoshhDocumentBody</param>
         public CoshhDocumentBody(IEnumerable<IDocumentObject> items)
         {
-            this.items = new ObservableCollection<IDocumentObject>(items);
+            foreach (IDocumentObject item in items)
+            {
+                this.items.Add(item);
+            }
             this.items.CollectionChanged += items_CollectionChanged;
-            selection = null;
         }
 
+        private readonly ObservableCollection<IDocumentObject> items = new ObservableCollection<IDocumentObject>();
         public ObservableCollection<IDocumentObject> Items
         {
-            get { return items; }
+            get 
+            { 
+                return items; 
+            }
         }
 
+        private IDocumentObject selection = null;
         public IDocumentObject Selection
         {
-            get { return selection; }
+            get 
+            { 
+                return selection; 
+            }
         }
 
         public void Select(IDocumentObject item)

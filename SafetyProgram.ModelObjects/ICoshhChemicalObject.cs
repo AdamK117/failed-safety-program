@@ -8,6 +8,6 @@ namespace SafetyProgram.ModelObjects
     {
         decimal Value { get; set; }
         string Unit { get; set; }
-        IChemicalModelObject Chemical { get; set; }
+        IChemicalModelObject Chemical { get; }
     }
 }

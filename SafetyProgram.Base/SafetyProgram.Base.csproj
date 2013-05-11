@@ -61,7 +61,12 @@
     <Compile Include="BaseICommand.cs" />
     <Compile Include="BaseINPC.cs" />
     <Compile Include="ExtendedICommand.cs" />
+    <Compile Include="Interfaces\IConfiguration.cs" />
     <Compile Include="Interfaces\ICommandsHolder.cs" />
+    <Compile Include="Interfaces\IConfigurableStorable.cs" />
+    <Compile Include="Interfaces\IFactory.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IRepositoryInfo.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
     <Compile Include="Interfaces\Document\IDocumentObject.cs" />
     <Compile Include="IDocumentFormats\A4DocFormat.cs" />

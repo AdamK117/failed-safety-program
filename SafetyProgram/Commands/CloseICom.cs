@@ -10,7 +10,7 @@ namespace SafetyProgram.Commands
             : base(window)
         {
             //Monitor changes in the CoshhWindow's CoshhDocument. Closed (null) documents can't be closed.
-            window.DocumentChanged += (document) => RaiseCanExecuteChanged();
+            window.ContentChanged += (document) => RaiseCanExecuteChanged();
         }
 
         /// <summary>

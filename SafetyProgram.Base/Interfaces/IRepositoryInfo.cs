@@ -1,6 +1,4 @@
-﻿using SafetyProgram.Base.Interfaces;
-
-namespace SafetyProgram.Configuration
+﻿namespace SafetyProgram.Base.Interfaces
 {
     public interface IRepositoryInfo : IStorable<IRepositoryInfo>
     {

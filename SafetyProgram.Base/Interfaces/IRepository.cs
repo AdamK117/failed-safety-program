@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.Configuration
+namespace SafetyProgram.Base.Interfaces
 {
     public interface IRepository<T> : IStorable<IRepository<T>>
         where T : IStorable<T>

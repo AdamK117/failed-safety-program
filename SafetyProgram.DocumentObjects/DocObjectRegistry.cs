@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.DocumentObjects
 {
@@ -11,7 +12,7 @@ namespace SafetyProgram.DocumentObjects
         {
             return new Dictionary<string, Func<IDocumentObject>>()
             {
-                {"chemicaltable", () => new ChemicalTable.ChemicalTable()}
+                {XmlNodeNames.CHEMICAL_TABLE_OBJ, () => new ChemicalTable.ChemicalTable()}
             };
         }
 
@@ -36,7 +37,7 @@ namespace SafetyProgram.DocumentObjects
                 {
                     //And make it if it is.
                     IDocumentObject docObject = registry[element.Name.LocalName]();
-                    docObject.LoadFromXml(element);
+                    docObject = docObject.LoadFromXml(element);
                     foundIDocObjects.Add(docObject);
                 }
             }

@@ -18,7 +18,7 @@ namespace SafetyProgram.Commands
             window.ServiceChanged += (service) => RaiseCanExecuteChanged();
 
             //Monitor if the CoshhWindow's CoshhDocument has changed (can't save a closed (null) document).
-            window.DocumentChanged += (document) => RaiseCanExecuteChanged();
+            window.ContentChanged += (document) => RaiseCanExecuteChanged();
         }
 
         /// <summary>

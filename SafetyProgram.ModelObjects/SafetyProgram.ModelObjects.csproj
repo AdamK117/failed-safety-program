@@ -61,8 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChemicalModelObject.cs" />
+    <Compile Include="ChemicalModelObjectLocalFileFactory.cs" />
     <Compile Include="CoshhChemicalObject.cs" />
+    <Compile Include="CoshhChemicalObjectLocalFileFactory.cs" />
     <Compile Include="HazardModelObject.cs" />
+    <Compile Include="HazardModelObjectLocalFileFactory.cs" />
     <Compile Include="IChemicalModelObject.cs" />
     <Compile Include="ICoshhChemicalObject.cs" />
     <Compile Include="IHazardModelObject.cs" />

@@ -1,6 +1,9 @@
 ﻿using System.Windows;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Services;
+using SafetyProgram.Configuration;
+using SafetyProgram.Static;
+using SafetyProgram.RepositoryIO;
 
 namespace SafetyProgram
 {
@@ -15,10 +18,15 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
 
+            //Load the configuration file for the app
+            IService<IConfiguration> configFileService = new LocalConfigurationFile(TestData.ConfigFile);
+            IConfiguration configFile = configFileService.Load();
+
+            //Load the document for the app
             IService<IDocument> service = new DocumentLocalFileService();
             IDocument document = service.New();
 
-            IWindow window = new CoshhWindow(service, document);
+            IWindow window = new CoshhWindow(configFile, service, document);
 
             window.View.Show();
         }

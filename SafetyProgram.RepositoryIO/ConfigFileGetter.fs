@@ -13,7 +13,7 @@
     let XmlParser<'T when 'T :> IStorable<'T>>(rep : IRepositoryInfo) (callback : 'T->unit) (ctor : unit->'T) = 
         if File.Exists(rep.Path) then
             XDocument.Load(rep.Path)
-                .Element(XName.Get XmlNodeNames.Repository)
+                .Element(XName.Get XmlNodeNames.REPOSITORY)
                 .Elements(XName.Get(ctor().Identifier))
                 |> Seq.map(
                     fun xmlElement -> 
@@ -35,7 +35,7 @@
     //  Repos type if used to define the type of objects held in the repository
     let Retrieve<'T when 'T :> IStorable<'T>>(callback : 'T->unit) (configFile : IConfiguration) (ctor : unit->'T) = 
         let reqContentType = ctor().Identifier
-        configFile.Repositories
+        configFile.RepositoriesInfo
         //Filter only to the correct type of repository information (chemicals, apparatus, hazards, etc.)
         |> Seq.filter(fun repositoryInfo -> repositoryInfo.ContentType = reqContentType)
         //Get a sequence of commands which load the repositories

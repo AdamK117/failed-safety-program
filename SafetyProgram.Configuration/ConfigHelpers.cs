@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Configuration
 {

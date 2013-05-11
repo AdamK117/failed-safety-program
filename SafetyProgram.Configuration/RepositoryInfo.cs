@@ -1,4 +1,5 @@
 ﻿using System.Xml.Linq;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Static;
 
 namespace SafetyProgram.Configuration
@@ -7,15 +8,6 @@ namespace SafetyProgram.Configuration
     {
         public RepositoryInfo()
         { }
-
-        public RepositoryInfo(IRepositoryInfo reposInfo)
-        {
-            Source = reposInfo.Source;
-            Path = reposInfo.Path;
-            Login = reposInfo.Login;
-            Password = reposInfo.Password;
-            ContentType = reposInfo.ContentType;
-        }
 
         public RepositoryInfo(string type, string path, string login, string password, string contentType)
         {
@@ -56,13 +48,19 @@ namespace SafetyProgram.Configuration
             private set;
         }
 
-        public IRepositoryInfo LoadFromXml(XElement data)
+        public static IRepositoryInfo ConstructFromXml(XElement data)
         {
             return ConfigHelpers.GetRepository(data);
         }
 
+        public IRepositoryInfo LoadFromXml(XElement data)
+        {
+            return LoadFromXml(data);
+        }
+
         public XElement WriteToXElement()
         {
+            //TODO: Error check
             return
                 new XElement(Identifier,
                     new XAttribute("source", Source),
@@ -75,7 +73,7 @@ namespace SafetyProgram.Configuration
 
         public string Identifier
         {
-            get { return XmlNodeNames.RepositoryInfo; }
+            get { return XmlNodeNames.REPOSITORY_INFO; }
         }
 
         public string Error

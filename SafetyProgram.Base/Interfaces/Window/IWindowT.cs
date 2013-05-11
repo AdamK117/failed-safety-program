@@ -10,7 +10,7 @@ namespace SafetyProgram.Base.Interfaces
         where Doc : IViewable, IStorable<Doc>
     {
         Doc Content { get; set; }
-        event Action<Doc> DocumentChanged;
+        event Action<Doc> ContentChanged;
 
         IService<Doc> Service { get; }
         void ChangeService(IService<Doc> newService);

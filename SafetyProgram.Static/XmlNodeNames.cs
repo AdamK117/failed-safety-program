@@ -2,13 +2,13 @@
 {
     public static class XmlNodeNames
     {
-        public const string ChemicalModelObj = "chemical";
-        public const string CoshhChemicalObj = "coshhchemical";
-        public const string HazardModelObj = "hazard";
-        public const string ChemicalTableObj = "chemicaltable";
-        public const string Repository = "repository";
-        public const string CoshhDocument = "coshhdocument";
-        public const string AppConfig = "appconfig";
-        public const string RepositoryInfo = "repositoryinfo";
+        public const string CHEMICAL_MODEL_OBJ = "chemical";
+        public const string COSHH_CHEMICAL_MODEL_OBJ = "coshhchemical";
+        public const string HAZARD_MODEL_OBJ = "hazard";
+        public const string CHEMICAL_TABLE_OBJ = "chemicaltable";
+        public const string REPOSITORY = "repository";
+        public const string COSHH_DOCUMENT = "coshhdocument";
+        public const string APP_CONFIG = "appconfig";
+        public const string REPOSITORY_INFO = "repositoryinfo";
     }
 }

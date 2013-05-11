@@ -22,3 +22,5 @@ V:\SafetyProgram\SafetyProgram.Document\obj\x86\Debug\SafetyProgram.Document.Pro
 V:\SafetyProgram\SafetyProgram.Document\obj\x86\Debug\SafetyProgram.Document.csproj.GenerateResource.Cache
 V:\SafetyProgram\SafetyProgram.Document\obj\x86\Debug\SafetyProgram.Document.dll
 V:\SafetyProgram\SafetyProgram.Document\obj\x86\Debug\SafetyProgram.Document.pdb
+V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Configuration.dll
+V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Configuration.pdb

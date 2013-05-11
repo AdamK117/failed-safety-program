@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
-using System.Linq;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Static;
-using System.Diagnostics;
 
 namespace SafetyProgram.Configuration
 {
-    public class Repository<T> : IRepository<T>
+    public sealed class Repository<T> : IRepository<T>
         where T : IStorable<T>
     {
         public Repository(string entryType, IEnumerable<T> entries, Func<T> entryConstructor)
@@ -18,11 +16,6 @@ namespace SafetyProgram.Configuration
             EntryType = entryType;
             Entries = entries;
             EntryConstructor = entryConstructor;
-        }
-
-        public Repository(Func<T> ctor)
-        {
-            EntryConstructor = ctor;
         }
 
         public Func<T> EntryConstructor
@@ -79,7 +72,7 @@ namespace SafetyProgram.Configuration
 
         public string Identifier
         {
-            get { return XmlNodeNames.Repository; }
+            get { return XmlNodeNames.REPOSITORY; }
         }
 
         public string Error

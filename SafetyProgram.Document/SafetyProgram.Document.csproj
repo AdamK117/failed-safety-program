@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="CoshhDocument.cs" />
     <Compile Include="CoshhDocumentBody.cs" />
+    <Compile Include="CoshhDocumentLocalFileFactory.cs" />
     <Compile Include="CoshhDocumentView.xaml.cs">
       <DependentUpon>CoshhDocumentView.xaml</DependentUpon>
     </Compile>
@@ -133,6 +134,10 @@
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
       <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
       <Name>SafetyProgram.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Configuration\SafetyProgram.Configuration.csproj">
+      <Project>{e3cec2ca-04a8-4841-9f19-e5439c47091a}</Project>
+      <Name>SafetyProgram.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.DocumentObjects\SafetyProgram.DocumentObjects.csproj">
       <Project>{60FE19F7-74B8-4D02-9AED-77AC986FF3A1}</Project>

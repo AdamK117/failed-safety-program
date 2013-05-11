@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using System.Xml.Linq;
@@ -18,10 +17,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         private readonly IContextMenu contextMenu;
         private readonly IRibbonTabItem contextualTab;
         private readonly UserControl view;
-
-        private string header;
-        private readonly ObservableCollection<ICoshhChemicalObject> chemicals;
-        private readonly ObservableCollection<ICoshhChemicalObject> selectedChemicals;
 
         /// <summary>
         /// Constructs a ChemicalTable DocObject containing no data (blank table).
@@ -61,7 +56,10 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         /// </summary>
         public override Control View
         {
-            get { return view; }
+            get 
+            { 
+                return view; 
+            }
         }
 
         /// <summary>
@@ -69,7 +67,10 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         /// </summary>
         public override IRibbonTabItem RibbonTab
         {
-            get { return contextualTab; }
+            get 
+            {
+                return contextualTab; 
+            }
         }
 
         /// <summary>
@@ -83,8 +84,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
             }
         }
 
-    #region ChemicalTable specific
-
         /// <summary>
         /// Gets the commands available to the ChemicalTable.
         /// </summary>
@@ -93,6 +92,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
             get { return commands; }
         }
 
+        private string header;
         /// <summary>
         /// Gets the header for the chemicalTable
         /// </summary>
@@ -106,6 +106,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
             }
         }
 
+        private readonly ObservableCollection<ICoshhChemicalObject> chemicals;
         /// <summary>
         /// Gets the chemicals in the ChemicalTable
         /// </summary>
@@ -114,17 +115,17 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
             get { return chemicals; }
         }
 
+        private readonly ObservableCollection<ICoshhChemicalObject> selectedChemicals;
         /// <summary>
         /// Gets/Sets the chemical selected in the table.
         /// </summary>
         public ObservableCollection<ICoshhChemicalObject> SelectedChemicals
         {
-            get { return selectedChemicals; }
+            get 
+            {
+                return selectedChemicals; 
+            }
         }
-
-    #endregion
-
-    #region ISelectable implementation
 
         /// <summary>
         /// Deselects the chemicals in the ChemicalTable on top of base implementation.
@@ -135,10 +136,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
             SelectedChemicals.Clear();
         }
 
-    #endregion
-
-    #region IStorable Implementation
-
         /// <summary>
         /// Saves the ChemicalTable to an XElement
         /// </summary>
@@ -146,7 +143,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         public override XElement WriteToXElement()
         {
             return (
-                new XElement(XmlNodeNames.ChemicalTableObj,
+                new XElement(XmlNodeNames.CHEMICAL_TABLE_OBJ,
                     new XElement("header", Header),
                     chemicals.Count > 0 ? 
                         from chemical in chemicals
@@ -157,14 +154,10 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
             );
         }
 
-        /// <summary>
-        /// Loads chemicals from an XElement into the ChemicalTable
-        /// </summary>
-        /// <param name="data">ChemicalTable data in XElement format</param>
-        public override IDocumentObject LoadFromXml(XElement data)
+        public static IDocumentObject ConstructFromXml(XElement data)
         {
             string loadedHeader = "";
-            ObservableCollection<ICoshhChemicalObject> loadedChemicals = new ObservableCollection<ICoshhChemicalObject>();            
+            var loadedChemicals = new ObservableCollection<ICoshhChemicalObject>();
 
             var headerElement = data.Element("header");
             if (headerElement != null)
@@ -172,19 +165,31 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
                 loadedHeader = headerElement.Value;
             }
 
-            var coshhChemicalsElements = data.Elements(XmlNodeNames.CoshhChemicalObj);
-            Func<XElement, ICoshhChemicalObject> chemicalCtor = new CoshhChemicalObject().LoadFromXml;
-
+            var coshhChemicalsElements = data.Elements(XmlNodeNames.COSHH_CHEMICAL_MODEL_OBJ);
             foreach (XElement coshhChemicalElement in coshhChemicalsElements)
             {
-                var chemicalObject = chemicalCtor(coshhChemicalElement);
+                var chemicalObject = CoshhChemicalObject.ConstructFromXml(coshhChemicalElement);
                 loadedChemicals.Add(chemicalObject);
             }
 
             return new ChemicalTable(loadedChemicals, loadedHeader);
         }
+        /// <summary>
+        /// Loads chemicals from an XElement into the ChemicalTable
+        /// </summary>
+        /// <param name="data">ChemicalTable data in XElement format</param>
+        public override IDocumentObject LoadFromXml(XElement data)
+        {
+            return ConstructFromXml(data);
+        }
 
-        public override string Identifier { get { return XmlNodeNames.ChemicalTableObj; } }
+        public override string Identifier 
+        { 
+            get 
+            { 
+                return XmlNodeNames.CHEMICAL_TABLE_OBJ; 
+            } 
+        }
 
         public override string Error
         {
@@ -195,7 +200,5 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         {
             get { throw new System.NotImplementedException(); }
         }
-
-    #endregion
     }
 }

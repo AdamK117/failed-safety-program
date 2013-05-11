@@ -27,7 +27,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
 
         public static void TryPaste(this ICollection<ICoshhChemicalObject> target)
         {
-            target.TryPaste<ICoshhChemicalObject>(ComIdentity);
+            target.TryPasteInto<ICoshhChemicalObject>(ComIdentity);
         }
 
         private static string getTextFormat(IEnumerable<ICoshhChemicalObject> data)

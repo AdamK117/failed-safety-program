@@ -59,13 +59,9 @@ namespace SafetyProgram.Services
                     {
                         path = openFileDialog1.FileName;
 
-                        IDocument loadedDoc = new CoshhDocument("Untitled Document", new A4DocFormat(), new CoshhDocumentBody());
-
                         XElement xDoc = XElement.Load(path);
 
-                        loadedDoc.LoadFromXml(xDoc);
-
-                        return loadedDoc;
+                        return CoshhDocument.ConstructFromXml(xDoc);
                     }
                     else throw new FileNotFoundException("The file selected does not exist", openFileDialog1.FileName);
 

@@ -150,6 +150,10 @@
       <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
       <Name>SafetyProgram.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Configuration\SafetyProgram.Configuration.csproj">
+      <Project>{e3cec2ca-04a8-4841-9f19-e5439c47091a}</Project>
+      <Name>SafetyProgram.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Document\SafetyProgram.Document.csproj">
       <Project>{0385FB46-CEFE-4542-8F47-DBAAD96E5BAB}</Project>
       <Name>SafetyProgram.Document</Name>
@@ -157,6 +161,14 @@
     <ProjectReference Include="..\SafetyProgram.Locale\SafetyProgram.Locale.csproj">
       <Project>{125449EC-B19E-4006-94D6-6E298C09EAC7}</Project>
       <Name>SafetyProgram.Locale</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.RepositoryIO\SafetyProgram.RepositoryIO.fsproj">
+      <Project>{a419173a-e029-4ec2-aa82-206a999e056c}</Project>
+      <Name>SafetyProgram.RepositoryIO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Static\SafetyProgram.Static.csproj">
+      <Project>{365f96a4-1c7f-4c32-8db9-a1385f2d109c}</Project>
+      <Name>SafetyProgram.Static</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
