@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Windows.Controls;
-using System.Xml.Linq;
 using SafetyProgram.Base;
 using SafetyProgram.Base.DocumentFormats;
 using SafetyProgram.Base.Interfaces;
@@ -12,8 +8,6 @@ using SafetyProgram.Document.Body;
 using SafetyProgram.Document.Commands;
 using SafetyProgram.Document.ContextMenus;
 using SafetyProgram.Document.Ribbons;
-using SafetyProgram.DocumentObjects;
-using SafetyProgram.Static;
 
 namespace SafetyProgram.Document
 {
@@ -167,75 +161,6 @@ namespace SafetyProgram.Document
         /// </summary>
         public event Action<IDocFormat> FormatChanged;
 
-        public static IDocument ConstructFromXml(XElement data)
-        {
-            string loadedTitle;
-            IDocFormat loadedFormat;
-            IDocumentBody loadedBody;
-
-            if (data != null)
-            {
-                //Optional: Get the title of the document
-                {                    
-                    var titleAttr = data.Attribute("title");
-                    if (titleAttr != null)
-                    {
-                        loadedTitle = titleAttr.Value;
-                    }
-                    else
-                    {
-                        Debug.Write("WARNING: When loading a CoshhDocument a title could not be found, set to default");
-                        loadedTitle = "Untitled CoshhDocument";
-                    }
-                }
-
-                //Optional: Get the format of the document
-                loadedFormat = new A4DocFormat();
-
-                //Required: Get the body of the document
-                loadedBody = new CoshhDocumentBody(
-                    DocObjectRegistry.GetDocObjects(data)
-                );
-            }
-            else throw new InvalidDataException("No CoshhDocument root could be found (<coshh></coshh>)");
-
-            return new CoshhDocument(loadedTitle, loadedFormat, loadedBody);
-        }
-        /// <summary>
-        /// Loads data (Xml format) into the CoshhDocument
-        /// </summary>
-        /// <param name="data">The data to be loaded into the CoshhDocument</param>
-        public IDocument LoadFromXml(XElement data)
-        {
-            return ConstructFromXml(data);
-        }
-
-        /// <summary>
-        /// Writes the CoshhDocument to an XElement
-        /// </summary>
-        /// <returns></returns>
-        public XElement WriteToXElement()
-        {
-            //TODO: Validation checks
-
-            XElement xDoc = new XElement("coshh",
-                from docObject in Body.Items
-                    select docObject.WriteToXElement()
-            );
-
-            return xDoc;
-        }
-
-        public string Identifier 
-        { 
-            get 
-            { 
-                return XmlNodeNames.COSHH_DOCUMENT; 
-            } 
-        }
-
-        #region IInteractable (ContextMenu, Removable, Editable) implementation
-
         /// <summary>
         /// Gets the general ContextMenu for the CoshhDocument
         /// </summary>
@@ -302,8 +227,6 @@ namespace SafetyProgram.Document
         /// Event that fires if the edited state of the CoshhDocument changes.
         /// </summary>
         public event Action<object, bool> EditedFlagChanged;
-
-        #endregion
 
         public string Error
         {

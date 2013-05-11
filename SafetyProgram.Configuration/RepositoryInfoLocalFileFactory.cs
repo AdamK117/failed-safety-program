@@ -1,56 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.Configuration
 {
-    internal static class ConfigHelpers
+    public class RepositoryInfoLocalFileFactory 
+        : ILocalFileFactory<IRepositoryInfo>
     {
-        public static bool GetDocumentLock(XElement data)
+        public static IRepositoryInfo StaticCreateNew()
         {
-            var element = data.Element("documentlock");
-
-            if (element != null)
-            {
-                var docLock = element.Value;
-                if (docLock == "false") return false;
-                else if (docLock == "true") return true;
-                else throw new InvalidDataException("The configuration value for documentLock was invalid. It must be true or false.");
-            }
-            else throw new InvalidDataException("The documentlock value could not be found in the configuration file");
+            return new RepositoryInfo();
         }
 
-        public static string GetLocale(XElement data)
+        public IRepositoryInfo CreateNew()
         {
-            var element = data.Element("locale");
-            if (element != null)
-            {
-                return element.Value;
-            }
-            else throw new InvalidDataException("No locale could be found in the configuration file");
+            return StaticCreateNew();
         }
 
-        public static IList<IRepositoryInfo> GetRepositories(XElement data)
-        {
-            //Create a container for the repositories. Can be empty.
-            var repositoriesList = new List<IRepositoryInfo>();
-            var repositoriesElement = data.Element("repositories");
-
-            if (repositoriesElement != null)
-            {
-                var repositoriesData = repositoriesElement.Elements("repository");
-
-                foreach (XElement repositoryInfo in repositoriesData)
-                {
-                    var loadedRepository = GetRepository(repositoryInfo);
-                    repositoriesList.Add(loadedRepository);
-                }
-            }
-            return repositoriesList;
-        }
-
-        public static IRepositoryInfo GetRepository(XElement data)
+        public static IRepositoryInfo StaticLoad(XElement data)
         {
             string source, repositoryPath, login, password, repositoryType;
 
@@ -96,6 +68,34 @@ namespace SafetyProgram.Configuration
 
             //Compile the data into a repository object
             return new RepositoryInfo(source, repositoryPath, login, password, repositoryType);
+        }
+
+        public IRepositoryInfo Load(XElement data)
+        {
+            return StaticLoad(data);
+        }
+
+        public static XElement StaticStore(IRepositoryInfo item)
+        {
+            return
+                new XElement(XML_IDENTIFIER,
+                    new XAttribute("source", item.Source),
+                    new XAttribute("type", item.ContentType),
+                    new XAttribute("path", item.Path),
+                    new XAttribute("login", item.Login),
+                    new XAttribute("password", item.Password)
+                );
+        }
+
+        public XElement Store(IRepositoryInfo item)
+        {
+            return StaticStore(item);
+        }
+
+        public const string XML_IDENTIFIER = "repositoryinfo";
+        public string XmlIdentifier
+        {
+            get { return XML_IDENTIFIER; }
         }
     }
 }

@@ -136,61 +136,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
             SelectedChemicals.Clear();
         }
 
-        /// <summary>
-        /// Saves the ChemicalTable to an XElement
-        /// </summary>
-        /// <returns>The ChemicalTable's data in an XElement</returns>
-        public override XElement WriteToXElement()
-        {
-            return (
-                new XElement(XmlNodeNames.CHEMICAL_TABLE_OBJ,
-                    new XElement("header", Header),
-                    chemicals.Count > 0 ? 
-                        from chemical in chemicals
-                        select chemical.WriteToXElement()
-                    :
-                        null
-                )
-            );
-        }
-
-        public static IDocumentObject ConstructFromXml(XElement data)
-        {
-            string loadedHeader = "";
-            var loadedChemicals = new ObservableCollection<ICoshhChemicalObject>();
-
-            var headerElement = data.Element("header");
-            if (headerElement != null)
-            {
-                loadedHeader = headerElement.Value;
-            }
-
-            var coshhChemicalsElements = data.Elements(XmlNodeNames.COSHH_CHEMICAL_MODEL_OBJ);
-            foreach (XElement coshhChemicalElement in coshhChemicalsElements)
-            {
-                var chemicalObject = CoshhChemicalObject.ConstructFromXml(coshhChemicalElement);
-                loadedChemicals.Add(chemicalObject);
-            }
-
-            return new ChemicalTable(loadedChemicals, loadedHeader);
-        }
-        /// <summary>
-        /// Loads chemicals from an XElement into the ChemicalTable
-        /// </summary>
-        /// <param name="data">ChemicalTable data in XElement format</param>
-        public override IDocumentObject LoadFromXml(XElement data)
-        {
-            return ConstructFromXml(data);
-        }
-
-        public override string Identifier 
-        { 
-            get 
-            { 
-                return XmlNodeNames.CHEMICAL_TABLE_OBJ; 
-            } 
-        }
-
         public override string Error
         {
             get { throw new System.NotImplementedException(); }

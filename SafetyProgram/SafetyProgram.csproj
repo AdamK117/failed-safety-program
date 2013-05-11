@@ -162,9 +162,9 @@
       <Project>{125449EC-B19E-4006-94D6-6E298C09EAC7}</Project>
       <Name>SafetyProgram.Locale</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.RepositoryIO\SafetyProgram.RepositoryIO.fsproj">
-      <Project>{a419173a-e029-4ec2-aa82-206a999e056c}</Project>
-      <Name>SafetyProgram.RepositoryIO</Name>
+    <ProjectReference Include="..\SafetyProgram.ModelObjects\SafetyProgram.ModelObjects.csproj">
+      <Project>{7c2c454d-a1d9-4355-976c-08582e07cd31}</Project>
+      <Name>SafetyProgram.ModelObjects</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Static\SafetyProgram.Static.csproj">
       <Project>{365f96a4-1c7f-4c32-8db9-a1385f2d109c}</Project>

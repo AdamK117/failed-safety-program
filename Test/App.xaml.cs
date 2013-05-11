@@ -22,7 +22,7 @@ namespace Test
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            IService<IConfiguration> configSvc = new LocalConfigurationFile(TestData.ConfigFile);
+            IService<IConfiguration> configSvc = new LocalConfigurationFile(TestData.CONFIGURATION_FILE);
             IConfiguration config = configSvc.Load();
 
             var c = ConfigFileGetter.RetrieveO<IChemicalModelObject>(

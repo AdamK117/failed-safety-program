@@ -93,7 +93,6 @@
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DocumentObject.cs" />
-    <Compile Include="DocObjectRegistry.cs" />
     <Compile Include="GenericCommands\DeleteIDocumentObjectICom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

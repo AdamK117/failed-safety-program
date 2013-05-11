@@ -10,21 +10,23 @@ namespace SafetyProgram.Static
         /// <summary>
         /// Folder containing all relevant test data
         /// </summary>
-        public const string TestFolder = "V:\\SafetyProgram\\SafetyProgram.TestData";
+        public const string TEST_FOLDER = "V:\\SafetyProgram\\SafetyProgram.TestData";
 
         /// <summary>
         /// File containing correct configuration file data
         /// </summary>
-        public static readonly string ConfigFile = Path.Combine(TestFolder, "ConfigurationFile.xml");
+        public static readonly string CONFIGURATION_FILE = Path.Combine(TEST_FOLDER, "ConfigurationFile.xml");
 
         /// <summary>
         /// File containing delibarately invalid data
         /// </summary>
-        public static readonly string InvalidConfigFile = Path.Combine(TestFolder, "InvalidConfigurationFile.xml");
+        public static readonly string INVALID_CONFIGURATION_FILE = Path.Combine(TEST_FOLDER, "InvalidConfigurationFile.xml");
 
         /// <summary>
         /// A standard Coshh file
         /// </summary>
-        public static readonly string CoshhFile = Path.Combine(TestFolder, "CoshhFile.xml");
+        public static readonly string COSHH_FILE = Path.Combine(TEST_FOLDER, "CoshhFile.xml");
+
+        public static readonly string CHEMICAL_REPOSITORY = Path.Combine(TEST_FOLDER, "ChemicalRepository.xml");
     }
 }

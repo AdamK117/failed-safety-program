@@ -3,8 +3,11 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.ModelObjects
 {
-    public interface ICoshhChemicalObject : 
-        INotifyPropertyChanged, IStorable<ICoshhChemicalObject>, ICopyPasteable, IDeepCloneable<ICoshhChemicalObject>
+    public interface ICoshhChemicalObject :
+        INotifyPropertyChanged, 
+        ICopyPasteable, 
+        IDeepCloneable<ICoshhChemicalObject>, 
+        IDataErrorInfo
     {
         decimal Value { get; set; }
         string Unit { get; set; }

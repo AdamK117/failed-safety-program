@@ -25,7 +25,7 @@ namespace SafetyProgram
             else this.service = documentService;
 
             if (document == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without a document");
-            else this.document = document;
+            else this.content = document;
 
             //TODO: Change to Func<IWindow<obj>> Dependancy injections?
             commands = new WindowICommands(this);
@@ -35,16 +35,6 @@ namespace SafetyProgram
         }
 
         private readonly IConfiguration appConfiguration;
-        /// <summary>
-        /// Gets the configuration used by this instance of the CoshhWindow.
-        /// </summary>
-        public IConfiguration AppConfiguration
-        {
-            get
-            {
-                return appConfiguration;
-            }
-        }
 
         private readonly Window view;
         /// <summary>
@@ -92,7 +82,7 @@ namespace SafetyProgram
             }
         }
 
-        private IDocument document;
+        private IDocument content;
         /// <summary>
         /// Gets the IDocument in this CoshhWindow.
         /// </summary>
@@ -101,14 +91,14 @@ namespace SafetyProgram
         {
             get 
             { 
-                return document; 
+                return content; 
             }
             set 
             { 
-                document = value;
+                content = value;
                 if (ContentChanged != null)
                 {
-                    ContentChanged(document);
+                    ContentChanged(content);
                 }                
                 RaisePropertyChanged("Content");
             }

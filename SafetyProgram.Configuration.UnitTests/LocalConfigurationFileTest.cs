@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SafetyProgram.Static;
-using System.Collections.Generic;
 
 namespace SafetyProgram.Configuration.UnitTests
 {
@@ -16,7 +15,7 @@ namespace SafetyProgram.Configuration.UnitTests
             //  All values are loaded without throwing an exception
             //  Repository is serialized correctly. It's a local file repository so username/password should be blank
 
-            var configService = new LocalConfigurationFile(TestData.ConfigFile);
+            var configService = new ConfigurationLocalFileService(TestData.CONFIGURATION_FILE);
 
             var configFile = configService.Load();
 
@@ -24,7 +23,9 @@ namespace SafetyProgram.Configuration.UnitTests
             Assert.AreEqual<string>(configFile.Locale, "en-GB");
 
             //First repository entry in the test data: local, C:\repository.xml.
-            var testRepos = configFile.RepositoriesInfo[0];
+            var enumerator = configFile.RepositoriesInfo.GetEnumerator();
+            enumerator.MoveNext();
+            var testRepos = enumerator.Current;
 
             Assert.AreEqual<string>(testRepos.Source, "local", "An incorrect source type was serialized into the repository. Should be 'local'.");
             Assert.AreEqual<string>(testRepos.Path, "V:\\SafetyProgram\\SafetyProgram.TestData\\ChemicalRepository.xml", "An incorrect path was serialized into the repository when compared with the test data");
@@ -32,7 +33,8 @@ namespace SafetyProgram.Configuration.UnitTests
             Assert.AreEqual<string>(testRepos.Password, "", "A password was serialized into the repository object. Local files (e.g. in the test data) shouldn't have a password");
 
             //Second repository entry in the test data: database, \\myserver\sqlAddr, Admin, password
-            var testDbRepos = configFile.RepositoriesInfo[1];
+            enumerator.MoveNext();
+            var testDbRepos = enumerator.Current;
 
             Assert.AreEqual<string>(testDbRepos.Source, "database");
             Assert.AreEqual<string>(testDbRepos.Path, "\\\\myserver\\sqlAddr");
@@ -49,7 +51,7 @@ namespace SafetyProgram.Configuration.UnitTests
 
             try
             {
-                var configService = new LocalConfigurationFile("SomeFakePath");
+                var configService = new ConfigurationLocalFileService("SomeFakePath");
                 Assert.Fail("The service should throw a FileNotFound exception if constructed with an incorrect path");
             }
             catch (FileNotFoundException)
@@ -64,7 +66,7 @@ namespace SafetyProgram.Configuration.UnitTests
             //Loads a known invalid file
             //  Should throw an System.IO.InvalidDataException
 
-            var configService = new LocalConfigurationFile(TestData.InvalidConfigFile);
+            var configService = new ConfigurationLocalFileService(TestData.INVALID_CONFIGURATION_FILE);
 
             try
             {

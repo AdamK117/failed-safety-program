@@ -3,14 +3,14 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-using SafetyProgram.Base.DocumentFormats;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Document;
-using SafetyProgram.Base;
-using SafetyProgram.Document.Body;
 
 namespace SafetyProgram.Services
 {
+    /// <summary>
+    /// Defines a service that uses CoshhDocument file factories to generate IDocuments.
+    /// </summary>
     internal sealed class DocumentLocalFileService : IService<IDocument>
     {
         private bool canNew = true, canLoad = true, canSave = true, canSaveAs = true;
@@ -24,7 +24,7 @@ namespace SafetyProgram.Services
         public IDocument New()
         {
             path = "";
-            return new CoshhDocument("Untitled Document", new A4DocFormat(), new CoshhDocumentBody());
+            return CoshhDocumentLocalFileFactory.StaticCreateNew();
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace SafetyProgram.Services
 
                         XElement xDoc = XElement.Load(path);
 
-                        return CoshhDocument.ConstructFromXml(xDoc);
+                        return CoshhDocumentLocalFileFactory.StaticLoad(xDoc);
                     }
                     else throw new FileNotFoundException("The file selected does not exist", openFileDialog1.FileName);
 
@@ -96,7 +96,7 @@ namespace SafetyProgram.Services
             {
                 XDocument xDoc = new XDocument();
 
-                xDoc.Add(document.WriteToXElement());
+                xDoc.Add(CoshhDocumentLocalFileFactory.StaticStore(document as CoshhDocument));
 
                 xDoc.Save(path);
             }            

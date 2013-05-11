@@ -3,7 +3,8 @@ using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Services;
 using SafetyProgram.Configuration;
 using SafetyProgram.Static;
-using SafetyProgram.RepositoryIO;
+using SafetyProgram.Base;
+using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram
 {
@@ -19,7 +20,7 @@ namespace SafetyProgram
             base.OnStartup(e);
 
             //Load the configuration file for the app
-            IService<IConfiguration> configFileService = new LocalConfigurationFile(TestData.ConfigFile);
+            IService<IConfiguration> configFileService = new GenericLocalFileService<IConfiguration>(new ConfigurationLocalFileFactory(), TestData.CONFIGURATION_FILE);
             IConfiguration configFile = configFileService.Load();
 
             //Load the document for the app

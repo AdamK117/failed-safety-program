@@ -142,20 +142,6 @@ namespace SafetyProgram.DocumentObjects
 
         #region IStorable: Input/Output (IO) logic
 
-        /// <summary>
-        /// Loads Xml (as an XElement) data into the DocObject
-        /// </summary>
-        /// <param name="data">XElement representation of the DocObject</param>
-        public abstract IDocumentObject LoadFromXml(XElement data);
-
-        /// <summary>
-        /// Saves the DocObject to an XElement.
-        /// </summary>
-        /// <returns>XElement containing the DocObjects data.</returns>
-        public abstract XElement WriteToXElement();
-
-        public abstract string Identifier { get; }
-
         public abstract string Error { get; }
 
         public abstract string this[string columnName] { get; }

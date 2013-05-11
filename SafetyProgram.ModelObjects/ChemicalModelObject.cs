@@ -55,78 +55,6 @@ namespace SafetyProgram.ModelObjects
             }
         }
 
-        public static IChemicalModelObject ConstructFromXml(XElement data)
-        {
-            //Declare variables that are populated when reading the XML
-            string loadedName;
-            var loadedHazards = new ObservableCollection<IHazardModelObject>();
-
-            //Required: Get the chemicals name. A chemical must have a name.
-            {
-                var chemicalNameElement = data.Element("name");
-                if (chemicalNameElement != null)
-                {
-                    loadedName = chemicalNameElement.Value;
-                }
-                else throw new InvalidDataException("The loaded chemical must have a name!");
-            }
-
-            //Optional: Get the hazards associated with the chemical. (A chemical may have no hazards).
-            {
-                var hazardsElement = data.Element("hazards");
-                if (hazardsElement != null)
-                {
-                    var hazardElements = hazardsElement.Elements(XmlNodeNames.HAZARD_MODEL_OBJ);
-
-                    //Redundancy check: Files shouldn't really be saved with empty <hazards></hazards> tags (although it won't cause a problem if it does).
-                    Debug.Assert(
-                        hazardElements.Count() > 0,
-                        "WARNING: Empty <hazards></hazards> tags with no <hazard> in them found"
-                    );
-                    //End redundancy check
-
-                    foreach (XElement hazardData in hazardElements)
-                    {
-                        var hazardObject = HazardModelObject.ConstructFromXml(hazardData);
-                        loadedHazards.Add(hazardObject);
-                    }
-                }
-            }
-
-            //Return the fully populated object
-            return new ChemicalModelObject(loadedName, loadedHazards);
-        }
-        public IChemicalModelObject LoadFromXml(XElement data)
-        {
-            return ConstructFromXml(data);
-        }
-
-        public XElement WriteToXElement()
-        {
-            if (String.IsNullOrWhiteSpace(Error))
-            {
-                return new XElement(XmlNodeNames.CHEMICAL_MODEL_OBJ,
-                    new XElement("name", Name),
-                    Hazards.Count > 0 ?
-                        new XElement("hazards",
-                            from hazard in hazards
-                            select hazard.WriteToXElement()
-                        )
-                    :
-                        null
-                );
-            }
-            else throw new InvalidDataException("Errors found when trying to save the document");
-        }
-
-        public string Identifier 
-        { 
-            get 
-            {
-                return XmlNodeNames.CHEMICAL_MODEL_OBJ; 
-            } 
-        }
-
         public string Error
         {
             get
@@ -179,11 +107,13 @@ namespace SafetyProgram.ModelObjects
             );
         }
 
+        public const string COM_IDENTITY = "ChemicalModel";
+
         public string ComIdentity
         {
             get
             {
-                return ComIdentities.CHEMICAL_MODEL;
+                return COM_IDENTITY;
             }
         }
 

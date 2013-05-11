@@ -31,7 +31,7 @@ namespace SafetyProgram.DocumentObjects
                         //Make the instance
                         inputRegistry = new Dictionary<string, Func<XElement, IDocumentObject>>()
                         {
-                            {XmlNodeNames.CHEMICAL_TABLE_OBJ, (element) => ChemicalTable.ChemicalTableLocalFileFactory.StaticLoad(element) }
+                            {ChemicalTable.ChemicalTableLocalFileFactory.XML_IDENTIFIER, (element) => ChemicalTable.ChemicalTableLocalFileFactory.StaticLoad(element) }
                         };
                     }
                 }

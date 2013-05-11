@@ -2,12 +2,11 @@
 using System.IO;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Static;
 
 namespace SafetyProgram.ModelObjects
 {
     public class HazardModelObjectLocalFileFactory
-        : IFactory<IHazardModelObject, XElement>
+        : ILocalFileFactory<IHazardModelObject>
     {
         public static IHazardModelObject StaticCreateNew()
         {
@@ -57,7 +56,7 @@ namespace SafetyProgram.ModelObjects
         {
             if (String.IsNullOrWhiteSpace(item.Error))
             {
-                return new XElement(XmlNodeNames.HAZARD_MODEL_OBJ,
+                return new XElement(XML_IDENTIFIER,
                     item.Hazard,
                     (item.SignalWord == null) ? (null) : (new XAttribute("signalword", item.SignalWord)),
                     (item.Symbol == null) ? (null) : (new XAttribute("symbol", item.Symbol))
@@ -69,6 +68,13 @@ namespace SafetyProgram.ModelObjects
         public XElement Store(IHazardModelObject item)
         {
             return StaticStore(item);
+        }
+
+        public const string XML_IDENTIFIER = "hazard";
+
+        public string XmlIdentifier
+        {
+            get { return XML_IDENTIFIER; }
         }
     }
 }

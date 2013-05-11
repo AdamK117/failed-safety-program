@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 namespace SafetyProgram.Base.Interfaces
 {
-    public interface IRepository<T> : IStorable<IRepository<T>>
-        where T : IStorable<T>
+    public interface IRepository<T>
     {
         Func<T> EntryConstructor { get; }
         string EntryType { get; }

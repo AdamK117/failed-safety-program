@@ -1,5 +1,6 @@
-﻿namespace SafetyProgram.Base.Interfaces
+﻿using System.ComponentModel;
+namespace SafetyProgram.Base.Interfaces
 {
-    public interface IDocumentObject : ISelectable, IStorable<IDocumentObject>
+    public interface IDocumentObject : ISelectable, IDataErrorInfo
     { }
 }

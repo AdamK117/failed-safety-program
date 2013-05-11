@@ -11,7 +11,7 @@ using SafetyProgram.DocumentObjects;
 namespace SafetyProgram.Document
 {
     public class CoshhDocumentLocalFileFactory
-        : IFactory<CoshhDocument, XElement>
+        : ILocalFileFactory<CoshhDocument>
     {
         public static CoshhDocument StaticCreateNew()
         {
@@ -78,6 +78,13 @@ namespace SafetyProgram.Document
         public XElement Store(CoshhDocument item)
         {
             return StaticStore(item);
+        }
+
+        public const string XmlIdentity = "coshhdocument";
+
+        public string XmlIdentifier
+        {
+            get { return XmlIdentity; }
         }
     }
 }

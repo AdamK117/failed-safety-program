@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.Configuration
 {
-    public sealed class LocalConfigurationFile : IService<IConfiguration>
+    public sealed class ConfigurationLocalFileService : IService<IConfiguration>
     {
         private readonly string path;
 
-        public LocalConfigurationFile(string path)
+        public ConfigurationLocalFileService(string path)
         {
             if (File.Exists(path)) this.path = path;
             else throw new FileNotFoundException("Specified configuration file path (" + path + ") could not be found.");
@@ -18,7 +18,7 @@ namespace SafetyProgram.Configuration
 
         public IConfiguration New()
         {
-            return new AppConfiguration();
+            return ConfigurationLocalFileFactory.StaticCreateNew();
         }
 
         public bool CanNew()
@@ -35,11 +35,10 @@ namespace SafetyProgram.Configuration
         {
             var configFile = XDocument.Load(path);
 
-            var configuration = configFile.Element("appconfig");
+            var configuration = configFile.Element(ConfigurationLocalFileFactory.XML_IDENTIFIER);
             if (configuration != null)
             {
-                var config = new AppConfiguration().LoadFromXml(configuration);
-                return config;
+                return ConfigurationLocalFileFactory.StaticLoad(configuration);
             }
             else throw new InvalidDataException("No appconfig root found in the specified configuration file");
         }

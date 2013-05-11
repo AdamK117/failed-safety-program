@@ -7,7 +7,7 @@ namespace SafetyProgram.Base.Interfaces
     /// </summary>
     /// <typeparam name="Doc">An IDocument that the IWindow houses</typeparam>
     public interface IWindow<Doc> : IWindow
-        where Doc : IViewable, IStorable<Doc>
+        where Doc : IViewable
     {
         Doc Content { get; set; }
         event Action<Doc> ContentChanged;

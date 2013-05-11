@@ -1,6 +1,6 @@
 ﻿namespace SafetyProgram.Base.Interfaces
 {
-    public interface IRepositoryInfo : IStorable<IRepositoryInfo>
+    public interface IRepositoryInfo
     {
         string Source { get; }
         string ContentType { get; }

@@ -2,10 +2,10 @@
 
 namespace SafetyProgram.Base.Interfaces
 {
-    public interface IConfiguration : IStorable<IConfiguration>
+    public interface IConfiguration
     {
         bool DocumentLock { get; }
-        IList<IRepositoryInfo> RepositoriesInfo { get; }
+        IEnumerable<IRepositoryInfo> RepositoriesInfo { get; }
         string Locale { get; }
     }
 }

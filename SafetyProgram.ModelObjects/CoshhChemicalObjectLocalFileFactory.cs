@@ -7,7 +7,7 @@ using SafetyProgram.Static;
 namespace SafetyProgram.ModelObjects
 {
     public class CoshhChemicalObjectLocalFileFactory :
-        IFactory<ICoshhChemicalObject, XElement>
+        ILocalFileFactory<ICoshhChemicalObject>
     {
         public static ICoshhChemicalObject StaticCreateNew()
         {
@@ -61,7 +61,7 @@ namespace SafetyProgram.ModelObjects
 
             //Required: Get the chemicals details
             {
-                var chemicalElement = data.Element(XmlNodeNames.CHEMICAL_MODEL_OBJ);
+                var chemicalElement = data.Element(ChemicalModelObjectLocalFileFactory.XML_IDENTIFIER);
                 var chemicalFactory = new ChemicalModelObjectLocalFileFactory();
                 if (chemicalElement != null)
                 {
@@ -85,7 +85,7 @@ namespace SafetyProgram.ModelObjects
             if (String.IsNullOrWhiteSpace(item.Error))
             {
                 return
-                    new XElement(XmlNodeNames.COSHH_CHEMICAL_MODEL_OBJ,
+                    new XElement(XML_IDENTIFIER,
                         new XElement("amount",
                             item.Value,
                             new XAttribute("unit", item.Unit)
@@ -99,6 +99,13 @@ namespace SafetyProgram.ModelObjects
         public XElement Store(ICoshhChemicalObject item)
         {
             return StaticStore(item);
+        }
+
+        public const string XML_IDENTIFIER = "coshhchemical";
+
+        public string XmlIdentifier
+        {
+            get { return XML_IDENTIFIER; }
         }
     }
 }

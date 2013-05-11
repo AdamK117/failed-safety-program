@@ -4,8 +4,11 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.ModelObjects
 {
-    public interface IChemicalModelObject : 
-        INotifyPropertyChanged, IStorable<IChemicalModelObject>, ICopyPasteable, IDeepCloneable<IChemicalModelObject>
+    public interface IChemicalModelObject :
+        INotifyPropertyChanged, 
+        ICopyPasteable, 
+        IDeepCloneable<IChemicalModelObject>, 
+        IDataErrorInfo
     {
         string Name { get; set; }
         ObservableCollection<IHazardModelObject> Hazards { get; }

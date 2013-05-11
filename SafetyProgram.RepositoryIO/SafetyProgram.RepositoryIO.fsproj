@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigFileGetter.fs" />
+    <Compile Include="FactoryMatcher.fs" />
+    <Compile Include="ConfigFileIO.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">

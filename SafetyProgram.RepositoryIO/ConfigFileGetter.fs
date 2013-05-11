@@ -47,5 +47,19 @@
         //Concat the seq<'T> response from each individual command into a total response
         |> Seq.concat
 
+    let RetriveM<'T>(configFile : IConfiguration) = 
+        let ident = GetIdentifier('T)
+        configFile.RepositoriesInfo
+        //Filter only to the correct type of repository information (chemicals, apparatus, hazards, etc.)
+        |> Seq.filter(fun repositoryInfo -> repositoryInfo.ContentType = reqContentType)
+        //Get a sequence of commands which load the repositories
+        |> Seq.map(fun repositoryInfo -> async { return LoadRepository callback ctor repositoryInfo })
+        //Parallelize the commands
+        |> Async.Parallel
+        //Run the commands, returning a seq<'T> for each command
+        |> Async.RunSynchronously
+        //Concat the seq<'T> response from each individual command into a total response
+        |> Seq.concat
+
     let RetrieveO<'T when 'T :> IStorable<'T>>(configFile : IConfiguration, ctor : unit->'T) = 
         Retrieve (fun model -> ()) configFile ctor

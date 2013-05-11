@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Static;
+﻿using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Configuration
 {
@@ -46,34 +44,6 @@ namespace SafetyProgram.Configuration
         {
             get;
             private set;
-        }
-
-        public static IRepositoryInfo ConstructFromXml(XElement data)
-        {
-            return ConfigHelpers.GetRepository(data);
-        }
-
-        public IRepositoryInfo LoadFromXml(XElement data)
-        {
-            return LoadFromXml(data);
-        }
-
-        public XElement WriteToXElement()
-        {
-            //TODO: Error check
-            return
-                new XElement(Identifier,
-                    new XAttribute("source", Source),
-                    new XAttribute("type", ContentType),
-                    new XAttribute("path", Path),
-                    new XAttribute("login", Login),
-                    new XAttribute("password", Password)
-                );
-        }
-
-        public string Identifier
-        {
-            get { return XmlNodeNames.REPOSITORY_INFO; }
         }
 
         public string Error

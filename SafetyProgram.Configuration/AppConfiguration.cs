@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using SafetyProgram.Static;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Configuration
@@ -11,12 +8,17 @@ namespace SafetyProgram.Configuration
     {
         public AppConfiguration()
         {
+            //Default application configuration
+            //  The window contents aren't locked
+            //  There are no repositories
+            //  It's in english
+
             DocumentLock = false;
             this.repositories = new List<IRepositoryInfo>();
             Locale = "en-GB";
         }
 
-        public AppConfiguration(bool documentLock, IList<IRepositoryInfo> repositories, string locale)
+        public AppConfiguration(bool documentLock, IEnumerable<IRepositoryInfo> repositories, string locale)
         {
             this.DocumentLock = documentLock;
 
@@ -35,8 +37,8 @@ namespace SafetyProgram.Configuration
             private set;
         }
 
-        private readonly IList<IRepositoryInfo> repositories;
-        public IList<IRepositoryInfo> RepositoriesInfo
+        private readonly IEnumerable<IRepositoryInfo> repositories;
+        public IEnumerable<IRepositoryInfo> RepositoriesInfo
         {
             get
             {
@@ -48,39 +50,6 @@ namespace SafetyProgram.Configuration
         {
             get;
             private set;
-        }
-
-        public static IConfiguration ConstructFromXml(XElement data)
-        {
-            bool documentLock = ConfigHelpers.GetDocumentLock(data);
-            IList<IRepositoryInfo> loadedRepositories = ConfigHelpers.GetRepositories(data);
-            string loadedLocale = ConfigHelpers.GetLocale(data);
-
-            return new AppConfiguration(documentLock, loadedRepositories, loadedLocale);
-        }
-
-        public IConfiguration LoadFromXml(XElement data)
-        {
-            return ConstructFromXml(data);
-        }
-
-        public XElement WriteToXElement()
-        {
-            //TODO: Error check
-            return
-                new XElement(Identifier,
-                    new XElement("documentlock", DocumentLock ? "true" : "false"),
-                    new XElement("repositories", 
-                        from repositoryInfo in RepositoriesInfo
-                        select repositoryInfo.WriteToXElement()
-                    ),
-                    new XElement("locale", Locale)
-                );
-        }
-
-        public string Identifier
-        {
-            get { return XmlNodeNames.APP_CONFIG; }
         }
 
         public string Error

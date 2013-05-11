@@ -4,7 +4,10 @@ using SafetyProgram.Base.Interfaces;
 namespace SafetyProgram.ModelObjects
 {
     public interface IHazardModelObject :
-        INotifyPropertyChanged, IStorable<IHazardModelObject>, ICopyPasteable, IDeepCloneable<IHazardModelObject>
+        INotifyPropertyChanged, 
+        ICopyPasteable, 
+        IDeepCloneable<IHazardModelObject>, 
+        IDataErrorInfo
     {
         string Hazard { get; set; }
         string SignalWord { get; set; }

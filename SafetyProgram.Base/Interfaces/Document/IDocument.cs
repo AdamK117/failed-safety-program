@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace SafetyProgram.Base.Interfaces
 {
-    public interface IDocument : IViewable, IStorable<IDocument>, IInteractable
+    public interface IDocument : IViewable, IInteractable, IDataErrorInfo
     {
         ObservableCollection<IRibbonTabItem> RibbonTabs { get; }
 

@@ -10,7 +10,7 @@ using SafetyProgram.Static;
 namespace SafetyProgram.ModelObjects
 {
     public class ChemicalModelObjectLocalFileFactory 
-        : IFactory<IChemicalModelObject, XElement>
+        : ILocalFileFactory<IChemicalModelObject>
     {
         public static IChemicalModelObject StaticCreateNew()
         {
@@ -43,7 +43,7 @@ namespace SafetyProgram.ModelObjects
                 var hazardsElement = data.Element("hazards");
                 if (hazardsElement != null)
                 {
-                    var hazardElements = hazardsElement.Elements(XmlNodeNames.HAZARD_MODEL_OBJ);
+                    var hazardElements = hazardsElement.Elements(HazardModelObjectLocalFileFactory.XML_IDENTIFIER);
 
                     //Redundancy check: Files shouldn't really be saved with empty <hazards></hazards> tags (although it won't cause a problem if it does).
                     Debug.Assert(
@@ -52,11 +52,9 @@ namespace SafetyProgram.ModelObjects
                     );
                     //End redundancy check
 
-                    var hazardFactory = new HazardModelObjectLocalFileFactory();
-
                     foreach (XElement hazardData in hazardElements)
                     {
-                        var hazardObject = hazardFactory.Load(hazardData);
+                        var hazardObject = HazardModelObjectLocalFileFactory.StaticLoad(hazardData);
                         loadedHazards.Add(hazardObject);
                     }
                 }
@@ -76,7 +74,7 @@ namespace SafetyProgram.ModelObjects
             var hazardFactory = new HazardModelObjectLocalFileFactory();
             if (String.IsNullOrWhiteSpace(item.Error))
             {
-                return new XElement(XmlNodeNames.CHEMICAL_MODEL_OBJ,
+                return new XElement(XML_IDENTIFIER,
                     new XElement("name", item.Name),
                     item.Hazards.Count > 0 ?
                         new XElement("hazards",
@@ -93,6 +91,13 @@ namespace SafetyProgram.ModelObjects
         public XElement Store(IChemicalModelObject item)
         {
             return StaticStore(item);
+        }
+
+        public const string XML_IDENTIFIER = "chemical";
+
+        public string XmlIdentifier
+        {
+            get { return XML_IDENTIFIER; }
         }
     }
 }

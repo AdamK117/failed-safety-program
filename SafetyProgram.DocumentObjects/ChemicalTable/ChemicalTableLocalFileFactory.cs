@@ -8,7 +8,7 @@ using SafetyProgram.Static;
 namespace SafetyProgram.DocumentObjects.ChemicalTable
 {
     public class ChemicalTableLocalFileFactory
-        : IFactory<ChemicalTable, XElement>
+        : ILocalFileFactory<ChemicalTable>
     {
         public static ChemicalTable StaticCreateNew()
         {
@@ -31,7 +31,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
                 loadedHeader = headerElement.Value;
             }
 
-            var coshhChemicalsElements = data.Elements(XmlNodeNames.COSHH_CHEMICAL_MODEL_OBJ);
+            var coshhChemicalsElements = data.Elements(CoshhChemicalObjectLocalFileFactory.XML_IDENTIFIER);
             foreach (XElement coshhChemicalElement in coshhChemicalsElements)
             {
                 var chemicalObject = CoshhChemicalObjectLocalFileFactory.StaticLoad(coshhChemicalElement);
@@ -49,7 +49,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         public static XElement StaticStore(ChemicalTable item)
         {
             return (
-                new XElement(XmlNodeNames.CHEMICAL_TABLE_OBJ,
+                new XElement(XML_IDENTIFIER,
                     new XElement("header", item.Header),
                     item.Chemicals.Count > 0 ?
                         from chemical in item.Chemicals
@@ -63,6 +63,13 @@ namespace SafetyProgram.DocumentObjects.ChemicalTable
         public XElement Store(ChemicalTable item)
         {
             return StaticStore(item);
+        }
+
+        public const string XML_IDENTIFIER = "chemicaltable";
+
+        public string XmlIdentifier
+        {
+            get { return XML_IDENTIFIER; }
         }
     }
 }
