@@ -1,22 +1,22 @@
 ﻿using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Controls;
 using Fluent;
-
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Ribbons
 {
-    internal sealed class CoshhRibbon : BaseINPC, IRibbon
+    internal sealed class CoshhRibbon : INotifyPropertyChanged, IRibbon
     {
-        private readonly CoshhWindow window;
+        private readonly ICoshhWindow window;
 
         /// <summary>
         /// Constructs the CoshhWindow's ribbon. This is the primary ribbon for the CoshhWindow.
         /// </summary>
         /// <param name="window">CoshhWindow the ribbon is a child of.</param>
-        public CoshhRibbon(CoshhWindow window)
+        public CoshhRibbon(ICoshhWindow window)
         {
             this.window = window;
 
@@ -76,7 +76,7 @@ namespace SafetyProgram.Ribbons
             private set
             {
                 ribbonVisibility = value;
-                RaisePropertyChanged("RibbonVisibility");
+                PropertyChanged.Raise(this, "RibbonVisibility");
             }
         }
 
@@ -133,5 +133,7 @@ namespace SafetyProgram.Ribbons
             }
             Debug.Assert(View.Tabs.Count == window.Content.RibbonTabs.Count, "WARNING: There's a difference between the ribbon tabs in the window vs the document");
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

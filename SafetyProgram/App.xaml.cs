@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Commands;
 using SafetyProgram.Configuration;
+using SafetyProgram.Ribbons;
 using SafetyProgram.Services;
 using SafetyProgram.Static;
 
@@ -26,7 +28,14 @@ namespace SafetyProgram
             IService<IDocument> service = new DocumentLocalFileService(configFile);
             IDocument document = service.New();
 
-            IWindow window = new CoshhWindow(configFile, service, document);
+            IWindow window = new CoshhWindow(
+                configFile, 
+                service, 
+                document,
+                (viewModel) => new CoshhWindowView(viewModel),
+                (windowViewModel) => new WindowICommands(windowViewModel),
+                (windowViewModel) => new CoshhRibbon(windowViewModel)
+                );
 
             window.View.Show();
         }

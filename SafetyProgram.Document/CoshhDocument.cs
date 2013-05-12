@@ -1,29 +1,27 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Controls;
 using SafetyProgram.Base;
-using SafetyProgram.Base.DocumentFormats;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Document.Body;
 using SafetyProgram.Document.Commands;
 using SafetyProgram.Document.ContextMenus;
 using SafetyProgram.Document.Ribbons;
 
 namespace SafetyProgram.Document
 {
-    public sealed class CoshhDocument : BaseINPC, IDocument
+    public sealed class CoshhDocument : INotifyPropertyChanged, IDocument
     {
-        private readonly DocumentICommands commands;
-        private readonly IContextMenu contextMenu;
-        private readonly CoshhDocumentView view;
-        private readonly ObservableCollection<IRibbonTabItem> ribbonTabItems;
-        private readonly IConfiguration appConfiguration;
-
         /// <summary>
         /// Constructs a new CoshhDocument.
         /// </summary>
-        public CoshhDocument
-            (IConfiguration appConfiguration, string title, IDocFormat format, IDocumentBody body)
+        public CoshhDocument (
+            IConfiguration appConfiguration, 
+            string title, 
+            IDocFormat format, 
+            IDocumentBody body,
+            Func<CoshhDocument, Control> viewConstructor
+            )
         {
             if (appConfiguration != null) this.appConfiguration = appConfiguration;
             else throw new ArgumentNullException();
@@ -34,25 +32,37 @@ namespace SafetyProgram.Document
             if (title != null) this.title = title;
             else throw new ArgumentNullException();
 
-            if (body != null) this.body = body;
-            else throw new ArgumentNullException();
-
-            this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
-            this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection); 
+            if (body != null)
+            {
+                this.body = body;
+                this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
+                this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection); 
+            }
+            else throw new ArgumentNullException();           
            
             edited = false;
 
             commands = new DocumentICommands(this);
             contextMenu = new DocumentContextMenu(commands);
-            ribbonTabItems = new ObservableCollection<IRibbonTabItem>();
 
             //Insert tab
+            ribbonTabItems = new ObservableCollection<IRibbonTabItem>();            
             ribbonTabItems.Add(new CoshhDocumentRibbonTab(this));
 
-            view = new CoshhDocumentView(this);
-            view.InputBindings.AddRange(commands.Hotkeys);
+            if (viewConstructor != null) view = viewConstructor(this);
+            else throw new ArgumentNullException();
         }
 
+        private readonly IConfiguration appConfiguration;
+        public IConfiguration AppConfiguration
+        {
+            get
+            {
+                return appConfiguration;
+            }
+        }
+
+        private readonly Control view;
         /// <summary>
         /// Gets the CoshhDocument's view
         /// </summary>
@@ -76,6 +86,7 @@ namespace SafetyProgram.Document
             }
         }
 
+        private readonly DocumentICommands commands;
         /// <summary>
         /// Gets the ICommands (and hotkeys associated with) for the CoshhDocument.
         /// </summary>
@@ -105,7 +116,7 @@ namespace SafetyProgram.Document
                 {
                     TitleChanged(title);
                 }
-                RaisePropertyChanged("Title");
+                PropertyChanged.Raise(this, "Title");
             }
         }
         /// <summary>
@@ -138,7 +149,7 @@ namespace SafetyProgram.Document
                 {
                     FormatChanged(format);
                 }
-                RaisePropertyChanged("Format");
+                PropertyChanged.Raise(this, "Format");
             }
             else throw new ArgumentNullException("The IDocumentFormat supplied must not be null (A document must have a format)");
         }
@@ -147,6 +158,7 @@ namespace SafetyProgram.Document
         /// </summary>
         public event Action<IDocFormat> FormatChanged;
 
+        private readonly IContextMenu contextMenu;
         /// <summary>
         /// Gets the general ContextMenu for the CoshhDocument
         /// </summary>
@@ -171,12 +183,15 @@ namespace SafetyProgram.Document
                 {
                     RemoveFlagChanged(this, removeFlag);
                 }
-                RaisePropertyChanged("RemoveFlag");
+                PropertyChanged.Raise(this, "RemoveFlag");
             }
         }
         public bool RemoveFlag
         {
-            get { return removeFlag; }
+            get 
+            {
+                return removeFlag; 
+            }
         }
         public event Action<object, bool> RemoveFlagChanged;
 
@@ -194,7 +209,7 @@ namespace SafetyProgram.Document
                 {
                     EditedFlagChanged(this, true);
                 }
-                RaisePropertyChanged("EditedFlag");
+                PropertyChanged.Raise(this, "EditedFlag");
             }
         }
         /// <summary>
@@ -222,6 +237,7 @@ namespace SafetyProgram.Document
             get { throw new NotImplementedException(); }
         }
 
+        private readonly ObservableCollection<IRibbonTabItem> ribbonTabItems;
         public ObservableCollection<IRibbonTabItem> RibbonTabs
         {
             get 
@@ -259,6 +275,8 @@ namespace SafetyProgram.Document
 
                 RibbonTabs.Add(newSelection.RibbonTab);
             }
-        } 
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

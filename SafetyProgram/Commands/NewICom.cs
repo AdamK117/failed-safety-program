@@ -1,20 +1,23 @@
 ﻿using System;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Base;
+using System.Windows.Input;
 
 namespace SafetyProgram.Commands
 {
-    public sealed class NewICom : ExtendedICommand<IWindow<IDocument>>
+    public sealed class NewICom : ICommand
     {
+        private readonly IWindow<IDocument> data;
+
         /// <summary>
         /// Constructs an instance of the "New Document" command.
         /// </summary>
         /// <param name="window">Window in which the new document will be added when called.</param>
         public NewICom(IWindow<IDocument> window)
-            : base(window)
         {
+            this.data = window;
             //Monitor changes in the CoshhWindow's service (affects CanNew())
-            window.ServiceChanged += (service) => RaiseCanExecuteChanged();
+            window.ServiceChanged += (service) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -22,7 +25,7 @@ namespace SafetyProgram.Commands
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <returns></returns>
-        public override bool CanExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return data.Service.CanNew() ? true : false;
         }
@@ -32,7 +35,7 @@ namespace SafetyProgram.Commands
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <exception cref="NotSupportedException">Thrown if Execute is called when CanExecute == false</exception>
-        public override void Execute(object parameter)
+        public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
@@ -52,5 +55,7 @@ namespace SafetyProgram.Commands
             }
             else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)");
         }
+
+        public event EventHandler CanExecuteChanged;
     }
 }

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using SafetyProgram.Base;
 
 namespace SafetyProgram.ModelObjects
 {
     [Serializable]
-    public sealed class ChemicalModelObject : BaseINPC, IChemicalModelObject
+    public sealed class ChemicalModelObject : INotifyPropertyChanged, IChemicalModelObject
     {
         private readonly IList<string> validationErrorList = new List<string>();
 
@@ -37,7 +38,7 @@ namespace SafetyProgram.ModelObjects
             set
             {
                 name = value;
-                RaisePropertyChanged("Name");
+                PropertyChanged.Raise(this, "Name");
             }
         }
 
@@ -113,5 +114,7 @@ namespace SafetyProgram.ModelObjects
         {
             return this.GetDataObject(COM_IDENTITY);
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

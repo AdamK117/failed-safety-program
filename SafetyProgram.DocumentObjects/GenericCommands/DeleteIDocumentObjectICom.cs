@@ -1,21 +1,24 @@
 ﻿using System.Windows.Forms;
-using SafetyProgram.Base;
+using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects.GenericCommands
 {
-    public sealed class DeleteIDocumentObjectICom : ExtendedICommand<IDocumentObject>
+    public sealed class DeleteIDocumentObjectICom : ICommand
     {
+        private readonly IDocumentObject data;
+
         internal DeleteIDocumentObjectICom(IDocumentObject docObject)
-            : base(docObject)
-        { }
+        {
+            this.data = docObject;
+        }
 
         /// <summary>
         /// Can always execute
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <returns></returns>
-        public override bool CanExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return true;
         }
@@ -24,7 +27,7 @@ namespace SafetyProgram.DocumentObjects.GenericCommands
         /// Flags the IDocObject for deletion.
         /// </summary>
         /// <param name="parameter">Unused paramater.</param>
-        public override void Execute(object parameter)
+        public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
@@ -41,5 +44,7 @@ namespace SafetyProgram.DocumentObjects.GenericCommands
                 }
             }                      
         }
+
+        public event System.EventHandler CanExecuteChanged;
     }
 }

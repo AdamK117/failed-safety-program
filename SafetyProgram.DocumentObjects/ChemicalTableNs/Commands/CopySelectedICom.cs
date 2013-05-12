@@ -1,17 +1,21 @@
 ﻿using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Input;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects.ChemicalTableNs;
 using SafetyProgram.ModelObjects;
+
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
-    internal sealed class CopySelectedICom : ExtendedICommand<ChemicalTable>
+    internal sealed class CopySelectedICom : ICommand
     {
+        private readonly ChemicalTable data;
+
         public CopySelectedICom(ChemicalTable table)
-            : base(table)
         {
-            table.SelectedChemicals.CollectionChanged += (sender, args) => RaiseCanExecuteChanged();
+            this.data = table;
+            table.SelectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -19,7 +23,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <returns></returns>
-        public override bool CanExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return data.SelectedChemicals.Count == 0 ? false : true;
         }
@@ -28,7 +32,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// Copies the selected CoshhChemicalModel(s) to the clipboard.
         /// </summary>
         /// <param name="parameter">Unused paramater.</param>
-        public override void Execute(object parameter)
+        public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
@@ -43,5 +47,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
                 }
             }                
         }
+
+        public event System.EventHandler CanExecuteChanged;
     }
 }

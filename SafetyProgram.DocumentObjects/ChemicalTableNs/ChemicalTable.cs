@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects.ChemicalTableNs.Commands;
 using SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus;
@@ -9,20 +10,23 @@ using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
+    /// <summary>
+    /// Defines a ViewModel for a ChemicalTable
+    /// </summary>
     public sealed class ChemicalTable : DocumentObject
     {
-        private readonly IChemicalTableCommands commands;
-        private readonly IContextMenu contextMenu;
-        private readonly IRibbonTabItem contextualTab;
-        private readonly IConfiguration appConfiguration;
-        private readonly UserControl view;
-
+        /// <summary>
+        /// Constructs an instance of the ChemicalTable DocObject
+        /// </summary>
+        /// <param name="appConfiguration">The applications configuration file (singleton, dependancy injected)</param>
+        /// <param name="chemicals">The chemicals in this chemicaltable (may be empty)</param>
+        /// <param name="header">The header for the chemicaltable</param>
+        /// <param name="viewCtor">A constructor which generates a view compatiable with the chemicaltable as a viewmodel</param>
         internal ChemicalTable (
             IConfiguration appConfiguration, 
             ObservableCollection<ICoshhChemicalObject> chemicals, 
             string header,
-            Func<ChemicalTable, ChemicalTableRibbonTab> ribbonCreator,
-            Func<ChemicalTable, ChemicalTableView> viewCreator
+            Func<ChemicalTable, UserControl> viewCtor
             )
         {
             if (appConfiguration != null) this.appConfiguration = appConfiguration;
@@ -37,9 +41,20 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             contextMenu = new ChemicalTableContextMenu(this);
             contextualTab = new ChemicalTableRibbonTab(this);
 
-            view = viewCreator(this);
+            if (viewCtor != null) view = viewCtor(this);
+            else throw new ArgumentNullException();
         }
 
+        private readonly IConfiguration appConfiguration;
+        public IConfiguration AppConfiguration
+        {
+            get
+            {
+                return appConfiguration;
+            }
+        }
+
+        private readonly UserControl view;
         /// <summary>
         /// Gets the ChemicalTable UserControl
         /// </summary>
@@ -51,6 +66,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             }
         }
 
+        private readonly IRibbonTabItem contextualTab;
         /// <summary>
         /// Gets the ribbon assosciated with a ChemicalTable.
         /// </summary>
@@ -62,6 +78,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             }
         }
 
+        private readonly IContextMenu contextMenu;
         /// <summary>
         /// Gets the ChemicalTable's context menu.
         /// </summary>
@@ -73,6 +90,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             }
         }
 
+        private readonly IChemicalTableCommands commands;
         /// <summary>
         /// Gets the commands available to the ChemicalTable.
         /// </summary>
@@ -97,7 +115,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             set
             {
                 header = value;
-                RaisePropertyChanged("Header");
+                PropertyChanged.Raise(this, "Header");
             }
         }
 
@@ -149,5 +167,9 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
                 throw new System.NotImplementedException(); 
             }
         }
+
+        public const string COM_IDENTITY = "CoshhChemicalModels";
+
+        public override event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
     }
 }

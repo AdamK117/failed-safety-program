@@ -58,10 +58,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseICommand.cs" />
-    <Compile Include="BaseINPC.cs" />
-    <Compile Include="ExtendedICommand.cs" />
     <Compile Include="GenericLocalFileService.cs" />
+    <Compile Include="ICommandExtensions.cs" />
+    <Compile Include="INPCExtensions.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
     <Compile Include="Interfaces\ICommandsHolder.cs" />
     <Compile Include="Interfaces\IFactory.cs" />

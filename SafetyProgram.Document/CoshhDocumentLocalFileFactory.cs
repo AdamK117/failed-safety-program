@@ -1,9 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Xml.Linq;
 using SafetyProgram.Base;
-using SafetyProgram.Base.DocumentFormats;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Document.Body;
 using SafetyProgram.DocumentObjects;
@@ -22,7 +20,7 @@ namespace SafetyProgram.Document
 
         public static CoshhDocument StaticCreateNew(IConfiguration appConfiguration)
         {
-            return new CoshhDocument(appConfiguration, "someDefaultTitle", new A4DocFormat(), new CoshhDocumentBody());
+            return CoshhDocumentDefaults.DefaultCoshhDocument(appConfiguration);
         }
 
         public CoshhDocument CreateNew()
@@ -48,12 +46,12 @@ namespace SafetyProgram.Document
                     else
                     {
                         Debug.Write("WARNING: When loading a CoshhDocument a title could not be found, set to default");
-                        loadedTitle = "Untitled CoshhDocument";
+                        loadedTitle = CoshhDocumentDefaults.DefaultTitle;
                     }
                 }
 
                 //Optional: Get the format of the document
-                loadedFormat = new A4DocFormat();
+                loadedFormat = CoshhDocumentDefaults.DefaultFormat();
 
                 //Required: Get the body of the document
                 loadedBody = new CoshhDocumentBody(
@@ -62,7 +60,13 @@ namespace SafetyProgram.Document
             }
             else throw new InvalidDataException("No CoshhDocument root could be found (<coshh></coshh>)");
 
-            return new CoshhDocument(appConfiguration, loadedTitle, loadedFormat, loadedBody);
+            return new CoshhDocument(
+                appConfiguration, 
+                loadedTitle, 
+                loadedFormat, 
+                loadedBody,
+                CoshhDocumentDefaults.DefaultViewCtor()
+                );
         }
 
         public CoshhDocument Load(XElement data)

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using SafetyProgram.Base;
 
 namespace SafetyProgram.ModelObjects
 {
     [Serializable]
-    public sealed class CoshhChemicalObject : BaseINPC, ICoshhChemicalObject
+    public sealed class CoshhChemicalObject : INotifyPropertyChanged, ICoshhChemicalObject
     {
         private readonly List<string> validationErrorList = new List<string>();
 
@@ -37,7 +38,7 @@ namespace SafetyProgram.ModelObjects
             set
             {
                 _value = value;
-                RaisePropertyChanged("Value");                
+                PropertyChanged.Raise(this, "Value");               
             }
         }
 
@@ -51,7 +52,7 @@ namespace SafetyProgram.ModelObjects
             set
             {
                 unit = value;
-                RaisePropertyChanged("Unit");
+                PropertyChanged.Raise(this, "Unit");
             }
         }
 
@@ -134,5 +135,7 @@ namespace SafetyProgram.ModelObjects
         { 
             return chemical.Name; 
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

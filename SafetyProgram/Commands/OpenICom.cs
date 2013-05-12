@@ -1,22 +1,26 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using SafetyProgram.Base.Interfaces;
+using System.Windows.Input;
 using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    public class OpenICom : ExtendedICommand<IWindow<IDocument>>
+    public class OpenICom : ICommand
     {
+        private IWindow<IDocument> data;
+
         /// <summary>
         /// Constructs a command that opens a CoshhDocument into the CoshhWindow using the CoshhWindow's service
         /// </summary>
         /// <param name="window">The CoshhWindow that will load the CoshhDocument</param>
         public OpenICom(IWindow<IDocument> window)
-            : base(window)
         {
+            this.data = window;
+
             //Monitor changes in the CoshhWindow's service (affects CanLoad()).
-            window.ServiceChanged += (service) => RaiseCanExecuteChanged();
+            window.ServiceChanged += (service) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -24,7 +28,7 @@ namespace SafetyProgram.Commands
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <returns></returns>
-        public override bool CanExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return data.Service.CanLoad() ? true : false;
         }
@@ -34,7 +38,7 @@ namespace SafetyProgram.Commands
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <exception cref="NotSupportedException">Thrown if Execute is called when CanExecute is false.</exception>
-        public override void Execute(object parameter)
+        public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
@@ -66,5 +70,7 @@ namespace SafetyProgram.Commands
             }
             else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)");          
         }
+
+        public event EventHandler CanExecuteChanged;
     }
 }

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Document.Body
 {
-    public sealed class CoshhDocumentBody : BaseINPC, IDocumentBody
+    public sealed class CoshhDocumentBody : INotifyPropertyChanged, IDocumentBody
     {
         /// <summary>
         /// Construct a blank CoshhDocumentBody
@@ -58,7 +59,7 @@ namespace SafetyProgram.Document.Body
                 {
                     SelectionChanged(selection);
                 }
-                RaisePropertyChanged("Selection");
+                PropertyChanged.Raise(this, "Selection");
             }
             else throw new ArgumentNullException("Attempted to select nothing, use ClearSelection instead when attempting to clear a CoshhDocuments selection");
         }
@@ -72,7 +73,7 @@ namespace SafetyProgram.Document.Body
             {
                 SelectionChanged(selection);
             }
-            RaisePropertyChanged("Selected");
+            PropertyChanged.Raise(this, "Selected");
         }
 
         public void DeSelectAll()
@@ -83,7 +84,7 @@ namespace SafetyProgram.Document.Body
             {
                 SelectionChanged(selection);
             }
-            RaisePropertyChanged("Selection");
+            PropertyChanged.Raise(this, "Selection");
         }
 
         public event Action<IDocumentObject> SelectionChanged;
@@ -133,5 +134,7 @@ namespace SafetyProgram.Document.Body
                 #endregion
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

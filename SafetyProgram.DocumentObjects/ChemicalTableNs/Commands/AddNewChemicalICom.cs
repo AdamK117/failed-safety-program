@@ -1,19 +1,24 @@
 ﻿using SafetyProgram.ModelObjects;
 using SafetyProgram.Base;
+using System.Windows.Input;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
-    public sealed class AddNewChemicalICom : ExtendedICommand<ChemicalTable>
+    public sealed class AddNewChemicalICom : ICommand
     {
-        internal AddNewChemicalICom(ChemicalTable table) : base(table) 
-        { }
+        private readonly ChemicalTable data;
+
+        internal AddNewChemicalICom(ChemicalTable table) 
+        {
+            this.data = table;
+        }
 
         /// <summary>
         /// Can always execute
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <returns></returns>
-        public override bool CanExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return true;
         }
@@ -22,7 +27,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// Adds a random chemical to the ChemicalTable.
         /// </summary>
         /// <param name="parameter">Unused paramater.</param>
-        public override void Execute(object parameter)
+        public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
@@ -50,6 +55,8 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
                     );
                 data.Chemicals.Add(chemical);
             }            
-        }        
+        }
+
+        public event System.EventHandler CanExecuteChanged;
     }
 }

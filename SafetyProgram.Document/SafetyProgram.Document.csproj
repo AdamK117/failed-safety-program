@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="CoshhDocument.cs" />
     <Compile Include="CoshhDocumentBody.cs" />
+    <Compile Include="CoshhDocumentDefaults.cs" />
     <Compile Include="CoshhDocumentLocalFileFactory.cs" />
     <Compile Include="CoshhDocumentView.xaml.cs">
       <DependentUpon>CoshhDocumentView.xaml</DependentUpon>

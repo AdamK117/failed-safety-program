@@ -1,40 +1,58 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Commands;
-using SafetyProgram.Ribbons;
 
 namespace SafetyProgram
 {
-    public sealed class CoshhWindow : BaseINPC, IWindow<IDocument>, IRibbonWindow
+    /// <summary>
+    /// Defines a CoshhWindow, a window composed of:
+    ///     -A document, which is displayed in the window
+    ///     -A service, which saves/loads/creates new documents
+    ///     -A view, which is displayed to the user
+    ///     -Commands which are digested by the view
+    ///     -A ribbon which appears at the top of the view
+    /// </summary>
+    public sealed class CoshhWindow : 
+        INotifyPropertyChanged, ICoshhWindow
     {
+        private readonly IConfiguration appConfiguration;
+
         /// <summary>
         /// Constructs a CoshhWindow IRibbonWindow.
         /// </summary>
         /// <param name="documentService">The service used by the IRibbonWindow to load IDocuments into it</param>
         /// <param name="document">The IDocument shown by the IRibbonWindow on construction</param>
-        public CoshhWindow
-            (IConfiguration appConfiguration, IService<IDocument> documentService, IDocument document)
+        public CoshhWindow(
+            IConfiguration appConfiguration, 
+            IService<IDocument> documentService, 
+            IDocument document,
+            Func<ICoshhWindow, Window> viewConstructor,
+            Func<ICoshhWindow, IWindowCommands> commandsConstructor,
+            Func<ICoshhWindow, IRibbon> ribbonConstructor
+            )
         {
-            if (appConfiguration == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without an app configuration");
-            else this.appConfiguration = appConfiguration;
-
-            if (documentService == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without a service");
-            else this.service = documentService;
-
-            if (document == null) throw new ArgumentNullException("Instance of CoshhWindow cannot be created without a document");
-            else this.content = document;
-
-            //TODO: Change to Func<IWindow<obj>> Dependancy injections?
-            commands = new WindowICommands(this);
-            ribbon = new CoshhRibbon(this);
-            view = new CoshhWindowView(this);
-            view.InputBindings.AddRange(commands.Hotkeys);
+            if (
+                appConfiguration != null &&
+                documentService != null &&
+                document != null &&
+                commandsConstructor != null &&
+                ribbonConstructor != null &&
+                viewConstructor != null
+                )
+            {
+                this.appConfiguration = appConfiguration;
+                this.service = documentService;
+                this.content = document;
+                this.commands = commandsConstructor(this);
+                this.ribbon = ribbonConstructor(this);
+                this.view = viewConstructor(this);
+            }
+            else throw new ArgumentNullException();
         }
-
-        private readonly IConfiguration appConfiguration;
 
         private readonly Window view;
         /// <summary>
@@ -99,8 +117,8 @@ namespace SafetyProgram
                 if (ContentChanged != null)
                 {
                     ContentChanged(content);
-                }                
-                RaisePropertyChanged("Content");
+                }
+                PropertyChanged.Raise(this, "Content");
             }
         }
         /// <summary>
@@ -133,8 +151,8 @@ namespace SafetyProgram
                 {
                     ServiceChanged(service);
                 }
-                RaisePropertyChanged("Service");
-                RaisePropertyChanged("Commands");
+                PropertyChanged.Raise(this, "Service");
+                PropertyChanged.Raise(this, "Commands");
             }
             else throw new ArgumentNullException("newService", "The CoshhWindow's service cannot be set to null, a valid service must be set");
         }        
@@ -142,5 +160,7 @@ namespace SafetyProgram
         /// Event that triggers if the CoshhWindow's IDocumentService changes.
         /// </summary>
         public event Action<IService<IDocument>> ServiceChanged;
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -7,9 +7,12 @@ namespace SafetyProgram.Document.Commands
 {
     public sealed class DocumentICommands : IDocumentICommands
     {
-        public DocumentICommands(IDocument document)
+        public DocumentICommands(CoshhDocument document)
         {
-            //InsertChemicalTable = new InsertIDocumentObjectICom(document, () => new ChemicalTable());
+            InsertChemicalTable = new InsertIDocumentObjectICom(
+                document, 
+                () => ChemicalTableDefaults.DefaultTable(document.AppConfiguration)
+                );
             DeleteIDocObject = new DeleteIDocObjectICom(document);
 
             Hotkeys = setHotkeys();

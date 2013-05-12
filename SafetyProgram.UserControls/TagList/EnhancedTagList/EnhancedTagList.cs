@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -8,7 +9,7 @@ using SafetyProgram.UserControls.TagList;
 
 namespace SafetyProgram.UserControls.Generic.EnhancedTagList
 {
-    public sealed class EnhancedTagList<T> : BaseINPC, ITagList
+    public sealed class EnhancedTagList<T> : INotifyPropertyChanged, ITagList
     {
         private readonly ObservableCollection<T> rawItems;
         private readonly Func<T, ITagListItem> binder;
@@ -26,7 +27,7 @@ namespace SafetyProgram.UserControls.Generic.EnhancedTagList
             View = new TagListView(this);
 
             //TODO: Change this QAD refresher to a dynamic linker
-            rawItems.CollectionChanged += (sender, e) => RaisePropertyChanged("Items");
+            rawItems.CollectionChanged += (sender, e) => PropertyChanged.Raise(this, "Items");
         }        
 
         public ObservableCollection<ITagListItem> Items
@@ -38,6 +39,8 @@ namespace SafetyProgram.UserControls.Generic.EnhancedTagList
                     select binder(tli)
                 );                
             }
-        }        
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

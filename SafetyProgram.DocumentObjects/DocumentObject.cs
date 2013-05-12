@@ -1,12 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Controls;
-using System.Xml.Linq;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects
 {
-    public abstract class DocumentObject : BaseINPC, IDocumentObject
+    public abstract class DocumentObject : INotifyPropertyChanged, IDocumentObject
     {
         /// <summary>
         /// Gets the UserControl view for the DocObject.
@@ -36,7 +36,7 @@ namespace SafetyProgram.DocumentObjects
                 {
                     SelectedChanged(this, selectedFlag);
                 }
-                RaisePropertyChanged("Selected");
+                PropertyChanged.Raise(this, "Selected");
             }
         }
         /// <summary>
@@ -53,7 +53,7 @@ namespace SafetyProgram.DocumentObjects
                 {
                     SelectedChanged(this, selectedFlag);
                 }
-                RaisePropertyChanged("Selected");
+                PropertyChanged.Raise(this, "Selected");
             }
         }
         /// <summary>
@@ -87,11 +87,8 @@ namespace SafetyProgram.DocumentObjects
             if (editedFlag == false)
             {
                 editedFlag = true;
-                if (EditedFlagChanged != null)
-                {
-                    EditedFlagChanged(this, editedFlag);
-                }
-                RaisePropertyChanged("EditedFlag");
+                EditedFlagChanged.Raise(this, editedFlag);
+                PropertyChanged.Raise(this, "EditedFlag");
             }
         }
         /// <summary>
@@ -118,12 +115,10 @@ namespace SafetyProgram.DocumentObjects
                 removeFlag = true;
 
                 DeSelect();
-                
-                if (RemoveFlagChanged != null)
-                {
-                    RemoveFlagChanged(this, removeFlag);
-                }
-                RaisePropertyChanged("RemoveFlag");
+
+                RemoveFlagChanged.Raise(this, removeFlag);
+
+                PropertyChanged.Raise(this, "RemoveFlag");
             }            
         }
         /// <summary>
@@ -147,5 +142,7 @@ namespace SafetyProgram.DocumentObjects
         public abstract string this[string columnName] { get; }
 
         #endregion
+
+        public virtual event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -72,28 +72,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractDocObjectFactory.cs" />
-    <Compile Include="ChemicalTable\ChemicalTable.cs" />
-    <Compile Include="ChemicalTable\ChemicalTableClipboard.cs" />
-    <Compile Include="ChemicalTable\ChemicalTableLocalFileFactory.cs" />
-    <Compile Include="ChemicalTable\ChemicalTableView.xaml.cs">
+    <Compile Include="ChemicalTableNs\ChemicalTable.cs" />
+    <Compile Include="ChemicalTableNs\ChemicalTableClipboard.cs" />
+    <Compile Include="ChemicalTableNs\ChemicalTableDefaults.cs" />
+    <Compile Include="ChemicalTableNs\ChemicalTableLocalFileFactory.cs" />
+    <Compile Include="ChemicalTableNs\ChemicalTableView.xaml.cs">
       <DependentUpon>ChemicalTableView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChemicalTable\Commands\AddNewChemicalICom.cs" />
-    <Compile Include="ChemicalTable\Commands\ChemicalTableCommands.cs" />
-    <Compile Include="ChemicalTable\Commands\CopySelectedICom.cs" />
-    <Compile Include="ChemicalTable\Commands\DeleteSelectedICom.cs" />
-    <Compile Include="ChemicalTable\Commands\IChemicalTableCommands.cs" />
-    <Compile Include="ChemicalTable\Commands\PasteChemicalsICom.cs" />
-    <Compile Include="ChemicalTable\ContextMenus\ChemicalTableContextMenu.cs" />
-    <Compile Include="ChemicalTable\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
+    <Compile Include="ChemicalTableNs\Commands\AddNewChemicalICom.cs" />
+    <Compile Include="ChemicalTableNs\Commands\ChemicalTableCommands.cs" />
+    <Compile Include="ChemicalTableNs\Commands\CopySelectedICom.cs" />
+    <Compile Include="ChemicalTableNs\Commands\DeleteSelectedICom.cs" />
+    <Compile Include="ChemicalTableNs\Commands\IChemicalTableCommands.cs" />
+    <Compile Include="ChemicalTableNs\Commands\PasteChemicalsICom.cs" />
+    <Compile Include="ChemicalTableNs\ContextMenus\ChemicalTableContextMenu.cs" />
+    <Compile Include="ChemicalTableNs\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
       <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChemicalTable\Ribbon\ChemicalTableRibbon.cs" />
-    <Compile Include="ChemicalTable\Ribbon\ChemicalTableRibbonView.xaml.cs">
+    <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbon.cs" />
+    <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml.cs">
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DocumentObject.cs" />
     <Compile Include="GenericCommands\DeleteIDocumentObjectICom.cs" />
+    <Compile Include="GenericDocObjectCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -118,19 +120,19 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ChemicalTable\ChemicalTableView.xaml">
+    <Page Include="ChemicalTableNs\ChemicalTableView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ChemicalTable\ContextMenus\ChemicalTableContextMenuView.xaml">
+    <Page Include="ChemicalTableNs\ContextMenus\ChemicalTableContextMenuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ChemicalTable\Ribbon\ChemicalTableRibbonView.xaml">
+    <Page Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

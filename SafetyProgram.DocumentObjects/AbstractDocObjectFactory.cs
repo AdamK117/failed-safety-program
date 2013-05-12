@@ -31,7 +31,10 @@ namespace SafetyProgram.DocumentObjects
                         //Make the instance
                         inputRegistry = new Dictionary<string, Func<XElement, IConfiguration, IDocumentObject>>()
                         {
-                            {ChemicalTableLocalFileFactory.XML_IDENTIFIER, (element, appConf) => ChemicalTableLocalFileFactory.StaticLoad(element, appConf) }
+                            {
+                                ChemicalTableLocalFileFactory.XML_IDENTIFIER, 
+                                (element, appConf) => ChemicalTableLocalFileFactory.StaticLoad(element, appConf) 
+                            }
                         };
                     }
                 }
@@ -49,7 +52,10 @@ namespace SafetyProgram.DocumentObjects
                     {
                         outputRegistry = new Dictionary<Type, Func<IDocumentObject, IConfiguration, XElement>>()
                             {
-                                {typeof(ChemicalTable), (docobj, appConf) => ChemicalTableLocalFileFactory.StaticStore(docobj as ChemicalTable, appConf) }
+                                {
+                                    typeof(ChemicalTable), 
+                                    (docobj, appConf) => ChemicalTableLocalFileFactory.StaticStore((ChemicalTable)docobj, appConf) 
+                                }
                             };
                     }
                 }

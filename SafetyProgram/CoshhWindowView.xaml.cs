@@ -14,12 +14,14 @@ namespace SafetyProgram
         /// <summary>
         /// Makes an instance of the CoshhWindow object.
         /// </summary>
-        public CoshhWindowView(IWindow<IDocument> viewModel)
+        public CoshhWindowView(ICoshhWindow viewModel)
         {
             this.viewModel = viewModel;
 
-            DataContext = viewModel;
+            this.DataContext = viewModel;
             InitializeComponent();
+
+            this.InputBindings.AddRange(viewModel.Commands.Hotkeys);
         }
 
         //TODO: Make it so the closed dialog shows up without de-focusing the window

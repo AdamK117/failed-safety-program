@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using SafetyProgram.Base;
 
 namespace SafetyProgram.ModelObjects
 {
     [Serializable]
-    public sealed class HazardModelObject : BaseINPC, IHazardModelObject
+    public sealed class HazardModelObject : INotifyPropertyChanged, IHazardModelObject
     {
         private readonly List<string> validationErrorList = new List<string>();
 
@@ -27,7 +28,7 @@ namespace SafetyProgram.ModelObjects
             set
             {
                 hazard = value;
-                RaisePropertyChanged("Hazard");
+                PropertyChanged.Raise(this, "Hazard");
             }
         }
 
@@ -41,7 +42,7 @@ namespace SafetyProgram.ModelObjects
             set
             {
                 signalWord = value;
-                RaisePropertyChanged("SignalWord");
+                PropertyChanged.Raise(this, "SignalWord");
             }
         }
 
@@ -52,7 +53,7 @@ namespace SafetyProgram.ModelObjects
             set
             {
                 symbol = value;
-                RaisePropertyChanged("Symbol");
+                PropertyChanged.Raise(this, "Symbol");
             }
         }
 
@@ -114,5 +115,7 @@ namespace SafetyProgram.ModelObjects
         {
             return hazard;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

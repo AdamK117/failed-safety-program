@@ -8,7 +8,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
     internal static class ChemicalTableClipboard
     {
-        public static string ComIdentity { get { return "CoshhChemicalModels"; } }
+        public static string ComIdentity { get { return ChemicalTable.COM_IDENTITY; } }
 
         public static IDataObject GetDataObject(this IEnumerable<ICoshhChemicalObject> chemicals)
         {

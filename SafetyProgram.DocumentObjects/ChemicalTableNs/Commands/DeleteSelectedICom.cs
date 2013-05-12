@@ -3,15 +3,19 @@ using System.Windows.Forms;
 
 using SafetyProgram.ModelObjects;
 using SafetyProgram.Base;
+using System.Windows.Input;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
-    public sealed class DeleteSelectedICom : ExtendedICommand<ChemicalTable>
+    public sealed class DeleteSelectedICom : ICommand
     {
-        internal DeleteSelectedICom(ChemicalTable table) : base(table) 
+        private readonly ChemicalTable data;
+
+        internal DeleteSelectedICom(ChemicalTable table) 
         {
+            this.data = table;
             //Monitor the ChemicalTable's selections. This command won't work if nothing is selected.
-            table.SelectedChemicals.CollectionChanged += (sender, args) => RaiseCanExecuteChanged();
+            table.SelectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -19,7 +23,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <returns></returns>
-        public override bool CanExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return data.SelectedChemicals.Count == 0 ? false : true;
         }
@@ -28,7 +32,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// Deletes the selected chemicals in the ChemicalTable.
         /// </summary>
         /// <param name="parameter">Unused paramater.</param>
-        public override void Execute(object parameter)
+        public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
@@ -47,7 +51,9 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
                     default:
                         break;
                 }
-            }                        
+            }
         }
+
+        public event System.EventHandler CanExecuteChanged;
     }
 }

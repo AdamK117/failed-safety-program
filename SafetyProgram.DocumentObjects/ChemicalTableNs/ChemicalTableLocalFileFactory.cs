@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon;
 using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
@@ -19,13 +18,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
         public static ChemicalTable StaticCreateNew(IConfiguration appConfiguration)
         {
-            return new ChemicalTable(
-                appConfiguration, 
-                new ObservableCollection<ICoshhChemicalObject>(), 
-                "Chemical Table",
-                (chemTable) => new ChemicalTableRibbonTab(chemTable),
-                (chemTable) => new ChemicalTableView(chemTable)
-            );
+            return ChemicalTableDefaults.DefaultTable(appConfiguration);
         }
 
         public ChemicalTable CreateNew()
@@ -35,26 +28,35 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
         public static ChemicalTable StaticLoad(XElement data, IConfiguration appConfiguration)
         {
+            //Define variables to load from the data
             string loadedHeader = "";
             var loadedChemicals = new ObservableCollection<ICoshhChemicalObject>();
 
-            var headerElement = data.Element("header");
-            if (headerElement != null)
+            //Header (Optional)
             {
-                loadedHeader = headerElement.Value;
+                var headerElement = data.Element("header");
+                if (headerElement != null)
+                {
+                    loadedHeader = headerElement.Value;
+                }
+                else loadedHeader = "SomeDefaultValue";
             }
 
-            var coshhChemicalsElements = data.Elements(CoshhChemicalObjectLocalFileFactory.XML_IDENTIFIER);
-            foreach (XElement coshhChemicalElement in coshhChemicalsElements)
+            //Chemicals in the table (Optional)
             {
-                var chemicalObject = CoshhChemicalObjectLocalFileFactory.StaticLoad(coshhChemicalElement);
-                loadedChemicals.Add(chemicalObject);
+                var coshhChemicalsElements = data.Elements(CoshhChemicalObjectLocalFileFactory.XML_IDENTIFIER);
+                foreach (XElement coshhChemicalElement in coshhChemicalsElements)
+                {
+                    var chemicalObject = CoshhChemicalObjectLocalFileFactory.StaticLoad(coshhChemicalElement);
+                    loadedChemicals.Add(chemicalObject);
+                }
             }
 
-            return new ChemicalTable(appConfiguration, 
-                loadedChemicals, 
+            //Return the fully loaded chemical table
+            return new ChemicalTable(
+                appConfiguration,
+                loadedChemicals,
                 loadedHeader,
-                (chemTable) => new ChemicalTableRibbonTab(chemTable),
                 (chemTable) => new ChemicalTableView(chemTable)
                 );
         }
@@ -66,6 +68,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
         public static XElement StaticStore(ChemicalTable item, IConfiguration appConfiguration)
         {
+            //TODO: Validation check
             return (
                 new XElement(XML_IDENTIFIER,
                     new XElement("header", item.Header),

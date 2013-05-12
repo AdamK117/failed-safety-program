@@ -1,21 +1,28 @@
-﻿using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Base;
+﻿using System;
+using System.Windows.Input;
+using SafetyProgram.Base.Interfaces;
+
 namespace SafetyProgram.Commands
 {
-    public sealed class ExitICom : ExtendedICommand<IWindow<IDocument>>
+    public sealed class ExitICom : ICommand
     {
-        public ExitICom(IWindow<IDocument> window)
-            : base(window)
-        { }
+        private readonly IWindow<IDocument> window;
 
-        public override bool CanExecute(object parameter)
+        public ExitICom(IWindow<IDocument> window)
+        {
+            this.window = window;
+        }
+
+        public bool CanExecute(object parameter)
         {
             return true;
         }
 
-        public override void Execute(object parameter)
+        public void Execute(object parameter)
         {
-            data.View.Close();
+            window.View.Close();
         }
+
+        public event EventHandler CanExecuteChanged;
     }
 }

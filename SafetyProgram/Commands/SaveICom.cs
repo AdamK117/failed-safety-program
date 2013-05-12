@@ -2,26 +2,30 @@
 using System.Windows;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Base;
+using System.Windows.Input;
 
 namespace SafetyProgram.Commands
 {
     /// <summary>
     /// ICommand for Saving the current document
     /// </summary>
-    public class SaveICom : ExtendedICommand<IWindow<IDocument>>
+    public class SaveICom : ICommand
     {
+        private readonly IWindow<IDocument> data;
+
         /// <summary>
         /// Construct a Save command which will save the CoshhWindow's document
         /// </summary>
         /// <param name="window">CoshhWindow which houses the CoshhDocument to be saved</param>
         public SaveICom(IWindow<IDocument> window)
-            : base(window) 
         {
+            this.data = window;
+
             //Monitor if the CoshhWindow's service has changed (Service.CanSave())
-            window.ServiceChanged += (service) => RaiseCanExecuteChanged();
+            window.ServiceChanged += (service) => CanExecuteChanged.Raise(this);
 
             //Monitor if the CoshhWindow's document has changed (Can't save a closed (null) document)
-            window.ContentChanged += (document) => RaiseCanExecuteChanged();
+            window.ContentChanged += (document) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -29,7 +33,7 @@ namespace SafetyProgram.Commands
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <returns></returns>
-        public override bool CanExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return (data.Content != null && data.Service.CanSave(data.Content)) ? false : true;
         }
@@ -38,7 +42,7 @@ namespace SafetyProgram.Commands
         /// Attempts to save the CoshhWindow's CoshhDocument.
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
-        public override void Execute(object parameter)
+        public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
@@ -58,5 +62,7 @@ namespace SafetyProgram.Commands
             }
             else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)"); 
         }
+
+        public event EventHandler CanExecuteChanged;
     }
 }

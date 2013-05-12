@@ -1,16 +1,19 @@
 ﻿using System;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Base;
+using System.Windows.Input;
 
 namespace SafetyProgram.Commands
 {
-    public sealed class CloseICom : ExtendedICommand<IWindow<IDocument>>
+    public sealed class CloseICom : ICommand
     {
+        private readonly IWindow<IDocument> data;
+
         public CloseICom(IWindow<IDocument> window)
-            : base(window)
         {
+            this.data = window;
             //Monitor changes in the CoshhWindow's CoshhDocument. Closed (null) documents can't be closed.
-            window.ContentChanged += (document) => RaiseCanExecuteChanged();
+            window.ContentChanged += (document) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -18,7 +21,7 @@ namespace SafetyProgram.Commands
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <returns></returns>
-        public override bool CanExecute(object parameter)
+        public bool CanExecute(object parameter)
         {            
             return data.Content == null ? false : true;
         }
@@ -28,7 +31,7 @@ namespace SafetyProgram.Commands
         /// </summary>
         /// <param name="parameter">Unused paramater</param>
         /// <exception cref="NotSupportedException">Thrown if Execute is called but CanExecute == false</exception>
-        public override void Execute(object parameter)
+        public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
@@ -47,5 +50,7 @@ namespace SafetyProgram.Commands
             }
             else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)");
         }
+
+        public event EventHandler CanExecuteChanged;
     }
 }

@@ -107,6 +107,7 @@
     <Compile Include="CoshhWindowView.xaml.cs">
       <DependentUpon>CoshhWindowView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ICoshhWindow.cs" />
     <Compile Include="Services\DocumentLocalFileService.cs" />
     <Page Include="CoshhWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>

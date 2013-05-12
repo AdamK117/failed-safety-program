@@ -16,6 +16,7 @@ namespace SafetyProgram.Document
             this.viewModel = viewModel;
             DataContext = viewModel;
             InitializeComponent();
+            this.InputBindings.AddRange(viewModel.Commands.Hotkeys);
         }
 
         //If the document (i.e. not a docObject) is clicked
