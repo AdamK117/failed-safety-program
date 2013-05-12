@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Static;
 
 namespace SafetyProgram.Configuration.UnitTests
@@ -15,7 +17,7 @@ namespace SafetyProgram.Configuration.UnitTests
             //  All values are loaded without throwing an exception
             //  Repository is serialized correctly. It's a local file repository so username/password should be blank
 
-            var configService = new ConfigurationLocalFileService(TestData.CONFIGURATION_FILE);
+            var configService = new LocalFileService<IConfiguration>(new ConfigurationLocalFileFactory(), TestData.CONFIGURATION_FILE);
 
             var configFile = configService.Load();
 
@@ -51,7 +53,7 @@ namespace SafetyProgram.Configuration.UnitTests
 
             try
             {
-                var configService = new ConfigurationLocalFileService("SomeFakePath");
+                var configService = new LocalFileService<IConfiguration>(new ConfigurationLocalFileFactory(), "SomeFakePath");
                 Assert.Fail("The service should throw a FileNotFound exception if constructed with an incorrect path");
             }
             catch (FileNotFoundException)
@@ -66,7 +68,7 @@ namespace SafetyProgram.Configuration.UnitTests
             //Loads a known invalid file
             //  Should throw an System.IO.InvalidDataException
 
-            var configService = new ConfigurationLocalFileService(TestData.INVALID_CONFIGURATION_FILE);
+            var configService = new LocalFileService<IConfiguration>(new ConfigurationLocalFileFactory(), TestData.INVALID_CONFIGURATION_FILE);
 
             try
             {

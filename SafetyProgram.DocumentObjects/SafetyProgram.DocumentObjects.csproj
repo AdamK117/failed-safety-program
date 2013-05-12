@@ -93,7 +93,7 @@
     <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml.cs">
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DocumentObject.cs" />
+    <Compile Include="DefaultDocumentObjects.cs" />
     <Compile Include="GenericCommands\DeleteIDocumentObjectICom.cs" />
     <Compile Include="GenericDocObjectCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -148,6 +148,10 @@
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
       <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
       <Name>SafetyProgram.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Configuration\SafetyProgram.Configuration.csproj">
+      <Project>{e3cec2ca-04a8-4841-9f19-e5439c47091a}</Project>
+      <Name>SafetyProgram.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.ModelObjects\SafetyProgram.ModelObjects.csproj">
       <Project>{7C2C454D-A1D9-4355-976C-08582E07CD31}</Project>

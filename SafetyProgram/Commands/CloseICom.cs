@@ -5,11 +5,11 @@ using System.Windows.Input;
 
 namespace SafetyProgram.Commands
 {
-    public sealed class CloseICom : ICommand
+    internal sealed class CloseICom<T> : ICommand
     {
-        private readonly IWindow<IDocument> data;
+        private readonly IWindow<T> data;
 
-        public CloseICom(IWindow<IDocument> window)
+        public CloseICom(IWindow<T> window)
         {
             this.data = window;
             //Monitor changes in the CoshhWindow's CoshhDocument. Closed (null) documents can't be closed.
@@ -41,7 +41,7 @@ namespace SafetyProgram.Commands
                 try
                 {
                     data.Service.Close(data.Content);
-                    data.Content = null;
+                    data.Content = default(T);
                 }
                 catch (ArgumentException)
                 {

@@ -54,38 +54,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.exe" size="28672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.exe" size="29696">
       <assemblyIdentity name="SafetyProgram" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>gb5Rtg/Xm6WfokssD9fdqQy9RfA=</dsig:DigestValue>
+        <dsig:DigestValue>BnlESlPbmg6eR2X8QgpgPflov/w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.Base.dll" size="19968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.Base.dll" size="22016">
       <assemblyIdentity name="SafetyProgram.Base" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>mgMbwG83eQHHcksIcM3FR/xQ/b0=</dsig:DigestValue>
+        <dsig:DigestValue>S/q8x7K1DiKLUk9e5x7QC33IDv4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.Configuration.dll" size="15872">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.Configuration.dll" size="14848">
       <assemblyIdentity name="SafetyProgram.Configuration" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>raxdcnGo0KnO4onmH+HiEQSzFH0=</dsig:DigestValue>
+        <dsig:DigestValue>wBCkYw1c6mB64QTopHSuS6IubAQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,19 +97,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>nDhMHrSY4Yw3mrwa1QhHaLdbevo=</dsig:DigestValue>
+        <dsig:DigestValue>V1jUfeaitdj8eDjtE3l6XEFk3Vs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.DocumentObjects.dll" size="38912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.DocumentObjects.dll" size="39424">
       <assemblyIdentity name="SafetyProgram.DocumentObjects" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>at225L2orIQMGV5mpr+lYObUQ5M=</dsig:DigestValue>
+        <dsig:DigestValue>ueWnHTW2ssOfS3ULJdRjyO+g3PM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -133,7 +133,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>NHW4kr+9fIkfEZGU8rq7LE5XfNw=</dsig:DigestValue>
+        <dsig:DigestValue>5WcLyDLJ604OPXzrxbf4+W3U090=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

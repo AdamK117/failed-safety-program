@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Windows;
-using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Base;
 using System.Windows.Input;
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
     /// <summary>
     /// ICommand for Saving the current document
     /// </summary>
-    public class SaveICom : ICommand
+    internal class SaveICom<T> : ICommand
     {
-        private readonly IWindow<IDocument> data;
+        private readonly IWindow<T> data;
 
         /// <summary>
         /// Construct a Save command which will save the CoshhWindow's document
         /// </summary>
         /// <param name="window">CoshhWindow which houses the CoshhDocument to be saved</param>
-        public SaveICom(IWindow<IDocument> window)
+        public SaveICom(IWindow<T> window)
         {
             this.data = window;
 

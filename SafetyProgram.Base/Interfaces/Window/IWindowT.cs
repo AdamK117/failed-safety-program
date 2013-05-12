@@ -6,10 +6,9 @@ namespace SafetyProgram.Base.Interfaces
     /// Defines an IWindow that can house another, servicable, object (e.g. an IDocument)
     /// </summary>
     /// <typeparam name="Doc">An IDocument that the IWindow houses</typeparam>
-    public interface IWindow<Doc> : IWindow
-        where Doc : IViewable
+    public interface IWindow<Doc> : IWindow, IContentWindow
     {
-        Doc Content { get; set; }
+        new Doc Content { get; set; }
         event Action<Doc> ContentChanged;
 
         IService<Doc> Service { get; }

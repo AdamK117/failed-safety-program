@@ -1,6 +1,7 @@
 ﻿using System;
 using Fluent;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Document;
 
 namespace SafetyProgram
 {
@@ -9,7 +10,7 @@ namespace SafetyProgram
     /// </summary>
     internal sealed partial class CoshhWindowView : RibbonWindow
     {
-        private readonly IWindow<IDocument> viewModel;
+        private readonly ICoshhWindow viewModel;
 
         /// <summary>
         /// Makes an instance of the CoshhWindow object.
@@ -32,7 +33,7 @@ namespace SafetyProgram
             //Close the current document (if possible)
             if (viewModel.Content != null)
             {
-                viewModel.Service.Close(viewModel.Content);
+                viewModel.Commands.Close.Execute(null);
             }
             
             System.Windows.Application.Current.Shutdown();

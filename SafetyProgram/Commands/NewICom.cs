@@ -5,15 +5,15 @@ using System.Windows.Input;
 
 namespace SafetyProgram.Commands
 {
-    public sealed class NewICom : ICommand
+    internal sealed class NewICom<T> : ICommand
     {
-        private readonly IWindow<IDocument> data;
+        private readonly IWindow<T> data;
 
         /// <summary>
         /// Constructs an instance of the "New Document" command.
         /// </summary>
         /// <param name="window">Window in which the new document will be added when called.</param>
-        public NewICom(IWindow<IDocument> window)
+        public NewICom(IWindow<T> window)
         {
             this.data = window;
             //Monitor changes in the CoshhWindow's service (affects CanNew())
@@ -44,7 +44,7 @@ namespace SafetyProgram.Commands
                     try
                     {
                         data.Service.Close(data.Content);
-                        data.Content = null;
+                        data.Content = default(T);
                     }
                     catch(ArgumentException)
                     {

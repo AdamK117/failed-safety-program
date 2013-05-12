@@ -55,7 +55,7 @@ namespace SafetyProgram.Document
 
                 //Required: Get the body of the document
                 loadedBody = new CoshhDocumentBody(
-                    AbstractDocObjectFactory.GetDocObjects(data, appConfiguration)
+                    DocumentObjectLocalFileFactory.GetDocObjects(data, appConfiguration)
                 );
             }
             else throw new InvalidDataException("No CoshhDocument root could be found (<coshh></coshh>)");
@@ -77,7 +77,7 @@ namespace SafetyProgram.Document
         public static XElement StaticStore(CoshhDocument item, IConfiguration appConfiguration)
         {
             XElement xDoc = new XElement("coshh",
-                AbstractDocObjectFactory.SaveDocObjects(item.Body.Items, appConfiguration)
+                DocumentObjectLocalFileFactory.SaveDocObjects(item.Body.Items, appConfiguration)
             );
 
             return xDoc;

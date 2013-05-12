@@ -5,16 +5,16 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Document.ContextMenus
 {
-    public sealed class DocumentContextMenu : IContextMenu
+    internal sealed class DocumentContextMenu : IContextMenu
     {
-        private readonly DocumentICommands documentCommands;
+        private readonly IDocumentICommands documentCommands;
         private readonly ContextMenu view;
 
         /// <summary>
         /// Constructs an instance of a DocumentContextMenu for the CoshhDocument
         /// </summary>
         /// <param name="documentCommands"></param>
-        public DocumentContextMenu(DocumentICommands documentCommands)
+        public DocumentContextMenu(IDocumentICommands documentCommands)
         {
             this.documentCommands = documentCommands;
 
@@ -40,7 +40,7 @@ namespace SafetyProgram.Document.ContextMenus
         /// <summary>
         /// Gets the CoshhDocument's DocumentCommandsHolder
         /// </summary>
-        public DocumentICommands DocumentCommands
+        public IDocumentICommands DocumentCommands
         {
             get { return documentCommands; }
         }

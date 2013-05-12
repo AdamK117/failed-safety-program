@@ -8,11 +8,9 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
     internal static class ChemicalTableClipboard
     {
-        public static string ComIdentity { get { return ChemicalTable.COM_IDENTITY; } }
-
         public static IDataObject GetDataObject(this IEnumerable<ICoshhChemicalObject> chemicals)
         {
-            IDataObject dataObject = chemicals.GetDataObject<ICoshhChemicalObject>(ComIdentity);
+            IDataObject dataObject = chemicals.GetDataObject<ICoshhChemicalObject>(ChemicalTable.COM_IDENTITY);
 
             dataObject.SetData(DataFormats.Text, getTextFormat(chemicals));
             dataObject.SetData(DataFormats.Rtf, getRtfFormat(chemicals));
@@ -27,7 +25,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
         public static void TryPaste(this ICollection<ICoshhChemicalObject> target)
         {
-            target.TryPasteInto<ICoshhChemicalObject>(ComIdentity);
+            target.TryPasteInto<ICoshhChemicalObject>(ChemicalTable.COM_IDENTITY);
         }
 
         private static string getTextFormat(IEnumerable<ICoshhChemicalObject> data)

@@ -1,14 +1,13 @@
-﻿using SafetyProgram.ModelObjects;
-using SafetyProgram.Base;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
-    public sealed class AddNewChemicalICom : ICommand
+    internal sealed class AddNewChemicalICom : ICommand
     {
         private readonly ChemicalTable data;
 
-        internal AddNewChemicalICom(ChemicalTable table) 
+        public AddNewChemicalICom(ChemicalTable table) 
         {
             this.data = table;
         }

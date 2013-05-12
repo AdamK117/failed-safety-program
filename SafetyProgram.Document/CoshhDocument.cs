@@ -86,11 +86,11 @@ namespace SafetyProgram.Document
             }
         }
 
-        private readonly DocumentICommands commands;
+        private readonly IDocumentICommands commands;
         /// <summary>
         /// Gets the ICommands (and hotkeys associated with) for the CoshhDocument.
         /// </summary>
-        public DocumentICommands Commands
+        public IDocumentICommands Commands
         {
             get 
             { 

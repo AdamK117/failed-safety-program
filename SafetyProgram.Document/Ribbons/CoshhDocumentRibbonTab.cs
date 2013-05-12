@@ -15,7 +15,7 @@ namespace SafetyProgram.Document.Ribbons
             view = new CoshhDocumentRibbonTabView(this);
         }
 
-        public DocumentICommands DocumentCommands
+        public IDocumentICommands DocumentCommands
         {
             get 
             {

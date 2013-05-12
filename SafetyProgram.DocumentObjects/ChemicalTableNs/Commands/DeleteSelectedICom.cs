@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
-
-using SafetyProgram.ModelObjects;
-using SafetyProgram.Base;
 using System.Windows.Input;
+using SafetyProgram.Base;
+using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
-    public sealed class DeleteSelectedICom : ICommand
+    internal sealed class DeleteSelectedICom : ICommand
     {
         private readonly ChemicalTable data;
 
-        internal DeleteSelectedICom(ChemicalTable table) 
+        public DeleteSelectedICom(ChemicalTable table) 
         {
             this.data = table;
             //Monitor the ChemicalTable's selections. This command won't work if nothing is selected.

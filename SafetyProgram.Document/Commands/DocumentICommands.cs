@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
-using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects.ChemicalTableNs;
+using SafetyProgram.DocumentObjects;
 
 namespace SafetyProgram.Document.Commands
 {
-    public sealed class DocumentICommands : IDocumentICommands
+    internal sealed class DocumentICommands : IDocumentICommands
     {
         public DocumentICommands(CoshhDocument document)
         {
             InsertChemicalTable = new InsertIDocumentObjectICom(
                 document, 
-                () => ChemicalTableDefaults.DefaultTable(document.AppConfiguration)
+                () => DefaultDocumentObjects.ChemicalTable(document.AppConfiguration)
                 );
             DeleteIDocObject = new DeleteIDocObjectICom(document);
 

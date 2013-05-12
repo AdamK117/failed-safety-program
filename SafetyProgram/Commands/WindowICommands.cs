@@ -4,24 +4,24 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    public sealed class WindowICommands : IWindowCommands
+    internal sealed class WindowICommands<T> : IWindowCommands
     {
-        private readonly IWindow<IDocument> window;
+        private readonly IWindow<T> window;
 
         /// <summary>
         /// Constructs a new instance of the commands (iCommands, Hotkeys, generic commands) available to a CoshhWindow.
         /// </summary>
         /// <param name="window">Instance of a CoshhWindow parent</param>
-        public WindowICommands(IWindow<IDocument> window)
+        public WindowICommands(IWindow<T> window)
         {
             this.window = window;
 
             //Instantiate CoshhWindow commands
-            Close = new CloseICom(window);
-            New = new NewICom(window);
-            Open = new OpenICom(window);
-            Save = new SaveICom(window);
-            SaveAs = new SaveAsICom(window);
+            Close = new CloseICom<T>(window);
+            New = new NewICom<T>(window);
+            Open = new OpenICom<T>(window);
+            Save = new SaveICom<T>(window);
+            SaveAs = new SaveAsICom<T>(window);
             Exit = new ExitICom(window);
 
             //Get a list of hotkeys for these CoshhWindow commands.

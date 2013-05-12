@@ -19,6 +19,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus
 
         Control IViewable.View { get { return view; } }
 
-        public IChemicalTableCommands Commands { get; private set; }        
+        public IChemicalTableCommands Commands { get; private set; }
     }
 }

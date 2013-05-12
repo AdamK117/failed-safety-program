@@ -7,15 +7,15 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    public class OpenICom : ICommand
+    internal class OpenICom<T> : ICommand
     {
-        private IWindow<IDocument> data;
+        private IWindow<T> data;
 
         /// <summary>
         /// Constructs a command that opens a CoshhDocument into the CoshhWindow using the CoshhWindow's service
         /// </summary>
         /// <param name="window">The CoshhWindow that will load the CoshhDocument</param>
-        public OpenICom(IWindow<IDocument> window)
+        public OpenICom(IWindow<T> window)
         {
             this.data = window;
 
@@ -48,7 +48,7 @@ namespace SafetyProgram.Commands
                     try
                     {
                         data.Service.Close(data.Content);
-                        data.Content = null;
+                        data.Content = default(T);
                     }
                     catch (ArgumentException)
                     {

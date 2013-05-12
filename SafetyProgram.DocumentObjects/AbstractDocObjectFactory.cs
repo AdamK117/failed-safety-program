@@ -11,7 +11,7 @@ namespace SafetyProgram.DocumentObjects
     ///     -Contains a dictionary of ID's (Xml node names) for loading IDocumentObjects from Xml
     ///     -Contains a dictionary of types (of IDocumentObjects) for saving to Xml.
     /// </summary>
-    public static class AbstractDocObjectFactory
+    public static class DocumentObjectLocalFileFactory
     {
         private static object syncRoot = new Object();
         private static volatile IDictionary<string, Func<XElement, IConfiguration, IDocumentObject>> inputRegistry;

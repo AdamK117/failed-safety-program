@@ -5,12 +5,12 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base
 {
-    public sealed class GenericLocalFileService<T> : IService<T>
+    public sealed class LocalFileService<T> : IService<T>
     {
         private readonly string path;
         private readonly ILocalFileFactory<T> itemFactory;
 
-        public GenericLocalFileService(ILocalFileFactory<T> itemFactory, string path)
+        public LocalFileService(ILocalFileFactory<T> itemFactory, string path)
         {
             if (itemFactory != null) this.itemFactory = itemFactory;
             else throw new ArgumentNullException();

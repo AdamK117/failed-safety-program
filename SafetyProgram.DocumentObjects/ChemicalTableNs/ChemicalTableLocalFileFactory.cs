@@ -6,7 +6,12 @@ using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
-    public class ChemicalTableLocalFileFactory
+    /// <summary>
+    /// Defines an ABSTRACT FACTORY for producing IDocumentObjects
+    ///     -Works with local files (XML)
+    ///     -Produces a ChemicalTable IDocumentObject
+    /// </summary>
+    internal sealed class ChemicalTableLocalFileFactory
         : ILocalFileFactory<ChemicalTable>
     {
         private readonly IConfiguration appConfiguration;
@@ -57,7 +62,10 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
                 appConfiguration,
                 loadedChemicals,
                 loadedHeader,
-                (chemTable) => new ChemicalTableView(chemTable)
+                ChemicalTableDefaults.DefaultCommandsConstructor,
+                ChemicalTableDefaults.DefaultContextMenuConstructor,
+                ChemicalTableDefaults.DefaultRibbonConstructor,
+                ChemicalTableDefaults.DefaultViewConstructor
                 );
         }
 

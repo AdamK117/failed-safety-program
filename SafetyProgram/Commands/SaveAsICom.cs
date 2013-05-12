@@ -6,15 +6,15 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    public class SaveAsICom : ICommand
+    internal class SaveAsICom<T> : ICommand
     {
-        private readonly IWindow<IDocument> data;
+        private readonly IWindow<T> data;
 
         /// <summary>
         /// Constructs a new ICommand that allows 'SaveAs' of the CoshhWindow's document using the CoshhWindow's service.
         /// </summary>
         /// <param name="window">Window which houses the document to be 'SavedAs'</param>
-        public SaveAsICom(IWindow<IDocument> window)
+        public SaveAsICom(IWindow<T> window)
         {
             this.data = window;
 

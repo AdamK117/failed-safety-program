@@ -2,7 +2,7 @@
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
-    public sealed class PasteChemicalsICom : ICommand
+    internal sealed class PasteChemicalsICom : ICommand
     {
         private readonly ChemicalTable data;
 
@@ -10,7 +10,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// Creates a command that allows pasting of CoshhChemicalModel's into a ChemicalTable
         /// </summary>
         /// <param name="table"></param>
-        internal PasteChemicalsICom(ChemicalTable table)
+        public PasteChemicalsICom(ChemicalTable table)
         {
             this.data = table;
         }

@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects;
 
 namespace SafetyProgram.Document
@@ -43,7 +44,7 @@ namespace SafetyProgram.Document
         private void DocObjectClicked(object sender, MouseButtonEventArgs e)
         {
             ContentControl contentControl = (ContentControl)sender;
-            DocumentObject docObject = (DocumentObject)contentControl.DataContext;
+            IDocumentObject docObject = (IDocumentObject)contentControl.DataContext;
             viewModel.Body.Select(docObject);
         }
     }

@@ -4,11 +4,11 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects.GenericCommands
 {
-    public sealed class DeleteIDocumentObjectICom : ICommand
+    internal sealed class DeleteIDocumentObjectICom : ICommand
     {
         private readonly IDocumentObject data;
 
-        internal DeleteIDocumentObjectICom(IDocumentObject docObject)
+        public DeleteIDocumentObjectICom(IDocumentObject docObject)
         {
             this.data = docObject;
         }

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Controls;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects.ChemicalTableNs.Commands;
-using SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus;
-using SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon;
 using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
@@ -13,7 +12,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
     /// <summary>
     /// Defines a ViewModel for a ChemicalTable
     /// </summary>
-    public sealed class ChemicalTable : DocumentObject
+    internal sealed class ChemicalTable : INotifyPropertyChanged, IDocumentObject
     {
         /// <summary>
         /// Constructs an instance of the ChemicalTable DocObject
@@ -21,27 +20,34 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
         /// <param name="appConfiguration">The applications configuration file (singleton, dependancy injected)</param>
         /// <param name="chemicals">The chemicals in this chemicaltable (may be empty)</param>
         /// <param name="header">The header for the chemicaltable</param>
-        /// <param name="viewCtor">A constructor which generates a view compatiable with the chemicaltable as a viewmodel</param>
-        internal ChemicalTable (
+        /// <param name="viewConstructor">A constructor which generates a view compatiable with the chemicaltable as a viewmodel</param>
+        public ChemicalTable (
             IConfiguration appConfiguration, 
             ObservableCollection<ICoshhChemicalObject> chemicals, 
             string header,
-            Func<ChemicalTable, UserControl> viewCtor
+            Func<ChemicalTable, IChemicalTableCommands> commandsConstructor,
+            Func<ChemicalTable, IContextMenu> contextMenuConstructor,
+            Func<ChemicalTable, IRibbonTabItem> ribbonTabConstructor,
+            Func<ChemicalTable, UserControl> viewConstructor
             )
         {
-            if (appConfiguration != null) this.appConfiguration = appConfiguration;
-            else throw new ArgumentNullException();
-
-            if (chemicals != null) this.chemicals = chemicals;
-            else throw new ArgumentNullException();
-
-            this.header = header;
-
-            commands = new ChemicalTableCommands(this);
-            contextMenu = new ChemicalTableContextMenu(this);
-            contextualTab = new ChemicalTableRibbonTab(this);
-
-            if (viewCtor != null) view = viewCtor(this);
+            if (
+                appConfiguration != null &&
+                chemicals != null &&
+                commandsConstructor != null &&
+                contextMenuConstructor != null &&
+                ribbonTabConstructor != null &&
+                viewConstructor != null
+                )
+            {
+                this.appConfiguration = appConfiguration;
+                this.chemicals = chemicals;
+                this.header = header;
+                this.commands = commandsConstructor(this);
+                this.contextMenu = contextMenuConstructor(this);
+                this.contextualTab = ribbonTabConstructor(this);
+                this.view = viewConstructor(this);
+            }
             else throw new ArgumentNullException();
         }
 
@@ -58,7 +64,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
         /// <summary>
         /// Gets the ChemicalTable UserControl
         /// </summary>
-        public override Control View
+        public Control View
         {
             get 
             { 
@@ -70,7 +76,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
         /// <summary>
         /// Gets the ribbon assosciated with a ChemicalTable.
         /// </summary>
-        public override IRibbonTabItem RibbonTab
+        public IRibbonTabItem RibbonTab
         {
             get 
             {
@@ -82,7 +88,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
         /// <summary>
         /// Gets the ChemicalTable's context menu.
         /// </summary>
-        public override IContextMenu ContextMenu
+        public IContextMenu ContextMenu
         {
             get 
             { 
@@ -146,13 +152,20 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
         /// <summary>
         /// Deselects the chemicals in the ChemicalTable on top of base implementation.
         /// </summary>
-        public override void DeSelect()
+        public void DeSelect()
         {
-            base.DeSelect();
+            //If the flag is actually changing
+            if (selectedFlag == true)
+            {
+                selectedFlag = false;
+
+                SelectedChanged.Raise(this, selectedFlag);
+                PropertyChanged.Raise(this, "Selected");
+            }
             SelectedChemicals.Clear();
         }
 
-        public override string Error
+        public string Error
         {
             get 
             { 
@@ -160,7 +173,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             }
         }
 
-        public override string this[string columnName]
+        public string this[string columnName]
         {
             get 
             { 
@@ -170,6 +183,71 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
         public const string COM_IDENTITY = "CoshhChemicalModels";
 
-        public override event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        private bool selectedFlag;
+        public void Select()
+        {
+            //If the flag is actually changing
+            if (selectedFlag == false)
+            {
+                selectedFlag = true;
+
+                SelectedChanged.Raise(this, selectedFlag);
+                PropertyChanged.Raise(this, "Selected");
+            }
+        }
+
+        public bool Selected
+        {
+            get
+            {
+                return selectedFlag;
+            }
+        }
+
+        public event Action<object, bool> SelectedChanged;
+
+        private bool removeFlag;
+        public void FlagForRemoval()
+        {
+            if (removeFlag == false)
+            {
+                removeFlag = true;
+
+                DeSelect();
+                RemoveFlagChanged.Raise(this, removeFlag);
+                PropertyChanged.Raise(this, "RemoveFlag");
+            }
+        }
+
+        public bool RemoveFlag
+        {
+            get { return removeFlag; }
+        }
+
+        public event Action<object, bool> RemoveFlagChanged;
+
+        private bool editedFlag;
+        public void FlagAsEdited()
+        {
+            if (editedFlag == false)
+            {
+                editedFlag = true;
+
+                EditedFlagChanged.Raise(this, editedFlag);
+                PropertyChanged.Raise(this, "EditedFlag");
+            }
+        }
+
+        public bool EditedFlag
+        {
+            get 
+            { 
+                return editedFlag; 
+            }
+        }
+
+        public event Action<object, bool> EditedFlagChanged;
     }
 }

@@ -1,20 +1,25 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.DocumentObjects.ChemicalTableNs.Commands;
+using SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus;
+using SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon;
 using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
-    public static class ChemicalTableDefaults
+    internal static class ChemicalTableDefaults
     {
         public static ChemicalTable DefaultTable(IConfiguration appConfiguration)
         {
             return new ChemicalTable(
                 appConfiguration,
                 DefaultChemicals(),
-                DefaultHeader(),
-                DefaultView()
+                DEFAULT_HEADER,
+                DefaultCommandsConstructor,
+                DefaultContextMenuConstructor,
+                DefaultRibbonConstructor,
+                DefaultViewConstructor
                 );
         }
 
@@ -23,14 +28,26 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             return new ObservableCollection<ICoshhChemicalObject>();
         }
 
-        public static string DefaultHeader()
+        public const string DEFAULT_HEADER = "Chemical Table";
+
+        public static IChemicalTableCommands DefaultCommandsConstructor(ChemicalTable chemicalTable)
         {
-            return "Chemical Table";
+            return new ChemicalTableCommands(chemicalTable);
         }
 
-        public static Func<ChemicalTable, UserControl> DefaultView()
+        public static IContextMenu DefaultContextMenuConstructor(ChemicalTable chemicalTable)
         {
-            return (chemTable) => new ChemicalTableView(chemTable);
+            return new ChemicalTableContextMenu(chemicalTable);
+        }
+
+        public static IRibbonTabItem DefaultRibbonConstructor(ChemicalTable chemTable)
+        {
+            return new ChemicalTableRibbonTab(chemTable);
+        }
+
+        public static UserControl DefaultViewConstructor(ChemicalTable chemicalTable)
+        {
+            return new ChemicalTableView(chemicalTable);
         }
     }
 }

@@ -3,6 +3,7 @@ using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Commands;
 using SafetyProgram.Configuration;
+using SafetyProgram.Document;
 using SafetyProgram.Ribbons;
 using SafetyProgram.Services;
 using SafetyProgram.Static;
@@ -21,19 +22,23 @@ namespace SafetyProgram
             base.OnStartup(e);
 
             //Load the configuration file for the app
-            IService<IConfiguration> configFileService = new GenericLocalFileService<IConfiguration>(new ConfigurationLocalFileFactory(), TestData.CONFIGURATION_FILE);
+            IService<IConfiguration> configFileService = new LocalFileService<IConfiguration>(
+                new ConfigurationLocalFileFactory(), 
+                TestData.CONFIGURATION_FILE
+                );
+
             IConfiguration configFile = configFileService.Load();
 
             //Load the document for the app
-            IService<IDocument> service = new DocumentLocalFileService(configFile);
-            IDocument document = service.New();
+            IService<CoshhDocument> contentService = new InteractiveLocalFileService<CoshhDocument>(configFile, new CoshhDocumentLocalFileFactory(configFile));
+            var content = contentService.New();
 
             IWindow window = new CoshhWindow(
                 configFile, 
-                service, 
-                document,
-                (viewModel) => new CoshhWindowView(viewModel),
-                (windowViewModel) => new WindowICommands(windowViewModel),
+                contentService, 
+                content,
+                (windowViewModel) => new CoshhWindowView(windowViewModel),
+                (windowViewModel) => new WindowICommands<CoshhDocument>(windowViewModel),
                 (windowViewModel) => new CoshhRibbon(windowViewModel)
                 );
 

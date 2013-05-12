@@ -2,12 +2,10 @@ V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Document.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Document.pdb
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\Fluent.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Base.dll
-V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Configuration.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.DocumentObjects.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Static.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.ModelObjects.dll
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Base.pdb
-V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Configuration.pdb
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.DocumentObjects.pdb
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Static.pdb
 V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.ModelObjects.pdb
@@ -24,3 +22,5 @@ V:\SafetyProgram\SafetyProgram.Document\obj\x86\Debug\SafetyProgram.Document.Pro
 V:\SafetyProgram\SafetyProgram.Document\obj\x86\Debug\SafetyProgram.Document.csproj.GenerateResource.Cache
 V:\SafetyProgram\SafetyProgram.Document\obj\x86\Debug\SafetyProgram.Document.dll
 V:\SafetyProgram\SafetyProgram.Document\obj\x86\Debug\SafetyProgram.Document.pdb
+V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Configuration.dll
+V:\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Configuration.pdb

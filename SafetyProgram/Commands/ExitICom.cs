@@ -4,11 +4,11 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    public sealed class ExitICom : ICommand
+    internal sealed class ExitICom : ICommand
     {
-        private readonly IWindow<IDocument> window;
+        private readonly IWindow window;
 
-        public ExitICom(IWindow<IDocument> window)
+        public ExitICom(IWindow window)
         {
             this.window = window;
         }

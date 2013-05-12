@@ -2,9 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using SafetyProgram.Base;
-using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects.ChemicalTableNs;
-using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
