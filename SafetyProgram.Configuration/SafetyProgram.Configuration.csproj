@@ -60,6 +60,9 @@
   <ItemGroup>
     <Compile Include="AppConfiguration.cs" />
     <Compile Include="ConfigurationLocalFileFactory.cs" />
+    <Compile Include="AppConfigurationDefault.cs" />
+    <Compile Include="RepositoryDefault.cs" />
+    <Compile Include="RepositoryInfoDefault.cs" />
     <Compile Include="RepositoryInfoLocalFileFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryInfo.cs" />

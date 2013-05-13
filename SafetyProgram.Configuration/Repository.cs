@@ -4,13 +4,22 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Configuration
 {
-    public sealed class Repository<T> : IRepository<T>
+    public sealed class Repository<T> : 
+        IRepository<T>
     {
-        public Repository(string entryType, IEnumerable<T> entries, Func<T> entryConstructor)
+        public Repository(
+            string entryType, 
+            IEnumerable<T> entries, 
+            Func<T> entryConstructor)
         {
             EntryType = entryType;
-            Entries = entries;
-            EntryConstructor = entryConstructor;
+
+            if (entries != null && entryConstructor != null)
+            {
+                Entries = entries;
+                EntryConstructor = entryConstructor;
+            }
+            else throw new ArgumentNullException();
         }
 
         public Func<T> EntryConstructor

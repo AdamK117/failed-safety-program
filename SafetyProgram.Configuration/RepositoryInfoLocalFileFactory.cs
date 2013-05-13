@@ -14,7 +14,7 @@ namespace SafetyProgram.Configuration
     {
         public static IRepositoryInfo StaticCreateNew()
         {
-            return new RepositoryInfo();
+            return RepositoryInfoDefault.RepositoryInfo();
         }
 
         public IRepositoryInfo CreateNew()

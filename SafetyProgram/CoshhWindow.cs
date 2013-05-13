@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Commands;
-using SafetyProgram.Document;
 
 namespace SafetyProgram
 {
@@ -17,7 +16,8 @@ namespace SafetyProgram
     ///     -Commands which are digested by the view
     ///     -A ribbon which appears at the top of the view
     /// </summary>
-    internal sealed class CoshhWindow : ICoshhWindow
+    internal sealed class CoshhWindow<T> : ICoshhWindowT<T>
+        where T : IViewable
     {
         private readonly IConfiguration appConfiguration;
 
@@ -28,11 +28,11 @@ namespace SafetyProgram
         /// <param name="document">The IDocument shown by the IRibbonWindow on construction</param>
         public CoshhWindow(
             IConfiguration appConfiguration, 
-            IService<CoshhDocument> documentService, 
-            CoshhDocument document,
-            Func<ICoshhWindow, Window> viewConstructor,
-            Func<ICoshhWindow, IWindowCommands> commandsConstructor,
-            Func<ICoshhWindow, IRibbon> ribbonConstructor
+            IService<T> documentService, 
+            T document,
+            Func<ICoshhWindowT<T>, Window> viewConstructor,
+            Func<ICoshhWindowT<T>, IWindowCommands> commandsConstructor,
+            Func<ICoshhWindowT<T>, IRibbon> ribbonConstructor
             )
         {
             if (
@@ -100,12 +100,12 @@ namespace SafetyProgram
             }
         }
 
-        private CoshhDocument content;
+        private T content;
         /// <summary>
         /// Gets the IDocument in this CoshhWindow.
         /// </summary>
         /// <remarks>Nullable: IRibbonWindow may contain no IDocument</remarks>
-        public CoshhDocument Content
+        public T Content
         {
             get 
             { 
@@ -128,13 +128,13 @@ namespace SafetyProgram
         /// <summary>
         /// Event that triggers when its IDocument changes.
         /// </summary>
-        public event Action<CoshhDocument> ContentChanged;
+        public event Action<T> ContentChanged;
 
-        private IService<CoshhDocument> service;
+        private IService<T> service;
         /// <summary>
         /// Gets the IDocumentService I/O service used by this CoshhWindow
         /// </summary>
-        public IService<CoshhDocument> Service
+        public IService<T> Service
         {
             get 
             { 
@@ -146,7 +146,7 @@ namespace SafetyProgram
         /// </summary>
         /// <param name="newService">The new ICoshhDocumentService</param>
         /// <exception cref="System.ArgumentNullException">Thrown if try to change to a null service</exception>
-        public void ChangeService(IService<CoshhDocument> newService)
+        public void ChangeService(IService<T> newService)
         {
             if (newService != null)
             {
@@ -163,10 +163,8 @@ namespace SafetyProgram
         /// <summary>
         /// Event that triggers if the CoshhWindow's IDocumentService changes.
         /// </summary>
-        public event Action<IService<CoshhDocument>> ServiceChanged;
+        public event Action<IService<T>> ServiceChanged;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        
     }
 }

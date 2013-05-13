@@ -5,7 +5,6 @@ using SafetyProgram.Commands;
 using SafetyProgram.Configuration;
 using SafetyProgram.Document;
 using SafetyProgram.Ribbons;
-using SafetyProgram.Services;
 using SafetyProgram.Static;
 
 namespace SafetyProgram
@@ -30,16 +29,18 @@ namespace SafetyProgram
             IConfiguration configFile = configFileService.Load();
 
             //Load the document for the app
-            IService<CoshhDocument> contentService = new InteractiveLocalFileService<CoshhDocument>(configFile, new CoshhDocumentLocalFileFactory(configFile));
+            IService<CoshhDocument> contentService = new InteractiveLocalFileService<CoshhDocument>(
+                configFile, 
+                new CoshhDocumentLocalFileFactory(configFile)
+                );
+
             var content = contentService.New();
 
-            IWindow window = new CoshhWindow(
-                configFile, 
-                contentService, 
-                content,
-                (windowViewModel) => new CoshhWindowView(windowViewModel),
-                (windowViewModel) => new WindowICommands<CoshhDocument>(windowViewModel),
-                (windowViewModel) => new CoshhRibbon(windowViewModel)
+            IWindow window = CoshhWindowFactory<CoshhDocument>.StaticCreateNew
+                (
+                    configFile,
+                    contentService,
+                    content
                 );
 
             window.View.Show();

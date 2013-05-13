@@ -1,12 +1,13 @@
-﻿using SafetyProgram.Base.Interfaces;
+﻿using System.ComponentModel;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Commands;
-using SafetyProgram.Document;
 
 namespace SafetyProgram
 {
     public interface ICoshhWindow : 
-        IWindow<CoshhDocument>, 
-        IContentRibbonWindow
+        IContentWindow,
+        IRibbonWindow,
+        INotifyPropertyChanged
     {
         IWindowCommands Commands { get; }
     }

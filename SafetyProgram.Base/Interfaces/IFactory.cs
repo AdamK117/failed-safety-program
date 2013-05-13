@@ -1,9 +1,7 @@
 ﻿namespace SafetyProgram.Base.Interfaces
 {
-    public interface IFactory<Item, IoFormat>
+    public interface IFactory <Item>
     {
         Item CreateNew();
-        Item Load(IoFormat data);
-        IoFormat Store(Item item);
     }
 }

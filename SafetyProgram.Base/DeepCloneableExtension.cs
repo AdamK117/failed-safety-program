@@ -55,6 +55,32 @@ namespace SafetyProgram.Base
         }
 
         /// <summary>
+        /// Tries to get an IDeepCloneable from the clipboard with the comIdentity
+        /// </summary>
+        /// <typeparam name="T">An IDeepCloneable</typeparam>
+        /// <param name="comIdentity">The identity use in the Com (must be the same as was set when copying it to the clipboard)</param>
+        /// <returns></returns>
+        public static IDeepCloneable<T> TryPaste<T>(string comIdentity)
+            where T : IDeepCloneable<T>
+        {
+            if (Clipboard.ContainsData(comIdentity))
+            {
+                try
+                {
+                    object uncastedData = Clipboard.GetData(comIdentity);
+                    T data = (T)uncastedData;
+                    return data;
+                }
+                catch (COMException)
+                {
+                    MessageBox.Show("Can't access the clipboard!");
+                    throw;
+                }
+            }
+            else return null;
+        }
+
+        /// <summary>
         /// Attempts to paste data from the clipboard into the collection.
         /// </summary>
         /// <typeparam name="T">The type of data being pasted</typeparam>
@@ -113,33 +139,7 @@ namespace SafetyProgram.Base
             where T : IDeepCloneable<T>
         {
             Clipboard.SetDataObject(GetDataObject<T>(item, comIdentity));
-        }
-
-        /// <summary>
-        /// Tries to get an IDeepCloneable from the clipboard with the comIdentity
-        /// </summary>
-        /// <typeparam name="T">An IDeepCloneable</typeparam>
-        /// <param name="comIdentity">The identity use in the Com (must be the same as was set when copying it to the clipboard)</param>
-        /// <returns></returns>
-        public static IDeepCloneable<T> TryPaste<T>(string comIdentity)
-            where T : IDeepCloneable<T>
-        {
-            if (Clipboard.ContainsData(comIdentity))
-            {
-                try
-                {
-                    object uncastedData = Clipboard.GetData(comIdentity);
-                    T data = (T)uncastedData;
-                    return data;
-                }
-                catch (COMException)
-                {
-                    MessageBox.Show("Can't access the clipboard!");
-                    throw;
-                }
-            }
-            else return null;
-        }
+        }        
 
         public static IEnumerable<T> DeepCloneList<T>(this IEnumerable<T> items)
             where T : IDeepCloneable<T>

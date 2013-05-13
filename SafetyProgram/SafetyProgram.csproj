@@ -104,12 +104,14 @@
     <Compile Include="Commands\SaveAsICom.cs" />
     <Compile Include="Commands\WindowICommands.cs" />
     <Compile Include="CoshhWindow.cs" />
+    <Compile Include="CoshhWindowFactory.cs" />
     <Compile Include="CoshhWindowView.xaml.cs">
       <DependentUpon>CoshhWindowView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IContentRibbonWindow.cs" />
     <Compile Include="ICoshhWindow.cs" />
-    <Compile Include="Services\DocumentLocalFileService.cs" />
+    <Compile Include="ICoshhWindowT.cs" />
+    <Compile Include="Ribbons\ICoshhRibbon.cs" />
+    <Compile Include="Services\DocumentClosing.cs" />
     <Page Include="CoshhWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

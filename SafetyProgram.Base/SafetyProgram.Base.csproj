@@ -59,14 +59,16 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComposedService.cs" />
     <Compile Include="InteractiveLocalFileService.cs" />
+    <Compile Include="Interfaces\IFactory.cs" />
     <Compile Include="Interfaces\Window\IContentWindow.cs" />
     <Compile Include="LocalFileService.cs" />
     <Compile Include="ICommandExtensions.cs" />
     <Compile Include="INPCExtensions.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
     <Compile Include="Interfaces\ICommandsHolder.cs" />
-    <Compile Include="Interfaces\IFactory.cs" />
+    <Compile Include="Interfaces\IFactoryIO.cs" />
     <Compile Include="Interfaces\ILocalFileFactory.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IRepositoryInfo.cs" />

@@ -82,11 +82,12 @@
     </Compile>
     <Compile Include="CoshhDocument.cs" />
     <Compile Include="CoshhDocumentBody.cs" />
-    <Compile Include="CoshhDocumentDefaults.cs" />
+    <Compile Include="CoshhDocumentDefault.cs" />
     <Compile Include="CoshhDocumentLocalFileFactory.cs" />
     <Compile Include="CoshhDocumentView.xaml.cs">
       <DependentUpon>CoshhDocumentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ICoshhDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

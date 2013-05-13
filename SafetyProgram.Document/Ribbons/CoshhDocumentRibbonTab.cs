@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Document.Commands;
@@ -7,12 +8,15 @@ namespace SafetyProgram.Document.Ribbons
 {
     public sealed class CoshhDocumentRibbonTab : IRibbonTabItem
     {
-        private readonly CoshhDocument document;  
+        private readonly ICoshhDocument document;  
 
-        public CoshhDocumentRibbonTab(CoshhDocument document)
+        public CoshhDocumentRibbonTab(
+            ICoshhDocument document,
+            Func<CoshhDocumentRibbonTab, RibbonTabItem> viewConstructor
+            )
         {
             this.document = document;
-            view = new CoshhDocumentRibbonTabView(this);
+            view = viewConstructor(this);
         }
 
         public IDocumentICommands DocumentCommands
@@ -23,7 +27,7 @@ namespace SafetyProgram.Document.Ribbons
             }
         }
 
-        private readonly CoshhDocumentRibbonTabView view;
+        private readonly RibbonTabItem view;
         public RibbonTabItem View
         {
             get 

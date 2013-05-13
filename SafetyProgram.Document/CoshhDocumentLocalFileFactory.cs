@@ -20,7 +20,7 @@ namespace SafetyProgram.Document
 
         public static CoshhDocument StaticCreateNew(IConfiguration appConfiguration)
         {
-            return CoshhDocumentDefaults.DefaultCoshhDocument(appConfiguration);
+            return CoshhDocumentDefault.DefaultCoshhDocument(appConfiguration);
         }
 
         public CoshhDocument CreateNew()
@@ -46,12 +46,12 @@ namespace SafetyProgram.Document
                     else
                     {
                         Debug.Write("WARNING: When loading a CoshhDocument a title could not be found, set to default");
-                        loadedTitle = CoshhDocumentDefaults.DefaultTitle;
+                        loadedTitle = CoshhDocumentDefault.DefaultTitle;
                     }
                 }
 
                 //Optional: Get the format of the document
-                loadedFormat = CoshhDocumentDefaults.DefaultFormat();
+                loadedFormat = CoshhDocumentDefault.DefaultFormat();
 
                 //Required: Get the body of the document
                 loadedBody = new CoshhDocumentBody(
@@ -65,7 +65,10 @@ namespace SafetyProgram.Document
                 loadedTitle, 
                 loadedFormat, 
                 loadedBody,
-                CoshhDocumentDefaults.DefaultViewCtor()
+                CoshhDocumentDefault.CommandsConstructor,
+                CoshhDocumentDefault.ContextMenuConstructor,
+                CoshhDocumentDefault.RibbonTabsConstructor,
+                CoshhDocumentDefault.ViewConstructor
                 );
         }
 

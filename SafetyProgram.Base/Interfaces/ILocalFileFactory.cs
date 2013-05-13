@@ -2,7 +2,7 @@
 
 namespace SafetyProgram.Base.Interfaces
 {
-    public interface ILocalFileFactory<T> : IFactory<T, XElement>
+    public interface ILocalFileFactory<T> : IFactoryIO<T, XElement>
     {
         string XmlIdentifier { get; }
     }

@@ -6,19 +6,11 @@ namespace SafetyProgram.Configuration
 {
     internal sealed class AppConfiguration : IConfiguration
     {
-        public AppConfiguration()
-        {
-            //Default application configuration
-            //  The window contents aren't locked
-            //  There are no repositories
-            //  It's in english
-
-            DocumentLock = false;
-            this.repositories = new List<IRepositoryInfo>();
-            Locale = "en-GB";
-        }
-
-        public AppConfiguration(bool documentLock, IEnumerable<IRepositoryInfo> repositories, string locale)
+        public AppConfiguration(
+            bool documentLock, 
+            IEnumerable<IRepositoryInfo> repositories, 
+            string locale
+            )
         {
             this.DocumentLock = documentLock;
 
@@ -26,7 +18,7 @@ namespace SafetyProgram.Configuration
             {
                 this.repositories = repositories;
             }
-            else throw new ArgumentNullException("The repositories IList passed to AppConfiguration must not be null.");
+            else throw new ArgumentNullException("The repositories passed to AppConfiguration must not be null.");
 
             this.Locale = locale;
         }

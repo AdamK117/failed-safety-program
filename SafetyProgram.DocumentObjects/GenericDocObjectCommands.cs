@@ -2,7 +2,7 @@
 
 namespace SafetyProgram.DocumentObjects
 {
-    public static class GenericDocObjectCommands
+    internal static class GenericDocObjectCommands
     {
         public static void Raise(this Action<object, bool> handler, object sender, bool payload)
         {

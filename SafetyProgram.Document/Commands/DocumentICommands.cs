@@ -6,7 +6,7 @@ namespace SafetyProgram.Document.Commands
 {
     internal sealed class DocumentICommands : IDocumentICommands
     {
-        public DocumentICommands(CoshhDocument document)
+        public DocumentICommands(ICoshhDocument document)
         {
             InsertChemicalTable = new InsertIDocumentObjectICom(
                 document, 

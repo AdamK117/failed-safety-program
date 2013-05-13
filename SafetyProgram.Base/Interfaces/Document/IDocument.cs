@@ -4,7 +4,10 @@ using System.ComponentModel;
 
 namespace SafetyProgram.Base.Interfaces
 {
-    public interface IDocument : IViewable, IInteractable, IDataErrorInfo
+    public interface IDocument : 
+        IViewable, 
+        IInteractable, 
+        IDataErrorInfo
     {
         ObservableCollection<IRibbonTabItem> RibbonTabs { get; }
 

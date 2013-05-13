@@ -11,7 +11,7 @@ namespace SafetyProgram.Ribbons
         /// Construct a CoshhRibbon view (this is the primary CoshhWindow ribbon).
         /// </summary>
         /// <param name="viewModel"></param>
-        public CoshhRibbonView(CoshhRibbon viewModel)
+        public CoshhRibbonView(ICoshhRibbon viewModel)
         {
             DataContext = viewModel;
             InitializeComponent();

@@ -5,12 +5,10 @@ using System.Windows.Controls;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Document.Commands;
-using SafetyProgram.Document.ContextMenus;
-using SafetyProgram.Document.Ribbons;
 
 namespace SafetyProgram.Document
 {
-    public sealed class CoshhDocument : INotifyPropertyChanged, IDocument
+    public sealed class CoshhDocument : ICoshhDocument
     {
         /// <summary>
         /// Constructs a new CoshhDocument.
@@ -20,36 +18,38 @@ namespace SafetyProgram.Document
             string title, 
             IDocFormat format, 
             IDocumentBody body,
-            Func<CoshhDocument, Control> viewConstructor
+            Func<ICoshhDocument, IDocumentICommands> commandsConstructor,
+            Func<IDocumentICommands, IContextMenu> contextMenuConstructor,
+            Func<ICoshhDocument, ObservableCollection<IRibbonTabItem>> ribbonTabsConstructor,
+            Func<ICoshhDocument, Control> viewConstructor
             )
         {
-            if (appConfiguration != null) this.appConfiguration = appConfiguration;
-            else throw new ArgumentNullException();
-
-            if (format != null) this.format = format;
-            else throw new ArgumentNullException();
-
-            if (title != null) this.title = title;
-            else throw new ArgumentNullException();
-
-            if (body != null)
-            {
-                this.body = body;
-                this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
-                this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection); 
-            }
-            else throw new ArgumentNullException();           
-           
             edited = false;
 
-            commands = new DocumentICommands(this);
-            contextMenu = new DocumentContextMenu(commands);
+            if (
+                appConfiguration != null &&
+                format != null &&
+                title != null &&
+                body != null &&
+                commandsConstructor != null &&
+                contextMenuConstructor != null &&
+                ribbonTabsConstructor != null &&
+                viewConstructor != null
+                )
+            {
+                this.appConfiguration = appConfiguration;
+                this.title = title;
+                this.format = format;                
 
-            //Insert tab
-            ribbonTabItems = new ObservableCollection<IRibbonTabItem>();            
-            ribbonTabItems.Add(new CoshhDocumentRibbonTab(this));
+                this.body = body;
+                this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
+                this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection);
 
-            if (viewConstructor != null) view = viewConstructor(this);
+                commands = commandsConstructor(this);
+                contextMenu = contextMenuConstructor(this.Commands);
+                ribbonTabItems = ribbonTabsConstructor(this);
+                view = viewConstructor(this);
+            }
             else throw new ArgumentNullException();
         }
 

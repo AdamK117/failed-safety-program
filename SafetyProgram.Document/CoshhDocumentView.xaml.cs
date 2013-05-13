@@ -10,9 +10,9 @@ namespace SafetyProgram.Document
     /// </summary>
     internal partial class CoshhDocumentView : UserControl
     {
-        private readonly CoshhDocument viewModel;
+        private readonly ICoshhDocument viewModel;
 
-        public CoshhDocumentView(CoshhDocument viewModel)
+        public CoshhDocumentView(ICoshhDocument viewModel)
         {
             this.viewModel = viewModel;
             DataContext = viewModel;

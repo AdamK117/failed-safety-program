@@ -11,7 +11,7 @@ namespace SafetyProgram.Configuration
     {
         public static IConfiguration StaticCreateNew()
         {
-            return new AppConfiguration();
+            return AppConfigurationDefault.AppConfiguration();
         }
         public IConfiguration CreateNew()
         {
@@ -52,6 +52,7 @@ namespace SafetyProgram.Configuration
                 }
             }
         }
+
         public static IConfiguration StaticLoad(XElement data)
         {
             bool documentLock = getDocumentLock(data);

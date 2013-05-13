@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Windows;
+﻿using System.Windows;
 
 namespace SafetyProgram.Base.Interfaces
 {

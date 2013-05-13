@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
-using SafetyProgram.Document.Commands;
-using SafetyProgram.Base;
+﻿using System;
+using System.Windows.Controls;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Document.Commands;
 
 namespace SafetyProgram.Document.ContextMenus
 {
@@ -14,11 +14,17 @@ namespace SafetyProgram.Document.ContextMenus
         /// Constructs an instance of a DocumentContextMenu for the CoshhDocument
         /// </summary>
         /// <param name="documentCommands"></param>
-        public DocumentContextMenu(IDocumentICommands documentCommands)
+        public DocumentContextMenu(
+            IDocumentICommands documentCommands, 
+            Func<DocumentContextMenu, ContextMenu> viewConstructor
+            )
         {
-            this.documentCommands = documentCommands;
-
-            view = new DocumentContextMenuView(this);
+            if (documentCommands != null && viewConstructor != null)
+            {
+                this.documentCommands = documentCommands;
+                view = viewConstructor(this);
+            }
+            else throw new ArgumentNullException();
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace SafetyProgram.Base
 {
     public interface IViewModel<T>

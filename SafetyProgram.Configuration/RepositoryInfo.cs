@@ -2,12 +2,16 @@
 
 namespace SafetyProgram.Configuration
 {
-    internal sealed class RepositoryInfo : IRepositoryInfo
+    internal sealed class RepositoryInfo : 
+        IRepositoryInfo
     {
-        public RepositoryInfo()
-        { }
-
-        public RepositoryInfo(string type, string path, string login, string password, string contentType)
+        public RepositoryInfo(
+            string type, 
+            string path, 
+            string login, 
+            string password, 
+            string contentType
+            )
         {
             Source = type;
             Path = path;

@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Static;
 
 namespace SafetyProgram.Configuration
 {
@@ -14,15 +13,20 @@ namespace SafetyProgram.Configuration
 
         public RepositoryLocalFileFactory(ILocalFileFactory<T> entryFactory)
         {
-            this.entryFactory = entryFactory;
+            if (entryFactory != null) this.entryFactory = entryFactory;
+            else throw new ArgumentNullException();
         }
 
+        public static IRepository<T> StaticCreateNew(IFactory<T> entryFactory)
+        {
+            return RepositoryDefault.Repository(entryFactory);
+        }
         public IRepository<T> CreateNew()
         {
-            return new Repository<T>("local", new List<T>(), entryFactory.CreateNew);
+            return StaticCreateNew(entryFactory);
         }
 
-        public IRepository<T> Load(XElement data)
+        public static IRepository<T> StaticLoad(ILocalFileFactory<T> entryFactory, XElement data)
         {
             string loadedEntryType = entryFactory.XmlIdentifier;
             var loadedEntries = new List<T>();
@@ -37,17 +41,30 @@ namespace SafetyProgram.Configuration
 
             Debug.Assert(entryElements.Count() > 0, "Empty repository found");
 
-            return new Repository<T>(loadedEntryType, loadedEntries, loadedEntryConstructor);
+            return new Repository<T>(
+                loadedEntryType,
+                loadedEntries,
+                loadedEntryConstructor
+                );
+        }
+        public IRepository<T> Load(XElement data)
+        {
+            return StaticLoad(entryFactory, data);
         }
 
-        public XElement Store(IRepository<T> item)
+        public static XElement StaticStore(ILocalFileFactory<T> entryFactory, IRepository<T> item)
         {
+            //TODO: Validation check
             return
                 new XElement(XML_IDENTIFIER,
                     new XAttribute("type", item.EntryType),
                     from entry in item.Entries
                     select entryFactory.Store(entry)
                 );
+        }
+        public XElement Store(IRepository<T> item)
+        {
+            return StaticStore(entryFactory, item);
         }
 
         public const string XML_IDENTIFIER = "repository";
