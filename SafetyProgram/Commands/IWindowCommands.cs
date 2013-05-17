@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
@@ -12,5 +11,7 @@ namespace SafetyProgram.Commands
         ICommand SaveAs { get; }
         ICommand Close { get; }
         ICommand Exit { get; }
+        ICommand Undo { get; }
+        ICommand Redo { get; }
     }
 }

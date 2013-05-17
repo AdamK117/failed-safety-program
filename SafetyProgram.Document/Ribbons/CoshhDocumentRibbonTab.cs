@@ -6,19 +6,22 @@ using SafetyProgram.Document.Commands;
 
 namespace SafetyProgram.Document.Ribbons
 {
-    public sealed class CoshhDocumentRibbonTab : IRibbonTabItem
+    internal sealed class CoshhDocumentRibbonTab : ICoshhDocumentRibbonTab
     {
-        private readonly ICoshhDocument document;  
-
         public CoshhDocumentRibbonTab(
             ICoshhDocument document,
-            Func<CoshhDocumentRibbonTab, RibbonTabItem> viewConstructor
+            Func<ICoshhDocumentRibbonTab, RibbonTabItem> viewConstructor
             )
         {
-            this.document = document;
-            view = viewConstructor(this);
+            if (document != null && viewConstructor != null)
+            {
+                this.document = document;
+                view = viewConstructor(this);
+            }
+            else throw new ArgumentNullException();
         }
 
+        private readonly ICoshhDocument document;
         public IDocumentICommands DocumentCommands
         {
             get 
@@ -35,7 +38,6 @@ namespace SafetyProgram.Document.Ribbons
                 return view; 
             }
         }
-
         Control IViewable.View
         {
             get 

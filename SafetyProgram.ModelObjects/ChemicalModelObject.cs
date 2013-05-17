@@ -8,14 +8,11 @@ using SafetyProgram.Base;
 namespace SafetyProgram.ModelObjects
 {
     [Serializable]
-    public sealed class ChemicalModelObject : INotifyPropertyChanged, IChemicalModelObject
+    public sealed class ChemicalModelObject : 
+        INotifyPropertyChanged, 
+        IChemicalModelObject
     {
         private readonly IList<string> validationErrorList = new List<string>();
-
-        public ChemicalModelObject()
-        {
-            hazards = new ObservableCollection<IHazardModelObject>();
-        }
 
         public ChemicalModelObject(string name, ObservableCollection<IHazardModelObject> hazards)
         {

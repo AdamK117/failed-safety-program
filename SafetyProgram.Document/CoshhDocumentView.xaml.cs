@@ -15,7 +15,7 @@ namespace SafetyProgram.Document
         public CoshhDocumentView(ICoshhDocument viewModel)
         {
             this.viewModel = viewModel;
-            DataContext = viewModel;
+            this.DataContext = viewModel;
             InitializeComponent();
             this.InputBindings.AddRange(viewModel.Commands.Hotkeys);
         }

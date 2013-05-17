@@ -1,10 +1,9 @@
 ﻿using System.Windows;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Commands;
 using SafetyProgram.Configuration;
 using SafetyProgram.Document;
-using SafetyProgram.Ribbons;
+using SafetyProgram.DocumentObjects;
 using SafetyProgram.Static;
 
 namespace SafetyProgram
@@ -20,26 +19,34 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
 
-            //Load the configuration file for the app
+            //CONFIGURATION
             IService<IConfiguration> configFileService = new LocalFileService<IConfiguration>(
                 new ConfigurationLocalFileFactory(), 
                 TestData.CONFIGURATION_FILE
                 );
 
-            IConfiguration configFile = configFileService.Load();
+            IConfiguration appConfiguration = configFileService.Load();
 
-            //Load the document for the app
-            IService<CoshhDocument> contentService = new InteractiveLocalFileService<CoshhDocument>(
-                configFile, 
-                new CoshhDocumentLocalFileFactory(configFile)
+            //COMMAND INVOKER
+            ICommandInvoker commandInvoker = new CommandInvoker();
+
+            //DEFAULT DOCUMENT (shown when opening)
+            IService<ICoshhDocument> contentService = new InteractiveLocalFileService<ICoshhDocument>(
+                new CoshhDocumentLocalFileFactory(
+                    new LocalDocumentObjectFactory(appConfiguration, commandInvoker),
+                    appConfiguration, 
+                    commandInvoker
+                    )
                 );
 
             var content = contentService.New();
 
-            IWindow window = CoshhWindowFactory<CoshhDocument>.StaticCreateNew
+            //MAIN WINDOW
+            IWindow window = CoshhWindowFactory<ICoshhDocument>.StaticCreateNew
                 (
-                    configFile,
+                    appConfiguration,
                     contentService,
+                    commandInvoker,
                     content
                 );
 

@@ -7,20 +7,18 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    internal class OpenICom<T> : ICommand
+    internal class OpenICom<TContent> : ICommand
     {
-        private IWindow<T> data;
+        private IWindow<TContent> window;
 
         /// <summary>
         /// Constructs a command that opens a CoshhDocument into the CoshhWindow using the CoshhWindow's service
         /// </summary>
         /// <param name="window">The CoshhWindow that will load the CoshhDocument</param>
-        public OpenICom(IWindow<T> window)
+        public OpenICom(IWindow<TContent> window)
         {
-            this.data = window;
-
-            //Monitor changes in the CoshhWindow's service (affects CanLoad()).
-            window.ServiceChanged += (service) => CanExecuteChanged.Raise(this);
+            this.window = window;
+            this.window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -30,7 +28,7 @@ namespace SafetyProgram.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return data.Service.CanLoad() ? true : false;
+            return window.Service.CanLoad() ? true : false;
         }
 
         /// <summary>
@@ -43,12 +41,12 @@ namespace SafetyProgram.Commands
             if (CanExecute(parameter))
             {
                 //If theres a document open, close it.
-                if (data.Content != null)
+                if (window.Content != null)
                 {
                     try
                     {
-                        data.Service.Close(data.Content);
-                        data.Content = default(T);
+                        window.Service.Disconnect();
+                        window.Content = default(TContent);
                     }
                     catch (ArgumentException)
                     {
@@ -60,7 +58,7 @@ namespace SafetyProgram.Commands
                 //Try to load a CoshhDocument using the service.
                 try
                 {
-                    data.Content = data.Service.Load();
+                    window.Content = window.Service.Load();
                 }
                 catch (FileNotFoundException)
                 {

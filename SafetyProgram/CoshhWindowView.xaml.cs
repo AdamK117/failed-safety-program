@@ -1,7 +1,5 @@
 ﻿using System;
 using Fluent;
-using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Document;
 
 namespace SafetyProgram
 {

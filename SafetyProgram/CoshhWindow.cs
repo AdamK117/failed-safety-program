@@ -16,37 +16,33 @@ namespace SafetyProgram
     ///     -Commands which are digested by the view
     ///     -A ribbon which appears at the top of the view
     /// </summary>
-    internal sealed class CoshhWindow<T> : ICoshhWindowT<T>
-        where T : IViewable
+    internal sealed class CoshhWindow<TContent> : ICoshhWindowT<TContent>
+        where TContent : IViewable
     {
-        private readonly IConfiguration appConfiguration;
 
         /// <summary>
         /// Constructs a CoshhWindow IRibbonWindow.
         /// </summary>
-        /// <param name="documentService">The service used by the IRibbonWindow to load IDocuments into it</param>
-        /// <param name="document">The IDocument shown by the IRibbonWindow on construction</param>
+        /// <param name="contentService">The service used by the IRibbonWindow to load IDocuments into it</param>
+        /// <param name="content">The IDocument shown by the IRibbonWindow on construction</param>
         public CoshhWindow(
-            IConfiguration appConfiguration, 
-            IService<T> documentService, 
-            T document,
-            Func<ICoshhWindowT<T>, Window> viewConstructor,
-            Func<ICoshhWindowT<T>, IWindowCommands> commandsConstructor,
-            Func<ICoshhWindowT<T>, IRibbon> ribbonConstructor
+            IService<TContent> contentService, 
+            TContent content,
+            Func<ICoshhWindowT<TContent>, Window> viewConstructor,
+            Func<ICoshhWindowT<TContent>, IWindowCommands> commandsConstructor,
+            Func<ICoshhWindowT<TContent>, IRibbon> ribbonConstructor
             )
         {
             if (
-                appConfiguration != null &&
-                documentService != null &&
-                document != null &&
+                contentService != null &&
+                content != null &&
                 commandsConstructor != null &&
                 ribbonConstructor != null &&
                 viewConstructor != null
                 )
             {
-                this.appConfiguration = appConfiguration;
-                this.service = documentService;
-                this.content = document;
+                this.service = contentService;
+                this.content = content;
                 this.commands = commandsConstructor(this);
                 this.ribbon = ribbonConstructor(this);
                 this.view = viewConstructor(this);
@@ -100,12 +96,12 @@ namespace SafetyProgram
             }
         }
 
-        private T content;
+        private TContent content;
         /// <summary>
         /// Gets the IDocument in this CoshhWindow.
         /// </summary>
         /// <remarks>Nullable: IRibbonWindow may contain no IDocument</remarks>
-        public T Content
+        public TContent Content
         {
             get 
             { 
@@ -114,10 +110,7 @@ namespace SafetyProgram
             set 
             { 
                 content = value;
-                if (ContentChanged != null)
-                {
-                    ContentChanged(content);
-                }
+                ContentChanged.Raise(this, new GenericPropertyChangedEventArg<TContent>(content));
                 PropertyChanged.Raise(this, "Content");
             }
         }
@@ -128,13 +121,13 @@ namespace SafetyProgram
         /// <summary>
         /// Event that triggers when its IDocument changes.
         /// </summary>
-        public event Action<T> ContentChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<TContent>> ContentChanged;
 
-        private IService<T> service;
+        private IService<TContent> service;
         /// <summary>
         /// Gets the IDocumentService I/O service used by this CoshhWindow
         /// </summary>
-        public IService<T> Service
+        public IService<TContent> Service
         {
             get 
             { 
@@ -146,24 +139,20 @@ namespace SafetyProgram
         /// </summary>
         /// <param name="newService">The new ICoshhDocumentService</param>
         /// <exception cref="System.ArgumentNullException">Thrown if try to change to a null service</exception>
-        public void ChangeService(IService<T> newService)
+        public void ChangeService(IService<TContent> newService)
         {
             if (newService != null)
             {
                 service = newService;
-                if (ServiceChanged != null)
-                {
-                    ServiceChanged(service);
-                }
+                ServiceChanged.Raise(this, new GenericPropertyChangedEventArg<IService<TContent>>(service));
                 PropertyChanged.Raise(this, "Service");
-                PropertyChanged.Raise(this, "Commands");
             }
             else throw new ArgumentNullException("newService", "The CoshhWindow's service cannot be set to null, a valid service must be set");
         }        
         /// <summary>
         /// Event that triggers if the CoshhWindow's IDocumentService changes.
         /// </summary>
-        public event Action<IService<T>> ServiceChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<IService<TContent>>> ServiceChanged;
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

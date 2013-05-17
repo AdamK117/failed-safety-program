@@ -6,20 +6,21 @@ using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Commands;
 
 namespace SafetyProgram.Ribbons
 {
-    internal sealed class CoshhRibbon<T> : ICoshhRibbon
-        where T : IDocument
+    internal sealed class CoshhRibbon<TContent> : ICoshhRibbon
+        where TContent : IDocument
     {
-        private readonly ICoshhWindowT<T> window;
+        private readonly ICoshhWindowT<TContent> window;
 
         /// <summary>
         /// Constructs the CoshhWindow's ribbon. This is the primary ribbon for the CoshhWindow.
         /// </summary>
         /// <param name="window">CoshhWindow the ribbon is a child of.</param>
         public CoshhRibbon(
-            ICoshhWindowT<T> window, 
+            ICoshhWindowT<TContent> window, 
             Func<ICoshhRibbon, Ribbon> viewConstructor
             )
         {
@@ -32,7 +33,7 @@ namespace SafetyProgram.Ribbons
 
                 this.view = viewConstructor(this);
                 window.ContentChanged += windowContentChanged;
-                if (window.Content != null) windowContentChanged(window.Content);
+                if (window.Content != null) windowContentChanged(window, new GenericPropertyChangedEventArg<TContent>(window.Content));
             }
             else throw new ArgumentNullException();            
         }
@@ -63,7 +64,7 @@ namespace SafetyProgram.Ribbons
         /// <summary>
         /// Gets the parent CoshhWindow's commands.
         /// </summary>
-        public ICommandsHolder WindowCommands
+        public IWindowCommands WindowCommands
         {
             get 
             { 
@@ -92,27 +93,27 @@ namespace SafetyProgram.Ribbons
         /// Handler that is called if the CoshhDocument contained within the CoshhWindow changes.
         /// </summary>
         /// <param name="content">The new CoshhDocument (or lack of).</param>
-        private void windowContentChanged(T content)
+        private void windowContentChanged(object sender, GenericPropertyChangedEventArg<TContent> content)
         {
             // 2 Scenarios
             //  The CoshhWindow closed its IDocument (null): Clear data, lock ribbon.
             //  A new IDocument was set in the CoshhWindow: Add handlers, unlock ribbon (if it was locked).
 
             //The IDocument was closed
-            if (content == null)
+            if (content.NewProperty == null)
             {
                 //TODO:Greying effect
                 RibbonVisibility = false;
-                View.Tabs.Clear();  
+                View.Tabs.Clear();
             }
             //A new IDocument was opened in the CoshhWindow
-            else if (content != null)
+            else if (content.NewProperty != null)
             {
-                foreach (IRibbonTabItem ribbonTab in content.RibbonTabs)
+                foreach (IRibbonTabItem ribbonTab in content.NewProperty.RibbonTabs)
                 {
                     View.Tabs.Add(ribbonTab.View);
                 }
-                content.RibbonTabs.CollectionChanged += contentRibbonTabsChanged;
+                content.NewProperty.RibbonTabs.CollectionChanged += contentRibbonTabsChanged;
                 RibbonVisibility = true;
             }
         }

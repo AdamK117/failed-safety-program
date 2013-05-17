@@ -13,7 +13,7 @@ namespace SafetyProgram.ModelObjects
     {
         public static IChemicalModelObject StaticCreateNew()
         {
-            return new ChemicalModelObject();
+            return ModelObjectsPrototypes.ChemicalModelObject();
         }
 
         public IChemicalModelObject CreateNew()

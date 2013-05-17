@@ -19,10 +19,10 @@ namespace SafetyProgram.Commands
             this.data = window;
 
             //Monitor if the CoshhWindow's service has changed (CanSaveAs() can change).
-            window.ServiceChanged += (service) => CanExecuteChanged.Raise(this);
+            window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
 
             //Monitor if the CoshhWindow's CoshhDocument has changed (can't save a closed (null) document).
-            window.ContentChanged += (document) => CanExecuteChanged.Raise(this);
+            window.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>

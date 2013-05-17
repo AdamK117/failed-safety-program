@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\DeleteIDocObjectICom.cs" />
+    <Compile Include="Commands\DeleteIDocObjectInvokedCom.cs" />
     <Compile Include="Commands\DocumentICommands.cs" />
     <Compile Include="Commands\IDocumentICommands.cs" />
     <Compile Include="Commands\InsertIDocumentObjectICom.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="ContextMenus\DocumentContextMenuView.xaml.cs">
       <DependentUpon>DocumentContextMenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContextMenus\IDocumentContextMenu.cs" />
     <Compile Include="CoshhDocument.cs" />
     <Compile Include="CoshhDocumentBody.cs" />
     <Compile Include="CoshhDocumentDefault.cs" />
@@ -88,6 +90,7 @@
       <DependentUpon>CoshhDocumentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ICoshhDocument.cs" />
+    <Compile Include="Commands\InsertIDocumentObjectInvokedCom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,6 +108,7 @@
     <Compile Include="Ribbons\CoshhDocumentRibbonTabView.xaml.cs">
       <DependentUpon>CoshhDocumentRibbonTabView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ribbons\ICoshhDocumentRibbonTab.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

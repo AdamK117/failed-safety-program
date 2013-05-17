@@ -12,12 +12,12 @@ namespace SafetyProgram.Base.Interfaces
         ObservableCollection<IRibbonTabItem> RibbonTabs { get; }
 
         string Title { get; set; }
-        event Action<string> TitleChanged;
+        event EventHandler<GenericPropertyChangedEventArg<string>> TitleChanged;
 
         IDocumentBody Body { get; }
 
-        IDocFormat Format { get; }
-        void ChangeFormat(IDocFormat newFormat);
-        event Action<IDocFormat> FormatChanged;
+        IFormat Format { get; }
+        void ChangeFormat(IFormat newFormat);
+        event EventHandler<GenericPropertyChangedEventArg<IFormat>> FormatChanged;
     }
 }

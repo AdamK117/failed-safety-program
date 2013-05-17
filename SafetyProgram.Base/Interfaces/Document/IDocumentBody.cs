@@ -11,6 +11,6 @@ namespace SafetyProgram.Base.Interfaces
         void Select(IDocumentObject item);
         void DeSelect(IDocumentObject item);
         void DeSelectAll();        
-        event Action<IDocumentObject> SelectionChanged;
+        event EventHandler<GenericPropertyChangedEventArg<IDocumentObject>> SelectionChanged;
     }
 }

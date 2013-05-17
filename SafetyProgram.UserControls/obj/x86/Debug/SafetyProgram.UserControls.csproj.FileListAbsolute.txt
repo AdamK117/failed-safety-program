@@ -2,7 +2,10 @@ V:\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\SafetyProgram.UserCont
 V:\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\SafetyProgram.UserControls.pdb
 V:\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\Fluent.dll
+V:\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\System.Windows.Interactivity.dll
 V:\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\SafetyProgram.Base.pdb
+V:\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\Fluent.pdb
+V:\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\Fluent.xml
 V:\SafetyProgram\SafetyProgram.UserControls\obj\x86\Debug\SafetyProgram.UserControls.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.UserControls\obj\x86\Debug\TagList\TagListView.baml
 V:\SafetyProgram\SafetyProgram.UserControls\obj\x86\Debug\TagList\Style.baml

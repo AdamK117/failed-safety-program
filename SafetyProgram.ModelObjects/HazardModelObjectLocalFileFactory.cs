@@ -10,7 +10,7 @@ namespace SafetyProgram.ModelObjects
     {
         public static IHazardModelObject StaticCreateNew()
         {
-            return new HazardModelObject();
+            return ModelObjectsPrototypes.HazardModelObject();
         }
 
         public IHazardModelObject CreateNew()

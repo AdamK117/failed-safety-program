@@ -1,19 +1,18 @@
 ﻿using System;
-using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Base;
 using System.Windows.Input;
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    internal sealed class CloseICom<T> : ICommand
+    internal sealed class CloseICom<TContent> : ICommand
     {
-        private readonly IWindow<T> data;
+        private readonly IWindow<TContent> window;
 
-        public CloseICom(IWindow<T> window)
+        public CloseICom(IWindow<TContent> window)
         {
-            this.data = window;
-            //Monitor changes in the CoshhWindow's CoshhDocument. Closed (null) documents can't be closed.
-            window.ContentChanged += (document) => CanExecuteChanged.Raise(this);
+            this.window = window;
+            this.window.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -23,7 +22,7 @@ namespace SafetyProgram.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {            
-            return data.Content == null ? false : true;
+            return (window.Content == null) ? false : true;
         }
 
         /// <summary>
@@ -40,8 +39,8 @@ namespace SafetyProgram.Commands
                 //  The service fails at closing the document (user presses cancel, data is invalid, etc.).
                 try
                 {
-                    data.Service.Close(data.Content);
-                    data.Content = default(T);
+                    window.Service.Disconnect();
+                    window.Content = default(TContent);
                 }
                 catch (ArgumentException)
                 {

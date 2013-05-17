@@ -16,7 +16,7 @@ namespace SafetyProgram.Document
         public CoshhDocument (
             IConfiguration appConfiguration, 
             string title, 
-            IDocFormat format, 
+            IFormat format, 
             IDocumentBody body,
             Func<ICoshhDocument, IDocumentICommands> commandsConstructor,
             Func<IDocumentICommands, IContextMenu> contextMenuConstructor,
@@ -43,7 +43,7 @@ namespace SafetyProgram.Document
 
                 this.body = body;
                 this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
-                this.body.SelectionChanged += (IDocumentObject selection) => documentSelectionChanged(selection);
+                this.body.SelectionChanged += (object sender, GenericPropertyChangedEventArg<IDocumentObject> selection) => documentSelectionChanged(selection.NewProperty);
 
                 commands = commandsConstructor(this);
                 contextMenu = contextMenuConstructor(this.Commands);
@@ -112,23 +112,20 @@ namespace SafetyProgram.Document
             { 
                 title = value;
 
-                if (TitleChanged != null)
-                {
-                    TitleChanged(title);
-                }
+                TitleChanged.Raise(this, new GenericPropertyChangedEventArg<string>(title));
                 PropertyChanged.Raise(this, "Title");
             }
         }
         /// <summary>
         /// Event that fires if the Title of the CoshhDocument changes.
         /// </summary>
-        public event Action<string> TitleChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<string>> TitleChanged;
 
-        private IDocFormat format;
+        private IFormat format;
         /// <summary>
         /// Gets/Sets the format (A4 etc.) of the CoshhDocument.
         /// </summary>
-        public IDocFormat Format
+        public IFormat Format
         {
             get 
             {
@@ -139,16 +136,13 @@ namespace SafetyProgram.Document
         /// Change the format of the CoshhDocument
         /// </summary>
         /// <param name="newFormat">The new format</param>
-        public void ChangeFormat(IDocFormat newFormat)
+        public void ChangeFormat(IFormat newFormat)
         {
             if (newFormat != null)
             {
                 format = newFormat;
 
-                if (FormatChanged != null)
-                {
-                    FormatChanged(format);
-                }
+                FormatChanged.Raise(this, new GenericPropertyChangedEventArg<IFormat>(format));
                 PropertyChanged.Raise(this, "Format");
             }
             else throw new ArgumentNullException("The IDocumentFormat supplied must not be null (A document must have a format)");
@@ -156,7 +150,7 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Event that triggers if the Format of the CoshhDocument changes.
         /// </summary>
-        public event Action<IDocFormat> FormatChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<IFormat>> FormatChanged;
 
         private readonly IContextMenu contextMenu;
         /// <summary>
@@ -179,10 +173,7 @@ namespace SafetyProgram.Document
             if (removeFlag != true)
             {
                 removeFlag = true;
-                if (RemoveFlagChanged != null)
-                {
-                    RemoveFlagChanged(this, removeFlag);
-                }
+                RemoveFlagChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(removeFlag));
                 PropertyChanged.Raise(this, "RemoveFlag");
             }
         }
@@ -193,7 +184,7 @@ namespace SafetyProgram.Document
                 return removeFlag; 
             }
         }
-        public event Action<object, bool> RemoveFlagChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<bool>> RemoveFlagChanged;
 
         private bool edited;
         /// <summary>
@@ -205,10 +196,7 @@ namespace SafetyProgram.Document
             {
                 edited = true;
 
-                if (EditedFlagChanged != null)
-                {
-                    EditedFlagChanged(this, true);
-                }
+                EditedFlagChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(true));
                 PropertyChanged.Raise(this, "EditedFlag");
             }
         }
@@ -225,7 +213,7 @@ namespace SafetyProgram.Document
         /// <summary>
         /// Event that fires if the edited state of the CoshhDocument changes.
         /// </summary>
-        public event Action<object, bool> EditedFlagChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<bool>> EditedFlagChanged;
 
         public string Error
         {

@@ -11,7 +11,7 @@ namespace SafetyProgram.ModelObjects
     {
         public static ICoshhChemicalObject StaticCreateNew()
         {
-            return new CoshhChemicalObject();
+            return ModelObjectsPrototypes.CoshhChemicalObject();
         }
 
         public ICoshhChemicalObject CreateNew()

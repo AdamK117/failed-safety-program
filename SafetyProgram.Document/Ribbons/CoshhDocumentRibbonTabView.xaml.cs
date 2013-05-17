@@ -7,11 +7,8 @@ namespace SafetyProgram.Document.Ribbons
     /// </summary>
     internal sealed partial class CoshhDocumentRibbonTabView : RibbonTabItem
     {
-        private readonly CoshhDocumentRibbonTab viewModel;
-
-        public CoshhDocumentRibbonTabView(CoshhDocumentRibbonTab viewModel)
+        public CoshhDocumentRibbonTabView(ICoshhDocumentRibbonTab viewModel)
         {
-            this.viewModel = viewModel;
             this.DataContext = viewModel;
             InitializeComponent();
         }

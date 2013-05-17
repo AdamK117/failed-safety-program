@@ -7,11 +7,8 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon
     /// </summary>
     internal sealed partial class ChemicalTableRibbonView : RibbonTabItem
     {
-        private readonly ChemicalTableRibbonTab viewModel;
-
-        public ChemicalTableRibbonView(ChemicalTableRibbonTab viewModel)
+        public ChemicalTableRibbonView(IChemicalTableRibbonTab viewModel)
         {
-            this.viewModel = viewModel;
             this.DataContext = viewModel;
 
             InitializeComponent();

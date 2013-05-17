@@ -7,11 +7,11 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class CopySelectedICom : ICommand
     {
-        private readonly ChemicalTable data;
+        private readonly IChemicalTable table;
 
-        public CopySelectedICom(ChemicalTable table)
+        public CopySelectedICom(IChemicalTable table)
         {
-            this.data = table;
+            this.table = table;
             table.SelectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);
         }
 
@@ -22,7 +22,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return data.SelectedChemicals.Count == 0 ? false : true;
+            return (table.SelectedChemicals.Count) == 0 ? false : true;
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
             {
                 try
                 {
-                    data.SelectedChemicals.TryCopy();
+                    table.SelectedChemicals.TryCopy();
                 }
                 catch (COMException)
                 {

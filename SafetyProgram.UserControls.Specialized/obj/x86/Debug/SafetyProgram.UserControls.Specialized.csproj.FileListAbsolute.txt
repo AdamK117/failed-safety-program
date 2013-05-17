@@ -4,9 +4,12 @@ V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\SafetyProg
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\SafetyProgram.ModelObjects.dll
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\SafetyProgram.UserControls.dll
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\Fluent.dll
+V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\System.Windows.Interactivity.dll
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\SafetyProgram.Base.pdb
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\SafetyProgram.ModelObjects.pdb
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\SafetyProgram.UserControls.pdb
+V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\Fluent.pdb
+V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\Fluent.xml
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\obj\x86\Debug\SafetyProgram.UserControls.Specialized.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\obj\x86\Debug\SafetyProgram.UserControls.Specialized.Properties.Resources.resources
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\obj\x86\Debug\SafetyProgram.UserControls.Specialized.csproj.GenerateResource.Cache

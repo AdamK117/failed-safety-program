@@ -71,7 +71,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractDocObjectFactory.cs" />
     <Compile Include="ChemicalTableNs\ChemicalTable.cs" />
     <Compile Include="ChemicalTableNs\ChemicalTableClipboard.cs" />
     <Compile Include="ChemicalTableNs\ChemicalTableDefaults.cs" />
@@ -80,6 +79,7 @@
       <DependentUpon>ChemicalTableView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChemicalTableNs\Commands\AddNewChemicalICom.cs" />
+    <Compile Include="ChemicalTableNs\Commands\AddNewChemicalInvokedCom.cs" />
     <Compile Include="ChemicalTableNs\Commands\ChemicalTableCommands.cs" />
     <Compile Include="ChemicalTableNs\Commands\CopySelectedICom.cs" />
     <Compile Include="ChemicalTableNs\Commands\DeleteSelectedICom.cs" />
@@ -89,13 +89,15 @@
     <Compile Include="ChemicalTableNs\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
       <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbon.cs" />
+    <Compile Include="ChemicalTableNs\ContextMenus\IChemicalTableContextMenu.cs" />
+    <Compile Include="ChemicalTableNs\IChemicalTable.cs" />
+    <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonTab.cs" />
     <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml.cs">
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChemicalTableNs\Ribbon\IChemicalTableRibbonTab.cs" />
     <Compile Include="DefaultDocumentObjects.cs" />
     <Compile Include="GenericCommands\DeleteIDocumentObjectICom.cs" />
-    <Compile Include="GenericDocObjectCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -109,6 +111,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="LocalDocumentObjectFactory.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

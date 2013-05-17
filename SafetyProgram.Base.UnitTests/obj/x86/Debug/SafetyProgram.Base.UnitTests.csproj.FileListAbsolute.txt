@@ -3,8 +3,11 @@ V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Base.U
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.ModelObjects.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Fluent.dll
+V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\System.Windows.Interactivity.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Base.pdb
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.ModelObjects.pdb
+V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Fluent.pdb
+V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Fluent.xml
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\x86\Debug\SafetyProgram.Base.UnitTests.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\x86\Debug\SafetyProgram.Base.UnitTests.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\x86\Debug\SafetyProgram.Base.UnitTests.pdb

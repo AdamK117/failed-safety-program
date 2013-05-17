@@ -5,7 +5,7 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base
 {
-    public static class DeepCloneableExtension
+    public static class DeepCloneableExtensions
     {
         /// <summary>
         /// Gets a data object containing an IEnumerable of IDeepCloneable items. This may be added to the clipboard or used in drag & drop operations.
@@ -15,13 +15,13 @@ namespace SafetyProgram.Base
         /// <param name="comIdentity">The COM identity to wrap into the DataObject</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException"></exception>
-        public static IDataObject GetDataObject<T>(this IEnumerable<T> data, string comIdentity)
+        public static IDataObject GetDataObject<T>(this IEnumerable<T> items, string comIdentity)
             where T : IDeepCloneable<T>
         {
-            DataObject dataObject = new DataObject();
-            List<T> clonedItems = new List<T>();
+            IDataObject dataObject = new DataObject();
+            IList<T> clonedItems = new List<T>();
 
-            foreach (IDeepCloneable<T> item in data)
+            foreach (IDeepCloneable<T> item in items)
             {
                 T clonedItem = item.DeepClone();
 
@@ -45,7 +45,9 @@ namespace SafetyProgram.Base
         {
             try
             {
-                Clipboard.SetDataObject(GetDataObject<T>(data, comIdentity));
+                Clipboard.SetDataObject(
+                    GetDataObject<T>(data, comIdentity)
+                    );
             }
             catch (COMException)
             {
@@ -68,8 +70,8 @@ namespace SafetyProgram.Base
                 try
                 {
                     object uncastedData = Clipboard.GetData(comIdentity);
-                    T data = (T)uncastedData;
-                    return data;
+                    T castedData = (T)uncastedData;
+                    return castedData;
                 }
                 catch (COMException)
                 {
@@ -121,7 +123,7 @@ namespace SafetyProgram.Base
         /// <returns></returns>
         public static IDataObject GetDataObject<T>(this IDeepCloneable<T> item, string comIdentity)
         {
-            DataObject dataObject = new DataObject();
+            var dataObject = new DataObject();
             T clonedItem = item.DeepClone();
             dataObject.SetData(comIdentity, item);
 

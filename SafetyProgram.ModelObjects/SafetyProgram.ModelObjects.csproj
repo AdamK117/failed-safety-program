@@ -69,6 +69,7 @@
     <Compile Include="IChemicalModelObject.cs" />
     <Compile Include="ICoshhChemicalObject.cs" />
     <Compile Include="IHazardModelObject.cs" />
+    <Compile Include="ModelObjectsPrototypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

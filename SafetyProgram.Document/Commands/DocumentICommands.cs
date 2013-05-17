@@ -1,20 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects;
 
 namespace SafetyProgram.Document.Commands
 {
     internal sealed class DocumentICommands : IDocumentICommands
     {
-        public DocumentICommands(ICoshhDocument document)
+        public DocumentICommands(ICoshhDocument document, ICommandInvoker commandInvoker)
         {
-            InsertChemicalTable = new InsertIDocumentObjectICom(
-                document, 
-                () => DefaultDocumentObjects.ChemicalTable(document.AppConfiguration)
-                );
-            DeleteIDocObject = new DeleteIDocObjectICom(document);
+            if (
+                document != null &&
+                commandInvoker != null
+                )
+            {
+                InsertChemicalTable = new InsertIDocumentObjectICom(
+                    document,
+                    commandInvoker,
+                    () => DefaultDocumentObjects.ChemicalTable(document.AppConfiguration, commandInvoker)
+                    );
+                DeleteIDocObject = new DeleteIDocObjectICom(document, commandInvoker);
 
-            Hotkeys = setHotkeys();
+                Hotkeys = setHotkeys();
+            }
+            else throw new ArgumentNullException();            
         }
 
         private List<InputBinding> setHotkeys()

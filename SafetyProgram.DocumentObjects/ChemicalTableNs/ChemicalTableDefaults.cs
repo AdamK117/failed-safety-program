@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects.ChemicalTableNs.Commands;
@@ -10,13 +11,13 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
     internal static class ChemicalTableDefaults
     {
-        public static ChemicalTable DefaultTable(IConfiguration appConfiguration)
+        public static ChemicalTable DefaultTable(IConfiguration appConfiguration, ICommandInvoker commandInvoker)
         {
             return new ChemicalTable(
                 appConfiguration,
                 DefaultChemicals(),
                 DEFAULT_HEADER,
-                DefaultCommandsConstructor,
+                DefaultCommandsConstructor(commandInvoker),
                 DefaultContextMenuConstructor,
                 DefaultRibbonConstructor,
                 DefaultViewConstructor
@@ -30,22 +31,25 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
         public const string DEFAULT_HEADER = "Chemical Table";
 
-        public static IChemicalTableCommands DefaultCommandsConstructor(ChemicalTable chemicalTable)
+        public static Func<IChemicalTable, IChemicalTableCommands> DefaultCommandsConstructor(ICommandInvoker commandInvoker)
         {
-            return new ChemicalTableCommands(chemicalTable);
+            return (chemicalTable) =>
+                {
+                    return new ChemicalTableCommands(chemicalTable, commandInvoker);
+                };
         }
 
-        public static IContextMenu DefaultContextMenuConstructor(ChemicalTable chemicalTable)
+        public static IContextMenu DefaultContextMenuConstructor(IChemicalTable chemicalTable)
         {
-            return new ChemicalTableContextMenu(chemicalTable);
+            return new ChemicalTableContextMenu(chemicalTable, (viewModel) => new ChemicalTableContextMenuView(viewModel));
         }
 
-        public static IRibbonTabItem DefaultRibbonConstructor(ChemicalTable chemTable)
+        public static IRibbonTabItem DefaultRibbonConstructor(IChemicalTable chemTable)
         {
-            return new ChemicalTableRibbonTab(chemTable);
+            return new ChemicalTableRibbonTab(chemTable, (viewModel) => new ChemicalTableRibbonView(viewModel));
         }
 
-        public static UserControl DefaultViewConstructor(ChemicalTable chemicalTable)
+        public static UserControl DefaultViewConstructor(IChemicalTable chemicalTable)
         {
             return new ChemicalTableView(chemicalTable);
         }

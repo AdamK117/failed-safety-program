@@ -11,7 +11,7 @@ namespace SafetyProgram.Commands
     /// </summary>
     internal class SaveICom<T> : ICommand
     {
-        private readonly IWindow<T> data;
+        private readonly IWindow<T> window;
 
         /// <summary>
         /// Construct a Save command which will save the CoshhWindow's document
@@ -19,13 +19,13 @@ namespace SafetyProgram.Commands
         /// <param name="window">CoshhWindow which houses the CoshhDocument to be saved</param>
         public SaveICom(IWindow<T> window)
         {
-            this.data = window;
+            this.window = window;
 
             //Monitor if the CoshhWindow's service has changed (Service.CanSave())
-            window.ServiceChanged += (service) => CanExecuteChanged.Raise(this);
+            window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
 
             //Monitor if the CoshhWindow's document has changed (Can't save a closed (null) document)
-            window.ContentChanged += (document) => CanExecuteChanged.Raise(this);
+            window.ContentChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace SafetyProgram.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return (data.Content != null && data.Service.CanSave(data.Content)) ? false : true;
+            return (window.Content != null && window.Service.CanSave(window.Content)) ? true : false;
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace SafetyProgram.Commands
             {
                 try
                 {
-                    data.Service.Save(data.Content);
+                    window.Service.Save(window.Content);
                 }
                 catch (UnauthorizedAccessException)
                 {

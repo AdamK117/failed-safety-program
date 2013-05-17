@@ -13,12 +13,12 @@
                 <Fluent:Backstage x:Name="Backstage">
                     <Fluent:BackstageTabControl>
                         <!-- File Menu options-->
-                        <Fluent:Button Header="Save" Command="{Binding WindowCommands.Save}" />
-                        <Fluent:Button Header="Save As" Command="{Binding WindowCommands.SaveAs}" />
-                        <Fluent:Button Header="Save As PDF" Command="{Binding WindowCommands.Save}" />
-                        <Fluent:Button Header="Open" Command="{Binding WindowCommands.Open}" />
-                        <Fluent:Button Header="Close" Command="{Binding WindowCommands.Close}" />
-                        <Fluent:Button Header="New" Command="{Binding WindowCommands.New}" />
+                        <Fluent:Button Header="Save" Command="{Binding Commands.Save}" />
+                        <Fluent:Button Header="Save As" Command="{Binding Commands.SaveAs}" />
+                        <Fluent:Button Header="Save As PDF" Command="{Binding Commands.Save}" />
+                        <Fluent:Button Header="Open" Command="{Binding Commands.Open}" />
+                        <Fluent:Button Header="Close" Command="{Binding Commands.Close}" />
+                        <Fluent:Button Header="New" Command="{Binding Commands.New}" />
                         
                         <Fluent:BackstageTabItem Header="Recent" >
                             <Fluent:Button Header="Work In Progress (Show recently opened documents here)" />
@@ -26,7 +26,7 @@
                         <Fluent:BackstageTabItem Header="Print"/>
                         <Fluent:BackstageTabItem Header="Help"/>
                         
-                        <Fluent:Button Header="Exit" Command="{Binding WindowCommands.Exit}" />
+                        <Fluent:Button Header="Exit" Command="{Binding Commands.Exit}" />
                     </Fluent:BackstageTabControl>
                 </Fluent:Backstage>
             </Fluent:Ribbon.Menu>

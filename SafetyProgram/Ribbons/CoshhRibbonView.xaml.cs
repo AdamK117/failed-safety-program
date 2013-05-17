@@ -13,7 +13,7 @@ namespace SafetyProgram.Ribbons
         /// <param name="viewModel"></param>
         public CoshhRibbonView(ICoshhRibbon viewModel)
         {
-            DataContext = viewModel;
+            //BUG: Datacontext of a Ribbon always goes to its parent RibbonWindow/Window regardless of setting it or not
             InitializeComponent();
         }
     }

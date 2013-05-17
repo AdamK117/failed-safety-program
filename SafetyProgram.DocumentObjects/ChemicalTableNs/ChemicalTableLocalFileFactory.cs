@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
@@ -12,26 +13,32 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
     ///     -Produces a ChemicalTable IDocumentObject
     /// </summary>
     internal sealed class ChemicalTableLocalFileFactory
-        : ILocalFileFactory<ChemicalTable>
+        : ILocalFileFactory<IChemicalTable>
     {
         private readonly IConfiguration appConfiguration;
+        private readonly ICommandInvoker commandInvoker;
 
-        public ChemicalTableLocalFileFactory(IConfiguration appConfiguration)
+        public ChemicalTableLocalFileFactory(IConfiguration appConfiguration, ICommandInvoker commandInvoker)
         {
-            this.appConfiguration = appConfiguration;
+            if (appConfiguration != null && commandInvoker != null)
+            {
+                this.appConfiguration = appConfiguration;
+                this.commandInvoker = commandInvoker;
+            }
+            else throw new ArgumentNullException();
         }
 
-        public static ChemicalTable StaticCreateNew(IConfiguration appConfiguration)
+        public static IChemicalTable StaticCreateNew(IConfiguration appConfiguration, ICommandInvoker commandInvoker)
         {
-            return ChemicalTableDefaults.DefaultTable(appConfiguration);
+            return ChemicalTableDefaults.DefaultTable(appConfiguration, commandInvoker);
         }
 
-        public ChemicalTable CreateNew()
+        public IChemicalTable CreateNew()
         {
-            return StaticCreateNew(appConfiguration);
+            return StaticCreateNew(appConfiguration, commandInvoker);
         }
 
-        public static ChemicalTable StaticLoad(XElement data, IConfiguration appConfiguration)
+        public static IChemicalTable StaticLoad(XElement data, IConfiguration appConfiguration, ICommandInvoker commandInvoker)
         {
             //Define variables to load from the data
             string loadedHeader = "";
@@ -62,19 +69,19 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
                 appConfiguration,
                 loadedChemicals,
                 loadedHeader,
-                ChemicalTableDefaults.DefaultCommandsConstructor,
+                ChemicalTableDefaults.DefaultCommandsConstructor(commandInvoker),
                 ChemicalTableDefaults.DefaultContextMenuConstructor,
                 ChemicalTableDefaults.DefaultRibbonConstructor,
                 ChemicalTableDefaults.DefaultViewConstructor
                 );
         }
 
-        public ChemicalTable Load(XElement data)
+        public IChemicalTable Load(XElement data)
         {
-            return StaticLoad(data, appConfiguration);
+            return StaticLoad(data, appConfiguration, commandInvoker);
         }
 
-        public static XElement StaticStore(ChemicalTable item, IConfiguration appConfiguration)
+        public static XElement StaticStore(IChemicalTable item, IConfiguration appConfiguration)
         {
             //TODO: Validation check
             return (
@@ -89,7 +96,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             );
         }
 
-        public XElement Store(ChemicalTable item)
+        public XElement Store(IChemicalTable item)
         {
             return StaticStore(item, appConfiguration);
         }

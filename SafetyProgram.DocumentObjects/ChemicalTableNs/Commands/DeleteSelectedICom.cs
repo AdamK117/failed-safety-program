@@ -8,11 +8,11 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class DeleteSelectedICom : ICommand
     {
-        private readonly ChemicalTable data;
+        private readonly IChemicalTable table;
 
-        public DeleteSelectedICom(ChemicalTable table) 
+        public DeleteSelectedICom(IChemicalTable table) 
         {
-            this.data = table;
+            this.table = table;
             //Monitor the ChemicalTable's selections. This command won't work if nothing is selected.
             table.SelectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);
         }
@@ -24,7 +24,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return data.SelectedChemicals.Count == 0 ? false : true;
+            return (table.SelectedChemicals.Count) == 0 ? false : true;
         }
 
         /// <summary>
@@ -41,10 +41,10 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
                 {
                     case DialogResult.Yes:
                         //Create a cache of the selection.
-                        List<ICoshhChemicalObject> selection = new List<ICoshhChemicalObject>(data.SelectedChemicals);
+                        List<ICoshhChemicalObject> selection = new List<ICoshhChemicalObject>(table.SelectedChemicals);
 
                         //Remove the selection from the chemicals in the table
-                        selection.ForEach(x => data.Chemicals.Remove(x));
+                        selection.ForEach(x => table.Chemicals.Remove(x));
                         break;
 
                     default:

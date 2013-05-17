@@ -4,7 +4,7 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    internal sealed class WindowICommands<T> : IWindowCommands
+    public sealed class WindowICommands<T> : IWindowCommands
     {
         private readonly IWindow<T> window;
 
@@ -12,7 +12,7 @@ namespace SafetyProgram.Commands
         /// Constructs a new instance of the commands (iCommands, Hotkeys, generic commands) available to a CoshhWindow.
         /// </summary>
         /// <param name="window">Instance of a CoshhWindow parent</param>
-        public WindowICommands(IWindow<T> window)
+        public WindowICommands(IWindow<T> window, ICommandInvoker commandInvoker)
         {
             this.window = window;
 
@@ -23,6 +23,8 @@ namespace SafetyProgram.Commands
             Save = new SaveICom<T>(window);
             SaveAs = new SaveAsICom<T>(window);
             Exit = new ExitICom(window);
+            Undo = new UndoICom(commandInvoker);
+            Redo = new RedoICom(commandInvoker);
 
             //Get a list of hotkeys for these CoshhWindow commands.
             Hotkeys = setHotKeys();
@@ -56,6 +58,16 @@ namespace SafetyProgram.Commands
                     new InputBinding(
                         New,
                         new KeyGesture(Key.N, ModifierKeys.Control)
+                    ),
+                    //Undo: CTRL+Z
+                    new InputBinding(
+                        Undo,
+                        new KeyGesture(Key.Z, ModifierKeys.Control)
+                    ),
+                    //Redo: CTRL+Y
+                    new InputBinding(
+                        Redo,
+                        new KeyGesture(Key.Y, ModifierKeys.Control)
                     )
                 };
         }
@@ -96,10 +108,27 @@ namespace SafetyProgram.Commands
             private set;
         }
 
+        public ICommand Undo
+        {
+            get;
+            private set;
+        }
+
+        public ICommand Redo
+        {
+            get;
+            private set;
+        }
+
         public List<InputBinding> Hotkeys
         {
             get;
             private set;
         }
+
+
+        
+
+        
     }
 }

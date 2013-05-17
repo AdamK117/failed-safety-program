@@ -1,15 +1,22 @@
-﻿using System.Windows.Input;
-using SafetyProgram.ModelObjects;
+﻿using System;
+using System.Windows.Input;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class AddNewChemicalICom : ICommand
     {
-        private readonly ChemicalTable data;
+        private readonly IChemicalTable table;
+        private readonly ICommandInvoker commandInvoker;
 
-        public AddNewChemicalICom(ChemicalTable table) 
+        public AddNewChemicalICom(IChemicalTable table, ICommandInvoker commandInvoker) 
         {
-            this.data = table;
+            if (table != null && commandInvoker != null)
+            {
+                this.table = table;
+                this.commandInvoker = commandInvoker;
+            }
+            else throw new ArgumentNullException();
         }
 
         /// <summary>
@@ -30,29 +37,8 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         {
             if (CanExecute(parameter))
             {
-                CoshhChemicalObject chemical = new CoshhChemicalObject();
-                chemical.Chemical.Name = "MyRandomChemical";
-                chemical.Value = 20.5M;
-                chemical.Unit = "mgs";
-                chemical.Chemical.Hazards.Add
-                    (
-                        new HazardModelObject()
-                        {
-                            Hazard = "Flammable",
-                            SignalWord = "H25",
-                            Symbol = "Flammable"
-                        }
-                    );
-                chemical.Chemical.Hazards.Add
-                    (
-                        new HazardModelObject()
-                        {
-                            Hazard = "Harmful",
-                            SignalWord = "H25",
-                            Symbol = "Harmful"
-                        }
-                    );
-                data.Chemicals.Add(chemical);
+                var invokedCommand = new AddNewChemicalInvokedCom(table);
+                commandInvoker.InvokeCommand(invokedCommand);
             }            
         }
 

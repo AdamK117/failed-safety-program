@@ -26,7 +26,7 @@ namespace SafetyProgram.Base.Interfaces
         /// <summary>
         /// An event that triggers if the RemoveFlag of this IInteractable has changed.
         /// </summary>
-        event Action<object, bool> RemoveFlagChanged;
+        event EventHandler<GenericPropertyChangedEventArg<bool>> RemoveFlagChanged;
 
         /// <summary>
         /// Flags this IInteractable as edited.
@@ -39,6 +39,6 @@ namespace SafetyProgram.Base.Interfaces
         /// <summary>
         /// An event that fires if the IInteractable's EditedFlag changes
         /// </summary>
-        event Action<object, bool> EditedFlagChanged;
+        event EventHandler<GenericPropertyChangedEventArg<bool>> EditedFlagChanged;
     }
 }

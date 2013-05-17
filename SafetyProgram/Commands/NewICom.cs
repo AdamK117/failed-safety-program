@@ -5,19 +5,18 @@ using System.Windows.Input;
 
 namespace SafetyProgram.Commands
 {
-    internal sealed class NewICom<T> : ICommand
+    internal sealed class NewICom<TContent> : ICommand
     {
-        private readonly IWindow<T> data;
+        private readonly IWindow<TContent> window;
 
         /// <summary>
         /// Constructs an instance of the "New Document" command.
         /// </summary>
         /// <param name="window">Window in which the new document will be added when called.</param>
-        public NewICom(IWindow<T> window)
+        public NewICom(IWindow<TContent> window)
         {
-            this.data = window;
-            //Monitor changes in the CoshhWindow's service (affects CanNew())
-            window.ServiceChanged += (service) => CanExecuteChanged.Raise(this);
+            this.window = window;
+            this.window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -27,7 +26,7 @@ namespace SafetyProgram.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return data.Service.CanNew() ? true : false;
+            return window.Service.CanNew() ? true : false;
         }
 
         /// <summary>
@@ -39,19 +38,19 @@ namespace SafetyProgram.Commands
         {
             if (CanExecute(parameter))
             {
-                if (data.Content != null)
+                if (window.Content != null)
                 {
                     try
                     {
-                        data.Service.Close(data.Content);
-                        data.Content = default(T);
+                        window.Service.Disconnect();
+                        window.Content = default(TContent);
                     }
                     catch(ArgumentException)
                     {
                         throw;
                     }                    
                 }
-                data.Content = data.Service.New();
+                window.Content = window.Service.New();
             }
             else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)");
         }

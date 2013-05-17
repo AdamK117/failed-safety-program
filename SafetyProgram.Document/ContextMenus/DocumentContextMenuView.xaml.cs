@@ -7,13 +7,9 @@ namespace SafetyProgram.Document.ContextMenus
     /// </summary>
     internal sealed partial class DocumentContextMenuView : ContextMenu
     {
-        private readonly DocumentContextMenu viewModel;
-
-        public DocumentContextMenuView(DocumentContextMenu viewModel)
+        public DocumentContextMenuView(IDocumentContextMenu viewModel)
         {
-            this.viewModel = viewModel;
-
-            DataContext = viewModel;
+            this.DataContext = viewModel;
             InitializeComponent();
         }
     }

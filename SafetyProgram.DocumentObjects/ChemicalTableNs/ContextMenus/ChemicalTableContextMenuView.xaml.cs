@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus
 {
@@ -7,13 +8,14 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus
     /// </summary>
     internal sealed partial class ChemicalTableContextMenuView : ContextMenu
     {
-        private readonly ChemicalTableContextMenu viewModel;
-
-        public ChemicalTableContextMenuView(ChemicalTableContextMenu viewModel)
+        public ChemicalTableContextMenuView(IChemicalTableContextMenu viewModel)
         {
-            this.viewModel = viewModel;
-            this.DataContext = viewModel;
-
+            if (viewModel != null)
+            {
+                this.DataContext = viewModel;
+            }
+            else throw new ArgumentNullException();
+            
             InitializeComponent();
         }
     }

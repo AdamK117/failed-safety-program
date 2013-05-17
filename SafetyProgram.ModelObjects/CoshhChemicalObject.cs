@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using SafetyProgram.Base;
@@ -10,11 +11,6 @@ namespace SafetyProgram.ModelObjects
     public sealed class CoshhChemicalObject : INotifyPropertyChanged, ICoshhChemicalObject
     {
         private readonly List<string> validationErrorList = new List<string>();
-
-        public CoshhChemicalObject()
-        {
-            chemical = new ChemicalModelObject();
-        }
 
         public CoshhChemicalObject(decimal _value, string unit, IChemicalModelObject chemical)
         {

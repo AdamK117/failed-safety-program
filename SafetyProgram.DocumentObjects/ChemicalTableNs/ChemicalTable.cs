@@ -12,7 +12,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
     /// <summary>
     /// Defines a ViewModel for a ChemicalTable
     /// </summary>
-    internal sealed class ChemicalTable : INotifyPropertyChanged, IDocumentObject
+    internal sealed class ChemicalTable : IChemicalTable
     {
         /// <summary>
         /// Constructs an instance of the ChemicalTable DocObject
@@ -25,10 +25,10 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             IConfiguration appConfiguration, 
             ObservableCollection<ICoshhChemicalObject> chemicals, 
             string header,
-            Func<ChemicalTable, IChemicalTableCommands> commandsConstructor,
-            Func<ChemicalTable, IContextMenu> contextMenuConstructor,
-            Func<ChemicalTable, IRibbonTabItem> ribbonTabConstructor,
-            Func<ChemicalTable, UserControl> viewConstructor
+            Func<IChemicalTable, IChemicalTableCommands> commandsConstructor,
+            Func<IChemicalTable, IContextMenu> contextMenuConstructor,
+            Func<IChemicalTable, IRibbonTabItem> ribbonTabConstructor,
+            Func<IChemicalTable, UserControl> viewConstructor
             )
         {
             if (
@@ -158,8 +158,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             if (selectedFlag == true)
             {
                 selectedFlag = false;
-
-                SelectedChanged.Raise(this, selectedFlag);
+                SelectedChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(selectedFlag));
                 PropertyChanged.Raise(this, "Selected");
             }
             SelectedChemicals.Clear();
@@ -183,7 +182,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
         public const string COM_IDENTITY = "CoshhChemicalModels";
 
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private bool selectedFlag;
         public void Select()
@@ -193,7 +192,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             {
                 selectedFlag = true;
 
-                SelectedChanged.Raise(this, selectedFlag);
+                SelectedChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(selectedFlag));
                 PropertyChanged.Raise(this, "Selected");
             }
         }
@@ -206,7 +205,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             }
         }
 
-        public event Action<object, bool> SelectedChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<bool>> SelectedChanged;
 
         private bool removeFlag;
         public void FlagForRemoval()
@@ -216,7 +215,8 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
                 removeFlag = true;
 
                 DeSelect();
-                RemoveFlagChanged.Raise(this, removeFlag);
+
+                RemoveFlagChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(removeFlag));
                 PropertyChanged.Raise(this, "RemoveFlag");
             }
         }
@@ -226,7 +226,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             get { return removeFlag; }
         }
 
-        public event Action<object, bool> RemoveFlagChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<bool>> RemoveFlagChanged;
 
         private bool editedFlag;
         public void FlagAsEdited()
@@ -235,7 +235,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             {
                 editedFlag = true;
 
-                EditedFlagChanged.Raise(this, editedFlag);
+                EditedFlagChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(editedFlag));
                 PropertyChanged.Raise(this, "EditedFlag");
             }
         }
@@ -248,6 +248,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             }
         }
 
-        public event Action<object, bool> EditedFlagChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<bool>> EditedFlagChanged;
     }
 }

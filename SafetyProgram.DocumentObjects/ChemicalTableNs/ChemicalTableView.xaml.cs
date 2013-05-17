@@ -10,9 +10,9 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
     /// </summary>
     internal sealed partial class ChemicalTableView : UserControl
     {
-        private readonly ChemicalTable viewModel;
+        private readonly IChemicalTable viewModel;
 
-        public ChemicalTableView(ChemicalTable viewModel)
+        public ChemicalTableView(IChemicalTable viewModel)
         {
             this.viewModel = viewModel;
             DataContext = viewModel;

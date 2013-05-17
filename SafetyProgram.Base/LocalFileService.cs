@@ -66,7 +66,7 @@ namespace SafetyProgram.Base
             throw new NotImplementedException();
         }
 
-        public void Close(T data)
+        public void Disconnect()
         {
             throw new NotImplementedException();
         }

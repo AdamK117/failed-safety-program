@@ -6,16 +6,29 @@ namespace SafetyProgram.Document.Commands
 {
     public sealed class InsertIDocumentObjectICom : ICommand
     {
-        private readonly IDocument data;
+        private readonly IDocument document;
+        private readonly ICommandInvoker commandInvoker;
         private readonly Func<IDocumentObject> iDocumentObjectCtor;
+        private IDocumentObject addedDocumentObject;
 
         public InsertIDocumentObjectICom(
             IDocument document, 
+            ICommandInvoker commandInvoker,
             Func<IDocumentObject> iDocumentObjectCtor
             )
         {
-            this.data = document;
-            this.iDocumentObjectCtor = iDocumentObjectCtor;
+            if
+                (
+                document != null &&
+                commandInvoker != null &&
+                iDocumentObjectCtor != null
+                )
+            {
+                this.document = document;
+                this.commandInvoker = commandInvoker;
+                this.iDocumentObjectCtor = iDocumentObjectCtor;
+            }
+            else throw new ArgumentNullException();
         }
 
         /// <summary>
@@ -37,9 +50,12 @@ namespace SafetyProgram.Document.Commands
         {
             if (CanExecute(parameter))
             {
-                data.Body.Items.Add(iDocumentObjectCtor());
+                var invokedCommand = new InsertIDocumentObjectInvokedCom(
+                    document,
+                    iDocumentObjectCtor
+                    );
+                commandInvoker.InvokeCommand(invokedCommand);
             }
-            else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)");
         }
 
         public event EventHandler CanExecuteChanged;

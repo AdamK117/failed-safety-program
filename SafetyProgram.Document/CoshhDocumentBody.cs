@@ -8,7 +8,9 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Document.Body
 {
-    public sealed class CoshhDocumentBody : INotifyPropertyChanged, IDocumentBody
+    public sealed class CoshhDocumentBody : 
+        INotifyPropertyChanged,
+        IDocumentBody
     {
         /// <summary>
         /// Construct a blank CoshhDocumentBody
@@ -55,10 +57,7 @@ namespace SafetyProgram.Document.Body
             {
                 selection = item;
 
-                if (SelectionChanged != null)
-                {
-                    SelectionChanged(selection);
-                }
+                SelectionChanged.Raise(this, new GenericPropertyChangedEventArg<IDocumentObject>(selection));
                 PropertyChanged.Raise(this, "Selection");
             }
             else throw new ArgumentNullException("Attempted to select nothing, use ClearSelection instead when attempting to clear a CoshhDocuments selection");
@@ -69,10 +68,7 @@ namespace SafetyProgram.Document.Body
             //TODO: Multiselection logic so it can deselect the item provided.
             DeSelectAll();
 
-            if (SelectionChanged != null)
-            {
-                SelectionChanged(selection);
-            }
+            SelectionChanged.Raise(this, new GenericPropertyChangedEventArg<IDocumentObject>(selection));
             PropertyChanged.Raise(this, "Selected");
         }
 
@@ -80,14 +76,11 @@ namespace SafetyProgram.Document.Body
         {
             selection = null;
 
-            if (SelectionChanged != null)
-            {
-                SelectionChanged(selection);
-            }
+            SelectionChanged.Raise(this, new GenericPropertyChangedEventArg<IDocumentObject>(selection));
             PropertyChanged.Raise(this, "Selection");
         }
 
-        public event Action<IDocumentObject> SelectionChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<IDocumentObject>> SelectionChanged;
 
         void items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -99,25 +92,22 @@ namespace SafetyProgram.Document.Body
                     foreach (IDocumentObject control in e.NewItems)
                     {
                         //Monitor the new DocObject's Remove flag
-                        control.RemoveFlagChanged += (object docObject, bool flag) =>
+                        control.RemoveFlagChanged += (object docObject, GenericPropertyChangedEventArg<bool> flag) =>
                         {
-                            if (flag == true)
+                            if (flag.NewProperty == true)
                             {
                                 DeSelect(control);
                                 items.Remove(control);
                             }
                         };
                         //Monitor the DocObjet's Selected flag.
-                        control.SelectedChanged += (object docObject, bool flag) =>
+                        control.SelectedChanged += (object docObject, GenericPropertyChangedEventArg<bool> flag) =>
                         {
-                            if (flag == true)
+                            if (flag.NewProperty == true)
                             {
                                 Select(control);
                             }
-                            if (flag == false)
-                            {
-                                DeSelect(control);
-                            }
+                            else DeSelect(control);
                         };
                     }
                     break;

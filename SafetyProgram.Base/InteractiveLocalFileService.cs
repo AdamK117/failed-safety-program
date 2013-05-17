@@ -16,17 +16,12 @@ namespace SafetyProgram.Base
 
         private string path;
 
-        private readonly IConfiguration appConfiguration;
         private readonly ILocalFileFactory<T> itemFactory;
 
-        public InteractiveLocalFileService(IConfiguration appConfiguration, ILocalFileFactory<T> itemFactory)
+        public InteractiveLocalFileService(ILocalFileFactory<T> itemFactory)
         {
-            if (
-                appConfiguration != null &&
-                itemFactory != null
-                )
+            if (itemFactory != null)
             {
-                this.appConfiguration = appConfiguration;
                 this.itemFactory = itemFactory;
             }
             else throw new ArgumentNullException();
@@ -134,7 +129,7 @@ namespace SafetyProgram.Base
             return canSaveAs;
         }
 
-        public void Close(T data)
+        public void Disconnect()
         {
             //Close connections etc.
         }

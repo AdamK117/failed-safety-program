@@ -5,7 +5,7 @@ using SafetyProgram.Document.Commands;
 
 namespace SafetyProgram.Document.ContextMenus
 {
-    internal sealed class DocumentContextMenu : IContextMenu
+    internal sealed class DocumentContextMenu : IDocumentContextMenu
     {
         private readonly IDocumentICommands documentCommands;
         private readonly ContextMenu view;
@@ -16,7 +16,7 @@ namespace SafetyProgram.Document.ContextMenus
         /// <param name="documentCommands"></param>
         public DocumentContextMenu(
             IDocumentICommands documentCommands, 
-            Func<DocumentContextMenu, ContextMenu> viewConstructor
+            Func<IDocumentContextMenu, ContextMenu> viewConstructor
             )
         {
             if (documentCommands != null && viewConstructor != null)

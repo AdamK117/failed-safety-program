@@ -1,34 +1,44 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects.GenericCommands;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class ChemicalTableCommands : IChemicalTableCommands
     {
-        public ChemicalTableCommands(ChemicalTable table)
+        public ChemicalTableCommands(
+            IChemicalTable table, 
+            ICommandInvoker commandInvoker
+            )
         {
-            AddNewChemical = new AddNewChemicalICom(table);
-            DeleteSelected = new DeleteSelectedICom(table);
-            DeleteTable = new DeleteIDocumentObjectICom(table);
-            CopySelected = new CopySelectedICom(table);
-            PasteChemicals = new PasteChemicalsICom(table);
+            if (table != null && commandInvoker != null)
+            {
+                AddNewChemical = new AddNewChemicalICom(table, commandInvoker);
+                DeleteSelected = new DeleteSelectedICom(table);
+                DeleteTable = new DeleteIDocumentObjectICom(table);
+                CopySelected = new CopySelectedICom(table);
+                PasteChemicals = new PasteChemicalsICom(table);
 
-            Hotkeys = setHotkeys();
+                Hotkeys = setHotkeys();
+            }            
         }
 
         private List<InputBinding> setHotkeys()
         {
             return new List<InputBinding>()
             {
+                //DEL: Delete selected
                 new InputBinding(
                     DeleteSelected,
                     new KeyGesture(Key.Delete)
                 ),
+                //CTRL+C: Copy selected
                 new InputBinding(
                     CopySelected,
                     new KeyGesture(Key.C, ModifierKeys.Control)
                 ),
+                //CTRL+V: Paste into selected
                 new InputBinding(
                     PasteChemicals,
                     new KeyGesture(Key.V, ModifierKeys.Control)

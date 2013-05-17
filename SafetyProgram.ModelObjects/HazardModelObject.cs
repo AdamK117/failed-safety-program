@@ -11,9 +11,6 @@ namespace SafetyProgram.ModelObjects
     {
         private readonly List<string> validationErrorList = new List<string>();
 
-        public HazardModelObject()
-        { }
-
         public HazardModelObject(string hazard, string signalWord, string symbol)
         {
             this.hazard = hazard;
@@ -92,8 +89,7 @@ namespace SafetyProgram.ModelObjects
 
         public IHazardModelObject DeepClone()
         {
-            //All members are value types. Construct a new instance from them
-            return new HazardModelObject(signalWord, hazard, symbol);
+            return new HazardModelObject(hazard, signalWord, symbol);
         }
 
         public const string COM_IDENTITY = "HazardModel";

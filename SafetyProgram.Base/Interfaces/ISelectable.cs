@@ -9,7 +9,8 @@ namespace SafetyProgram.Base.Interfaces
     /// -May be selected/deselected
     /// -Has a contextual ribbon for when it is selected/deselected
     /// </summary>
-    public interface ISelectable : IInteractable
+    public interface ISelectable : 
+        IInteractable
     {
         /// <summary>
         /// Gets the contextual IRibbonTabItem associated with this ISelectable
@@ -34,6 +35,6 @@ namespace SafetyProgram.Base.Interfaces
         /// <summary>
         /// Event that triggers if the Selected state of this ISelectable changes
         /// </summary>
-        event Action<object, bool> SelectedChanged;
+        event EventHandler<GenericPropertyChangedEventArg<bool>> SelectedChanged;
     }
 }
