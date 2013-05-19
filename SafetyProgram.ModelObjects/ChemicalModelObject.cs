@@ -52,12 +52,7 @@ namespace SafetyProgram.ModelObjects
         {
             get
             {
-                if (validationErrorList.Count > 0)
-                {
-                    var errors = String.Join(", ", validationErrorList);
-                    return errors;
-                }
-                else return null;
+                return ErrorValidation.JoinErrors(validationErrorList);
             }
         }
 
@@ -73,9 +68,9 @@ namespace SafetyProgram.ModelObjects
                 {
                     if (Name.Length == 0)
                     {
-                        const string errorMsg = "You must enter a name for this chemical";
-                        validationErrorList.Add(errorMsg);
-                        return errorMsg;
+                        const string ERROR_MSG = "You must enter a name for this chemical";
+                        validationErrorList.Add(ERROR_MSG);
+                        return ERROR_MSG;
                     }
                 }
 

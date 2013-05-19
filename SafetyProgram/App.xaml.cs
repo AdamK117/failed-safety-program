@@ -33,7 +33,7 @@ namespace SafetyProgram
             //DEFAULT DOCUMENT (shown when opening)
             IService<ICoshhDocument> contentService = new InteractiveLocalFileService<ICoshhDocument>(
                 new CoshhDocumentLocalFileFactory(
-                    new LocalDocumentObjectFactory(appConfiguration, commandInvoker),
+                    new DocumentObjectLocalFileFactory(appConfiguration, commandInvoker),
                     appConfiguration, 
                     commandInvoker
                     )

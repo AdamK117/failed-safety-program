@@ -65,11 +65,7 @@ namespace SafetyProgram.ModelObjects
         {
             get
             {
-                if (validationErrorList.Count > 0)
-                {
-                    return String.Join(", ", validationErrorList);
-                }
-                else return null;
+                return ErrorValidation.JoinErrors(validationErrorList);
             }
         }
 

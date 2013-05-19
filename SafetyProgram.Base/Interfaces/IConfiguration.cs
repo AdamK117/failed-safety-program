@@ -7,5 +7,6 @@ namespace SafetyProgram.Base.Interfaces
         bool DocumentLock { get; }
         IEnumerable<IRepositoryInfo> RepositoriesInfo { get; }
         string Locale { get; }
+        string ConnectionType { get; }
     }
 }

@@ -10,7 +10,8 @@ namespace SafetyProgram.Configuration
             return new AppConfiguration(
                 DocumentLock,
                 RepositoryInfo(),
-                LOCALE
+                LOCALE,
+                LOCAL_CONNECTION_TYPE
                 );
         }
 
@@ -22,5 +23,7 @@ namespace SafetyProgram.Configuration
         }
 
         public const string LOCALE = "en-GB";
+        public const string LOCAL_CONNECTION_TYPE = "local";
+        public const string DATABASE_CONNECTION_TYPE = "database";
     }
 }

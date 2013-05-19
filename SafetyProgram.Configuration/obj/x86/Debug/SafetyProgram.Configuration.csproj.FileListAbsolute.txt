@@ -11,3 +11,5 @@ V:\SafetyProgram\SafetyProgram.Configuration\bin\x86\Debug\Fluent.xml
 V:\SafetyProgram\SafetyProgram.Configuration\obj\x86\Debug\SafetyProgram.Configuration.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.Configuration\obj\x86\Debug\SafetyProgram.Configuration.dll
 V:\SafetyProgram\SafetyProgram.Configuration\obj\x86\Debug\SafetyProgram.Configuration.pdb
+V:\SafetyProgram\SafetyProgram.Configuration\bin\x86\Debug\SafetyProgram.Configuration.dll.CodeAnalysisLog.xml
+V:\SafetyProgram\SafetyProgram.Configuration\bin\x86\Debug\SafetyProgram.Configuration.dll.lastcodeanalysissucceeded

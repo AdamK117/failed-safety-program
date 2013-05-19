@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
@@ -24,7 +25,7 @@ namespace SafetyProgram.Document
             Func<ICoshhDocument, Control> viewConstructor
             )
         {
-            edited = false;
+            editedFlag = false;
 
             if (
                 appConfiguration != null &&
@@ -41,11 +42,11 @@ namespace SafetyProgram.Document
                 this.title = title;
                 this.format = format;                
 
-                this.body = body;
-                this.body.Items.CollectionChanged += (sender, e) => FlagAsEdited();
-                this.body.SelectionChanged += (object sender, GenericPropertyChangedEventArg<IDocumentObject> selection) => documentSelectionChanged(selection.NewProperty);
+                this.documentBody = body;
+                this.documentBody.Items.CollectionChanged += (sender, e) => FlagAsEdited();
+                this.documentBody.SelectionChanged += (object sender, GenericPropertyChangedEventArg<IDocumentObject> selection) => documentSelectionChanged(selection.NewProperty);
 
-                commands = commandsConstructor(this);
+                documentCommands = commandsConstructor(this);
                 contextMenu = contextMenuConstructor(this.Commands);
                 ribbonTabItems = ribbonTabsConstructor(this);
                 view = viewConstructor(this);
@@ -74,7 +75,7 @@ namespace SafetyProgram.Document
             }
         }
 
-        private readonly IDocumentBody body;
+        private readonly IDocumentBody documentBody;
         /// <summary>
         /// Gets the body (content) of the CoshhDocument
         /// </summary>
@@ -82,11 +83,11 @@ namespace SafetyProgram.Document
         {
             get 
             { 
-                return body; 
+                return documentBody; 
             }
         }
 
-        private readonly IDocumentICommands commands;
+        private readonly IDocumentICommands documentCommands;
         /// <summary>
         /// Gets the ICommands (and hotkeys associated with) for the CoshhDocument.
         /// </summary>
@@ -94,7 +95,7 @@ namespace SafetyProgram.Document
         {
             get 
             { 
-                return commands; 
+                return documentCommands; 
             }
         }
 
@@ -111,8 +112,7 @@ namespace SafetyProgram.Document
             set 
             { 
                 title = value;
-
-                TitleChanged.Raise(this, new GenericPropertyChangedEventArg<string>(title));
+                TitleChanged.Raise(this, title);
                 PropertyChanged.Raise(this, "Title");
             }
         }
@@ -141,8 +141,7 @@ namespace SafetyProgram.Document
             if (newFormat != null)
             {
                 format = newFormat;
-
-                FormatChanged.Raise(this, new GenericPropertyChangedEventArg<IFormat>(format));
+                FormatChanged.Raise(this, format);
                 PropertyChanged.Raise(this, "Format");
             }
             else throw new ArgumentNullException("The IDocumentFormat supplied must not be null (A document must have a format)");
@@ -173,7 +172,7 @@ namespace SafetyProgram.Document
             if (removeFlag != true)
             {
                 removeFlag = true;
-                RemoveFlagChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(removeFlag));
+                RemoveFlagChanged.Raise(this, removeFlag);
                 PropertyChanged.Raise(this, "RemoveFlag");
             }
         }
@@ -186,17 +185,16 @@ namespace SafetyProgram.Document
         }
         public event EventHandler<GenericPropertyChangedEventArg<bool>> RemoveFlagChanged;
 
-        private bool edited;
+        private bool editedFlag;
         /// <summary>
         /// Marks the CoshhDocument as edited
         /// </summary>
         public void FlagAsEdited()
         {
-            if (edited != true)
+            if (editedFlag != true)
             {
-                edited = true;
-
-                EditedFlagChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(true));
+                editedFlag = true;
+                EditedFlagChanged.Raise(this, editedFlag);
                 PropertyChanged.Raise(this, "EditedFlag");
             }
         }
@@ -207,7 +205,7 @@ namespace SafetyProgram.Document
         {
             get
             {
-                return edited;
+                return editedFlag;
             }
         }
         /// <summary>
@@ -215,14 +213,26 @@ namespace SafetyProgram.Document
         /// </summary>
         public event EventHandler<GenericPropertyChangedEventArg<bool>> EditedFlagChanged;
 
+        private IList<string> validationErrorList = new List<string>();
+
         public string Error
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                return ErrorValidation.JoinErrors(validationErrorList);
+            }
         }
 
         public string this[string columnName]
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                validationErrorList.Clear();
+
+                //No validation checks for the document (yet)
+
+                return null;
+            }
         }
 
         private readonly ObservableCollection<IRibbonTabItem> ribbonTabItems;
@@ -234,7 +244,7 @@ namespace SafetyProgram.Document
             }
         }
 
-        private ISelectable oldSelection;
+        private ISelectable currentSelection;
         private void documentSelectionChanged(IDocumentObject newSelection)
         {
             //3 Scenarios: 
@@ -245,21 +255,21 @@ namespace SafetyProgram.Document
             //The Selection is cleared
             if (newSelection == null)
             {
-                if (oldSelection != null)
+                if (currentSelection != null)
                 {
-                    RibbonTabs.Remove(oldSelection.RibbonTab);
+                    RibbonTabs.Remove(currentSelection.RibbonTab);
                 }                
-                oldSelection = null;
+                currentSelection = null;
             }
             //The Selection is different
-            else if (newSelection != oldSelection)
+            else if (newSelection != currentSelection)
             {
-                if (oldSelection != null)
+                if (currentSelection != null)
                 {
-                    RibbonTabs.Remove(oldSelection.RibbonTab);
-                    oldSelection = null;
+                    RibbonTabs.Remove(currentSelection.RibbonTab);
+                    currentSelection = null;
                 }                
-                oldSelection = newSelection;
+                currentSelection = newSelection;
 
                 RibbonTabs.Add(newSelection.RibbonTab);
             }

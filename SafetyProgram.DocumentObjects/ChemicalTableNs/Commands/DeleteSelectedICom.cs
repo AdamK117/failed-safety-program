@@ -1,20 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Windows.Forms;
 using System.Windows.Input;
 using SafetyProgram.Base;
-using SafetyProgram.ModelObjects;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class DeleteSelectedICom : ICommand
     {
         private readonly IChemicalTable table;
+        private readonly ICommandInvoker commandInvoker;
 
-        public DeleteSelectedICom(IChemicalTable table) 
+        public DeleteSelectedICom(IChemicalTable table, ICommandInvoker commandInvoker) 
         {
-            this.table = table;
-            //Monitor the ChemicalTable's selections. This command won't work if nothing is selected.
-            table.SelectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);
+            if (table != null && commandInvoker != null)
+            {
+                this.table = table;
+                this.commandInvoker = commandInvoker;
+            }
+            else throw new ArgumentNullException();
+
+            table.SelectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);  
         }
 
         /// <summary>
@@ -40,16 +46,13 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
                 switch (userPrompt)
                 {
                     case DialogResult.Yes:
-                        //Create a cache of the selection.
-                        List<ICoshhChemicalObject> selection = new List<ICoshhChemicalObject>(table.SelectedChemicals);
-
-                        //Remove the selection from the chemicals in the table
-                        selection.ForEach(x => table.Chemicals.Remove(x));
+                        var invokedCommand = new DeleteSelectedInvokedCom(table);
+                        commandInvoker.InvokeCommand(invokedCommand);
                         break;
 
                     default:
                         break;
-                }
+                }                
             }
         }
 

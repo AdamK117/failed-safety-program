@@ -7,7 +7,7 @@ using SafetyProgram.DocumentObjects.ChemicalTableNs;
 
 namespace SafetyProgram.DocumentObjects
 {
-    public sealed class LocalDocumentObjectFactory : 
+    public sealed class DocumentObjectLocalFileFactory : 
         ILocalFileFactory<IDocumentObject>
     {
         private readonly IConfiguration appConfiguration;
@@ -15,7 +15,7 @@ namespace SafetyProgram.DocumentObjects
         private readonly IDictionary<string, ILoader<IDocumentObject, XElement>> creationFactories;
         private readonly IDictionary<Type, Func<IDocumentObject, XElement>> outputFactories;
 
-        public LocalDocumentObjectFactory(
+        public DocumentObjectLocalFileFactory(
             IConfiguration appConfiguration, 
             ICommandInvoker commandInvoker
             )
@@ -46,9 +46,14 @@ namespace SafetyProgram.DocumentObjects
             };
         }
 
+        public const string XML_IDENTIFIER = "documentobject";
+
         public string XmlIdentifier
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                return XML_IDENTIFIER; 
+            }
         }
 
         public XElement Store(IDocumentObject item)

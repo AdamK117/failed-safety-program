@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandInvoker.cs" />
+    <Compile Include="ErrorChecker.cs" />
     <Compile Include="GenericChangedEventArg.cs" />
     <Compile Include="InteractiveLocalFileService.cs" />
     <Compile Include="Interfaces\Creational Interfaces\ILoader.cs" />

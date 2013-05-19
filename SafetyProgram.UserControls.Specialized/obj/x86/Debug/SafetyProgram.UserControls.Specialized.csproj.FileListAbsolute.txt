@@ -15,3 +15,5 @@ V:\SafetyProgram\SafetyProgram.UserControls.Specialized\obj\x86\Debug\SafetyProg
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\obj\x86\Debug\SafetyProgram.UserControls.Specialized.csproj.GenerateResource.Cache
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\obj\x86\Debug\SafetyProgram.UserControls.Specialized.dll
 V:\SafetyProgram\SafetyProgram.UserControls.Specialized\obj\x86\Debug\SafetyProgram.UserControls.Specialized.pdb
+V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\SafetyProgram.UserControls.Specialized.dll.CodeAnalysisLog.xml
+V:\SafetyProgram\SafetyProgram.UserControls.Specialized\bin\x86\Debug\SafetyProgram.UserControls.Specialized.dll.lastcodeanalysissucceeded

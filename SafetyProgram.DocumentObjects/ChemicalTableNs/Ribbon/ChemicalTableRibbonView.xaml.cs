@@ -1,4 +1,5 @@
-﻿using Fluent;
+﻿using System;
+using Fluent;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon
 {
@@ -9,7 +10,11 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon
     {
         public ChemicalTableRibbonView(IChemicalTableRibbonTab viewModel)
         {
-            this.DataContext = viewModel;
+            if (viewModel != null)
+            {
+                this.DataContext = viewModel;
+            }
+            else throw new ArgumentNullException();            
 
             InitializeComponent();
         }

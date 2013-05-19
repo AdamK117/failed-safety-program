@@ -83,6 +83,7 @@
     <Compile Include="ChemicalTableNs\Commands\ChemicalTableCommands.cs" />
     <Compile Include="ChemicalTableNs\Commands\CopySelectedICom.cs" />
     <Compile Include="ChemicalTableNs\Commands\DeleteSelectedICom.cs" />
+    <Compile Include="ChemicalTableNs\Commands\DeleteSelectedInvokedCom.cs" />
     <Compile Include="ChemicalTableNs\Commands\IChemicalTableCommands.cs" />
     <Compile Include="ChemicalTableNs\Commands\PasteChemicalsICom.cs" />
     <Compile Include="ChemicalTableNs\ContextMenus\ChemicalTableContextMenu.cs" />
@@ -111,7 +112,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="LocalDocumentObjectFactory.cs" />
+    <Compile Include="DocumentObjectLocalFileFactory.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

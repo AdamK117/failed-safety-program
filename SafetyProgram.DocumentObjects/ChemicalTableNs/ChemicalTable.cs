@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
@@ -164,19 +166,25 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             SelectedChemicals.Clear();
         }
 
+        private IList<string> validationErrorList = new List<string>();
+
         public string Error
         {
             get 
-            { 
-                throw new System.NotImplementedException(); 
+            {
+                return ErrorValidation.JoinErrors(validationErrorList);
             }
         }
 
         public string this[string columnName]
         {
             get 
-            { 
-                throw new System.NotImplementedException(); 
+            {
+                validationErrorList.Clear();
+
+                //No known valdation errors for the chemical table (yet)
+
+                return null;
             }
         }
 
@@ -191,8 +199,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             if (selectedFlag == false)
             {
                 selectedFlag = true;
-
-                SelectedChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(selectedFlag));
+                SelectedChanged.Raise(this, selectedFlag);
                 PropertyChanged.Raise(this, "Selected");
             }
         }
@@ -213,10 +220,8 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             if (removeFlag == false)
             {
                 removeFlag = true;
-
                 DeSelect();
-
-                RemoveFlagChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(removeFlag));
+                RemoveFlagChanged.Raise(this, removeFlag);
                 PropertyChanged.Raise(this, "RemoveFlag");
             }
         }
@@ -234,8 +239,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             if (editedFlag == false)
             {
                 editedFlag = true;
-
-                EditedFlagChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(editedFlag));
+                EditedFlagChanged.Raise(this, editedFlag);
                 PropertyChanged.Raise(this, "EditedFlag");
             }
         }

@@ -56,8 +56,7 @@ namespace SafetyProgram.Document.Body
             if (item != null)
             {
                 selection = item;
-
-                SelectionChanged.Raise(this, new GenericPropertyChangedEventArg<IDocumentObject>(selection));
+                SelectionChanged.Raise(this, selection);
                 PropertyChanged.Raise(this, "Selection");
             }
             else throw new ArgumentNullException("Attempted to select nothing, use ClearSelection instead when attempting to clear a CoshhDocuments selection");
@@ -65,18 +64,15 @@ namespace SafetyProgram.Document.Body
 
         public void DeSelect(IDocumentObject item)
         {
-            //TODO: Multiselection logic so it can deselect the item provided.
             DeSelectAll();
-
-            SelectionChanged.Raise(this, new GenericPropertyChangedEventArg<IDocumentObject>(selection));
+            SelectionChanged.Raise(this, selection);
             PropertyChanged.Raise(this, "Selected");
         }
 
         public void DeSelectAll()
         {
             selection = null;
-
-            SelectionChanged.Raise(this, new GenericPropertyChangedEventArg<IDocumentObject>(selection));
+            SelectionChanged.Raise(this, selection);
             PropertyChanged.Raise(this, "Selection");
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Configuration
@@ -40,14 +41,24 @@ namespace SafetyProgram.Configuration
             private set;
         }
 
+        IList<string> validationErrorList = new List<string>();
+
         public string Error
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                return ErrorValidation.JoinErrors(validationErrorList);
+            }
         }
 
         public string this[string columnName]
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                validationErrorList.Clear();
+                //No error checks for this (yet)
+                return null;
+            }
         }
     }
 }

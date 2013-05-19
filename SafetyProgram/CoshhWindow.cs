@@ -116,7 +116,10 @@ namespace SafetyProgram
         }
         IViewable IContentWindow.Content
         {
-            get { return content; }
+            get 
+            {
+                return content;
+            }
         }
         /// <summary>
         /// Event that triggers when its IDocument changes.

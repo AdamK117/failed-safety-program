@@ -68,23 +68,25 @@ namespace SafetyProgram.ModelObjects
             return StaticLoad(data);
         }
 
-        public static XElement StaticStore(IChemicalModelObject item)
+        public static XElement StaticStore(IChemicalModelObject chemical)
         {
             var hazardFactory = new HazardModelObjectLocalFileFactory();
-            if (String.IsNullOrWhiteSpace(item.Error))
+
+            if (String.IsNullOrWhiteSpace(chemical.Error))
             {
                 return new XElement(XML_IDENTIFIER,
-                    new XElement("name", item.Name),
-                    item.Hazards.Count > 0 ?
+                    new XElement("name", chemical.Name),
+                    /* If there are hazards to write, write them */
+                    chemical.Hazards.Count > 0 ?
                         new XElement("hazards",
-                            from hazard in item.Hazards
+                            from hazard in chemical.Hazards
                             select hazardFactory.Store(hazard)
                         )
                     :
                         null
                 );
             }
-            else throw new InvalidDataException("Errors found when trying to save the document");
+            else throw new InvalidDataException("Errors found when trying to save the document: " + chemical.Error);
         }
 
         public XElement Store(IChemicalModelObject item)

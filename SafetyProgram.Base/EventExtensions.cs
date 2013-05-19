@@ -37,5 +37,17 @@ namespace SafetyProgram.Base
                 handler(sender, eventArg);
             }
         }
+
+        public static void Raise<TPropertyChanged>(
+            this EventHandler<GenericPropertyChangedEventArg<TPropertyChanged>> handler, 
+            object sender, 
+            TPropertyChanged newProperty)
+        {
+            if (handler != null)
+            {
+                var eventArg = new GenericPropertyChangedEventArg<TPropertyChanged>(newProperty);
+                handler(sender, eventArg);
+            }
+        }
     }
 }

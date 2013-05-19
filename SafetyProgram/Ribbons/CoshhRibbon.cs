@@ -30,8 +30,8 @@ namespace SafetyProgram.Ribbons
                 )
             {
                 this.window = window;
-
                 this.view = viewConstructor(this);
+
                 window.ContentChanged += windowContentChanged;
                 if (window.Content != null) windowContentChanged(window, new GenericPropertyChangedEventArg<TContent>(window.Content));
             }

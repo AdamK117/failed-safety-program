@@ -8,11 +8,11 @@ V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\
 SafetyProgram.DocumentObjects
 none
 false
-DEBUG;TRACE
+CODE_ANALYSIS;DEBUG;TRACE
 
 4-9181357
 
-25-2034443767
+26-888708724
 19-1371103143
 ChemicalTableNs\ChemicalTableView.xaml;ChemicalTableNs\ContextMenus\ChemicalTableContextMenuView.xaml;ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml;Styles\TableListStyle.xaml;
 

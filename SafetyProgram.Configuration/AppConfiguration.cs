@@ -9,7 +9,8 @@ namespace SafetyProgram.Configuration
         public AppConfiguration(
             bool documentLock, 
             IEnumerable<IRepositoryInfo> repositories, 
-            string locale
+            string locale,
+            string connectionType
             )
         {
             this.DocumentLock = documentLock;
@@ -39,6 +40,12 @@ namespace SafetyProgram.Configuration
         }
 
         public string Locale
+        {
+            get;
+            private set;
+        }
+
+        public string ConnectionType
         {
             get;
             private set;

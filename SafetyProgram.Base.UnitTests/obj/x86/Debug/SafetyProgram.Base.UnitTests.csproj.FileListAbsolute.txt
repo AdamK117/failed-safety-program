@@ -11,3 +11,5 @@ V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Fluent.xml
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\x86\Debug\SafetyProgram.Base.UnitTests.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\x86\Debug\SafetyProgram.Base.UnitTests.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\obj\x86\Debug\SafetyProgram.Base.UnitTests.pdb
+V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Base.UnitTests.dll.CodeAnalysisLog.xml
+V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Base.UnitTests.dll.lastcodeanalysissucceeded

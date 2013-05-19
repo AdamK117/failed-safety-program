@@ -59,7 +59,11 @@ namespace SafetyProgram.Configuration
             IEnumerable<IRepositoryInfo> loadedRepositories = getRepositories(data);
             string loadedLocale = getLocale(data);
 
-            return new AppConfiguration(documentLock, loadedRepositories, loadedLocale);
+            return new AppConfiguration(
+                documentLock, 
+                loadedRepositories, 
+                loadedLocale,
+                AppConfigurationDefault.LOCAL_CONNECTION_TYPE);
         }
         public IConfiguration Load(XElement data)
         {

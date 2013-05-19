@@ -28,3 +28,5 @@ V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\SafetyProgram.Docum
 V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\SafetyProgram.DocumentObjects.csproj.GenerateResource.Cache
 V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\SafetyProgram.DocumentObjects.dll
 V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\SafetyProgram.DocumentObjects.pdb
+V:\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.DocumentObjects.dll.CodeAnalysisLog.xml
+V:\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.DocumentObjects.dll.lastcodeanalysissucceeded

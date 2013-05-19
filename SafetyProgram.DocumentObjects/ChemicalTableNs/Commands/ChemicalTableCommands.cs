@@ -15,7 +15,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
             if (table != null && commandInvoker != null)
             {
                 AddNewChemical = new AddNewChemicalICom(table, commandInvoker);
-                DeleteSelected = new DeleteSelectedICom(table);
+                DeleteSelected = new DeleteSelectedICom(table, commandInvoker);
                 DeleteTable = new DeleteIDocumentObjectICom(table);
                 CopySelected = new CopySelectedICom(table);
                 PasteChemicals = new PasteChemicalsICom(table);

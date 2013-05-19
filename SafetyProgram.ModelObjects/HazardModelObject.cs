@@ -58,11 +58,7 @@ namespace SafetyProgram.ModelObjects
         {
             get
             {
-                if (validationErrorList.Count > 0)
-                {
-                    return String.Join(", ", validationErrorList);
-                }
-                else return null;
+                return ErrorValidation.JoinErrors(validationErrorList);
             }
         }
 
@@ -81,8 +77,9 @@ namespace SafetyProgram.ModelObjects
                             return ERR_MSG_NO_HAZARD;
                         }
                         break;
+                    //SignalWord is optional
+                    //Symbol is optional
                 }
-
                 return null;
             }
         }
