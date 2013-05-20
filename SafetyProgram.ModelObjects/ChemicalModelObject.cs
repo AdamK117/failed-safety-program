@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.ModelObjects
 {
@@ -12,8 +13,6 @@ namespace SafetyProgram.ModelObjects
         INotifyPropertyChanged, 
         IChemicalModelObject
     {
-        private readonly IList<string> validationErrorList = new List<string>();
-
         public ChemicalModelObject(string name, ObservableCollection<IHazardModelObject> hazards)
         {
             this.name = name;
@@ -47,6 +46,8 @@ namespace SafetyProgram.ModelObjects
                 return hazards; 
             }
         }
+
+        private readonly IList<string> validationErrorList = new List<string>();
 
         public string Error
         {
@@ -92,19 +93,19 @@ namespace SafetyProgram.ModelObjects
             );
         }
 
-        public const string COM_IDENTITY = "ChemicalModel";
+        public const string IDENTIFIER = "ChemicalModel";
 
         public string ComIdentity
         {
             get
             {
-                return COM_IDENTITY;
+                return IDENTIFIER;
             }
         }
 
         public IDataObject GetDataObject()
         {
-            return this.GetDataObject(COM_IDENTITY);
+            return this.GetDataObject(IDENTIFIER);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

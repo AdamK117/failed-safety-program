@@ -9,7 +9,7 @@ namespace SafetyProgram.Commands
     /// <summary>
     /// ICommand for Saving the current document
     /// </summary>
-    internal class SaveICom<T> : ICommand
+    internal sealed class SaveICom<T> : ICommand
     {
         private readonly IWindow<T> window;
 
@@ -19,12 +19,13 @@ namespace SafetyProgram.Commands
         /// <param name="window">CoshhWindow which houses the CoshhDocument to be saved</param>
         public SaveICom(IWindow<T> window)
         {
-            this.window = window;
-
-            //Monitor if the CoshhWindow's service has changed (Service.CanSave())
+            if (window != null)
+            {
+                this.window = window;
+            }
+            else throw new ArgumentNullException();
+            
             window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
-
-            //Monitor if the CoshhWindow's document has changed (Can't save a closed (null) document)
             window.ContentChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
         }
 

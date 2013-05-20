@@ -6,7 +6,7 @@ using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
-    internal interface IChemicalTable :
+    public interface IChemicalTable :
         INotifyPropertyChanged,
         IDocumentObject
     {

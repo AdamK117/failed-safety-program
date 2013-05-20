@@ -78,14 +78,13 @@
     <Compile Include="ChemicalTableNs\ChemicalTableView.xaml.cs">
       <DependentUpon>ChemicalTableView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChemicalTableNs\Commands\AddNewChemicalICom.cs" />
-    <Compile Include="ChemicalTableNs\Commands\AddNewChemicalInvokedCom.cs" />
     <Compile Include="ChemicalTableNs\Commands\ChemicalTableCommands.cs" />
     <Compile Include="ChemicalTableNs\Commands\CopySelectedICom.cs" />
     <Compile Include="ChemicalTableNs\Commands\DeleteSelectedICom.cs" />
     <Compile Include="ChemicalTableNs\Commands\DeleteSelectedInvokedCom.cs" />
     <Compile Include="ChemicalTableNs\Commands\IChemicalTableCommands.cs" />
     <Compile Include="ChemicalTableNs\Commands\PasteChemicalsICom.cs" />
+    <Compile Include="ChemicalTableNs\Commands\PasteChemicalsInvokedCom.cs" />
     <Compile Include="ChemicalTableNs\ContextMenus\ChemicalTableContextMenu.cs" />
     <Compile Include="ChemicalTableNs\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
       <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
@@ -97,6 +96,8 @@
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChemicalTableNs\Ribbon\IChemicalTableRibbonTab.cs" />
+    <Compile Include="ChemicalTableNs\Commands\InsertChemical.cs" />
+    <Compile Include="ChemicalTableNs\Commands\InsertChemicalCommandInvoker.cs" />
     <Compile Include="DefaultDocumentObjects.cs" />
     <Compile Include="GenericCommands\DeleteIDocumentObjectICom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

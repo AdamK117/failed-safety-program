@@ -7,9 +7,9 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    internal class OpenICom<TContent> : ICommand
+    internal sealed class OpenICom<TContent> : ICommand
     {
-        private IWindow<TContent> window;
+        private readonly IWindow<TContent> window;
 
         /// <summary>
         /// Constructs a command that opens a CoshhDocument into the CoshhWindow using the CoshhWindow's service
@@ -17,7 +17,11 @@ namespace SafetyProgram.Commands
         /// <param name="window">The CoshhWindow that will load the CoshhDocument</param>
         public OpenICom(IWindow<TContent> window)
         {
-            this.window = window;
+            if (window != null)
+            {
+                this.window = window;
+            }
+            else throw new ArgumentNullException();
             this.window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
         }
 

@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Configuration
 {
     internal sealed class AppConfiguration : IConfiguration
     {
-        public AppConfiguration(
-            bool documentLock, 
+        public AppConfiguration(bool documentLock, 
             IEnumerable<IRepositoryInfo> repositories, 
+            IEnumerable<INewRepository<IChemicalModelObject>> chemicalRepository,
             string locale,
-            string connectionType
-            )
+            string connectionType)
         {
             this.DocumentLock = documentLock;
 
-            if (repositories != null)
+            if (repositories != null && chemicalRepository != null)
             {
                 this.repositories = repositories;
+                this.chemicalRepositories = chemicalRepository;
             }
             else throw new ArgumentNullException("The repositories passed to AppConfiguration must not be null.");
 
@@ -39,6 +40,15 @@ namespace SafetyProgram.Configuration
             }
         }
 
+        private readonly IEnumerable<INewRepository<IChemicalModelObject>> chemicalRepositories;
+        public IEnumerable<INewRepository<IChemicalModelObject>> ChemicalRepositories
+        {
+            get
+            {
+                return chemicalRepositories;
+            }
+        }
+
         public string Locale
         {
             get;
@@ -51,14 +61,35 @@ namespace SafetyProgram.Configuration
             private set;
         }
 
+        private IList<string> validationErrorList = new List<string>();
         public string Error
         {
-            get { throw new System.NotImplementedException(); }
+            get 
+            {
+                return ErrorValidation.JoinErrors(validationErrorList);
+            }
         }
 
         public string this[string columnName]
         {
-            get { throw new System.NotImplementedException(); }
-        }
+            get 
+            {
+                switch (columnName)
+                {
+                    case "ConnectionType":
+                        if (
+                            (ConnectionType != AppConfigurationDefault.DEFAULT_CONNECTION_TYPE_LOCAL) &&
+                            (ConnectionType != AppConfigurationDefault.DEFAULT_CONNECTION_TYPE_DATABASE)
+                            )
+                        {
+                            const string ERROR_CONNECTION_TYPE_UNKNOWN = "Connection type for the app_config is unknown. Known examples: 'local' & 'database";
+
+                            return ERROR_CONNECTION_TYPE_UNKNOWN;
+                        }
+                        break;                        
+                }
+                return null;
+            }
+        }        
     }
 }

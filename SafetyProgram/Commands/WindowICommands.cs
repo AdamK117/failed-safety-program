@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
 
@@ -6,28 +7,29 @@ namespace SafetyProgram.Commands
 {
     public sealed class WindowICommands<T> : IWindowCommands
     {
-        private readonly IWindow<T> window;
-
         /// <summary>
         /// Constructs a new instance of the commands (iCommands, Hotkeys, generic commands) available to a CoshhWindow.
         /// </summary>
         /// <param name="window">Instance of a CoshhWindow parent</param>
-        public WindowICommands(IWindow<T> window, ICommandInvoker commandInvoker)
+        public WindowICommands(IWindow<T> window, 
+            ICommandInvoker commandInvoker)
         {
-            this.window = window;
+            if (window != null && commandInvoker != null)
+            {
+                //Instantiate CoshhWindow commands
+                Close = new CloseICom<T>(window);
+                New = new NewICom<T>(window);
+                Open = new OpenICom<T>(window);
+                Save = new SaveICom<T>(window);
+                SaveAs = new SaveAsICom<T>(window);
+                Exit = new ExitICom(window);
+                Undo = new UndoICom(commandInvoker);
+                Redo = new RedoICom(commandInvoker);
 
-            //Instantiate CoshhWindow commands
-            Close = new CloseICom<T>(window);
-            New = new NewICom<T>(window);
-            Open = new OpenICom<T>(window);
-            Save = new SaveICom<T>(window);
-            SaveAs = new SaveAsICom<T>(window);
-            Exit = new ExitICom(window);
-            Undo = new UndoICom(commandInvoker);
-            Redo = new RedoICom(commandInvoker);
-
-            //Get a list of hotkeys for these CoshhWindow commands.
-            Hotkeys = setHotKeys();
+                //Get a list of hotkeys for these CoshhWindow commands.
+                Hotkeys = setHotKeys();
+            }
+            else throw new ArgumentNullException();            
         }
 
         private List<InputBinding> setHotKeys()
@@ -125,10 +127,5 @@ namespace SafetyProgram.Commands
             get;
             private set;
         }
-
-
-        
-
-        
     }
 }

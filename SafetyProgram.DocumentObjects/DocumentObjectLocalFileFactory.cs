@@ -12,36 +12,47 @@ namespace SafetyProgram.DocumentObjects
     {
         private readonly IConfiguration appConfiguration;
         private readonly ICommandInvoker commandInvoker;
+
+        private readonly ILocalFileFactory<IChemicalTable> chemicalTableFactory;
+
         private readonly IDictionary<string, ILoader<IDocumentObject, XElement>> creationFactories;
         private readonly IDictionary<Type, Func<IDocumentObject, XElement>> outputFactories;
 
         public DocumentObjectLocalFileFactory(
             IConfiguration appConfiguration, 
-            ICommandInvoker commandInvoker
+            ICommandInvoker commandInvoker,
+            ILocalFileFactory<IChemicalTable> chemicalTableFactory
             )
         {
-            if (appConfiguration != null && commandInvoker != null)
+            if (appConfiguration == null ||
+                commandInvoker == null ||
+                chemicalTableFactory == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
             {
                 this.appConfiguration = appConfiguration;
                 this.commandInvoker = commandInvoker;
+                this.chemicalTableFactory = chemicalTableFactory;
             }
-            else throw new ArgumentNullException();
 
             //Registry of available docObjects
             creationFactories = new Dictionary<string, ILoader<IDocumentObject, XElement>>()
             {
                 {
-                    ChemicalTableLocalFileFactory.XML_IDENTIFIER,
-                    new ChemicalTableLocalFileFactory(appConfiguration, commandInvoker)
+                    chemicalTableFactory.XmlIdentifier,
+                    chemicalTableFactory
                 }
             };
 
             //Registry of available output methods for docObjects
             outputFactories = new Dictionary<Type, Func<IDocumentObject, XElement>>()
             {
+                //TODO: Fix upcasting to a IChemicalTable.
                 {
                     typeof(ChemicalTable),
-                    (docObject) => new ChemicalTableLocalFileFactory(appConfiguration, commandInvoker).Store((ChemicalTable)docObject)
+                    (docObject) => chemicalTableFactory.Store((IChemicalTable)docObject)
                 }
             };
         }

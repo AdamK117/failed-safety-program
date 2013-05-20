@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.ModelObjects
 {
@@ -107,20 +108,20 @@ namespace SafetyProgram.ModelObjects
             );
         }
 
-        public const string COM_IDENTITY = "CoshhChemicalObject";
+        public const string IDENTIFIER = "CoshhChemicalObject";
 
         public string ComIdentity
         {
             get 
             {
-                return COM_IDENTITY; 
+                return IDENTIFIER; 
             }
         }
 
         public IDataObject GetDataObject()
         {
             //Uses an IStorable extension method
-            return this.GetDataObject(COM_IDENTITY);
+            return this.GetDataObject(IDENTIFIER);
         }
 
         public override string ToString() 

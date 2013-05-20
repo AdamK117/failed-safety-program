@@ -10,7 +10,11 @@ namespace SafetyProgram.Commands
 
         public ExitICom(IWindow window)
         {
-            this.window = window;
+            if (window != null)
+            {
+                this.window = window;
+            }
+            else throw new ArgumentNullException();  
         }
 
         public bool CanExecute(object parameter)

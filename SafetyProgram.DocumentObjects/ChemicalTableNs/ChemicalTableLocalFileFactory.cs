@@ -12,7 +12,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
     ///     -Works with local files (XML)
     ///     -Produces a ChemicalTable IDocumentObject
     /// </summary>
-    internal sealed class ChemicalTableLocalFileFactory
+    public sealed class ChemicalTableLocalFileFactory
         : ILocalFileFactory<IChemicalTable>
     {
         private readonly IConfiguration appConfiguration;

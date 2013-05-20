@@ -174,5 +174,6 @@ V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.exe.manifest
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.application
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.exe
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.pdb
-V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.exe.CodeAnalysisLog.xml
-V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.exe.lastcodeanalysissucceeded
+V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.dll
+V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.pdb
+V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.xml

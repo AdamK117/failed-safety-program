@@ -11,7 +11,7 @@
   <chemical>
     <name>MyRandomChemical</name>
     <hazards>
-      <hazard signalword="H25" symbol="Flammable">Flammable</hazard>
+      <hazard signalword="H25" symbol="Flammable">RandomlyHazardout</hazard>
     </hazards>
   </chemical>
 

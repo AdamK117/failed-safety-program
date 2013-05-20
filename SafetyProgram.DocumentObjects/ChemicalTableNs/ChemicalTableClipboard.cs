@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs

@@ -24,18 +24,26 @@ namespace SafetyProgram.Ribbons
             Func<ICoshhRibbon, Ribbon> viewConstructor
             )
         {
-            if (
-                window != null &&
-                viewConstructor != null
-                )
+            if (window == null ||
+                viewConstructor == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
             {
                 this.window = window;
+                window.ContentChanged += windowContentChanged;
+
                 this.view = viewConstructor(this);
 
-                window.ContentChanged += windowContentChanged;
-                if (window.Content != null) windowContentChanged(window, new GenericPropertyChangedEventArg<TContent>(window.Content));
+                if (window.Content != null)
+                {
+                    windowContentChanged(
+                        window, 
+                        new GenericPropertyChangedEventArg<TContent>(window.Content)
+                        );
+                }                
             }
-            else throw new ArgumentNullException();            
         }
 
         private readonly Ribbon view;

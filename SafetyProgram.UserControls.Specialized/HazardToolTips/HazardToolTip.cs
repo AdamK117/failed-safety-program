@@ -1,4 +1,5 @@
-﻿using SafetyProgram.ModelObjects;
+﻿using SafetyProgram.Base.Interfaces;
+using SafetyProgram.ModelObjects;
 using SafetyProgram.UserControls.Tooltips;
 using SafetyProgram.UserControls.Tooltips.Fancy;
 

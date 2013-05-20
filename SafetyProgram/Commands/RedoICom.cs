@@ -13,10 +13,11 @@ namespace SafetyProgram.Commands
         {
             if (commandInvoker != null)
             {
-                this.commandInvoker = commandInvoker;
-                this.commandInvoker.CanRedoChanged += (sender, e) => CanExecuteChanged.Raise(this);
+                this.commandInvoker = commandInvoker;  
             }
             else throw new ArgumentNullException();
+
+            this.commandInvoker.CanRedoChanged += (sender, e) => CanExecuteChanged.Raise(this);
         }
 
         public bool CanExecute(object parameter)

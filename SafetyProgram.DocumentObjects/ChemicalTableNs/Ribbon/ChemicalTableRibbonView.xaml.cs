@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using Fluent;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon

@@ -1,14 +1,30 @@
 ﻿using System.IO;
+using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Static;
+using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.Configuration.UnitTests
 {
     [TestClass]
     public class LocalConfigurationFileTest
     {
+        private XElement getTestData()
+        {
+            return XElement.Load(TestData.CONFIGURATION_FILE);
+        }
+
+        private XElement getInvalidTestData()
+        {
+            return XElement.Load(TestData.INVALID_CONFIGURATION_FILE);
+        }
+
+        private ILocalFileFactory<IConfiguration> getFactory()
+        {
+            return new ConfigurationLocalFileFactory(new RepositoryInfoLocalFileFactory(), new ChemicalModelObjectLocalFileFactory());
+        }
+
         [TestMethod]
         public void LoadFileTest()
         {
@@ -17,15 +33,19 @@ namespace SafetyProgram.Configuration.UnitTests
             //  All values are loaded without throwing an exception
             //  Repository is serialized correctly. It's a local file repository so username/password should be blank
 
-            var configService = new LocalFileService<IConfiguration>(new ConfigurationLocalFileFactory(), TestData.CONFIGURATION_FILE);
+            //SETUP: Get test data
+            var data = getTestData();
 
-            var configFile = configService.Load();
+            var factory = getFactory();
 
-            Assert.AreEqual<bool>(configFile.DocumentLock, false);
-            Assert.AreEqual<string>(configFile.Locale, "en-GB");
+            //EXECUTE: Load the config file data using the factory
+            var loadedConfig = factory.Load(data);
+
+            Assert.AreEqual<bool>(loadedConfig.DocumentLock, false);
+            Assert.AreEqual<string>(loadedConfig.Locale, "en-GB");
 
             //First repository entry in the test data: local, C:\repository.xml.
-            var enumerator = configFile.RepositoriesInfo.GetEnumerator();
+            var enumerator = loadedConfig.RepositoriesInfo.GetEnumerator();
             enumerator.MoveNext();
             var testRepos = enumerator.Current;
 
@@ -45,34 +65,22 @@ namespace SafetyProgram.Configuration.UnitTests
         }
 
         [TestMethod]
-        public void InvalidPathTest()
-        {
-            //Tests that the Local file service throws an exception early
-            //  Make an instance of it with an invalid path
-            //  Should immediately throw (not when you call a method)
-
-            try
-            {
-                var configService = new LocalFileService<IConfiguration>(new ConfigurationLocalFileFactory(), "SomeFakePath");
-                Assert.Fail("The service should throw a FileNotFound exception if constructed with an incorrect path");
-            }
-            catch (FileNotFoundException)
-            {
-                //The right exception, test passed.
-            }            
-        }
-
-        [TestMethod]
         public void InvalidDataTest()
-        {
-            //Loads a known invalid file
-            //  Should throw an System.IO.InvalidDataException
+        {   
+            //  Expected Behaviours:
+            //      -1) The invalid data should throw up a InvalidDataException
+            //          Test: Check for an InvalidDataException
 
-            var configService = new LocalFileService<IConfiguration>(new ConfigurationLocalFileFactory(), TestData.INVALID_CONFIGURATION_FILE);
+
+            //SETUP: Get invalid test data
+            var invalidData = getInvalidTestData();
+
+            var factory = getFactory();
 
             try
             {
-                configService.Load();
+                //EXECUTE: Load the invalid data
+                factory.Load(invalidData);
                 Assert.Fail("Invalid data should produce a System.IO.InvalidDataException, this invalid data does not");
             }
             catch (InvalidDataException)

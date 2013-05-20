@@ -11,8 +11,12 @@ namespace SafetyProgram.Commands
 
         public CloseICom(IWindow<TContent> window)
         {
-            this.window = window;
-            this.window.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
+            if (window != null)
+            {
+                this.window = window;
+                this.window.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
+            }
+            else throw new ArgumentNullException();            
         }
 
         /// <summary>

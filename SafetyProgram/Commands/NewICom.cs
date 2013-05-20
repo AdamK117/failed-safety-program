@@ -15,7 +15,12 @@ namespace SafetyProgram.Commands
         /// <param name="window">Window in which the new document will be added when called.</param>
         public NewICom(IWindow<TContent> window)
         {
-            this.window = window;
+            if (window != null)
+            {
+                this.window = window;
+            }
+            else throw new ArgumentNullException();
+
             this.window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
         }
 

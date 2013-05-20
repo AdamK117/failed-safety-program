@@ -1,26 +1,43 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.Configuration
 {
     public class ConfigurationLocalFileFactory 
         : ILocalFileFactory<IConfiguration>
     {
-        public static IConfiguration StaticCreateNew()
+        private readonly ILocalFileFactory<IRepositoryInfo> repositoryInfoFactory;
+        private readonly ILocalFileFactory<IChemicalModelObject> chemicalLocalFileFactory;
+
+        public ConfigurationLocalFileFactory(ILocalFileFactory<IRepositoryInfo> repositoryInfoFactory,
+            ILocalFileFactory<IChemicalModelObject> chemicalLocalFileFactory)
+        {
+            if (repositoryInfoFactory == null || chemicalLocalFileFactory == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                this.repositoryInfoFactory = repositoryInfoFactory;
+                this.chemicalLocalFileFactory = chemicalLocalFileFactory;
+            }
+        }
+
+        public IConfiguration CreateNew()
         {
             return AppConfigurationDefault.AppConfiguration();
         }
-        public IConfiguration CreateNew()
-        {
-            return StaticCreateNew();
-        }
 
+        private const string DOCUMENT_XML_IDENTIFIER = "documentlock";
         private static bool getDocumentLock(XElement data)
         {
-            var element = data.Element("documentlock");
+            var element = data.Element(DOCUMENT_XML_IDENTIFIER);
 
             if (element != null)
             {
@@ -31,48 +48,70 @@ namespace SafetyProgram.Configuration
             }
             else throw new InvalidDataException("The documentlock value could not be found in the configuration file");
         }
+
+        private const string LOCALE_XML_IDENTIFIER = "locale";
         private static string getLocale(XElement data)
         {
-            var element = data.Element("locale");
-            if (element != null)
-            {
-                return element.Value;
-            }
-            else throw new InvalidDataException("No locale could be found in the configuration file");
+            return
+                data
+                .Element(LOCALE_XML_IDENTIFIER)
+                .ExtractStrict("No locale could be found in the configuration file");
         }
-        private static IEnumerable<IRepositoryInfo> getRepositories(XElement data)
+
+        private const string REPOSITORY_INFO_XML_IDENTIFIER = "repositories";
+        private IEnumerable<IRepositoryInfo> getRepositoriesInfo(XElement data)
         {
-            var repositoriesElement = data.Element("repositories");
+            var repositoriesElement = data.Element(REPOSITORY_INFO_XML_IDENTIFIER);
             if (repositoriesElement != null)
             {
-                var repositoriesData = repositoriesElement.Elements(RepositoryInfoLocalFileFactory.XML_IDENTIFIER);
+                var repositoriesData = repositoriesElement.Elements(repositoryInfoFactory.XmlIdentifier);
                 foreach (XElement repositoryInfo in repositoriesData)
                 {
-                    yield return RepositoryInfoLocalFileFactory.StaticLoad(repositoryInfo);
+                    yield return repositoryInfoFactory.Load(repositoryInfo);
                 }
             }
         }
 
-        public static IConfiguration StaticLoad(XElement data)
+        private IEnumerable<INewRepository<IChemicalModelObject>> getChemicalRepositories(IEnumerable<IRepositoryInfo> repositoryInfo)
         {
-            bool documentLock = getDocumentLock(data);
-            IEnumerable<IRepositoryInfo> loadedRepositories = getRepositories(data);
-            string loadedLocale = getLocale(data);
+            var repositories = new List<INewRepository<IChemicalModelObject>>();
 
-            return new AppConfiguration(
-                documentLock, 
-                loadedRepositories, 
-                loadedLocale,
-                AppConfigurationDefault.LOCAL_CONNECTION_TYPE);
+            foreach (IRepositoryInfo info in repositoryInfo)
+            {
+                if (info.Source == AppConfigurationDefault.DEFAULT_CONNECTION_TYPE_LOCAL)
+                {
+                    if (info.ContentType == chemicalLocalFileFactory.XmlIdentifier)
+                    {
+                        var repository = new NewRepository<IChemicalModelObject>(
+                            new LocalRepositoryService<IChemicalModelObject>(
+                                info.Path,
+                                chemicalLocalFileFactory
+                            )
+                        );
+                        repositories.Add(repository);
+                    }
+                }
+            }
+
+            return repositories;
         }
+
         public IConfiguration Load(XElement data)
         {
-            return StaticLoad(data);
+            var loadedRepositories = getRepositoriesInfo(data);
+            var loadedChemicalRepositoies = getChemicalRepositories(loadedRepositories);
+
+            return new AppConfiguration(
+                getDocumentLock(data),
+                loadedRepositories,
+                loadedChemicalRepositoies,
+                getLocale(data),
+                AppConfigurationDefault.DEFAULT_CONNECTION_TYPE_LOCAL);
         }
 
         public static XElement StaticStore(IConfiguration item)
         {
-            //TODO: Error check
+            //TODO: Validation check
             return
                 new XElement(XML_IDENTIFIER,
                     new XElement("documentlock", item.DocumentLock ? "true" : "false"),

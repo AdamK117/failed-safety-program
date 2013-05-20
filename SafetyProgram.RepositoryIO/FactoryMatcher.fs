@@ -9,13 +9,10 @@
     open System.Xml
     open System.Xml.Linq
 
-    let GetService (identifier : string, typeIdentifier : string) = 
-        match 
-
     //Gets a factory associated with an identity string and IO type (local, etc.)
     let GetFactory (identifier : string, typeIdentifier : string) = 
         match identifier with
-            | XmlNodeNames.CHEMICAL_MODEL_OBJ -> 
+            | ChemicalModelObject.COM_IDENTITY -> 
                 match typeIdentifier with
                     | "local" -> new ChemicalModelObjectLocalFileFactory()
                     | _ -> raise(new InvalidDataException("Unknown repository source: e.g. 'local' or 'database'"))

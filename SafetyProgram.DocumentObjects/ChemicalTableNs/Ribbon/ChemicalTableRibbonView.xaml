@@ -10,9 +10,47 @@
              >
     
     <Fluent:RibbonGroupBox Header="Operations">
-        <Fluent:Button Header="Add random chemical" Command="{Binding Commands.AddNewChemical}" />
+        <!-- Add a chemical from the repositories -->
+        <Fluent:DropDownButton Header="Add Chemical" FocusManager.FocusedElement="{Binding ElementName=SearchBox}">
+            <StackPanel>
+                <TextBox x:Name="SearchBox" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <ItemsControl ItemsSource="{Binding Chemicals}" Focusable="False">
+
+                    <!-- Present the chemicals with no embelishment -->
+                    <ItemsControl.Template>
+                        <ControlTemplate>
+                            <ItemsPresenter />
+                        </ControlTemplate>
+                    </ItemsControl.Template>
+
+                    <!-- Stack the chemicals on top of one another -->
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <!-- Display each chemical in a Fluent:MenuItem -->
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Fluent:MenuItem 
+                            Header="{Binding Name}"
+                            Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Fluent:RibbonGroupBox}}, Path=DataContext.Commands.InsertChemical}" 
+                            CommandParameter="{Binding}" 
+                            />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+            </StackPanel>
+        </Fluent:DropDownButton>
+        
+        <!-- Delete selected chemicals -->
         <Fluent:Button Header="Delete Selected" Command="{Binding Commands.DeleteSelected}" />
-        <Fluent:Button Header="Delete Table" Command="{Binding Commands.DeleteTable}" />
+        
+        <!-- Delete the chemical table -->
+        <Fluent:Button Header="Delete Table" Command="{Binding Commands.DeleteTable}" /> 
+        
     </Fluent:RibbonGroupBox>
     
 </Fluent:RibbonTabItem>

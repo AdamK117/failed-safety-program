@@ -8,22 +8,28 @@ namespace SafetyProgram.Configuration
         public static AppConfiguration AppConfiguration()
         {
             return new AppConfiguration(
-                DocumentLock,
-                RepositoryInfo(),
-                LOCALE,
-                LOCAL_CONNECTION_TYPE
+                DEFAULT_DOCUMENT_LOCK,
+                DefaultRepositoryInfo(),
+                DefaultChemicalRepositories(),
+                DEFAULT_LOCALE,
+                DEFAULT_CONNECTION_TYPE_LOCAL
                 );
         }
 
-        public const bool DocumentLock = false;
+        public const bool DEFAULT_DOCUMENT_LOCK = false;
 
-        public static IEnumerable<IRepositoryInfo> RepositoryInfo()
+        public static IEnumerable<IRepositoryInfo> DefaultRepositoryInfo()
         {
             return new List<IRepositoryInfo>();
         }
 
-        public const string LOCALE = "en-GB";
-        public const string LOCAL_CONNECTION_TYPE = "local";
-        public const string DATABASE_CONNECTION_TYPE = "database";
+        public static IEnumerable<INewRepository<IChemicalModelObject>> DefaultChemicalRepositories()
+        {
+            return new List<INewRepository<IChemicalModelObject>>();
+        }
+
+        public const string DEFAULT_LOCALE = "en-GB";
+        public const string DEFAULT_CONNECTION_TYPE_LOCAL = "local";
+        public const string DEFAULT_CONNECTION_TYPE_DATABASE = "database";
     }
 }

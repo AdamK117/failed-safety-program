@@ -61,6 +61,9 @@
     <Compile Include="AppConfiguration.cs" />
     <Compile Include="ConfigurationLocalFileFactory.cs" />
     <Compile Include="AppConfigurationDefault.cs" />
+    <Compile Include="ICallbackService.cs" />
+    <Compile Include="NewRepository.cs" />
+    <Compile Include="RepositoryCallbackService.cs" />
     <Compile Include="RepositoryDefault.cs" />
     <Compile Include="RepositoryInfoDefault.cs" />
     <Compile Include="RepositoryInfoLocalFileFactory.cs" />
@@ -73,6 +76,10 @@
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
       <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
       <Name>SafetyProgram.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.ModelObjects\SafetyProgram.ModelObjects.csproj">
+      <Project>{7c2c454d-a1d9-4355-976c-08582e07cd31}</Project>
+      <Name>SafetyProgram.ModelObjects</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Static\SafetyProgram.Static.csproj">
       <Project>{365f96a4-1c7f-4c32-8db9-a1385f2d109c}</Project>

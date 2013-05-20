@@ -34,12 +34,16 @@ namespace SafetyProgram
             )
         {
             if (
-                contentService != null &&
-                content != null &&
-                commandsConstructor != null &&
-                ribbonConstructor != null &&
-                viewConstructor != null
+                contentService == null ||
+                content == null ||
+                commandsConstructor == null ||
+                ribbonConstructor == null ||
+                viewConstructor == null
                 )
+            {
+                throw new ArgumentNullException();
+            }
+            else
             {
                 this.service = contentService;
                 this.content = content;
@@ -47,7 +51,6 @@ namespace SafetyProgram
                 this.ribbon = ribbonConstructor(this);
                 this.view = viewConstructor(this);
             }
-            else throw new ArgumentNullException();
         }
 
         private readonly Window view;
@@ -110,7 +113,7 @@ namespace SafetyProgram
             set 
             { 
                 content = value;
-                ContentChanged.Raise(this, new GenericPropertyChangedEventArg<TContent>(content));
+                ContentChanged.Raise(this, content);
                 PropertyChanged.Raise(this, "Content");
             }
         }
@@ -147,7 +150,7 @@ namespace SafetyProgram
             if (newService != null)
             {
                 service = newService;
-                ServiceChanged.Raise(this, new GenericPropertyChangedEventArg<IService<TContent>>(service));
+                ServiceChanged.Raise(this, service);
                 PropertyChanged.Raise(this, "Service");
             }
             else throw new ArgumentNullException("newService", "The CoshhWindow's service cannot be set to null, a valid service must be set");

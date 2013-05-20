@@ -6,9 +6,9 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Commands
 {
-    internal class SaveAsICom<T> : ICommand
+    internal sealed class SaveAsICom<T> : ICommand
     {
-        private readonly IWindow<T> data;
+        private readonly IWindow<T> window;
 
         /// <summary>
         /// Constructs a new ICommand that allows 'SaveAs' of the CoshhWindow's document using the CoshhWindow's service.
@@ -16,12 +16,13 @@ namespace SafetyProgram.Commands
         /// <param name="window">Window which houses the document to be 'SavedAs'</param>
         public SaveAsICom(IWindow<T> window)
         {
-            this.data = window;
+            if (window != null)
+            {
+                this.window = window;
+            }
+            else throw new ArgumentNullException();            
 
-            //Monitor if the CoshhWindow's service has changed (CanSaveAs() can change).
             window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
-
-            //Monitor if the CoshhWindow's CoshhDocument has changed (can't save a closed (null) document).
             window.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
         }
 
@@ -32,7 +33,12 @@ namespace SafetyProgram.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return (data.Content != null && data.Service.CanSaveAs(data.Content)) ? true : false;
+            if (window.Content != null &&
+                window.Service.CanSaveAs(window.Content))
+            {
+                return true;
+            }
+            else return false;
         }
 
         /// <summary>
@@ -46,7 +52,7 @@ namespace SafetyProgram.Commands
             {
                 try
                 {
-                    data.Service.SaveAs(data.Content);
+                    window.Service.SaveAs(window.Content);
                 }
                 catch (UnauthorizedAccessException)
                 {
@@ -60,7 +66,6 @@ namespace SafetyProgram.Commands
             }
             else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)"); 
         }
-
 
         public event EventHandler CanExecuteChanged;
     }

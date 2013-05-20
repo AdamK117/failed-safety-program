@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.ModelObjects
 {
@@ -89,19 +90,19 @@ namespace SafetyProgram.ModelObjects
             return new HazardModelObject(hazard, signalWord, symbol);
         }
 
-        public const string COM_IDENTITY = "HazardModel";
+        public const string IDENTIFIER = "HazardModel";
 
         public string ComIdentity
         {
             get 
             {
-                return COM_IDENTITY; 
+                return IDENTIFIER; 
             }
         }
 
         public IDataObject GetDataObject()
         {
-            return this.GetDataObject(COM_IDENTITY);
+            return this.GetDataObject(IDENTIFIER);
         }
 
         public override string ToString()

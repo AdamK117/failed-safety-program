@@ -11,5 +11,3 @@ V:\SafetyProgram\SafetyProgram.ModelObjects\bin\x86\Debug\Fluent.xml
 V:\SafetyProgram\SafetyProgram.ModelObjects\obj\x86\Debug\SafetyProgram.ModelObjects.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.ModelObjects\obj\x86\Debug\SafetyProgram.ModelObjects.dll
 V:\SafetyProgram\SafetyProgram.ModelObjects\obj\x86\Debug\SafetyProgram.ModelObjects.pdb
-V:\SafetyProgram\SafetyProgram.ModelObjects\bin\x86\Debug\SafetyProgram.ModelObjects.dll.CodeAnalysisLog.xml
-V:\SafetyProgram\SafetyProgram.ModelObjects\bin\x86\Debug\SafetyProgram.ModelObjects.dll.lastcodeanalysissucceeded

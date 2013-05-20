@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandInvoker.cs" />
-    <Compile Include="ErrorChecker.cs" />
+    <Compile Include="ErrorValidation.cs" />
     <Compile Include="GenericChangedEventArg.cs" />
     <Compile Include="InteractiveLocalFileService.cs" />
     <Compile Include="Interfaces\Creational Interfaces\ILoader.cs" />
@@ -68,15 +68,19 @@
     <Compile Include="Interfaces\Command\ICommandInvoker.cs" />
     <Compile Include="Interfaces\Creational Interfaces\IFactory.cs" />
     <Compile Include="Interfaces\Command\IInvokedCommand.cs" />
+    <Compile Include="Interfaces\Models\IChemicalModelObject.cs" />
+    <Compile Include="Interfaces\Models\ICoshhChemicalObject.cs" />
+    <Compile Include="Interfaces\Models\IHazardModelObject.cs" />
+    <Compile Include="Interfaces\RepositoryAndAggregate\INewRepository.cs" />
     <Compile Include="Interfaces\Window\IContentWindow.cs" />
     <Compile Include="LocalFileService.cs" />
     <Compile Include="EventExtensions.cs" />
-    <Compile Include="Interfaces\IConfiguration.cs" />
+    <Compile Include="Interfaces\RepositoryAndAggregate\IConfiguration.cs" />
     <Compile Include="Interfaces\Command\ICommandsHolder.cs" />
     <Compile Include="Interfaces\Creational Interfaces\IFactoryIO.cs" />
     <Compile Include="Interfaces\Creational Interfaces\ILocalFileFactory.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Interfaces\IRepositoryInfo.cs" />
+    <Compile Include="Interfaces\RepositoryAndAggregate\IRepository.cs" />
+    <Compile Include="Interfaces\RepositoryAndAggregate\IRepositoryInfo.cs" />
     <Compile Include="Interfaces\Document\IDocumentObject.cs" />
     <Compile Include="IFormats\A4Format.cs" />
     <Compile Include="IFormats\CustomFormat.cs" />
@@ -109,6 +113,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="DeepCloneableExtension.cs" />
+    <Compile Include="XElementExtensions.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
