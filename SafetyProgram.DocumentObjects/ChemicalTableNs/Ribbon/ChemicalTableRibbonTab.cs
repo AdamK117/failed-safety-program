@@ -45,7 +45,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon
                 //    );
                 //allLoadedChemicals = unsortedChemicals;
 
-                Chemicals = new ObservableCollection<IChemicalModelObject>(allLoadedChemicals);
+                //Chemicals = new ObservableCollection<IChemicalModelObject>(allLoadedChemicals);
 
                 view = viewConstructor(this);
             }

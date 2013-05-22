@@ -35,7 +35,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
             if (CanExecute(parameter))
             {
                 //Repository will contain ChemicalModels; however, we need a CoshhChemicalModel (extended form)
-                var chemicalToAdd = new CoshhChemicalObject(0M, "", (IChemicalModelObject)parameter);
+                var chemicalToAdd = ModelObjectsPrototypes.CoshhChemicalObject(0M, "", (IChemicalModelObject)parameter);
                 var command = new InsertChemicalInvokedCom(chemicalTable, chemicalToAdd);
                 commandInvoker.InvokeCommand(command);
             }

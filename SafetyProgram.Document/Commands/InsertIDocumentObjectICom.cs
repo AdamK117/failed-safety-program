@@ -9,7 +9,6 @@ namespace SafetyProgram.Document.Commands
         private readonly IDocument document;
         private readonly ICommandInvoker commandInvoker;
         private readonly Func<IDocumentObject> iDocumentObjectCtor;
-        private IDocumentObject addedDocumentObject;
 
         public InsertIDocumentObjectICom(
             IDocument document, 

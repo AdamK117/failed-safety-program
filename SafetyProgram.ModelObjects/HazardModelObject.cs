@@ -8,7 +8,7 @@ using SafetyProgram.Base.Interfaces;
 namespace SafetyProgram.ModelObjects
 {
     [Serializable]
-    public sealed class HazardModelObject : INotifyPropertyChanged, IHazardModelObject
+    internal sealed class HazardModelObject : INotifyPropertyChanged, IHazardModelObject
     {
         private readonly List<string> validationErrorList = new List<string>();
 

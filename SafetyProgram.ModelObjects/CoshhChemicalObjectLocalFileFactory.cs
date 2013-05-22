@@ -2,11 +2,10 @@
 using System.IO;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Static;
 
 namespace SafetyProgram.ModelObjects
 {
-    public class CoshhChemicalObjectLocalFileFactory :
+    public sealed class CoshhChemicalObjectLocalFileFactory :
         ILocalFileFactory<ICoshhChemicalObject>
     {
         public static ICoshhChemicalObject StaticCreateNew()

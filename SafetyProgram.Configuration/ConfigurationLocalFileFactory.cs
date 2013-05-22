@@ -72,9 +72,9 @@ namespace SafetyProgram.Configuration
             }
         }
 
-        private IEnumerable<INewRepository<IChemicalModelObject>> getChemicalRepositories(IEnumerable<IRepositoryInfo> repositoryInfo)
+        private IEnumerable<IRepository<IChemicalModelObject>> getChemicalRepositories(IEnumerable<IRepositoryInfo> repositoryInfo)
         {
-            var repositories = new List<INewRepository<IChemicalModelObject>>();
+            var repositories = new List<IRepository<IChemicalModelObject>>();
 
             foreach (IRepositoryInfo info in repositoryInfo)
             {
@@ -82,9 +82,10 @@ namespace SafetyProgram.Configuration
                 {
                     if (info.ContentType == chemicalLocalFileFactory.XmlIdentifier)
                     {
-                        var repository = new NewRepository<IChemicalModelObject>(
-                            new LocalRepositoryService<IChemicalModelObject>(
+                        var repository = new Repository<IChemicalModelObject>(
+                            new LocalFileServiceMultiItem<IChemicalModelObject>(
                                 info.Path,
+                                "repository",
                                 chemicalLocalFileFactory
                             )
                         );

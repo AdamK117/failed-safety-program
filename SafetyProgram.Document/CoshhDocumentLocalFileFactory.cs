@@ -3,10 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Document.Body;
-using SafetyProgram.DocumentObjects;
 
 namespace SafetyProgram.Document
 {

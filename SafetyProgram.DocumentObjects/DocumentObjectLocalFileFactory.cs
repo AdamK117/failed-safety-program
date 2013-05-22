@@ -15,7 +15,7 @@ namespace SafetyProgram.DocumentObjects
 
         private readonly ILocalFileFactory<IChemicalTable> chemicalTableFactory;
 
-        private readonly IDictionary<string, ILoader<IDocumentObject, XElement>> creationFactories;
+        private readonly IDictionary<string, IOutputFactory<IDocumentObject, XElement>> creationFactories;
         private readonly IDictionary<Type, Func<IDocumentObject, XElement>> outputFactories;
 
         public DocumentObjectLocalFileFactory(
@@ -38,7 +38,7 @@ namespace SafetyProgram.DocumentObjects
             }
 
             //Registry of available docObjects
-            creationFactories = new Dictionary<string, ILoader<IDocumentObject, XElement>>()
+            creationFactories = new Dictionary<string, IOutputFactory<IDocumentObject, XElement>>()
             {
                 {
                     chemicalTableFactory.XmlIdentifier,

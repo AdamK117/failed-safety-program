@@ -61,16 +61,11 @@
     <Compile Include="AppConfiguration.cs" />
     <Compile Include="ConfigurationLocalFileFactory.cs" />
     <Compile Include="AppConfigurationDefault.cs" />
-    <Compile Include="ICallbackService.cs" />
-    <Compile Include="NewRepository.cs" />
-    <Compile Include="RepositoryCallbackService.cs" />
-    <Compile Include="RepositoryDefault.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="RepositoryInfoDefault.cs" />
     <Compile Include="RepositoryInfoLocalFileFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryInfo.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="RepositoryLocalFileFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">

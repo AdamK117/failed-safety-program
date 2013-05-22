@@ -9,7 +9,7 @@ using SafetyProgram.Base.Interfaces;
 namespace SafetyProgram.ModelObjects
 {
     [Serializable]
-    public sealed class ChemicalModelObject : 
+    internal sealed class ChemicalModelObject : 
         INotifyPropertyChanged, 
         IChemicalModelObject
     {

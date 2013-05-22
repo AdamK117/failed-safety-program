@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Fluent;
 using Ninject;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
@@ -7,6 +8,8 @@ using SafetyProgram.Configuration;
 using SafetyProgram.Document;
 using SafetyProgram.DocumentObjects;
 using SafetyProgram.DocumentObjects.ChemicalTableNs;
+using SafetyProgram.MainWindow;
+using SafetyProgram.MainWindow.Commands;
 using SafetyProgram.ModelObjects;
 using SafetyProgram.Static;
 
@@ -27,117 +30,159 @@ namespace SafetyProgram
             {
                 //FACTORY BINDINGS
 
-                //LocalFactories: Configuration/Repository
-                kernel
-                    .Bind<ILocalFileFactory<IConfiguration>>()
-                    .To<ConfigurationLocalFileFactory>()
-                    .InSingletonScope();
+                ////LocalFactories: Configuration/Repository
+                //kernel
+                //    .Bind<ILocalFileFactory<IConfiguration>>()
+                //    .To<ConfigurationLocalFileFactory>()
+                //    .InSingletonScope();
 
-                kernel
-                    .Bind<ILocalFileFactory<IRepositoryInfo>>()
-                    .To<RepositoryInfoLocalFileFactory>();
+                //kernel
+                //    .Bind<ILocalFileFactory<IRepositoryInfo>>()
+                //    .To<RepositoryInfoLocalFileFactory>();
 
-                //LocalFactories: Core components
+                ////LocalFactories: Core components
+                //kernel
+                //    .Bind<ILocalFileFactory<ICoshhDocument>>()
+                //    .To<CoshhDocumentLocalFileFactory>();
 
-                kernel
-                    .Bind<ILocalFileFactory<ICoshhDocument>>()
-                    .To<CoshhDocumentLocalFileFactory>();
+                //kernel
+                //    .Bind<ILocalFileFactory<IDocumentObject>>()
+                //    .To<DocumentObjectLocalFileFactory>();
 
-                kernel
-                    .Bind<ILocalFileFactory<IDocumentObject>>()
-                    .To<DocumentObjectLocalFileFactory>();
+                //kernel
+                //    .Bind<ILocalFileFactory<IChemicalTable>>()
+                //    .To<ChemicalTableLocalFileFactory>();
 
-                kernel
-                    .Bind<ILocalFileFactory<IChemicalTable>>()
-                    .To<ChemicalTableLocalFileFactory>();
+                ////LocalFactories: Models
+                //kernel
+                //    .Bind<ILocalFileFactory<ICoshhChemicalObject>>()
+                //    .To<CoshhChemicalObjectLocalFileFactory>();
 
-                //LocalFactories: Models
-                kernel
-                    .Bind<ILocalFileFactory<ICoshhChemicalObject>>()
-                    .To<CoshhChemicalObjectLocalFileFactory>();
+                //kernel
+                //    .Bind<ILocalFileFactory<IChemicalModelObject>>()
+                //    .To<ChemicalModelObjectLocalFileFactory>();
 
-                kernel
-                    .Bind<ILocalFileFactory<IChemicalModelObject>>()
-                    .To<ChemicalModelObjectLocalFileFactory>();
+                //kernel
+                //    .Bind<ILocalFileFactory<IHazardModelObject>>()
+                //    .To<HazardModelObjectLocalFileFactory>();
 
-                kernel
-                    .Bind<ILocalFileFactory<IHazardModelObject>>()
-                    .To<HazardModelObjectLocalFileFactory>();
+                ////COMMAND INVOKER (command pattern, singleton pattern)
+                //kernel
+                //    .Bind<ICommandInvoker>()
+                //    .To<CommandInvoker>()
+                //    .InSingletonScope();
 
-                //COMMAND INVOKER (command pattern, singleton pattern)
-                kernel
-                    .Bind<ICommandInvoker>()
-                    .To<CommandInvoker>()
-                    .InSingletonScope();
+                ////COMMANDS
+                ////Commands: Window commands
+                //kernel
+                //    .Bind<IWindowCommands>()
+                //    .To<WindowICommands<ICoshhDocument>>();
 
-                //SERVICE BINDINGS
+                ////SERVICES
+                ////LocalServices: Configuration
+                //kernel
+                //    .Bind<IIOService<IConfiguration>>()
+                //    .To<LocalFileService<IConfiguration>>()
+                //    .InSingletonScope()
+                //    .WithConstructorArgument("path", TestData.CONFIGURATION_FILE);
 
-                //LocalServices: Configuration
-                kernel
-                    .Bind<IService<IConfiguration>>()
-                    .To<LocalFileService<IConfiguration>>()
-                    .InSingletonScope()
-                    .WithConstructorArgument("path", TestData.CONFIGURATION_FILE);
+                ////LocalServices: Core
+                //kernel
+                //    .Bind<IIOService<ICoshhDocument>>()
+                //    .To<InteractiveLocalFileService<ICoshhDocument>>()
+                //    .InSingletonScope();
 
-                //LocalServices: Core
-                kernel
-                    .Bind<IService<ICoshhDocument>>()
-                    .To<InteractiveLocalFileService<ICoshhDocument>>()
-                    .InSingletonScope();
+                ////VIEWMODELS              
+                ////MainWindowRibbon
+                //kernel
+                //    .Bind<IRibbon>()
+                //    .To<CoshhRibbon<ICoshhDocument>>()
+                //    .Named("MainRibbon");
 
-                //VIEW BINDINGS
-                //MainWindowView
-                kernel
-                    .Bind<Func<ICoshhWindow, Window>>()
-                    .ToMethod(
-                        context =>
-                            coshhWindow => new CoshhWindowView(coshhWindow)                          
-                    );
+                ////VIEW CONSTRUCTORS
+                ////MainWindowRibbonView
+                //kernel
+                //    .Bind<Func<ICoshhRibbon, Ribbon>>()
+                //    .ToMethod(
+                //        ((context) =>
+                //            (coshhRibbon) => new CoshhRibbonView(coshhRibbon)
+                //        )
+                //    );
 
+                ////MainWindowView
+                //kernel
+                //    .Bind<Func<ICoshhWindowT<ICoshhDocument>, Window>>()
+                //    .ToMethod(
+                //        context =>
+                //            coshhWindow => new CoshhWindowView(coshhWindow)
+                //    );
+
+                ////VIEWMODEL CONSTRUCTORS
+                ////MainWindowRibbon
+                //kernel
+                //    .Bind<Func<ICoshhWindowT<ICoshhDocument>, IRibbon>>()
+                //    .ToMethod(
+                //        ((context) =>
+                //            coshhWindow => kernel.Get<IRibbon>()
+                //        )
+                //    );
+
+                ////MainWindowCommands
+                //kernel
+                //    .Bind<Func<ICoshhWindowT<ICoshhDocument>, IWindowCommands>>()
+                //    .ToMethod(
+                //        ((context) =>
+                //            windowCommands => kernel.Get<IWindowCommands>()
+                //        )
+                //    );
                 
-                //RESOLVING BINDINGS
+                ////RESOLVING BINDINGS
 
-                //Resolve configuration (singleton pattern)
-                kernel
-                    .Bind<IConfiguration>()
-                    .ToMethod(
-                        context =>
-                            {
-                                return context.Kernel
-                                    .Get<IService<IConfiguration>>()
-                                    .Load();
-                            }
-                    )
-                    .InSingletonScope();                          
+                ////Resolve: IConfiguration (singleton pattern)
+                //kernel
+                //    .Bind<IConfiguration>()
+                //    .ToMethod(
+                //        context =>
+                //            {
+                //                return context.Kernel
+                //                    .Get<IIOService<IConfiguration>>()
+                //                    .Load();
+                //            }
+                //    )
+                //    .InSingletonScope();                          
 
-                //Resolve default document
-                kernel
-                    .Bind<ICoshhDocument>()
-                    .ToMethod(
-                        context =>
-                            {
-                                return context.Kernel.Get<IService<ICoshhDocument>>().New();
-                            }
-                    );
+                ////Resolve: Default ICoshhDocument
+                //kernel
+                //    .Bind<ICoshhDocument>()
+                //    .ToMethod(
+                //        context =>
+                //            {
+                //                return context.Kernel.Get<IIOService<ICoshhDocument>>().New();
+                //            }
+                //    );
 
-                //Resolve main window
-                kernel
-                    .Bind<IWindow<ICoshhDocument>>()
-                    .ToMethod(
-                        context =>
-                        {
-                            return CoshhWindowFactory<ICoshhDocument>.StaticCreateNew
-                                (
-                                    kernel.Get<IConfiguration>(),
-                                    kernel.Get<IService<ICoshhDocument>>(),
-                                    kernel.Get<ICommandInvoker>(),
-                                    kernel.Get<ICoshhDocument>()
-                                );
-                        }
-                    );
+                ////kernel
+                ////    .Bind<IWindow<ICoshhDocument>>()
+                ////    .To<CoshhWindow<ICoshhDocument>>();
 
-                var a = kernel.Get<IWindow<ICoshhDocument>>();
-                a.View.Show();
+                ////Resolve main window
+                //kernel
+                //    .Bind<IWindow<ICoshhDocument>>()
+                //    .ToMethod(
+                //        context =>
+                //        {
+                //            return CoshhWindowFactory<ICoshhDocument>.StaticCreateNew
+                //                (
+                //                    kernel.Get<IConfiguration>(),
+                //                    kernel.Get<IIOService<ICoshhDocument>>(),
+                //                    kernel.Get<ICommandInvoker>(),
+                //                    kernel.Get<ICoshhDocument>()
+                //                );
+                //        }
+                //    );
+
+                //var a = kernel.Get<IWindow<ICoshhDocument>>();
+                //a.View.Show();
             }
 
             //CONFIGURATION

@@ -4,7 +4,7 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Configuration
 {
-    public class RepositoryInfoLocalFileFactory 
+    public sealed class RepositoryInfoLocalFileFactory 
         : ILocalFileFactory<IRepositoryInfo>
     {
         public static IRepositoryInfo StaticCreateNew()

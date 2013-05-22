@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Configuration
@@ -8,57 +7,67 @@ namespace SafetyProgram.Configuration
     public sealed class Repository<TContent> : 
         IRepository<TContent>
     {
-        public Repository(
-            string entryType, 
-            IEnumerable<TContent> entries, 
-            Func<TContent> entryConstructor)
-        {
-            EntryType = entryType;
+        private readonly IServiceMultiItem<TContent> contentService;
+        private readonly IList<TContent> cachedContent = new List<TContent>();
 
-            if (entries != null && entryConstructor != null)
+        public Repository(IServiceMultiItem<TContent> contentService)
+        {
+            if (contentService == null)
             {
-                Entries = entries;
-                EntryConstructor = entryConstructor;
+                throw new ArgumentNullException();
             }
-            else throw new ArgumentNullException();
-        }
-
-        public Func<TContent> EntryConstructor
-        {
-            get;
-            private set;
-        }
-
-        public string EntryType
-        {
-            get;
-            private set;
-        }
-
-        public IEnumerable<TContent> Entries
-        {
-            get;
-            private set;
-        }
-
-        IList<string> validationErrorList = new List<string>();
-
-        public string Error
-        {
-            get 
+            else
             {
-                return ErrorValidation.JoinErrors(validationErrorList);
+                this.contentService = contentService;
             }
         }
 
-        public string this[string columnName]
+        public IEnumerable<TContent> Get(Func<TContent, bool> filter, Action<TContent> callback)
         {
-            get 
+            //Filter the cache, return the filtered entries
+            var filteredResults = new List<TContent>();
+            foreach (TContent entry in GetAll())
             {
-                validationErrorList.Clear();
-                //No error checks for this (yet)
-                return null;
+                if (filter(entry))
+                {
+                    callback(entry);
+                    filteredResults.Add(entry);
+                }
             }
+
+            return filteredResults;
+        }
+
+        public IEnumerable<TContent> GetAll(Action<TContent> callback)
+        {
+            //Get all entries in the repositories. Two scenarios.
+            //  -The entries haven't been loaded yet. Load them into a cache and return that.
+            //  -The entries are already loaded (cached). Return the cache.
+
+            if (cachedContent.Count == 0)
+            {
+                var loadedContent = contentService.Load(callback);
+
+                foreach (TContent loadedEntry in loadedContent)
+                {
+                    cachedContent.Add(loadedEntry);
+                }
+
+                return cachedContent;
+            }
+            else
+            {
+                foreach (TContent cachedEntry in cachedContent)
+                {
+                    callback(cachedEntry);
+                }
+                return cachedContent;
+            }            
+        }
+
+        public IEnumerable<TContent> GetAll()
+        {
+            return GetAll((content) => { });
         }
     }
 }

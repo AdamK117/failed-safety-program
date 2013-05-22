@@ -71,9 +71,12 @@
     <Compile Include="NewRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LocalConfigurationFileTest.cs" />
-    <Compile Include="RepositoryCallbackServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Base.UnitTests\SafetyProgram.Base.UnitTests.csproj">
+      <Project>{1e9995cc-8fe5-4859-b0af-49ea9ea36668}</Project>
+      <Name>SafetyProgram.Base.UnitTests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
       <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
       <Name>SafetyProgram.Base</Name>

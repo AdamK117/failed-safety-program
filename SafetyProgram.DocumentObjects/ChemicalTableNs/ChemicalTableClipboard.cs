@@ -67,7 +67,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 \cellx3
 {Chemicals\cell Amounts\cell Hazards\cell }
 \row";
-            foreach (CoshhChemicalObject chemical in data)
+            foreach (ICoshhChemicalObject chemical in data)
             {
                 //Add a table row
                 rtfTable += @"\trowd\trautofit1

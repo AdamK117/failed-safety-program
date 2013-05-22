@@ -142,6 +142,7 @@ V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.application
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.exe
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.pdb
 V:\SafetyProgram\SafetyProgram\bin\Debug\Fluent.dll
+V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.dll
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Configuration.dll
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Document.dll
@@ -159,12 +160,10 @@ V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.ModelObjects.pdb
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Static.pdb
 V:\SafetyProgram\SafetyProgram\bin\Debug\Fluent.pdb
 V:\SafetyProgram\SafetyProgram\bin\Debug\Fluent.xml
+V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.pdb
+V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.xml
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.csprojResolveAssemblyReference.cache
-V:\SafetyProgram\SafetyProgram\obj\x86\Debug\CoshhWindowView.baml
-V:\SafetyProgram\SafetyProgram\obj\x86\Debug\Ribbons\CoshhRibbonView.baml
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\App.baml
-V:\SafetyProgram\SafetyProgram\obj\x86\Debug\CoshhWindowView.g.cs
-V:\SafetyProgram\SafetyProgram\obj\x86\Debug\Ribbons\CoshhRibbonView.g.cs
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\App.g.cs
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram_MarkupCompile.cache
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.g.resources
@@ -174,6 +173,5 @@ V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.exe.manifest
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.application
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.exe
 V:\SafetyProgram\SafetyProgram\obj\x86\Debug\SafetyProgram.pdb
-V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.dll
-V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.pdb
-V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.xml
+V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.MainWindow.dll
+V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.MainWindow.pdb

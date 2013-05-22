@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using SafetyProgram.Base;
@@ -9,7 +8,7 @@ using SafetyProgram.Base.Interfaces;
 namespace SafetyProgram.ModelObjects
 {
     [Serializable]
-    public sealed class CoshhChemicalObject : INotifyPropertyChanged, ICoshhChemicalObject
+    internal sealed class CoshhChemicalObject : INotifyPropertyChanged, ICoshhChemicalObject
     {
         private readonly List<string> validationErrorList = new List<string>();
 

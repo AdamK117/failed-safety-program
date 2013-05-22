@@ -5,7 +5,7 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base
 {
-    public sealed class LocalFileService<T> : IService<T>
+    public sealed class LocalFileService<T> : IIOService<T>
     {
         private readonly string path;
         private readonly ILocalFileFactory<T> itemFactory;

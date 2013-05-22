@@ -98,38 +98,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\CloseICom.cs" />
-    <Compile Include="Commands\ExitICom.cs" />
-    <Compile Include="Commands\IWindowCommands.cs" />
-    <Compile Include="Commands\NewICom.cs" />
-    <Compile Include="Commands\OpenICom.cs" />
-    <Compile Include="Commands\RedoICom.cs" />
-    <Compile Include="Commands\SaveICom.cs" />
-    <Compile Include="Commands\SaveAsICom.cs" />
-    <Compile Include="Commands\UndoICom.cs" />
-    <Compile Include="Commands\WindowICommands.cs" />
-    <Compile Include="CoshhWindow.cs" />
-    <Compile Include="CoshhWindowFactory.cs" />
-    <Compile Include="CoshhWindowView.xaml.cs">
-      <DependentUpon>CoshhWindowView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ICoshhWindow.cs" />
-    <Compile Include="ICoshhWindowT.cs" />
-    <Compile Include="Ribbons\ICoshhRibbon.cs" />
-    <Page Include="CoshhWindowView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Ribbons\CoshhRibbonView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ribbons\CoshhRibbon.cs" />
-    <Compile Include="Ribbons\CoshhRibbonView.xaml.cs">
-      <DependentUpon>CoshhRibbonView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -173,6 +143,10 @@
     <ProjectReference Include="..\SafetyProgram.Locale\SafetyProgram.Locale.csproj">
       <Project>{125449EC-B19E-4006-94D6-6E298C09EAC7}</Project>
       <Name>SafetyProgram.Locale</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.MainWindow\SafetyProgram.MainWindow.csproj">
+      <Project>{2bf84dd7-1743-402e-a049-352c772741a0}</Project>
+      <Name>SafetyProgram.MainWindow</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.ModelObjects\SafetyProgram.ModelObjects.csproj">
       <Project>{7c2c454d-a1d9-4355-976c-08582e07cd31}</Project>

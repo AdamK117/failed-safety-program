@@ -2,4 +2,3 @@ V:\SafetyProgram\SafetyProgram.Static\bin\x86\Debug\SafetyProgram.Static.dll
 V:\SafetyProgram\SafetyProgram.Static\bin\x86\Debug\SafetyProgram.Static.pdb
 V:\SafetyProgram\SafetyProgram.Static\obj\x86\Debug\SafetyProgram.Static.dll
 V:\SafetyProgram\SafetyProgram.Static\obj\x86\Debug\SafetyProgram.Static.pdb
-V:\SafetyProgram\SafetyProgram.Static\obj\x86\Debug\SafetyProgram.Static.csprojResolveAssemblyReference.cache

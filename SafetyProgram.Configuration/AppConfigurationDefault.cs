@@ -23,9 +23,9 @@ namespace SafetyProgram.Configuration
             return new List<IRepositoryInfo>();
         }
 
-        public static IEnumerable<INewRepository<IChemicalModelObject>> DefaultChemicalRepositories()
+        public static IEnumerable<IRepository<IChemicalModelObject>> DefaultChemicalRepositories()
         {
-            return new List<INewRepository<IChemicalModelObject>>();
+            return new List<IRepository<IChemicalModelObject>>();
         }
 
         public const string DEFAULT_LOCALE = "en-GB";

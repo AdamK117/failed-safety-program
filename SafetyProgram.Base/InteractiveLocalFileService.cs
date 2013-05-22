@@ -6,7 +6,7 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base
 {
-    public sealed class InteractiveLocalFileService<T> : IService<T>
+    public sealed class InteractiveLocalFileService<T> : IIOService<T>
     {
         private readonly bool 
             canNew = true,

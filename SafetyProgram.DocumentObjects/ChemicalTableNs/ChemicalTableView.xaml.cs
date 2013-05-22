@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
@@ -39,12 +40,12 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
         /// <param name="e"></param>
         private void Chemicals_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (CoshhChemicalObject chemical in e.RemovedItems)
+            foreach (ICoshhChemicalObject chemical in e.RemovedItems)
             {
                 viewModel.SelectedChemicals.Remove(chemical);
             }
 
-            foreach (CoshhChemicalObject chemical in e.AddedItems)
+            foreach (ICoshhChemicalObject chemical in e.AddedItems)
             {
                 viewModel.SelectedChemicals.Add(chemical);
             }

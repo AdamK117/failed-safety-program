@@ -5,7 +5,7 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.ModelObjects
 {
-    public class HazardModelObjectLocalFileFactory
+    public sealed class HazardModelObjectLocalFileFactory
         : ILocalFileFactory<IHazardModelObject>
     {
         public static IHazardModelObject StaticCreateNew()

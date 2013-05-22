@@ -35,15 +35,15 @@ namespace SafetyProgram.Configuration.UnitTests
         };
 
         //Solid dependancy on the implementation here.
-        private INewRepository<MockEntry> mockRepository()
+        private IRepository<MockEntry> mockRepository()
         {
             //Mock a service the repository will use.
-            var mockedService = new Mock<ICallbackService<MockEntry>>();
+            var mockedService = new Mock<IServiceMultiItem<MockEntry>>();
 
             //Mock blank loading (no callback) method on the service.
             mockedService
                 .Setup(
-                    svc => svc.LoadContent()
+                    svc => svc.Load()
                 )
                 .Returns(
                     () => { return mockEntries; }
@@ -52,7 +52,7 @@ namespace SafetyProgram.Configuration.UnitTests
             //Mock callback loading method on the service (will push entries through the callback).
             mockedService
                 .Setup(
-                    svc => svc.LoadContent(
+                    svc => svc.Load(
                         It.IsAny<Action<MockEntry>>()
                     )
                 )
@@ -71,7 +71,7 @@ namespace SafetyProgram.Configuration.UnitTests
                     () => { return mockEntries; }
                 );
             
-            return new NewRepository<MockEntry>(mockedService.Object);
+            return new Repository<MockEntry>(mockedService.Object);
         }
 
         [TestMethod]

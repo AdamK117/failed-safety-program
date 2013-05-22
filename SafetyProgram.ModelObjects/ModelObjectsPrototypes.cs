@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.ModelObjects
@@ -22,6 +18,11 @@ namespace SafetyProgram.ModelObjects
         public static IHazardModelObject HazardModelObject()
         {
             return new HazardModelObject("", "", "");
+        }
+
+        public static ICoshhChemicalObject CoshhChemicalObject(decimal amount, string units, IChemicalModelObject chemical)
+        {
+            return new CoshhChemicalObject(amount, units, chemical);
         }
     }
 }

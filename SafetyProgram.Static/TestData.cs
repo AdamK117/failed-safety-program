@@ -28,5 +28,7 @@ namespace SafetyProgram.Static
         public static readonly string COSHH_FILE = Path.Combine(TEST_FOLDER, "CoshhFile.xml");
 
         public static readonly string CHEMICAL_REPOSITORY = Path.Combine(TEST_FOLDER, "ChemicalRepository.xml");
+
+        public static readonly string MOCK_MULTIITEM_DATA = Path.Combine(TEST_FOLDER, "MockMultiItemData.xml");
     }
 }

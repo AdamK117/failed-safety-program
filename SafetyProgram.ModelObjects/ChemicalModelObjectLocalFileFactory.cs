@@ -8,7 +8,7 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.ModelObjects
 {
-    public class ChemicalModelObjectLocalFileFactory 
+    public sealed class ChemicalModelObjectLocalFileFactory 
         : ILocalFileFactory<IChemicalModelObject>
     {
         public static IChemicalModelObject StaticCreateNew()

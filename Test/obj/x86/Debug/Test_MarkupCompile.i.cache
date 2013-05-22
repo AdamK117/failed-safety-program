@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 V:\SafetyProgram\Test\App.xaml
-11151548125
+3365310485
 
-61129548209
+91173315035
 242030974541
-MainWindow.xaml;
+InnerViewExample.xaml;MainWindow.xaml;ViewExample.xaml;
 
 False
 

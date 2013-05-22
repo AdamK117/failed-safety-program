@@ -8,20 +8,21 @@ namespace SafetyProgram.Configuration
     internal sealed class AppConfiguration : IConfiguration
     {
         public AppConfiguration(bool documentLock, 
-            IEnumerable<IRepositoryInfo> repositories, 
-            IEnumerable<INewRepository<IChemicalModelObject>> chemicalRepository,
+            IEnumerable<IRepositoryInfo> repositoriesInfo, 
+            IEnumerable<IRepository<IChemicalModelObject>> chemicalRepository,
             string locale,
             string connectionType)
         {
             this.DocumentLock = documentLock;
 
-            if (repositories != null && chemicalRepository != null)
+            if (repositoriesInfo != null && chemicalRepository != null)
             {
-                this.repositories = repositories;
+                this.repositories = repositoriesInfo;
                 this.chemicalRepositories = chemicalRepository;
             }
             else throw new ArgumentNullException("The repositories passed to AppConfiguration must not be null.");
 
+            this.ConnectionType = connectionType;
             this.Locale = locale;
         }
 
@@ -40,8 +41,8 @@ namespace SafetyProgram.Configuration
             }
         }
 
-        private readonly IEnumerable<INewRepository<IChemicalModelObject>> chemicalRepositories;
-        public IEnumerable<INewRepository<IChemicalModelObject>> ChemicalRepositories
+        private readonly IEnumerable<IRepository<IChemicalModelObject>> chemicalRepositories;
+        public IEnumerable<IRepository<IChemicalModelObject>> ChemicalRepositories
         {
             get
             {

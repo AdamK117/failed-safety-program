@@ -17,4 +17,3 @@ V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.Properties.
 V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csproj.GenerateResource.Cache
 V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.pdb
-V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csprojResolveAssemblyReference.cache
