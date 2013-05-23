@@ -54,6 +54,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ap.cs" />
     <Compile Include="Commands\CloseICom.cs" />
     <Compile Include="Commands\ExitICom.cs" />
     <Compile Include="Commands\IWindowCommands.cs" />

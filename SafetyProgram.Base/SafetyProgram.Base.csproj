@@ -61,7 +61,8 @@
   <ItemGroup>
     <Compile Include="CommandInvoker.cs" />
     <Compile Include="ErrorValidation.cs" />
-    <Compile Include="GenericChangedEventArg.cs" />
+    <Compile Include="GenericPropertyChangedEventArg.cs" />
+    <Compile Include="IGenericPropertyChangedEventArg.cs" />
     <Compile Include="InteractiveLocalFileService.cs" />
     <Compile Include="Interfaces\Creational\Service\ICallbackService.cs" />
     <Compile Include="Interfaces\Creational\Service\IInputService.cs" />

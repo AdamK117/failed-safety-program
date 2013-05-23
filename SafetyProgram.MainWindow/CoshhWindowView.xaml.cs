@@ -8,12 +8,12 @@ namespace SafetyProgram.MainWindow
     /// </summary>
     internal sealed partial class CoshhWindowView : RibbonWindow
     {
-        private readonly ICoshhWindow viewModel;
+        private readonly IMainWindowViewModel viewModel;
 
         /// <summary>
         /// Makes an instance of the CoshhWindow object.
         /// </summary>
-        public CoshhWindowView(ICoshhWindow viewModel)
+        public CoshhWindowView(IMainWindowViewModel viewModel)
         {
             this.viewModel = viewModel;
 
