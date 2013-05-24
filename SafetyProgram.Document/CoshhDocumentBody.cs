@@ -6,7 +6,7 @@ using System.ComponentModel;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.Document.Body
+namespace SafetyProgram.Document
 {
     public sealed class CoshhDocumentBody : 
         INotifyPropertyChanged,

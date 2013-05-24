@@ -1,9 +1,8 @@
 ﻿<Fluent:RibbonWindow x:Class="SafetyProgram.MainWindow.CoshhWindowView"
-                     x:ClassModifier="internal"
         xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{Binding Content.Title}" Height="600" Width="800">
+                     Height="600" Width="800">
     
     <Grid x:Name="LayoutRoot">
         
@@ -17,10 +16,10 @@
         </Grid.RowDefinitions>
         
         <!-- Ribbon -->
-        <ContentControl Content="{Binding Ribbon.View}" Grid.Row="0" />
+        <ContentControl Content="{Binding RibbonView}" Grid.Row="0" />
         
         <!-- Document -->
-        <ContentControl Content="{Binding Content.View}" Grid.Row="1" />
+        <ContentControl Content="{Binding ContentView}" Grid.Row="1" />
 
     </Grid>
 </Fluent:RibbonWindow>

@@ -51,7 +51,8 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
         public static UserControl DefaultViewConstructor(IChemicalTable chemicalTable)
         {
-            return new ChemicalTableView(chemicalTable);
+            throw new NotImplementedException();
+            //return new ChemicalTableView(chemicalTable);
         }
     }
 }

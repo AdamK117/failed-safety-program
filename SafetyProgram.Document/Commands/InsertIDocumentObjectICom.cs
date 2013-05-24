@@ -6,24 +6,24 @@ namespace SafetyProgram.Document.Commands
 {
     public sealed class InsertIDocumentObjectICom : ICommand
     {
-        private readonly IDocument document;
+        private readonly IDocumentBody documentBody;
         private readonly ICommandInvoker commandInvoker;
         private readonly Func<IDocumentObject> iDocumentObjectCtor;
 
         public InsertIDocumentObjectICom(
-            IDocument document, 
+            IDocumentBody documentBody, 
             ICommandInvoker commandInvoker,
             Func<IDocumentObject> iDocumentObjectCtor
             )
         {
             if
                 (
-                document != null &&
+                documentBody != null &&
                 commandInvoker != null &&
                 iDocumentObjectCtor != null
                 )
             {
-                this.document = document;
+                this.documentBody = documentBody;
                 this.commandInvoker = commandInvoker;
                 this.iDocumentObjectCtor = iDocumentObjectCtor;
             }
@@ -50,7 +50,7 @@ namespace SafetyProgram.Document.Commands
             if (CanExecute(parameter))
             {
                 var invokedCommand = new InsertIDocumentObjectInvokedCom(
-                    document,
+                    documentBody,
                     iDocumentObjectCtor
                     );
                 commandInvoker.InvokeCommand(invokedCommand);

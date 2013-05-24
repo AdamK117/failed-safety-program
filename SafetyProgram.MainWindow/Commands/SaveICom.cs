@@ -9,24 +9,25 @@ namespace SafetyProgram.MainWindow.Commands
     /// <summary>
     /// ICommand for Saving the current document
     /// </summary>
-    internal sealed class SaveICom<T> : ICommand
+    internal sealed class SaveICom<TContent> : ICommand
     {
-        private readonly IWindow<T> window;
+        private readonly IHolder<TContent> contentHolder;
+        private readonly IHolder<IInputService<TContent>> serviceHolder;
 
-        /// <summary>
-        /// Construct a Save command which will save the CoshhWindow's document
-        /// </summary>
-        /// <param name="window">CoshhWindow which houses the CoshhDocument to be saved</param>
-        public SaveICom(IWindow<T> window)
+        public SaveICom(IHolder<TContent> contentHolder,
+            IHolder<IInputService<TContent>> serviceHolder)
         {
-            if (window != null)
+            if (contentHolder == null ||
+                serviceHolder == null)
+                throw new ArgumentNullException();
+            else
             {
-                this.window = window;
+                this.contentHolder = contentHolder;
+                this.serviceHolder = serviceHolder;
+
+                serviceHolder.ContentChanged += (sender, newService) => CanExecuteChanged.Raise(this);
+                contentHolder.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
             }
-            else throw new ArgumentNullException();
-            
-            window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
-            window.ContentChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace SafetyProgram.MainWindow.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return (window.Content != null && window.Service.CanSave(window.Content)) ? true : false;
+            return (contentHolder.Content != null && serviceHolder.Content.CanSave(contentHolder.Content)) ? true : false;
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace SafetyProgram.MainWindow.Commands
             {
                 try
                 {
-                    window.Service.Save(window.Content);
+                    serviceHolder.Content.Save(contentHolder.Content);
                 }
                 catch (UnauthorizedAccessException)
                 {

@@ -9,11 +9,11 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
     /// <summary>
     /// Interaction logic for ChemicalTableView.xaml
     /// </summary>
-    internal sealed partial class ChemicalTableView : UserControl
+    public sealed partial class ChemicalTableView : UserControl
     {
-        private readonly IChemicalTable viewModel;
+        private readonly IChemicalTableViewModel viewModel;
 
-        public ChemicalTableView(IChemicalTable viewModel)
+        public ChemicalTableView(IChemicalTableViewModel viewModel)
         {
             this.viewModel = viewModel;
             DataContext = viewModel;
@@ -28,7 +28,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
             InitializeComponent();
 
-            this.InputBindings.AddRange(viewModel.Commands.Hotkeys);
+            this.InputBindings.AddRange(viewModel.Hotkeys);
         }
 
         #region Selection logic

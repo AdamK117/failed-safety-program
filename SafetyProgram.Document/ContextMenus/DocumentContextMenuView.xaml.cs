@@ -5,9 +5,9 @@ namespace SafetyProgram.Document.ContextMenus
     /// <summary>
     /// Interaction logic for DocumentContextMenuView.xaml
     /// </summary>
-    internal sealed partial class DocumentContextMenuView : ContextMenu
+    public sealed partial class DocumentContextMenuView : ContextMenu
     {
-        public DocumentContextMenuView(IDocumentContextMenu viewModel)
+        public DocumentContextMenuView(IDocumentContextMenuViewModel viewModel)
         {
             this.DataContext = viewModel;
             InitializeComponent();

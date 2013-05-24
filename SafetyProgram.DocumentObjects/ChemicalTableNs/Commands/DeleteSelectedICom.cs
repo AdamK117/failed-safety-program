@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Forms;
 using System.Windows.Input;
 using SafetyProgram.Base;
@@ -6,21 +8,24 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
-    internal sealed class DeleteSelectedICom : ICommand
+    internal sealed class DeleteSelectedICom<T> : ICommand
     {
-        private readonly IChemicalTable table;
+        private readonly ObservableCollection<T> selection;
+        private readonly ICollection<T> items;
         private readonly ICommandInvoker commandInvoker;
 
-        public DeleteSelectedICom(IChemicalTable table, ICommandInvoker commandInvoker) 
+        public DeleteSelectedICom(ObservableCollection<T> selection, 
+            ICollection<T> items, 
+            ICommandInvoker commandInvoker) 
         {
-            if (table != null && commandInvoker != null)
+            if (Helpers.NullCheck(selection, items, commandInvoker))
             {
-                this.table = table;
+                this.selection = selection;
+                this.items = items;
                 this.commandInvoker = commandInvoker;
-            }
-            else throw new ArgumentNullException();
 
-            table.SelectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);  
+                this.selection.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this); 
+            }                     
         }
 
         /// <summary>
@@ -30,7 +35,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return (table.SelectedChemicals.Count) == 0 ? false : true;
+            return (selection.Count == 0) ? false : true;
         }
 
         /// <summary>
@@ -46,7 +51,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
                 switch (userPrompt)
                 {
                     case DialogResult.Yes:
-                        var invokedCommand = new DeleteSelectedInvokedCom(table);
+                        var invokedCommand = new DeleteSelectedInvokedCom<T>(selection, items);
                         commandInvoker.InvokeCommand(invokedCommand);
                         break;
 
@@ -56,6 +61,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
             }
         }
 
-        public event System.EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged;
     }
 }

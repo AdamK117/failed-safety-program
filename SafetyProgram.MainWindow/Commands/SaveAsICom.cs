@@ -8,33 +8,29 @@ namespace SafetyProgram.MainWindow.Commands
 {
     internal sealed class SaveAsICom<T> : ICommand
     {
-        private readonly IWindow<T> window;
+        private readonly IHolder<T> contentHolder;
+        private readonly IHolder<IInputService<T>> serviceHolder;
 
-        /// <summary>
-        /// Constructs a new ICommand that allows 'SaveAs' of the CoshhWindow's document using the CoshhWindow's service.
-        /// </summary>
-        /// <param name="window">Window which houses the document to be 'SavedAs'</param>
-        public SaveAsICom(IWindow<T> window)
+        public SaveAsICom(IHolder<T> contentHolder,
+            IHolder<IInputService<T>> serviceHolder)
         {
-            if (window != null)
+            if (contentHolder == null ||
+                serviceHolder == null)
+                throw new ArgumentNullException();
+            else
             {
-                this.window = window;
-            }
-            else throw new ArgumentNullException();            
+                this.contentHolder = contentHolder;
+                this.serviceHolder = serviceHolder;
 
-            window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
-            window.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
+                this.contentHolder.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
+                this.serviceHolder.ContentChanged += (sender, newService) => CanExecuteChanged.Raise(this);
+            }
         }
 
-        /// <summary>
-        /// Can execute if there is a CoshhDocument open to save and the CoshhWindow's service allows saving as.
-        /// </summary>
-        /// <param name="parameter">Unused paramater</param>
-        /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            if (window.Content != null &&
-                window.Service.CanSaveAs(window.Content))
+            if (contentHolder.Content != null &&
+                serviceHolder.Content.CanSaveAs(contentHolder.Content))
             {
                 return true;
             }
@@ -52,7 +48,7 @@ namespace SafetyProgram.MainWindow.Commands
             {
                 try
                 {
-                    window.Service.SaveAs(window.Content);
+                    serviceHolder.Content.SaveAs(contentHolder.Content);
                 }
                 catch (UnauthorizedAccessException)
                 {

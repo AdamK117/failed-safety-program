@@ -77,20 +77,21 @@
     <Compile Include="Commands\DocumentICommands.cs" />
     <Compile Include="Commands\IDocumentICommands.cs" />
     <Compile Include="Commands\InsertIDocumentObjectICom.cs" />
-    <Compile Include="ContextMenus\DocumentContextMenu.cs" />
+    <Compile Include="Commands\InsertIDocumentObjectInvokedCom.cs" />
     <Compile Include="ContextMenus\DocumentContextMenuView.xaml.cs">
       <DependentUpon>DocumentContextMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ContextMenus\IDocumentContextMenu.cs" />
+    <Compile Include="ContextMenus\DocumentContextMenuViewModel.cs" />
+    <Compile Include="ContextMenus\IDocumentContextMenuViewModel.cs" />
     <Compile Include="CoshhDocument.cs" />
     <Compile Include="CoshhDocumentBody.cs" />
-    <Compile Include="CoshhDocumentDefault.cs" />
     <Compile Include="CoshhDocumentLocalFileFactory.cs" />
     <Compile Include="CoshhDocumentView.xaml.cs">
       <DependentUpon>CoshhDocumentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CoshhDocumentViewModel.cs" />
     <Compile Include="ICoshhDocument.cs" />
-    <Compile Include="Commands\InsertIDocumentObjectInvokedCom.cs" />
+    <Compile Include="ICoshhDocumentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -104,11 +105,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Ribbons\CoshhDocumentRibbonTab.cs" />
     <Compile Include="Ribbons\CoshhDocumentRibbonTabView.xaml.cs">
       <DependentUpon>CoshhDocumentRibbonTabView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ribbons\ICoshhDocumentRibbonTab.cs" />
+    <Compile Include="Ribbons\CoshhDocumentRibbonTabViewModel.cs" />
+    <Compile Include="Ribbons\ICoshhDocumentRibbonTabViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -119,22 +120,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="ContextMenus\DocumentContextMenuView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Ribbons\CoshhDocumentRibbonTabView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="CoshhDocumentView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
@@ -150,7 +135,20 @@
       <Name>SafetyProgram.Static</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Page Include="ContextMenus\DocumentContextMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CoshhDocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ribbons\CoshhDocumentRibbonTabView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

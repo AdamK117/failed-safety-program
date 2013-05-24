@@ -1,39 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
-    internal sealed class DeleteSelectedInvokedCom : IInvokedCommand
+    internal sealed class DeleteSelectedInvokedCom<T> : IInvokedCommand
     {
-        private readonly IChemicalTable table;
-        private IEnumerable<ICoshhChemicalObject> deletedChemicals;
+        private readonly IEnumerable<T> selection;
+        private readonly ICollection<T> items;
 
-        public DeleteSelectedInvokedCom(IChemicalTable table)
+        private IEnumerable<T> deletedItems;
+
+        public DeleteSelectedInvokedCom(IEnumerable<T> selectedChemicals,
+            ICollection<T> chemicals)
         {
-            if (table != null)
+            if (selectedChemicals == null ||
+                chemicals == null)
+                throw new ArgumentNullException();
+            else
             {
-                this.table = table;
-            }
-            else throw new ArgumentNullException();           
+                this.selection = selectedChemicals;
+                this.items = chemicals;
+            }      
         }
 
         public void Execute()
         {
-            deletedChemicals = new List<ICoshhChemicalObject>(table.SelectedChemicals);
+            deletedItems = new List<T>(selection);
 
-            foreach (ICoshhChemicalObject chemical in deletedChemicals)
+            foreach (T item in deletedItems)
             {
-                table.Chemicals.Remove(chemical);
+                items.Remove(item);
             }
         }
 
         public void UnExecute()
         {
-            foreach (ICoshhChemicalObject chemical in deletedChemicals)
+            foreach (T item in deletedItems)
             {
-                table.Chemicals.Add(chemical);
+                items.Add(item);
             }
         }
     }

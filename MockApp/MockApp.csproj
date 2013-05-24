@@ -58,69 +58,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="DocumentObject\DocumentObjectView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Document\DocumentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Document\ContextMenu\DocumentContextMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow\MainWindowView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Document\IDoccs.cs" />
-    <Compile Include="MainWindow\Commands\IMainWindowCommands.cs" />
-    <Compile Include="MainWindow\Commands\MainWindowCommands.cs" />
-    <Compile Include="MainWindow\Commands\NewICom.cs" />
-    <Compile Include="DocumentObject\DocumentObjectView.xaml.cs">
-      <DependentUpon>DocumentObjectView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Document\MainDocument.cs" />
-    <Compile Include="Document\DocumentViewModel.cs" />
-    <Compile Include="Document\IDocumentViewModel.cs" />
-    <Compile Include="Document\ContextMenu\DocumentContextMenu.xaml.cs">
-      <DependentUpon>DocumentContextMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Holder.cs" />
-    <Compile Include="IEditableHolderT.cs" />
-    <Compile Include="IHolder.cs" />
-    <Compile Include="IHolderT.cs" />
-    <Compile Include="MainWindow\Ribbon\IMainRibbonViewModel.cs" />
-    <Compile Include="MainWindow\IMainWindow.cs" />
-    <Compile Include="MainWindow\IMainWindowViewModel.cs" />
-    <Compile Include="Document\DocumentView.xaml.cs">
-      <DependentUpon>DocumentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow\Ribbon\MainRibbonViewModel.cs" />
-    <Compile Include="MainWindow\MainWindowView.xaml.cs">
-      <DependentUpon>MainWindowView.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="MainWindow\Ribbon\MainWindowRibbon.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="MainWindow\Ribbon\MainWindowRibbon.xaml.cs">
-      <DependentUpon>MainWindowRibbon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow\MainWindowViewModel.cs" />
-    <Compile Include="MockService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

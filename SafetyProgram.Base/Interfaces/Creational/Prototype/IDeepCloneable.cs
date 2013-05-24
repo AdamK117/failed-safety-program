@@ -1,6 +1,6 @@
 ﻿namespace SafetyProgram.Base.Interfaces
 {
-    public interface IDeepCloneable<T>
+    public interface IDeepCloneable<out T>
     {
         T DeepClone();
     }

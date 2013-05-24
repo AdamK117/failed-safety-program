@@ -1,26 +1,26 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
+using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class PasteChemicalsICom : ICommand
     {
-        private readonly IChemicalTable table;
+        private readonly ICollection<ICoshhChemicalObject> target;
         private readonly ICommandInvoker commandInvoker;
 
         /// <summary>
         /// Creates a command that allows pasting of CoshhChemicalModel's into a ChemicalTable
         /// </summary>
         /// <param name="table"></param>
-        public PasteChemicalsICom(IChemicalTable table, ICommandInvoker commandInvoker)
+        public PasteChemicalsICom(ICollection<ICoshhChemicalObject> target, ICommandInvoker commandInvoker)
         {
-            if (table != null && commandInvoker != null)
+            if (Helpers.NullCheck(target, commandInvoker))
             {
-                this.table = table;
+                this.target = target;
                 this.commandInvoker = commandInvoker;
             }
-            else throw new ArgumentNullException();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         {
             if (CanExecute(parameter))
             {
-                var command = new PasteChemicalsInvokedCom(table);
+                var command = new PasteChemicalsInvokedCom(target);
                 commandInvoker.InvokeCommand(command);
             }     
         }

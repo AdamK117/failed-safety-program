@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class PasteChemicalsInvokedCom : IInvokedCommand
     {
-        private readonly IChemicalTable table;
+        private readonly ICollection<ICoshhChemicalObject> targetTable;
         private readonly ICollection<ICoshhChemicalObject> pastedChemicals;
 
-        public PasteChemicalsInvokedCom(IChemicalTable table)
+        public PasteChemicalsInvokedCom(ICollection<ICoshhChemicalObject> targetTable)
         {
-            if (table != null)
+            if (targetTable != null)
             {
-                this.table = table;
+                this.targetTable = targetTable;
             }
             else throw new ArgumentNullException();
 
@@ -32,7 +27,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 
             foreach (ICoshhChemicalObject chemical in pastedChemicals)
             {
-                table.Chemicals.Add(chemical);
+                targetTable.Add(chemical);
             }
         }
 
@@ -40,7 +35,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         {
             foreach (ICoshhChemicalObject chemical in pastedChemicals)
             {
-                table.Chemicals.Remove(chemical);
+                targetTable.Remove(chemical);
             }
         }
     }

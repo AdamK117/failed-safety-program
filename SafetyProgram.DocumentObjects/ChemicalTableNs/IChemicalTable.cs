@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects.ChemicalTableNs.Commands;
-using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {

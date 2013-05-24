@@ -7,21 +7,21 @@ namespace SafetyProgram.Document.Commands
 {
     public sealed class DeleteIDocObjectICom : ICommand
     {
-        private readonly IDocument document;
+        private readonly IDocumentBody body;
         private readonly ICommandInvoker commandInvoker;
 
         /// <summary>
         /// Construct an ICommand that deletes the currently selected item in the CoshhDocument.
         /// </summary>
         /// <param name="document">CoshhDocument from which selected items will be deleted.</param>
-        public DeleteIDocObjectICom(IDocument document, ICommandInvoker commandInvoker)
+        public DeleteIDocObjectICom(IDocumentBody document, ICommandInvoker commandInvoker)
         {
             if (document != null && commandInvoker != null)
             {
                 this.commandInvoker = commandInvoker;
-                this.document = document;
+                this.body = document;
                 //Monitor changes in the CoshhDocument's selection (can't delete if there isn't a selection).
-                document.Body.SelectionChanged += (object sender, GenericPropertyChangedEventArg<IDocumentObject> docObject) => CanExecuteChanged.Raise(this);
+                document.SelectionChanged += (object sender, GenericPropertyChangedEventArg<IDocumentObject> docObject) => CanExecuteChanged.Raise(this);
             }
             else throw new ArgumentNullException();
         }    
@@ -33,7 +33,7 @@ namespace SafetyProgram.Document.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return (document.Body.Selection == null) ? false : true;
+            return (body.Selection == null) ? false : true;
         }
 
 
@@ -42,7 +42,7 @@ namespace SafetyProgram.Document.Commands
             if (CanExecute(parameter))
             {
                 var invokedCommand = new DeleteIDocObjectInvokedCom(
-                    document,
+                    body,
                     commandInvoker
                     );
                 commandInvoker.InvokeCommand(invokedCommand);

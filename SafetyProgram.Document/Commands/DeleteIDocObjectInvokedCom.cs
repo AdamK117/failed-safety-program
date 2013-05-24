@@ -1,26 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Document.Commands
 {
     internal sealed class DeleteIDocObjectInvokedCom : IInvokedCommand
     {
-        private readonly IDocument document;
+        private readonly IDocumentBody body;
         private readonly ICommandInvoker commandInvoker;
+
         private IDocumentObject deletedItem;
         private int deletedItemIndex;
 
         public DeleteIDocObjectInvokedCom(
-            IDocument document,
+            IDocumentBody document,
             ICommandInvoker commandInvoker
             )
         {
             if (document != null && commandInvoker != null)
             {
-                this.document = document;
+                this.body = document;
                 this.commandInvoker = commandInvoker;
             }
             else throw new ArgumentNullException();
@@ -28,20 +26,16 @@ namespace SafetyProgram.Document.Commands
 
         public void Execute()
         {
-            var documentBody = document.Body;
+            deletedItem = body.Selection;
+            deletedItemIndex = body.Items.IndexOf(deletedItem);
 
-            deletedItem = documentBody.Selection;
-            deletedItemIndex = documentBody.Items.IndexOf(deletedItem);
-
-            documentBody.Items.Remove(deletedItem);
-            documentBody.DeSelectAll();
+            body.Items.Remove(deletedItem);
+            body.DeSelectAll();
         }
 
         public void UnExecute()
         {
-            var documentBody = document.Body;
-
-            documentBody.Items.Insert(deletedItemIndex, deletedItem);
+            body.Items.Insert(deletedItemIndex, deletedItem);
         }
     }
 }

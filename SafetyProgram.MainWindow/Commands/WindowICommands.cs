@@ -1,35 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.MainWindow.Commands
 {
-    public sealed class WindowICommands<T> : IWindowCommands
+    public sealed class WindowICommands<TContent> : IWindowCommands
     {
         /// <summary>
         /// Constructs a new instance of the commands (iCommands, Hotkeys, generic commands) available to a CoshhWindow.
         /// </summary>
         /// <param name="window">Instance of a CoshhWindow parent</param>
-        public WindowICommands(IWindow<T> window, 
-            ICommandInvoker commandInvoker)
+        public WindowICommands(Window window,
+            ICommandInvoker commandInvoker,
+            IEditableHolder<TContent> contentHolder,
+            IHolder<IIOService<TContent>> serviceHolder)
         {
-            if (window != null && commandInvoker != null)
+            if (window == null ||
+                commandInvoker == null ||
+                contentHolder == null ||
+                serviceHolder == null)
+                throw new ArgumentNullException();
+            else
             {
-                //Instantiate CoshhWindow commands
-                Close = new CloseICom<T>(window);
-                New = new NewICom<T>(window);
-                Open = new OpenICom<T>(window);
-                Save = new SaveICom<T>(window);
-                SaveAs = new SaveAsICom<T>(window);
+                Close = new CloseICom<TContent>(contentHolder, serviceHolder);
+                New = new NewICom<TContent>(contentHolder, serviceHolder);
+                Open = new OpenICom<TContent>(contentHolder, serviceHolder);
+                Save = new SaveICom<TContent>(contentHolder, serviceHolder);
+                SaveAs = new SaveAsICom<TContent>(contentHolder, serviceHolder);
                 Exit = new ExitICom(window);
                 Undo = new UndoICom(commandInvoker);
                 Redo = new RedoICom(commandInvoker);
 
-                //Get a list of hotkeys for these CoshhWindow commands.
                 Hotkeys = setHotKeys();
-            }
-            else throw new ArgumentNullException();            
+            }           
         }
 
         private List<InputBinding> setHotKeys()

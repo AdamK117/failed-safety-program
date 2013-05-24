@@ -1,18 +1,25 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class CopySelectedICom : ICommand
     {
-        private readonly IChemicalTable table;
+        private readonly ObservableCollection<ICoshhChemicalObject> selectedChemicals;
 
-        public CopySelectedICom(IChemicalTable table)
+        public CopySelectedICom(ObservableCollection<ICoshhChemicalObject> selectedChemicals)
         {
-            this.table = table;
-            table.SelectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);
+            if (selectedChemicals == null) throw new ArgumentNullException();
+            else
+            {
+                this.selectedChemicals = selectedChemicals;
+                this.selectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);
+            }           
         }
 
         /// <summary>
@@ -22,7 +29,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return (table.SelectedChemicals.Count) == 0 ? false : true;
+            return (selectedChemicals.Count) == 0 ? false : true;
         }
 
         /// <summary>
@@ -35,7 +42,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
             {
                 try
                 {
-                    table.SelectedChemicals.TryCopy();
+                    selectedChemicals.TryCopy();
                 }
                 catch (COMException)
                 {

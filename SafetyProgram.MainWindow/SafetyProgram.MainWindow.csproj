@@ -54,7 +54,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ap.cs" />
     <Compile Include="Commands\CloseICom.cs" />
     <Compile Include="Commands\ExitICom.cs" />
     <Compile Include="Commands\IWindowCommands.cs" />
@@ -65,14 +64,11 @@
     <Compile Include="Commands\SaveICom.cs" />
     <Compile Include="Commands\UndoICom.cs" />
     <Compile Include="Commands\WindowICommands.cs" />
-    <Compile Include="CoshhWindow.cs" />
-    <Compile Include="CoshhWindowFactory.cs" />
     <Compile Include="CoshhWindowView.xaml.cs">
       <DependentUpon>CoshhWindowView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ICoshhWindow.cs" />
-    <Compile Include="ICoshhWindowT.cs" />
-    <Compile Include="MainWindowModule.cs" />
+    <Compile Include="CoshhWindowViewModel.cs" />
+    <Compile Include="ICoshhWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,11 +82,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Ribbons\CoshhRibbon.cs" />
     <Compile Include="Ribbons\CoshhRibbonView.xaml.cs">
       <DependentUpon>CoshhRibbonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ribbons\ICoshhRibbon.cs" />
+    <Compile Include="Ribbons\CoshhRibbonViewModel.cs" />
+    <Compile Include="Ribbons\ICoshhRibbonViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -116,13 +112,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Ribbons\CoshhRibbonView.xaml">
+    <Page Include="CoshhWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="CoshhWindowView.xaml">
+    <Page Include="Ribbons\CoshhRibbonView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

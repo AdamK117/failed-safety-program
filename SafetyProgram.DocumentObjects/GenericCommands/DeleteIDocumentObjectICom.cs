@@ -6,9 +6,9 @@ namespace SafetyProgram.DocumentObjects.GenericCommands
 {
     internal sealed class DeleteIDocumentObjectICom : ICommand
     {
-        private readonly IDocumentObject data;
+        private readonly IInteractable data;
 
-        public DeleteIDocumentObjectICom(IDocumentObject docObject)
+        public DeleteIDocumentObjectICom(IInteractable docObject)
         {
             this.data = docObject;
         }

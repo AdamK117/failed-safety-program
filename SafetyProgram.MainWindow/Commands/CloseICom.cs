@@ -7,33 +7,29 @@ namespace SafetyProgram.MainWindow.Commands
 {
     internal sealed class CloseICom<TContent> : ICommand
     {
-        private readonly IWindow<TContent> window;
+        private readonly IEditableHolder<TContent> contentHolder;
+        private readonly IHolder<IInputService<TContent>> serviceHolder;
 
-        public CloseICom(IWindow<TContent> window)
+        public CloseICom(IEditableHolder<TContent> contentHolder,
+            IHolder<IInputService<TContent>> serviceHolder)
         {
-            if (window != null)
+            if (contentHolder == null ||
+                serviceHolder == null)
+                throw new ArgumentNullException();
+            else
             {
-                this.window = window;
-                this.window.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
-            }
-            else throw new ArgumentNullException();            
+                this.contentHolder = contentHolder;
+                this.serviceHolder = serviceHolder;
+
+                this.contentHolder.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
+            }           
         }
 
-        /// <summary>
-        /// May only close a document if there is one actually open
-        /// </summary>
-        /// <param name="parameter">Unused paramater</param>
-        /// <returns></returns>
         public bool CanExecute(object parameter)
-        {            
-            return (window.Content == null) ? false : true;
+        {
+            return (contentHolder.Content == null) ? false : true;
         }
 
-        /// <summary>
-        /// Closes the current document.
-        /// </summary>
-        /// <param name="parameter">Unused paramater</param>
-        /// <exception cref="NotSupportedException">Thrown if Execute is called but CanExecute == false</exception>
         public void Execute(object parameter)
         {
             if (CanExecute(parameter))
@@ -43,8 +39,8 @@ namespace SafetyProgram.MainWindow.Commands
                 //  The service fails at closing the document (user presses cancel, data is invalid, etc.).
                 try
                 {
-                    window.Service.Disconnect();
-                    window.Content = default(TContent);
+                    serviceHolder.Content.Disconnect();
+                    contentHolder.Content = default(TContent);
                 }
                 catch (ArgumentException)
                 {

@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
-using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.MainWindow.Commands
 {
     internal sealed class ExitICom : ICommand
     {
-        private readonly IWindow window;
+        private readonly Window window;
 
-        public ExitICom(IWindow window)
+        public ExitICom(Window window)
         {
             if (window != null)
             {
@@ -24,7 +24,7 @@ namespace SafetyProgram.MainWindow.Commands
 
         public void Execute(object parameter)
         {
-            window.View.Close();
+            window.Close();
         }
 
         public event EventHandler CanExecuteChanged;

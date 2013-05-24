@@ -59,10 +59,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChildHolder.cs" />
     <Compile Include="CommandInvoker.cs" />
     <Compile Include="ErrorValidation.cs" />
     <Compile Include="GenericPropertyChangedEventArg.cs" />
+    <Compile Include="Holder.cs" />
+    <Compile Include="Interfaces\Structural\IEditableHolder.cs" />
     <Compile Include="IGenericPropertyChangedEventArg.cs" />
+    <Compile Include="Interfaces\Structural\IHolder.cs" />
     <Compile Include="InteractiveLocalFileService.cs" />
     <Compile Include="Interfaces\Creational\Service\ICallbackService.cs" />
     <Compile Include="Interfaces\Creational\Service\IInputService.cs" />
@@ -103,6 +107,7 @@
     <Compile Include="Interfaces\Structural\Window\IWindow.cs" />
     <Compile Include="Interfaces\Structural\Window\IWindowT.cs" />
     <Compile Include="LocalFileServiceMultiItem.cs" />
+    <Compile Include="NullCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

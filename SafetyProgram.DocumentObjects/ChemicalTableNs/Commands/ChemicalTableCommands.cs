@@ -14,11 +14,11 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         {
             if (table != null && commandInvoker != null)
             {
-                DeleteSelected = new DeleteSelectedICom(table, commandInvoker);
-                InsertChemical = new InsertChemicalICom(table, commandInvoker);
+                DeleteSelected = new DeleteSelectedICom<ICoshhChemicalObject>(table.SelectedChemicals, table.Chemicals, commandInvoker);
+                InsertChemical = new InsertChemicalICom(table.Chemicals, commandInvoker);
                 DeleteTable = new DeleteIDocumentObjectICom(table);
-                CopySelected = new CopySelectedICom(table);
-                PasteChemicals = new PasteChemicalsICom(table, commandInvoker);
+                CopySelected = new CopySelectedICom(table.SelectedChemicals);
+                PasteChemicals = new PasteChemicalsICom(table.SelectedChemicals, commandInvoker);
 
                 Hotkeys = setHotkeys();
             }            

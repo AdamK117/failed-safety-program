@@ -1,61 +1,54 @@
 ﻿using System;
-using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Base;
 using System.Windows.Input;
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.MainWindow.Commands
 {
     internal sealed class NewICom<TContent> : ICommand
     {
-        private readonly IWindow<TContent> window;
+        private readonly IEditableHolder<TContent> contentHolder;
+        private readonly IHolder<IIOService<TContent>> serviceHolder;
 
-        /// <summary>
-        /// Constructs an instance of the "New Document" command.
-        /// </summary>
-        /// <param name="window">Window in which the new document will be added when called.</param>
-        public NewICom(IWindow<TContent> window)
+        public NewICom(IEditableHolder<TContent> contentHolder,
+            IHolder<IIOService<TContent>> serviceHolder)
         {
-            if (window != null)
+            if (contentHolder == null ||
+                serviceHolder == null)
+                throw new ArgumentNullException();
+            else
             {
-                this.window = window;
-            }
-            else throw new ArgumentNullException();
+                this.contentHolder = contentHolder;
+                this.serviceHolder = serviceHolder;
 
-            this.window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
+                this.contentHolder.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
+                this.serviceHolder.ContentChanged += (sender, newService) => CanExecuteChanged.Raise(this);
+            }
         }
 
-        /// <summary>
-        /// Can only execute if the current service allows the creation of new documents
-        /// </summary>
-        /// <param name="parameter">Unused paramater</param>
-        /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return window.Service.CanNew() ? true : false;
+            return (serviceHolder.Content.CanNew()) ? true : false;
         }
 
-        /// <summary>
-        /// Attempts to create a new CoshhDocument.
-        /// </summary>
-        /// <param name="parameter">Unused paramater</param>
-        /// <exception cref="NotSupportedException">Thrown if Execute is called when CanExecute == false</exception>
         public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
-                if (window.Content != null)
+                if (contentHolder.Content != null)
                 {
                     try
                     {
-                        window.Service.Disconnect();
-                        window.Content = default(TContent);
+                        serviceHolder.Content.Disconnect();
+                        contentHolder.Content = default(TContent);
                     }
                     catch(ArgumentException)
                     {
                         throw;
                     }                    
                 }
-                window.Content = window.Service.New();
+
+                contentHolder.Content = serviceHolder.Content.New();
             }
             else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)");
         }

@@ -1,14 +1,15 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using Fluent;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Document.Commands;
 
 namespace SafetyProgram.Document
 {
-    public interface ICoshhDocument :
-        INotifyPropertyChanged,
-        IDocument
+    public interface ICoshhDocument
     {
-        IConfiguration AppConfiguration { get; }
-        IDocumentICommands Commands { get; }
+        Control View { get; }
+        IDocumentBody Body { get; }
+        IFormat Format { get; }
+        ObservableCollection<RibbonTabItem> RibbonTabs { get; }
     }
 }

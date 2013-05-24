@@ -8,23 +8,25 @@ namespace SafetyProgram.Document.Commands
 {
     internal sealed class DocumentICommands : IDocumentICommands
     {
-        public DocumentICommands(ICoshhDocument document, ICommandInvoker commandInvoker)
+        public DocumentICommands(IDocumentBody documentBody, 
+            IConfiguration appConfiguration,
+            ICommandInvoker commandInvoker)
         {
-            if (
-                document != null &&
-                commandInvoker != null
-                )
+            if (documentBody == null ||
+                appConfiguration == null ||
+                commandInvoker == null)
+                throw new ArgumentNullException();
+            else
             {
                 InsertChemicalTable = new InsertIDocumentObjectICom(
-                    document,
+                    documentBody,
                     commandInvoker,
-                    () => DefaultDocumentObjects.ChemicalTable(document.AppConfiguration, commandInvoker)
+                    () => DefaultDocumentObjects.ChemicalTable(appConfiguration, commandInvoker)
                     );
-                DeleteIDocObject = new DeleteIDocObjectICom(document, commandInvoker);
+                DeleteIDocObject = new DeleteIDocObjectICom(documentBody, commandInvoker);
 
                 Hotkeys = setHotkeys();
-            }
-            else throw new ArgumentNullException();            
+            }         
         }
 
         private List<InputBinding> setHotkeys()

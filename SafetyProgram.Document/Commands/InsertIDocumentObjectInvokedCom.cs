@@ -5,18 +5,18 @@ namespace SafetyProgram.Document.Commands
 {
     internal sealed class InsertIDocumentObjectInvokedCom : IInvokedCommand
     {
-        private readonly IDocument data;
+        private readonly IDocumentBody body;
         private readonly Func<IDocumentObject> iDocumentObjectCtor;
         private IDocumentObject addedDocumentObject;
 
         public InsertIDocumentObjectInvokedCom(
-            IDocument document,
+            IDocumentBody document,
             Func<IDocumentObject> documentObjectConstructor
             )
         {
             if (document != null && documentObjectConstructor != null)
             {
-                this.data = document;
+                this.body = document;
                 this.iDocumentObjectCtor = documentObjectConstructor;
             }
             else throw new ArgumentNullException();            
@@ -27,13 +27,13 @@ namespace SafetyProgram.Document.Commands
             if (addedDocumentObject == null)
             {
                 addedDocumentObject = iDocumentObjectCtor();
-            }            
-            data.Body.Items.Add(addedDocumentObject);
+            }  
+            body.Items.Add(addedDocumentObject);
         }
 
         public void UnExecute()
         {
-            data.Body.Items.Remove(addedDocumentObject);
+            body.Items.Remove(addedDocumentObject);
         }
     }
 }

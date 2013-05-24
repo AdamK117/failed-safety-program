@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using Fluent;
+using SafetyProgram.Base;
+using SafetyProgram.Base.DocumentFormats;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Document.Body;
+using SafetyProgram.Document.Commands;
+using SafetyProgram.Document.ContextMenus;
+using SafetyProgram.Document.Ribbons;
 
 namespace SafetyProgram.Document
 {
@@ -34,22 +40,56 @@ namespace SafetyProgram.Document
             else throw new ArgumentNullException();
         }
 
-        public static ICoshhDocument StaticCreateNew(IConfiguration appConfiguration, ICommandInvoker commandInvoker)
+        public const string XML_IDENTIFIER = "coshhdocument";
+        public string XmlIdentifier
         {
-            return CoshhDocumentDefault.DefaultCoshhDocument(appConfiguration, commandInvoker);
+            get { return XML_IDENTIFIER; }
         }
 
         public ICoshhDocument CreateNew()
         {
-            return StaticCreateNew(appConfiguration, commandInvoker);
+            var documentBody = new CoshhDocumentBody();
+
+            var documentCommands = new DocumentICommands(
+                documentBody,
+                appConfiguration,
+                commandInvoker
+            );
+
+            var documentFormat = new Holder<IFormat>(
+                new A4Format()
+            );
+
+            var documentRibbonTabs = new ObservableCollection<RibbonTabItem>()
+            {
+                new CoshhDocumentRibbonTabView(
+                    new CoshhDocumentRibbonTabViewModel(
+                        documentCommands
+                    )
+                )
+            };
+
+            //Construct the new CoshhDocument
+            return new CoshhDocument(
+                new CoshhDocumentView(
+                    new CoshhDocumentViewModel(
+                        documentFormat,
+                        new DocumentContextMenuView(
+                            new DocumentContextMenuViewModel(
+                                documentCommands
+                            )
+                        ),
+                        documentBody,
+                        documentCommands.Hotkeys
+                    )
+                ),
+                documentBody,
+                documentFormat,
+                documentRibbonTabs
+            );
         }
 
-        public static ICoshhDocument StaticLoad(
-            XElement data, 
-            ILocalFileFactory<IDocumentObject> docObjFactory, 
-            IConfiguration appConfiguration, 
-            ICommandInvoker commandInvoker
-            )
+        public ICoshhDocument Load(XElement data)
         {
             string loadedTitle;
             IFormat loadedFormat;
@@ -67,12 +107,12 @@ namespace SafetyProgram.Document
                     else
                     {
                         Debug.Write("WARNING: When loading a CoshhDocument a title could not be found, set to default");
-                        loadedTitle = CoshhDocumentDefault.DefaultTitle;
+                        loadedTitle = "SomeDefaultTitle";
                     }
                 }
 
                 //Optional: Get the format of the document
-                loadedFormat = CoshhDocumentDefault.DefaultFormat();
+                loadedFormat = new A4Format();
 
                 //Required: Get the body of the document
                 loadedBody = new CoshhDocumentBody(
@@ -82,43 +122,48 @@ namespace SafetyProgram.Document
             }
             else throw new InvalidDataException("No CoshhDocument root could be found (<coshh></coshh>)");
 
-            return new CoshhDocument(
-                appConfiguration, 
-                loadedTitle, 
-                loadedFormat, 
+            var documentCommands = new DocumentICommands(
                 loadedBody,
-                CoshhDocumentDefault.CommandsConstructor(commandInvoker),
-                CoshhDocumentDefault.ContextMenuConstructor,
-                CoshhDocumentDefault.RibbonTabsConstructor,
-                CoshhDocumentDefault.ViewConstructor
-                );
-        }
-
-        public ICoshhDocument Load(XElement data)
-        {
-            return StaticLoad(data, docObjFactory, appConfiguration, commandInvoker);
-        }
-
-        public static XElement StaticStore(ICoshhDocument item, ILocalFileFactory<IDocumentObject> docObjFactory, IConfiguration appConfiguration)
-        {
-            XElement xDoc = new XElement("coshh",
-                from docObj in item.Body.Items
-                select docObjFactory.Store(docObj)
+                appConfiguration,
+                commandInvoker
             );
 
-            return xDoc;
+            var documentRibbonTabs = new ObservableCollection<RibbonTabItem>()
+            {
+                new CoshhDocumentRibbonTabView(
+                    new CoshhDocumentRibbonTabViewModel(
+                        documentCommands
+                    )
+                )
+            };
+
+            var docFormat = new Holder<IFormat>(loadedFormat);
+
+            return new CoshhDocument(
+                new CoshhDocumentView(
+                    new CoshhDocumentViewModel(
+                        docFormat,
+                        new DocumentContextMenuView(
+                            new DocumentContextMenuViewModel(
+                                documentCommands
+                            )
+                        ),
+                        loadedBody,
+                        documentCommands.Hotkeys
+                    )
+                ),
+                loadedBody,
+                docFormat,
+                documentRibbonTabs
+            );
         }
 
-        public XElement Store(ICoshhDocument item)
+        public XElement Store(ICoshhDocument data)
         {
-            return StaticStore(item, docObjFactory, appConfiguration);
-        }
-
-        public const string XML_IDENTIFIER = "coshhdocument";
-
-        public string XmlIdentifier
-        {
-            get { return XML_IDENTIFIER; }
+            return new XElement(XML_IDENTIFIER,
+                from docObj in data.Body.Items
+                select docObjFactory.Store(docObj)
+            );
         }
     }
 }

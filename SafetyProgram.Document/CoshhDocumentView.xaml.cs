@@ -8,16 +8,17 @@ namespace SafetyProgram.Document
     /// <summary>
     /// Interaction logic for CoshhDocumentView.xaml
     /// </summary>
-    internal partial class CoshhDocumentView : UserControl
+    public sealed partial class CoshhDocumentView : UserControl
     {
-        private readonly ICoshhDocument viewModel;
+        private readonly ICoshhDocumentViewModel viewModel;
 
-        public CoshhDocumentView(ICoshhDocument viewModel)
+        public CoshhDocumentView(ICoshhDocumentViewModel viewModel)
         {
             this.viewModel = viewModel;
             this.DataContext = viewModel;
+
             InitializeComponent();
-            this.InputBindings.AddRange(viewModel.Commands.Hotkeys);
+            this.InputBindings.AddRange(viewModel.Hotkeys);
         }
 
         //If the document (i.e. not a docObject) is clicked

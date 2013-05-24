@@ -9,48 +9,40 @@ namespace SafetyProgram.MainWindow.Commands
 {
     internal sealed class OpenICom<TContent> : ICommand
     {
-        private readonly IWindow<TContent> window;
+        private readonly IEditableHolder<TContent> contentHolder;
+        private readonly IHolder<IOutputService<TContent>> serviceHolder;
 
-        /// <summary>
-        /// Constructs a command that opens a CoshhDocument into the CoshhWindow using the CoshhWindow's service
-        /// </summary>
-        /// <param name="window">The CoshhWindow that will load the CoshhDocument</param>
-        public OpenICom(IWindow<TContent> window)
+        public OpenICom(IEditableHolder<TContent> contentHolder,
+            IHolder<IOutputService<TContent>> serviceHolder)
         {
-            if (window != null)
+            if (contentHolder == null ||
+                serviceHolder == null)
+                throw new ArgumentNullException();
+            else
             {
-                this.window = window;
+                this.contentHolder = contentHolder;
+                this.serviceHolder = serviceHolder;
+
+                this.serviceHolder.ContentChanged += (sender, newService) => CanExecuteChanged.Raise(this);
             }
-            else throw new ArgumentNullException();
-            this.window.ServiceChanged += (sender, newProperty) => CanExecuteChanged.Raise(this);
         }
 
-        /// <summary>
-        /// Can only execute if the CoshhWindow's service allows loading.
-        /// </summary>
-        /// <param name="parameter">Unused paramater</param>
-        /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return window.Service.CanLoad() ? true : false;
+            return (serviceHolder.Content.CanLoad()) ? true : false;
         }
 
-        /// <summary>
-        /// Attempts to open a new CoshhDocument using the CoshhWindow's service.
-        /// </summary>
-        /// <param name="parameter">Unused paramater</param>
-        /// <exception cref="NotSupportedException">Thrown if Execute is called when CanExecute is false.</exception>
         public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
                 //If theres a document open, close it.
-                if (window.Content != null)
+                if (contentHolder.Content != null)
                 {
                     try
                     {
-                        window.Service.Disconnect();
-                        window.Content = default(TContent);
+                        serviceHolder.Content.Disconnect();
+                        contentHolder.Content = default(TContent);
                     }
                     catch (ArgumentException)
                     {
@@ -62,7 +54,7 @@ namespace SafetyProgram.MainWindow.Commands
                 //Try to load a CoshhDocument using the service.
                 try
                 {
-                    window.Content = window.Service.Load();
+                    contentHolder.Content = serviceHolder.Content.Load();
                 }
                 catch (FileNotFoundException)
                 {

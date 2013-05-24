@@ -49,5 +49,13 @@ namespace SafetyProgram.Base
                 handler(sender, eventArg);
             }
         }
+
+        public static void Raise<TPropertyChanged>(this Action<object, TPropertyChanged> handler, object sender, TPropertyChanged newProperty)
+        {
+            if (handler != null)
+            {
+                handler(sender, newProperty);
+            }
+        }
     }
 }
