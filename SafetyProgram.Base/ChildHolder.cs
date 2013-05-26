@@ -11,22 +11,14 @@ namespace SafetyProgram.Base
 
         public ChildHolder(IHolder<TParent> parentHolder, Func<TParent, TChild> accessor)
         {
-            if (parentHolder == null ||
-                accessor == null)
-            throw new ArgumentNullException();
-            else
-            {
-                this.parentHolder = parentHolder;
-                this.accessor = accessor;
+            Helpers.NullCheck(parentHolder, accessor);
 
-                this.content = accessor(parentHolder.Content);
+            this.parentHolder = parentHolder;
+            this.accessor = accessor;
 
-                parentHolder.ContentChanged += (sender, newContent) =>
-                    {
-                        if (newContent == null) this.Content = default(TChild);
-                        else this.Content = accessor(newContent);
-                    };
-            }
+            this.content = accessor(parentHolder.Content);
+
+            parentHolder.ContentChanged += parentHolderContentChanged;
         }
 
         public TChild Content
@@ -39,6 +31,18 @@ namespace SafetyProgram.Base
             }
         }
 
-        public event Action<object, TChild> ContentChanged;
+        private void parentHolderContentChanged(object sender, object newContent)
+        {
+            if (parentHolder.Content == null)
+            {
+                this.Content = default(TChild);
+            }
+            else
+            {
+                this.Content = accessor(parentHolder.Content);
+            }
+        }
+
+        public event EventHandler<GenericPropertyChangedEventArg<object>> ContentChanged;
     }
 }

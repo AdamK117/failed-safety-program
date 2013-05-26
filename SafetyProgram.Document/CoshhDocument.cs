@@ -1,7 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using Fluent;
+using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Document
@@ -11,20 +12,16 @@ namespace SafetyProgram.Document
         public CoshhDocument(Control view,
             IDocumentBody body,
             IHolder<IFormat> formatHolder,
-            ObservableCollection<RibbonTabItem> ribbonTabs)
+            ICollection<RibbonTabItem> ribbonTabs)
         {
-            if (view == null ||
-                body == null ||
-                formatHolder == null ||
-                ribbonTabs == null)
-                throw new ArgumentNullException();
-            else
-            {
-                this.view = view;
-                this.body = body;
-                this.formatHolder = formatHolder;
-                this.ribbonTabs = ribbonTabs;
-            }
+            Helpers.NullCheck(view, body, formatHolder, ribbonTabs);
+
+            this.view = view;
+            this.body = body;
+            this.formatHolder = formatHolder;
+            this.ribbonTabs = ribbonTabs;
+
+            this.contextualRibbonTabs = body.ContextualRibbonTabs;
         }
 
         private readonly Control view;
@@ -45,10 +42,16 @@ namespace SafetyProgram.Document
             get { return formatHolder.Content; }
         }
 
-        private readonly ObservableCollection<RibbonTabItem> ribbonTabs;
-        public ObservableCollection<RibbonTabItem> RibbonTabs
+        private readonly ICollection<RibbonTabItem> ribbonTabs;
+        public ICollection<RibbonTabItem> DocumentRibbonTabs
         {
             get { return ribbonTabs; }
+        }
+
+        private readonly ObservableCollection<RibbonTabItem> contextualRibbonTabs;
+        public ObservableCollection<RibbonTabItem> ContextualRibbonTabs
+        {
+            get { return contextualRibbonTabs; }
         }
     }
 }

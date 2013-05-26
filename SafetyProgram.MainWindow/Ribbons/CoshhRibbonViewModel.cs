@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Fluent;
@@ -10,27 +11,40 @@ namespace SafetyProgram.MainWindow.Ribbons
 {
     public sealed class CoshhRibbonViewModel : ICoshhRibbonViewModel
     {
-        public CoshhRibbonViewModel(IHolder<ObservableCollection<RibbonTabItem>> ribbonTabsHolder,
-            IHolder<IWindowCommands> windowCommandsHolder)
+        public CoshhRibbonViewModel(IHolder<IWindowCommands> windowCommandsHolder, 
+            IHolder<ICollection<RibbonTabItem>> documentRibbonTabsHolder, 
+            IHolder<ObservableCollection<RibbonTabItem>> contextualRibbonTabsHolder)
         {
-            if (ribbonTabsHolder == null ||
-                windowCommandsHolder == null)
-                throw new ArgumentNullException();
-            else
-            {
-                this.ribbonTabsHolder = ribbonTabsHolder;
-                this.windowCommandsHolder = windowCommandsHolder;
+            Helpers.NullCheck(documentRibbonTabsHolder, windowCommandsHolder, contextualRibbonTabsHolder);
 
-                this.ribbonTabsHolder.ContentChanged += (sender, newRibbonTabs) => PropertyChanged.Raise(this, "RibbonTabs");
-                this.windowCommandsHolder.ContentChanged += (sender, newCommands) => PropertyChanged.Raise(this, "Commands");
-            }
+            this.documentRibbonTabsHolder = documentRibbonTabsHolder;
+            this.windowCommandsHolder = windowCommandsHolder;
+            this.contextualRibbonTabsHolder = contextualRibbonTabsHolder;
+
+            this.documentRibbonTabsHolder.ContentChanged +=
+                (sender, newDocumentTabs) =>
+                {
+                    PropertyChanged.Raise(this, "DocumentRibbonTabs");
+                    DocumentRibbonTabsChanged.Raise(this, DocumentRibbonTabs);
+                };
+
+            this.windowCommandsHolder.ContentChanged += 
+                (sender, newWindowCommands) => PropertyChanged.Raise(this, "Commands");
+
+            this.contextualRibbonTabsHolder.ContentChanged += 
+                (sender, newContextualTabs) => 
+                {
+                    PropertyChanged.Raise(this, "ContextualRibbonTabs");
+                    ContextualRibbonTabsChanged.Raise(this, ContextualRibbonTabs);
+                };
         }
 
-        private readonly IHolder<ObservableCollection<RibbonTabItem>> ribbonTabsHolder;
-        public ObservableCollection<RibbonTabItem> RibbonTabs
+        private readonly IHolder<ICollection<RibbonTabItem>> documentRibbonTabsHolder;
+        public ICollection<RibbonTabItem> DocumentRibbonTabs
         {
-            get { return ribbonTabsHolder.Content; }
+            get { return documentRibbonTabsHolder.Content; }
         }
+        public event EventHandler<GenericPropertyChangedEventArg<ICollection<RibbonTabItem>>> DocumentRibbonTabsChanged;
 
         private readonly IHolder<IWindowCommands> windowCommandsHolder;
         public IWindowCommands Commands
@@ -38,6 +52,18 @@ namespace SafetyProgram.MainWindow.Ribbons
             get { return windowCommandsHolder.Content; }
         }
 
+        private readonly IHolder<ObservableCollection<RibbonTabItem>> contextualRibbonTabsHolder;
+        public ObservableCollection<RibbonTabItem> ContextualRibbonTabs
+        {
+            get { return contextualRibbonTabsHolder.Content; }
+        }
+        public event EventHandler<GenericPropertyChangedEventArg<ObservableCollection<RibbonTabItem>>> ContextualRibbonTabsChanged;
+
         public event PropertyChangedEventHandler PropertyChanged;
+
+
+        
+
+        
     }
 }

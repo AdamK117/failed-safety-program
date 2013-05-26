@@ -1,7 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using Fluent;
+using SafetyProgram.Base;
 
 namespace SafetyProgram.MainWindow.Ribbons
 {
@@ -11,49 +12,108 @@ namespace SafetyProgram.MainWindow.Ribbons
 
         public CoshhRibbonView(ICoshhRibbonViewModel viewModel)
         {
-            if (viewModel == null) throw new ArgumentNullException();
-            else
+            Helpers.NullCheck(viewModel);
+
+            this.viewModel = viewModel;
+            this.DataContext = viewModel;
+            InitializeComponent();
+
+            contextualGroup.Visibility = System.Windows.Visibility.Visible;
+
+            foreach (RibbonTabItem ribbonTab in viewModel.DocumentRibbonTabs)
             {
-                this.viewModel = viewModel;
-
-                this.DataContext = viewModel;
-                InitializeComponent();
-
-                viewModel.RibbonTabs.CollectionChanged += RibbonTabs_CollectionChanged;
-                viewModel.PropertyChanged += (sender, propertyChanged) =>
-                    {
-                        if (propertyChanged.PropertyName == "RibbonTabs")
-                        {
-                            this.Tabs.Clear();
-                            viewModel.RibbonTabs.CollectionChanged += RibbonTabs_CollectionChanged;
-                        }
-                    };
+                this.Tabs.Add(ribbonTab);
             }
-            
+
+            //If the document ribbon tabs change.
+            viewModel.DocumentRibbonTabsChanged += 
+                (sender, newDocumentRibbonTabs) =>
+                {
+                    this.Tabs.Clear();
+
+                    if (viewModel.DocumentRibbonTabs != null)
+                    {
+                        foreach (RibbonTabItem documentRibbonTab in viewModel.DocumentRibbonTabs)
+                        {
+                            this.Tabs.Add(documentRibbonTab);
+                        }
+                    }
+                };
+
+            //If the contextual ribbon tabs collection changes
+            viewModel.ContextualRibbonTabsChanged += 
+                (sender, newContextualTabs) =>
+                {
+                    if (viewModel.ContextualRibbonTabs != null)
+                    {
+                        viewModel.ContextualRibbonTabs.CollectionChanged +=
+                            ContextualRibbonTabs_CollectionChanged;
+                    }
+                    else
+                    {
+                        var removalList = new List<RibbonTabItem>();
+                        foreach (RibbonTabItem ribbonTab in this.Tabs)
+                        {
+                            if (ribbonTab.Group == contextualGroup)
+                            {
+                                removalList.Add(ribbonTab);
+                            }
+                        }
+
+                        foreach (RibbonTabItem contextualRibbonTab in removalList)
+                        {
+                            contextualRibbonTab.Group = null;
+                            this.Tabs.Remove(contextualRibbonTab);
+                        }
+                    }
+                };
+
+            //Add a handler to the current contextual tabs.
+            viewModel.ContextualRibbonTabs.CollectionChanged +=
+                ContextualRibbonTabs_CollectionChanged;         
         }
 
-        void RibbonTabs_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        void ContextualRibbonTabs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
                     foreach (RibbonTabItem ribbonTab in e.NewItems)
                     {
+                        //Add the tab to a default contextual group.
+                        ribbonTab.Group = contextualGroup;
+                        //Add the tab to the ribbon.
                         this.Tabs.Add(ribbonTab);
-                    }
+                        //Select (focus) the tab.
+                        this.SelectedTabItem = ribbonTab;
+                    }                  
                     break;
+
                 case NotifyCollectionChangedAction.Remove:
                     foreach (RibbonTabItem ribbonTab in e.OldItems)
                     {
-                        Debug.Assert(this.Tabs.Contains(ribbonTab), "WARNING: The IWindows ribbon does not contain a tab the IDocument tried to remove.");
                         this.Tabs.Remove(ribbonTab);
                     }
                     break;
+
                 case NotifyCollectionChangedAction.Reset:
-                    this.Tabs.Clear();
+                    var removalList = new List<RibbonTabItem>();
+
+                    foreach (RibbonTabItem ribbonTab in this.Tabs)
+                    {
+                        if (ribbonTab.Group == contextualGroup)
+                        {
+                            removalList.Add(ribbonTab);
+                        }
+                    }
+
+                    removalList.ForEach(contextualTab => 
+                        {
+                            contextualTab.Group = null;
+                            this.Tabs.Remove(contextualTab);
+                        });
                     break;
             }
-            Debug.Assert(this.Tabs.Count == viewModel.RibbonTabs.Count, "WARNING: There's a difference between the ribbon tabs in the window vs the document");
         }
     }
 }

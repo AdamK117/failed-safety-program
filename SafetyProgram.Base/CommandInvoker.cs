@@ -9,8 +9,8 @@ namespace SafetyProgram.Base
     /// </summary>
     public sealed class CommandInvoker : ICommandInvoker
     {
-        private Stack<IInvokedCommand> futureCommands;
-        private Stack<IInvokedCommand> pastCommands;
+        private readonly Stack<IInvokedCommand> futureCommands;
+        private readonly Stack<IInvokedCommand> pastCommands;
 
         public CommandInvoker()
         {
@@ -32,11 +32,6 @@ namespace SafetyProgram.Base
             });
         }
 
-        public bool CanUndo()
-        {
-            return (pastCommands.Count > 0) ? true : false;
-        }
-
         public void Undo()
         {
             //Undo a command:
@@ -44,17 +39,19 @@ namespace SafetyProgram.Base
             //  Unexecute that command.
             //  Put the unexecuted command onto the 'future' stack.
             invoker(() =>
-                {
-                    var command = pastCommands.Pop();
-                    command.UnExecute();
-                    futureCommands.Push(command);
-                });
+            {
+                var command = pastCommands.Pop();
+                command.UnExecute();
+                futureCommands.Push(command);
+            });
         }
 
-        public bool CanRedo()
+        public bool CanUndo()
         {
-            return (futureCommands.Count > 0) ? true : false;
+            return (pastCommands.Count > 0) ? true : false;
         }
+
+        public event EventHandler<GenericPropertyChangedEventArg<bool>> CanUndoChanged;
 
         public void Redo()
         {
@@ -63,14 +60,17 @@ namespace SafetyProgram.Base
             //  Execute the command.
             //  Put the executed command into the 'past' stack.
             invoker(() =>
-                {
-                    var command = futureCommands.Pop();
-                    command.Execute();
-                    pastCommands.Push(command);
-                });              
+            {
+                var command = futureCommands.Pop();
+                command.Execute();
+                pastCommands.Push(command);
+            });
         }
 
-        public event EventHandler<GenericPropertyChangedEventArg<bool>> CanUndoChanged;
+        public bool CanRedo()
+        {
+            return (futureCommands.Count > 0) ? true : false;
+        }      
 
         public event EventHandler<GenericPropertyChangedEventArg<bool>> CanRedoChanged;
 
@@ -94,14 +94,14 @@ namespace SafetyProgram.Base
                 bool canUndoAfter = CanUndo();
                 if (canUndoBefore != canUndoAfter)
                 {
-                    CanUndoChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(canUndoAfter));
+                    CanUndoChanged.Raise(this, canUndoAfter);
                 }
             }
             {
                 bool canRedoAfter = CanRedo();
                 if (canRedoBefore != canRedoAfter)
                 {
-                    CanRedoChanged.Raise(this, new GenericPropertyChangedEventArg<bool>(canRedoAfter));
+                    CanRedoChanged.Raise(this, canRedoAfter);
                 }
             }
         }

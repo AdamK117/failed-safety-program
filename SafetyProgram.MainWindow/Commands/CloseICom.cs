@@ -13,16 +13,12 @@ namespace SafetyProgram.MainWindow.Commands
         public CloseICom(IEditableHolder<TContent> contentHolder,
             IHolder<IInputService<TContent>> serviceHolder)
         {
-            if (contentHolder == null ||
-                serviceHolder == null)
-                throw new ArgumentNullException();
-            else
-            {
-                this.contentHolder = contentHolder;
-                this.serviceHolder = serviceHolder;
+            Helpers.NullCheck(contentHolder, serviceHolder);
 
-                this.contentHolder.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
-            }           
+            this.contentHolder = contentHolder;
+            this.serviceHolder = serviceHolder;
+
+            this.contentHolder.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
         }
 
         public bool CanExecute(object parameter)

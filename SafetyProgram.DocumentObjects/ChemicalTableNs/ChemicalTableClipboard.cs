@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
@@ -11,7 +10,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
     {
         public static IDataObject GetDataObject(this IEnumerable<ICoshhChemicalObject> chemicals)
         {
-            IDataObject dataObject = chemicals.GetDataObject<ICoshhChemicalObject>(ChemicalTable.COM_IDENTITY);
+            IDataObject dataObject = chemicals.GetDataObject<ICoshhChemicalObject>(ChemicalTableLocalFileFactory.XML_IDENTIFIER);
 
             dataObject.SetData(DataFormats.Text, getTextFormat(chemicals));
             dataObject.SetData(DataFormats.Rtf, getRtfFormat(chemicals));
@@ -26,7 +25,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 
         public static void TryPaste(this ICollection<ICoshhChemicalObject> target)
         {
-            target.TryPasteInto<ICoshhChemicalObject>(ChemicalTable.COM_IDENTITY);
+            target.TryPasteInto<ICoshhChemicalObject>(ChemicalTableLocalFileFactory.XML_IDENTIFIER);
         }
 
         private static string getTextFormat(IEnumerable<ICoshhChemicalObject> data)

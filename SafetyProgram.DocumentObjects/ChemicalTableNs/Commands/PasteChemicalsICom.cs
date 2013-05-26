@@ -16,11 +16,10 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// <param name="table"></param>
         public PasteChemicalsICom(ICollection<ICoshhChemicalObject> target, ICommandInvoker commandInvoker)
         {
-            if (Helpers.NullCheck(target, commandInvoker))
-            {
-                this.target = target;
-                this.commandInvoker = commandInvoker;
-            }
+            Helpers.NullCheck(target, commandInvoker);
+
+            this.target = target;
+            this.commandInvoker = commandInvoker;
         }
 
         /// <summary>

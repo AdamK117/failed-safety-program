@@ -15,16 +15,12 @@ namespace SafetyProgram.MainWindow.Commands
         public OpenICom(IEditableHolder<TContent> contentHolder,
             IHolder<IOutputService<TContent>> serviceHolder)
         {
-            if (contentHolder == null ||
-                serviceHolder == null)
-                throw new ArgumentNullException();
-            else
-            {
-                this.contentHolder = contentHolder;
-                this.serviceHolder = serviceHolder;
+            Helpers.NullCheck(contentHolder, serviceHolder);
 
-                this.serviceHolder.ContentChanged += (sender, newService) => CanExecuteChanged.Raise(this);
-            }
+            this.contentHolder = contentHolder;
+            this.serviceHolder = serviceHolder;
+
+            this.serviceHolder.ContentChanged += (sender, newService) => CanExecuteChanged.Raise(this);
         }
 
         public bool CanExecute(object parameter)
@@ -36,6 +32,7 @@ namespace SafetyProgram.MainWindow.Commands
         {
             if (CanExecute(parameter))
             {
+
                 //If theres a document open, close it.
                 if (contentHolder.Content != null)
                 {

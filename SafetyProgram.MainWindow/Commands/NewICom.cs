@@ -13,17 +13,16 @@ namespace SafetyProgram.MainWindow.Commands
         public NewICom(IEditableHolder<TContent> contentHolder,
             IHolder<IIOService<TContent>> serviceHolder)
         {
-            if (contentHolder == null ||
-                serviceHolder == null)
-                throw new ArgumentNullException();
-            else
-            {
-                this.contentHolder = contentHolder;
-                this.serviceHolder = serviceHolder;
+            Helpers.NullCheck(contentHolder, serviceHolder);
 
-                this.contentHolder.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
-                this.serviceHolder.ContentChanged += (sender, newService) => CanExecuteChanged.Raise(this);
-            }
+            this.contentHolder = contentHolder;
+            this.serviceHolder = serviceHolder;
+
+            this.contentHolder.ContentChanged += 
+                (sender, newContent) => CanExecuteChanged.Raise(this);
+
+            this.serviceHolder.ContentChanged += 
+                (sender, newService) => CanExecuteChanged.Raise(this);
         }
 
         public bool CanExecute(object parameter)

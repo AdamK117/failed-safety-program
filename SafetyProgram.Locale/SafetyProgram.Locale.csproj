@@ -59,6 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemMessages-fr-FR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SystemMessages-fr-FR.resx</DependentUpon>
+    </Compile>
     <Compile Include="SystemMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,8 +71,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SystemMessages.resx">
+    <EmbeddedResource Include="SystemMessages-fr-FR.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SystemMessages-fr-FR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SystemMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
-using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.MainWindow.Commands
 {

@@ -4,14 +4,17 @@ namespace SafetyProgram.Base
 {
     public static class Helpers
     {
-        public static bool NullCheck(params object[] items)
+        /// <summary>
+        /// Performs a null check on the supplied objects.
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        public static void NullCheck(params object[] items)
         {
             foreach (object item in items)
             {
                 if (item == null) throw new ArgumentNullException();
             }
-
-            return true;
         }
     }
 }

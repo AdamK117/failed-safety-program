@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
+using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects.ChemicalTableNs;
 
@@ -18,24 +19,15 @@ namespace SafetyProgram.DocumentObjects
         private readonly IDictionary<string, IOutputFactory<IDocumentObject, XElement>> creationFactories;
         private readonly IDictionary<Type, Func<IDocumentObject, XElement>> outputFactories;
 
-        public DocumentObjectLocalFileFactory(
-            IConfiguration appConfiguration, 
+        public DocumentObjectLocalFileFactory(IConfiguration appConfiguration, 
             ICommandInvoker commandInvoker,
-            ILocalFileFactory<IChemicalTable> chemicalTableFactory
-            )
+            ILocalFileFactory<IChemicalTable> chemicalTableFactory)
         {
-            if (appConfiguration == null ||
-                commandInvoker == null ||
-                chemicalTableFactory == null)
-            {
-                throw new ArgumentNullException();
-            }
-            else
-            {
-                this.appConfiguration = appConfiguration;
-                this.commandInvoker = commandInvoker;
-                this.chemicalTableFactory = chemicalTableFactory;
-            }
+            Helpers.NullCheck(appConfiguration, commandInvoker, chemicalTableFactory);
+
+            this.appConfiguration = appConfiguration;
+            this.commandInvoker = commandInvoker;
+            this.chemicalTableFactory = chemicalTableFactory;
 
             //Registry of available docObjects
             creationFactories = new Dictionary<string, IOutputFactory<IDocumentObject, XElement>>()

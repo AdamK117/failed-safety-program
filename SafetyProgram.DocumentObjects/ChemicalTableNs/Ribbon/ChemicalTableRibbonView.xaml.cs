@@ -1,6 +1,5 @@
-﻿using System;
-using System.Windows;
-using Fluent;
+﻿using Fluent;
+using SafetyProgram.Base;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon
 {
@@ -9,15 +8,13 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon
     /// </summary>
     internal sealed partial class ChemicalTableRibbonView : RibbonTabItem
     {
-        public ChemicalTableRibbonView(IChemicalTableRibbonTab viewModel)
+        public ChemicalTableRibbonView(IChemicalTableRibbonViewModel viewModel)
         {
-            if (viewModel != null)
-            {
-                this.DataContext = viewModel;
-            }
-            else throw new ArgumentNullException();            
+            Helpers.NullCheck(viewModel);
 
-            InitializeComponent();
+            this.DataContext = viewModel;
+
+            InitializeComponent();  
         }
     }
 }

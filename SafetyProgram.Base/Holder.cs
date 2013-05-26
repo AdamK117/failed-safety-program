@@ -9,11 +9,9 @@ namespace SafetyProgram.Base
 
         public Holder(TContent content)
         {
-            if (content != null)
-            {
-                this.content = content;
-            }
-            else throw new ArgumentNullException();
+            Helpers.NullCheck(content);
+
+            this.content = content;
         }
 
         public TContent Content
@@ -34,6 +32,6 @@ namespace SafetyProgram.Base
             get { return content; }
         }
 
-        public event Action<object, TContent> ContentChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<object>> ContentChanged;
     }
 }

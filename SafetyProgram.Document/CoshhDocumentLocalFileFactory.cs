@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -21,23 +20,15 @@ namespace SafetyProgram.Document
         private readonly IConfiguration appConfiguration;
         private readonly ICommandInvoker commandInvoker;
 
-        public CoshhDocumentLocalFileFactory(
-            ILocalFileFactory<IDocumentObject> docObjFactory,
-            IConfiguration appConfiguration, 
-            ICommandInvoker commandInvoker
-            )
+        public CoshhDocumentLocalFileFactory(IConfiguration appConfiguration, 
+            ICommandInvoker commandInvoker, 
+            ILocalFileFactory<IDocumentObject> documentObjectFactory)
         {
-            if (
-                docObjFactory != null &&
-                appConfiguration != null &&
-                commandInvoker != null
-                )
-            {
-                this.docObjFactory = docObjFactory;
-                this.appConfiguration = appConfiguration;
-                this.commandInvoker = commandInvoker;
-            }
-            else throw new ArgumentNullException();
+            Helpers.NullCheck(documentObjectFactory, appConfiguration, commandInvoker);
+
+            this.docObjFactory = documentObjectFactory;
+            this.appConfiguration = appConfiguration;
+            this.commandInvoker = commandInvoker;
         }
 
         public const string XML_IDENTIFIER = "coshhdocument";
@@ -48,7 +39,9 @@ namespace SafetyProgram.Document
 
         public ICoshhDocument CreateNew()
         {
-            var documentBody = new CoshhDocumentBody();
+            var documentBody = new CoshhDocumentBody(
+                new ObservableCollection<IDocumentObject>()
+            );
 
             var documentCommands = new DocumentICommands(
                 documentBody,
@@ -116,9 +109,11 @@ namespace SafetyProgram.Document
 
                 //Required: Get the body of the document
                 loadedBody = new CoshhDocumentBody(
-                    from iDocObject in data.Elements()
-                    select docObjFactory.Load(iDocObject)
-                    );
+                    new ObservableCollection<IDocumentObject>(
+                        from iDocObject in data.Elements()
+                        select docObjFactory.Load(iDocObject)
+                    )
+                );
             }
             else throw new InvalidDataException("No CoshhDocument root could be found (<coshh></coshh>)");
 

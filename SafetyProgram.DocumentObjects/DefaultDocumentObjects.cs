@@ -7,7 +7,7 @@ namespace SafetyProgram.DocumentObjects
     {
         public static IDocumentObject ChemicalTable(IConfiguration appConfiguration, ICommandInvoker commandInvoker)
         {
-            return ChemicalTableDefaults.DefaultTable(appConfiguration, commandInvoker);
+            return ChemicalTableFacade.ChemicalTable(appConfiguration, commandInvoker);
         }
     }
 }

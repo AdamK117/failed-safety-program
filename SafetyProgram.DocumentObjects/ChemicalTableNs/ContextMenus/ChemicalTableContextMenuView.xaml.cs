@@ -8,7 +8,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.ContextMenus
     /// </summary>
     internal sealed partial class ChemicalTableContextMenuView : ContextMenu
     {
-        public ChemicalTableContextMenuView(IChemicalTableContextMenu viewModel)
+        public ChemicalTableContextMenuView(IChemicalTableContextMenuViewModel viewModel)
         {
             if (viewModel != null)
             {

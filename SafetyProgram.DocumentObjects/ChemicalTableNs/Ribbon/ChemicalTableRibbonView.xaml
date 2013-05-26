@@ -14,7 +14,7 @@
         <Fluent:DropDownButton Header="Add Chemical" FocusManager.FocusedElement="{Binding ElementName=SearchBox}">
             <StackPanel>
                 <TextBox x:Name="SearchBox" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <ItemsControl ItemsSource="{Binding Chemicals}" Focusable="False">
+                <ItemsControl ItemsSource="{Binding SearchResult}" Focusable="False">
 
                     <!-- Present the chemicals with no embelishment -->
                     <ItemsControl.Template>
@@ -47,9 +47,6 @@
         
         <!-- Delete selected chemicals -->
         <Fluent:Button Header="Delete Selected" Command="{Binding Commands.DeleteSelected}" />
-        
-        <!-- Delete the chemical table -->
-        <Fluent:Button Header="Delete Table" Command="{Binding Commands.DeleteTable}" /> 
         
     </Fluent:RibbonGroupBox>
     

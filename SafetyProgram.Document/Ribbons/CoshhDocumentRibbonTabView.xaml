@@ -11,7 +11,7 @@
 
     <!-- GroupBox 1: Chemicals -->
     <Fluent:RibbonGroupBox Header="Tables">
-        <Fluent:Button Header="Chemicals" Command="{Binding DocumentCommands.InsertChemicalTable}" />
+        <Fluent:Button Header="Chemicals" Command="{Binding Commands.InsertChemicalTable}" />
     </Fluent:RibbonGroupBox>
 
 </Fluent:RibbonTabItem>

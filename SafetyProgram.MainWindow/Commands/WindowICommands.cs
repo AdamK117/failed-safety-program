@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
+using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.MainWindow.Commands
@@ -12,29 +11,21 @@ namespace SafetyProgram.MainWindow.Commands
         /// Constructs a new instance of the commands (iCommands, Hotkeys, generic commands) available to a CoshhWindow.
         /// </summary>
         /// <param name="window">Instance of a CoshhWindow parent</param>
-        public WindowICommands(Window window,
-            ICommandInvoker commandInvoker,
+        public WindowICommands(ICommandInvoker commandInvoker,
             IEditableHolder<TContent> contentHolder,
             IHolder<IIOService<TContent>> serviceHolder)
         {
-            if (window == null ||
-                commandInvoker == null ||
-                contentHolder == null ||
-                serviceHolder == null)
-                throw new ArgumentNullException();
-            else
-            {
-                Close = new CloseICom<TContent>(contentHolder, serviceHolder);
-                New = new NewICom<TContent>(contentHolder, serviceHolder);
-                Open = new OpenICom<TContent>(contentHolder, serviceHolder);
-                Save = new SaveICom<TContent>(contentHolder, serviceHolder);
-                SaveAs = new SaveAsICom<TContent>(contentHolder, serviceHolder);
-                Exit = new ExitICom(window);
-                Undo = new UndoICom(commandInvoker);
-                Redo = new RedoICom(commandInvoker);
+            Helpers.NullCheck(commandInvoker, contentHolder, serviceHolder);
 
-                Hotkeys = setHotKeys();
-            }           
+            Close = new CloseICom<TContent>(contentHolder, serviceHolder);
+            New = new NewICom<TContent>(contentHolder, serviceHolder);
+            Open = new OpenICom<TContent>(contentHolder, serviceHolder);
+            Save = new SaveICom<TContent>(contentHolder, serviceHolder);
+            SaveAs = new SaveAsICom<TContent>(contentHolder, serviceHolder);
+            Undo = new UndoICom(commandInvoker);
+            Redo = new RedoICom(commandInvoker);
+
+            Hotkeys = setHotKeys();
         }
 
         private List<InputBinding> setHotKeys()

@@ -12,10 +12,14 @@ namespace SafetyProgram.Base
 
         public LocalFileService(ILocalFileFactory<T> itemFactory, string path)
         {
-            if (itemFactory != null) this.itemFactory = itemFactory;
-            else throw new ArgumentNullException();
+            Helpers.NullCheck(itemFactory);
 
-            if (File.Exists(path)) this.path = path;
+            this.itemFactory = itemFactory;
+
+            if (File.Exists(path))
+            {
+                this.path = path;
+            }
             else throw new FileNotFoundException("Specified file path '" + path + "' could not be found.");
         }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,19 +14,19 @@ namespace SafetyProgram.MainWindow
             IHolder<Control> contentViewHolder,
             List<InputBinding> hotkeys)
         {
-            if (ribbonViewHolder == null ||
-                contentViewHolder == null ||
-                hotkeys == null)
-                throw new ArgumentNullException();
-            else
-            {
-                this.ribbonViewHolder = ribbonViewHolder;
-                this.controlViewHolder = contentViewHolder;
-                this.hotkeys = hotkeys;
+            Helpers.NullCheck(ribbonViewHolder, contentViewHolder, hotkeys);
 
-                this.ribbonViewHolder.ContentChanged += (sender, newRibbon) => PropertyChanged.Raise(this, "RibbonView");
-                this.controlViewHolder.ContentChanged += (sender, newContent) => PropertyChanged.Raise(this, "ContentView");
-            }
+            this.ribbonViewHolder = ribbonViewHolder;
+            this.controlViewHolder = contentViewHolder;
+            this.hotkeys = hotkeys;
+
+            //Monitor if the ribbon view changes.
+            this.ribbonViewHolder.ContentChanged += 
+                (sender, newRibbon) => PropertyChanged.Raise(this, "RibbonView");
+
+            //Monitor if the content (document) changes.
+            this.controlViewHolder.ContentChanged += 
+                (sender, newContent) => PropertyChanged.Raise(this, "ContentView");
         }
 
         private readonly IHolder<Ribbon> ribbonViewHolder;

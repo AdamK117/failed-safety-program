@@ -18,19 +18,17 @@ namespace SafetyProgram.Base
             string rootNodeName, 
             ILocalFileFactory<TContent> contentFactory)
         {
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException();
-            }
-            else this.path = path;
+            Helpers.NullCheck(contentFactory);
 
-            this.rootNodeName = rootNodeName;
-
-            if (contentFactory == null)
+            if (File.Exists(path))
             {
-                throw new ArgumentNullException();
+                this.path = path;                
             }
-            else this.contentFactory = contentFactory;
+            else throw new FileNotFoundException();
+
+            this.rootNodeName = rootNodeName;            
+
+            this.contentFactory = contentFactory;
         }
 
         public IEnumerable<TContent> Load()
@@ -64,8 +62,11 @@ namespace SafetyProgram.Base
 
                     foreach (XElement entry in entries)
                     {
+                        //Load it.
                         var loadedEntry = contentFactory.Load(entry);
+                        //Push the loaded response through the callback.
                         callback(loadedEntry);
+                        //Add it to the overall return value.
                         loadedEntries.Add(loadedEntry);
                     }
                 }

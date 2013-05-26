@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
@@ -14,12 +13,11 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 
         public CopySelectedICom(ObservableCollection<ICoshhChemicalObject> selectedChemicals)
         {
-            if (selectedChemicals == null) throw new ArgumentNullException();
-            else
-            {
-                this.selectedChemicals = selectedChemicals;
-                this.selectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);
-            }           
+            Helpers.NullCheck(selectedChemicals);
+
+            this.selectedChemicals = selectedChemicals;
+
+            this.selectedChemicals.CollectionChanged += (sender, args) => CanExecuteChanged.Raise(this);     
         }
 
         /// <summary>

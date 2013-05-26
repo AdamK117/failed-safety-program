@@ -20,3 +20,5 @@ V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\Fluent.xml
 V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\obj\x86\Debug\SafetyProgram.Configuration.UnitTests.csprojResolveAssemblyReference.cache
 V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\obj\x86\Debug\SafetyProgram.Configuration.UnitTests.dll
 V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\obj\x86\Debug\SafetyProgram.Configuration.UnitTests.pdb
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Locale.dll
+V:\SafetyProgram\SafetyProgram.Configuration.UnitTests\bin\x86\Debug\SafetyProgram.Locale.pdb

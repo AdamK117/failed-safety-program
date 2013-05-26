@@ -40,7 +40,7 @@
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -73,11 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\DeleteIDocObjectICom.cs" />
-    <Compile Include="Commands\DeleteIDocObjectInvokedCom.cs" />
     <Compile Include="Commands\DocumentICommands.cs" />
     <Compile Include="Commands\IDocumentICommands.cs" />
-    <Compile Include="Commands\InsertIDocumentObjectICom.cs" />
-    <Compile Include="Commands\InsertIDocumentObjectInvokedCom.cs" />
     <Compile Include="ContextMenus\DocumentContextMenuView.xaml.cs">
       <DependentUpon>DocumentContextMenuView.xaml</DependentUpon>
     </Compile>
@@ -86,12 +83,13 @@
     <Compile Include="CoshhDocument.cs" />
     <Compile Include="CoshhDocumentBody.cs" />
     <Compile Include="CoshhDocumentLocalFileFactory.cs" />
-    <Compile Include="CoshhDocumentView.xaml.cs">
+    <Compile Include="IWindowContent.cs" />
+    <Compile Include="View\CoshhDocumentView.xaml.cs">
       <DependentUpon>CoshhDocumentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CoshhDocumentViewModel.cs" />
+    <Compile Include="View\CoshhDocumentViewModel.cs" />
     <Compile Include="ICoshhDocument.cs" />
-    <Compile Include="ICoshhDocumentViewModel.cs" />
+    <Compile Include="View\ICoshhDocumentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -140,7 +138,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CoshhDocumentView.xaml">
+    <Page Include="View\CoshhDocumentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

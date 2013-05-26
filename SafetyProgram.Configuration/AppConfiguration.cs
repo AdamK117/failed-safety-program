@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
@@ -13,15 +12,11 @@ namespace SafetyProgram.Configuration
             string locale,
             string connectionType)
         {
+            Helpers.NullCheck(repositoriesInfo, chemicalRepository);
+
             this.DocumentLock = documentLock;
-
-            if (repositoriesInfo != null && chemicalRepository != null)
-            {
-                this.repositories = repositoriesInfo;
-                this.chemicalRepositories = chemicalRepository;
-            }
-            else throw new ArgumentNullException("The repositories passed to AppConfiguration must not be null.");
-
+            this.repositories = repositoriesInfo;
+            this.chemicalRepositories = chemicalRepository;
             this.ConnectionType = connectionType;
             this.Locale = locale;
         }

@@ -17,17 +17,13 @@ namespace SafetyProgram.MainWindow.Commands
         public SaveICom(IHolder<TContent> contentHolder,
             IHolder<IInputService<TContent>> serviceHolder)
         {
-            if (contentHolder == null ||
-                serviceHolder == null)
-                throw new ArgumentNullException();
-            else
-            {
-                this.contentHolder = contentHolder;
-                this.serviceHolder = serviceHolder;
+            Helpers.NullCheck(contentHolder, serviceHolder);
 
-                serviceHolder.ContentChanged += (sender, newService) => CanExecuteChanged.Raise(this);
-                contentHolder.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
-            }
+            this.contentHolder = contentHolder;
+            this.serviceHolder = serviceHolder;
+
+            serviceHolder.ContentChanged += (sender, newService) => CanExecuteChanged.Raise(this);
+            contentHolder.ContentChanged += (sender, newContent) => CanExecuteChanged.Raise(this);
         }
 
         /// <summary>
@@ -37,7 +33,15 @@ namespace SafetyProgram.MainWindow.Commands
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            return (contentHolder.Content != null && serviceHolder.Content.CanSave(contentHolder.Content)) ? true : false;
+            var content = contentHolder.Content;
+            var service = serviceHolder.Content;
+
+            if (content != null &&
+                service.CanSave(content))
+            {
+                return true;
+            }
+            else return false;
         }
 
         /// <summary>

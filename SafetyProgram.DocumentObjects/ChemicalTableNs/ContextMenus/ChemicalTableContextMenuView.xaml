@@ -6,9 +6,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <MenuItem Header="Add Chemical" Command="{Binding Commands.AddNewChemical}" />
+    
     <MenuItem Header="Delete Selected" Command="{Binding Commands.DeleteSelected}" />
     <MenuItem Header="Copy" Command="{Binding Commands.CopySelected}" />
     <MenuItem Header="Paste" Command="{Binding Commands.PasteChemicals}" />
-    <MenuItem Header="Delete Table" Command="{Binding Commands.DeleteTable}" />
+    
 </ContextMenu>

@@ -1,36 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Document
 {
-    public sealed class CoshhDocumentBody : 
-        INotifyPropertyChanged,
-        IDocumentBody
+    public sealed class CoshhDocumentBody : IDocumentBody, INotifyPropertyChanged
     {
-        /// <summary>
-        /// Construct a blank CoshhDocumentBody
-        /// </summary>
-        public CoshhDocumentBody()
+        public CoshhDocumentBody(ObservableCollection<IDocumentObject> items)
         {
-            items.CollectionChanged += items_CollectionChanged;
-        }
+            Helpers.NullCheck(items);
 
-        /// <summary>
-        /// Construct a CoshhDocumentBody containing the supplied IDocObject items
-        /// </summary>
-        /// <param name="items">Items to populate into this CoshhDocumentBody</param>
-        public CoshhDocumentBody(IEnumerable<IDocumentObject> items)
-        {
             foreach (IDocumentObject item in items)
             {
                 this.items.Add(item);
             }
-            this.items.CollectionChanged += items_CollectionChanged;
+            this.items.CollectionChanged += items_CollectionChanged;      
+        }
+
+        private readonly ObservableCollection<RibbonTabItem> contextualRibbonTabs = new ObservableCollection<RibbonTabItem>();
+        public ObservableCollection<RibbonTabItem> ContextualRibbonTabs
+        {
+            get { return contextualRibbonTabs; }
         }
 
         private readonly ObservableCollection<IDocumentObject> items = new ObservableCollection<IDocumentObject>();
@@ -56,6 +50,9 @@ namespace SafetyProgram.Document
             if (item != null)
             {
                 selection = item;
+                contextualRibbonTabs.Clear();
+                contextualRibbonTabs.Add(selection.ContextualTab);
+
                 SelectionChanged.Raise(this, selection);
                 PropertyChanged.Raise(this, "Selection");
             }
@@ -66,12 +63,14 @@ namespace SafetyProgram.Document
         {
             DeSelectAll();
             SelectionChanged.Raise(this, selection);
-            PropertyChanged.Raise(this, "Selected");
+            PropertyChanged.Raise(this, "Selection");
         }
 
         public void DeSelectAll()
         {
             selection = null;
+            contextualRibbonTabs.Clear();
+
             SelectionChanged.Raise(this, selection);
             PropertyChanged.Raise(this, "Selection");
         }
@@ -82,34 +81,6 @@ namespace SafetyProgram.Document
         {
             switch (e.Action)
             {
-                #region Add
-                //If new DocObject(s) were added to the Body.
-                case NotifyCollectionChangedAction.Add:
-                    foreach (IDocumentObject control in e.NewItems)
-                    {
-                        //Monitor the new DocObject's Remove flag
-                        control.RemoveFlagChanged += (object docObject, GenericPropertyChangedEventArg<bool> flag) =>
-                        {
-                            if (flag.NewProperty == true)
-                            {
-                                DeSelect(control);
-                                items.Remove(control);
-                            }
-                        };
-                        //Monitor the DocObjet's Selected flag.
-                        control.SelectedChanged += (object docObject, GenericPropertyChangedEventArg<bool> flag) =>
-                        {
-                            if (flag.NewProperty == true)
-                            {
-                                Select(control);
-                            }
-                            else DeSelect(control);
-                        };
-                    }
-                    break;
-                #endregion
-
-                #region Remove
                 //If DocObject(s) are removed from the CoshhDocument.
                 case NotifyCollectionChangedAction.Remove:
                     foreach (IDocumentObject control in e.OldItems)
@@ -117,7 +88,6 @@ namespace SafetyProgram.Document
                         DeSelect(control);
                     }
                     break;
-                #endregion
             }
         }
 

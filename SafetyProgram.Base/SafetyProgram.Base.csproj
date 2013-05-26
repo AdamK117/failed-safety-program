@@ -25,7 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -62,10 +62,15 @@
     <Compile Include="ChildHolder.cs" />
     <Compile Include="CommandInvoker.cs" />
     <Compile Include="ErrorValidation.cs" />
+    <Compile Include="GenericCommands\AddItemInvokedICom.cs" />
+    <Compile Include="GenericCommands\DeleteSelectedICom.cs" />
+    <Compile Include="GenericCommands\DeleteSelectedInvokedCom.cs" />
+    <Compile Include="GenericCommands\InsertIDocumentObjectICom.cs" />
     <Compile Include="GenericPropertyChangedEventArg.cs" />
     <Compile Include="Holder.cs" />
+    <Compile Include="Interfaces\IEditable.cs" />
     <Compile Include="Interfaces\Structural\IEditableHolder.cs" />
-    <Compile Include="IGenericPropertyChangedEventArg.cs" />
+    <Compile Include="Interfaces\IGenericPropertyChangedEventArg.cs" />
     <Compile Include="Interfaces\Structural\IHolder.cs" />
     <Compile Include="InteractiveLocalFileService.cs" />
     <Compile Include="Interfaces\Creational\Service\ICallbackService.cs" />
@@ -76,11 +81,10 @@
     <Compile Include="Interfaces\Command\ICommandInvoker.cs" />
     <Compile Include="Interfaces\Creational\Factory\IFactory.cs" />
     <Compile Include="Interfaces\Command\IInvokedCommand.cs" />
-    <Compile Include="Interfaces\Structural\Models\IChemicalModelObject.cs" />
-    <Compile Include="Interfaces\Structural\Models\ICoshhChemicalObject.cs" />
-    <Compile Include="Interfaces\Structural\Models\IHazardModelObject.cs" />
+    <Compile Include="Interfaces\Structural\IChemicalModelObject.cs" />
+    <Compile Include="Interfaces\Structural\ICoshhChemicalObject.cs" />
+    <Compile Include="Interfaces\Structural\IHazardModelObject.cs" />
     <Compile Include="Interfaces\Singleton\IRepository.cs" />
-    <Compile Include="Interfaces\Structural\Window\IContentWindow.cs" />
     <Compile Include="LocalFileService.cs" />
     <Compile Include="EventExtensions.cs" />
     <Compile Include="Interfaces\Singleton\IConfiguration.cs" />
@@ -88,24 +92,15 @@
     <Compile Include="Interfaces\Creational\Factory\IIOFactory.cs" />
     <Compile Include="Interfaces\Creational\Factory\ILocalFileFactory.cs" />
     <Compile Include="Interfaces\Singleton\IRepositoryInfo.cs" />
-    <Compile Include="Interfaces\Structural\Document\IDocumentObject.cs" />
+    <Compile Include="Interfaces\Structural\IDocumentObject.cs" />
     <Compile Include="IFormats\A4Format.cs" />
     <Compile Include="IFormats\CustomFormat.cs" />
-    <Compile Include="Interfaces\Structural\Document\IDocument.cs" />
-    <Compile Include="Interfaces\IContextMenu.cs" />
-    <Compile Include="Interfaces\Structural\Document\IFormat.cs" />
-    <Compile Include="Interfaces\Structural\Document\IDocumentBody.cs" />
+    <Compile Include="Interfaces\Structural\IFormat.cs" />
+    <Compile Include="Interfaces\Structural\IDocumentBody.cs" />
     <Compile Include="Interfaces\ICopyPasteable.cs" />
     <Compile Include="Interfaces\Creational\Prototype\IDeepCloneable.cs" />
-    <Compile Include="Interfaces\IInteractable.cs" />
-    <Compile Include="Interfaces\IRibbon.cs" />
-    <Compile Include="Interfaces\IRibbonTabItem.cs" />
-    <Compile Include="Interfaces\Structural\Window\IRibbonWindow.cs" />
-    <Compile Include="Interfaces\ISelectable.cs" />
-    <Compile Include="Interfaces\Creational\Service\IService.cs" />
+    <Compile Include="Interfaces\Creational\Service\IIOService.cs" />
     <Compile Include="Interfaces\IViewable.cs" />
-    <Compile Include="Interfaces\Structural\Window\IWindow.cs" />
-    <Compile Include="Interfaces\Structural\Window\IWindowT.cs" />
     <Compile Include="LocalFileServiceMultiItem.cs" />
     <Compile Include="NullCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -133,7 +128,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Locale\SafetyProgram.Locale.csproj">
+      <Project>{125449ec-b19e-4006-94d6-6e298c09eac7}</Project>
+      <Name>SafetyProgram.Locale</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

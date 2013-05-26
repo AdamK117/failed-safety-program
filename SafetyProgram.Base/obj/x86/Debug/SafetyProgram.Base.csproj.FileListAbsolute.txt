@@ -18,3 +18,5 @@ V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csproj.Gene
 V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.pdb
 V:\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csprojResolveAssemblyReference.cache
+V:\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Locale.dll
+V:\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Locale.pdb

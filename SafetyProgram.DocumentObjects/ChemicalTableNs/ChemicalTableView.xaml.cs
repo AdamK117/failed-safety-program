@@ -9,7 +9,7 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
     /// <summary>
     /// Interaction logic for ChemicalTableView.xaml
     /// </summary>
-    public sealed partial class ChemicalTableView : UserControl
+    internal sealed partial class ChemicalTableView : UserControl
     {
         private readonly IChemicalTableViewModel viewModel;
 
@@ -49,16 +49,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
             {
                 viewModel.SelectedChemicals.Add(chemical);
             }
-        }
-
-        /// <summary>
-        /// Selects the ChemicalTable when it is clicked.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ChemicalTable_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            viewModel.Select();
         }
 
         #endregion

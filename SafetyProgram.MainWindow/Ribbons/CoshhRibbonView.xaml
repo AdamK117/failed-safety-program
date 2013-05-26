@@ -40,4 +40,8 @@
                 </Fluent:QuickAccessMenuItem>
             </Fluent:Ribbon.QuickAccessItems>
 
+    <Fluent:Ribbon.ContextualGroups>
+        <Fluent:RibbonContextualTabGroup Header="Tools" Background="Green" x:Name="contextualGroup" Visibility="Visible" />
+    </Fluent:Ribbon.ContextualGroups>
+
 </Fluent:Ribbon>

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.ModelObjects;
 
 namespace SafetyProgram.Configuration
 {
@@ -18,15 +16,10 @@ namespace SafetyProgram.Configuration
         public ConfigurationLocalFileFactory(ILocalFileFactory<IRepositoryInfo> repositoryInfoFactory,
             ILocalFileFactory<IChemicalModelObject> chemicalLocalFileFactory)
         {
-            if (repositoryInfoFactory == null || chemicalLocalFileFactory == null)
-            {
-                throw new ArgumentNullException();
-            }
-            else
-            {
-                this.repositoryInfoFactory = repositoryInfoFactory;
-                this.chemicalLocalFileFactory = chemicalLocalFileFactory;
-            }
+            Helpers.NullCheck(repositoryInfoFactory, chemicalLocalFileFactory);
+
+            this.repositoryInfoFactory = repositoryInfoFactory;
+            this.chemicalLocalFileFactory = chemicalLocalFileFactory;
         }
 
         public IConfiguration CreateNew()

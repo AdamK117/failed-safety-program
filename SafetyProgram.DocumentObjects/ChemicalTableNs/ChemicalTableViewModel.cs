@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
@@ -9,33 +8,26 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
-    public sealed class ChemicalTableViewModel : IChemicalTableViewModel
+    internal sealed class ChemicalTableViewModel : IChemicalTableViewModel
     {
         public ChemicalTableViewModel(IEditableHolder<string> headerHolder,
             ContextMenu contextMenu,
             ObservableCollection<ICoshhChemicalObject> chemicals,
             ObservableCollection<ICoshhChemicalObject> selectedChemicals,
-            List<InputBinding> hotkeys,
-            Action selectAction)
+            List<InputBinding> hotkeys)
         {
-            if (headerHolder == null ||
-                contextMenu == null ||
-                chemicals == null ||
-                selectedChemicals == null ||
-                hotkeys == null ||
-                selectAction == null)
-                throw new ArgumentNullException();
-            else
-            {
-                this.headerHolder = headerHolder;
-                this.contextMenu = contextMenu;
-                this.chemicals = chemicals;
-                this.selectedChemicals = selectedChemicals;
-                this.hotkeys = hotkeys;
-                this.selectAction = selectAction;
+            Helpers.NullCheck(headerHolder,
+                contextMenu,
+                chemicals,
+                selectedChemicals);
 
-                this.headerHolder.ContentChanged += (sender, newHeader) => PropertyChanged.Raise(this, "Header");
-            }
+            this.headerHolder = headerHolder;
+            this.contextMenu = contextMenu;
+            this.chemicals = chemicals;
+            this.selectedChemicals = selectedChemicals;
+            this.hotkeys = hotkeys;
+
+            this.headerHolder.ContentChanged += (sender, newHeader) => PropertyChanged.Raise(this, "Header");
         }
 
         private readonly IEditableHolder<string> headerHolder;
@@ -70,12 +62,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs
         public List<InputBinding> Hotkeys
         {
             get { return hotkeys; }
-        }
-
-        private readonly Action selectAction;
-        public void Select()
-        {
-            selectAction();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

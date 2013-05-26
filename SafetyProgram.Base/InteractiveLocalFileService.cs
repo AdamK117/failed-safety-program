@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Locale;
 
 namespace SafetyProgram.Base
 {
@@ -20,11 +21,9 @@ namespace SafetyProgram.Base
 
         public InteractiveLocalFileService(ILocalFileFactory<T> itemFactory)
         {
-            if (itemFactory != null)
-            {
-                this.itemFactory = itemFactory;
-            }
-            else throw new ArgumentNullException();
+            Helpers.NullCheck(itemFactory);
+
+            this.itemFactory = itemFactory;
         }
 
         public T New()
@@ -48,7 +47,7 @@ namespace SafetyProgram.Base
             {
                 var openFileDialog = new OpenFileDialog()
                 {
-                    Filter = "Some XML Docs (.xml)|*.xml",
+                    Filter = "Xml Document (.xml)|*.xml",
                     Multiselect = false,
                     CheckFileExists = true
                 };
@@ -64,10 +63,10 @@ namespace SafetyProgram.Base
 
                             return itemFactory.Load(xElement);
                         }
-                        else throw new FileNotFoundException("The file selected does not exist", openFileDialog.FileName);
+                        else throw new FileNotFoundException(SystemMessages.FileNotFound, openFileDialog.FileName);
 
                     default:
-                        throw new ArgumentException("User cancelled out of selecting a file to load");
+                        throw new ArgumentException();
 
                 }
             }

@@ -11,7 +11,7 @@ namespace SafetyProgram.Base
         {
             if (xmlElement != null)
             {
-                Debug.Assert(xmlElement.Value != "", "Empty xml tags parsed");
+                Debug.Assert(xmlElement.Value.Length > 0, "Empty xml tags parsed");
                 return xmlElement.Value;
             }
             else throw new InvalidDataException(errorMessage);
@@ -21,7 +21,7 @@ namespace SafetyProgram.Base
         {
             if (xmlElement != null)
             {
-                Debug.Assert(xmlElement.Value != "", "Empty xml tags parsed");
+                Debug.Assert(xmlElement.Value.Length > 0, "Empty xml tags parsed");
                 return xmlElement.Value;
             }
             else return defaultValue;

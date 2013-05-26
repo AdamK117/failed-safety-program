@@ -7,13 +7,13 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs
 {
-    public interface IChemicalTableViewModel : INotifyPropertyChanged
+    internal interface IChemicalTableViewModel : 
+        INotifyPropertyChanged
     {
         string Header { get; set; }
         ContextMenu ContextMenu { get; }
         ObservableCollection<ICoshhChemicalObject> Chemicals { get; }
         ObservableCollection<ICoshhChemicalObject> SelectedChemicals { get; }
         List<InputBinding> Hotkeys { get; }
-        void Select();
     }
 }

@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
+using SafetyProgram.Base;
+using SafetyProgram.Base.GenericCommands;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.DocumentObjects;
 
@@ -12,21 +13,17 @@ namespace SafetyProgram.Document.Commands
             IConfiguration appConfiguration,
             ICommandInvoker commandInvoker)
         {
-            if (documentBody == null ||
-                appConfiguration == null ||
-                commandInvoker == null)
-                throw new ArgumentNullException();
-            else
-            {
-                InsertChemicalTable = new InsertIDocumentObjectICom(
-                    documentBody,
-                    commandInvoker,
-                    () => DefaultDocumentObjects.ChemicalTable(appConfiguration, commandInvoker)
-                    );
-                DeleteIDocObject = new DeleteIDocObjectICom(documentBody, commandInvoker);
+            Helpers.NullCheck(documentBody, appConfiguration, commandInvoker);
 
-                Hotkeys = setHotkeys();
-            }         
+            InsertChemicalTable = new InsertObjectICom<IDocumentObject>(
+                documentBody.Items,
+                commandInvoker,
+                () => DefaultDocumentObjects.ChemicalTable(appConfiguration, commandInvoker)
+                );
+
+            DeleteIDocObject = new DeleteIDocObjectICom(documentBody, commandInvoker);
+
+            Hotkeys = setHotkeys();
         }
 
         private List<InputBinding> setHotkeys()

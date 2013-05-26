@@ -6,7 +6,8 @@ using Fluent;
 
 namespace SafetyProgram.MainWindow
 {
-    public interface ICoshhWindowViewModel : INotifyPropertyChanged
+    public interface ICoshhWindowViewModel : 
+        INotifyPropertyChanged
     {
         Ribbon RibbonView { get; }
         Control ContentView { get; }

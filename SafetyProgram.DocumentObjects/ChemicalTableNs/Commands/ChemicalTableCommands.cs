@@ -1,27 +1,26 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
+using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DocumentObjects.GenericCommands;
+using SafetyProgram.Base.GenericCommands;
 
 namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
 {
     internal sealed class ChemicalTableCommands : IChemicalTableCommands
     {
-        public ChemicalTableCommands(
-            IChemicalTable table, 
-            ICommandInvoker commandInvoker
-            )
+        public ChemicalTableCommands(ObservableCollection<ICoshhChemicalObject> selectedChemicals,
+            IList<ICoshhChemicalObject> chemicals,
+            ICommandInvoker commandInvoker)
         {
-            if (table != null && commandInvoker != null)
-            {
-                DeleteSelected = new DeleteSelectedICom<ICoshhChemicalObject>(table.SelectedChemicals, table.Chemicals, commandInvoker);
-                InsertChemical = new InsertChemicalICom(table.Chemicals, commandInvoker);
-                DeleteTable = new DeleteIDocumentObjectICom(table);
-                CopySelected = new CopySelectedICom(table.SelectedChemicals);
-                PasteChemicals = new PasteChemicalsICom(table.SelectedChemicals, commandInvoker);
+            Helpers.NullCheck(selectedChemicals, chemicals, commandInvoker);
 
-                Hotkeys = setHotkeys();
-            }            
+            DeleteSelected = new DeleteSelectedICom<ICoshhChemicalObject>(selectedChemicals, chemicals, commandInvoker);
+            InsertChemical = new InsertChemicalICom(chemicals, commandInvoker);
+            CopySelected = new CopySelectedICom(selectedChemicals);
+            PasteChemicals = new PasteChemicalsICom(chemicals, commandInvoker);
+
+            Hotkeys = setHotkeys();   
         }
 
         private List<InputBinding> setHotkeys()
@@ -50,15 +49,6 @@ namespace SafetyProgram.DocumentObjects.ChemicalTableNs.Commands
         /// Gets an ICommand that deletes chemicals selected within the ChemicalTable.
         /// </summary>
         public ICommand DeleteSelected 
-        { 
-            get; 
-            private set; 
-        }
-
-        /// <summary>
-        /// Gets an ICommand that flags the ChemicalTable for deletion.
-        /// </summary>
-        public ICommand DeleteTable 
         { 
             get; 
             private set; 

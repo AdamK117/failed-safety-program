@@ -11,13 +11,11 @@ namespace SafetyProgram.MainWindow.Commands
 
         public UndoICom(ICommandInvoker commandInvoker)
         {
-            if (commandInvoker != null)
-            {
-                this.commandInvoker = commandInvoker;
-            }
-            else throw new ArgumentNullException();
+            Helpers.NullCheck(commandInvoker);
 
-            this.commandInvoker.CanUndoChanged += (sender, e) => CanExecuteChanged.Raise(this);
+            this.commandInvoker = commandInvoker;
+
+            this.commandInvoker.CanUndoChanged += (sender, e) => CanExecuteChanged.Raise(this);          
         }
 
         public bool CanExecute(object parameter)

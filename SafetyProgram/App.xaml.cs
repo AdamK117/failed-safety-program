@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows;
-using Fluent;
-using Ninject;
+﻿using System.Windows;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Configuration;
@@ -10,8 +6,6 @@ using SafetyProgram.Document;
 using SafetyProgram.DocumentObjects;
 using SafetyProgram.DocumentObjects.ChemicalTableNs;
 using SafetyProgram.MainWindow;
-using SafetyProgram.MainWindow.Commands;
-using SafetyProgram.MainWindow.Ribbons;
 using SafetyProgram.ModelObjects;
 using SafetyProgram.Static;
 
@@ -28,15 +22,46 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
 
-            //CoshhWindowView window = new CoshhWindowView(
-            //    new CoshhWindowViewModel(
-            //        new Holder<Ribbon>(
-            //            new CoshhRibbonView(
-            //                new CoshhRibbonViewModel(
-            //                    new Holder<ObservableCollection<RibbonTabItem>>(
-            //                        new ObservableCollection<RibbonTabItem>()
-            //                    ),
-            //                    new Holder<WindowICommands<>(
+            //Create a service that can load the config file.
+            var configService = new LocalFileService<IConfiguration>(
+                new ConfigurationLocalFileFactory(
+                    new RepositoryInfoLocalFileFactory(),
+                    new ChemicalModelObjectLocalFileFactory()
+                ),
+                TestData.CONFIGURATION_FILE
+            );
+
+            //Load the config file (singleton).
+            var config = configService.Load();
+
+            //Assign a command invoker (singleton).
+            var commandInvoker = new CommandInvoker();
+
+            var service = new InteractiveLocalFileService<ICoshhDocument>(
+                new CoshhDocumentLocalFileFactory(config, commandInvoker, new DocumentObjectLocalFileFactory(
+                        config,
+                        commandInvoker,
+                        new ChemicalTableLocalFileFactory(
+                            config,
+                            commandInvoker
+                        )
+                    ))
+            );
+
+            //Place the service in an ObservableHolder (it may change during runtime).
+            var serviceHolder = new Holder<IIOService<ICoshhDocument>>(
+                service
+            );
+
+            var windowFactory = new MainWindowFacade<ICoshhDocument>(
+                config,
+                commandInvoker,
+                serviceHolder
+            );
+
+            var window = windowFactory.CreateNew();
+
+            window.Show();
         }
 
         /// <summary>
