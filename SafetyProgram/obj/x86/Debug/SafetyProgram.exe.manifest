@@ -73,7 +73,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>fi/AVY+KcxTyN8vRqvIFd9GBpxI=</dsig:DigestValue>
+        <dsig:DigestValue>6Xi1EDMIed5cI+PxNzdvfrkNxd4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -138,14 +138,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.MainWindow.dll" size="29184">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.MainWindow.dll" size="29696">
       <assemblyIdentity name="SafetyProgram.MainWindow" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>e6Wdt1/R7/s3W6UX2AZw6tXrT/U=</dsig:DigestValue>
+        <dsig:DigestValue>+vBeukSsCcpMop9HBJxxT2c3pfs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

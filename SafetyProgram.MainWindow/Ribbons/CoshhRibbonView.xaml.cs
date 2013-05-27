@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using Fluent;
 using SafetyProgram.Base;
+using System.Windows;
 
 namespace SafetyProgram.MainWindow.Ribbons
 {
@@ -18,8 +19,9 @@ namespace SafetyProgram.MainWindow.Ribbons
             this.DataContext = viewModel;
             InitializeComponent();
 
-            contextualGroup.Visibility = System.Windows.Visibility.Visible;
+            contextualGroup.Visibility = Visibility.Visible;
 
+            //Add document tabs that may already be there
             foreach (RibbonTabItem ribbonTab in viewModel.DocumentRibbonTabs)
             {
                 this.Tabs.Add(ribbonTab);
@@ -29,6 +31,11 @@ namespace SafetyProgram.MainWindow.Ribbons
             viewModel.DocumentRibbonTabsChanged += 
                 (sender, newDocumentRibbonTabs) =>
                 {
+                    //De-group and clear the list.
+                    foreach (RibbonTabItem ribbonTab in this.Tabs)
+                    {
+                        ribbonTab.Group = null;
+                    }
                     this.Tabs.Clear();
 
                     if (viewModel.DocumentRibbonTabs != null)
