@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
+using System.Windows;
 using Fluent;
 using SafetyProgram.Base;
-using System.Windows;
 
 namespace SafetyProgram.MainWindow.Ribbons
 {
@@ -27,8 +26,8 @@ namespace SafetyProgram.MainWindow.Ribbons
                 this.Tabs.Add(ribbonTab);
             }
 
-            //If the document ribbon tabs change.
-            viewModel.DocumentRibbonTabsChanged += 
+            //If the document ribbon tabs collection changes.
+            viewModel.DocumentRibbonTabsHolderChanged += 
                 (sender, newDocumentRibbonTabs) =>
                 {
                     //De-group and clear the list.
@@ -40,6 +39,7 @@ namespace SafetyProgram.MainWindow.Ribbons
 
                     if (viewModel.DocumentRibbonTabs != null)
                     {
+                        //Add the new tabs in.
                         foreach (RibbonTabItem documentRibbonTab in viewModel.DocumentRibbonTabs)
                         {
                             this.Tabs.Add(documentRibbonTab);
@@ -48,7 +48,7 @@ namespace SafetyProgram.MainWindow.Ribbons
                 };
 
             //If the contextual ribbon tabs collection changes
-            viewModel.ContextualRibbonTabsChanged += 
+            viewModel.ContextualRibbonTabsHolderChanged += 
                 (sender, newContextualTabs) =>
                 {
                     if (viewModel.ContextualRibbonTabs != null)

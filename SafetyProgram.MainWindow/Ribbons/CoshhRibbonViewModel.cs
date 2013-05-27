@@ -25,7 +25,7 @@ namespace SafetyProgram.MainWindow.Ribbons
                 (sender, newDocumentTabs) =>
                 {
                     PropertyChanged.Raise(this, "DocumentRibbonTabs");
-                    DocumentRibbonTabsChanged.Raise(this, DocumentRibbonTabs);
+                    DocumentRibbonTabsHolderChanged.Raise(this, DocumentRibbonTabs);
                 };
 
             this.windowCommandsHolder.ContentChanged += 
@@ -35,7 +35,7 @@ namespace SafetyProgram.MainWindow.Ribbons
                 (sender, newContextualTabs) => 
                 {
                     PropertyChanged.Raise(this, "ContextualRibbonTabs");
-                    ContextualRibbonTabsChanged.Raise(this, ContextualRibbonTabs);
+                    ContextualRibbonTabsHolderChanged.Raise(this, ContextualRibbonTabs);
                 };
         }
 
@@ -44,7 +44,7 @@ namespace SafetyProgram.MainWindow.Ribbons
         {
             get { return documentRibbonTabsHolder.Content; }
         }
-        public event EventHandler<GenericPropertyChangedEventArg<ICollection<RibbonTabItem>>> DocumentRibbonTabsChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<ICollection<RibbonTabItem>>> DocumentRibbonTabsHolderChanged;
 
         private readonly IHolder<IWindowCommands> windowCommandsHolder;
         public IWindowCommands Commands
@@ -57,7 +57,7 @@ namespace SafetyProgram.MainWindow.Ribbons
         {
             get { return contextualRibbonTabsHolder.Content; }
         }
-        public event EventHandler<GenericPropertyChangedEventArg<ObservableCollection<RibbonTabItem>>> ContextualRibbonTabsChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<ObservableCollection<RibbonTabItem>>> ContextualRibbonTabsHolderChanged;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
