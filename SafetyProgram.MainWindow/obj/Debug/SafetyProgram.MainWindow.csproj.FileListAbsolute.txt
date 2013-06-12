@@ -1,7 +1,5 @@
 V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.MainWindow.dll
 V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.MainWindow.pdb
-V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\Fluent.dll
-V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\Ninject.dll
 V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.Document.dll
 V:\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.Locale.dll

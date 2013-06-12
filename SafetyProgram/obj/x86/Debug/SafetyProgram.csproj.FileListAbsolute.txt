@@ -141,8 +141,6 @@ V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.exe.manifest
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.application
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.exe
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.pdb
-V:\SafetyProgram\SafetyProgram\bin\Debug\Fluent.dll
-V:\SafetyProgram\SafetyProgram\bin\Debug\Ninject.dll
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Configuration.dll
 V:\SafetyProgram\SafetyProgram\bin\Debug\SafetyProgram.Document.dll

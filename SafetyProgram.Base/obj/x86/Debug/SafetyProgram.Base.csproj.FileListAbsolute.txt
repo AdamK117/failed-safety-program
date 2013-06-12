@@ -9,7 +9,6 @@ V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram.BaseClasses\obj\x86\Debug\SafetyProgram.Base.pdb
 V:\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Base.pdb
-V:\SafetyProgram\SafetyProgram.Base\bin\Debug\Fluent.dll
 V:\SafetyProgram\SafetyProgram.Base\bin\Debug\System.Windows.Interactivity.dll
 V:\SafetyProgram\SafetyProgram.Base\bin\Debug\Fluent.pdb
 V:\SafetyProgram\SafetyProgram.Base\bin\Debug\Fluent.xml

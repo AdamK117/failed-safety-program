@@ -1,6 +1,5 @@
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Base.UnitTests.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Base.UnitTests.pdb
-V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Moq.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Base.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Configuration.dll
 V:\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.ModelObjects.dll
