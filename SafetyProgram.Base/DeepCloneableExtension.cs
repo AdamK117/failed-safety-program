@@ -17,8 +17,7 @@ namespace SafetyProgram.Base
         /// <exception cref="System.ArgumentNullException"></exception>
         public static IDataObject GetDataObject<T>(this IEnumerable<T> items, string comIdentity)
             where T : IDeepCloneable<T>
-        {
-            IDataObject dataObject = new DataObject();
+        { 
             IList<T> clonedItems = new List<T>();
 
             foreach (IDeepCloneable<T> item in items)
@@ -27,6 +26,8 @@ namespace SafetyProgram.Base
 
                 clonedItems.Add(clonedItem);
             }
+
+            IDataObject dataObject = new DataObject();
 
             dataObject.SetData(comIdentity, clonedItems);
 
@@ -45,9 +46,9 @@ namespace SafetyProgram.Base
         {
             try
             {
-                Clipboard.SetDataObject(
-                    GetDataObject<T>(data, comIdentity)
-                    );
+                var dataObject = GetDataObject<T>(data, comIdentity);
+
+                Clipboard.SetDataObject(dataObject);
             }
             catch (COMException)
             {
@@ -62,8 +63,7 @@ namespace SafetyProgram.Base
         /// <typeparam name="T">An IDeepCloneable</typeparam>
         /// <param name="comIdentity">The identity use in the Com (must be the same as was set when copying it to the clipboard)</param>
         /// <returns></returns>
-        public static IDeepCloneable<T> TryPaste<T>(string comIdentity)
-            where T : IDeepCloneable<T>
+        public static T TryPaste<T>(string comIdentity)
         {
             if (Clipboard.ContainsData(comIdentity))
             {
@@ -79,7 +79,7 @@ namespace SafetyProgram.Base
                     throw;
                 }
             }
-            else return null;
+            else return default(T);
         }
 
         /// <summary>
@@ -94,23 +94,11 @@ namespace SafetyProgram.Base
         public static void TryPasteInto<T>(this ICollection<T> target, string comIdentity)
             where T : IDeepCloneable<T>
         {
-            if (Clipboard.ContainsData(comIdentity))
-            {
-                try
-                {
-                    object uncastedData = Clipboard.GetData(comIdentity);
-                    IEnumerable<T> data = (IEnumerable<T>)uncastedData;
+            var clipboardData = TryPaste<IEnumerable<T>>(comIdentity);
 
-                    foreach (T entry in data)
-                    {
-                        target.Add(entry);
-                    }
-                }
-                catch (COMException)
-                {
-                    MessageBox.Show("Can't access the clipboard!");
-                    throw;
-                }
+            foreach (T entry in clipboardData)
+            {
+                target.Add(entry);
             }
         }
 
@@ -140,7 +128,12 @@ namespace SafetyProgram.Base
         public static void TryCopy<T>(this IDeepCloneable<T> item, string comIdentity)
             where T : IDeepCloneable<T>
         {
-            Clipboard.SetDataObject(GetDataObject<T>(item, comIdentity));
+            Clipboard.SetDataObject(
+                GetDataObject<T>(
+                    item, 
+                    comIdentity
+                )
+            );
         }        
 
         public static IEnumerable<T> DeepCloneList<T>(this IEnumerable<T> items)

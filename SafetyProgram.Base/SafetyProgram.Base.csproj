@@ -70,7 +70,6 @@
     <Compile Include="Holder.cs" />
     <Compile Include="Interfaces\IEditable.cs" />
     <Compile Include="Interfaces\Structural\IEditableHolder.cs" />
-    <Compile Include="Interfaces\IGenericPropertyChangedEventArg.cs" />
     <Compile Include="Interfaces\Structural\IHolder.cs" />
     <Compile Include="InteractiveLocalFileService.cs" />
     <Compile Include="Interfaces\Creational\Service\ICallbackService.cs" />

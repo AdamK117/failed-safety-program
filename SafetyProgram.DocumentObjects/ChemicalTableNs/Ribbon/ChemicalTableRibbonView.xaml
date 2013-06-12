@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+             xmlns:ChemItem="clr-namespace:SafetyProgram.DocumentObjects.ChemicalTableNs.Ribbon"
              mc:Ignorable="d" 
              Header="Chemical Table"
              >
@@ -33,11 +34,12 @@
                     <!-- Display each chemical in a Fluent:MenuItem -->
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Fluent:MenuItem 
+                            <Button Content="Boo" />
+                            <!--<Fluent:MenuItem 
                             Header="{Binding Name}"
                             Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Fluent:RibbonGroupBox}}, Path=DataContext.Commands.InsertChemical}" 
                             CommandParameter="{Binding}" 
-                            />
+                            />-->
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
 

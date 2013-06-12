@@ -91,6 +91,9 @@
     <Compile Include="ChemicalTableNs\ContextMenus\IChemicalTableContextMenuViewModel.cs" />
     <Compile Include="ChemicalTableNs\IChemicalTable.cs" />
     <Compile Include="ChemicalTableNs\IChemicalTableViewModel.cs" />
+    <Compile Include="ChemicalTableNs\Ribbon\ChemicalMenuItem.xaml.cs">
+      <DependentUpon>ChemicalMenuItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonTabViewModel.cs" />
     <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml.cs">
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
@@ -135,6 +138,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ChemicalTableNs\Ribbon\ChemicalMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

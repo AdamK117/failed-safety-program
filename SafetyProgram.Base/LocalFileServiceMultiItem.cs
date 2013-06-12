@@ -12,7 +12,7 @@ namespace SafetyProgram.Base
 
         private readonly string path;
         private readonly string rootNodeName;
-        private readonly ILocalFileFactory<TContent> contentFactory;        
+        private readonly ILocalFileFactory<TContent> contentFactory;     
 
         public LocalFileServiceMultiItem(string path, 
             string rootNodeName, 
@@ -51,10 +51,10 @@ namespace SafetyProgram.Base
                 var loadedEntries = new List<TContent>();
 
                 //Load the XML file.
-                var sourceXml = XDocument.Load(path);
+                var sourceData = XDocument.Load(path);
 
                 //Required: Get the root node (e.g. 'repositories', 'chemicals').
-                var root = sourceXml.Element(rootNodeName);
+                var root = sourceData.Element(rootNodeName);
                 if (root != null)
                 {
                     //Optional (it may be empty): Get the elements contained within the root using the supplied factory.

@@ -23,9 +23,15 @@ namespace SafetyProgram.MainWindow.Ribbons
             //Add document tabs that may already be there
             foreach (RibbonTabItem ribbonTab in viewModel.DocumentRibbonTabs)
             {
+                this.SelectedTabItem = ribbonTab;
                 this.Tabs.Add(ribbonTab);
             }
 
+            //Add a handler to the current contextual tabs.
+            viewModel.ContextualRibbonTabs.CollectionChanged +=
+                ContextualRibbonTabs_CollectionChanged;
+
+            //HOLDER CHANGES.
             //If the document ribbon tabs collection changes.
             viewModel.DocumentRibbonTabsHolderChanged += 
                 (sender, newDocumentRibbonTabs) =>
@@ -42,12 +48,13 @@ namespace SafetyProgram.MainWindow.Ribbons
                         //Add the new tabs in.
                         foreach (RibbonTabItem documentRibbonTab in viewModel.DocumentRibbonTabs)
                         {
+                            this.SelectedTabItem = documentRibbonTab;
                             this.Tabs.Add(documentRibbonTab);
                         }
                     }
                 };
 
-            //If the contextual ribbon tabs collection changes
+            //If the contextual ribbon tabs holder changes (normally when a new document is opened).
             viewModel.ContextualRibbonTabsHolderChanged += 
                 (sender, newContextualTabs) =>
                 {
@@ -56,28 +63,7 @@ namespace SafetyProgram.MainWindow.Ribbons
                         viewModel.ContextualRibbonTabs.CollectionChanged +=
                             ContextualRibbonTabs_CollectionChanged;
                     }
-                    else
-                    {
-                        var removalList = new List<RibbonTabItem>();
-                        foreach (RibbonTabItem ribbonTab in this.Tabs)
-                        {
-                            if (ribbonTab.Group == contextualGroup)
-                            {
-                                removalList.Add(ribbonTab);
-                            }
-                        }
-
-                        foreach (RibbonTabItem contextualRibbonTab in removalList)
-                        {
-                            contextualRibbonTab.Group = null;
-                            this.Tabs.Remove(contextualRibbonTab);
-                        }
-                    }
-                };
-
-            //Add a handler to the current contextual tabs.
-            viewModel.ContextualRibbonTabs.CollectionChanged +=
-                ContextualRibbonTabs_CollectionChanged;         
+                };                   
         }
 
         void ContextualRibbonTabs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -104,21 +90,16 @@ namespace SafetyProgram.MainWindow.Ribbons
                     break;
 
                 case NotifyCollectionChangedAction.Reset:
-                    var removalList = new List<RibbonTabItem>();
+                    var placeHolderTabsHolder = new List<RibbonTabItem>(this.Tabs);
 
-                    foreach (RibbonTabItem ribbonTab in this.Tabs)
+                    foreach (RibbonTabItem ribbonTab in placeHolderTabsHolder)
                     {
                         if (ribbonTab.Group == contextualGroup)
                         {
-                            removalList.Add(ribbonTab);
+                            ribbonTab.Group = null;
+                            this.Tabs.Remove(ribbonTab);
                         }
                     }
-
-                    removalList.ForEach(contextualTab => 
-                        {
-                            contextualTab.Group = null;
-                            this.Tabs.Remove(contextualTab);
-                        });
                     break;
             }
         }

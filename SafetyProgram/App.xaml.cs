@@ -38,14 +38,18 @@ namespace SafetyProgram
             var commandInvoker = new CommandInvoker();
 
             var service = new InteractiveLocalFileService<ICoshhDocument>(
-                new CoshhDocumentLocalFileFactory(config, commandInvoker, new DocumentObjectLocalFileFactory(
+                new CoshhDocumentLocalFileFactory(
+                    config, 
+                    commandInvoker, 
+                    new DocumentObjectLocalFileFactory(
                         config,
                         commandInvoker,
                         new ChemicalTableLocalFileFactory(
                             config,
                             commandInvoker
                         )
-                    ))
+                    )
+                )
             );
 
             //Place the service in an ObservableHolder (it may change during runtime).

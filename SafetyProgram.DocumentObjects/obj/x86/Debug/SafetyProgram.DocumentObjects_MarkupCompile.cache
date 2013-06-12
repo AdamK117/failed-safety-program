@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-4-9181357
+51500427327
 
-25-2062214875
+26778710442
 19-1371103143
-ChemicalTableNs\ChemicalTableView.xaml;ChemicalTableNs\ContextMenus\ChemicalTableContextMenuView.xaml;ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml;Styles\TableListStyle.xaml;
+ChemicalTableNs\ChemicalTableView.xaml;ChemicalTableNs\ContextMenus\ChemicalTableContextMenuView.xaml;ChemicalTableNs\Ribbon\ChemicalMenuItem.xaml;ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml;Styles\TableListStyle.xaml;
 
 False
 

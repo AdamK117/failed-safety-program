@@ -92,14 +92,14 @@ namespace SafetyProgram.Base
             //Check if the states have changed. If they have, trigger the necessay events.
             {
                 bool canUndoAfter = CanUndo();
-                if (canUndoBefore != canUndoAfter)
+                if (canUndoAfter != canUndoBefore)
                 {
                     CanUndoChanged.Raise(this, canUndoAfter);
                 }
             }
             {
                 bool canRedoAfter = CanRedo();
-                if (canRedoBefore != canRedoAfter)
+                if (canRedoAfter != canRedoBefore)
                 {
                     CanRedoChanged.Raise(this, canRedoAfter);
                 }

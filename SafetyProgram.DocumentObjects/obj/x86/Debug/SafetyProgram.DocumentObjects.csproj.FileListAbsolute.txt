@@ -30,3 +30,6 @@ V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\SafetyProgram.Docum
 V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\SafetyProgram.DocumentObjects.pdb
 V:\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.Locale.dll
 V:\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.Locale.pdb
+V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\ChemicalTableNs\Ribbon\ChemicalMenuItem.baml
+V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\ChemicalTableNs\Ribbon\ChemicalMenuItem.g.cs
+V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\SafetyProgram.DocumentObjects_MarkupCompile.lref

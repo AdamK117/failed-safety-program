@@ -67,7 +67,6 @@ namespace SafetyProgram.Base
 
                     default:
                         throw new ArgumentException();
-
                 }
             }
             else throw new InvalidOperationException();
