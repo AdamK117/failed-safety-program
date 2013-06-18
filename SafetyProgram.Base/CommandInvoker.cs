@@ -7,17 +7,28 @@ namespace SafetyProgram.Base
     /// <summary>
     /// Defines an ICommandInvoker. A class that will execute and buffer IInvokedCommands.
     /// </summary>
+    /// <remarks>Book: GoF 'Command Pattern'.</remarks>
     public sealed class CommandInvoker : ICommandInvoker
     {
+        //Holder for 'redo' operations.
         private readonly Stack<IInvokedCommand> futureCommands;
+
+        //Holder for 'undo' operations.
         private readonly Stack<IInvokedCommand> pastCommands;
 
+        /// <summary>
+        /// Construct a new instance of the CommandInvoker class.
+        /// </summary>
         public CommandInvoker()
         {
             futureCommands = new Stack<IInvokedCommand>();
             pastCommands = new Stack<IInvokedCommand>();
         }
 
+        /// <summary>
+        /// Invoke an IInvokedCommand. Once executed, the command may be reversed with the 'Undo' method.
+        /// </summary>
+        /// <param name="command">The IInvokedCommand to execute.</param>
         public void InvokeCommand(IInvokedCommand command)
         {
             //Execute a new command:
@@ -32,6 +43,9 @@ namespace SafetyProgram.Base
             });
         }
 
+        /// <summary>
+        /// Perform an undo operation. This will call UnExecute() on the last executed IInvokedCommand.
+        /// </summary>
         public void Undo()
         {
             //Undo a command:
@@ -46,13 +60,23 @@ namespace SafetyProgram.Base
             });
         }
 
+        /// <summary>
+        /// Check if the Undo command is available.
+        /// </summary>
+        /// <returns>The availability of the Undo command.</returns>
         public bool CanUndo()
         {
             return (pastCommands.Count > 0) ? true : false;
         }
 
+        /// <summary>
+        /// Get an event that monitors if the CanUndo state of the CommandInvoker has changed.
+        /// </summary>
         public event EventHandler<GenericPropertyChangedEventArg<bool>> CanUndoChanged;
 
+        /// <summary>
+        /// Perform a Redo operation. This will call Execute() on the last undone IInvokedCommand.
+        /// </summary>
         public void Redo()
         {
             //Redo a command
@@ -67,17 +91,24 @@ namespace SafetyProgram.Base
             });
         }
 
+        /// <summary>
+        /// Check if the Redo command is available.
+        /// </summary>
+        /// <returns>The availability of the Redo command.</returns>
         public bool CanRedo()
         {
             return (futureCommands.Count > 0) ? true : false;
-        }      
-
+        }
+     
+        /// <summary>
+        /// Get an event that monitors if the CanRedo state of the CommandInvoker has changed.
+        /// </summary>
         public event EventHandler<GenericPropertyChangedEventArg<bool>> CanRedoChanged;
 
         /// <summary>
-        /// Invokes actions. Checks if the CanUndo and CanRedo states changed during invokation
+        /// Invoke an action. Checks if the CanUndo and CanRedo states changed during invokation.
         /// </summary>
-        /// <param name="invokedAction"></param>
+        /// <param name="invokedAction">The action that the CommandInvoker will invoke.</param>
         private void invoker(Action invokedAction)
         {
             //Invokes an action, checking if the CanUndo and CanRedo states change after invokation.

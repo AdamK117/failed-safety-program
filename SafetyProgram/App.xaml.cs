@@ -37,6 +37,7 @@ namespace SafetyProgram
             //Assign a command invoker (singleton).
             var commandInvoker = new CommandInvoker();
 
+            //Create a service for CoshhDocuments (default local, may be changed).
             var service = new InteractiveLocalFileService<ICoshhDocument>(
                 new CoshhDocumentLocalFileFactory(
                     config, 
@@ -57,14 +58,15 @@ namespace SafetyProgram
                 service
             );
 
+            //Create a main window factory (use a facade, a fully exposed API would be a mess to wire up here).
             var windowFactory = new MainWindowFacade<ICoshhDocument>(
                 config,
                 commandInvoker,
                 serviceHolder
             );
 
+            //Use the factory to create a window and show it.
             var window = windowFactory.CreateNew();
-
             window.Show();
         }
 

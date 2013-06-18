@@ -4,7 +4,7 @@
 library
 C#
 .cs
-V:\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\
 SafetyProgram.DocumentObjects
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 51500427327
 
 27-368962143
-19331121659
+19-612100213
 ChemicalTableNs\ChemicalTableView.xaml;ChemicalTableNs\ContextMenus\ChemicalTableContextMenuView.xaml;ChemicalTableNs\Ribbon\ChemicalMenuItem.xaml;ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml;Styles\TableListStyle.xaml;
 
 True

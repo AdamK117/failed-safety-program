@@ -2,8 +2,8 @@
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Static;
 using SafetyProgram.ModelObjects;
+using SafetyProgram.Static;
 
 namespace SafetyProgram.Configuration.UnitTests
 {
@@ -50,7 +50,7 @@ namespace SafetyProgram.Configuration.UnitTests
             var testRepos = enumerator.Current;
 
             Assert.AreEqual<string>(testRepos.Source, "local", "An incorrect source type was serialized into the repository. Should be 'local'.");
-            Assert.AreEqual<string>(testRepos.Path, "V:\\SafetyProgram\\SafetyProgram.TestData\\ChemicalRepository.xml", "An incorrect path was serialized into the repository when compared with the test data");
+            Assert.AreEqual<string>(testRepos.Path, "C:\\Users\\AdamK117\\Desktop\\SafetyProgram\\SafetyProgram.TestData\\ChemicalRepository.xml", "An incorrect path was serialized into the repository when compared with the test data");
             Assert.AreEqual<string>(testRepos.Login, "", "A login was serialized into the repository object. Local files (e.g. in the test data) shouldn't have a login");
             Assert.AreEqual<string>(testRepos.Password, "", "A password was serialized into the repository object. Local files (e.g. in the test data) shouldn't have a password");
 
@@ -66,7 +66,7 @@ namespace SafetyProgram.Configuration.UnitTests
 
         [TestMethod]
         public void InvalidDataTest()
-        {   
+        {
             //  Expected Behaviours:
             //      -1) The invalid data should throw up a InvalidDataException
             //          Test: Check for an InvalidDataException

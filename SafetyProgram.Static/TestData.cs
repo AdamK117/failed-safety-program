@@ -10,7 +10,7 @@ namespace SafetyProgram.Static
         /// <summary>
         /// Folder containing all relevant test data
         /// </summary>
-        public const string TEST_FOLDER = "V:\\SafetyProgram\\SafetyProgram.TestData";
+        public const string TEST_FOLDER = "C:\\Users\\AdamK117\\Desktop\\SafetyProgram\\SafetyProgram.TestData";
 
         /// <summary>
         /// File containing correct configuration file data

@@ -5,6 +5,9 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base
 {
+    /// <summary>
+    /// Defines a set of extension methods that are compatible with classes and collections of classes that implement the <c>IDeepCloneable</c> interface.
+    /// </summary>
     public static class DeepCloneableExtensions
     {
         /// <summary>
@@ -18,7 +21,7 @@ namespace SafetyProgram.Base
         public static IDataObject GetDataObject<T>(this IEnumerable<T> items, string comIdentity)
             where T : IDeepCloneable<T>
         { 
-            IList<T> clonedItems = new List<T>();
+            var clonedItems = new List<T>();
 
             foreach (IDeepCloneable<T> item in items)
             {

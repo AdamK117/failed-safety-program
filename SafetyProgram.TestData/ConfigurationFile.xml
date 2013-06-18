@@ -2,7 +2,7 @@
 <appconfig>
   <documentlock>false</documentlock>
   <repositories>
-    <repositoryinfo source="local" type="chemical" path="V:\SafetyProgram\SafetyProgram.TestData\ChemicalRepository.xml" />
+    <repositoryinfo source="local" type="chemical" path="C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.TestData\ChemicalRepository.xml" />
     <repositoryinfo source="database" type="apparatus" path="\\myserver\sqlAddr" login="Admin" password="password" />
   </repositories>
   <locale>en-GB</locale>
