@@ -16,5 +16,5 @@ DEBUG;TRACE
 19-612100213
 ChemicalTableNs\ChemicalTableView.xaml;ChemicalTableNs\ContextMenus\ChemicalTableContextMenuView.xaml;ChemicalTableNs\Ribbon\ChemicalMenuItem.xaml;ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml;Styles\TableListStyle.xaml;
 
-True
+False
 

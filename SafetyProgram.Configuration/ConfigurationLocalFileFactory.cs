@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -45,10 +46,13 @@ namespace SafetyProgram.Configuration
         private const string LOCALE_XML_IDENTIFIER = "locale";
         private static string getLocale(XElement data)
         {
-            return
-                data
-                .Element(LOCALE_XML_IDENTIFIER)
-                .ExtractStrict("No locale could be found in the configuration file");
+            var xmlElement = data.Element(LOCALE_XML_IDENTIFIER);
+            if (xmlElement != null)
+            {
+                Debug.Assert(xmlElement.Value.Length > 0, "Empty xml tags parsed");
+                return xmlElement.Value;
+            }
+            else throw new InvalidDataException("No locale could be found in the configuration file");
         }
 
         private const string REPOSITORY_INFO_XML_IDENTIFIER = "repositories";
