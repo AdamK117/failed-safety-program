@@ -8,7 +8,6 @@ V:\SafetyProgram\SafetyProgram.Locale\obj\x86\Debug\SafetyProgram.Locale.SystemM
 V:\SafetyProgram\SafetyProgram.Locale\obj\x86\Debug\SafetyProgram.Locale.csprojResolveAssemblyReference.cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Locale\bin\x86\Debug\SafetyProgram.Locale.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Locale\bin\x86\Debug\SafetyProgram.Locale.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Locale\obj\x86\Debug\SafetyProgram.Locale.csprojResolveAssemblyReference.cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Locale\obj\x86\Debug\SafetyProgram.Locale.SystemMessages-fr-FR.resources
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Locale\obj\x86\Debug\SafetyProgram.Locale.SystemMessages.resources
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Locale\obj\x86\Debug\SafetyProgram.Locale.csproj.GenerateResource.Cache

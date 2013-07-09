@@ -27,15 +27,10 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Deb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Static.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Fluent.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Locale.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\System.Windows.Interactivity.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Base.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Configuration.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.ModelObjects.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Static.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Moq.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Moq.xml
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Fluent.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\Fluent.xml
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\bin\x86\Debug\SafetyProgram.Locale.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\obj\x86\Debug\SafetyProgram.Base.UnitTests.csprojResolveAssemblyReference.cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base.UnitTests\obj\x86\Debug\SafetyProgram.Base.UnitTests.dll

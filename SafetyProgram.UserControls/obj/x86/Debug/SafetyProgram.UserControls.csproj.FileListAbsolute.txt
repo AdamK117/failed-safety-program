@@ -27,10 +27,7 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\SafetyProgram.Base.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\Fluent.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\SafetyProgram.Locale.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\System.Windows.Interactivity.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\SafetyProgram.Base.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\Fluent.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\Fluent.xml
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\bin\x86\Debug\SafetyProgram.Locale.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\obj\x86\Debug\SafetyProgram.UserControls.csprojResolveAssemblyReference.cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UserControls\obj\x86\Debug\TagList\TagListView.baml

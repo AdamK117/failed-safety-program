@@ -26,6 +26,7 @@ namespace SafetyProgram
             var configService = new LocalFileService<IConfiguration>(
                 new ConfigurationLocalFileFactory(
                     new RepositoryInfoLocalFileFactory(),
+                    //Give it a way to load chemical models.
                     new ChemicalModelObjectLocalFileFactory()
                 ),
                 TestData.CONFIGURATION_FILE

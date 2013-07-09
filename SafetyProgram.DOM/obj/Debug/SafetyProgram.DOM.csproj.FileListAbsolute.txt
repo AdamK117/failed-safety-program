@@ -1,0 +1,10 @@
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\bin\Debug\SafetyProgram.DOM.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\bin\Debug\SafetyProgram.DOM.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\bin\Debug\SafetyProgram.Base.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\bin\Debug\Fluent.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\bin\Debug\SafetyProgram.Locale.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\bin\Debug\SafetyProgram.Base.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\bin\Debug\SafetyProgram.Locale.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\obj\Debug\SafetyProgram.DOM.csprojResolveAssemblyReference.cache
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\obj\Debug\SafetyProgram.DOM.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\obj\Debug\SafetyProgram.DOM.pdb

@@ -40,14 +40,11 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\De
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.Static.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.UserControls.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.Locale.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\System.Windows.Interactivity.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.Base.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.Configuration.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.ModelObjects.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.Static.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.UserControls.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\Fluent.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\Fluent.xml
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\bin\x86\Debug\SafetyProgram.Locale.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\SafetyProgram.DocumentObjects.csprojResolveAssemblyReference.cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DocumentObjects\obj\x86\Debug\ChemicalTableNs\ChemicalTableView.baml

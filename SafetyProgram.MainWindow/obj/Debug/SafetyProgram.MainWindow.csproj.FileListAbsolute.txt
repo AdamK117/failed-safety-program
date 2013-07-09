@@ -32,15 +32,10 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\Safet
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.Document.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.Locale.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.DocumentObjects.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.ModelObjects.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.Base.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.Document.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.Locale.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\Fluent.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\Fluent.xml
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\Ninject.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\Ninject.xml
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.DocumentObjects.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\bin\Debug\SafetyProgram.ModelObjects.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\SafetyProgram.MainWindow.csprojResolveAssemblyReference.cache

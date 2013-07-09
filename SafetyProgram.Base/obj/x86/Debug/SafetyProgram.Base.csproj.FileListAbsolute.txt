@@ -22,10 +22,7 @@ V:\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Locale.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Base.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Base.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Locale.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\SafetyProgram.Locale.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\Fluent.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\Fluent.xml
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csprojResolveAssemblyReference.cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.Properties.Resources.resources
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csproj.GenerateResource.Cache

@@ -33,12 +33,9 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\Saf
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Static.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Locale.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.ModelObjects.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\System.Windows.Interactivity.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Base.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.DocumentObjects.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Static.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\Fluent.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\Fluent.xml
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.Locale.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\bin\x86\Debug\SafetyProgram.ModelObjects.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Document\obj\x86\Debug\SafetyProgram.Document.csprojResolveAssemblyReference.cache
