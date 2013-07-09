@@ -1,4 +1,4 @@
-﻿namespace SafetyProgram.DOM.Objects
+﻿namespace SafetyProgram.DOM.Models
 {
     /// <summary>
     /// Defines a class that contains the unique identifiers for different IDocObj's (ChemicalTable, ApparatusTable, etc.)

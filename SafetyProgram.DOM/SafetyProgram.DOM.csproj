@@ -39,15 +39,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Doc.cs" />
     <Compile Include="IDoc.cs" />
     <Compile Include="IWindow.cs" />
-    <Compile Include="Objects\IChemical.cs" />
-    <Compile Include="Objects\IChemicalTable.cs" />
-    <Compile Include="Objects\ICoshhChemical.cs" />
-    <Compile Include="Objects\IDocObj.cs" />
-    <Compile Include="Objects\IHazard.cs" />
-    <Compile Include="Objects\IQuantity.cs" />
-    <Compile Include="Objects\ObjIdentifiers.cs" />
+    <Compile Include="Models\Chemical.cs" />
+    <Compile Include="Models\ChemicalTable.cs" />
+    <Compile Include="Models\CoshhChemical.cs" />
+    <Compile Include="Models\Hazard.cs" />
+    <Compile Include="Models\IChemical.cs" />
+    <Compile Include="Models\IChemicalTable.cs" />
+    <Compile Include="Models\ICoshhChemical.cs" />
+    <Compile Include="Models\IDocObj.cs" />
+    <Compile Include="Models\IHazard.cs" />
+    <Compile Include="Models\IQuantity.cs" />
+    <Compile Include="Models\ObjIdentifiers.cs" />
+    <Compile Include="Models\Quantity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.DOM.Objects
+namespace SafetyProgram.DOM.Models
 {
     /// <summary>
     /// Defines an interface for a Chemical Table in the Safety Document. The table contains a collection of chemicals and a header.
@@ -18,11 +18,11 @@ namespace SafetyProgram.DOM.Objects
         /// <summary>
         /// Occurs when the header of the ChemicalTable changes.
         /// </summary>
-        event EventHandler<GenericPropertyChangedEventArg<bool>> HeaderChanged;
+        event EventHandler<GenericPropertyChangedEventArg<string>> HeaderChanged;
 
         /// <summary>
         /// Gets the chemicals in the ChemicalTable.
         /// </summary>
-        ObservableCollection<IHazard> Chemicals { get; }
+        ObservableCollection<ICoshhChemical> Chemicals { get; }
     }
 }

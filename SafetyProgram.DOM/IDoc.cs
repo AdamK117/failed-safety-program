@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.DOM.Objects;
+using SafetyProgram.DOM.Models;
 
 namespace SafetyProgram.DOM
 {

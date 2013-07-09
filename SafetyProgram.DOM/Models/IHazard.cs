@@ -1,7 +1,7 @@
 ﻿using System;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.DOM.Objects
+namespace SafetyProgram.DOM.Models
 {
     /// <summary>
     /// Defines the interface for a hazard object. Classes that implement this hold a collection of related COSHH details.
@@ -15,10 +15,20 @@ namespace SafetyProgram.DOM.Objects
         string SignalWord { get; set; }
 
         /// <summary>
+        /// Occurs when the SignalWord changes.
+        /// </summary>
+        event EventHandler<GenericPropertyChangedEventArg<string>> SignalWordChanged;
+
+        /// <summary>
         /// Gets or Sets the R-Phrase associated with this hazard. These phrases serve the same purpose as Hazard Statements (signalwords)
         /// </summary>
         /// <example>R36</example>
         string RPhrase { get; set; }
+
+        /// <summary>
+        /// Occurs when the RPhrase string changes.
+        /// </summary>
+        event EventHandler<GenericPropertyChangedEventArg<string>> RPhraseChanged;
 
         /// <summary>
         /// Gets or Sets the Warning string associated with this hazard.

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.DOM.Objects
+namespace SafetyProgram.DOM.Models
 {
     /// <summary>
     /// Defines an interface for a Chemical in the SafetyProgram. The chemical requires a name and hazards associated with it.
@@ -23,6 +23,6 @@ namespace SafetyProgram.DOM.Objects
         /// <summary>
         /// Gets the Hazards associated with the chemical.
         /// </summary>
-        ObservableCollection<string> Hazards { get; }
+        ObservableCollection<IHazard> Hazards { get; }
     }
 }

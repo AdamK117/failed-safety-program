@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SafetyProgram.DOM.Objects
+namespace SafetyProgram.DOM.Models
 {
     /// <summary>
     /// Defines an interface for describing quantities. Previously, these were held as separate fields on the chemical class.
