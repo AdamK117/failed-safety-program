@@ -2,6 +2,9 @@
 
 namespace SafetyProgram.Base
 {
+    /// <summary>
+    /// Defines helper methods to be used in the rest of the program.
+    /// </summary>
     public static class Helpers
     {
         /// <summary>

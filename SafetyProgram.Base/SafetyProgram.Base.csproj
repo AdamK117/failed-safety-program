@@ -71,7 +71,6 @@
     <Compile Include="Interfaces\IEditable.cs" />
     <Compile Include="Interfaces\Structural\IEditableHolder.cs" />
     <Compile Include="Interfaces\Structural\IHolder.cs" />
-    <Compile Include="InteractiveLocalFileService.cs" />
     <Compile Include="Interfaces\Creational\Service\ICallbackService.cs" />
     <Compile Include="Interfaces\Creational\Service\IInputService.cs" />
     <Compile Include="Interfaces\Creational\Factory\IOutputFactory.cs" />
@@ -80,27 +79,16 @@
     <Compile Include="Interfaces\Command\ICommandInvoker.cs" />
     <Compile Include="Interfaces\Creational\Factory\IFactory.cs" />
     <Compile Include="Interfaces\Command\IInvokedCommand.cs" />
-    <Compile Include="Interfaces\Structural\IChemicalModelObject.cs" />
-    <Compile Include="Interfaces\Structural\ICoshhChemicalObject.cs" />
-    <Compile Include="Interfaces\Structural\IHazardModelObject.cs" />
-    <Compile Include="Interfaces\Singleton\IRepository.cs" />
-    <Compile Include="LocalFileService.cs" />
     <Compile Include="EventExtensions.cs" />
-    <Compile Include="Interfaces\Singleton\IConfiguration.cs" />
     <Compile Include="Interfaces\Command\ICommandsHolder.cs" />
     <Compile Include="Interfaces\Creational\Factory\IIOFactory.cs" />
     <Compile Include="Interfaces\Creational\Factory\ILocalFileFactory.cs" />
-    <Compile Include="Interfaces\Singleton\IRepositoryInfo.cs" />
-    <Compile Include="Interfaces\Structural\IDocumentObject.cs" />
     <Compile Include="IFormats\A4Format.cs" />
     <Compile Include="IFormats\CustomFormat.cs" />
-    <Compile Include="Interfaces\Structural\IFormat.cs" />
-    <Compile Include="Interfaces\Structural\IDocumentBody.cs" />
     <Compile Include="Interfaces\ICopyPasteable.cs" />
     <Compile Include="Interfaces\Creational\Prototype\IDeepCloneable.cs" />
     <Compile Include="Interfaces\Creational\Service\IIOService.cs" />
     <Compile Include="Interfaces\IViewable.cs" />
-    <Compile Include="LocalFileServiceMultiItem.cs" />
     <Compile Include="NullCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -68,6 +68,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fluent">
+      <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -94,6 +97,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IApplicationCommands.cs" />
+    <Compile Include="IApplicationController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -122,29 +127,13 @@
       <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
       <Name>SafetyProgram.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Configuration\SafetyProgram.Configuration.csproj">
-      <Project>{e3cec2ca-04a8-4841-9f19-e5439c47091a}</Project>
-      <Name>SafetyProgram.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.DocumentObjects\SafetyProgram.DocumentObjects.csproj">
-      <Project>{60fe19f7-74b8-4d02-9aed-77ac986ff3a1}</Project>
-      <Name>SafetyProgram.DocumentObjects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Document\SafetyProgram.Document.csproj">
-      <Project>{0385FB46-CEFE-4542-8F47-DBAAD96E5BAB}</Project>
-      <Name>SafetyProgram.Document</Name>
+    <ProjectReference Include="..\SafetyProgram.IO\SafetyProgram.IO.csproj">
+      <Project>{781e446c-e724-4a96-b769-e29cd69d42e7}</Project>
+      <Name>SafetyProgram.IO</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Locale\SafetyProgram.Locale.csproj">
       <Project>{125449EC-B19E-4006-94D6-6E298C09EAC7}</Project>
       <Name>SafetyProgram.Locale</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.MainWindow\SafetyProgram.MainWindow.csproj">
-      <Project>{2bf84dd7-1743-402e-a049-352c772741a0}</Project>
-      <Name>SafetyProgram.MainWindow</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.ModelObjects\SafetyProgram.ModelObjects.csproj">
-      <Project>{7c2c454d-a1d9-4355-976c-08582e07cd31}</Project>
-      <Name>SafetyProgram.ModelObjects</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Static\SafetyProgram.Static.csproj">
       <Project>{365f96a4-1c7f-4c32-8db9-a1385f2d109c}</Project>

@@ -1,0 +1,14 @@
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.Models.IO.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.Models.IO.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.Base.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.IO.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.Models.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\Fluent.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.Locale.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.Base.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.Models.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.IO.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\bin\Debug\SafetyProgram.Locale.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\obj\Debug\SafetyProgram.Models.IO.csprojResolveAssemblyReference.cache
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\obj\Debug\SafetyProgram.Models.IO.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO\obj\Debug\SafetyProgram.Models.IO.pdb

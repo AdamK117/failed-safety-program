@@ -1,0 +1,9 @@
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\SafetyProgram.DOM.IO.UnitTests.dll.config
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\FsUnitTest.XML
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\SafetyProgram.DOM.IO.UnitTests.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\SafetyProgram.DOM.IO.UnitTests.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\FSharp.Core.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\FSharp.Core.xml
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\obj\Debug\SafetyProgram.DOM.IO.UnitTests.fsprojResolveAssemblyReference.cache
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\obj\Debug\SafetyProgram.DOM.IO.UnitTests.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\obj\Debug\SafetyProgram.DOM.IO.UnitTests.pdb

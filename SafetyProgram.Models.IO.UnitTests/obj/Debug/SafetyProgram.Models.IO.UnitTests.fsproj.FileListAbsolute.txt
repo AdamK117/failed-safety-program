@@ -1,0 +1,8 @@
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\SafetyProgram.Models.IO.UnitTests.dll.config
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\FsUnitTest.XML
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\SafetyProgram.Models.IO.UnitTests.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\SafetyProgram.Models.IO.UnitTests.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\FSharp.Core.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\bin\Debug\FSharp.Core.xml
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\obj\Debug\SafetyProgram.Models.IO.UnitTests.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM.IO.UnitTests\obj\Debug\SafetyProgram.Models.IO.UnitTests.pdb
