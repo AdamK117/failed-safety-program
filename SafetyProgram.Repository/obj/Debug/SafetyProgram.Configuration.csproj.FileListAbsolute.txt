@@ -1,8 +1,0 @@
-V:\SafetyProgram\SafetyProgram.Configuration\bin\Debug\SafetyProgram.Configuration.dll
-V:\SafetyProgram\SafetyProgram.Configuration\bin\Debug\SafetyProgram.Configuration.pdb
-V:\SafetyProgram\SafetyProgram.Configuration\bin\Debug\SafetyProgram.Base.dll
-V:\SafetyProgram\SafetyProgram.Configuration\bin\Debug\Fluent.dll
-V:\SafetyProgram\SafetyProgram.Configuration\bin\Debug\SafetyProgram.Base.pdb
-V:\SafetyProgram\SafetyProgram.Configuration\obj\Debug\SafetyProgram.Configuration.csprojResolveAssemblyReference.cache
-V:\SafetyProgram\SafetyProgram.Configuration\obj\Debug\SafetyProgram.Configuration.dll
-V:\SafetyProgram\SafetyProgram.Configuration\obj\Debug\SafetyProgram.Configuration.pdb

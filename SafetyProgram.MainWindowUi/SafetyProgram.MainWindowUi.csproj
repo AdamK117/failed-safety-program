@@ -33,12 +33,31 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluent">
-      <HintPath>..\Fluent.dll</HintPath>
+    <Reference Include="Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
-      <HintPath>..\Ninject\Ninject.dll</HintPath>
+      <HintPath>..\SafetyProgram.ExternalLibraries\Ninject\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -55,13 +74,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\IWindowCommands.cs" />
-    <Compile Include="IMainWindowFactory.cs" />
-    <Compile Include="View\CoshhWindowView.xaml.cs">
-      <DependentUpon>CoshhWindowView.xaml</DependentUpon>
+    <Compile Include="Commands\IMainWindowCommands.cs" />
+    <Compile Include="Commands\MainWindowCommands.cs" />
+    <Compile Include="Ribbons\MainRibbonViewModel.cs" />
+    <Compile Include="View\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ICoshhWindowViewModel.cs" />
-    <Compile Include="IMainWindowController.cs" />
+    <Compile Include="View\MainWindowViewModel.cs" />
+    <Compile Include="View\IMainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -75,10 +95,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Ribbons\CoshhRibbonView.xaml.cs">
-      <DependentUpon>CoshhRibbonView.xaml</DependentUpon>
+    <Compile Include="Ribbons\MainRibbonView.xaml.cs">
+      <DependentUpon>MainRibbonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ribbons\ICoshhRibbonViewModel.cs" />
+    <Compile Include="Ribbons\IMainRibbonViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -94,6 +114,10 @@
       <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
       <Name>SafetyProgram.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.DocumentObjectUi\SafetyProgram.DocumentObjectUi.csproj">
+      <Project>{60fe19f7-74b8-4d02-9aed-77ac986ff3a1}</Project>
+      <Name>SafetyProgram.DocumentObjectUi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.DocumentUi\SafetyProgram.DocumentUi.csproj">
       <Project>{0385fb46-cefe-4542-8f47-dbaad96e5bab}</Project>
       <Name>SafetyProgram.DocumentUi</Name>
@@ -106,13 +130,21 @@
       <Project>{125449ec-b19e-4006-94d6-6e298c09eac7}</Project>
       <Name>SafetyProgram.Locale</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Models.IO\SafetyProgram.Models.IO.csproj">
+      <Project>{91b89727-6166-4f7c-9fd9-df6a43783b5f}</Project>
+      <Name>SafetyProgram.Models.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
+      <Project>{3f73aa8c-38e0-424d-b316-9a6f0403f1f2}</Project>
+      <Name>SafetyProgram.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\CoshhWindowView.xaml">
+    <Page Include="View\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ribbons\CoshhRibbonView.xaml">
+    <Page Include="Ribbons\MainRibbonView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -51,7 +51,7 @@ namespace SafetyProgram.DocumentUi.ContextMenus {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SafetyProgram.Document;component/contextmenus/documentcontextmenuview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SafetyProgram.DocumentUi;component/contextmenus/documentcontextmenuview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\ContextMenus\DocumentContextMenuView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

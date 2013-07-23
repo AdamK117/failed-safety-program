@@ -8,8 +8,8 @@
     <ProjectGuid>{0385FB46-CEFE-4542-8F47-DBAAD96E5BAB}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SafetyProgram.Document</RootNamespace>
-    <AssemblyName>SafetyProgram.Document</AssemblyName>
+    <RootNamespace>SafetyProgram.DocumentUi</RootNamespace>
+    <AssemblyName>SafetyProgram.DocumentUi</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -72,20 +72,18 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\DeleteIDocObjectICom.cs" />
+    <Compile Include="Commands\DocumentICommands.cs" />
     <Compile Include="Commands\IDocumentICommands.cs" />
     <Compile Include="ContextMenus\DocumentContextMenuView.xaml.cs">
       <DependentUpon>DocumentContextMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ContextMenus\DocumentContextMenuViewModel.cs" />
     <Compile Include="ContextMenus\IDocumentContextMenuViewModel.cs" />
-    <Compile Include="IDocumentController.cs" />
-    <Compile Include="IDocumentFactory.cs" />
-    <Compile Include="View\CoshhDocumentView.xaml.cs">
-      <DependentUpon>CoshhDocumentView.xaml</DependentUpon>
+    <Compile Include="View\DocumentView.xaml.cs">
+      <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CoshhDocumentViewModel.cs" />
-    <Compile Include="View\ICoshhDocumentViewModel.cs" />
+    <Compile Include="View\DocumentViewModel.cs" />
+    <Compile Include="View\IDocumentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -99,11 +97,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Ribbons\CoshhDocumentRibbonTabView.xaml.cs">
-      <DependentUpon>CoshhDocumentRibbonTabView.xaml</DependentUpon>
+    <Compile Include="Ribbons\DocumentRibbonTabView.xaml.cs">
+      <DependentUpon>DocumentRibbonTabView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ribbons\CoshhDocumentRibbonTabViewModel.cs" />
-    <Compile Include="Ribbons\ICoshhDocumentRibbonTabViewModel.cs" />
+    <Compile Include="Ribbons\DocumentRibbonTabViewModel.cs" />
+    <Compile Include="Ribbons\IDocumentRibbonTabViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -128,6 +126,10 @@
       <Project>{781e446c-e724-4a96-b769-e29cd69d42e7}</Project>
       <Name>SafetyProgram.IO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
+      <Project>{3f73aa8c-38e0-424d-b316-9a6f0403f1f2}</Project>
+      <Name>SafetyProgram.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Static\SafetyProgram.Static.csproj">
       <Project>{365f96a4-1c7f-4c32-8db9-a1385f2d109c}</Project>
       <Name>SafetyProgram.Static</Name>
@@ -138,11 +140,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\CoshhDocumentView.xaml">
+    <Page Include="View\DocumentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ribbons\CoshhDocumentRibbonTabView.xaml">
+    <Page Include="Ribbons\DocumentRibbonTabView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

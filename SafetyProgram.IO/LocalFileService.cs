@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Xml.Linq;
 using SafetyProgram.Base;
-using SafetyProgram.IO;
 
 namespace SafetyProgram.IO
 {

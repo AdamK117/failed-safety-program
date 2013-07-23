@@ -22,3 +22,12 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\View\
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\SafetyProgram.MainWindowUi_MarkupCompile.cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\SafetyProgram.MainWindowUi.g.resources
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindow\obj\Debug\SafetyProgram.MainWindowUi.Properties.Resources.resources
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindowUi\obj\Debug\SafetyProgram.MainWindowUi.csprojResolveAssemblyReference.cache
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindowUi\obj\Debug\View\MainWindowView.baml
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindowUi\obj\Debug\Ribbons\MainRibbonView.baml
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindowUi\obj\Debug\View\MainWindowView.g.cs
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindowUi\obj\Debug\Ribbons\MainRibbonView.g.cs
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindowUi\obj\Debug\SafetyProgram.MainWindowUi_MarkupCompile.cache
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindowUi\obj\Debug\SafetyProgram.MainWindowUi.g.resources
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindowUi\obj\Debug\SafetyProgram.MainWindowUi.Properties.Resources.resources
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.MainWindowUi\obj\Debug\SafetyProgram.MainWindowUi.csproj.GenerateResource.Cache

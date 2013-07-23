@@ -68,7 +68,8 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluent">
+    <Reference Include="Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -97,8 +98,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IApplicationCommands.cs" />
-    <Compile Include="IApplicationController.cs" />
+    <Compile Include="ApplicationController.cs" />
+    <Compile Include="Commands\ApplicationCommands.cs" />
+    <Compile Include="Commands\IApplicationCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -127,6 +129,14 @@
       <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
       <Name>SafetyProgram.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.DocumentObjectUi\SafetyProgram.DocumentObjectUi.csproj">
+      <Project>{60fe19f7-74b8-4d02-9aed-77ac986ff3a1}</Project>
+      <Name>SafetyProgram.DocumentObjectUi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.DocumentUi\SafetyProgram.DocumentUi.csproj">
+      <Project>{0385fb46-cefe-4542-8f47-dbaad96e5bab}</Project>
+      <Name>SafetyProgram.DocumentUi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.IO\SafetyProgram.IO.csproj">
       <Project>{781e446c-e724-4a96-b769-e29cd69d42e7}</Project>
       <Name>SafetyProgram.IO</Name>
@@ -134,6 +144,18 @@
     <ProjectReference Include="..\SafetyProgram.Locale\SafetyProgram.Locale.csproj">
       <Project>{125449EC-B19E-4006-94D6-6E298C09EAC7}</Project>
       <Name>SafetyProgram.Locale</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.MainWindowUi\SafetyProgram.MainWindowUi.csproj">
+      <Project>{2bf84dd7-1743-402e-a049-352c772741a0}</Project>
+      <Name>SafetyProgram.MainWindowUi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Models.IO\SafetyProgram.Models.IO.csproj">
+      <Project>{91b89727-6166-4f7c-9fd9-df6a43783b5f}</Project>
+      <Name>SafetyProgram.Models.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
+      <Project>{3f73aa8c-38e0-424d-b316-9a6f0403f1f2}</Project>
+      <Name>SafetyProgram.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Static\SafetyProgram.Static.csproj">
       <Project>{365f96a4-1c7f-4c32-8db9-a1385f2d109c}</Project>

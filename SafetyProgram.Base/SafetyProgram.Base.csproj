@@ -61,7 +61,6 @@
   <ItemGroup>
     <Compile Include="ChildHolder.cs" />
     <Compile Include="CommandInvoker.cs" />
-    <Compile Include="ErrorValidation.cs" />
     <Compile Include="GenericCommands\AddItemInvokedICom.cs" />
     <Compile Include="GenericCommands\DeleteSelectedICom.cs" />
     <Compile Include="GenericCommands\DeleteSelectedInvokedCom.cs" />
@@ -71,10 +70,7 @@
     <Compile Include="Interfaces\IEditable.cs" />
     <Compile Include="Interfaces\Structural\IEditableHolder.cs" />
     <Compile Include="Interfaces\Structural\IHolder.cs" />
-    <Compile Include="Interfaces\Creational\Service\ICallbackService.cs" />
-    <Compile Include="Interfaces\Creational\Service\IInputService.cs" />
     <Compile Include="Interfaces\Creational\Factory\IOutputFactory.cs" />
-    <Compile Include="Interfaces\Creational\Service\IOutputService.cs" />
     <Compile Include="Interfaces\Creational\Factory\IInputFactory.cs" />
     <Compile Include="Interfaces\Command\ICommandInvoker.cs" />
     <Compile Include="Interfaces\Creational\Factory\IFactory.cs" />
@@ -83,11 +79,7 @@
     <Compile Include="Interfaces\Command\ICommandsHolder.cs" />
     <Compile Include="Interfaces\Creational\Factory\IIOFactory.cs" />
     <Compile Include="Interfaces\Creational\Factory\ILocalFileFactory.cs" />
-    <Compile Include="IFormats\A4Format.cs" />
-    <Compile Include="IFormats\CustomFormat.cs" />
     <Compile Include="Interfaces\ICopyPasteable.cs" />
-    <Compile Include="Interfaces\Creational\Prototype\IDeepCloneable.cs" />
-    <Compile Include="Interfaces\Creational\Service\IIOService.cs" />
     <Compile Include="Interfaces\IViewable.cs" />
     <Compile Include="NullCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -103,7 +95,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="DeepCloneableExtension.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -120,6 +111,7 @@
       <Name>SafetyProgram.Locale</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -4,6 +4,10 @@ using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base.GenericCommands
 {
+    /// <summary>
+    /// Defines an invoked command that adds an item to a collection.
+    /// </summary>
+    /// <typeparam name="T">The type of item handled by this command.</typeparam>
     public sealed class AddItemInvokedICom<T> : IInvokedCommand
     {
         private readonly ICollection<T> items;

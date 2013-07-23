@@ -1,4 +1,7 @@
 ﻿using System.Windows;
+using SafetyProgram.IO;
+using SafetyProgram.Models;
+using SafetyProgram.Models.IO.XML;
 
 namespace SafetyProgram
 {
@@ -14,11 +17,10 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
 
-            IApplicationController appController = null;
-            appController
-                .WindowController
-                .View
-                .Show();
+            // Create an application kernel model.
+            var appKernel = new ApplicationKernel(
+                null
+            );
         }
 
         /// <summary>

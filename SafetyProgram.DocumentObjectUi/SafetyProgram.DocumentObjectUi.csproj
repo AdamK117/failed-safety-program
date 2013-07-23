@@ -72,7 +72,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChemicalTableNs\IChemicalTableFactory.cs" />
+    <Compile Include="ChemicalTableNs\Commands\ChemicalTableCommands.cs" />
+    <Compile Include="ChemicalTableNs\ContextMenus\ChemicalTableContextMenuViewModel.cs" />
+    <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonViewModel.cs" />
     <Compile Include="ChemicalTableNs\View\ChemicalTableView.xaml.cs">
       <DependentUpon>ChemicalTableView.xaml</DependentUpon>
     </Compile>
@@ -81,13 +83,13 @@
       <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChemicalTableNs\ContextMenus\IChemicalTableContextMenuViewModel.cs" />
-    <Compile Include="ChemicalTableNs\IChemicalTableController.cs" />
+    <Compile Include="ChemicalTableNs\View\ChemicalTableViewModel.cs" />
     <Compile Include="ChemicalTableNs\View\IChemicalTableViewModel.cs" />
     <Compile Include="ChemicalTableNs\Ribbon\ChemicalTableRibbonView.xaml.cs">
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChemicalTableNs\Ribbon\IChemicalTableRibbonViewModel.cs" />
-    <Compile Include="IDocumentObjectController.cs" />
+    <Compile Include="DocumentObjectAbstractFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -143,6 +145,10 @@
     <ProjectReference Include="..\SafetyProgram.IO\SafetyProgram.IO.csproj">
       <Project>{781e446c-e724-4a96-b769-e29cd69d42e7}</Project>
       <Name>SafetyProgram.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Models\SafetyProgram.Models.csproj">
+      <Project>{3f73aa8c-38e0-424d-b316-9a6f0403f1f2}</Project>
+      <Name>SafetyProgram.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Static\SafetyProgram.Static.csproj">
       <Project>{365F96A4-1C7F-4C32-8DB9-A1385F2D109C}</Project>

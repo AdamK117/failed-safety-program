@@ -8,3 +8,4 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\bin\Debug\SafetyProgra
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\obj\Debug\SafetyProgram.Models.csprojResolveAssemblyReference.cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\obj\Debug\SafetyProgram.Models.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.DOM\obj\Debug\SafetyProgram.Models.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Models\obj\Debug\SafetyProgram.Models.csprojResolveAssemblyReference.cache

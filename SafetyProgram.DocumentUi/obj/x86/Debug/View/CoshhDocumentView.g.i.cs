@@ -67,7 +67,7 @@ namespace SafetyProgram.DocumentUi {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SafetyProgram.Document;component/view/coshhdocumentview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SafetyProgram.DocumentUi;component/view/coshhdocumentview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\CoshhDocumentView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
