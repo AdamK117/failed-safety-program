@@ -1,6 +1,0 @@
-V:\SafetyProgram\SafetyProgram.Locale\bin\Debug\SafetyProgram.Locale.dll
-V:\SafetyProgram\SafetyProgram.Locale\bin\Debug\SafetyProgram.Locale.pdb
-V:\SafetyProgram\SafetyProgram.Locale\obj\Debug\SafetyProgram.Locale.SystemMessages.resources
-V:\SafetyProgram\SafetyProgram.Locale\obj\Debug\SafetyProgram.Locale.csproj.GenerateResource.Cache
-V:\SafetyProgram\SafetyProgram.Locale\obj\Debug\SafetyProgram.Locale.dll
-V:\SafetyProgram\SafetyProgram.Locale\obj\Debug\SafetyProgram.Locale.pdb

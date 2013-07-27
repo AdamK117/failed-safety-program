@@ -1,4 +1,0 @@
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Models.Validation\bin\Debug\SafetyProgram.Models.Validation.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Models.Validation\bin\Debug\SafetyProgram.Models.Validation.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Models.Validation\obj\Debug\SafetyProgram.Models.Validation.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Models.Validation\obj\Debug\SafetyProgram.Models.Validation.pdb

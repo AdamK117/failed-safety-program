@@ -105,12 +105,6 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Locale\SafetyProgram.Locale.csproj">
-      <Project>{125449ec-b19e-4006-94d6-6e298c09eac7}</Project>
-      <Name>SafetyProgram.Locale</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

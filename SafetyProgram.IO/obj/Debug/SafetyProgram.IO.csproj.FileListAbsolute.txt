@@ -1,9 +1,0 @@
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.IO\bin\Debug\SafetyProgram.IO.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.IO\bin\Debug\SafetyProgram.IO.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.IO\bin\Debug\SafetyProgram.Base.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.IO\bin\Debug\SafetyProgram.Locale.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.IO\bin\Debug\SafetyProgram.Base.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.IO\bin\Debug\SafetyProgram.Locale.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.IO\obj\Debug\SafetyProgram.IO.csprojResolveAssemblyReference.cache
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.IO\obj\Debug\SafetyProgram.IO.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.IO\obj\Debug\SafetyProgram.IO.pdb
