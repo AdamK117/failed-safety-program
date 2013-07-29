@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using SafetyProgram.UI.Document;
 
 namespace SafetyProgram.UI
 {
@@ -8,5 +9,10 @@ namespace SafetyProgram.UI
         /// Get the UI view for the application
         /// </summary>
         Window View { get; }
+
+        /// <summary>
+        /// Get the controller of the document Ui.
+        /// </summary>
+        IDocumentUiController Document { get; }
     }
 }

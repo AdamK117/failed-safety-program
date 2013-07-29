@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Xml.Linq;
-using SafetyProgram.IO;
+using SafetyProgram.Core.IO;
 
 namespace SafetyProgram.Models.IO.XML
 {

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Windows;
+using SafetyProgram.Base;
 using SafetyProgram.Core;
+using SafetyProgram.Core.Commands.CoreCommands;
+using SafetyProgram.UI.Document;
 
 namespace SafetyProgram.UI
 {
@@ -11,14 +11,38 @@ namespace SafetyProgram.UI
     /// </summary>
     public sealed class ApplicationUiController : IApplicationUiController
     {
+        /// <summary>
+        /// Construct an instance of an application UI controller.
+        /// </summary>
+        /// <param name="applicationKernel"></param>
         public ApplicationUiController(IApplicationKernel applicationKernel)
         {
-            
+            var commandInvoker = new CommandInvoker();
+            var coreCommands = new CoreCommands(applicationKernel, commandInvoker);
+
+            this.view = new MainView(
+                new MainViewModel(
+                    coreCommands,
+                    null
+                )
+            );
         }
 
+        private readonly Window view;
+
+        /// <summary>
+        /// Get the ui for the application.
+        /// </summary>
         public System.Windows.Window View
         {
-            get { throw new NotImplementedException(); }
+            get { return view; }
+        }
+
+        private IDocumentUiController document;
+
+        public Document.IDocumentUiController Document
+        {
+            get { return document; }
         }
     }
 }

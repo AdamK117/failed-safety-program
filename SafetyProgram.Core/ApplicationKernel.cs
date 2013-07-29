@@ -16,7 +16,11 @@ namespace SafetyProgram.Core
         public ApplicationKernel(IConfiguration configuration)
         {
             this.Configuration = configuration;
-            document = null;
+
+            document = new Document(
+                new System.Collections.ObjectModel.ObservableCollection<IDocumentObject>(),
+                new A4Format()
+            );
             service = null;
         }
 

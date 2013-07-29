@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SafetyProgram.Core
 {
-    interface IConfiguration
+    public interface IConfiguration
     {
     }
 }

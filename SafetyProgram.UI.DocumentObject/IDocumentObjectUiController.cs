@@ -2,10 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls;
+using Fluent;
 
 namespace SafetyProgram.UI.DocumentObject
 {
-    interface IDocumentObjectUiController
+    public interface IDocumentObjectUiController
     {
+        /// <summary>
+        /// Get the view associated with the document object.
+        /// </summary>
+        Control View { get; }
+
+        /// <summary>
+        /// Get the contextual ribbon tab associated with the document object.
+        /// </summary>
+        RibbonTabItem ContextualTab { get; }
     }
 }

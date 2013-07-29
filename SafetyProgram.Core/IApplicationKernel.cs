@@ -11,22 +11,22 @@ namespace SafetyProgram.Core
     public interface IApplicationKernel
     {
         /// <summary>
-        /// Get or set the document of the window (may be null).
+        /// Get or set the document of the application (may be null).
         /// </summary>
         IDocument Document { get; set; }
 
         /// <summary>
-        /// Occurs when the windows document changes.
+        /// Occurs when the applications document changes.
         /// </summary>
         public event EventHandler<GenericPropertyChangedEventArg<IDocument>> DocumentChanged;
 
         /// <summary>
-        /// Get or set the IO service used by the window.
+        /// Get or set the IO service used by the application.
         /// </summary>
         IIOService<IDocument> Service { get; set; }
 
         /// <summary>
-        /// Occurs when the windows service changes.
+        /// Occurs when the service changes.
         /// </summary>
         public event EventHandler<GenericPropertyChangedEventArg<IIOService<IDocument>>> ServiceChanged;
 

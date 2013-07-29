@@ -4,12 +4,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Fluent;
 
-namespace SafetyProgram.MainWindowUi
+namespace SafetyProgram.UI
 {
     /// <summary>
     /// Defines an interface for the ViewModel of the CoshhWindowView.
     /// </summary>
-    public interface IMainWindowViewModel : INotifyPropertyChanged
+    public interface IMainViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// Get the RibbonView associated with the ViewModel.

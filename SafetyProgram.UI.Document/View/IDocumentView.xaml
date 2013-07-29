@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="SafetyProgram.UI.Document.DocumentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             >
+    <ScrollViewer x:Name="DocumentWrapper" MouseLeftButtonDown="DocumentClicked" Focusable="False">
+        <StackPanel x:Name="DocumentHolder" Width="{Binding Format.Width}" ContextMenu="{Binding ContextMenu.View}"  Background="White">
+            
+            <ItemsControl ItemsSource="{Binding Body.Items}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                    <ContentControl Content="{Binding View}" PreviewMouseLeftButtonDown="DocObjectClicked" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

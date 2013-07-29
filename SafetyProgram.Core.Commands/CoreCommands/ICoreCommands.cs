@@ -1,12 +1,12 @@
 ﻿using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.MainWindowUi.Commands
+namespace SafetyProgram.Core.Commands
 {
     /// <summary>
     /// Defines the commands available to the window.
     /// </summary>
-    public interface IMainWindowCommands : ICommandsHolder
+    public interface ICoreCommands : ICommandsHolder
     {    
         /// <summary>
         /// Get a command for creating a new document within the window.

@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fluent">
+      <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -47,6 +50,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextMenus\DocumentContextMenuView.xaml.cs">
+      <DependentUpon>DocumentContextMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContextMenus\DocumentContextMenuViewModel.cs" />
+    <Compile Include="ContextMenus\IDocumentContextMenuViewModel.cs" />
+    <Compile Include="View\DocumentViewModel.cs" />
+    <Compile Include="View\IDocumentView.xaml.cs">
+      <DependentUpon>IDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentUiController.cs" />
+    <Compile Include="View\IDocumentViewModel.cs" />
     <Compile Include="IDocumentUiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -70,6 +84,41 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
+      <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
+      <Name>SafetyProgram.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.Commands\SafetyProgram.Core.Commands.csproj">
+      <Project>{f56414f8-0849-4a8c-96f5-36dff7f292b9}</Project>
+      <Name>SafetyProgram.Core.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
+      <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>
+      <Name>SafetyProgram.Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.csproj">
+      <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
+      <Name>SafetyProgram.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UI.DocumentObject\SafetyProgram.UI.DocumentObject.csproj">
+      <Project>{c8e02939-77e0-4ac0-8e53-0bee1b41b18a}</Project>
+      <Name>SafetyProgram.UI.DocumentObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="RibbonTabs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ContextMenus\DocumentContextMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IDocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,11 +1,11 @@
 ﻿using Fluent;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.MainWindowUi
+namespace SafetyProgram.UI
 {
-    public sealed partial class MainWindowView : RibbonWindow
+    public sealed partial class MainView : RibbonWindow
     {
-        public MainWindowView(IMainWindowViewModel viewModel)
+        public MainView(IMainViewModel viewModel)
         {
             Helpers.NullCheck(viewModel);
 
