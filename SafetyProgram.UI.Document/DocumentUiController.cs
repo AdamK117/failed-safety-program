@@ -3,7 +3,9 @@ using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Core;
-using SafetyProgram.Models;
+using SafetyProgram.Core.Commands;
+using SafetyProgram.Core.Models;
+using SafetyProgram.UI.Document.View;
 using SafetyProgram.UI.DocumentObject;
 
 namespace SafetyProgram.UI.Document
@@ -18,7 +20,11 @@ namespace SafetyProgram.UI.Document
             documentObjects = new ObservableCollection<IDocumentObjectUiController>();
 
             view = new DocumentView(
-                new DocumentViewModel());
+                new DocumentViewModel(
+                    document,
+                    new DocumentICommands(document, commandInvoker)
+                )
+            );
         }
 
         private readonly Control view;

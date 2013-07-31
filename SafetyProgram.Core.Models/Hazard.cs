@@ -1,7 +1,7 @@
 ﻿using System;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.Models
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an implementation of IHazard. A class that holds Hazard information.

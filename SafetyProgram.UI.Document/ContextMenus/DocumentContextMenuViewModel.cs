@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SafetyProgram.DocumentUi.Commands;
+﻿using SafetyProgram.Base;
+using SafetyProgram.Core.Commands;
 
 namespace SafetyProgram.UI.Document
 {
@@ -10,8 +7,9 @@ namespace SafetyProgram.UI.Document
     {
         public DocumentContextMenuViewModel(IDocumentICommands commands)
         {
-            if (commands == null) throw new ArgumentNullException();
-            else this.commands = commands;
+            Helpers.NullCheck(commands);
+
+            this.commands = commands;
         }
 
         private readonly IDocumentICommands commands;

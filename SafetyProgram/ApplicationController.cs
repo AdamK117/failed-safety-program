@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using SafetyProgram.MainWindowUi;
-using SafetyProgram.MainWindowUi.View;
-using SafetyProgram.Models;
+using SafetyProgram.Core;
+using SafetyProgram.UI;
 
 namespace SafetyProgram
 {
@@ -15,14 +14,14 @@ namespace SafetyProgram
             // Get the configuration file
             IConfiguration configuration = null;
 
-            Window window = new MainWindowView(
-                new MainWindowViewModel(
-                    applicationKernel.Window,
-                    configuration
-                )
-            );
+            //Window window = new MainView(
+            //    new MainViewModel(
+            //        applicationKernel,
+            //        configuration
+            //    )
+            //);
 
-            window.Show();
+            //window.Show();
         }
 
         private readonly IApplicationCommands commands;
@@ -40,7 +39,7 @@ namespace SafetyProgram
         /// <summary>
         /// Get the configuration for the application.
         /// </summary>
-        public Models.IConfiguration Configuration
+        public IConfiguration Configuration
         {
             get { return configuration; }
         }

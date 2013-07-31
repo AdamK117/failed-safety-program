@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.DocumentUi.Commands
+namespace SafetyProgram.Core.Commands
 {
     /// <summary>
     /// Defines an interface for commands that act on the document.

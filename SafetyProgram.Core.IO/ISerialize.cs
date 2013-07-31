@@ -1,4 +1,4 @@
-﻿namespace SafetyProgram.IO
+﻿namespace SafetyProgram.Core.IO
 {
     /// <summary>
     /// Defines a general storage (disk, db, etc.) interface.

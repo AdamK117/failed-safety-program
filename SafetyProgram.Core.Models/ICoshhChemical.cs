@@ -1,4 +1,4 @@
-﻿namespace SafetyProgram.Models
+﻿namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an interface for a ICoshhChemical. This is both a chemical and the amount of that chemical used.

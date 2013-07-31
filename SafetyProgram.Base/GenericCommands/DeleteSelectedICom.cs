@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Windows.Forms;
 using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Locale;
 
 namespace SafetyProgram.Base.GenericCommands
 {
@@ -46,16 +45,16 @@ namespace SafetyProgram.Base.GenericCommands
         {
             if (CanExecute(parameter))
             {
-                DialogResult userPrompt = 
-                    MessageBox.Show(Locale.SystemMessages.DeleteSelectedMessage, 
-                    Locale.SystemMessages.DeleteSelectedMessage, 
-                    MessageBoxButtons.YesNo);
+                //DialogResult userPrompt = 
+                //    MessageBox.Show(Locale.SystemMessages.DeleteSelectedMessage, 
+                //    Locale.SystemMessages.DeleteSelectedMessage, 
+                //    MessageBoxButtons.YesNo);
 
-                if (userPrompt == DialogResult.Yes)
-                {
-                    var invokedCommand = new DeleteSelectedInvokedCom<T>(selection, items);
-                    commandInvoker.InvokeCommand(invokedCommand);
-                }              
+                //if (userPrompt == DialogResult.Yes)
+                //{
+                //    var invokedCommand = new DeleteSelectedInvokedCom<T>(selection, items);
+                //    commandInvoker.InvokeCommand(invokedCommand);
+                //}              
             }
         }
 

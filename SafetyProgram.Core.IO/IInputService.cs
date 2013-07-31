@@ -1,4 +1,4 @@
-﻿namespace SafetyProgram.IO
+﻿namespace SafetyProgram.Core.IO
 {
     /// <summary>
     /// Defines an interface for a service that saves data to storage.

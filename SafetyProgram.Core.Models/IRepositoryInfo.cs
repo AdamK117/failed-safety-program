@@ -1,4 +1,4 @@
-﻿namespace SafetyProgram.Models
+﻿namespace SafetyProgram.Core.Models
 {
     public interface IRepositoryInfo
     {

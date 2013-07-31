@@ -1,4 +1,4 @@
-﻿namespace SafetyProgram.IO
+﻿namespace SafetyProgram.Core.IO
 {
     /// <summary>
     /// Defines a general storage interface for converting between an in memory representation of data and its storage type representation.

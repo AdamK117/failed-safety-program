@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.Models
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an implementation for IChemicalTable. The underlying data required for a ChemicalTable.

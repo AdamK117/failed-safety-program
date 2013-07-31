@@ -1,5 +1,4 @@
-﻿
-namespace SafetyProgram.Models
+﻿namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines a Quantity class. A class that holds quantity information together.
@@ -52,5 +51,10 @@ namespace SafetyProgram.Models
                 unit = value;
             }
         }
+
+
+        public event System.EventHandler<Base.GenericPropertyChangedEventArg<IFormat>> ValueChanged;
+
+        public event System.EventHandler<Base.GenericPropertyChangedEventArg<IFormat>> UnitChanged;
     }
 }

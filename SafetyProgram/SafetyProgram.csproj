@@ -129,6 +129,14 @@
       <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
       <Name>SafetyProgram.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.csproj">
+      <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
+      <Name>SafetyProgram.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UI\SafetyProgram.UI.csproj">
+      <Project>{c781ff99-3ed4-4647-bcd6-71fe4a8f43b2}</Project>
+      <Name>SafetyProgram.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

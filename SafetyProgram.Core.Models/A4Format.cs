@@ -1,6 +1,6 @@
 ﻿using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.Models
+namespace SafetyProgram.Core.Models
 {
     public class A4Format : IFormat
     {

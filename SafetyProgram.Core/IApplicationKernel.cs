@@ -1,7 +1,7 @@
 ﻿using System;
 using SafetyProgram.Base;
-using SafetyProgram.IO;
-using SafetyProgram.Models;
+using SafetyProgram.Core.IO;
+using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.Core
 {
@@ -18,7 +18,7 @@ namespace SafetyProgram.Core
         /// <summary>
         /// Occurs when the applications document changes.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<IDocument>> DocumentChanged;
+        event EventHandler<GenericPropertyChangedEventArg<IDocument>> DocumentChanged;
 
         /// <summary>
         /// Get or set the IO service used by the application.
@@ -28,7 +28,7 @@ namespace SafetyProgram.Core
         /// <summary>
         /// Occurs when the service changes.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<IIOService<IDocument>>> ServiceChanged;
+        event EventHandler<GenericPropertyChangedEventArg<IIOService<IDocument>>> ServiceChanged;
 
         /// <summary>
         /// Get the configuration used by the application.

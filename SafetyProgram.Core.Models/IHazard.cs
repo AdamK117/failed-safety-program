@@ -1,7 +1,7 @@
 ﻿using System;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.Models
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines the interface for a hazard object. Classes that implement this hold a collection of related COSHH details.

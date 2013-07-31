@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.IO
+namespace SafetyProgram.Core.IO
 {
     /// <summary>
     /// Defines an implementation for an I/O service that uses the local file system on the client machine.

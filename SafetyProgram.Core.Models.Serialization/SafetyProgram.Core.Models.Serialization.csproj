@@ -29,6 +29,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,6 +68,10 @@
     <Compile Include="XML\QuantityXml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.csproj">
+      <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
+      <Name>SafetyProgram.Core.IO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models.Validation\SafetyProgram.Core.Models.Validation.csproj">
       <Project>{f283ad74-2bc6-4b0a-8f10-dc41b6892803}</Project>
       <Name>SafetyProgram.Core.Models.Validation</Name>
@@ -57,6 +79,10 @@
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
       <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>
       <Name>SafetyProgram.Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.csproj">
+      <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
+      <Name>SafetyProgram.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

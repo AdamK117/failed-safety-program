@@ -1,4 +1,4 @@
-﻿namespace SafetyProgram.Models
+﻿namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an interface for an IDocObj. An object that is usually contained in a document.

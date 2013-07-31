@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SafetyProgram.IO
+namespace SafetyProgram.Core.IO
 {
     /// <summary>
     /// Defines a service that loads IEnumerable's of items individually. Calling a callback for each item.

@@ -1,0 +1,15 @@
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.IO.Models.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.IO.Models.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.IO.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.Models.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.Models.Validators.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Base.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.IO.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.Models.Validators.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.Models.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Core.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\bin\x86\Debug\SafetyProgram.Base.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\obj\x86\Debug\SafetyProgram.Core.Models.Serialization.csprojResolveAssemblyReference.cache
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\obj\x86\Debug\SafetyProgram.Core.IO.Models.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Serialization\obj\x86\Debug\SafetyProgram.Core.IO.Models.pdb

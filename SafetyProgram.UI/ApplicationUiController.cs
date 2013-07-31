@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using SafetyProgram.Base;
 using SafetyProgram.Core;
-using SafetyProgram.Core.Commands.CoreCommands;
+using SafetyProgram.Core.Commands;
 using SafetyProgram.UI.Document;
 
 namespace SafetyProgram.UI
@@ -23,7 +23,7 @@ namespace SafetyProgram.UI
             this.view = new MainView(
                 new MainViewModel(
                     coreCommands,
-                    null
+                    new DocumentUiController(null, applicationKernel.Configuration, commandInvoker)
                 )
             );
         }

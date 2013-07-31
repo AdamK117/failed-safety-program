@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.Models
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an interface for a Chemical Table in the Safety Document. The table contains a collection of chemicals and a header.

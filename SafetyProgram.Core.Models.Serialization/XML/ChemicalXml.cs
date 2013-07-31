@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml.Linq;
-using SafetyProgram.IO;
+using SafetyProgram.Core.IO;
 
-namespace SafetyProgram.Models.IO.XML
+namespace SafetyProgram.Core.Models.Serialization
 {
     /// <summary>
     /// Implements an IXmlDomIO converter for converting between XML stored data and IChemical model.

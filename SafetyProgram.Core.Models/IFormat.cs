@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SafetyProgram.Models
+﻿namespace SafetyProgram.Core.Models
 {
     public interface IFormat
     {
         /// <summary>
         /// Get or set the width of the document
         /// </summary>
-        int Width { get; set; }
+        string Width { get; }
+
+        string Height { get; }
     }
 }

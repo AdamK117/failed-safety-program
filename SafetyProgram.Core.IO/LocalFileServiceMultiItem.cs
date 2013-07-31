@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace SafetyProgram.IO
+namespace SafetyProgram.Core.IO
 {
     public sealed class LocalFileServiceMultiItem<TContent> : IServiceMultiItem<TContent>
     {

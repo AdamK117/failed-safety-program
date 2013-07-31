@@ -1,0 +1,11 @@
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\bin\x86\Debug\SafetyProgram.Core.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\bin\x86\Debug\SafetyProgram.Core.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\bin\x86\Debug\SafetyProgram.Base.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\bin\x86\Debug\SafetyProgram.Core.IO.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\bin\x86\Debug\SafetyProgram.Core.Models.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\bin\x86\Debug\SafetyProgram.Base.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\bin\x86\Debug\SafetyProgram.Core.IO.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\bin\x86\Debug\SafetyProgram.Core.Models.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\obj\x86\Debug\SafetyProgram.Core.csprojResolveAssemblyReference.cache
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\obj\x86\Debug\SafetyProgram.Core.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core\obj\x86\Debug\SafetyProgram.Core.pdb

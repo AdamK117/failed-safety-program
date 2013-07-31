@@ -1,7 +1,5 @@
 ﻿using System.Windows;
-using SafetyProgram.IO;
-using SafetyProgram.Models;
-using SafetyProgram.Models.IO.XML;
+using SafetyProgram.Core;
 
 namespace SafetyProgram
 {

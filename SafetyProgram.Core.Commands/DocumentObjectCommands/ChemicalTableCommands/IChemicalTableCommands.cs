@@ -1,7 +1,6 @@
 ﻿using System.Windows.Input;
-using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.DocumentObjectUi.ChemicalTableNs.Commands
+namespace SafetyProgram.Core.Commands
 {
     /// <summary>
     /// Defines an interface for the commands available to the chemical table.

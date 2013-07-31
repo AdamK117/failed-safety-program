@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.Core.Commands.CoreCommands
+namespace SafetyProgram.Core.Commands
 {
     public sealed class CoreCommands : ICoreCommands
     {
@@ -44,6 +41,11 @@ namespace SafetyProgram.Core.Commands.CoreCommands
         }
 
         public ICommand Redo
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public System.Collections.Generic.List<InputBinding> Hotkeys
         {
             get { throw new NotImplementedException(); }
         }

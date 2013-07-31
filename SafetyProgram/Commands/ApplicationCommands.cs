@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using SafetyProgram.Base;
-using SafetyProgram.Models;
+using SafetyProgram.Core;
 
 namespace SafetyProgram.Commands
 {

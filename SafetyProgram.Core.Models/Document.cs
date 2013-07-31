@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.Models
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an implementation of IDoc. A class that holds document information (content, print format, etc.)
@@ -40,6 +40,7 @@ namespace SafetyProgram.Models
         public IFormat Format
         {
             get { return format; }
+            set { format = value; }
         }
 
         /// <summary>

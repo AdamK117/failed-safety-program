@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-2-2009360083
+3-789423317
 
-12-525190744
+15-1770362357
 18-354585230
-ContextMenus\DocumentContextMenuView.xaml;View\IDocumentView.xaml;
+ContextMenus\DocumentContextMenuView.xaml;RibbonTabs\DocumentRibbonTabView.xaml;View\IDocumentView.xaml;
 
 False
 

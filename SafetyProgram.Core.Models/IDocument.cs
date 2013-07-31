@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.Models
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an IDoc. A document that conforms to a certain format (A4, A3, etc.) and contains objects (ChemicalTables, Headers, TextBoxes, etc.)

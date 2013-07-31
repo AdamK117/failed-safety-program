@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.IO
+namespace SafetyProgram.Core.IO
 {
     public sealed class LocalFileService<T> : IIOService<T>
     {

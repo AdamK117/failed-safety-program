@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SafetyProgram.DocumentUi.Commands;
+﻿using SafetyProgram.Core.Commands;
 
 namespace SafetyProgram.UI.Document
 {

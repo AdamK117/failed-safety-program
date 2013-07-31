@@ -31,6 +31,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fluent">
       <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
@@ -50,7 +68,31 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChemicalTableUI\ChemicalTableUiController.cs" />
+    <Compile Include="ChemicalTableUI\Commands\ChemicalTableCommands.cs" />
+    <Compile Include="ChemicalTableUI\Commands\CopySelectedICom.cs" />
+    <Compile Include="ChemicalTableUI\Commands\IChemicalTableCommands.cs" />
+    <Compile Include="ChemicalTableUI\Commands\InsertChemicalICom.cs" />
+    <Compile Include="ChemicalTableUI\Commands\PasteChemicalsICom.cs" />
+    <Compile Include="ChemicalTableUI\Commands\PasteChemicalsInvokedCom.cs" />
+    <Compile Include="ChemicalTableUI\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
+      <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChemicalTableUI\ContextMenus\ChemicalTableContextMenuViewModel.cs" />
+    <Compile Include="ChemicalTableUI\ContextMenus\IChemicalTableContextMenuViewModel.cs" />
+    <Compile Include="ChemicalTableUI\ContextualRibbon\ChemicalTableRibbonTabViewModel.cs" />
+    <Compile Include="ChemicalTableUI\ContextualRibbon\ChemicalTableRibbonView.xaml.cs">
+      <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChemicalTableUI\ContextualRibbon\IChemicalTableRibbonViewModel.cs" />
+    <Compile Include="ChemicalTableUI\IChemicalTableUiController.cs" />
+    <Compile Include="ChemicalTableUI\View\ChemicalTableView.xaml.cs">
+      <DependentUpon>ChemicalTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChemicalTableUI\View\ChemicalTableViewModel.cs" />
+    <Compile Include="ChemicalTableUI\View\IChemicalTableViewModel.cs" />
     <Compile Include="IDocumentObjectUiController.cs" />
+    <Compile Include="IDocumentObjectUiControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -75,7 +117,32 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ChemicalTableUI\" />
+    <Page Include="ChemicalTableUI\ContextMenus\ChemicalTableContextMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChemicalTableUI\ContextualRibbon\ChemicalTableRibbonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChemicalTableUI\View\ChemicalTableView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
+      <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
+      <Name>SafetyProgram.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
+      <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>
+      <Name>SafetyProgram.Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.csproj">
+      <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
+      <Name>SafetyProgram.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

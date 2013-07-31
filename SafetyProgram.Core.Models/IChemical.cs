@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.Models
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an interface for a Chemical in the SafetyProgram. The chemical requires a name and hazards associated with it.

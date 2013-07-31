@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-1-98425716
+4-566333584
 
-5-2010457534
-121654848548
-UserControl1.xaml;
+18-8275713
+16-932826765
+ChemicalTableUI\ContextMenus\ChemicalTableContextMenuView.xaml;ChemicalTableUI\ContextualRibbon\ChemicalMenuItem.xaml;ChemicalTableUI\ContextualRibbon\ChemicalTableRibbonView.xaml;ChemicalTableUI\View\ChemicalTableView.xaml;
 
 False
 

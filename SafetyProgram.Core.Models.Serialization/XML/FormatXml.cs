@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Xml.Linq;
-using SafetyProgram.IO;
+using SafetyProgram.Core.IO;
 
-namespace SafetyProgram.Models.IO.XML
+namespace SafetyProgram.Core.Models.Serialization
 {
     /// <summary>
     /// Defines an implementation of an IFormat object (de)serializer.

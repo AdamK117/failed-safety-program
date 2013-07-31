@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
-using SafetyProgram.DocumentUi.Commands;
-using SafetyProgram.Models;
+using SafetyProgram.Core.Commands;
+using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.Document.View
 {
@@ -22,7 +22,7 @@ namespace SafetyProgram.UI.Document.View
             );
         }
 
-        public Models.IFormat Format
+        public IFormat Format
         {
             get { return document.Format; }
         }
