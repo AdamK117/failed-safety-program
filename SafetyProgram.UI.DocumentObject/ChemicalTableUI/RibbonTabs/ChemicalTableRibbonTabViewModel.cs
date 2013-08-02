@@ -1,12 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using SafetyProgram.Base;
-using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Core;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 {
+    /// <summary>
+    /// Defines an implementation of an IChemicalTableRibbonViewModel.
+    /// </summary>
     internal sealed class ChemicalTableRibbonTabViewModel : IChemicalTableRibbonViewModel
     {
         private readonly IConfiguration appConfiguration;
@@ -24,6 +26,10 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         }
 
         private string search = "";
+
+        /// <summary>
+        /// Get or set the current search phrase.
+        /// </summary>
         public string Search
         {
             get
@@ -39,17 +45,30 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         }
 
         private readonly ObservableCollection<IChemical> searchResult = new ObservableCollection<IChemical>();
+
+        /// <summary>
+        /// Get the search result yielded from the search phrase.
+        /// </summary>
         public ObservableCollection<IChemical> SearchResult
         {
             get { return searchResult; }
         }
 
         private readonly IChemicalTableCommands commands;
+
+        /// <summary>
+        /// Get a group of commands that act on the chemical table.
+        /// </summary>
         public IChemicalTableCommands Commands
         {
             get { return commands; }
         }
 
+
+        /// <summary>
+        /// Performs a search for chemicals using the string.
+        /// </summary>
+        /// <param name="searchString"></param>
         private void performSearch(string searchString)
         {
             searchResult.Clear();

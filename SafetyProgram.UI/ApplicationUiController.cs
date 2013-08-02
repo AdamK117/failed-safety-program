@@ -23,7 +23,7 @@ namespace SafetyProgram.UI
             this.view = new MainView(
                 new MainViewModel(
                     coreCommands,
-                    new DocumentUiController(null, applicationKernel.Configuration, commandInvoker)
+                    new DocumentUiController(applicationKernel.Document, applicationKernel.Configuration, commandInvoker)
                 )
             );
         }
@@ -33,14 +33,14 @@ namespace SafetyProgram.UI
         /// <summary>
         /// Get the ui for the application.
         /// </summary>
-        public System.Windows.Window View
+        public Window View
         {
             get { return view; }
         }
 
         private IDocumentUiController document;
 
-        public Document.IDocumentUiController Document
+        public IDocumentUiController Document
         {
             get { return document; }
         }

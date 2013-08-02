@@ -24,7 +24,8 @@ namespace SafetyProgram.UI
 
         public System.Collections.ObjectModel.ObservableCollection<Fluent.RibbonTabItem> ContextualRibbonTabs
         {
-            get { throw new NotImplementedException(); }
+            get 
+            { throw new NotImplementedException(); }
         }
 
         public event EventHandler<Base.GenericPropertyChangedEventArg<System.Collections.ObjectModel.ObservableCollection<Fluent.RibbonTabItem>>> ContextualRibbonTabsHolderChanged;

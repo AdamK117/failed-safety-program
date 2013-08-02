@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using Fluent;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Core;
 using SafetyProgram.Core.Models;
@@ -11,33 +14,46 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
             IConfiguration configuration, 
             ICommandInvoker commandInvoker)
         {
+            this.chemicals = chemicalTable.Chemicals;
+            this.header = chemicalTable.Header;
+
+            this.view = new ChemicalTableView(
+                new ChemicalTableViewModel(
         }
+
+        private string header;
 
         public string Header
         {
             get
             {
-                throw new NotImplementedException();
+                return header;
             }
             set
             {
-                throw new NotImplementedException();
+                header = value;
             }
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<ICoshhChemical> Chemicals
+        private readonly ObservableCollection<ICoshhChemical> chemicals;
+
+        public ObservableCollection<ICoshhChemical> Chemicals
         {
-            get { throw new NotImplementedException(); }
+            get { return chemicals; }
         }
 
-        public System.Windows.Controls.Control View
+        private readonly Control view;
+
+        public Control View
         {
-            get { throw new NotImplementedException(); }
+            get { return view; }
         }
+
+        private readonly RibbonTabItem contextualTab;
 
         public Fluent.RibbonTabItem ContextualTab
         {
-            get { throw new NotImplementedException(); }
+            get { return contextualTab; }
         }
     }
 }

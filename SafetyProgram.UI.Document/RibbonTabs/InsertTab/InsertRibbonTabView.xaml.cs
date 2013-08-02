@@ -5,9 +5,9 @@ namespace SafetyProgram.Document.Ribbons
     /// <summary>
     /// Interaction logic for CoshhDocumentRibbonTabView.xaml
     /// </summary>
-    internal sealed partial class CoshhDocumentRibbonTabView : RibbonTabItem
+    internal sealed partial class InsertRibbonTabView : RibbonTabItem
     {
-        public CoshhDocumentRibbonTabView(IDocumentRibbonTabViewModel viewModel)
+        public InsertRibbonTabView(IInsertRibbonTabViewModel viewModel)
         {
             this.DataContext = viewModel;
             InitializeComponent();

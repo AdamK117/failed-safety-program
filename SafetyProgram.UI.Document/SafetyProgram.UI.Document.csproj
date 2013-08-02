@@ -73,14 +73,14 @@
     </Compile>
     <Compile Include="ContextMenus\DocumentContextMenuViewModel.cs" />
     <Compile Include="ContextMenus\IDocumentContextMenuViewModel.cs" />
-    <Compile Include="RibbonTabs\DocumentRibbonTabView.xaml.cs">
-      <DependentUpon>DocumentRibbonTabView.xaml</DependentUpon>
+    <Compile Include="RibbonTabs\InsertTab\IInsertRibbonTabViewModel.cs" />
+    <Compile Include="RibbonTabs\InsertTab\InsertRibbonTabView.xaml.cs">
+      <DependentUpon>InsertRibbonTabView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RibbonTabs\DocumentRibbonTabViewModel.cs" />
-    <Compile Include="RibbonTabs\IDocumentRibbonTabViewModel.cs" />
+    <Compile Include="RibbonTabs\InsertTab\InsertRibbonTabViewModel.cs" />
     <Compile Include="View\DocumentViewModel.cs" />
-    <Compile Include="View\IDocumentView.xaml.cs">
-      <DependentUpon>IDocumentView.xaml</DependentUpon>
+    <Compile Include="View\DocumentView.xaml.cs">
+      <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DocumentUiController.cs" />
     <Compile Include="View\IDocumentViewModel.cs" />
@@ -136,11 +136,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="RibbonTabs\DocumentRibbonTabView.xaml">
+    <Page Include="RibbonTabs\InsertTab\InsertRibbonTabView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\IDocumentView.xaml">
+    <Page Include="View\DocumentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

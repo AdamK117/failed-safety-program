@@ -1,7 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
 using SafetyProgram.Base;
-using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.UI.Document
 {
