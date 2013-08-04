@@ -1,4 +1,5 @@
-﻿namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
+﻿using SafetyProgram.Core.Commands;
+namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 {
     /// <summary>
     /// Defines a viewmodel for a chemical table's context menu.

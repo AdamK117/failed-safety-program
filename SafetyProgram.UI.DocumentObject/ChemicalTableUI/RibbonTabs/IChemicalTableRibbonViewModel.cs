@@ -1,11 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using SafetyProgram.Core.Commands;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 {
     /// <summary>
-    /// Defines an ViewModel for a cheimcal table ribbon view.
+    /// Defines a ViewModel for a cheimcal table ribbon view.
     /// </summary>
     internal interface IChemicalTableRibbonViewModel : INotifyPropertyChanged
     {

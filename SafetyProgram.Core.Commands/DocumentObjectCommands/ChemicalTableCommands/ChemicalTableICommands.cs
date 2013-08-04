@@ -28,5 +28,10 @@ namespace SafetyProgram.Core.Commands
         {
             get { throw new NotImplementedException(); }
         }
+
+        public System.Collections.Generic.List<System.Windows.Input.InputBinding> Hotkeys
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

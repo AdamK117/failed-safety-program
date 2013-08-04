@@ -35,3 +35,5 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\obj\x86\
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\obj\x86\Debug\SafetyProgram.UI.DocumentObject.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\obj\x86\Debug\ChemicalTableUI\RibbonTabs\ChemicalTableRibbonView.baml
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\obj\x86\Debug\ChemicalTableUI\RibbonTabs\ChemicalTableRibbonView.g.cs
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.Commands.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.Commands.pdb

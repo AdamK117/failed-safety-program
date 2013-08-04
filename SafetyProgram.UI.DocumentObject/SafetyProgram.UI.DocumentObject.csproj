@@ -69,12 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChemicalTableUI\ChemicalTableUiController.cs" />
-    <Compile Include="ChemicalTableUI\Commands\ChemicalTableCommands.cs" />
-    <Compile Include="ChemicalTableUI\Commands\CopySelectedICom.cs" />
-    <Compile Include="ChemicalTableUI\Commands\IChemicalTableCommands.cs" />
-    <Compile Include="ChemicalTableUI\Commands\InsertChemicalICom.cs" />
-    <Compile Include="ChemicalTableUI\Commands\PasteChemicalsICom.cs" />
-    <Compile Include="ChemicalTableUI\Commands\PasteChemicalsInvokedCom.cs" />
     <Compile Include="ChemicalTableUI\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
       <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
     </Compile>
@@ -135,6 +129,10 @@
       <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
       <Name>SafetyProgram.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.Commands\SafetyProgram.Core.Commands.csproj">
+      <Project>{f56414f8-0849-4a8c-96f5-36dff7f292b9}</Project>
+      <Name>SafetyProgram.Core.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
       <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>
       <Name>SafetyProgram.Core.Models</Name>
@@ -143,6 +141,9 @@
       <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
       <Name>SafetyProgram.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ChemicalTableUI\Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

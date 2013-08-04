@@ -1,4 +1,5 @@
 ﻿using SafetyProgram.Base;
+using SafetyProgram.Core.Commands;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 {

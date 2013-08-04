@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>DAf4HN8GE6vJQYgYlymZEWyxcoU=</dsig:DigestValue>
+        <dsig:DigestValue>GKWKIhZK7bAx5Uxtec/VwIh0jfg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,7 +97,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>rtwxrZYjDU5WAWGViLdFK8abH24=</dsig:DigestValue>
+        <dsig:DigestValue>L+LyJg/+n3r0PHz5g+ClAcZNM58=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -133,7 +133,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>bo46yQEMQSp+mhUgH+aqG7cJmtc=</dsig:DigestValue>
+        <dsig:DigestValue>Pvk6S5B0hbxFNwoSsKQ187R0z6w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -145,19 +145,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>eAJk+4REUC5CIFgU2m9cjKZ8i7I=</dsig:DigestValue>
+        <dsig:DigestValue>QymAozo+s+VIiRHyJ/PsVgRGOng=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.UI.DocumentObject.dll" size="25600">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SafetyProgram.UI.DocumentObject.dll" size="20992">
       <assemblyIdentity name="SafetyProgram.UI.DocumentObject" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Gaz7ANcPxhXcS6XE4GFdHMFaAAg=</dsig:DigestValue>
+        <dsig:DigestValue>xPy4EhN+ctTxppsbheOHFibPy9M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

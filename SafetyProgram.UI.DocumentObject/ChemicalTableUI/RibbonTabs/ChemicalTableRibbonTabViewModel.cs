@@ -2,12 +2,13 @@
 using System.ComponentModel;
 using SafetyProgram.Base;
 using SafetyProgram.Core;
+using SafetyProgram.Core.Commands;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 {
     /// <summary>
-    /// Defines an implementation of an IChemicalTableRibbonViewModel.
+    /// Defines a standard implementation of an IChemicalTableRibbonViewModel.
     /// </summary>
     internal sealed class ChemicalTableRibbonTabViewModel : IChemicalTableRibbonViewModel
     {

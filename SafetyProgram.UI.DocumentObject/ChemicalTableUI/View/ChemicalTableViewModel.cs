@@ -3,68 +3,96 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Input;
-using SafetyProgram.Base;
-using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Core.Models;
+using SafetyProgram.Base;
+using SafetyProgram.Core.Commands;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 {
-    internal sealed class ChemicalTableViewModel : IChemicalTableViewModel
+    /// <summary>
+    /// Defines a standard implementation of a IChemicalTableViewModel.
+    /// </summary>
+    public sealed class ChemicalTableViewModel : IChemicalTableViewModel
     {
-        public ChemicalTableViewModel(IEditableHolder<string> headerHolder,
-            ContextMenu contextMenu,
-            ObservableCollection<ICoshhChemical> chemicals,
-            ObservableCollection<ICoshhChemical> selectedChemicals,
-            List<InputBinding> hotkeys)
+        /// <summary>
+        /// Construct an instance of a ChemicalTableViewModel. A viewmodel for a chemical table view.
+        /// </summary>
+        /// <param name="chemicalTable">The underlying chemical table model to expose to the view.</param>
+        /// <param name="chemicalTableCommands">Commands that act on the model.</param>
+        public ChemicalTableViewModel(IChemicalTable chemicalTable,
+            IChemicalTableCommands chemicalTableCommands)
         {
-            Helpers.NullCheck(headerHolder,
-                contextMenu,
-                chemicals,
-                selectedChemicals);
+            this.chemicalTable = chemicalTable;
+            this.chemicalTableCommands = chemicalTableCommands;
 
-            this.headerHolder = headerHolder;
-            this.contextMenu = contextMenu;
-            this.chemicals = chemicals;
-            this.selectedChemicals = selectedChemicals;
-            this.hotkeys = hotkeys;
+            selectedChemicals = new ObservableCollection<ICoshhChemical>();
 
-            this.headerHolder.ContentChanged += (sender, newHeader) => PropertyChanged.Raise(this, "Header");
+            contextMenu = new ChemicalTableContextMenuView(
+                new ChemicalTableContextMenuViewModel(
+                    chemicalTableCommands
+                )
+            );
         }
 
-        private readonly IEditableHolder<string> headerHolder;
+        private IChemicalTable chemicalTable;
+
+        /// <summary>
+        /// Get or set the header of the chemical table.
+        /// </summary>
         public string Header
         {
-            get { return headerHolder.Content; }
+            get
+            {
+                return chemicalTable.Header;
+            }
             set
             {
-                headerHolder.Content = value;
+                chemicalTable.Header = value;
+                PropertyChanged.Raise(this, "Header");
             }
         }
 
         private readonly ContextMenu contextMenu;
+
+        /// <summary>
+        /// Get the context menu for the chemical table.
+        /// </summary>
         public ContextMenu ContextMenu
         {
             get { return contextMenu; }
         }
 
-        private readonly ObservableCollection<ICoshhChemical> chemicals;
+        /// <summary>
+        /// Get the chemicals in the chemical table.
+        /// </summary>
         public ObservableCollection<ICoshhChemical> Chemicals
         {
-            get { return chemicals; }
+            get { return chemicalTable.Chemicals; }
         }
 
         private readonly ObservableCollection<ICoshhChemical> selectedChemicals;
+
+        /// <summary>
+        /// Get the chemicals selected in the chemical table.
+        /// </summary>
         public ObservableCollection<ICoshhChemical> SelectedChemicals
         {
             get { return selectedChemicals; }
         }
 
-        private readonly List<InputBinding> hotkeys;
+        private IChemicalTableCommands chemicalTableCommands;
+
+        /// <summary>
+        /// Get the hotkeys exposed by the chemical table.
+        /// </summary>
         public List<InputBinding> Hotkeys
         {
-            get { return hotkeys; }
+            get { return chemicalTableCommands.Hotkeys; }
         }
 
+        /// <summary>
+        /// Occurs when a property in this class changes.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

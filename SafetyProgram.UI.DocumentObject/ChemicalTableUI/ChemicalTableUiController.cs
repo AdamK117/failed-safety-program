@@ -1,49 +1,42 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Core;
+using SafetyProgram.Core.Commands;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 {
+    /// <summary>
+    /// Defines a standard implementation of an IChemcialTableUiController.
+    /// </summary>
     public sealed class ChemicalTableUiController : IChemicalTableUiController
     {
+        /// <summary>
+        /// Construct an instance of a ChemicalTableUiController. A controller for a chemical table ui object.
+        /// </summary>
+        /// <param name="chemicalTable">The underlying chemical table model.</param>
+        /// <param name="configuration">The configuration used by the application.</param>
+        /// <param name="commandInvoker">The command invoker used by the application.</param>
         public ChemicalTableUiController(IChemicalTable chemicalTable, 
             IConfiguration configuration, 
             ICommandInvoker commandInvoker)
         {
-            this.chemicals = chemicalTable.Chemicals;
-            this.header = chemicalTable.Header;
+            IChemicalTableCommands tableCommands = null;
 
             this.view = new ChemicalTableView(
                 new ChemicalTableViewModel(
-        }
-
-        private string header;
-
-        public string Header
-        {
-            get
-            {
-                return header;
-            }
-            set
-            {
-                header = value;
-            }
-        }
-
-        private readonly ObservableCollection<ICoshhChemical> chemicals;
-
-        public ObservableCollection<ICoshhChemical> Chemicals
-        {
-            get { return chemicals; }
+                    chemicalTable,
+                    tableCommands
+                )
+            );
         }
 
         private readonly Control view;
 
+        /// <summary>
+        /// Get the view for the chemical table.
+        /// </summary>
         public Control View
         {
             get { return view; }
@@ -51,6 +44,9 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 
         private readonly RibbonTabItem contextualTab;
 
+        /// <summary>
+        /// Get the chemical table's contextual ribbon tab.
+        /// </summary>
         public Fluent.RibbonTabItem ContextualTab
         {
             get { return contextualTab; }
