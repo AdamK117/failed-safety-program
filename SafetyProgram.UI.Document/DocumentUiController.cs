@@ -15,19 +15,18 @@ namespace SafetyProgram.UI.Document
 {
     public sealed class DocumentUiController : IDocumentUiController
     {
+        private readonly IDocumentObjectUiControllerFactory documentObjectControllerFactory;
+
         public DocumentUiController(IDocument document, 
             IConfiguration configuration, 
             ICommandInvoker commandInvoker)
         {
-            IDocumentObjectUiControllerFactory fac = null;
-
-            // Hold the document contents.
-            documentObjects = new ObservableCollection<IDocumentObjectUiController>();
-
             foreach (IDocumentObject documentObject in document.Items)
             {
-                var docUiController = fac.GetDocumentObjectUiController(documentObject);
-                documentObjects.Add(docUiController);
+                var docUiController = documentObjectControllerFactory
+                    .GetDocumentObjectUiController(documentObject);
+
+                documentObjectControllers.Add(docUiController);
             }
 
             // Construct commands to work on the document.
@@ -36,21 +35,14 @@ namespace SafetyProgram.UI.Document
             // Construct the document view.
             view = new DocumentView(
                 new DocumentViewModel(
-                    documentObjects,
-                    documentCommands
-                )
-            );
+                    document,
+                    documentObjectControllers,
+                    documentCommands));
 
-            // Construct the ribbon tabs exposed by the document.
-            documentRibbonTabs = new ObservableCollection<RibbonTabItem>();
-
-            var insertTab = new InsertRibbonTabView(
-                new InsertRibbonTabViewModel(
-                    documentCommands
-                )
-            );
-
-            documentRibbonTabs.Add(insertTab);
+            documentRibbonTabs.Add(
+                new InsertRibbonTabView(
+                    new InsertRibbonTabViewModel(
+                        documentCommands)));
         }
 
         private readonly Control view;
@@ -63,7 +55,8 @@ namespace SafetyProgram.UI.Document
             get { return view; }
         }
 
-        private readonly ObservableCollection<RibbonTabItem> documentRibbonTabs;
+        private readonly ObservableCollection<RibbonTabItem> documentRibbonTabs 
+            = new ObservableCollection<RibbonTabItem>();
 
         /// <summary>
         /// Get the ribbon tab items associated with the document (insert, change layout, etc.).
@@ -73,14 +66,15 @@ namespace SafetyProgram.UI.Document
             get { return documentRibbonTabs; }
         }
 
-        private readonly ObservableCollection<IDocumentObjectUiController> documentObjects;
+        private readonly ObservableCollection<IDocumentObjectUiController> documentObjectControllers 
+            = new ObservableCollection<IDocumentObjectUiController>();
 
         /// <summary>
         /// Get the document objects in the document.
         /// </summary>
-        public ObservableCollection<IDocumentObjectUiController> DocumentObjects
+        public ObservableCollection<IDocumentObjectUiController> DocumentObjectControllers
         {
-            get { return documentObjects; }
+            get { return documentObjectControllers; }
         }
 
         IDocumentObjectUiController selection;
@@ -101,6 +95,7 @@ namespace SafetyProgram.UI.Document
         /// <summary>
         /// Occurs when the selection changes.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<IDocumentObjectUiController>> SelectionChanged;
+        public event EventHandler<
+            GenericPropertyChangedEventArg<IDocumentObjectUiController>> SelectionChanged;
     }
 }

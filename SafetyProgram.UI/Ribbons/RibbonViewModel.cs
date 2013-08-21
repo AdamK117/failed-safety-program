@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using Fluent;
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Core.Commands;
 using SafetyProgram.UI.Document;
 
@@ -7,36 +12,56 @@ namespace SafetyProgram.UI
 {
     public sealed class RibbonViewModel : IRibbonViewModel
     {
-        private readonly IDocumentUiController documentUiController;
+        private readonly IHolder<IDocumentUiController> documentUiControllerHolder;
 
-        public RibbonViewModel(ICoreCommands coreCommands, IDocumentUiController documentUiController)
+        public RibbonViewModel(ICoreCommands coreCommands, IHolder<IDocumentUiController> documentUiControllerHolder)
         {
             this.coreCommands = coreCommands;
-            this.documentUiController = documentUiController;
+            this.documentUiControllerHolder = documentUiControllerHolder;
+
+            documentUiControllerHolder.ContentChanged += (s, newController) => PropertyChanged.Raise(this, "DocumentRibbonTabs");
         }
 
-        public ICollection<Fluent.RibbonTabItem> DocumentRibbonTabs
+        /// <summary>
+        /// Get the current document ribbon tabs.
+        /// </summary>
+        public ICollection<RibbonTabItem> DocumentRibbonTabs
         {
-            get { return documentUiController.DocumentRibbonTabs; }
+            get { return documentUiControllerHolder.Content.DocumentRibbonTabs; }
         }
 
-        public event EventHandler<Base.GenericPropertyChangedEventArg<ICollection<Fluent.RibbonTabItem>>> DocumentRibbonTabsHolderChanged;
+        /// <summary>
+        /// Occurs when the document ribbon tabs changes.
+        /// </summary>
+        public event EventHandler<GenericPropertyChangedEventArg<ICollection<RibbonTabItem>>> DocumentRibbonTabsHolderChanged;
 
-        public System.Collections.ObjectModel.ObservableCollection<Fluent.RibbonTabItem> ContextualRibbonTabs
+        /// <summary>
+        /// Get the contextual ribbon tabs assoicated with the currently open document.
+        /// </summary>
+        public ObservableCollection<RibbonTabItem> ContextualRibbonTabs
         {
             get 
             { throw new NotImplementedException(); }
         }
 
-        public event EventHandler<Base.GenericPropertyChangedEventArg<System.Collections.ObjectModel.ObservableCollection<Fluent.RibbonTabItem>>> ContextualRibbonTabsHolderChanged;
+        /// <summary>
+        /// Occurs when the contextual ribbontabs (the tabs associated with the current document) change.
+        /// </summary>
+        public event EventHandler<GenericPropertyChangedEventArg<ObservableCollection<RibbonTabItem>>> ContextualRibbonTabsHolderChanged;
 
         private readonly ICoreCommands coreCommands;
 
-        public Core.Commands.ICoreCommands Commands
+        /// <summary>
+        /// Get application commands (new, save, saveas, close, etc.)
+        /// </summary>
+        public ICoreCommands Commands
         {
             get { return coreCommands; }
         }
 
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Occurs when a property changes in this viewmodel.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

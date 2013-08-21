@@ -1,7 +1,4 @@
-﻿using SafetyProgram.Base;
-using SafetyProgram.Base.Interfaces;
-
-namespace SafetyProgram.Core.Models
+﻿namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines a custom IDocFormat

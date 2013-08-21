@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Fluent;
+using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Core.Commands;
 using SafetyProgram.UI.Document;
 
@@ -8,41 +12,51 @@ namespace SafetyProgram.UI
 {
     public sealed class MainViewModel : IMainViewModel
     {
-        public MainViewModel(ICoreCommands coreCommands, IDocumentUiController documentUiController)
+        private readonly IHolder<IDocumentUiController> documentUiControllerHolder;
+        private readonly ICoreCommands coreCommands;
+
+        /// <summary>
+        /// Construct an instance of a main window viewmodel. A view model for the main application window.
+        /// </summary>
+        /// <param name="coreCommands">The core commands for the program (new, open, close, etc.)</param>
+        /// <param name="documentUiController">The document ui controller for the current document.</param>
+        public MainViewModel(ICoreCommands coreCommands, IHolder<IDocumentUiController> documentUiControllerHolder, Ribbon ribbonView)
         {
-            this.ribbonView = new RibbonView(
-                new RibbonViewModel(
-                    coreCommands,
-                    documentUiController
-                )
-            );
-
-            this.contentView = documentUiController.View;
-
             this.coreCommands = coreCommands;
+            this.documentUiControllerHolder = documentUiControllerHolder;
+            this.ribbonView = ribbonView;
+
+            documentUiControllerHolder.ContentChanged += (sender, newController) => PropertyChanged.Raise(this, "View");
         }
 
         private readonly Ribbon ribbonView;
-
-        public Fluent.Ribbon RibbonView
+        
+        /// <summary>
+        /// Get the ribbon view for the main window.
+        /// </summary>
+        public Ribbon RibbonView
         {
             get { return ribbonView; }
         }
 
-        private readonly Control contentView;
+        private Control contentView;
 
-        public System.Windows.Controls.Control ContentView
+        /// <summary>
+        /// Get the content (document) view of the window.
+        /// </summary>
+        public Control ContentView
         {
-            get { return contentView; }
-        }
+            get { return documentUiControllerHolder.Content.View; }
+        }        
 
-        private ICoreCommands coreCommands;
-
-        public List<System.Windows.Input.InputBinding> Hotkeys
+        /// <summary>
+        /// Get the hotkeys associated with the main window view.
+        /// </summary>
+        public List<InputBinding> Hotkeys
         {
             get { return coreCommands.Hotkeys; }
         }
 
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base;
+using SafetyProgram.Core.Models;
 using SafetyProgram.UI.DocumentObject;
 
 namespace SafetyProgram.UI.Document
@@ -22,7 +23,7 @@ namespace SafetyProgram.UI.Document
         /// <summary>
         /// Get the document ui objects contained within the document.
         /// </summary>
-        ObservableCollection<IDocumentObjectUiController> DocumentObjects { get; }
+        ObservableCollection<IDocumentObjectUiController> DocumentObjectControllers { get; }
 
         /// <summary>
         /// Get the IDocumentObjectUiController selected within the document.

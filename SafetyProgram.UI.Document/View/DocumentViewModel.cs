@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Input;
+using SafetyProgram.Base;
 using SafetyProgram.Core.Commands;
 using SafetyProgram.Core.Models;
 using SafetyProgram.UI.DocumentObject;
@@ -21,8 +22,13 @@ namespace SafetyProgram.UI.Document.View
         /// </summary>
         /// <param name="document">The underlying document model.</param>
         /// <param name="documentCommands">Commands that act on the document model.</param>
-        public DocumentViewModel(ObservableCollection<IDocumentObjectUiController> documentObjects, IDocumentICommands documentCommands)
+        public DocumentViewModel(IDocument document,
+            ObservableCollection<IDocumentObjectUiController> documentObjects, 
+            IDocumentICommands documentCommands)
         {
+            Helpers.NullCheck(document, documentObjects, documentCommands);
+
+            this.document = document;
             this.documentObjects = documentObjects;
             this.hotkeys = documentCommands.Hotkeys;
 
@@ -31,6 +37,9 @@ namespace SafetyProgram.UI.Document.View
                     documentCommands
                 )
             );
+
+            this.document.FormatChanged += (sender, newFormatEventHandler) =>
+                PropertyChanged.Raise(this, "Format");
         }
 
         /// <summary>
