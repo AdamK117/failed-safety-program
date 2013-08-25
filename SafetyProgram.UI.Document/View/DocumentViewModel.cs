@@ -23,7 +23,7 @@ namespace SafetyProgram.UI.Document.View
         /// <param name="document">The underlying document model.</param>
         /// <param name="documentCommands">Commands that act on the document model.</param>
         public DocumentViewModel(IDocument document,
-            ObservableCollection<IDocumentObjectUiController> documentObjects, 
+            ReadOnlyObservableCollection<IDocumentObjectUiController> documentObjects, 
             IDocumentICommands documentCommands)
         {
             Helpers.NullCheck(document, documentObjects, documentCommands);
@@ -70,12 +70,12 @@ namespace SafetyProgram.UI.Document.View
             get { return hotkeys; }
         }
 
-        private readonly ObservableCollection<IDocumentObjectUiController> documentObjects;
+        private readonly ReadOnlyObservableCollection<IDocumentObjectUiController> documentObjects;
 
         /// <summary>
         /// Get the documentobjects in the document.
         /// </summary>
-        public ObservableCollection<IDocumentObjectUiController> DocumentObjects
+        public ReadOnlyObservableCollection<IDocumentObjectUiController> DocumentObjects
         {
             get { return documentObjects; }
         }

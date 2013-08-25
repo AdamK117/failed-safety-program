@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
 
@@ -45,7 +46,7 @@ namespace SafetyProgram.Core.Commands
             get { throw new NotImplementedException(); }
         }
 
-        public System.Collections.Generic.List<InputBinding> Hotkeys
+        public List<InputBinding> Hotkeys
         {
             get { throw new NotImplementedException(); }
         }

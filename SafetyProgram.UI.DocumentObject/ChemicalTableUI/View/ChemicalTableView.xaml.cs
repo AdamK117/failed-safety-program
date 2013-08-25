@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
@@ -16,7 +15,7 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         public ChemicalTableView(IChemicalTableViewModel viewModel)
         {
             this.viewModel = viewModel;
-            DataContext = viewModel;
+            this.DataContext = viewModel;
 
             viewModel.SelectedChemicals.CollectionChanged += (selectedChemicals, collectionArgs) =>
                 {

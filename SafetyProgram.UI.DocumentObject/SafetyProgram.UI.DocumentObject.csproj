@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="ChemicalTableUI\View\ChemicalTableViewModel.cs" />
     <Compile Include="ChemicalTableUI\View\IChemicalTableViewModel.cs" />
+    <Compile Include="DocumentObjectUiControllerFactory.cs" />
     <Compile Include="IDocumentObjectUiController.cs" />
     <Compile Include="IDocumentObjectUiControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -142,9 +143,7 @@
       <Name>SafetyProgram.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ChemicalTableUI\Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

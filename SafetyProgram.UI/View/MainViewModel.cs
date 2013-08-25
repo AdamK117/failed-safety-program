@@ -20,7 +20,9 @@ namespace SafetyProgram.UI
         /// </summary>
         /// <param name="coreCommands">The core commands for the program (new, open, close, etc.)</param>
         /// <param name="documentUiController">The document ui controller for the current document.</param>
-        public MainViewModel(ICoreCommands coreCommands, IHolder<IDocumentUiController> documentUiControllerHolder, Ribbon ribbonView)
+        public MainViewModel(ICoreCommands coreCommands, 
+            IHolder<IDocumentUiController> documentUiControllerHolder, 
+            Ribbon ribbonView)
         {
             this.coreCommands = coreCommands;
             this.documentUiControllerHolder = documentUiControllerHolder;

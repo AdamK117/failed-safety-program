@@ -11,17 +11,7 @@ namespace SafetyProgram
     {
         public ApplicationController(IApplicationKernel applicationKernel)
         {
-            // Get the configuration file
-            IConfiguration configuration = null;
 
-            //Window window = new MainView(
-            //    new MainViewModel(
-            //        applicationKernel,
-            //        configuration
-            //    )
-            //);
-
-            //window.Show();
         }
 
         private readonly IApplicationCommands commands;

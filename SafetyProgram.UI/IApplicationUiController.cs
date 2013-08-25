@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using SafetyProgram.Base.Interfaces;
 using SafetyProgram.UI.Document;
 
 namespace SafetyProgram.UI
@@ -13,6 +14,6 @@ namespace SafetyProgram.UI
         /// <summary>
         /// Get the controller of the document Ui.
         /// </summary>
-        IDocumentUiController Document { get; }
+        IHolder<IDocumentUiController> Document { get; }
     }
 }

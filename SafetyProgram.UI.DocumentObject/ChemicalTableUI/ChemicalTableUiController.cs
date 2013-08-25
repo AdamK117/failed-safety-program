@@ -27,9 +27,7 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
             this.view = new ChemicalTableView(
                 new ChemicalTableViewModel(
                     chemicalTable,
-                    tableCommands
-                )
-            );
+                    tableCommands));
         }
 
         private readonly Control view;

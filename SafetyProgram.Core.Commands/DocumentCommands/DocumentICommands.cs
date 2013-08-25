@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using SafetyProgram.Base.Interfaces;
 using SafetyProgram.Core.Models;
 
@@ -8,20 +9,19 @@ namespace SafetyProgram.Core.Commands
     public sealed class DocumentICommands : IDocumentICommands
     {
         public DocumentICommands(IDocument document, ICommandInvoker commandInvoker)
-        {
-        }
+        { }
 
-        public System.Windows.Input.ICommand DeleteIDocObject
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public System.Windows.Input.ICommand InsertChemicalTable
+        public ICommand DeleteIDocObject
         {
             get { throw new NotImplementedException(); }
         }
 
-        public List<System.Windows.Input.InputBinding> Hotkeys
+        public ICommand InsertChemicalTable
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public List<InputBinding> Hotkeys
         {
             get { throw new NotImplementedException(); }
         }

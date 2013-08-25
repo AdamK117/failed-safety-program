@@ -15,7 +15,6 @@ namespace SafetyProgram.UI
     {
         private readonly ICommandInvoker commandInvoker;
         private readonly IApplicationKernel applicationKernel;
-        private readonly IEditableHolder<IDocumentUiController> documentControllerHolder;
 
         /// <summary>
         /// Construct an instance of an application UI controller.
@@ -31,7 +30,7 @@ namespace SafetyProgram.UI
             /* Create a mutable holder for the idocumentuicontroller. A new controller will
              * be generated each time that the document changes in the underlying kernel.
              * The holder will allow subscribers (such as views) to rebind to the new document controller. */
-            this.documentControllerHolder = new Holder<IDocumentUiController>(
+            this.document = new Holder<IDocumentUiController>(
                 new DocumentUiController(
                     applicationKernel.Document, 
                     applicationKernel.Configuration, 
@@ -46,11 +45,11 @@ namespace SafetyProgram.UI
             this.view = new MainView(
                 new MainViewModel(
                     coreCommands,
-                    this.documentControllerHolder,
+                    this.document,
                     new RibbonView(
                         new RibbonViewModel(
                             coreCommands,
-                            documentControllerHolder))));            
+                            document))));            
         }
 
         /// <summary>
@@ -60,7 +59,7 @@ namespace SafetyProgram.UI
         /// <param name="newDocument"></param>
         private void documentChanged(IDocument newDocument)
         {
-            documentControllerHolder.Content = new DocumentUiController(
+            document.Content = new DocumentUiController(
                 newDocument, 
                 applicationKernel.Configuration, 
                 commandInvoker);
@@ -76,12 +75,12 @@ namespace SafetyProgram.UI
             get { return view; }
         }
 
-        private IDocumentUiController document;
+        private readonly IEditableHolder<IDocumentUiController> document;
 
         /// <summary>
         /// Get the controller for the document inside the window.
         /// </summary>
-        public IDocumentUiController Document
+        public IHolder<IDocumentUiController> Document
         {
             get { return document; }
         }

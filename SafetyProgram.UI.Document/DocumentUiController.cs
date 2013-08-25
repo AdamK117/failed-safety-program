@@ -21,13 +21,14 @@ namespace SafetyProgram.UI.Document
             IConfiguration configuration, 
             ICommandInvoker commandInvoker)
         {
-            foreach (IDocumentObject documentObject in document.Items)
-            {
-                var docUiController = documentObjectControllerFactory
-                    .GetDocumentObjectUiController(documentObject);
+            documentObjectControllerFactory = new DocumentObjectUiControllerFactory(
+                configuration,
+                commandInvoker);
 
-                documentObjectControllers.Add(docUiController);
-            }
+            documentObjectControllers = new LinkedReadOnlyObservableCollection
+                <IDocumentObject, IDocumentObjectUiController>(
+                document.Items,
+                documentObjectControllerFactory.GetDocumentObjectUiController);
 
             // Construct commands to work on the document.
             var documentCommands = new DocumentICommands(document, commandInvoker);
@@ -66,13 +67,12 @@ namespace SafetyProgram.UI.Document
             get { return documentRibbonTabs; }
         }
 
-        private readonly ObservableCollection<IDocumentObjectUiController> documentObjectControllers 
-            = new ObservableCollection<IDocumentObjectUiController>();
+        private readonly ReadOnlyObservableCollection<IDocumentObjectUiController> documentObjectControllers;
 
         /// <summary>
         /// Get the document objects in the document.
         /// </summary>
-        public ObservableCollection<IDocumentObjectUiController> DocumentObjectControllers
+        public ReadOnlyObservableCollection<IDocumentObjectUiController> DocumentObjectControllers
         {
             get { return documentObjectControllers; }
         }

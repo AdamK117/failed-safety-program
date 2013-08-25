@@ -81,6 +81,7 @@
     <Compile Include="Interfaces\Creational\Factory\ILocalFileFactory.cs" />
     <Compile Include="Interfaces\ICopyPasteable.cs" />
     <Compile Include="Interfaces\IViewable.cs" />
+    <Compile Include="LinkedReadOnlyObservableCollection.cs" />
     <Compile Include="NullCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

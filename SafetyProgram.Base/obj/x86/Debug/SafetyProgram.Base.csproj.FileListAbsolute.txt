@@ -36,3 +36,4 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyP
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csproj.GenerateResource.Cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csprojResolveAssemblyReference.cache

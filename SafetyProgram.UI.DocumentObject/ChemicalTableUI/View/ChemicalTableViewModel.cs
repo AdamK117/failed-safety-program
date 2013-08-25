@@ -25,13 +25,11 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
             this.chemicalTable = chemicalTable;
             this.chemicalTableCommands = chemicalTableCommands;
 
-            selectedChemicals = new ObservableCollection<ICoshhChemical>();
+            this.selectedChemicals = new ObservableCollection<ICoshhChemical>();
 
-            contextMenu = new ChemicalTableContextMenuView(
+            this.contextMenu = new ChemicalTableContextMenuView(
                 new ChemicalTableContextMenuViewModel(
-                    chemicalTableCommands
-                )
-            );
+                    chemicalTableCommands));
         }
 
         private IChemicalTable chemicalTable;
@@ -41,10 +39,7 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         /// </summary>
         public string Header
         {
-            get
-            {
-                return chemicalTable.Header;
-            }
+            get { return chemicalTable.Header; }
             set
             {
                 chemicalTable.Header = value;

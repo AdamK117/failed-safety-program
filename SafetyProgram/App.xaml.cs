@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using SafetyProgram.Core;
+using SafetyProgram.UI;
 
 namespace SafetyProgram
 {
@@ -17,8 +18,10 @@ namespace SafetyProgram
 
             // Create an application kernel model.
             var appKernel = new ApplicationKernel(
-                null
-            );
+                null);
+
+            var appUiController = new ApplicationUiController(appKernel);
+            appUiController.View.Show();
         }
 
         /// <summary>
