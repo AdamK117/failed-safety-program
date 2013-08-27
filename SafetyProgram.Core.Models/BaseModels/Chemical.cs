@@ -61,7 +61,7 @@ namespace SafetyProgram.Core.Models
         /// <example>ChemicalObject</example>
         public string Identifier
         {
-            get { return Identifiers.CHEMICAL_IDENTIFIER; }
+            get { return ModelIdentifiers.CHEMICAL_IDENTIFIER; }
         }
     }
 }

@@ -98,7 +98,7 @@ namespace SafetyProgram.Core.Models
         /// </summary>
         public string Identifier
         {
-            get { return Identifiers.HAZARD_IDENTIFIER; }
+            get { return ModelIdentifiers.HAZARD_IDENTIFIER; }
         }
     }
 }

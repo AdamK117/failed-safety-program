@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Core;
+using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject
 {

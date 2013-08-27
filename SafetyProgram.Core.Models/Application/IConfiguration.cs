@@ -1,4 +1,4 @@
-﻿namespace SafetyProgram.Core
+﻿namespace SafetyProgram.Core.Models
 {
     public interface IConfiguration
     {

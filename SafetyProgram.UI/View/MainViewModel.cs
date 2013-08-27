@@ -12,7 +12,7 @@ namespace SafetyProgram.UI
 {
     public sealed class MainViewModel : IMainViewModel
     {
-        private readonly IHolder<IDocumentUiController> documentUiControllerHolder;
+        private readonly IHolder<IDocumentController> documentUiControllerHolder;
         private readonly ICoreCommands coreCommands;
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace SafetyProgram.UI
         /// <param name="coreCommands">The core commands for the program (new, open, close, etc.)</param>
         /// <param name="documentUiController">The document ui controller for the current document.</param>
         public MainViewModel(ICoreCommands coreCommands, 
-            IHolder<IDocumentUiController> documentUiControllerHolder, 
+            IHolder<IDocumentController> documentUiControllerHolder, 
             Ribbon ribbonView)
         {
             this.coreCommands = coreCommands;

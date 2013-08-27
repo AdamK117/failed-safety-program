@@ -16,6 +16,11 @@ namespace SafetyProgram.Core.Models
         ObservableCollection<IDocumentObject> Items { get; }
 
         /// <summary>
+        /// Get the current selection in the document.
+        /// </summary>
+        ObservableCollection<IDocumentObject> Selection { get; }
+
+        /// <summary>
         /// Gets the IFormat associated with this IDoc.
         /// </summary>
         /// <example>A4, A3, Poster, Banner, etc.</example>

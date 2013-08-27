@@ -57,30 +57,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="A4Format.cs" />
-    <Compile Include="Chemical.cs" />
-    <Compile Include="ChemicalTable.cs" />
-    <Compile Include="CoshhChemical.cs" />
-    <Compile Include="CustomFormat.cs" />
-    <Compile Include="Document.cs" />
-    <Compile Include="Hazard.cs" />
-    <Compile Include="IChemical.cs" />
-    <Compile Include="IChemicalTable.cs" />
-    <Compile Include="ICoshhChemical.cs" />
-    <Compile Include="IDocument.cs" />
-    <Compile Include="IDocumentObject.cs" />
-    <Compile Include="IFormat.cs" />
-    <Compile Include="IHazard.cs" />
-    <Compile Include="IQuantity.cs" />
+    <Compile Include="Application\ApplicationKernel.cs" />
+    <Compile Include="Application\IApplicationKernel.cs" />
+    <Compile Include="Application\IConfiguration.cs" />
+    <Compile Include="BaseModels\A4Format.cs" />
+    <Compile Include="BaseModels\Chemical.cs" />
+    <Compile Include="DocumentObjects\ChemicalTable.cs" />
+    <Compile Include="BaseModels\CoshhChemical.cs" />
+    <Compile Include="BaseModels\CustomFormat.cs" />
+    <Compile Include="Document\Document.cs" />
+    <Compile Include="BaseModels\Hazard.cs" />
+    <Compile Include="BaseModels\IChemical.cs" />
+    <Compile Include="DocumentObjects\IChemicalTable.cs" />
+    <Compile Include="BaseModels\ICoshhChemical.cs" />
+    <Compile Include="Document\IDocument.cs" />
+    <Compile Include="DocumentObjects\IDocumentObject.cs" />
+    <Compile Include="BaseModels\IFormat.cs" />
+    <Compile Include="BaseModels\IHazard.cs" />
+    <Compile Include="BaseModels\IQuantity.cs" />
     <Compile Include="IRepositoryInfo.cs" />
-    <Compile Include="Identifiers.cs" />
+    <Compile Include="ModelIdentifiers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quantity.cs" />
+    <Compile Include="BaseModels\Quantity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
       <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
       <Name>SafetyProgram.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.csproj">
+      <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
+      <Name>SafetyProgram.Core.IO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

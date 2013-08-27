@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines a class that contains the unique identifiers for different IDocObj's (ChemicalTable, ApparatusTable, etc.)
     /// </summary>
-    public static class Identifiers
+    public static class ModelIdentifiers
     {
         /// <summary>
         /// Get the unique identifier for the ChemicalTable IDocObj.

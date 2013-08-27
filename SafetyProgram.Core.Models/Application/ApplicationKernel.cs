@@ -1,9 +1,8 @@
 ﻿using System;
 using SafetyProgram.Base;
 using SafetyProgram.Core.IO;
-using SafetyProgram.Core.Models;
 
-namespace SafetyProgram.Core
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines a standard implementation of IApplicationKernel

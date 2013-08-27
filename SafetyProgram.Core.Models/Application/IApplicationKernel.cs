@@ -1,9 +1,8 @@
 ﻿using System;
 using SafetyProgram.Base;
 using SafetyProgram.Core.IO;
-using SafetyProgram.Core.Models;
 
-namespace SafetyProgram.Core
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an application kernel. The overall structure of the SafetyProgram application.

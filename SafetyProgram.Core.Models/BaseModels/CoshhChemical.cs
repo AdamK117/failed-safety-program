@@ -46,7 +46,7 @@ namespace SafetyProgram.Core.Models
         /// </summary>
         public string Identifier
         {
-            get { return Identifiers.COSHH_CHEMICAL_IDENTIFIER; }
+            get { return ModelIdentifiers.COSHH_CHEMICAL_IDENTIFIER; }
         }
     }
 }

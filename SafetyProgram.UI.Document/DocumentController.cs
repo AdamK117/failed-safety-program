@@ -4,7 +4,6 @@ using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Core;
 using SafetyProgram.Core.Commands;
 using SafetyProgram.Core.Models;
 using SafetyProgram.Document.Ribbons;
@@ -13,11 +12,15 @@ using SafetyProgram.UI.DocumentObject;
 
 namespace SafetyProgram.UI.Document
 {
-    public sealed class DocumentUiController : IDocumentUiController
+    /// <summary>
+    /// Defines a standard implementation of the IDocumentController interface.
+    /// </summary>
+    public sealed class DocumentController : IDocumentController
     {
         private readonly IDocumentObjectUiControllerFactory documentObjectControllerFactory;
+        
 
-        public DocumentUiController(IDocument document, 
+        public DocumentController(IDocument document, 
             IConfiguration configuration, 
             ICommandInvoker commandInvoker)
         {

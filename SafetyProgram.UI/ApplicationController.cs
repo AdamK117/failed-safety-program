@@ -9,9 +9,9 @@ using SafetyProgram.UI.Document;
 namespace SafetyProgram.UI
 {
     /// <summary>
-    /// Defines a standard implementation of IApplicationUiController.
+    /// Defines a standard implementation of IApplicationController.
     /// </summary>
-    public sealed class ApplicationUiController : IApplicationUiController
+    public sealed class ApplicationController : IApplicationController
     {
         private readonly ICommandInvoker commandInvoker;
         private readonly IApplicationKernel applicationKernel;
@@ -20,7 +20,7 @@ namespace SafetyProgram.UI
         /// Construct an instance of an application UI controller.
         /// </summary>
         /// <param name="applicationKernel">The underlying application model the controller oversees.</param>
-        public ApplicationUiController(IApplicationKernel applicationKernel)
+        public ApplicationController(IApplicationKernel applicationKernel)
         {
             this.applicationKernel = applicationKernel;
             this.commandInvoker = new CommandInvoker();
@@ -30,8 +30,8 @@ namespace SafetyProgram.UI
             /* Create a mutable holder for the idocumentuicontroller. A new controller will
              * be generated each time that the document changes in the underlying kernel.
              * The holder will allow subscribers (such as views) to rebind to the new document controller. */
-            this.document = new Holder<IDocumentUiController>(
-                new DocumentUiController(
+            this.document = new Holder<IDocumentController>(
+                new DocumentController(
                     applicationKernel.Document, 
                     applicationKernel.Configuration, 
                     commandInvoker));
@@ -59,7 +59,7 @@ namespace SafetyProgram.UI
         /// <param name="newDocument"></param>
         private void documentChanged(IDocument newDocument)
         {
-            document.Content = new DocumentUiController(
+            document.Content = new DocumentController(
                 newDocument, 
                 applicationKernel.Configuration, 
                 commandInvoker);
@@ -75,12 +75,12 @@ namespace SafetyProgram.UI
             get { return view; }
         }
 
-        private readonly IEditableHolder<IDocumentUiController> document;
+        private readonly IEditableHolder<IDocumentController> document;
 
         /// <summary>
         /// Get the controller for the document inside the window.
         /// </summary>
-        public IHolder<IDocumentUiController> Document
+        public IHolder<IDocumentController> Document
         {
             get { return document; }
         }

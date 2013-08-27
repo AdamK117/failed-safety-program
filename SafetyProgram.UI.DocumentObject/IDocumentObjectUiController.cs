@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using Fluent;
+using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject
 {
@@ -14,5 +15,10 @@ namespace SafetyProgram.UI.DocumentObject
         /// Get the contextual ribbon tab associated with the document object.
         /// </summary>
         RibbonTabItem ContextualTab { get; }
+
+        /// <summary>
+        /// Get the underlying IDocumentObject model.
+        /// </summary>
+        IDocumentObject Model { get; }
     }
 }

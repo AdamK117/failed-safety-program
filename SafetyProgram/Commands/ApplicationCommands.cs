@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Input;
-using SafetyProgram.Base;
-using SafetyProgram.Core;
+using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.Commands
 {

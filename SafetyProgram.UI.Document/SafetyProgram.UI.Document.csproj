@@ -82,9 +82,9 @@
     <Compile Include="View\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DocumentUiController.cs" />
+    <Compile Include="DocumentController.cs" />
     <Compile Include="View\IDocumentViewModel.cs" />
-    <Compile Include="IDocumentUiController.cs" />
+    <Compile Include="IDocumentController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

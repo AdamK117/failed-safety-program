@@ -7,7 +7,7 @@ using SafetyProgram.UI.DocumentObject;
 
 namespace SafetyProgram.UI.Document
 {
-    public interface IDocumentUiController
+    public interface IDocumentController
     {
         /// <summary>
         /// Get the view associated with the controller.

@@ -22,6 +22,7 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
             IConfiguration configuration, 
             ICommandInvoker commandInvoker)
         {
+            this.model = chemicalTable;
             IChemicalTableCommands tableCommands = null;
 
             this.view = new ChemicalTableView(
@@ -48,6 +49,18 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         public Fluent.RibbonTabItem ContextualTab
         {
             get { return contextualTab; }
+        }
+
+        private readonly IChemicalTable model;
+
+        public IDocumentObject Model
+        {
+            get { return model; }
+        }
+
+        IChemicalTable IChemicalTableUiController.Model
+        {
+            get { return model; }
         }
     }
 }

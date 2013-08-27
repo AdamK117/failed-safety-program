@@ -4,7 +4,7 @@ using SafetyProgram.UI.Document;
 
 namespace SafetyProgram.UI
 {
-    public interface IApplicationUiController
+    public interface IApplicationController
     {
         /// <summary>
         /// Get the UI view for the application
@@ -14,6 +14,6 @@ namespace SafetyProgram.UI
         /// <summary>
         /// Get the controller of the document Ui.
         /// </summary>
-        IHolder<IDocumentUiController> Document { get; }
+        IHolder<IDocumentController> Document { get; }
     }
 }

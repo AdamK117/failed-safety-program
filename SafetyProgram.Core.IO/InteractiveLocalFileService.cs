@@ -1,70 +1,135 @@
 ﻿using System;
+using System.IO;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using SafetyProgram.Base;
+using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Core.IO
 {
-    /// <summary>
-    /// Defines an implementation for an I/O service that uses the local file system on the client machine.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
     public sealed class InteractiveLocalFileService<T> : IIOService<T>
     {
-        private readonly IStorageConverter<T, XElement> ioFactory;
+        private readonly bool
+            canNew = true,
+            canLoad = true,
+            canSave = true,
+            canSaveAs = true;
 
-        /// <summary>
-        /// Construct an instance of a local file system I/O service that uses user prompts.
-        /// </summary>
-        public InteractiveLocalFileService(IStorageConverter<T, XElement> ioFactory)
+        private string path;
+
+        private readonly ILocalFileFactory<T> itemFactory;
+
+        public InteractiveLocalFileService(ILocalFileFactory<T> itemFactory)
         {
-            Helpers.NullCheck(ioFactory);
+            Helpers.NullCheck(itemFactory);
 
-            this.ioFactory = ioFactory;
+            this.itemFactory = itemFactory;
         }
 
         public T New()
         {
-            throw new NotImplementedException();
+            if (CanNew())
+            {
+                path = "";
+                return itemFactory.CreateNew();
+            }
+            else throw new InvalidOperationException("Cannot create a new document");
         }
 
         public bool CanNew()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Disconnect()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(T data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CanSave(T data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveAs(T data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CanSaveAs(T data)
-        {
-            throw new NotImplementedException();
+            return canNew;
         }
 
         public T Load()
         {
-            throw new NotImplementedException();
+            if (CanLoad())
+            {
+                var openFileDialog = new OpenFileDialog()
+                {
+                    Filter = "Xml Document (.xml)|*.xml",
+                    Multiselect = false,
+                    CheckFileExists = true
+                };
+
+                switch (openFileDialog.ShowDialog())
+                {
+                    case DialogResult.OK:
+                        if (File.Exists(openFileDialog.FileName))
+                        {
+                            path = openFileDialog.FileName;
+
+                            var xElement = XElement.Load(path);
+
+                            return itemFactory.Load(xElement);
+                        }
+                        else throw new FileNotFoundException("File not found", openFileDialog.FileName);
+
+                    default:
+                        throw new ArgumentException();
+                }
+            }
+            else throw new InvalidOperationException();
         }
 
         public bool CanLoad()
         {
-            throw new NotImplementedException();
+            return canLoad;
+        }
+
+        public void Save(T data)
+        {
+            if (CanSave(data))
+            {
+                if (String.IsNullOrEmpty(path))
+                {
+                    SaveAs(data);
+                }
+                else
+                {
+                    var xDocument = new XDocument();
+
+                    xDocument.Add(itemFactory.Store(data));
+
+                    xDocument.Save(path);
+                }
+            }
+            else throw new InvalidOperationException();
+        }
+
+        public bool CanSave(T data)
+        {
+            return canSave;
+        }
+
+        public void SaveAs(T data)
+        {
+            if (CanSaveAs(data))
+            {
+                var saveFileDialog = new SaveFileDialog()
+                {
+                    Filter = "SomeRandomXml|*.xml",
+                    Title = "Save As"
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    path = saveFileDialog.FileName;
+                    Save(data);
+                }
+                else throw new ArgumentException("User cancelled out of SaveAs dialog");
+            }
+            else throw new InvalidOperationException();
+        }
+
+        public bool CanSaveAs(T data)
+        {
+            return canSaveAs;
+        }
+
+        public void Disconnect()
+        {
+            //Close connections etc.
         }
     }
 }

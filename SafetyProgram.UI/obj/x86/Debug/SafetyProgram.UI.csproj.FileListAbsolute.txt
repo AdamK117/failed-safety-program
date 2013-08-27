@@ -1,3 +1,12 @@
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.csprojResolveAssemblyReference.cache
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\View\MainView.baml
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\Ribbons\RibbonView.baml
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\View\MainView.g.cs
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\Ribbons\RibbonView.g.cs
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI_MarkupCompile.cache
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.g.resources
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.Properties.Resources.resources
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.csproj.GenerateResource.Cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\bin\x86\Debug\SafetyProgram.UI.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\bin\x86\Debug\SafetyProgram.UI.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\bin\x86\Debug\Fluent.dll
@@ -28,14 +37,5 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\bin\x86\Debug\ja\System
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\bin\x86\Debug\ko\System.Windows.Interactivity.resources.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\bin\x86\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\bin\x86\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.csprojResolveAssemblyReference.cache
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\Ribbons\RibbonView.baml
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\Ribbons\RibbonView.g.cs
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI_MarkupCompile.cache
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.g.resources
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.Properties.Resources.resources
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.csproj.GenerateResource.Cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\SafetyProgram.UI.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\View\MainView.baml
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI\obj\x86\Debug\View\MainView.g.cs

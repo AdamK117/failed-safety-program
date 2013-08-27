@@ -57,9 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationKernel.cs" />
-    <Compile Include="IApplicationKernel.cs" />
-    <Compile Include="IConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

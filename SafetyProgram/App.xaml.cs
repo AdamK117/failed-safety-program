@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using SafetyProgram.Core;
+using SafetyProgram.Core.IO;
+using SafetyProgram.Core.Models;
 using SafetyProgram.UI;
 
 namespace SafetyProgram
@@ -17,10 +19,9 @@ namespace SafetyProgram
             base.OnStartup(e);
 
             // Create an application kernel model.
-            var appKernel = new ApplicationKernel(
-                null);
+            var appKernel = new ApplicationKernel(new InteractiveLocalFileService<IDocument>();
 
-            var appUiController = new ApplicationUiController(appKernel);
+            var appUiController = new ApplicationController(appKernel);
             appUiController.View.Show();
         }
 

@@ -32,8 +32,8 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\ja\System.W
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\ko\System.Windows.Interactivity.resources.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csprojResolveAssemblyReference.cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.Properties.Resources.resources
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csproj.GenerateResource.Cache
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Base\obj\x86\Debug\SafetyProgram.Base.csprojResolveAssemblyReference.cache

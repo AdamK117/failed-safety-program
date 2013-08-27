@@ -32,6 +32,14 @@ namespace SafetyProgram.Core.Models
             get { return items; }
         }
 
+        /// <summary>
+        /// Get the current selection in the document.
+        /// </summary>
+        public ObservableCollection<IDocumentObject> Selection
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         private IFormat format;
 
         /// <summary>
@@ -40,26 +48,20 @@ namespace SafetyProgram.Core.Models
         public IFormat Format
         {
             get { return format; }
-            set { format = value; }
-        }
-
-        /// <summary>
-        /// Change the Format of the Doc to a new (i.e. non-null) format.
-        /// </summary>
-        /// <param name="newFormat">The new format of the Doc.</param>
-        public void ChangeFormat(IFormat newFormat)
-        {
-            if (newFormat != null)
+            set 
             {
-                format = newFormat;
-                FormatChanged.Raise(this, format);
+                if (value != null)
+                {
+                    format = value;
+                    FormatChanged.Raise(this, format);
+                }
+                else throw new ArgumentNullException("Cannot set a Doc's format to null!");
             }
-            else throw new ArgumentNullException("Cannot set a Doc's format to null!");
         }
 
         /// <summary>
         /// Occurs when the Format of the Doc changes.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<IFormat>> FormatChanged;
+        public event EventHandler<GenericPropertyChangedEventArg<IFormat>> FormatChanged;        
     }
 }

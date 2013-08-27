@@ -12,9 +12,9 @@ namespace SafetyProgram.UI
 {
     public sealed class RibbonViewModel : IRibbonViewModel
     {
-        private readonly IHolder<IDocumentUiController> documentUiControllerHolder;
+        private readonly IHolder<IDocumentController> documentUiControllerHolder;
 
-        public RibbonViewModel(ICoreCommands coreCommands, IHolder<IDocumentUiController> documentUiControllerHolder)
+        public RibbonViewModel(ICoreCommands coreCommands, IHolder<IDocumentController> documentUiControllerHolder)
         {
             this.coreCommands = coreCommands;
             this.documentUiControllerHolder = documentUiControllerHolder;
