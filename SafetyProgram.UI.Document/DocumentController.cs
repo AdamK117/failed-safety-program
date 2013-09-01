@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Core;
 using SafetyProgram.Core.Commands;
 using SafetyProgram.Core.Models;
 using SafetyProgram.Document.Ribbons;
@@ -21,7 +22,7 @@ namespace SafetyProgram.UI.Document
         
 
         public DocumentController(IDocument document, 
-            IConfiguration configuration, 
+            IApplicationConfiguration configuration, 
             ICommandInvoker commandInvoker)
         {
             documentObjectControllerFactory = new DocumentObjectUiControllerFactory(

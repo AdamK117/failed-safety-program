@@ -1,30 +1,65 @@
 ﻿using System;
-using SafetyProgram.Base.Interfaces;
+using System.Collections.Generic;
+using System.IO;
+using SafetyProgram.Base;
 using SafetyProgram.Core.Models;
+using SafetyProgram.UI.DocumentObject.ChemicalTableUI;
 
 namespace SafetyProgram.UI.DocumentObject
 {
+    /// <summary>
+    /// Defines a standard implementation of the IDocumentObjectUiControllerFactory 
+    /// abstract factory.
+    /// </summary>
     public sealed class DocumentObjectUiControllerFactory 
         : IDocumentObjectUiControllerFactory
     {
-        private readonly IConfiguration configuration;
+        private readonly IApplicationConfiguration configuration;
         private readonly ICommandInvoker commandInvoker;
 
-        public DocumentObjectUiControllerFactory(IConfiguration configuration, 
+        /// <summary>
+        /// Construct an instance of a <code>DocumentObjectUiControllerFactory</code>,
+        /// an abstract factory for generating UI controllers from models.
+        /// </summary>
+        /// <param name="applicationConfiguration">The application configuration that shall be passed into
+        /// instances created by the factory.</param>
+        /// <param name="commandInvoker">The command invoker that shall be passed into instances created by
+        /// the factory.</param>
+        public DocumentObjectUiControllerFactory(IApplicationConfiguration applicationConfiguration, 
             ICommandInvoker commandInvoker)
         {
-            this.configuration = configuration;
+            Helpers.NullCheck(applicationConfiguration, commandInvoker);
+
+            this.configuration = applicationConfiguration;
             this.commandInvoker = commandInvoker;
+
+            lookupDictionary = new Dictionary<Type, Func<IDocumentObject, IDocumentObjectUiController>>()
+            {
+                {   typeof(ChemicalTable),
+                    (documentObject) => 
+                        new ChemicalTableUiController(documentObject as IChemicalTable, configuration, commandInvoker)}
+            };
         }
 
-        public Core.Models.IDocumentObject GetDocumentObject(IDocumentObjectUiController controller)
-        {
-            throw new NotImplementedException();
-        }
+        private readonly IDictionary<
+            Type, 
+            Func<IDocumentObject, IDocumentObjectUiController>> lookupDictionary;
 
-        public IDocumentObjectUiController GetDocumentObjectUiController(Core.Models.IDocumentObject documentObject)
+        /// <summary>
+        /// Create an <code>IDocumentUiController</code> using the supplied <code>IDocumentObject</code>
+        /// model.
+        /// </summary>
+        /// <param name="documentObject"></param>
+        /// <returns></returns>
+        public IDocumentObjectUiController GetDocumentObjectUiController(IDocumentObject documentObject)
         {
-            throw new NotImplementedException();
+            var typeArg = documentObject.GetType();
+
+            if (lookupDictionary.ContainsKey(typeArg))
+            {
+                return lookupDictionary[typeArg](documentObject);
+            }
+            else throw new InvalidDataException();
         }
     }
 }

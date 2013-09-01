@@ -17,6 +17,8 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.Models.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.IO.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.Models.Factories.dll
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.IO.Models.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\System.Windows.Interactivity.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Base.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.Commands.pdb
@@ -25,6 +27,8 @@ C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\Fluent.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\Fluent.xml
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.IO.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.Models.Factories.pdb
+C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\SafetyProgram.Core.IO.Models.pdb
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\System.Windows.Interactivity.xml
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\de\System.Windows.Interactivity.resources.dll
 C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.UI.DocumentObject\bin\x86\Debug\en\System.Windows.Interactivity.resources.dll

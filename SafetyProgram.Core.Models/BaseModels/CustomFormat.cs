@@ -16,16 +16,14 @@
             Height = height;
         }
 
-        public string Width
-        {
-            get;
-            private set;
-        }
+        /// <summary>
+        /// Get the width of the print format.
+        /// </summary>
+        public string Width { get; private set; }
 
-        public string Height
-        {
-            get;
-            private set;
-        }
+        /// <summary>
+        /// Get the height of the print format.
+        /// </summary>
+        public string Height { get; private set; }
     }
 }

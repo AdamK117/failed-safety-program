@@ -10,13 +10,13 @@ namespace SafetyProgram.Core.Commands
 {
     internal sealed class UndoICommand : ICommand
     {
-        private readonly ICommandInvoker commandInvoker;
+        private readonly ICommandController commandController;
 
-        public UndoICommand(ICommandInvoker commandInvoker)
+        public UndoICommand(ICommandController commandController)
         {
-            Helpers.NullCheck(commandInvoker);
+            Helpers.NullCheck(commandController);
 
-            this.commandInvoker = commandInvoker;
+            this.commandController = commandController;
         }
 
         public bool CanExecute(object parameter)

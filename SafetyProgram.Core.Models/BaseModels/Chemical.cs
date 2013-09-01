@@ -19,7 +19,7 @@ namespace SafetyProgram.Core.Models
             Helpers.NullCheck(name, hazards);
 
             this.name = name;
-            this.hazards = hazards;
+            this.Hazards = hazards;
         }
 
         private string name;
@@ -43,17 +43,14 @@ namespace SafetyProgram.Core.Models
         /// <summary>
         /// Occurs when the name of the Chemical changes.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<string>> NameChanged;
-
-        private readonly ObservableCollection<IHazard> hazards;
+        public event EventHandler<
+            GenericPropertyChangedEventArg<
+                string>> NameChanged;
         
         /// <summary>
         /// Gets the hazards associated with this chemical.
         /// </summary>
-        public ObservableCollection<IHazard> Hazards
-        {
-            get { return hazards; }
-        }
+        public ObservableCollection<IHazard> Hazards { get; private set; }
 
         /// <summary>
         /// Get the unique identifier for this type of object.

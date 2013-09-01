@@ -12,9 +12,9 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
     /// </summary>
     internal sealed class ChemicalTableRibbonTabViewModel : IChemicalTableRibbonViewModel
     {
-        private readonly IConfiguration appConfiguration;
+        private readonly IApplicationConfiguration appConfiguration;
 
-        public ChemicalTableRibbonTabViewModel(IConfiguration appConfiguration,
+        public ChemicalTableRibbonTabViewModel(IApplicationConfiguration appConfiguration,
             IChemicalTableCommands commands)
         {
             Helpers.NullCheck(appConfiguration, commands);

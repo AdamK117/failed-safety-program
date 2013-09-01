@@ -40,6 +40,8 @@ namespace SafetyProgram.UI.Document.View
 
             this.document.FormatChanged += (sender, newFormatEventHandler) =>
                 PropertyChanged.Raise(this, "Format");
+
+            this.Selection = new ObservableCollection<IDocumentObjectUiController>();
         }
 
         /// <summary>
@@ -83,6 +85,11 @@ namespace SafetyProgram.UI.Document.View
         /// <summary>
         /// Occurs when a property on the viewmodel changes.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;        
+        public event PropertyChangedEventHandler PropertyChanged;
+        
+        /// <summary>
+        /// Get the selection in the document.
+        /// </summary>
+        public ObservableCollection<IDocumentObjectUiController> Selection { get; private set; }
     }
 }

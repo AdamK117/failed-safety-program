@@ -14,12 +14,18 @@ namespace SafetyProgram.UI
     {
         private readonly IHolder<IDocumentController> documentUiControllerHolder;
 
-        public RibbonViewModel(ICoreCommands coreCommands, IHolder<IDocumentController> documentUiControllerHolder)
+        public RibbonViewModel(ICoreCommands coreCommands, 
+            IHolder<IDocumentController> documentUiControllerHolder)
         {
             this.coreCommands = coreCommands;
             this.documentUiControllerHolder = documentUiControllerHolder;
 
-            documentUiControllerHolder.ContentChanged += (s, newController) => PropertyChanged.Raise(this, "DocumentRibbonTabs");
+            documentUiControllerHolder.ContentChanged +=
+                (s, newController) =>
+                {
+                    PropertyChanged.Raise(this, "DocumentRibbonTabs");
+                    PropertyChanged.Raise(this, "ContextualRibbonTabs");
+                };
         }
 
         /// <summary>
@@ -33,7 +39,9 @@ namespace SafetyProgram.UI
         /// <summary>
         /// Occurs when the document ribbon tabs changes.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<ICollection<RibbonTabItem>>> DocumentRibbonTabsHolderChanged;
+        public event EventHandler<
+            GenericPropertyChangedEventArg<
+                ICollection<RibbonTabItem>>> DocumentRibbonTabsHolderChanged;
 
         /// <summary>
         /// Get the contextual ribbon tabs assoicated with the currently open document.
@@ -41,13 +49,24 @@ namespace SafetyProgram.UI
         public ObservableCollection<RibbonTabItem> ContextualRibbonTabs
         {
             get 
-            { throw new NotImplementedException(); }
+            {
+                var selection = documentUiControllerHolder.Content.Selection;
+
+                return selection != null ? 
+                    // Get the selection.
+                    selection.ContextualTabs : 
+                    // Or if null, return empty tabs.
+                    new ObservableCollection<RibbonTabItem>();          
+            }
         }
 
         /// <summary>
-        /// Occurs when the contextual ribbontabs (the tabs associated with the current document) change.
+        /// Occurs when the contextual ribbontabs (the tabs associated with the current 
+        /// document) change.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<ObservableCollection<RibbonTabItem>>> ContextualRibbonTabsHolderChanged;
+        public event EventHandler<
+            GenericPropertyChangedEventArg<
+                ObservableCollection<RibbonTabItem>>> ContextualRibbonTabsHolderChanged;
 
         private readonly ICoreCommands coreCommands;
 

@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using Fluent;
-using SafetyProgram.Base.Interfaces;
-using SafetyProgram.Core;
+using SafetyProgram.Base;
 using SafetyProgram.Core.Commands;
 using SafetyProgram.Core.Models;
 
@@ -19,16 +19,24 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         /// <param name="configuration">The configuration used by the application.</param>
         /// <param name="commandInvoker">The command invoker used by the application.</param>
         public ChemicalTableUiController(IChemicalTable chemicalTable, 
-            IConfiguration configuration, 
+            IApplicationConfiguration configuration, 
             ICommandInvoker commandInvoker)
         {
             this.model = chemicalTable;
-            IChemicalTableCommands tableCommands = null;
+            IChemicalTableCommands tableCommands = new ChemicalTableICommands(chemicalTable, commandInvoker);
 
             this.view = new ChemicalTableView(
                 new ChemicalTableViewModel(
                     chemicalTable,
                     tableCommands));
+
+            this.contextualTab = new ObservableCollection<RibbonTabItem>()
+            {
+                new ChemicalTableRibbonView(
+                    new ChemicalTableRibbonTabViewModel(
+                        configuration,
+                        tableCommands))
+            };
         }
 
         private readonly Control view;
@@ -41,23 +49,29 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
             get { return view; }
         }
 
-        private readonly RibbonTabItem contextualTab;
+        private readonly ObservableCollection<RibbonTabItem> contextualTab;
 
         /// <summary>
         /// Get the chemical table's contextual ribbon tab.
         /// </summary>
-        public Fluent.RibbonTabItem ContextualTab
+        public ObservableCollection<RibbonTabItem> ContextualTabs
         {
             get { return contextualTab; }
         }
 
         private readonly IChemicalTable model;
 
+        /// <summary>
+        /// Get the underlying <code>IDocumentObject</code> model.
+        /// </summary>
         public IDocumentObject Model
         {
             get { return model; }
         }
 
+        /// <summary>
+        /// Get the underlying <code>IChemicalTable</code> model.
+        /// </summary>
         IChemicalTable IChemicalTableUiController.Model
         {
             get { return model; }

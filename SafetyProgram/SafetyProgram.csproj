@@ -98,8 +98,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\ApplicationCommands.cs" />
-    <Compile Include="Commands\IApplicationCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -131,6 +129,14 @@
     <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.csproj">
       <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
       <Name>SafetyProgram.Core.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.Models.Factories\SafetyProgram.Core.Models.Factories.csproj">
+      <Project>{a935acae-0823-400f-8f60-44ace0aa575f}</Project>
+      <Name>SafetyProgram.Core.Models.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.Models.Serialization\SafetyProgram.Core.Models.Serialization.csproj">
+      <Project>{3213a682-7b4c-44aa-8ceb-6d6444c2cade}</Project>
+      <Name>SafetyProgram.Core.Models.Serialization</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
       <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>

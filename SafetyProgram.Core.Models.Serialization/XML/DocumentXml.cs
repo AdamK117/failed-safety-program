@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml.Linq;
 using SafetyProgram.Core.IO;
 
@@ -7,7 +8,7 @@ namespace SafetyProgram.Core.Models.Serialization
     /// <summary>
     /// Defines an implementation for an XML-Object (de)serializer.
     /// </summary>
-    public sealed class DocumentXml : IStorageConverter<IDocument, XElement>
+    public sealed class DocumentXml : ILocalStorageConverter<IDocument, XElement>
     {
         /// <summary>
         /// Construct an instance of a document XML (de)serializer.
@@ -33,6 +34,20 @@ namespace SafetyProgram.Core.Models.Serialization
         public IDocument Load(XElement data)
         {
             throw new NotImplementedException();
+        }
+
+        private string[] extensions = { "xml" };
+
+        public IEnumerable<string> Extensions
+        {
+            get { return extensions; }
+        }
+
+        private const string FILE_DESCRIPTION = "Xml File";
+
+        public string FileDescription
+        {
+            get { return FILE_DESCRIPTION; }
         }
     }
 }

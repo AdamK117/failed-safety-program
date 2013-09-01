@@ -32,5 +32,10 @@ namespace SafetyProgram.UI.Document
         /// Get the documentobjects in the document.
         /// </summary>
         ReadOnlyObservableCollection<IDocumentObjectUiController> DocumentObjects { get; }
+
+        /// <summary>
+        /// Get the selection in the document.
+        /// </summary>
+        ObservableCollection<IDocumentObjectUiController> Selection { get; }
     }
 }

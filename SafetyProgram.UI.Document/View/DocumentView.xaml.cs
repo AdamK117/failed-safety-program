@@ -28,26 +28,24 @@ namespace SafetyProgram.UI.Document
             if (e.OriginalSource is Control)
             {
                 Control control = (Control)e.OriginalSource;
-                //switch (control.Name)
-                //{
-                //    case "DocumentWrapper":
-                //        viewModel.Body.DeSelectAll();
-                //        break;
-                //    case "DocumentHolder":
-                //        viewModel.Body.DeSelectAll();
-                //        break;
-                //    default:
-                //        break;
-                //}
+                switch (control.Name)
+                {
+                    case "DocumentWrapper":
+                        viewModel.Selection.Clear();
+                        break;
+                    case "DocumentHolder":
+                        viewModel.Selection.Clear();
+                        break;
+                    default:
+                        break;
+                }
             }            
         }
 
         //If a docobject is clicked
         private void DocObjectClicked(object sender, MouseButtonEventArgs e)
         {
-            //ContentControl contentControl = (ContentControl)sender;
-            //IDocumentObject docObject = (IDocumentObject)contentControl.DataContext;
-            //viewModel.Body.Select(docObject);
+            ContentControl contentControl = (ContentControl)sender;
         }
     }
 }

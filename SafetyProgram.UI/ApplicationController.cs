@@ -13,7 +13,7 @@ namespace SafetyProgram.UI
     /// </summary>
     public sealed class ApplicationController : IApplicationController
     {
-        private readonly ICommandInvoker commandInvoker;
+        private readonly ICommandController commandInvoker;
         private readonly IApplicationKernel applicationKernel;
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace SafetyProgram.UI
         public ApplicationController(IApplicationKernel applicationKernel)
         {
             this.applicationKernel = applicationKernel;
-            this.commandInvoker = new CommandInvoker();
+            this.commandInvoker = new CommandController();
 
             var coreCommands = new CoreCommands(applicationKernel, commandInvoker);
 
@@ -59,10 +59,17 @@ namespace SafetyProgram.UI
         /// <param name="newDocument"></param>
         private void documentChanged(IDocument newDocument)
         {
-            document.Content = new DocumentController(
-                newDocument, 
-                applicationKernel.Configuration, 
+            if (newDocument == null)
+            {
+                document.Content = null;
+            }
+            else
+            {
+                document.Content = new DocumentController(
+                newDocument,
+                applicationKernel.Configuration,
                 commandInvoker);
+            }            
         }
 
         private readonly Window view;

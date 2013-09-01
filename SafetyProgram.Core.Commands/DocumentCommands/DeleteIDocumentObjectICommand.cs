@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
-using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Base;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.Core.Commands
@@ -10,7 +10,7 @@ namespace SafetyProgram.Core.Commands
     /// Defines an implementation for a command that deletes IDocumentObjects from
     /// the document contenets.
     /// </summary>
-    public sealed class DeleteIDocumentObjectICommand : ICommand
+    internal sealed class DeleteIDocumentObjectICommand : ICommand
     {
         private readonly IDocument document;
         private readonly ICommandInvoker commandInvoker;

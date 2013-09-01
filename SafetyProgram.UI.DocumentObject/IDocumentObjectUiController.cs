@@ -1,9 +1,13 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject
 {
+    /// <summary>
+    /// Defines an interface for a UiController of an IDocumentObject.
+    /// </summary>
     public interface IDocumentObjectUiController
     {
         /// <summary>
@@ -14,7 +18,7 @@ namespace SafetyProgram.UI.DocumentObject
         /// <summary>
         /// Get the contextual ribbon tab associated with the document object.
         /// </summary>
-        RibbonTabItem ContextualTab { get; }
+        ObservableCollection<RibbonTabItem> ContextualTabs { get; }
 
         /// <summary>
         /// Get the underlying IDocumentObject model.

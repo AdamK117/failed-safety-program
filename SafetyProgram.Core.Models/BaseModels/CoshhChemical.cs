@@ -16,30 +16,20 @@ namespace SafetyProgram.Core.Models
         {
             Helpers.NullCheck(chemical, amount);
 
-            this.chemical = chemical;
-            this.amount = amount;
+            this.Chemical = chemical;
+            this.Amount = amount;
         }
-
-        private readonly IChemical chemical;
 
         /// <summary>
         /// Gets the IChemical associated with this CoshhChemical entry.
         /// </summary>
-        public IChemical Chemical
-        {
-            get { return chemical; }
-        }
-
-        private readonly IQuantity amount;
+        public IChemical Chemical { get; private set; }
 
         /// <summary>
         /// Gets the amount of Chemical being used.
         /// </summary>
         /// <example>10 mgs</example>
-        public IQuantity Amount
-        {
-            get { return amount; }
-        }
+        public IQuantity Amount { get; private set; }
 
         /// <summary>
         /// Gets the unique identifer associated with this IDocObject.

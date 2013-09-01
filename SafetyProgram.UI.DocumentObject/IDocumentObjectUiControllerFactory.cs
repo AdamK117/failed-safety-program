@@ -7,8 +7,11 @@ namespace SafetyProgram.UI.DocumentObject
     /// </summary>
     public interface IDocumentObjectUiControllerFactory
     {
-        IDocumentObject GetDocumentObject(IDocumentObjectUiController controller);
-
+        /// <summary>
+        /// Create an <code>IDocumentObjectUiController</code> from the supplied <code>IDocumentObject</code> model.
+        /// </summary>
+        /// <param name="documentObject">The model from which to create the Ui controller.</param>
+        /// <returns>A new <code>IDocumentObjectUiController</code> created from the model.</returns>
         IDocumentObjectUiController GetDocumentObjectUiController(IDocumentObject documentObject);
     }
 }

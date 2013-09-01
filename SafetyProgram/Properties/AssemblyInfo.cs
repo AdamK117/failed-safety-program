@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SafetyProgram")]
-[assembly: AssemblyDescription("The main assembly used as the application entry point. Will handle standard input (stdin), application arguments, etc.")]
+[assembly: AssemblyDescription("Application root for the safetyprogram.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Adam Kewley")]
 [assembly: AssemblyProduct("SafetyProgram")]

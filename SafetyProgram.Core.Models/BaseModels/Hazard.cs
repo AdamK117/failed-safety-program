@@ -43,7 +43,9 @@ namespace SafetyProgram.Core.Models
         /// <summary>
         /// Occurs when the SignalWord of the Hazard changes.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<string>> SignalWordChanged;
+        public event EventHandler<
+            GenericPropertyChangedEventArg<
+                string>> SignalWordChanged;
 
         private string riskPhrase;
 
@@ -67,7 +69,9 @@ namespace SafetyProgram.Core.Models
         /// <summary>
         /// Occurs when the RPhrase of the Hazard changes.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<string>> RPhraseChanged;
+        public event EventHandler<
+            GenericPropertyChangedEventArg<
+                string>> RPhraseChanged;
 
         private string warning;
 
@@ -91,7 +95,9 @@ namespace SafetyProgram.Core.Models
         /// <summary>
         /// Occurs when the Warning of the Hazard changes.
         /// </summary>
-        public event EventHandler<GenericPropertyChangedEventArg<string>> WarningChanged;
+        public event EventHandler<
+            GenericPropertyChangedEventArg<
+                string>> WarningChanged;
 
         /// <summary>
         /// Get the unique IDocObj identifier associated with the Hazard object.

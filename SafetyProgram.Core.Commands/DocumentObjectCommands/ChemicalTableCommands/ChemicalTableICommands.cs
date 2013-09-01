@@ -1,5 +1,6 @@
-﻿using System;
-using SafetyProgram.Base.Interfaces;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
+using SafetyProgram.Base;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.Core.Commands
@@ -7,31 +8,23 @@ namespace SafetyProgram.Core.Commands
     public sealed class ChemicalTableICommands : IChemicalTableCommands
     {
         public ChemicalTableICommands(IChemicalTable chemicalTable, ICommandInvoker commandInvoker)
-        { }
-
-        public System.Windows.Input.ICommand DeleteSelected
         {
-            get { throw new NotImplementedException(); }
+            Hotkeys = setHotkeys();
         }
 
-        public System.Windows.Input.ICommand CopySelected
+        private List<InputBinding> setHotkeys()
         {
-            get { throw new NotImplementedException(); }
+            return new List<InputBinding>();
         }
 
-        public System.Windows.Input.ICommand PasteChemicals
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public ICommand DeleteSelected { get; private set; }
 
-        public System.Windows.Input.ICommand InsertChemical
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public ICommand CopySelected { get; private set; }
 
-        public System.Collections.Generic.List<System.Windows.Input.InputBinding> Hotkeys
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public ICommand PasteChemicals { get; private set; }
+
+        public ICommand InsertChemical { get; private set; }
+
+        public List<InputBinding> Hotkeys { get; private set; }
     }
 }

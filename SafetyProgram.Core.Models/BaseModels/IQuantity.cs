@@ -4,7 +4,8 @@ using SafetyProgram.Base;
 namespace SafetyProgram.Core.Models
 {
     /// <summary>
-    /// Defines an interface for describing quantities. Previously, these were held as separate fields on the chemical class.
+    /// Defines an interface for describing quantities. Previously, these 
+    /// were held as separate fields on the chemical class.
     /// </summary>
     public interface IQuantity
     {
@@ -17,7 +18,9 @@ namespace SafetyProgram.Core.Models
         /// <summary>
         /// Occurs when the value changes.
         /// </summary>
-        event EventHandler<GenericPropertyChangedEventArg<IFormat>> ValueChanged;
+        event EventHandler<
+            GenericPropertyChangedEventArg<
+                decimal>> ValueChanged;
 
         /// <summary>
         /// Get or Set the units associated with this IQuantity
@@ -28,6 +31,8 @@ namespace SafetyProgram.Core.Models
         /// <summary>
         /// Occurs when the unit changes.
         /// </summary>
-        event EventHandler<GenericPropertyChangedEventArg<IFormat>> UnitChanged;
+        event EventHandler<
+            GenericPropertyChangedEventArg<
+                string>> UnitChanged;
     }
 }

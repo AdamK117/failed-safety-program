@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 using SafetyProgram.Base;
-using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.Core.Commands
 {
@@ -16,19 +12,22 @@ namespace SafetyProgram.Core.Commands
         {
             Helpers.NullCheck(applicationKernel);
 
-            this.applicationKernel = applicationKernel;    
+            this.applicationKernel = applicationKernel;
+
+            this.applicationKernel.DocumentChanged +=
+                (sender, newDocument) => CanExecute(newDocument);
         }
 
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return applicationKernel != null;
         }
 
         public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            applicationKernel.Document = null;
         }
     }
 }

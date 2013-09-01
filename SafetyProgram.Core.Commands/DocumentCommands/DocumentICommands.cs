@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
-using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Base;
+using SafetyProgram.Core.Commands.DocumentCommands;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.Core.Commands
@@ -9,12 +10,12 @@ namespace SafetyProgram.Core.Commands
     {
         public DocumentICommands(IDocument document, ICommandInvoker commandInvoker)
         {
-            deleteIDocumentObject 
+            this.DeleteIDocObject
                 = new DeleteIDocumentObjectICommand(document, commandInvoker);
 
-            insertChemicalTable = null;
+            this.InsertChemicalTable = new InsertChemicalTableICommand(document, commandInvoker);
 
-            hotkeys = setHotkeys();
+            this.Hotkeys = setHotkeys();
         }
 
         private List<InputBinding> setHotkeys()
@@ -24,26 +25,17 @@ namespace SafetyProgram.Core.Commands
                 //Delete Selection: DEL
                 new InputBinding(
                     DeleteIDocObject,
-                    new KeyGesture(Key.Delete)
-                )
+                    new KeyGesture(Key.Delete)),
+                new InputBinding(
+                    InsertChemicalTable,
+                    new KeyGesture(Key.Insert))
             };
         }
-        private readonly ICommand deleteIDocumentObject;
-        public ICommand DeleteIDocObject
-        {
-            get { return deleteIDocumentObject; }
-        }
 
-        private readonly ICommand insertChemicalTable;
-        public ICommand InsertChemicalTable
-        {
-            get { return insertChemicalTable; }
-        }
+        public ICommand DeleteIDocObject { get; private set; }
 
-        private readonly List<InputBinding> hotkeys;
-        public List<InputBinding> Hotkeys
-        {
-            get { return hotkeys; }
-        }
+        public ICommand InsertChemicalTable { get; private set; }
+
+        public List<InputBinding> Hotkeys { get; private set; }
     }
 }

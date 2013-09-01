@@ -1,4 +1,5 @@
 ﻿using SafetyProgram.Core.Models;
+
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 {
     /// <summary>
@@ -6,6 +7,9 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
     /// </summary>
     public interface IChemicalTableUiController : IDocumentObjectUiController
     {
+        /// <summary>
+        /// Get the underlying ChemicalTable model.
+        /// </summary>
         new IChemicalTable Model { get; }
     }
 }

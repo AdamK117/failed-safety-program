@@ -57,24 +57,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\ApplicationKernel.cs" />
-    <Compile Include="Application\IApplicationKernel.cs" />
-    <Compile Include="Application\IConfiguration.cs" />
+    <Compile Include="ApplicationConfiguration.cs" />
     <Compile Include="BaseModels\A4Format.cs" />
     <Compile Include="BaseModels\Chemical.cs" />
-    <Compile Include="DocumentObjects\ChemicalTable.cs" />
+    <Compile Include="BaseModels\DocumentObjectModels\ChemicalTable.cs" />
     <Compile Include="BaseModels\CoshhChemical.cs" />
     <Compile Include="BaseModels\CustomFormat.cs" />
-    <Compile Include="Document\Document.cs" />
+    <Compile Include="BaseModels\DocumentModels\Document.cs" />
     <Compile Include="BaseModels\Hazard.cs" />
     <Compile Include="BaseModels\IChemical.cs" />
-    <Compile Include="DocumentObjects\IChemicalTable.cs" />
+    <Compile Include="BaseModels\DocumentObjectModels\IChemicalTable.cs" />
     <Compile Include="BaseModels\ICoshhChemical.cs" />
-    <Compile Include="Document\IDocument.cs" />
-    <Compile Include="DocumentObjects\IDocumentObject.cs" />
+    <Compile Include="BaseModels\DocumentModels\IDocument.cs" />
+    <Compile Include="BaseModels\DocumentObjectModels\IDocumentObject.cs" />
     <Compile Include="BaseModels\IFormat.cs" />
     <Compile Include="BaseModels\IHazard.cs" />
     <Compile Include="BaseModels\IQuantity.cs" />
+    <Compile Include="IApplicationConfiguration.cs" />
     <Compile Include="IRepositoryInfo.cs" />
     <Compile Include="ModelIdentifiers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,10 +83,6 @@
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
       <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
       <Name>SafetyProgram.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.csproj">
-      <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
-      <Name>SafetyProgram.Core.IO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SafetyProgram.Base")]
-[assembly: AssemblyDescription("Reusable classes and interfaces used by SafetyProgram")]
+[assembly: AssemblyDescription("General reusable classes.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Adam Kewley")]
 [assembly: AssemblyProduct("SafetyProgram.Base")]

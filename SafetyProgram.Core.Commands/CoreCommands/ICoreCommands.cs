@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Base;
 
 namespace SafetyProgram.Core.Commands
 {

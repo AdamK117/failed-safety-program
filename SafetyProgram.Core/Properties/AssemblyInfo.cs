@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SafetyProgram.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("The core application kernel (model) for the safetyprogram")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("AKD")]
 [assembly: AssemblyProduct("SafetyProgram.Core")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]

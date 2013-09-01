@@ -72,8 +72,13 @@
     <Compile Include="DocumentCommands\DeleteIDocumentObjectICommand.cs" />
     <Compile Include="DocumentCommands\DocumentICommands.cs" />
     <Compile Include="DocumentCommands\IDocumentCommands.cs" />
+    <Compile Include="DocumentCommands\InsertChemicalTableICommand.cs" />
     <Compile Include="DocumentObjectCommands\ChemicalTableCommands\ChemicalTableICommands.cs" />
+    <Compile Include="DocumentObjectCommands\ChemicalTableCommands\CopySelected.cs" />
+    <Compile Include="DocumentObjectCommands\ChemicalTableCommands\DeleteSelectedICommand.cs" />
     <Compile Include="DocumentObjectCommands\ChemicalTableCommands\IChemicalTableCommands.cs" />
+    <Compile Include="ICompositeMember.cs" />
+    <Compile Include="KernelCommands\IApplicationKernelCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

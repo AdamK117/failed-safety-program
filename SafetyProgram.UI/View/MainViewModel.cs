@@ -28,7 +28,7 @@ namespace SafetyProgram.UI
             this.documentUiControllerHolder = documentUiControllerHolder;
             this.ribbonView = ribbonView;
 
-            documentUiControllerHolder.ContentChanged += (sender, newController) => PropertyChanged.Raise(this, "View");
+            documentUiControllerHolder.ContentChanged += (sender, newController) => PropertyChanged.Raise(this, "ContentView");
         }
 
         private readonly Ribbon ribbonView;
@@ -48,7 +48,12 @@ namespace SafetyProgram.UI
         /// </summary>
         public Control ContentView
         {
-            get { return documentUiControllerHolder.Content.View; }
+            get 
+            {
+                var content = documentUiControllerHolder.Content;
+
+                return (content == null) ? null : content.View;
+            }
         }        
 
         /// <summary>

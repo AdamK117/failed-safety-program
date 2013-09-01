@@ -1,4 +1,6 @@
-﻿namespace SafetyProgram.Core.Models
+﻿using System;
+using SafetyProgram.Base;
+namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines a Quantity class. A class that holds quantity information together.
@@ -19,7 +21,7 @@
         private decimal _value;
 
         /// <summary>
-        /// Gets the value associated with this quantity.
+        /// Get the value associated with this quantity.
         /// </summary>
         /// <example>100</example>
         public decimal Value
@@ -31,13 +33,21 @@
             set
             {
                 _value = value;
+                ValueChanged.Raise(this, _value);
             }
         }
+
+        /// <summary>
+        /// Occurs when the value changes.
+        /// </summary>
+        public event EventHandler<
+            GenericPropertyChangedEventArg<
+                decimal>> ValueChanged;
 
         private string unit;
 
         /// <summary>
-        /// Gets or Sets the unit associated with this quantity.
+        /// Get or set the unit associated with this quantity.
         /// </summary>
         /// <example>mg</example>
         public string Unit
@@ -49,12 +59,15 @@
             set
             {
                 unit = value;
+                UnitChanged.Raise(this, unit);
             }
-        }
-
-
-        public event System.EventHandler<Base.GenericPropertyChangedEventArg<IFormat>> ValueChanged;
-
-        public event System.EventHandler<Base.GenericPropertyChangedEventArg<IFormat>> UnitChanged;
+        }     
+   
+        /// <summary>
+        /// Occurs when the unit changes.
+        /// </summary>
+        public event EventHandler<
+            GenericPropertyChangedEventArg<
+                string>> UnitChanged;
     }
 }

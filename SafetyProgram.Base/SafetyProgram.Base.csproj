@@ -59,30 +59,23 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChildHolder.cs" />
-    <Compile Include="CommandInvoker.cs" />
-    <Compile Include="GenericCommands\AddItemInvokedICom.cs" />
-    <Compile Include="GenericCommands\DeleteSelectedICom.cs" />
-    <Compile Include="GenericCommands\DeleteSelectedInvokedCom.cs" />
-    <Compile Include="GenericCommands\InsertIDocumentObjectICom.cs" />
-    <Compile Include="GenericPropertyChangedEventArg.cs" />
-    <Compile Include="Holder.cs" />
-    <Compile Include="Interfaces\IEditable.cs" />
-    <Compile Include="Interfaces\Structural\IEditableHolder.cs" />
-    <Compile Include="Interfaces\Structural\IHolder.cs" />
-    <Compile Include="Interfaces\Creational\Factory\IOutputFactory.cs" />
-    <Compile Include="Interfaces\Creational\Factory\IInputFactory.cs" />
-    <Compile Include="Interfaces\Command\ICommandInvoker.cs" />
-    <Compile Include="Interfaces\Creational\Factory\IFactory.cs" />
-    <Compile Include="Interfaces\Command\IInvokedCommand.cs" />
-    <Compile Include="EventExtensions.cs" />
-    <Compile Include="Interfaces\Command\ICommandsHolder.cs" />
-    <Compile Include="Interfaces\Creational\Factory\IIOFactory.cs" />
-    <Compile Include="Interfaces\Creational\Factory\ILocalFileFactory.cs" />
-    <Compile Include="Interfaces\ICopyPasteable.cs" />
-    <Compile Include="Interfaces\IViewable.cs" />
-    <Compile Include="LinkedReadOnlyObservableCollection.cs" />
-    <Compile Include="NullCheck.cs" />
+    <Compile Include="Classes\Holder\ChildHolder.cs" />
+    <Compile Include="CommandPattern\CommandController.cs" />
+    <Compile Include="Classes\GenericInvokedCommands\AddItemInvokedICom.cs" />
+    <Compile Include="Classes\GenericInvokedCommands\DeleteSelectedICom.cs" />
+    <Compile Include="Classes\GenericInvokedCommands\DeleteSelectedInvokedCom.cs" />
+    <Compile Include="Classes\GenericInvokedCommands\InsertIDocumentObjectICom.cs" />
+    <Compile Include="Classes\GenericPropertyChangedEventArg.cs" />
+    <Compile Include="Classes\Holder\Holder.cs" />
+    <Compile Include="CommandPattern\ICommandController.cs" />
+    <Compile Include="Classes\Holder\IEditableHolder.cs" />
+    <Compile Include="Classes\Holder\IHolder.cs" />
+    <Compile Include="CommandPattern\ICommandInvoker.cs" />
+    <Compile Include="CommandPattern\IInvokedCommand.cs" />
+    <Compile Include="Helpers\EventExtensions.cs" />
+    <Compile Include="CommandPattern\ICommandsHolder.cs" />
+    <Compile Include="Classes\LinkedReadOnlyObservableCollection.cs" />
+    <Compile Include="Helpers\NullCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
