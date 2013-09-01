@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 using SafetyProgram.Base;
-using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Core.Commands
 {

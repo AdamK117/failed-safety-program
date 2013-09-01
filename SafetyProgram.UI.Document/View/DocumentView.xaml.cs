@@ -46,6 +46,7 @@ namespace SafetyProgram.UI.Document
         private void DocObjectClicked(object sender, MouseButtonEventArgs e)
         {
             ContentControl contentControl = (ContentControl)sender;
+
         }
     }
 }
