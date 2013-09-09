@@ -62,7 +62,7 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         /// </summary>
         public ObservableCollection<ICoshhChemical> Chemicals
         {
-            get { return chemicalTable.Chemicals; }
+            get { return chemicalTable.Content; }
         }
 
         private readonly ObservableCollection<ICoshhChemical> selectedChemicals;

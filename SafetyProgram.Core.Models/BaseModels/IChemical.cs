@@ -8,7 +8,9 @@ namespace SafetyProgram.Core.Models
     /// Defines an interface for a Chemical in the SafetyProgram. The chemical 
     /// requires a name and hazards associated with it.
     /// </summary>
-    public interface IChemical : IDocumentObject
+    public interface IChemical : 
+        IApplicationModel,
+        IHasMany<IHazard>
     {
         /// <summary>
         /// Gets the name of the chemical.
@@ -22,10 +24,5 @@ namespace SafetyProgram.Core.Models
         event EventHandler<
             GenericPropertyChangedEventArg<
             string>> NameChanged;
-
-        /// <summary>
-        /// Get the Hazards associated with the chemical.
-        /// </summary>
-        ObservableCollection<IHazard> Hazards { get; }
     }
 }

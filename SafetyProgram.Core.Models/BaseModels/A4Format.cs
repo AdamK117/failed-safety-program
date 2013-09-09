@@ -22,5 +22,10 @@ namespace SafetyProgram.Core.Models
         {
             get { return "891"; }
         }
+
+        public string Identifier
+        {
+            get { return ModelIdentifiers.FORMAT_IDENTIFIER; }
+        }
     }
 }

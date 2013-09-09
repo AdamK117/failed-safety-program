@@ -57,24 +57,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationConfiguration.cs" />
+    <Compile Include="BaseModels\ApplicationConfiguration.cs" />
     <Compile Include="BaseModels\A4Format.cs" />
     <Compile Include="BaseModels\Chemical.cs" />
     <Compile Include="BaseModels\DocumentObjectModels\ChemicalTable.cs" />
     <Compile Include="BaseModels\CoshhChemical.cs" />
     <Compile Include="BaseModels\CustomFormat.cs" />
     <Compile Include="BaseModels\DocumentModels\Document.cs" />
+    <Compile Include="BaseModels\DocumentObjectModels\IDocumentObject.cs" />
     <Compile Include="BaseModels\Hazard.cs" />
     <Compile Include="BaseModels\IChemical.cs" />
     <Compile Include="BaseModels\DocumentObjectModels\IChemicalTable.cs" />
     <Compile Include="BaseModels\ICoshhChemical.cs" />
     <Compile Include="BaseModels\DocumentModels\IDocument.cs" />
-    <Compile Include="BaseModels\DocumentObjectModels\IDocumentObject.cs" />
     <Compile Include="BaseModels\IFormat.cs" />
     <Compile Include="BaseModels\IHazard.cs" />
     <Compile Include="BaseModels\IQuantity.cs" />
-    <Compile Include="IApplicationConfiguration.cs" />
-    <Compile Include="IRepositoryInfo.cs" />
+    <Compile Include="BaseModels\IApplicationConfiguration.cs" />
+    <Compile Include="IApplicationModel.cs" />
+    <Compile Include="IHasMany.cs" />
+    <Compile Include="BaseModels\IRepositoryInfo.cs" />
     <Compile Include="ModelIdentifiers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseModels\Quantity.cs" />

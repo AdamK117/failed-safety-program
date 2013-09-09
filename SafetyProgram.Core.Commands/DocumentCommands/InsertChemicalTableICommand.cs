@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Models;
@@ -32,7 +29,7 @@ namespace SafetyProgram.Core.Commands.DocumentCommands
 
         public void Execute(object parameter)
         {
-            document.Items.Add(
+            document.Content.Add(
                 new ChemicalTable(
                         "Some Chemical Table",
                         new ObservableCollection<ICoshhChemical>()));

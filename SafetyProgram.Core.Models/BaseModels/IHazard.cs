@@ -7,7 +7,7 @@ namespace SafetyProgram.Core.Models
     /// Defines the interface for a hazard object. Classes that implement this 
     /// hold a collection of related COSHH details.
     /// </summary>
-    public interface IHazard : IDocumentObject
+    public interface IHazard : IApplicationModel
     {
         /// <summary>
         /// Gets or Sets the Signal Word associated with this hazard. 

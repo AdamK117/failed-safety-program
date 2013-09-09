@@ -77,11 +77,9 @@
     <Compile Include="DocumentObjectCommands\ChemicalTableCommands\CopySelected.cs" />
     <Compile Include="DocumentObjectCommands\ChemicalTableCommands\DeleteSelectedICommand.cs" />
     <Compile Include="DocumentObjectCommands\ChemicalTableCommands\IChemicalTableCommands.cs" />
-    <Compile Include="KernelCommands\ICompositeBranch.cs" />
     <Compile Include="KernelCommands\IKernelCommands.cs" />
-    <Compile Include="KernelCommands\ISelectionHandler.cs" />
-    <Compile Include="KernelCommands\KernelCommands.cs" />
-    <Compile Include="KernelCommands\SelectionHandler.cs" />
+    <Compile Include="KernelCommands\ISelectionHolder.cs" />
+    <Compile Include="KernelCommands\SelectionHolder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

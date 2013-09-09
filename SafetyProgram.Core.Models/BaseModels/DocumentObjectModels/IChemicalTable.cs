@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
 namespace SafetyProgram.Core.Models
@@ -7,7 +6,9 @@ namespace SafetyProgram.Core.Models
     /// <summary>
     /// Defines an interface for a Chemical Table in the Safety Document. The table contains a collection of chemicals and a header.
     /// </summary>
-    public interface IChemicalTable : IDocumentObject
+    public interface IChemicalTable : 
+        IDocumentObject,
+        IHasMany<ICoshhChemical>
     {
         /// <summary>
         /// Gets or Sets the header of the ChemicalTable.
@@ -21,10 +22,5 @@ namespace SafetyProgram.Core.Models
         event EventHandler<
             GenericPropertyChangedEventArg<
                 string>> HeaderChanged;
-
-        /// <summary>
-        /// Gets the chemicals in the ChemicalTable.
-        /// </summary>
-        ObservableCollection<ICoshhChemical> Chemicals { get; }
     }
 }

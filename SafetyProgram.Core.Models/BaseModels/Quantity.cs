@@ -1,5 +1,6 @@
 ﻿using System;
 using SafetyProgram.Base;
+
 namespace SafetyProgram.Core.Models
 {
     /// <summary>
@@ -69,5 +70,10 @@ namespace SafetyProgram.Core.Models
         public event EventHandler<
             GenericPropertyChangedEventArg<
                 string>> UnitChanged;
+
+        public string Identifier
+        {
+            get { return ModelIdentifiers.QUANTITY_IDENTIFIER; }
+        }
     }
 }

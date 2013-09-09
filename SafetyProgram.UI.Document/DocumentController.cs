@@ -31,7 +31,7 @@ namespace SafetyProgram.UI.Document
 
             documentObjectControllers = new LinkedReadOnlyObservableCollection
                 <IDocumentObject, IDocumentObjectUiController>(
-                document.Items,
+                document.Content,
                 documentObjectControllerFactory.GetDocumentObjectUiController);
 
             // Construct commands to work on the document.

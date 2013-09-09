@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace SafetyProgram.Core.Models
 {
@@ -13,17 +11,22 @@ namespace SafetyProgram.Core.Models
             get { throw new NotImplementedException(); }
         }
 
-        public IEnumerable<IRepositoryInfo> RepositoriesInfo
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         public string Locale
         {
             get { throw new NotImplementedException(); }
         }
 
         public string ConnectionType
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string Identifier
+        {
+            get { return ModelIdentifiers.APPLICATION_CONFIGURATION_IDENTIFIER; }
+        }
+
+        public ObservableCollection<IRepositoryInfo> Content
         {
             get { throw new NotImplementedException(); }
         }

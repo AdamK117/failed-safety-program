@@ -18,20 +18,9 @@ namespace SafetyProgram.Core.Models
         {
             Helpers.NullCheck(items, format);
 
-            this.Items = items;
+            this.Content = items;
             this.format = format;
-            this.Selection = new ObservableCollection<IDocumentObject>();
         }
-
-        /// <summary>
-        /// Get the IDocObjects contained within the Doc.
-        /// </summary>
-        public ObservableCollection<IDocumentObject> Items { get; private set; }
-
-        /// <summary>
-        /// Get the current selection in the document.
-        /// </summary>
-        public ObservableCollection<IDocumentObject> Selection { get; private set; }
 
         private IFormat format;
 
@@ -57,6 +46,13 @@ namespace SafetyProgram.Core.Models
         /// </summary>
         public event EventHandler<
             GenericPropertyChangedEventArg<
-                IFormat>> FormatChanged;        
+                IFormat>> FormatChanged;
+
+        public ObservableCollection<IDocumentObject> Content { get; private set; }
+
+        public string Identifier
+        {
+            get { return ModelIdentifiers.DOCUMENT_IDENTIFIER; }
+        }
     }
 }

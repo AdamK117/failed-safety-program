@@ -7,7 +7,7 @@ namespace SafetyProgram.Core.Models
     /// Defines an interface for describing quantities. Previously, these 
     /// were held as separate fields on the chemical class.
     /// </summary>
-    public interface IQuantity
+    public interface IQuantity : IApplicationModel
     {
         /// <summary>
         /// Get the value associated with this IQuantity

@@ -24,5 +24,10 @@
         /// Gets the unique identifier associated with a CoshhChemical entry.
         /// </summary>
         public const string COSHH_CHEMICAL_IDENTIFIER = "CoshhChemical";
+
+        public const string QUANTITY_IDENTIFIER = "Quantity";
+        public const string FORMAT_IDENTIFIER = "Format";
+        public const string DOCUMENT_IDENTIFIER = "Document";
+        public const string APPLICATION_CONFIGURATION_IDENTIFIER = "AppConfig";
     }
 }

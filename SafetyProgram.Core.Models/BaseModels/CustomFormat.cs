@@ -25,5 +25,10 @@
         /// Get the height of the print format.
         /// </summary>
         public string Height { get; private set; }
+
+        public string Identifier
+        {
+            get { return ModelIdentifiers.FORMAT_IDENTIFIER; }
+        }
     }
 }

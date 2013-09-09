@@ -19,7 +19,7 @@ namespace SafetyProgram.Core.Models
             Helpers.NullCheck(header, chemicals);
 
             this.header = header;
-            this.Chemicals = chemicals;
+            this.Content = chemicals;
         }
 
         private string header;
@@ -49,16 +49,13 @@ namespace SafetyProgram.Core.Models
                 string>> HeaderChanged;
 
         /// <summary>
-        /// Get the chemicals contained in the table.
-        /// </summary>
-        public ObservableCollection<ICoshhChemical> Chemicals { get; private set; }
-
-        /// <summary>
         /// Gets the unique IDocObj identifier for a ChemicalTable.
         /// </summary>
         public string Identifier
         {
             get { return ModelIdentifiers.CHEMICAL_TABLE_IDENTIFIER; }
         }
+
+        public ObservableCollection<ICoshhChemical> Content { get; private set; }
     }
 }

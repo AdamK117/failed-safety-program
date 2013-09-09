@@ -41,7 +41,7 @@ namespace SafetyProgram.Core.Commands
 
             foreach (IDocumentObject documentObject in selection)
             {
-                if (!document.Items.Contains(documentObject))
+                if (!document.Content.Contains(documentObject))
                 {
                     validSelection = false;
                     break;
@@ -65,7 +65,7 @@ namespace SafetyProgram.Core.Commands
 
                 foreach (IDocumentObject documentObject in selection)
                 {
-                    document.Items.Remove(documentObject);
+                    document.Content.Remove(documentObject);
                 }
             }
             else

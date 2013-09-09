@@ -5,7 +5,8 @@
     /// the amount of that chemical used.
     /// </summary>
     /// <example>Acetonitrile, 30 mgs</example>
-    public interface ICoshhChemical : IDocumentObject
+    public interface ICoshhChemical : 
+        IApplicationModel
     {
         /// <summary>
         /// Get the IChemical for this ICoshhChemical entry.

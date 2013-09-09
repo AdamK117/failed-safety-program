@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines an implementation for the description of a repository.
     /// </summary>
-    public interface IRepositoryInfo
+    public interface IRepositoryInfo : IApplicationModel
     {
         /// <summary>
         /// Get the data source for the repository.
