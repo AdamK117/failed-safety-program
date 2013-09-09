@@ -1,4 +1,0 @@
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Validation\bin\x86\Debug\SafetyProgram.Core.Models.Validators.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Validation\bin\x86\Debug\SafetyProgram.Core.Models.Validators.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Validation\obj\x86\Debug\SafetyProgram.Core.Models.Validators.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.Models.Validation\obj\x86\Debug\SafetyProgram.Core.Models.Validators.pdb

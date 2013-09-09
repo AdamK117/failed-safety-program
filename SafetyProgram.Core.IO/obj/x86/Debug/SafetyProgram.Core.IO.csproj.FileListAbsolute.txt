@@ -1,7 +1,0 @@
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.IO\bin\x86\Debug\SafetyProgram.Core.IO.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.IO\bin\x86\Debug\SafetyProgram.Core.IO.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.IO\bin\x86\Debug\SafetyProgram.Base.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.IO\bin\x86\Debug\SafetyProgram.Base.pdb
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.IO\obj\x86\Debug\SafetyProgram.Core.IO.csprojResolveAssemblyReference.cache
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.IO\obj\x86\Debug\SafetyProgram.Core.IO.dll
-C:\Users\AdamK117\Desktop\SafetyProgram\SafetyProgram.Core.IO\obj\x86\Debug\SafetyProgram.Core.IO.pdb
