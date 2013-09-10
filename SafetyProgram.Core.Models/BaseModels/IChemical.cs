@@ -10,7 +10,7 @@ namespace SafetyProgram.Core.Models
     /// </summary>
     public interface IChemical : 
         IApplicationModel,
-        IHasMany<IHazard>
+        IHasManyT<IHazard>
     {
         /// <summary>
         /// Gets the name of the chemical.

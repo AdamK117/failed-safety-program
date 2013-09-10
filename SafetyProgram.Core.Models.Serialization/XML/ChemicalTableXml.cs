@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Xml.Linq;
 using SafetyProgram.Core.IO;
 
@@ -32,7 +34,29 @@ namespace SafetyProgram.Core.Models.Serialization
         /// <returns></returns>
         public IChemicalTable Load(XElement data)
         {
-            throw new NotImplementedException();
+            string loadedHeader;
+            ObservableCollection<ICoshhChemical> loadedChemicals;
+
+            // Header (optional)
+            {
+                var headerElement = data.Element("header");
+
+                loadedHeader =
+                    headerElement != null ?
+                        headerElement.Value :
+                        "Default Header";
+            }
+
+            // Chemicals (optional, table may be empty).
+            {
+                var chemicalSerializer = new CoshhChemicalXml();
+
+                loadedChemicals = new ObservableCollection<ICoshhChemical>(
+                    from chemicalElement in data.Elements("coshhchemical")
+                    select chemicalSerializer.Load(chemicalElement));
+            }
+
+            return new ChemicalTable(loadedHeader, loadedChemicals);
         }
     }
 }

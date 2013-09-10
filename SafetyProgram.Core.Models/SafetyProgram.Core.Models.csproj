@@ -76,6 +76,7 @@
     <Compile Include="BaseModels\IApplicationConfiguration.cs" />
     <Compile Include="IApplicationModel.cs" />
     <Compile Include="IHasMany.cs" />
+    <Compile Include="IHasManyT.cs" />
     <Compile Include="BaseModels\IRepositoryInfo.cs" />
     <Compile Include="ModelIdentifiers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

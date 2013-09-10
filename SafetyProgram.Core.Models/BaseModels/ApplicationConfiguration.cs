@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SafetyProgram.Core.Models
@@ -27,6 +28,11 @@ namespace SafetyProgram.Core.Models
         }
 
         public ObservableCollection<IRepositoryInfo> Content
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        IEnumerable<IApplicationModel> IHasMany.Content
         {
             get { throw new NotImplementedException(); }
         }

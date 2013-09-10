@@ -8,7 +8,7 @@ namespace SafetyProgram.Core.Models
     /// </summary>
     public interface IApplicationConfiguration : 
         IApplicationModel,
-        IHasMany<IRepositoryInfo>
+        IHasManyT<IRepositoryInfo>
     {
         /// <summary>
         /// Get the document lock state for the configuration. The document

@@ -1,4 +1,6 @@
-﻿using Fluent;
+﻿using System.Windows;
+using System.Windows.Input;
+using Fluent;
 using SafetyProgram.Base;
 
 namespace SafetyProgram.UI
@@ -13,6 +15,11 @@ namespace SafetyProgram.UI
             InitializeComponent();
 
             this.InputBindings.AddRange(viewModel.Hotkeys);
+        }
+
+        private void Handle(object sender, MouseButtonEventArgs e)
+        {
+            var origSource = e.OriginalSource;
         }
     }
 }

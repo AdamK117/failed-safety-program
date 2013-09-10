@@ -8,7 +8,7 @@ namespace SafetyProgram.Core.Models
     /// </summary>
     public interface IChemicalTable : 
         IDocumentObject,
-        IHasMany<ICoshhChemical>
+        IHasManyT<ICoshhChemical>
     {
         /// <summary>
         /// Gets or Sets the header of the ChemicalTable.

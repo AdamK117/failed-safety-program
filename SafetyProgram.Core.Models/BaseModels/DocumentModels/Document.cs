@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
@@ -18,7 +19,7 @@ namespace SafetyProgram.Core.Models
         {
             Helpers.NullCheck(items, format);
 
-            this.Content = items;
+            this.content = items;
             this.format = format;
         }
 
@@ -48,11 +49,20 @@ namespace SafetyProgram.Core.Models
             GenericPropertyChangedEventArg<
                 IFormat>> FormatChanged;
 
-        public ObservableCollection<IDocumentObject> Content { get; private set; }
+        private readonly ObservableCollection<IDocumentObject> content;
+        public ObservableCollection<IDocumentObject> Content
+        {
+            get { return content; }
+        }
 
         public string Identifier
         {
             get { return ModelIdentifiers.DOCUMENT_IDENTIFIER; }
+        }
+
+        IEnumerable<IApplicationModel> IHasMany.Content
+        {
+            get { return content; }
         }
     }
 }

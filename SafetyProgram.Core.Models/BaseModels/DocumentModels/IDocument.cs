@@ -8,7 +8,7 @@ namespace SafetyProgram.Core.Models
     /// </summary>
     public interface IDocument : 
         IApplicationModel,
-        IHasMany<IDocumentObject>
+        IHasManyT<IDocumentObject>
     {
         /// <summary>
         /// Gets the IFormat associated with this IDoc.

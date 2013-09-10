@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
@@ -19,7 +20,7 @@ namespace SafetyProgram.Core.Models
             Helpers.NullCheck(header, chemicals);
 
             this.header = header;
-            this.Content = chemicals;
+            this.content = chemicals;
         }
 
         private string header;
@@ -56,6 +57,16 @@ namespace SafetyProgram.Core.Models
             get { return ModelIdentifiers.CHEMICAL_TABLE_IDENTIFIER; }
         }
 
-        public ObservableCollection<ICoshhChemical> Content { get; private set; }
+        private readonly ObservableCollection<ICoshhChemical> content;
+
+        public ObservableCollection<ICoshhChemical> Content
+        {
+            get { return content; }
+        }
+
+        IEnumerable<IApplicationModel> IHasMany.Content
+        {
+            get { return content; }
+        }
     }
 }

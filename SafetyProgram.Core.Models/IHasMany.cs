@@ -1,10 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace SafetyProgram.Core.Models
 {
-    public interface IHasMany<TContent>
-        where TContent : IApplicationModel
+    public interface IHasMany : IApplicationModel
     {
-        ObservableCollection<TContent> Content { get; }
+        IEnumerable<IApplicationModel> Content { get; }
     }
 }

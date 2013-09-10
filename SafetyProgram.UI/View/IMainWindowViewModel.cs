@@ -9,7 +9,8 @@ namespace SafetyProgram.UI
     /// <summary>
     /// Defines an interface for the ViewModel of the CoshhWindowView.
     /// </summary>
-    public interface IMainViewModel : INotifyPropertyChanged
+    public interface IMainViewModel :
+        INotifyPropertyChanged
     {
         /// <summary>
         /// Get the RibbonView associated with the ViewModel.

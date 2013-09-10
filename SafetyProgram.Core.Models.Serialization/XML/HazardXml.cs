@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Xml.Linq;
 using SafetyProgram.Core.IO;
 
@@ -32,7 +33,31 @@ namespace SafetyProgram.Core.Models.Serialization
         /// <returns>The deserialized IHazard object.</returns>
         public IHazard Load(System.Xml.Linq.XElement data)
         {
-            throw new NotImplementedException();
+            //Variables that are to be loaded
+            string loadedHazard, loadedSignalWord, loadedSymbol;
+
+            //Required: Get the hazard statement for this hazard.
+            {
+                if (!String.IsNullOrWhiteSpace(data.Value))
+                {
+                    loadedHazard = data.Value;
+                }
+                else throw new InvalidDataException("No hazard was found inside a hazard statement (every hazard statement must state its hazard).");
+            }
+
+            //Optional: Get the hazards signal word. Custom hazards may not have a signal word.
+            {
+                var signalWordAttr = data.Attribute("signalword");
+                loadedSignalWord = (signalWordAttr == null) ? ("") : (signalWordAttr.Value);
+            }
+
+            //Optional: Get the symbol associated with the hazard. Not every hazard has a symbol.
+            {
+                var symbolAttr = data.Attribute("symbol");
+                loadedSymbol = (symbolAttr == null) ? ("") : (symbolAttr.Value);
+            }
+
+            return new Hazard(loadedHazard, loadedSignalWord, loadedSymbol);
         }
     }
 }

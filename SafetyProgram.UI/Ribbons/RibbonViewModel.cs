@@ -24,6 +24,14 @@ namespace SafetyProgram.UI
                 (s, newController) =>
                 {
                     PropertyChanged.Raise(this, "DocumentRibbonTabs");
+                    if (documentUiControllerHolder.Content == null)
+                    {
+                        DocumentRibbonTabsHolderChanged.Raise(this, null);
+                    }
+                    else
+                    {
+                        DocumentRibbonTabsHolderChanged.Raise(this, documentUiControllerHolder.Content.DocumentRibbonTabs);
+                    }                    
                     PropertyChanged.Raise(this, "ContextualRibbonTabs");
                 };
         }
@@ -33,7 +41,12 @@ namespace SafetyProgram.UI
         /// </summary>
         public ICollection<RibbonTabItem> DocumentRibbonTabs
         {
-            get { return documentUiControllerHolder.Content.DocumentRibbonTabs; }
+            get 
+            { 
+                return documentUiControllerHolder.Content == null ?
+                    null :
+                    documentUiControllerHolder.Content.DocumentRibbonTabs;
+            }
         }
 
         /// <summary>

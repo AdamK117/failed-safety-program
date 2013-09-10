@@ -49,7 +49,20 @@ namespace SafetyProgram.UI
                     new RibbonView(
                         new RibbonViewModel(
                             coreCommands,
-                            document))));            
+                            document))));
+
+            this.view.KeyDown += view_KeyDown;
+            this.view.KeyUp += view_KeyUp;
+        }
+
+        void view_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        void view_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>

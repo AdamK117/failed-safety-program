@@ -78,8 +78,9 @@
     <Compile Include="DocumentObjectCommands\ChemicalTableCommands\DeleteSelectedICommand.cs" />
     <Compile Include="DocumentObjectCommands\ChemicalTableCommands\IChemicalTableCommands.cs" />
     <Compile Include="KernelCommands\IKernelCommands.cs" />
-    <Compile Include="KernelCommands\ISelectionHolder.cs" />
-    <Compile Include="KernelCommands\SelectionHolder.cs" />
+    <Compile Include="SelectionLogic\IApplicationSelection.cs" />
+    <Compile Include="SelectionLogic\ISelectionManager.cs" />
+    <Compile Include="SelectionLogic\SelectionHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

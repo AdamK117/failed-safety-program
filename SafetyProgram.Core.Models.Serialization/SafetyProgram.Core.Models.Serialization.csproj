@@ -62,19 +62,20 @@
     <Compile Include="XML\ChemicalXml.cs" />
     <Compile Include="XML\ConfigurationXml.cs" />
     <Compile Include="XML\CoshhChemicalXml.cs" />
+    <Compile Include="XML\DocumentObjectXml.cs" />
     <Compile Include="XML\DocumentXml.cs" />
     <Compile Include="XML\FormatXml.cs" />
     <Compile Include="XML\HazardXml.cs" />
     <Compile Include="XML\QuantityXml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
+      <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
+      <Name>SafetyProgram.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.csproj">
       <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
       <Name>SafetyProgram.Core.IO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.Models.Validation\SafetyProgram.Core.Models.Validation.csproj">
-      <Project>{f283ad74-2bc6-4b0a-8f10-dc41b6892803}</Project>
-      <Name>SafetyProgram.Core.Models.Validation</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
       <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>

@@ -55,8 +55,6 @@ namespace SafetyProgram.Core.Commands
                 }
             }
             else throw new NotSupportedException("Call to execute made when it cant execute (CanExecute() == false)");
-
-            throw new NotImplementedException();
         }
     }
 }

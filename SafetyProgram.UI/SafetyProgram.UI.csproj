@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="ApplicationController.cs" />
     <Compile Include="IApplicationController.cs" />
+    <Compile Include="IViewModel.cs" />
     <Compile Include="View\MainViewModel.cs" />
     <Compile Include="Ribbons\RibbonView.xaml.cs">
       <DependentUpon>RibbonView.xaml</DependentUpon>

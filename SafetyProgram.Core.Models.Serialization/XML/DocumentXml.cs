@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Xml.Linq;
+using SafetyProgram.Base;
 using SafetyProgram.Core.IO;
 
 namespace SafetyProgram.Core.Models.Serialization
@@ -33,7 +36,19 @@ namespace SafetyProgram.Core.Models.Serialization
         /// <returns>The deserialized document object.</returns>
         public IDocument Load(XElement data)
         {
-            throw new NotImplementedException();
+            Helpers.NullCheck(data);
+
+            string title;
+            IFormat format = new A4Format();
+            ObservableCollection<IDocumentObject> documentContent;
+
+            var documentObjectFactory = new DocumentObjectXml();
+
+            documentContent = new ObservableCollection<IDocumentObject>(
+                from documentObject in data.Elements()
+                select documentObjectFactory.Load(documentObject));
+
+            return new Document(documentContent, format);
         }
 
         private string[] extensions = { "xml" };

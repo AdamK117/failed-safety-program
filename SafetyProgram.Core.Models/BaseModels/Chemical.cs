@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 
@@ -19,7 +20,7 @@ namespace SafetyProgram.Core.Models
             Helpers.NullCheck(name, hazards);
 
             this.name = name;
-            this.Content = hazards;
+            this.content = hazards;
         }
 
         private string name;
@@ -56,6 +57,22 @@ namespace SafetyProgram.Core.Models
             get { return ModelIdentifiers.CHEMICAL_IDENTIFIER; }
         }
 
-        public ObservableCollection<IHazard> Content { get; private set; }
+        private readonly ObservableCollection<IHazard> content;
+
+        /// <summary>
+        /// Get the hazards associated with the chemical.
+        /// </summary>
+        public ObservableCollection<IHazard> Content 
+        {
+            get { return content; }
+        }
+
+        /// <summary>
+        /// Get the hazards associated with the chemical (generic interface).
+        /// </summary>
+        IEnumerable<IApplicationModel> IHasMany.Content
+        {
+            get { return content; }
+        }
     }
 }
