@@ -68,19 +68,25 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationController.cs" />
-    <Compile Include="IApplicationController.cs" />
-    <Compile Include="IViewModel.cs" />
-    <Compile Include="View\MainViewModel.cs" />
+    <Compile Include="MainUiController.cs" />
+    <Compile Include="ContentViews\ContentView.xaml.cs">
+      <DependentUpon>ContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentViews\ContentViewController.cs" />
+    <Compile Include="ContentViews\ContentViewModel.cs" />
+    <Compile Include="ContentViews\IContentViewModel.cs" />
+    <Compile Include="Ribbons\RibbonViewController.cs" />
+    <Compile Include="MainWindowView\MainViewModel.cs" />
     <Compile Include="Ribbons\RibbonView.xaml.cs">
       <DependentUpon>RibbonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ribbons\IRibbonViewModel.cs" />
     <Compile Include="Ribbons\RibbonViewModel.cs" />
+    <Compile Include="MainWindowView\MainWindowController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View\IMainWindowViewModel.cs" />
-    <Compile Include="View\MainView.xaml.cs">
+    <Compile Include="MainWindowView\IMainWindowViewModel.cs" />
+    <Compile Include="MainWindowView\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -133,7 +139,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\MainView.xaml">
+    <Page Include="ContentViews\ContentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindowView\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

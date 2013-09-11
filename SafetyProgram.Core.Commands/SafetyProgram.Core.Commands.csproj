@@ -78,10 +78,11 @@
     <Compile Include="DocumentObjectCommands\ChemicalTableCommands\DeleteSelectedICommand.cs" />
     <Compile Include="DocumentObjectCommands\ChemicalTableCommands\IChemicalTableCommands.cs" />
     <Compile Include="KernelCommands\IKernelCommands.cs" />
-    <Compile Include="SelectionLogic\IApplicationSelection.cs" />
+    <Compile Include="SelectionLogic\ISelection.cs" />
     <Compile Include="SelectionLogic\ISelectionManager.cs" />
-    <Compile Include="SelectionLogic\SelectionHelpers.cs" />
+    <Compile Include="SelectionLogic\Selection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectionLogic\SelectionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
@@ -101,7 +102,9 @@
       <Name>SafetyProgram.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="HotkeyLogic\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

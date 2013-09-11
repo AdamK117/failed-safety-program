@@ -19,7 +19,7 @@
         <ContentControl Content="{Binding RibbonView}" Grid.Row="0" />
         
         <!-- Document -->
-        <ContentControl Content="{Binding ContentView}" Grid.Row="1" PreviewMouseLeftButtonDown="Handle"/>
+        <ContentControl Content="{Binding ContentView}" Grid.Row="1"/>
 
     </Grid>
 </Fluent:RibbonWindow>

@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Controls;
-using System.Windows.Input;
 using Fluent;
 
 namespace SafetyProgram.UI
@@ -21,10 +19,5 @@ namespace SafetyProgram.UI
         /// Get the Content view associated with the ViewModel.
         /// </summary>
         Control ContentView { get; }
-
-        /// <summary>
-        /// Get the hotkeys associated with the ViewModel.
-        /// </summary>
-        List<InputBinding> Hotkeys { get; }
     }
 }

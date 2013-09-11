@@ -1,5 +1,0 @@
-* TODO Implement selection logic
-** TODO Implement a proper hierarchy that is flexible to future changes
-*** Should allow consumers to select sub items that they are in control of
-*** Should allow multiple selection of the sub items
-*** Controllers at the top of the hierarchy must be able to see selections across consumers

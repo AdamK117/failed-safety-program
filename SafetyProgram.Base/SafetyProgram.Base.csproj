@@ -40,6 +40,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fluent">
+      <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -73,6 +76,10 @@
     <Compile Include="CommandPattern\ICommandsHolder.cs" />
     <Compile Include="Classes\LinkedReadOnlyObservableCollection.cs" />
     <Compile Include="Helpers\NullCheck.cs" />
+    <Compile Include="IRibbonTabController.cs" />
+    <Compile Include="IRibbonViewController.cs" />
+    <Compile Include="IUiController.cs" />
+    <Compile Include="IWindowController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

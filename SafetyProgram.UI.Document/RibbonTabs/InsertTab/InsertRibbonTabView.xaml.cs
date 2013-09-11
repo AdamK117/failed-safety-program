@@ -1,4 +1,5 @@
 ﻿using Fluent;
+using SafetyProgram.Base;
 
 namespace SafetyProgram.Document.Ribbons
 {
@@ -9,6 +10,8 @@ namespace SafetyProgram.Document.Ribbons
     {
         public InsertRibbonTabView(IInsertRibbonTabViewModel viewModel)
         {
+            Helpers.NullCheck(viewModel);
+
             this.DataContext = viewModel;
             InitializeComponent();
         }

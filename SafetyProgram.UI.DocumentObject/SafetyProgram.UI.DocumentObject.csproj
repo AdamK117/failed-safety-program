@@ -68,12 +68,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChemicalTableUI\ChemicalTableUiController.cs" />
-    <Compile Include="ChemicalTableUI\ContextMenus\ChemicalTableContextMenuView.xaml.cs">
-      <DependentUpon>ChemicalTableContextMenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ChemicalTableUI\ContextMenus\ChemicalTableContextMenuViewModel.cs" />
-    <Compile Include="ChemicalTableUI\ContextMenus\IChemicalTableContextMenuViewModel.cs" />
+    <Compile Include="ChemicalTableUI\RibbonTabs\ChemicalTableRibbonTabController.cs" />
+    <Compile Include="ChemicalTableUI\View\ChemicalTableViewController.cs" />
     <Compile Include="ChemicalTableUI\RibbonTabs\ChemicalTableRibbonTabViewModel.cs" />
     <Compile Include="ChemicalTableUI\RibbonTabs\ChemicalTableRibbonView.xaml.cs">
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
@@ -112,10 +108,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ChemicalTableUI\ContextMenus\ChemicalTableContextMenuView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="ChemicalTableUI\RibbonTabs\ChemicalTableRibbonView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

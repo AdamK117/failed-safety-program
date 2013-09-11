@@ -1,16 +1,16 @@
 ﻿using System.Windows.Controls;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.UI.Document
+namespace SafetyProgram.UI.ContentViews
 {
     /// <summary>
-    /// Interaction logic for CoshhDocumentView.xaml
+    /// Interaction logic for ContentView.xaml
     /// </summary>
-    public sealed partial class DocumentView : UserControl
+    public partial class ContentView : UserControl
     {
-        private readonly IDocumentViewModel viewModel;
+        private readonly IContentViewModel viewModel;
 
-        public DocumentView(IDocumentViewModel viewModel)
+        public ContentView(IContentViewModel viewModel)
         {
             Helpers.NullCheck(viewModel);
 

@@ -1,8 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Controls;
-using Fluent;
+﻿using System.Windows.Controls;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Commands;
+using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
@@ -10,33 +9,31 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
     /// <summary>
     /// Defines a standard implementation of an IChemcialTableUiController.
     /// </summary>
-    public sealed class ChemicalTableUiController : IChemicalTableUiController
+    public sealed class ChemicalTableViewController : IChemicalTableUiController
     {
         /// <summary>
         /// Construct an instance of a ChemicalTableUiController. A controller for a chemical table ui object.
         /// </summary>
-        /// <param name="chemicalTable">The underlying chemical table model.</param>
+        /// <param name="model">The underlying chemical table model.</param>
         /// <param name="configuration">The configuration used by the application.</param>
         /// <param name="commandInvoker">The command invoker used by the application.</param>
-        public ChemicalTableUiController(IChemicalTable chemicalTable, 
+        public ChemicalTableViewController(IChemicalTable model, 
             IApplicationConfiguration configuration, 
-            ICommandInvoker commandInvoker)
+            ICommandInvoker commandInvoker,
+            ISelectionManager selectionManager)
         {
-            this.model = chemicalTable;
-            IChemicalTableCommands tableCommands = new ChemicalTableICommands(chemicalTable, commandInvoker);
+            Helpers.NullCheck(model,
+                configuration,
+                commandInvoker,
+                selectionManager);
+
+            this.model = model;
+
+            var tableCommands = new ChemicalTableICommands(model, commandInvoker);
 
             this.view = new ChemicalTableView(
                 new ChemicalTableViewModel(
-                    chemicalTable,
-                    tableCommands));
-
-            this.contextualTab = new ObservableCollection<RibbonTabItem>()
-            {
-                new ChemicalTableRibbonView(
-                    new ChemicalTableRibbonTabViewModel(
-                        configuration,
-                        tableCommands))
-            };
+                    model));
         }
 
         private readonly Control view;
@@ -47,16 +44,6 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         public Control View
         {
             get { return view; }
-        }
-
-        private readonly ObservableCollection<RibbonTabItem> contextualTab;
-
-        /// <summary>
-        /// Get the chemical table's contextual ribbon tab.
-        /// </summary>
-        public ObservableCollection<RibbonTabItem> ContextualTabs
-        {
-            get { return contextualTab; }
         }
 
         private readonly IChemicalTable model;

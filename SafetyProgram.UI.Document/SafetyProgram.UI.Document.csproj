@@ -68,12 +68,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextMenus\DocumentContextMenuView.xaml.cs">
-      <DependentUpon>DocumentContextMenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContextMenus\DocumentContextMenuViewModel.cs" />
-    <Compile Include="ContextMenus\IDocumentContextMenuViewModel.cs" />
+    <Compile Include="IDocumentUiController.cs" />
     <Compile Include="RibbonTabs\InsertTab\IInsertRibbonTabViewModel.cs" />
+    <Compile Include="RibbonTabs\InsertTab\InsertRibbonTabController.cs" />
     <Compile Include="RibbonTabs\InsertTab\InsertRibbonTabView.xaml.cs">
       <DependentUpon>InsertRibbonTabView.xaml</DependentUpon>
     </Compile>
@@ -82,9 +79,8 @@
     <Compile Include="View\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DocumentController.cs" />
+    <Compile Include="View\DocumentViewController.cs" />
     <Compile Include="View\IDocumentViewModel.cs" />
-    <Compile Include="IDocumentController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -132,10 +128,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="ContextMenus\DocumentContextMenuView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="RibbonTabs\InsertTab\InsertRibbonTabView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

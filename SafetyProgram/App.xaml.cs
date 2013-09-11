@@ -20,7 +20,7 @@ namespace SafetyProgram
             var applicationKernel = new ApplicationKernel(
                 new ApplicationConfiguration());
 
-            var applicationUi = new ApplicationController(applicationKernel);
+            var applicationUi = new MainUiController(applicationKernel);
 
             applicationUi.View.Show();
         }

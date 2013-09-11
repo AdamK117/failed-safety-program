@@ -27,7 +27,7 @@ namespace SafetyProgram.Base
         /// <param name="content">The content the <c>Holder</c> will hold. (Nullable)</param>
         public Holder(TContent content)
         {
-            Helpers.NullCheck(content);
+            //Helpers.NullCheck(content);
 
             this.content = content;
         }

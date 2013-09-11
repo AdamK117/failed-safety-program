@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Models;
-using SafetyProgram.UI.DocumentObject.ChemicalTableUI;
 
 namespace SafetyProgram.UI.DocumentObject
 {
@@ -33,12 +32,12 @@ namespace SafetyProgram.UI.DocumentObject
             this.configuration = applicationConfiguration;
             this.commandInvoker = commandInvoker;
 
-            lookupDictionary = new Dictionary<Type, Func<IDocumentObject, IDocumentObjectUiController>>()
-            {
+            lookupDictionary = new Dictionary<Type, Func<IDocumentObject, IDocumentObjectUiController>>();
+            /*{
                 {   typeof(ChemicalTable),
                     (documentObject) => 
-                        new ChemicalTableUiController(documentObject as IChemicalTable, configuration, commandInvoker)}
-            };
+                        new ChemicalTableViewController(documentObject as IChemicalTable, configuration, commandInvoker)}
+            };*/
         }
 
         private readonly IDictionary<

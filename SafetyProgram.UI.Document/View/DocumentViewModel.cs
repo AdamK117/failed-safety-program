@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows.Controls;
-using System.Windows.Input;
 using SafetyProgram.Base;
-using SafetyProgram.Core.Commands;
 using SafetyProgram.Core.Models;
 using SafetyProgram.UI.DocumentObject;
 
@@ -23,25 +19,15 @@ namespace SafetyProgram.UI.Document.View
         /// <param name="document">The underlying document model.</param>
         /// <param name="documentCommands">Commands that act on the document model.</param>
         public DocumentViewModel(IDocument document,
-            ReadOnlyObservableCollection<IDocumentObjectUiController> documentObjects, 
-            IDocumentICommands documentCommands)
+            ReadOnlyObservableCollection<IDocumentObjectUiController> documentObjects)
         {
-            Helpers.NullCheck(document, documentObjects, documentCommands);
+            Helpers.NullCheck(document, documentObjects);
 
             this.document = document;
-            this.documentObjects = documentObjects;
-            this.hotkeys = documentCommands.Hotkeys;
-
-            contextMenu = new DocumentContextMenuView(
-                new DocumentContextMenuViewModel(
-                    documentCommands
-                )
-            );
+            this.DocumentObjects = documentObjects;
 
             this.document.FormatChanged += (sender, newFormatEventHandler) =>
                 PropertyChanged.Raise(this, "Format");
-
-            this.Selection = new ObservableCollection<IDocumentObjectUiController>();
         }
 
         /// <summary>
@@ -52,44 +38,15 @@ namespace SafetyProgram.UI.Document.View
             get { return document.Format; }
         }
 
-        private readonly ContextMenu contextMenu;
-
-        /// <summary>
-        /// Get the contextmenu for the document view.
-        /// </summary>
-        public ContextMenu ContextMenu
-        {
-            get { return contextMenu; }
-        }
-
-        private List<InputBinding> hotkeys;
-
-        /// <summary>
-        /// Get the hotkeys associated with the document.
-        /// </summary>
-        public List<InputBinding> Hotkeys
-        {
-            get { return hotkeys; }
-        }
-
-        private readonly ReadOnlyObservableCollection<IDocumentObjectUiController> documentObjects;
-
         /// <summary>
         /// Get the documentobjects in the document.
         /// </summary>
-        public ReadOnlyObservableCollection<IDocumentObjectUiController> DocumentObjects
-        {
-            get { return documentObjects; }
-        }
+        public ReadOnlyObservableCollection<
+            IDocumentObjectUiController> DocumentObjects { get; private set; }
 
         /// <summary>
         /// Occurs when a property on the viewmodel changes.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-        
-        /// <summary>
-        /// Get the selection in the document.
-        /// </summary>
-        public ObservableCollection<IDocumentObjectUiController> Selection { get; private set; }
     }
 }

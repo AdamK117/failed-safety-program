@@ -16,17 +16,12 @@ namespace SafetyProgram.Document.Ribbons
         {
             Helpers.NullCheck(commands);
 
-            this.commands = commands;
+            this.Commands = commands;
         }
-
-        private readonly IDocumentICommands commands;
 
         /// <summary>
         /// Get a group of commands that act on the current document.
         /// </summary>
-        public IDocumentICommands Commands
-        {
-            get { return commands; }
-        }
+        public IDocumentICommands Commands { get; private set; }
     }
 }

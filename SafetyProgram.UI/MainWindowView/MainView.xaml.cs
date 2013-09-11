@@ -13,13 +13,6 @@ namespace SafetyProgram.UI
 
             this.DataContext = viewModel;
             InitializeComponent();
-
-            this.InputBindings.AddRange(viewModel.Hotkeys);
-        }
-
-        private void Handle(object sender, MouseButtonEventArgs e)
-        {
-            var origSource = e.OriginalSource;
         }
     }
 }
