@@ -78,6 +78,7 @@
     <Compile Include="IHasMany.cs" />
     <Compile Include="IHasManyT.cs" />
     <Compile Include="BaseModels\IRepositoryInfo.cs" />
+    <Compile Include="ModelGenerators.cs" />
     <Compile Include="ModelIdentifiers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseModels\Quantity.cs" />

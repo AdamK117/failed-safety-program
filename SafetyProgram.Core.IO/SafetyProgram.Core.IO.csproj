@@ -62,7 +62,6 @@
     <Compile Include="Serialization\ILocalStorageConverter.cs" />
     <Compile Include="Services\ICallbackService.cs" />
     <Compile Include="Serialization\IDeserializer.cs" />
-    <Compile Include="IGenerator.cs" />
     <Compile Include="Services\IInputService.cs" />
     <Compile Include="Services\IIOService.cs" />
     <Compile Include="Services\InteractiveLocalFileService.cs" />

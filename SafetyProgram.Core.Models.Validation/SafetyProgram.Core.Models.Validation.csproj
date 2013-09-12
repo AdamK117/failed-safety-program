@@ -7,8 +7,8 @@
     <ProjectGuid>{F283AD74-2BC6-4B0A-8F10-DC41B6892803}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SafetyProgram.Core.Models.Validators</RootNamespace>
-    <AssemblyName>SafetyProgram.Core.Models.Validators</AssemblyName>
+    <RootNamespace>SafetyProgram.Core.Models.Validation</RootNamespace>
+    <AssemblyName>SafetyProgram.Core.Models.Validation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -6,7 +6,7 @@ namespace SafetyProgram.Core.Commands
     /// <summary>
     /// Defines an interface for commands that act on the document.
     /// </summary>
-    public interface IDocumentICommands : ICommandsHolder
+    public interface IDocumentICommands
     {
         /// <summary>
         /// Get an ICommand for deleting an IDocumentObject

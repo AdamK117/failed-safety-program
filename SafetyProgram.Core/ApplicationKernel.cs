@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using SafetyProgram.Base;
 using SafetyProgram.Core.IO;
 using SafetyProgram.Core.Models;
-using SafetyProgram.Core.Models.Factories;
 using SafetyProgram.Core.Models.Serialization;
 
 namespace SafetyProgram.Core
@@ -25,7 +24,7 @@ namespace SafetyProgram.Core
                 new A4Format());
 
             service = new InteractiveLocalFileService<IDocument>(
-                new DocumentFactory(),
+                ModelGenerators.DocumentGenerator,
                 new DocumentXml());
         }
 

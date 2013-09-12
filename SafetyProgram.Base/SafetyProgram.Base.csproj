@@ -40,6 +40,14 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fluent">
       <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
@@ -74,7 +82,6 @@
     <Compile Include="CommandPattern\ICommandInvoker.cs" />
     <Compile Include="CommandPattern\IInvokedCommand.cs" />
     <Compile Include="Helpers\EventExtensions.cs" />
-    <Compile Include="CommandPattern\ICommandsHolder.cs" />
     <Compile Include="Classes\LinkedReadOnlyObservableCollection.cs" />
     <Compile Include="Helpers\NullCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

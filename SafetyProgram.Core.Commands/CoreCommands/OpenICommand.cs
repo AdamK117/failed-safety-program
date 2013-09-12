@@ -22,7 +22,10 @@ namespace SafetyProgram.Core.Commands
 
         public bool CanExecute(object parameter)
         {
-            return applicationKernel.Service.CanLoad();
+            return 
+                applicationKernel
+                    .Service
+                    .CanLoad();
         }
 
         public event EventHandler CanExecuteChanged;
@@ -35,7 +38,7 @@ namespace SafetyProgram.Core.Commands
                 {
                     try
                     {
-                        applicationKernel.Service.Disconnect();
+                        applicationKernel.Service.Disconnect(applicationKernel.Document);
                         applicationKernel.Document = default(IDocument);
                     }
                     catch (ArgumentException)

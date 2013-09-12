@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base
 {

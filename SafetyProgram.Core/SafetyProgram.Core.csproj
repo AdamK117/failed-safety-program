@@ -70,10 +70,6 @@
       <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
       <Name>SafetyProgram.Core.IO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.Models.Factories\SafetyProgram.Core.Models.Factories.csproj">
-      <Project>{a935acae-0823-400f-8f60-44ace0aa575f}</Project>
-      <Name>SafetyProgram.Core.Models.Factories</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models.Serialization\SafetyProgram.Core.Models.Serialization.csproj">
       <Project>{3213a682-7b4c-44aa-8ceb-6d6444c2cade}</Project>
       <Name>SafetyProgram.Core.Models.Serialization</Name>

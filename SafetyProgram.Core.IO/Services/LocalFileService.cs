@@ -25,7 +25,7 @@ namespace SafetyProgram.Core.IO
             throw new NotImplementedException();
         }
 
-        public void Disconnect()
+        public void Disconnect(T data)
         {
             throw new NotImplementedException();
         }

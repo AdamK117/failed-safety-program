@@ -33,8 +33,8 @@
         bool CanSaveAs(T data);
 
         /// <summary>
-        /// Disconnect this service from the storage.
+        /// Disconnect the in-memory data from its on-disk storage.
         /// </summary>
-        void Disconnect();
+        void Disconnect(T data);
     }
 }

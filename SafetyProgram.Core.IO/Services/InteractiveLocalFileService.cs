@@ -23,14 +23,14 @@ namespace SafetyProgram.Core.IO
         private string path;
 
         private readonly ILocalStorageConverter<T, XElement> itemFactory;
-        private readonly IGenerator<T> itemGenerator;
+        private readonly Func<T> itemGenerator;
 
         /// <summary>
         /// Construct an instance of the interactive file service.
         /// </summary>
         /// <param name="itemGenerator"></param>
         /// <param name="itemConverter"></param>
-        public InteractiveLocalFileService(IGenerator<T> itemGenerator, 
+        public InteractiveLocalFileService(Func<T> itemGenerator, 
             ILocalStorageConverter<T, XElement> itemConverter)
         {
             Helpers.NullCheck(itemGenerator, itemConverter);
@@ -44,7 +44,7 @@ namespace SafetyProgram.Core.IO
             if (CanNew())
             {
                 path = "";
-                return itemGenerator.CreateNew();
+                return itemGenerator();
             }
             else throw new InvalidOperationException("Cannot create a new document");
         }
@@ -140,7 +140,7 @@ namespace SafetyProgram.Core.IO
             return canSaveAs;
         }
 
-        public void Disconnect()
+        public void Disconnect(T data)
         {
             //Close connections etc.
         }

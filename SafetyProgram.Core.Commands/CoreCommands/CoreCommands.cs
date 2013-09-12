@@ -17,18 +17,6 @@ namespace SafetyProgram.Core.Commands
             Close = new CloseICommand(applicationKernel);
             Undo = new UndoICommand(commandInvoker);
             Redo = new RedoICommand(commandInvoker);
-
-            Hotkeys = setHotkeys();
-        }
-
-        private List<InputBinding> setHotkeys()
-        {
-            return new List<InputBinding>()
-                {
-                    new InputBinding(
-                        Close,
-                        new KeyGesture(Key.W, ModifierKeys.Control))
-                };
         }
 
         public ICommand New { get; private set; }
@@ -44,7 +32,5 @@ namespace SafetyProgram.Core.Commands
         public ICommand Undo { get; private set; }
 
         public ICommand Redo { get; private set; }
-
-        public List<InputBinding> Hotkeys { get; private set; }
     }
 }

@@ -41,7 +41,7 @@ namespace SafetyProgram.Core.Commands
                 {
                     try
                     {
-                        applicationKernel.Service.Disconnect();
+                        applicationKernel.Service.Disconnect(applicationKernel.Document);
                         applicationKernel.Document = default(IDocument);
                     }
                     catch (ArgumentException)

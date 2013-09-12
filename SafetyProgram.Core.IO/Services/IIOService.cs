@@ -23,6 +23,6 @@
         /// <summary>
         /// Disconnect from the storage this service handles.
         /// </summary>
-        new void Disconnect();
+        new void Disconnect(T data);
     }
 }

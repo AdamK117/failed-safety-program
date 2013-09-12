@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Models;
 
@@ -9,12 +8,6 @@ namespace SafetyProgram.Core.Commands
     {
         public ChemicalTableICommands(IChemicalTable chemicalTable, ICommandInvoker commandInvoker)
         {
-            Hotkeys = setHotkeys();
-        }
-
-        private List<InputBinding> setHotkeys()
-        {
-            return new List<InputBinding>();
         }
 
         public ICommand DeleteSelected { get; private set; }
@@ -24,7 +17,5 @@ namespace SafetyProgram.Core.Commands
         public ICommand PasteChemicals { get; private set; }
 
         public ICommand InsertChemical { get; private set; }
-
-        public List<InputBinding> Hotkeys { get; private set; }
     }
 }

@@ -17,10 +17,5 @@
         /// </summary>
         /// <returns>If data may be loaded.</returns>
         bool CanLoad();
-
-        /// <summary>
-        /// Disconnect from storage.
-        /// </summary>
-        void Disconnect();
     }
 }

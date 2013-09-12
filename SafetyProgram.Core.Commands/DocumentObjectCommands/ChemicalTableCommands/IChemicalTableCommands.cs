@@ -1,12 +1,11 @@
 ﻿using System.Windows.Input;
-using SafetyProgram.Base;
 
 namespace SafetyProgram.Core.Commands
 {
     /// <summary>
     /// Defines an interface for the commands available to the chemical table.
     /// </summary>
-    public interface IChemicalTableCommands : ICommandsHolder
+    public interface IChemicalTableCommands
     {
         /// <summary>
         /// Get a command that deletes the currently selected item(s) in the chemical table.

@@ -1,6 +1,4 @@
-﻿using SafetyProgram.Base.Interfaces;
-
-namespace SafetyProgram.Core.Models
+﻿namespace SafetyProgram.Core.Models
 {
     /// <summary>
     /// Defines an A4 print format.

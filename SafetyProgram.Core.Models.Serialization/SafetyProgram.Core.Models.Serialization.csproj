@@ -7,8 +7,8 @@
     <ProjectGuid>{3213A682-7B4C-44AA-8CEB-6D6444C2CADE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SafetyProgram.Core.IO.Models</RootNamespace>
-    <AssemblyName>SafetyProgram.Core.IO.Models</AssemblyName>
+    <RootNamespace>SafetyProgram.Core.Models.Serialization</RootNamespace>
+    <AssemblyName>SafetyProgram.Core.Models.Serialization</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

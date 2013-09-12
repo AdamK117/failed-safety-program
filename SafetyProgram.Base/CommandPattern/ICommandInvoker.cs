@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SafetyProgram.Base
+﻿namespace SafetyProgram.Base
 {
     /// <summary>
     /// Defines an interface for a class that invokes IInvokedCommand's.

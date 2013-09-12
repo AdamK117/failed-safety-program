@@ -68,6 +68,14 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -132,10 +140,6 @@
       <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
       <Name>SafetyProgram.Core.IO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.Models.Factories\SafetyProgram.Core.Models.Factories.csproj">
-      <Project>{a935acae-0823-400f-8f60-44ace0aa575f}</Project>
-      <Name>SafetyProgram.Core.Models.Factories</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models.Serialization\SafetyProgram.Core.Models.Serialization.csproj">
       <Project>{3213a682-7b4c-44aa-8ceb-6d6444c2cade}</Project>
       <Name>SafetyProgram.Core.Models.Serialization</Name>
@@ -148,9 +152,9 @@
       <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
       <Name>SafetyProgram.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.UI.MainWindow\SafetyProgram.UI.MainWindow.csproj">
-      <Project>{c781ff99-3ed4-4647-bcd6-71fe4a8f43b2}</Project>
-      <Name>SafetyProgram.UI.MainWindow</Name>
+    <ProjectReference Include="..\SafetyProgram.UI\SafetyProgram.UI.csproj">
+      <Project>{4aa0a7e9-3101-42a3-992f-f143cc98c554}</Project>
+      <Name>SafetyProgram.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
