@@ -6,9 +6,9 @@ using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 using SafetyProgram.UI.Document;
 
-namespace SafetyProgram.UI.ContentViews
+namespace SafetyProgram.UI.MainWindow.ContentViews
 {
-    public sealed class ContentViewController :
+    internal sealed class ContentViewController :
         IUiController
     {
         private readonly IApplicationKernel model;

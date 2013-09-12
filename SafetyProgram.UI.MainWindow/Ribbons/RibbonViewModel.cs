@@ -1,12 +1,12 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Commands;
 
-namespace SafetyProgram.UI
+namespace SafetyProgram.UI.MainWindow
 {
-    public sealed class RibbonViewModel : IRibbonViewModel
+    internal sealed class RibbonViewModel : 
+        IRibbonViewModel
     {
         public RibbonViewModel(ICoreCommands coreCommands,
             ReadOnlyObservableCollection<RibbonTabItem> ribbonTabs)
@@ -27,10 +27,5 @@ namespace SafetyProgram.UI
         /// Get the commands available to the ribbon.
         /// </summary>
         public ICoreCommands Commands { get; private set; }
-
-        /// <summary>
-        /// Occurs when a property changes on the viewmodel.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

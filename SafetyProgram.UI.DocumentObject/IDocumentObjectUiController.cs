@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Controls;
-using Fluent;
-using SafetyProgram.Base;
+﻿using SafetyProgram.Base;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject
@@ -13,13 +10,8 @@ namespace SafetyProgram.UI.DocumentObject
         IUiController
     {
         /// <summary>
-        /// Get the view associated with the document object.
-        /// </summary>
-        Control View { get; }
-
-        /// <summary>
         /// Get the underlying IDocumentObject model.
         /// </summary>
-        IDocumentObject Model { get; }
+        new IDocumentObject Model { get; }
     }
 }

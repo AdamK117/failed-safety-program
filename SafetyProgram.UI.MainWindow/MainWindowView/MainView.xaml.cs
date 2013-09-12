@@ -1,11 +1,9 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using Fluent;
+﻿using Fluent;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.UI
+namespace SafetyProgram.UI.MainWindow
 {
-    public sealed partial class MainView : RibbonWindow
+    internal sealed partial class MainView : RibbonWindow
     {
         public MainView(IMainViewModel viewModel)
         {

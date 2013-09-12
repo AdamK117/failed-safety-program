@@ -9,7 +9,8 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
     /// <summary>
     /// Defines a standard implementation of an IChemcialTableUiController.
     /// </summary>
-    public sealed class ChemicalTableViewController : IChemicalTableUiController
+    internal sealed class ChemicalTableViewController : 
+        IChemicalTableController
     {
         /// <summary>
         /// Construct an instance of a ChemicalTableUiController. A controller for a chemical table ui object.
@@ -59,7 +60,7 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         /// <summary>
         /// Get the underlying <code>IChemicalTable</code> model.
         /// </summary>
-        IChemicalTable IChemicalTableUiController.Model
+        IChemicalTable IChemicalTableController.Model
         {
             get { return model; }
         }

@@ -11,7 +11,7 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI.RibbonTabs
     /// Defines a standard implementation of a UI controller for a 
     /// chemical table ribbon tab (contextual).
     /// </summary>
-    public sealed class ChemicalTableRibbonTabController : 
+    internal sealed class ChemicalTableRibbonTabController : 
         IRibbonTabController
     {
         /// <summary>

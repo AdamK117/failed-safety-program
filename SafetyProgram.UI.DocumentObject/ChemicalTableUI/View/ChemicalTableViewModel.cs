@@ -8,7 +8,7 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
     /// <summary>
     /// Defines a standard implementation of a IChemicalTableViewModel.
     /// </summary>
-    public sealed class ChemicalTableViewModel : IChemicalTableViewModel
+    internal sealed class ChemicalTableViewModel : IChemicalTableViewModel
     {
         /// <summary>
         /// Construct an instance of a ChemicalTableViewModel. A viewmodel for a chemical table view.
@@ -18,6 +18,9 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         public ChemicalTableViewModel(IChemicalTable chemicalTable)
         {
             this.chemicalTable = chemicalTable;
+
+            this.Chemicals = new ReadOnlyObservableCollection<
+                ICoshhChemical>(chemicalTable.Content);
 
             chemicalTable.HeaderChanged +=
                 (s, e) => PropertyChanged.Raise(this, "Header");
@@ -41,10 +44,8 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         /// <summary>
         /// Get the chemicals in the chemical table.
         /// </summary>
-        public ObservableCollection<ICoshhChemical> Chemicals
-        {
-            get { return chemicalTable.Content; }
-        }
+        public ReadOnlyObservableCollection<
+            ICoshhChemical> Chemicals { get; private set; }
 
         /// <summary>
         /// Occurs when a property in this class changes.

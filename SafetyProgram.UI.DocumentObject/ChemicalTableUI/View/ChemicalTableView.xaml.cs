@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using SafetyProgram.Core.Models;
+﻿using System.Windows.Controls;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
 {

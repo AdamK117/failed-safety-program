@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using SafetyProgram.Base;
+using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
+using SafetyProgram.UI.DocumentObject.ChemicalTableUI;
 
 namespace SafetyProgram.UI.DocumentObject
 {
@@ -15,6 +17,8 @@ namespace SafetyProgram.UI.DocumentObject
     {
         private readonly IApplicationConfiguration configuration;
         private readonly ICommandInvoker commandInvoker;
+        private readonly ISelectionManager selectionManager;
+
 
         /// <summary>
         /// Construct an instance of a <code>DocumentObjectUiControllerFactory</code>,
@@ -25,19 +29,23 @@ namespace SafetyProgram.UI.DocumentObject
         /// <param name="commandInvoker">The command invoker that shall be passed into instances created by
         /// the factory.</param>
         public DocumentObjectUiControllerFactory(IApplicationConfiguration applicationConfiguration, 
-            ICommandInvoker commandInvoker)
+            ICommandInvoker commandInvoker,
+            ISelectionManager selectionManager)
         {
-            Helpers.NullCheck(applicationConfiguration, commandInvoker);
+            Helpers.NullCheck(applicationConfiguration, commandInvoker, selectionManager);
 
             this.configuration = applicationConfiguration;
             this.commandInvoker = commandInvoker;
+            this.selectionManager = selectionManager;
 
-            lookupDictionary = new Dictionary<Type, Func<IDocumentObject, IDocumentObjectUiController>>();
-            /*{
-                {   typeof(ChemicalTable),
+            lookupDictionary = new Dictionary<Type, Func<IDocumentObject, IDocumentObjectUiController>>()
+            {
+                {   
+                    typeof(ChemicalTable),
                     (documentObject) => 
-                        new ChemicalTableViewController(documentObject as IChemicalTable, configuration, commandInvoker)}
-            };*/
+                        new ChemicalTableViewController(documentObject as IChemicalTable, configuration, commandInvoker, selectionManager)
+                }
+            };
         }
 
         private readonly IDictionary<

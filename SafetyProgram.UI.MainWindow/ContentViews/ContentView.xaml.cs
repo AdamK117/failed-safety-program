@@ -1,12 +1,12 @@
 ﻿using System.Windows.Controls;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.UI.ContentViews
+namespace SafetyProgram.UI.MainWindow.ContentViews
 {
     /// <summary>
     /// Interaction logic for ContentView.xaml
     /// </summary>
-    public partial class ContentView : UserControl
+    internal partial class ContentView : UserControl
     {
         private readonly IContentViewModel viewModel;
 

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5A6C2BCF-7B42-49AA-B00F-E0FE5A632569}</ProjectGuid>
+    <ProjectGuid>{C781FF99-3ED4-4647-BCD6-71FE4A8F43B2}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SafetyProgram.UI.Document</RootNamespace>
-    <AssemblyName>SafetyProgram.UI.Document</AssemblyName>
+    <RootNamespace>SafetyProgram.UI.MainWindow</RootNamespace>
+    <AssemblyName>SafetyProgram.UI.MainWindow</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -68,19 +68,27 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDocumentUiController.cs" />
-    <Compile Include="RibbonTabs\InsertTab\IInsertRibbonTabViewModel.cs" />
-    <Compile Include="RibbonTabs\InsertTab\InsertRibbonTabController.cs" />
-    <Compile Include="RibbonTabs\InsertTab\InsertRibbonTabView.xaml.cs">
-      <DependentUpon>InsertRibbonTabView.xaml</DependentUpon>
+    <Compile Include="MainUiController.cs" />
+    <Compile Include="ContentViews\ContentView.xaml.cs">
+      <DependentUpon>ContentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RibbonTabs\InsertTab\InsertRibbonTabViewModel.cs" />
-    <Compile Include="View\DocumentViewModel.cs" />
-    <Compile Include="View\DocumentView.xaml.cs">
-      <DependentUpon>DocumentView.xaml</DependentUpon>
+    <Compile Include="ContentViews\ContentViewController.cs" />
+    <Compile Include="ContentViews\ContentViewModel.cs" />
+    <Compile Include="ContentViews\IContentViewModel.cs" />
+    <Compile Include="Ribbons\RibbonViewController.cs" />
+    <Compile Include="MainWindowView\MainViewModel.cs" />
+    <Compile Include="Ribbons\RibbonView.xaml.cs">
+      <DependentUpon>RibbonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DocumentViewController.cs" />
-    <Compile Include="View\IDocumentViewModel.cs" />
+    <Compile Include="Ribbons\IRibbonViewModel.cs" />
+    <Compile Include="Ribbons\RibbonViewModel.cs" />
+    <Compile Include="MainWindowView\MainWindowController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainWindowView\IMainWindowViewModel.cs" />
+    <Compile Include="MainWindowView\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -125,18 +133,25 @@
       <Project>{c8e02939-77e0-4ac0-8e53-0bee1b41b18a}</Project>
       <Name>SafetyProgram.UI.DocumentObject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UI.Document\SafetyProgram.UI.Document.csproj">
+      <Project>{5a6c2bcf-7b42-49aa-b00f-e0fe5a632569}</Project>
+      <Name>SafetyProgram.UI.Document</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI\SafetyProgram.UI.csproj">
       <Project>{4aa0a7e9-3101-42a3-992f-f143cc98c554}</Project>
       <Name>SafetyProgram.UI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Page Include="RibbonTabs\InsertTab\InsertRibbonTabView.xaml">
+    <Page Include="ContentViews\ContentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindowView\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\DocumentView.xaml">
+    <Page Include="Ribbons\RibbonView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

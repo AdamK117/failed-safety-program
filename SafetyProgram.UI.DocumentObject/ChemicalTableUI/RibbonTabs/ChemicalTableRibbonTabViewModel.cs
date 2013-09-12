@@ -44,7 +44,8 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
             }
         }
 
-        private readonly ObservableCollection<IChemical> searchResult = new ObservableCollection<IChemical>();
+        private readonly ObservableCollection<IChemical> searchResult 
+            = new ObservableCollection<IChemical>();
 
         /// <summary>
         /// Get the search result yielded from the search phrase.

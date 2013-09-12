@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Windows;
-using Fluent;
+﻿using Fluent;
 using SafetyProgram.Base;
 
-namespace SafetyProgram.UI
+namespace SafetyProgram.UI.MainWindow
 {
-    public sealed partial class RibbonView : Ribbon
+    internal sealed partial class RibbonView : Ribbon
     {
         private readonly IRibbonViewModel viewModel;
 

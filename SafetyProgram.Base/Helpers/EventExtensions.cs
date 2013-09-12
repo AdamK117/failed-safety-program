@@ -8,12 +8,6 @@ namespace SafetyProgram.Base
     /// </summary>
     public static class EventExtensions
     {
-        public static void Raise<T>(this EventHandler<T> handler, object sender, T e)
-            where T : EventArgs
-        {
-
-        }
-
         /// <summary>
         /// Raises a new PropertyChanged event, used in conjuction with INotifyPropertyChanged classes.
         /// </summary>

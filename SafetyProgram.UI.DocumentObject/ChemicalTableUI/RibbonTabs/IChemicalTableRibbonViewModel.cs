@@ -8,7 +8,8 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
     /// <summary>
     /// Defines a ViewModel for a cheimcal table ribbon view.
     /// </summary>
-    internal interface IChemicalTableRibbonViewModel : INotifyPropertyChanged
+    internal interface IChemicalTableRibbonViewModel : 
+        INotifyPropertyChanged
     {
         /// <summary>
         /// Get or set the current search (for searching chemicals)

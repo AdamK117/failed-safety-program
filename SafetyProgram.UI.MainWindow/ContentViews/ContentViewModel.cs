@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows.Controls;
 using SafetyProgram.Base;
 using SafetyProgram.Base.Interfaces;
 
-namespace SafetyProgram.UI.ContentViews
+namespace SafetyProgram.UI.MainWindow.ContentViews
 {
     /// <summary>
     /// Defines a standard implementation of a content view 
     /// viewmodel.
     /// </summary>
-    public sealed class ContentViewModel :
+    internal sealed class ContentViewModel :
         IContentViewModel
     {
         public ContentViewModel(IHolder<Control> contentView)

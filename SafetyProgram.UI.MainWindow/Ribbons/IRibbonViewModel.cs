@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using Fluent;
-using SafetyProgram.Base;
 using SafetyProgram.Core.Commands;
 
-namespace SafetyProgram.UI
+namespace SafetyProgram.UI.MainWindow
 {
     /// <summary>
     /// Defines a viewmodel for the ribbon view.
     /// </summary>
-    public interface IRibbonViewModel : 
-        INotifyPropertyChanged
+    internal interface IRibbonViewModel
     {
         /// <summary>
         /// Get the ribbon tabs for this ribbon.

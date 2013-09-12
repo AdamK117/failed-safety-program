@@ -8,7 +8,7 @@ namespace SafetyProgram.UI.Document
     /// <summary>
     /// Defines a viewmodel for a document view.
     /// </summary>
-    public interface IDocumentViewModel : 
+    internal interface IDocumentViewModel : 
         INotifyPropertyChanged
     {
         /// <summary>

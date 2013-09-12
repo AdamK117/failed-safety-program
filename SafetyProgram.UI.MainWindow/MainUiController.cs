@@ -2,9 +2,9 @@
 using SafetyProgram.Base;
 using SafetyProgram.Core;
 using SafetyProgram.Core.Commands.SelectionLogic;
-using SafetyProgram.UI.View;
+using SafetyProgram.UI.MainWindow.View;
 
-namespace SafetyProgram.UI
+namespace SafetyProgram.UI.MainWindow
 {
     /// <summary>
     /// Defines a standard implementation of IApplicationController.
@@ -13,7 +13,7 @@ namespace SafetyProgram.UI
     {
         private readonly IApplicationKernel applicationKernel;
         private readonly ICommandController commandInvoker;
-        private readonly ISelectionManager selectionManager;        
+        private readonly ISelectionManager selectionManager;       
 
         /// <summary>
         /// Construct an instance of an application UI controller.

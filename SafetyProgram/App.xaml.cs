@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using SafetyProgram.Core;
 using SafetyProgram.Core.Models;
-using SafetyProgram.UI;
+using SafetyProgram.UI.MainWindow;
 
 namespace SafetyProgram
 {

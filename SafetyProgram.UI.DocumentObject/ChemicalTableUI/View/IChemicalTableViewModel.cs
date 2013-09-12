@@ -7,7 +7,8 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
     /// <summary>
     /// Defines a ViewModel for the chemicaltable view.
     /// </summary>
-    internal interface IChemicalTableViewModel : INotifyPropertyChanged
+    internal interface IChemicalTableViewModel : 
+        INotifyPropertyChanged
     {
         /// <summary>
         /// Get or set the header of the chemicaltable.
@@ -17,6 +18,6 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
         /// <summary>
         /// Get the chemicals in the chemicaltable.
         /// </summary>
-        ObservableCollection<ICoshhChemical> Chemicals { get; }
+        ReadOnlyObservableCollection<ICoshhChemical> Chemicals { get; }
     }
 }

@@ -12,6 +12,6 @@ namespace SafetyProgram.UI.Document
         /// <summary>
         /// Get the document model this controller oversees.
         /// </summary>
-        IDocument Model { get; }
+        new IDocument Model { get; }
     }
 }

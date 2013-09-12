@@ -1,8 +1,6 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Controls;
-using Fluent;
+﻿using System.Windows.Controls;
 
-namespace SafetyProgram.Base
+namespace SafetyProgram.UI
 {
     /// <summary>
     /// Defines a UI controller (mvC).

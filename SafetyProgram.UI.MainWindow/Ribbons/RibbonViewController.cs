@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base;
@@ -12,12 +8,12 @@ using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 using SafetyProgram.UI.Document.RibbonTabs.InsertTab;
 
-namespace SafetyProgram.UI.Ribbons
+namespace SafetyProgram.UI.MainWindow.Ribbons
 {
     /// <summary>
     /// Defines a standard implementation of a controller for the ribbon view.
     /// </summary>
-    public sealed class RibbonViewController :
+    internal sealed class RibbonViewController :
         IRibbonViewController
     {
         private readonly IApplicationKernel model;

@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
 
-namespace SafetyProgram.UI.ContentViews
+namespace SafetyProgram.UI.MainWindow.ContentViews
 {
     /// <summary>
     /// Defines a viewmodel for the main content view.
     /// </summary>
-    public interface IContentViewModel :
+    internal interface IContentViewModel :
         INotifyPropertyChanged
     {
         /// <summary>

@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C781FF99-3ED4-4647-BCD6-71FE4A8F43B2}</ProjectGuid>
-    <OutputType>library</OutputType>
+    <ProjectGuid>{4AA0A7E9-3101-42A3-992F-F143CC98C554}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SafetyProgram.UI</RootNamespace>
     <AssemblyName>SafetyProgram.UI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,126 +29,34 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fluent">
       <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainUiController.cs" />
-    <Compile Include="ContentViews\ContentView.xaml.cs">
-      <DependentUpon>ContentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContentViews\ContentViewController.cs" />
-    <Compile Include="ContentViews\ContentViewModel.cs" />
-    <Compile Include="ContentViews\IContentViewModel.cs" />
-    <Compile Include="Ribbons\RibbonViewController.cs" />
-    <Compile Include="MainWindowView\MainViewModel.cs" />
-    <Compile Include="Ribbons\RibbonView.xaml.cs">
-      <DependentUpon>RibbonView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Ribbons\IRibbonViewModel.cs" />
-    <Compile Include="Ribbons\RibbonViewModel.cs" />
-    <Compile Include="MainWindowView\MainWindowController.cs" />
+    <Compile Include="IRibbonTabController.cs" />
+    <Compile Include="IRibbonViewController.cs" />
+    <Compile Include="IUiController.cs" />
+    <Compile Include="IWindowController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindowView\IMainWindowViewModel.cs" />
-    <Compile Include="MainWindowView\MainView.xaml.cs">
-      <DependentUpon>MainView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
-      <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
-      <Name>SafetyProgram.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.Commands\SafetyProgram.Core.Commands.csproj">
-      <Project>{f56414f8-0849-4a8c-96f5-36dff7f292b9}</Project>
-      <Name>SafetyProgram.Core.Commands</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
       <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>
       <Name>SafetyProgram.Core.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.csproj">
-      <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
-      <Name>SafetyProgram.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.UI.DocumentObject\SafetyProgram.UI.DocumentObject.csproj">
-      <Project>{c8e02939-77e0-4ac0-8e53-0bee1b41b18a}</Project>
-      <Name>SafetyProgram.UI.DocumentObject</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.UI.Document\SafetyProgram.UI.Document.csproj">
-      <Project>{5a6c2bcf-7b42-49aa-b00f-e0fe5a632569}</Project>
-      <Name>SafetyProgram.UI.Document</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="ContentViews\ContentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindowView\MainView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Ribbons\RibbonView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

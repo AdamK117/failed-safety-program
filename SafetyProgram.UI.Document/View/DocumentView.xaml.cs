@@ -6,7 +6,7 @@ namespace SafetyProgram.UI.Document
     /// <summary>
     /// Interaction logic for CoshhDocumentView.xaml
     /// </summary>
-    public sealed partial class DocumentView : UserControl
+    internal sealed partial class DocumentView : UserControl
     {
         private readonly IDocumentViewModel viewModel;
 

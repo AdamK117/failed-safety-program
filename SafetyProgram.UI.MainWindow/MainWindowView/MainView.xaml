@@ -1,4 +1,5 @@
-﻿<Fluent:RibbonWindow x:Class="SafetyProgram.UI.MainView"
+﻿<Fluent:RibbonWindow x:Class="SafetyProgram.UI.MainWindow.MainView"
+                     x:ClassModifier="internal"
         xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

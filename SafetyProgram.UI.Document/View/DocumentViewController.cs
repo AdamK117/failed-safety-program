@@ -31,7 +31,8 @@ namespace SafetyProgram.UI.Document
             documentObjectControllerFactory 
                 = new DocumentObjectUiControllerFactory(
                     configuration,
-                    commandInvoker);
+                    commandInvoker, 
+                    selectionManager);
 
             var documentObjectControllers 
                 = new LinkedReadOnlyObservableCollection

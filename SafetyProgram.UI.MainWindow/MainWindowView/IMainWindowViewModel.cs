@@ -1,14 +1,12 @@
-﻿using System.ComponentModel;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using Fluent;
 
-namespace SafetyProgram.UI
+namespace SafetyProgram.UI.MainWindow
 {
     /// <summary>
     /// Defines an interface for the ViewModel of the CoshhWindowView.
     /// </summary>
-    public interface IMainViewModel :
-        INotifyPropertyChanged
+    internal interface IMainViewModel
     {
         /// <summary>
         /// Get the RibbonView associated with the ViewModel.

@@ -1,6 +1,6 @@
 ﻿using Fluent;
 
-namespace SafetyProgram.Base
+namespace SafetyProgram.UI
 {
     public interface IRibbonTabController :
         IUiController

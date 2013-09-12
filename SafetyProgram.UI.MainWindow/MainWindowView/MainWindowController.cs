@@ -4,12 +4,12 @@ using SafetyProgram.Base;
 using SafetyProgram.Core;
 using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
-using SafetyProgram.UI.ContentViews;
-using SafetyProgram.UI.Ribbons;
+using SafetyProgram.UI.MainWindow.ContentViews;
+using SafetyProgram.UI.MainWindow.Ribbons;
 
-namespace SafetyProgram.UI.View
+namespace SafetyProgram.UI.MainWindow.View
 {
-    public sealed class MainWindowController : IWindowController
+    internal sealed class MainWindowController : IWindowController
     {
         public MainWindowController(IApplicationKernel model,
             IApplicationConfiguration configuration,

@@ -6,7 +6,7 @@ namespace SafetyProgram.Document.Ribbons
     /// <summary>
     /// Defines a standard implementation of an IInsertRibbonTabViewModel.
     /// </summary>
-    public sealed class InsertRibbonTabViewModel : IInsertRibbonTabViewModel
+    internal sealed class InsertRibbonTabViewModel : IInsertRibbonTabViewModel
     {
         /// <summary>
         /// Construct an instance of a viewmodel for an insert ribbon.

@@ -9,7 +9,7 @@ namespace SafetyProgram.UI.Document.View
     /// <summary>
     /// Defines a standard implementation of an IDocumentViewmodel.
     /// </summary>
-    public sealed class DocumentViewModel : IDocumentViewModel
+    internal sealed class DocumentViewModel : IDocumentViewModel
     {
         private readonly IDocument document;
 

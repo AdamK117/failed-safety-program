@@ -5,7 +5,7 @@ namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
     /// <summary>
     /// Defines a controller for a chemical table.
     /// </summary>
-    public interface IChemicalTableUiController : IDocumentObjectUiController
+    public interface IChemicalTableController : IDocumentObjectUiController
     {
         /// <summary>
         /// Get the underlying ChemicalTable model.
