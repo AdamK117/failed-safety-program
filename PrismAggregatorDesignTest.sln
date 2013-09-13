@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafetyProgram.UI", "SafetyP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafetyProgram.UI.Views", "SafetyProgram.UI.Views\SafetyProgram.UI.Views.csproj", "{1F897AAB-59C3-4E70-BA89-3090311C93E9}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TEMP.ViewModels", "TEMP.ViewModels\TEMP.ViewModels.fsproj", "{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PrismAggregatorDesignTest2.vsmdi
@@ -151,6 +153,16 @@ Global
 		{1F897AAB-59C3-4E70-BA89-3090311C93E9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1F897AAB-59C3-4E70-BA89-3090311C93E9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1F897AAB-59C3-4E70-BA89-3090311C93E9}.Release|x86.ActiveCfg = Release|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5B65FDB7-C8E7-41FB-B170-0E3C5725D20A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

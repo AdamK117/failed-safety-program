@@ -115,6 +115,10 @@
       <Project>{1f897aab-59c3-4e70-ba89-3090311c93e9}</Project>
       <Name>SafetyProgram.UI.Views</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TEMP.ViewModels\TEMP.ViewModels.fsproj">
+      <Project>{5b65fdb7-c8e7-41fb-b170-0e3c5725d20a}</Project>
+      <Name>TEMP.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
