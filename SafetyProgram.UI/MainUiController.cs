@@ -2,7 +2,7 @@
 using SafetyProgram.Base;
 using SafetyProgram.Core;
 using SafetyProgram.Core.Commands.SelectionLogic;
-using SafetyProgram.UI.MainView.Default;
+using SafetyProgram.UI.Views.MainView.Default;
 
 namespace SafetyProgram.UI
 {

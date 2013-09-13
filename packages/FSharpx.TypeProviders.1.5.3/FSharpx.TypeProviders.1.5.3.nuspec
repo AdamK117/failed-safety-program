@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>FSharpx.TypeProviders</id>
+    <version>1.5.3</version>
+    <authors>Steffen Forkmann, Tomas Petricek, Ryan Riley, Mauricio Scheffer, Dan Mohl, Johann Deneux</authors>
+    <owners>Steffen Forkmann, Mauricio Scheffer</owners>
+    <licenseUrl>http://github.com/fsharp/fsharpx/raw/master/License.txt</licenseUrl>
+    <projectUrl>http://github.com/fsharp/fsharpx</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FSharpx.TypeProviders is a library for the .NET platform implementing common type providers on top of the FSharpx.Core. Its main target is F# but it aims to be compatible with all .NET languages wherever possible.
+
+It currently implements type safe variants of:
+
+* Regex
+* FileSystem
+* Csv
+* Excel
+* JSON
+* XML
+* Registry
+* XAML
+* AppSettings.</description>
+    <summary>FSharpx.TypeProviders is a library for the .NET platform implementing common type providers on top of the FSharpx. Its main target is F# but it aims to be compatible with all .NET languages wherever possible.
+
+It currently implements type safe variants of:
+
+* Regex
+* FileSystem
+* Csv
+* Excel
+* JSON
+* XML
+* Registry
+* XAML
+* AppSettings.</summary>
+    <language>en-US</language>
+    <tags>fsharp csharp interop monad iteratee validation bytestring testing typeproviders</tags>
+    <references>
+      <reference file="FSharp.Data.TypeProviders.dll" />
+      <reference file="FSharpx.Core.dll" />
+      <reference file="FSharpx.TypeProviders.dll" />
+    </references>
+  </metadata>
+</package>

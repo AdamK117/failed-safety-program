@@ -69,36 +69,6 @@
   <ItemGroup>
     <Compile Include="ContentViewFactories.cs" />
     <Compile Include="MainUiController.cs" />
-    <Compile Include="MainView\Default\IMainViewModel.cs" />
-    <Compile Include="MainView\Default\MainView.xaml.cs">
-      <DependentUpon>MainView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainView\Default\MainViewModel.cs" />
-    <Compile Include="MainView\Default\Ribbon\IRibbonViewModel.cs" />
-    <Compile Include="MainView\Default\Ribbon\RibbonView.xaml.cs">
-      <DependentUpon>RibbonView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainView\Default\Ribbon\RibbonViewModel.cs" />
-    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableView.xaml.cs">
-      <DependentUpon>ChemicalTableView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableViewModel.cs" />
-    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\IChemicalTableViewModel.cs" />
-    <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentView.xaml.cs">
-      <DependentUpon>DocumentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentViewModel.cs" />
-    <Compile Include="ModelViews\ContentViews\Documents\Default\IDocumentViewModel.cs" />
-    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonTabViewModel.cs" />
-    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonView.xaml.cs">
-      <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\IChemicalTableRibbonViewModel.cs" />
-    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\IInsertRibbonTabViewModel.cs" />
-    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabView.xaml.cs">
-      <DependentUpon>InsertRibbonTabView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -123,35 +93,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModelViews\ContextMenuViews\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="MainView\Default\MainView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainView\Default\Ribbon\RibbonView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ModelViews\ContentViews\Documents\Default\DocumentView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
       <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
@@ -168,6 +110,10 @@
     <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.csproj">
       <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
       <Name>SafetyProgram.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UI.Views\SafetyProgram.UI.Views.csproj">
+      <Project>{1f897aab-59c3-4e70-ba89-3090311c93e9}</Project>
+      <Name>SafetyProgram.UI.Views</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

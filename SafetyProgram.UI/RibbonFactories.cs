@@ -4,8 +4,8 @@ using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
-using SafetyProgram.UI.ModelViews.RibbonTabViews.DocumentObjects.ChemicalTables;
-using SafetyProgram.UI.ModelViews.RibbonTabViews.Documents;
+using SafetyProgram.UI.Views.ModelViews.RibbonTabViews.DocumentObjects.ChemicalTables;
+using SafetyProgram.UI.Views.ModelViews.RibbonTabViews.Documents;
 
 namespace SafetyProgram.UI
 {

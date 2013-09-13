@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F897AAB-59C3-4E70-BA89-3090311C93E9}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SafetyProgram.UI.Views</RootNamespace>
+    <AssemblyName>SafetyProgram.UI.Views</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fluent">
+      <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainView\Default\IMainViewModel.cs" />
+    <Compile Include="MainView\Default\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainView\Default\MainViewModel.cs" />
+    <Compile Include="MainView\Default\Ribbon\IRibbonViewModel.cs" />
+    <Compile Include="MainView\Default\Ribbon\RibbonView.xaml.cs">
+      <DependentUpon>RibbonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainView\Default\Ribbon\RibbonViewModel.cs" />
+    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableView.xaml.cs">
+      <DependentUpon>ChemicalTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableViewModel.cs" />
+    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\IChemicalTableViewModel.cs" />
+    <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentView.xaml.cs">
+      <DependentUpon>DocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentViewModel.cs" />
+    <Compile Include="ModelViews\ContentViews\Documents\Default\IDocumentViewModel.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonTabViewModel.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonView.xaml.cs">
+      <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\IChemicalTableRibbonViewModel.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\IInsertRibbonTabViewModel.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabView.xaml.cs">
+      <DependentUpon>InsertRibbonTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainView\Default\MainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainView\Default\Ribbon\RibbonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModelViews\ContentViews\Documents\Default\DocumentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
+      <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
+      <Name>SafetyProgram.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.Commands\SafetyProgram.Core.Commands.csproj">
+      <Project>{f56414f8-0849-4a8c-96f5-36dff7f292b9}</Project>
+      <Name>SafetyProgram.Core.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
+      <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>
+      <Name>SafetyProgram.Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.csproj">
+      <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
+      <Name>SafetyProgram.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ModelViews\ContextMenuViews\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

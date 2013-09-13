@@ -3,8 +3,8 @@ using System.Windows.Controls;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
-using SafetyProgram.UI.ModelViews.ContentViews.DocumentObjects.ChemicalTables.Default;
-using SafetyProgram.UI.ModelViews.Documents.Default;
+using SafetyProgram.UI.Views.ModelViews.ContentViews.DocumentObjects.ChemicalTables.Default;
+using SafetyProgram.UI.Views.ModelViews.Documents.Default;
 
 namespace SafetyProgram.UI
 {
