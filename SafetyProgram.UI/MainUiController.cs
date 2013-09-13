@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using SafetyProgram.Base;
 using SafetyProgram.Core;
 using SafetyProgram.Core.Commands.SelectionLogic;
-using SafetyProgram.UI.MainWindow;
+using SafetyProgram.UI.MainView.Default;
 
 namespace SafetyProgram.UI
 {

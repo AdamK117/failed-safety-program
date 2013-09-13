@@ -64,58 +64,55 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DocumentObject\ChemicalTableUI\IChemicalTableController.cs" />
-    <Compile Include="DocumentObject\ChemicalTableUI\RibbonTabs\ChemicalTableRibbonTabController.cs" />
-    <Compile Include="DocumentObject\ChemicalTableUI\RibbonTabs\ChemicalTableRibbonTabViewModel.cs" />
-    <Compile Include="DocumentObject\ChemicalTableUI\RibbonTabs\ChemicalTableRibbonView.xaml.cs">
-      <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DocumentObject\ChemicalTableUI\RibbonTabs\IChemicalTableRibbonViewModel.cs" />
-    <Compile Include="DocumentObject\ChemicalTableUI\View\ChemicalTableView.xaml.cs">
-      <DependentUpon>ChemicalTableView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DocumentObject\ChemicalTableUI\View\ChemicalTableViewController.cs" />
-    <Compile Include="DocumentObject\ChemicalTableUI\View\ChemicalTableViewModel.cs" />
-    <Compile Include="DocumentObject\ChemicalTableUI\View\IChemicalTableViewModel.cs" />
-    <Compile Include="DocumentObject\DocumentObjectUiControllerFactory.cs" />
-    <Compile Include="DocumentObject\IDocumentObjectUiController.cs" />
-    <Compile Include="DocumentObject\IDocumentObjectUiControllerFactory.cs" />
-    <Compile Include="Document\IDocumentUiController.cs" />
-    <Compile Include="Document\RibbonTabs\InsertTab\IInsertRibbonTabViewModel.cs" />
-    <Compile Include="Document\RibbonTabs\InsertTab\InsertRibbonTabController.cs" />
-    <Compile Include="Document\RibbonTabs\InsertTab\InsertRibbonTabView.xaml.cs">
-      <DependentUpon>InsertRibbonTabView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Document\RibbonTabs\InsertTab\InsertRibbonTabViewModel.cs" />
-    <Compile Include="Document\View\DocumentView.xaml.cs">
-      <DependentUpon>DocumentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Document\View\DocumentViewController.cs" />
-    <Compile Include="Document\View\DocumentViewModel.cs" />
-    <Compile Include="Document\View\IDocumentViewModel.cs" />
     <Compile Include="IRibbonTabController.cs" />
     <Compile Include="IRibbonViewController.cs" />
     <Compile Include="IUiController.cs" />
     <Compile Include="IWindowController.cs" />
     <Compile Include="MainUiController.cs" />
-    <Compile Include="MainWindow\View\ContentViews\ContentView.xaml.cs">
+    <Compile Include="MainView\Default\Content\ContentView.xaml.cs">
       <DependentUpon>ContentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow\View\ContentViews\ContentViewController.cs" />
-    <Compile Include="MainWindow\View\ContentViews\ContentViewModel.cs" />
-    <Compile Include="MainWindow\View\ContentViews\IContentViewModel.cs" />
-    <Compile Include="MainWindow\View\IMainWindowViewModel.cs" />
-    <Compile Include="MainWindow\View\MainView.xaml.cs">
+    <Compile Include="MainView\Default\Content\ContentViewController.cs" />
+    <Compile Include="MainView\Default\Content\ContentViewModel.cs" />
+    <Compile Include="MainView\Default\Content\IContentViewModel.cs" />
+    <Compile Include="MainView\Default\IMainViewModel.cs" />
+    <Compile Include="MainView\Default\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow\View\MainViewModel.cs" />
-    <Compile Include="MainWindow\View\MainWindowController.cs" />
-    <Compile Include="MainWindow\View\Ribbons\IRibbonViewModel.cs" />
-    <Compile Include="MainWindow\View\Ribbons\RibbonView.xaml.cs">
+    <Compile Include="MainView\Default\MainViewModel.cs" />
+    <Compile Include="MainView\Default\MainViewController.cs" />
+    <Compile Include="MainView\Default\Ribbon\IRibbonViewModel.cs" />
+    <Compile Include="MainView\Default\Ribbon\RibbonView.xaml.cs">
       <DependentUpon>RibbonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow\View\Ribbons\RibbonViewController.cs" />
-    <Compile Include="MainWindow\View\Ribbons\RibbonViewModel.cs" />
+    <Compile Include="MainView\Default\Ribbon\RibbonViewController.cs" />
+    <Compile Include="MainView\Default\Ribbon\RibbonViewModel.cs" />
+    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableView.xaml.cs">
+      <DependentUpon>ChemicalTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableViewController.cs" />
+    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableViewModel.cs" />
+    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\IChemicalTableViewModel.cs" />
+    <Compile Include="DocumentObjectUiControllerFactory.cs" />
+    <Compile Include="IDocumentObjectUiControllerFactory.cs" />
+    <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentView.xaml.cs">
+      <DependentUpon>DocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentViewController.cs" />
+    <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentViewModel.cs" />
+    <Compile Include="ModelViews\ContentViews\Documents\Default\IDocumentViewModel.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonTabController.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonTabViewModel.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonView.xaml.cs">
+      <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\IChemicalTableRibbonViewModel.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\IInsertRibbonTabViewModel.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabController.cs" />
+    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabView.xaml.cs">
+      <DependentUpon>InsertRibbonTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -140,37 +137,34 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ModelContentViews\DocumentObjects\" />
-    <Folder Include="ModelContentViews\Documents\" />
-    <Folder Include="ModelRibbonTabViews\DocumentObjects\" />
-    <Folder Include="ModelRibbonTabViews\Documents\" />
+    <Folder Include="ModelViews\ContextMenuViews\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="DocumentObject\ChemicalTableUI\RibbonTabs\ChemicalTableRibbonView.xaml">
+    <Page Include="MainView\Default\Content\ContentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DocumentObject\ChemicalTableUI\View\ChemicalTableView.xaml">
+    <Page Include="MainView\Default\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Document\RibbonTabs\InsertTab\InsertRibbonTabView.xaml">
+    <Page Include="MainView\Default\Ribbon\RibbonView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Document\View\DocumentView.xaml">
+    <Page Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow\View\ContentViews\ContentView.xaml">
+    <Page Include="ModelViews\ContentViews\Documents\Default\DocumentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow\View\MainView.xaml">
+    <Page Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow\View\Ribbons\RibbonView.xaml">
+    <Page Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
