@@ -4,6 +4,7 @@ using SafetyProgram.Base;
 using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 using SafetyProgram.UI.ModelViews.ContentViews.DocumentObjects.ChemicalTables.Default;
+using SafetyProgram.UI.ModelViews.Documents.Default;
 
 namespace SafetyProgram.UI
 {
@@ -31,6 +32,28 @@ namespace SafetyProgram.UI
                         default:
                             throw new NotImplementedException();
                     }
+                };
+        }
+
+        public static Func<IDocument, Control> DocumentViewFactory(
+            IApplicationConfiguration configuration,
+            ICommandInvoker commandInvoker,
+            ISelectionManager selectionManager)
+        {
+            Helpers.NullCheck(configuration,
+                commandInvoker,
+                selectionManager);
+
+            return
+                (model) =>
+                {
+                    return new DocumentView(
+                        new DocumentViewModel(
+                            model,
+                            DocumentObjectViewFactory(
+                                configuration,
+                                commandInvoker,
+                                selectionManager)));
                 };
         }
     }

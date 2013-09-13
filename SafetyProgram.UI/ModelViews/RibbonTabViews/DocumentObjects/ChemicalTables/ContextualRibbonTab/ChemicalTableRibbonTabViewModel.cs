@@ -29,6 +29,7 @@ namespace SafetyProgram.UI.ModelViews.RibbonTabViews.DocumentObjects.ChemicalTab
                 commandInvoker);
 
             this.appConfiguration = applicationConfiguration;
+
             performSearch("");
         }
 

@@ -1,10 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
 using SafetyProgram.Base;
-using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
-using SafetyProgram.UI.DocumentObject;
 
 namespace SafetyProgram.UI.ModelViews.Documents.Default
 {
@@ -13,49 +12,39 @@ namespace SafetyProgram.UI.ModelViews.Documents.Default
     /// </summary>
     internal sealed class DocumentViewModel : IDocumentViewModel
     {
-        private readonly IDocument model;
-
         /// <summary>
         /// Construct an instance of a document viewmodel.
         /// </summary>
         /// <param name="document">The underlying document model.</param>
         /// <param name="documentCommands">Commands that act on the document model.</param>
         public DocumentViewModel(IDocument model,
-            IApplicationConfiguration configuration,
-            ICommandInvoker commandInvoker,
-            ISelectionManager selectionManager)
+            Func<IDocumentObject, Control> documentObjectViewFactory)
         {
             Helpers.NullCheck(model,
-                configuration,
-                commandInvoker,
-                selectionManager);
-
-            this.model = model;
+                documentObjectViewFactory);
 
             this.DocumentObjects =
                 model
                 .Content
-                .EchoCollection(
-                    (modelObj) =>
-                    {
-                        var fac = new DocumentObjectUiControllerFactory(
-                            configuration,
-                            commandInvoker,
-                            selectionManager);
-
-                        return fac.GetDocumentObjectUiController(modelObj);
-                    });
+                .EchoCollection(documentObjectViewFactory);
 
             model.FormatChanged +=
-                (s, e) => this.PropertyChanged.Raise(this, "Format");
+                (s, e) => this.Format = e.NewProperty;
         }
+
+        private IFormat format;
 
         /// <summary>
         /// Get the format of the document.
         /// </summary>
         public IFormat Format
         {
-            get { return model.Format; }
+            get { return format; }
+            set
+            {
+                format = value;
+                PropertyChanged.Raise(this, "Format");
+            }
         }
 
         /// <summary>

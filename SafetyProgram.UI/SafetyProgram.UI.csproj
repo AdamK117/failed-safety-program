@@ -53,6 +53,9 @@
     <Reference Include="Fluent">
       <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\SafetyProgram.ExternalLibraries\Ninject\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,11 +69,6 @@
   <ItemGroup>
     <Compile Include="ContentViewFactories.cs" />
     <Compile Include="MainUiController.cs" />
-    <Compile Include="MainView\Default\Content\ContentView.xaml.cs">
-      <DependentUpon>ContentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainView\Default\Content\ContentViewModel.cs" />
-    <Compile Include="MainView\Default\Content\IContentViewModel.cs" />
     <Compile Include="MainView\Default\IMainViewModel.cs" />
     <Compile Include="MainView\Default\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -86,8 +84,6 @@
     </Compile>
     <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableViewModel.cs" />
     <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\IChemicalTableViewModel.cs" />
-    <Compile Include="DocumentObjectUiControllerFactory.cs" />
-    <Compile Include="IDocumentObjectUiControllerFactory.cs" />
     <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
@@ -131,10 +127,6 @@
     <Folder Include="ModelViews\ContextMenuViews\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainView\Default\Content\ContentView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MainView\Default\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

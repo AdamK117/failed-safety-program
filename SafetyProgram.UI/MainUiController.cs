@@ -11,10 +11,6 @@ namespace SafetyProgram.UI
     /// </summary>
     public sealed class MainUiController
     {
-        private readonly IApplicationKernel applicationKernel;
-        private readonly ICommandController commandInvoker;
-        private readonly ISelectionManager selectionManager;
-
         /// <summary>
         /// Construct an instance of an application UI controller.
         /// </summary>
@@ -24,17 +20,25 @@ namespace SafetyProgram.UI
         {
             Helpers.NullCheck(applicationKernel);
 
-            // Create application singletons for DI here.
-            this.applicationKernel = applicationKernel;
-            this.commandInvoker = new CommandController();
-            this.selectionManager = new SelectionManager();
+            var commandInvoker = new CommandController();
+            var selectionManager = new SelectionManager();
+
+            var documentViewFactory = ContentViewFactories.DocumentViewFactory(
+                applicationKernel.Configuration,
+                commandInvoker,
+                selectionManager);
 
             this.View = new MainViews(
                 new MainViewModel(
                     applicationKernel,
-                    applicationKernel.Configuration,
-                    commandInvoker,
-                    selectionManager));
+                    new RibbonView(
+                        new RibbonViewModel(
+                            applicationKernel,
+                            applicationKernel.Configuration,
+                            commandInvoker,
+                            selectionManager,
+                            RibbonFactories.DocumentRibbonTabFactory(commandInvoker))),
+                    documentViewFactory));
         }
 
         /// <summary>

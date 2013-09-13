@@ -22,7 +22,7 @@ namespace SafetyProgram.UI.ModelViews.ContentViews.DocumentObjects.ChemicalTable
             this.Chemicals = chemicalTable.Content;
 
             chemicalTable.HeaderChanged +=
-                (s, e) => PropertyChanged.Raise(this, "Header");
+                (s, e) => Header = e.NewProperty;
         }
 
         private IChemicalTable chemicalTable;

@@ -1,8 +1,9 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.ComponentModel;
+using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Core;
-using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.MainView.Default
@@ -14,28 +15,25 @@ namespace SafetyProgram.UI.MainView.Default
         IMainViewModel
     {
         public MainViewModel(IApplicationKernel model,
-            IApplicationConfiguration configuration,
-            ICommandController commandController,
-            ISelectionManager selectionManager)
+            Ribbon ribbonView,
+            Func<IDocument, Control> documentViewFactory)
         {
             Helpers.NullCheck(model,
-                configuration,
-                commandController,
-                selectionManager);
+                ribbonView,
+                documentViewFactory);
 
-            this.RibbonView = new RibbonView(
-                new RibbonViewModel(
-                    model,
-                    configuration,
-                    commandController,
-                    selectionManager));
+            this.RibbonView = ribbonView;
 
-            this.ContentView = new ContentView(
-                new ContentViewModel(
-                    model,
-                    configuration,
-                    commandController,
-                    selectionManager));
+            model.DocumentChanged +=
+                (s, e) =>
+                {
+                    this.ContentView = e.NewProperty == null ?
+                        null :
+                        documentViewFactory(e.NewProperty);
+                };
+            this.ContentView = model.Document == null ? 
+                null : 
+                documentViewFactory(model.Document);
         }
 
         /// <summary>
@@ -43,9 +41,21 @@ namespace SafetyProgram.UI.MainView.Default
         /// </summary>
         public Ribbon RibbonView { get; private set; }
 
+        private Control contentView;
+
         /// <summary>
         /// Get the content view.
         /// </summary>
-        public Control ContentView { get; private set; }
+        public Control ContentView 
+        {
+            get { return contentView; }
+            set
+            {
+                contentView = value;
+                PropertyChanged.Raise(this, "ContentView");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
