@@ -5,7 +5,7 @@ namespace SafetyProgram.UI.DocumentObject
     /// <summary>
     /// Defines an abstract factory for creating IDocumentObjectUiControllers.
     /// </summary>
-    public interface IDocumentObjectUiControllerFactory
+    internal interface IDocumentObjectUiControllerFactory
     {
         /// <summary>
         /// Create an <code>IDocumentObjectUiController</code> from the supplied <code>IDocumentObject</code> model.

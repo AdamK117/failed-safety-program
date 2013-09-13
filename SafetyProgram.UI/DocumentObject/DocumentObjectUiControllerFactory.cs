@@ -12,7 +12,7 @@ namespace SafetyProgram.UI.DocumentObject
     /// Defines a standard implementation of the IDocumentObjectUiControllerFactory 
     /// abstract factory.
     /// </summary>
-    public sealed class DocumentObjectUiControllerFactory 
+    internal sealed class DocumentObjectUiControllerFactory 
         : IDocumentObjectUiControllerFactory
     {
         private readonly IApplicationConfiguration configuration;

@@ -20,7 +20,8 @@ namespace SafetyProgram.UI
         /// <summary>
         /// Construct an instance of an application UI controller.
         /// </summary>
-        /// <param name="applicationKernel">The underlying application model the controller oversees.</param>
+        /// <param name="applicationKernel">The underlying application model 
+        /// the controller oversees.</param>
         public MainUiController(IApplicationKernel applicationKernel)
         {
             Helpers.NullCheck(applicationKernel);
@@ -43,13 +44,16 @@ namespace SafetyProgram.UI
         private readonly Window view;
 
         /// <summary>
-        /// Get the ui for the application.
+        /// Get the window view this controller oversees.
         /// </summary>
         public Window View
         {
             get { return view; }
         }
 
+        /// <summary>
+        /// Get the generic control view this controller oversees.
+        /// </summary>
         Control IUiController.View
         {
             get { return view; }

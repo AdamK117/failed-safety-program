@@ -1,5 +1,4 @@
-﻿using SafetyProgram.Base;
-using SafetyProgram.Core.Models;
+﻿using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.Document
 {

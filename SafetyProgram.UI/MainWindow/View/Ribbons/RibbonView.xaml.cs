@@ -14,8 +14,10 @@ namespace SafetyProgram.UI.MainWindow
             this.viewModel = viewModel;
             this.DataContext = viewModel;
 
-            this.viewModel.RibbonTabs.CollectionChanged +=
-                (s, e) => ribbonTabsCollectionChanged();
+            this.viewModel
+                .RibbonTabs
+                .CollectionChanged +=
+                    (s, e) => ribbonTabsCollectionChanged();
 
             ribbonTabsCollectionChanged();
 

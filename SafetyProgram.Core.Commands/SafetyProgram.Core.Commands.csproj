@@ -60,23 +60,24 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoreCommands\CloseICommand.cs" />
-    <Compile Include="CoreCommands\CoreCommands.cs" />
-    <Compile Include="CoreCommands\ICoreCommands.cs" />
-    <Compile Include="CoreCommands\NewICommand.cs" />
-    <Compile Include="CoreCommands\OpenICommand.cs" />
-    <Compile Include="CoreCommands\RedoICommand.cs" />
-    <Compile Include="CoreCommands\SaveAsICommand.cs" />
-    <Compile Include="CoreCommands\SaveICommand.cs" />
-    <Compile Include="CoreCommands\UndoICommand.cs" />
-    <Compile Include="DocumentCommands\DeleteIDocumentObjectICommand.cs" />
-    <Compile Include="DocumentCommands\DocumentICommands.cs" />
-    <Compile Include="DocumentCommands\IDocumentCommands.cs" />
-    <Compile Include="DocumentCommands\InsertChemicalTableICommand.cs" />
-    <Compile Include="DocumentObjectCommands\ChemicalTableCommands\ChemicalTableICommands.cs" />
-    <Compile Include="DocumentObjectCommands\ChemicalTableCommands\CopySelected.cs" />
-    <Compile Include="DocumentObjectCommands\ChemicalTableCommands\DeleteSelectedICommand.cs" />
-    <Compile Include="DocumentObjectCommands\ChemicalTableCommands\IChemicalTableCommands.cs" />
+    <Compile Include="ICommands\CoreCommands\CloseICommand.cs" />
+    <Compile Include="ICommands\CoreCommands\CoreCommands.cs" />
+    <Compile Include="ICommands\CoreCommands\ICoreCommands.cs" />
+    <Compile Include="ICommands\CoreCommands\NewICommand.cs" />
+    <Compile Include="ICommands\CoreCommands\OpenICommand.cs" />
+    <Compile Include="ICommands\CoreCommands\RedoICommand.cs" />
+    <Compile Include="ICommands\CoreCommands\SaveAsICommand.cs" />
+    <Compile Include="ICommands\CoreCommands\SaveICommand.cs" />
+    <Compile Include="ICommands\CoreCommands\UndoICommand.cs" />
+    <Compile Include="ICommands\DocumentCommands\DeleteIDocumentObjectICommand.cs" />
+    <Compile Include="ICommands\DocumentCommands\DocumentICommands.cs" />
+    <Compile Include="ICommands\DocumentCommands\IDocumentCommands.cs" />
+    <Compile Include="ICommands\DocumentCommands\InsertChemicalTableICommand.cs" />
+    <Compile Include="ICommands\DocumentObjectCommands\ChemicalTableCommands\ChemicalTableICommands.cs" />
+    <Compile Include="ICommands\DocumentObjectCommands\ChemicalTableCommands\CopySelected.cs" />
+    <Compile Include="ICommands\DocumentObjectCommands\ChemicalTableCommands\DeleteSelectedICommand.cs" />
+    <Compile Include="ICommands\DocumentObjectCommands\ChemicalTableCommands\IChemicalTableCommands.cs" />
+    <Compile Include="ICommands\ICommandsHelpers.cs" />
     <Compile Include="KernelCommands\IKernelCommands.cs" />
     <Compile Include="SelectionLogic\ISelection.cs" />
     <Compile Include="SelectionLogic\ISelectionManager.cs" />
@@ -102,9 +103,7 @@
       <Name>SafetyProgram.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HotkeyLogic\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -4,6 +4,7 @@ using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Core;
 using SafetyProgram.Core.Commands;
+using SafetyProgram.Core.Commands.ICommands;
 using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 using SafetyProgram.UI.Document;
@@ -55,6 +56,9 @@ namespace SafetyProgram.UI.MainWindow
                         documentRibbonTabs));
         }
 
+        /// <summary>
+        /// Handles the DocumentChanged event in the application kernel.
+        /// </summary>
         private void documentChanged()
         {
             if (model.Document == null)
@@ -83,7 +87,7 @@ namespace SafetyProgram.UI.MainWindow
         }
 
         /// <summary>
-        /// Get the generic control view this controller oversees.
+        /// Get the generic control view the controller oversees.
         /// </summary>
         Control IUiController.View
         {

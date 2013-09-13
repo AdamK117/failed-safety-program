@@ -81,20 +81,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -132,18 +127,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
-      <Project>{1DC4D7EA-32B8-40C0-AF0D-C6786532216C}</Project>
-      <Name>SafetyProgram.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.csproj">
-      <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
-      <Name>SafetyProgram.Core.IO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.Models.Serialization\SafetyProgram.Core.Models.Serialization.csproj">
-      <Project>{3213a682-7b4c-44aa-8ceb-6d6444c2cade}</Project>
-      <Name>SafetyProgram.Core.Models.Serialization</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
       <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>
       <Name>SafetyProgram.Core.Models</Name>
@@ -153,7 +136,7 @@
       <Name>SafetyProgram.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI\SafetyProgram.UI.csproj">
-      <Project>{4aa0a7e9-3101-42a3-992f-f143cc98c554}</Project>
+      <Project>{e1206e18-1a7e-4fab-95b1-1c44fff5d43e}</Project>
       <Name>SafetyProgram.UI</Name>
     </ProjectReference>
   </ItemGroup>

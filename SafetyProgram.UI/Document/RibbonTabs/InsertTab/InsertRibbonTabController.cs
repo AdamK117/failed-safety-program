@@ -2,12 +2,13 @@
 using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Commands;
+using SafetyProgram.Core.Commands.ICommands;
 using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.Document
 {
-    public sealed class InsertRibbonTabController :
+    internal sealed class InsertRibbonTabController :
         IRibbonTabController
     {
         public InsertRibbonTabController(IDocument model,

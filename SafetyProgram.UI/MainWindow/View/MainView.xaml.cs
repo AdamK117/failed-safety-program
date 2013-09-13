@@ -10,6 +10,7 @@ namespace SafetyProgram.UI.MainWindow
             Helpers.NullCheck(viewModel);
 
             this.DataContext = viewModel;
+
             InitializeComponent();
         }
     }

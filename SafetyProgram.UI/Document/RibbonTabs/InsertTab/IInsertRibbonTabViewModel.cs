@@ -1,4 +1,5 @@
 ﻿using SafetyProgram.Core.Commands;
+using SafetyProgram.Core.Commands.ICommands;
 
 namespace SafetyProgram.UI.Document
 {

@@ -11,7 +11,7 @@ namespace SafetyProgram.UI.Document
     /// Defines a standard implementation of the IDocumentController 
     /// interface.
     /// </summary>
-    public sealed class DocumentViewController : 
+    internal sealed class DocumentViewController : 
         IDocumentUiController
     {
         private readonly IDocumentObjectUiControllerFactory documentObjectControllerFactory;

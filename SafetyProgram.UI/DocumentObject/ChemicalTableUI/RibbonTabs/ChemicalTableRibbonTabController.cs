@@ -2,6 +2,7 @@
 using Fluent;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Commands;
+using SafetyProgram.Core.Commands.ICommands;
 using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 

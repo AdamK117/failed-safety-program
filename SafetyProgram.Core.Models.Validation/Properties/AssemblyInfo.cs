@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SafetyProgram.Core.Models.Validators")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A set of validators that validate SafetyProgram.Core.Models")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SafetyProgram.Core.Models.Validators")]

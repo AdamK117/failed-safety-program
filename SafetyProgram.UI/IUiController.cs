@@ -3,12 +3,12 @@
 namespace SafetyProgram.UI
 {
     /// <summary>
-    /// Defines a UI controller (mvC).
+    /// Defines a generic controller.
     /// </summary>
     public interface IUiController
     {
         /// <summary>
-        /// Get the view the controller oversees (mVc).
+        /// Get the generic control view the controller oversees.
         /// </summary>
         Control View { get; }
     }

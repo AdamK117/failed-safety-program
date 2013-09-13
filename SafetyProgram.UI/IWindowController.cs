@@ -9,7 +9,7 @@ namespace SafetyProgram.UI
         IUiController
     {
         /// <summary>
-        /// Get the window this controller oversees.
+        /// Get the window view the controller oversees.
         /// </summary>
         new Window View { get; }
     }

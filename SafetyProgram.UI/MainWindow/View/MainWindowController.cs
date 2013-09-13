@@ -7,7 +7,11 @@ using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.MainWindow
 {
-    public sealed class MainWindowViewController : IWindowController
+    /// <summary>
+    /// Defines a standard implementation of an <code>IWindowController</code> 
+    /// for the main application window UI.
+    /// </summary>
+    internal sealed class MainWindowViewController : IWindowController
     {
         public MainWindowViewController(IApplicationKernel model,
             IApplicationConfiguration configuration,
@@ -19,18 +23,22 @@ namespace SafetyProgram.UI.MainWindow
                 commandController,
                 selectionManager);
 
+            // Construct the controller for the ribbon view.
             var ribbonController = new RibbonViewController(
                 model,
                 configuration,
                 commandController,
                 selectionManager);
 
+            // Construct the controller for the content view.
             var contentController = new ContentViewController(
                 model,
                 configuration,
                 commandController,
                 selectionManager);
 
+            /* Construct the main window view. It is composed of a 
+             * content view and a ribbon view. */
             this.view = new MainView(
                 new MainViewModel(
                     ribbonController.View,
@@ -39,11 +47,17 @@ namespace SafetyProgram.UI.MainWindow
 
         private readonly Window view;
 
+        /// <summary>
+        /// Get the window view this controller oversees.
+        /// </summary>
         public Window View
         {
             get { return view; }
         }
 
+        /// <summary>
+        /// Get the generic control view this controller oversees.
+        /// </summary>
         Control IUiController.View
         {
             get { return view; }

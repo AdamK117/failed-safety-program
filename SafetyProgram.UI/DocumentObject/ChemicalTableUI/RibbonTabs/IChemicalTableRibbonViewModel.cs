@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using SafetyProgram.Core.Commands;
+using SafetyProgram.Core.Commands.ICommands;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject.ChemicalTableUI
