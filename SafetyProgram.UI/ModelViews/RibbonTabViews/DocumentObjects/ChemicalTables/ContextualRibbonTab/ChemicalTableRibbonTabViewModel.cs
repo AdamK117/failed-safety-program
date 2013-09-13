@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Commands.ICommands;
+using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.ModelViews.RibbonTabViews.DocumentObjects.ChemicalTables
@@ -13,15 +14,21 @@ namespace SafetyProgram.UI.ModelViews.RibbonTabViews.DocumentObjects.ChemicalTab
     {
         private readonly IApplicationConfiguration appConfiguration;
 
-        public ChemicalTableRibbonTabViewModel(IApplicationConfiguration appConfiguration,
-            IChemicalTableCommands commands)
+        public ChemicalTableRibbonTabViewModel(IChemicalTable model,
+            IApplicationConfiguration applicationConfiguration,
+            ICommandInvoker commandInvoker,
+            ISelectionManager selectionManager)
         {
-            Helpers.NullCheck(appConfiguration, commands);
+            Helpers.NullCheck(model,
+                appConfiguration,
+                commandInvoker,
+                selectionManager);
 
-            this.appConfiguration = appConfiguration;
-            this.commands = commands;
+            this.Commands = new ChemicalTableICommands(
+                model,
+                commandInvoker);
 
-            //Perform an initial blank search
+            this.appConfiguration = applicationConfiguration;
             performSearch("");
         }
 
@@ -55,15 +62,10 @@ namespace SafetyProgram.UI.ModelViews.RibbonTabViews.DocumentObjects.ChemicalTab
             get { return searchResult; }
         }
 
-        private readonly IChemicalTableCommands commands;
-
         /// <summary>
         /// Get a group of commands that act on the chemical table.
         /// </summary>
-        public IChemicalTableCommands Commands
-        {
-            get { return commands; }
-        }
+        public IChemicalTableCommands Commands { get; private set; }
 
 
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Controls;
 using SafetyProgram.Core.Models;
-using SafetyProgram.UI.DocumentObject;
 
 namespace SafetyProgram.UI.ModelViews.Documents.Default
 {
@@ -19,7 +19,6 @@ namespace SafetyProgram.UI.ModelViews.Documents.Default
         /// <summary>
         /// Get the documentobjects in the document.
         /// </summary>
-        ReadOnlyObservableCollection<
-            IUiController> DocumentObjects { get; }
+        ReadOnlyObservableCollection<Control> DocumentObjects { get; }
     }
 }

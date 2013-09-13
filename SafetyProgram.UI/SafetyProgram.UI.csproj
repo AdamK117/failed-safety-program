@@ -64,15 +64,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRibbonTabController.cs" />
-    <Compile Include="IRibbonViewController.cs" />
-    <Compile Include="IUiController.cs" />
-    <Compile Include="IWindowController.cs" />
+    <Compile Include="ContentViewFactories.cs" />
     <Compile Include="MainUiController.cs" />
     <Compile Include="MainView\Default\Content\ContentView.xaml.cs">
       <DependentUpon>ContentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainView\Default\Content\ContentViewController.cs" />
     <Compile Include="MainView\Default\Content\ContentViewModel.cs" />
     <Compile Include="MainView\Default\Content\IContentViewModel.cs" />
     <Compile Include="MainView\Default\IMainViewModel.cs" />
@@ -80,17 +76,14 @@
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainView\Default\MainViewModel.cs" />
-    <Compile Include="MainView\Default\MainViewController.cs" />
     <Compile Include="MainView\Default\Ribbon\IRibbonViewModel.cs" />
     <Compile Include="MainView\Default\Ribbon\RibbonView.xaml.cs">
       <DependentUpon>RibbonView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainView\Default\Ribbon\RibbonViewController.cs" />
     <Compile Include="MainView\Default\Ribbon\RibbonViewModel.cs" />
     <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableView.xaml.cs">
       <DependentUpon>ChemicalTableView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableViewController.cs" />
     <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\ChemicalTableViewModel.cs" />
     <Compile Include="ModelViews\ContentViews\DocumentObjects\ChemicalTables\Default\IChemicalTableViewModel.cs" />
     <Compile Include="DocumentObjectUiControllerFactory.cs" />
@@ -98,17 +91,14 @@
     <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentView.xaml.cs">
       <DependentUpon>DocumentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentViewController.cs" />
     <Compile Include="ModelViews\ContentViews\Documents\Default\DocumentViewModel.cs" />
     <Compile Include="ModelViews\ContentViews\Documents\Default\IDocumentViewModel.cs" />
-    <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonTabController.cs" />
     <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonTabViewModel.cs" />
     <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\ChemicalTableRibbonView.xaml.cs">
       <DependentUpon>ChemicalTableRibbonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelViews\RibbonTabViews\DocumentObjects\ChemicalTables\ContextualRibbonTab\IChemicalTableRibbonViewModel.cs" />
     <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\IInsertRibbonTabViewModel.cs" />
-    <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabController.cs" />
     <Compile Include="ModelViews\RibbonTabViews\Documents\InsertTab\InsertRibbonTabView.xaml.cs">
       <DependentUpon>InsertRibbonTabView.xaml</DependentUpon>
     </Compile>
@@ -126,6 +116,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RibbonFactories.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

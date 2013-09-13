@@ -18,6 +18,6 @@ namespace SafetyProgram.UI.ModelViews.ContentViews.DocumentObjects.ChemicalTable
         /// <summary>
         /// Get the chemicals in the chemicaltable.
         /// </summary>
-        ReadOnlyObservableCollection<ICoshhChemical> Chemicals { get; }
+        ObservableCollection<ICoshhChemical> Chemicals { get; }
     }
 }

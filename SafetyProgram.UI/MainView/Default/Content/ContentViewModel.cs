@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
 using SafetyProgram.Base;
-using SafetyProgram.Base.Interfaces;
+using SafetyProgram.Core;
+using SafetyProgram.Core.Commands.SelectionLogic;
+using SafetyProgram.Core.Models;
+using SafetyProgram.UI.ModelViews.Documents.Default;
 
 namespace SafetyProgram.UI.MainView.Default
 {
@@ -12,25 +15,58 @@ namespace SafetyProgram.UI.MainView.Default
     internal sealed class ContentViewModel :
         IContentViewModel
     {
-        public ContentViewModel(IHolder<Control> contentView)
+        private readonly IApplicationConfiguration applicationConfiguration;
+        private readonly ICommandInvoker commandInvoker;
+        private readonly ISelectionManager selectionManager;
+
+        public ContentViewModel(IApplicationKernel model,
+            IApplicationConfiguration configuration,
+            ICommandInvoker commandInvoker,
+            ISelectionManager selectionManager)
         {
-            Helpers.NullCheck(contentView);
+            Helpers.NullCheck(model,
+                configuration,
+                commandInvoker,
+                selectionManager);
 
-            this.contentView = contentView;
+            this.applicationConfiguration = configuration;
+            this.commandInvoker = commandInvoker;
+            this.selectionManager = selectionManager;
 
-            this.contentView.ContentChanged +=
-                (s, e) => 
-                    PropertyChanged.Raise(this, "Content");
+            model.DocumentChanged +=
+                (s, e) => documentChanged(e.NewProperty);
+
+            documentChanged(model.Document);
         }
 
-        private readonly IHolder<Control> contentView;
+        private void documentChanged(IDocument newDocument)
+        {
+            this.Content = null;
+
+            if (newDocument != null)
+            {
+                Content = new DocumentView(
+                    new DocumentViewModel(
+                        newDocument,
+                        applicationConfiguration,
+                        commandInvoker,
+                        selectionManager));
+            }
+        }
+
+        private Control content;
 
         /// <summary>
         /// Get the content view.
         /// </summary>
         public Control Content
         {
-            get { return contentView.Content; }
+            get { return content; }
+            set
+            {
+                content = value;
+                PropertyChanged.Raise(this, "Content");
+            }
         }
 
         /// <summary>

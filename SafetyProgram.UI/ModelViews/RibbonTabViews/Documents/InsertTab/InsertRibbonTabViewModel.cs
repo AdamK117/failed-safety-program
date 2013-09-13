@@ -1,5 +1,6 @@
 ﻿using SafetyProgram.Base;
 using SafetyProgram.Core.Commands.ICommands;
+using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.ModelViews.RibbonTabViews.Documents
 {
@@ -12,11 +13,14 @@ namespace SafetyProgram.UI.ModelViews.RibbonTabViews.Documents
         /// Construct an instance of a viewmodel for an insert ribbon.
         /// </summary>
         /// <param name="commands">A set of commands that act on the document that items will be inserted into.</param>
-        public InsertRibbonTabViewModel(IDocumentICommands commands)
+        public InsertRibbonTabViewModel(IDocument model, 
+            ICommandInvoker commandInvoker)
         {
-            Helpers.NullCheck(commands);
+            Helpers.NullCheck(model, commandInvoker);
 
-            this.Commands = commands;
+            this.Commands = new DocumentICommands(
+                model,
+                commandInvoker);
         }
 
         /// <summary>

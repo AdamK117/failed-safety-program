@@ -5,19 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
              >
     <ScrollViewer x:Name="DocumentWrapper" Focusable="False">
-        <StackPanel x:Name="DocumentHolder" Width="{Binding Format.Width}" ContextMenu="{Binding ContextMenu.View}"  Background="White">
-            
-            <ItemsControl ItemsSource="{Binding DocumentObjects}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                    <ContentControl Content="{Binding View}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-            
+        <StackPanel x:Name="DocumentHolder" Width="{Binding Format.Width}" Background="White">
+            <ItemsControl ItemsSource="{Binding DocumentObjects}" />            
         </StackPanel>
     </ScrollViewer>
 

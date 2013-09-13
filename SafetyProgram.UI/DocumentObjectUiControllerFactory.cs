@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Controls;
 using SafetyProgram.Base;
 using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
@@ -37,19 +38,21 @@ namespace SafetyProgram.UI.DocumentObject
             this.commandInvoker = commandInvoker;
             this.selectionManager = selectionManager;
 
-            lookupDictionary = new Dictionary<Type, Func<IDocumentObject, IUiController>>()
+            lookupDictionary = new Dictionary<Type, Func<IDocumentObject, Control>>()
             {
                 {   
                     typeof(ChemicalTable),
                     (documentObject) => 
-                        new ChemicalTableViewController(documentObject as IChemicalTable, configuration, commandInvoker, selectionManager)
+                        new ChemicalTableView(
+                            new ChemicalTableViewModel(
+                                documentObject as IChemicalTable))
                 }
             };
         }
 
         private readonly IDictionary<
             Type, 
-            Func<IDocumentObject, IUiController>> lookupDictionary;
+            Func<IDocumentObject, Control>> lookupDictionary;
 
         /// <summary>
         /// Create an <code>IDocumentUiController</code> using the supplied <code>IDocumentObject</code>
@@ -57,7 +60,7 @@ namespace SafetyProgram.UI.DocumentObject
         /// </summary>
         /// <param name="documentObject"></param>
         /// <returns></returns>
-        public IUiController GetDocumentObjectUiController(IDocumentObject documentObject)
+        public Control GetDocumentObjectUiController(IDocumentObject documentObject)
         {
             var typeArg = documentObject.GetType();
 

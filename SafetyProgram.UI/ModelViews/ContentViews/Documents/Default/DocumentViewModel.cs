@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Controls;
 using SafetyProgram.Base;
+using SafetyProgram.Core.Commands.SelectionLogic;
 using SafetyProgram.Core.Models;
 using SafetyProgram.UI.DocumentObject;
 
@@ -11,23 +13,41 @@ namespace SafetyProgram.UI.ModelViews.Documents.Default
     /// </summary>
     internal sealed class DocumentViewModel : IDocumentViewModel
     {
-        private readonly IDocument document;
+        private readonly IDocument model;
 
         /// <summary>
         /// Construct an instance of a document viewmodel.
         /// </summary>
         /// <param name="document">The underlying document model.</param>
         /// <param name="documentCommands">Commands that act on the document model.</param>
-        public DocumentViewModel(IDocument document,
-            ReadOnlyObservableCollection<IUiController> documentObjects)
+        public DocumentViewModel(IDocument model,
+            IApplicationConfiguration configuration,
+            ICommandInvoker commandInvoker,
+            ISelectionManager selectionManager)
         {
-            Helpers.NullCheck(document, documentObjects);
+            Helpers.NullCheck(model,
+                configuration,
+                commandInvoker,
+                selectionManager);
 
-            this.document = document;
-            this.DocumentObjects = documentObjects;
+            this.model = model;
 
-            this.document.FormatChanged += (sender, newFormatEventHandler) =>
-                PropertyChanged.Raise(this, "Format");
+            this.DocumentObjects =
+                model
+                .Content
+                .EchoCollection(
+                    (modelObj) =>
+                    {
+                        var fac = new DocumentObjectUiControllerFactory(
+                            configuration,
+                            commandInvoker,
+                            selectionManager);
+
+                        return fac.GetDocumentObjectUiController(modelObj);
+                    });
+
+            model.FormatChanged +=
+                (s, e) => this.PropertyChanged.Raise(this, "Format");
         }
 
         /// <summary>
@@ -35,14 +55,13 @@ namespace SafetyProgram.UI.ModelViews.Documents.Default
         /// </summary>
         public IFormat Format
         {
-            get { return document.Format; }
+            get { return model.Format; }
         }
 
         /// <summary>
         /// Get the documentobjects in the document.
         /// </summary>
-        public ReadOnlyObservableCollection<
-            IUiController> DocumentObjects { get; private set; }
+        public ReadOnlyObservableCollection<Control> DocumentObjects { get; private set; }
 
         /// <summary>
         /// Occurs when a property on the viewmodel changes.

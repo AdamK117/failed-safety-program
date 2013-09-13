@@ -19,8 +19,7 @@ namespace SafetyProgram.UI.ModelViews.ContentViews.DocumentObjects.ChemicalTable
         {
             this.chemicalTable = chemicalTable;
 
-            this.Chemicals = new ReadOnlyObservableCollection<
-                ICoshhChemical>(chemicalTable.Content);
+            this.Chemicals = chemicalTable.Content;
 
             chemicalTable.HeaderChanged +=
                 (s, e) => PropertyChanged.Raise(this, "Header");
@@ -44,7 +43,7 @@ namespace SafetyProgram.UI.ModelViews.ContentViews.DocumentObjects.ChemicalTable
         /// <summary>
         /// Get the chemicals in the chemical table.
         /// </summary>
-        public ReadOnlyObservableCollection<
+        public ObservableCollection<
             ICoshhChemical> Chemicals { get; private set; }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using SafetyProgram.Core.Models;
+﻿using System.Windows.Controls;
+using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.DocumentObject
 {
@@ -12,6 +13,6 @@ namespace SafetyProgram.UI.DocumentObject
         /// </summary>
         /// <param name="documentObject">The model from which to create the Ui controller.</param>
         /// <returns>A new <code>IDocumentObjectUiController</code> created from the model.</returns>
-        IUiController GetDocumentObjectUiController(IDocumentObject documentObject);
+        Control GetDocumentObjectUiController(IDocumentObject documentObject);
     }
 }

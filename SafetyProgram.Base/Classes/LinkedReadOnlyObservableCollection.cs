@@ -5,6 +5,18 @@ using System.Linq;
 
 namespace SafetyProgram.Base
 {
+    public static class MutableHelpers
+    {
+        public static ReadOnlyObservableCollection<TChild>
+            EchoCollection<TParent, TChild>(this ObservableCollection<TParent> parent,
+            Func<TParent, TChild> linker)
+        {
+            return new LinkedReadOnlyObservableCollection<TParent, TChild>(
+                parent,
+                linker);
+        }
+    }
+
     public sealed class LinkedReadOnlyObservableCollection<Parent, Child> 
         : ReadOnlyObservableCollection<Child>
     {

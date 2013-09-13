@@ -8,13 +8,10 @@ namespace SafetyProgram.UI.ModelViews.Documents.Default
     /// </summary>
     internal sealed partial class DocumentView : UserControl
     {
-        private readonly IDocumentViewModel viewModel;
-
         public DocumentView(IDocumentViewModel viewModel)
         {
             Helpers.NullCheck(viewModel);
 
-            this.viewModel = viewModel;
             this.DataContext = viewModel;
 
             InitializeComponent();

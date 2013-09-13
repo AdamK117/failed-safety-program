@@ -12,6 +12,7 @@ namespace SafetyProgram.UI.ModelViews.ContentViews.DocumentObjects.ChemicalTable
         public ChemicalTableView(IChemicalTableViewModel viewModel)
         {
             this.viewModel = viewModel;
+
             this.DataContext = viewModel;
 
             InitializeComponent();

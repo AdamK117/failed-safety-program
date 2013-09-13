@@ -1,6 +1,9 @@
 ﻿using System.Windows.Controls;
 using Fluent;
 using SafetyProgram.Base;
+using SafetyProgram.Core;
+using SafetyProgram.Core.Commands.SelectionLogic;
+using SafetyProgram.Core.Models;
 
 namespace SafetyProgram.UI.MainView.Default
 {
@@ -10,14 +13,29 @@ namespace SafetyProgram.UI.MainView.Default
     internal sealed class MainViewModel : 
         IMainViewModel
     {
-        public MainViewModel(Ribbon ribbonView,
-            Control contentView)
+        public MainViewModel(IApplicationKernel model,
+            IApplicationConfiguration configuration,
+            ICommandController commandController,
+            ISelectionManager selectionManager)
         {
-            Helpers.NullCheck(ribbonView,
-                contentView);
+            Helpers.NullCheck(model,
+                configuration,
+                commandController,
+                selectionManager);
 
-            this.RibbonView = ribbonView;
-            this.ContentView = contentView;
+            this.RibbonView = new RibbonView(
+                new RibbonViewModel(
+                    model,
+                    configuration,
+                    commandController,
+                    selectionManager));
+
+            this.ContentView = new ContentView(
+                new ContentViewModel(
+                    model,
+                    configuration,
+                    commandController,
+                    selectionManager));
         }
 
         /// <summary>

@@ -3,9 +3,9 @@ using SafetyProgram.Base;
 
 namespace SafetyProgram.UI.MainView.Default
 {
-    internal sealed partial class MainView : RibbonWindow
+    internal sealed partial class MainViews : RibbonWindow
     {
-        public MainView(IMainViewModel viewModel)
+        public MainViews(IMainViewModel viewModel)
         {
             Helpers.NullCheck(viewModel);
 
