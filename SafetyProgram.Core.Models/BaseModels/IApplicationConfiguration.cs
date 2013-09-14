@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using SafetyProgram.Core.Models;
-
+﻿
 namespace SafetyProgram.Core.Models
 {
     /// <summary>

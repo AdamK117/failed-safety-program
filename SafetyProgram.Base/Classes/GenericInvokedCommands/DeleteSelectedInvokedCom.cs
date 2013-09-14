@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using SafetyProgram.Base;
-using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base.GenericCommands
 {

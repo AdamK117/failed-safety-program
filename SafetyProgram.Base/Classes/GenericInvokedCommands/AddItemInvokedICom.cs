@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using SafetyProgram.Base;
-using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base.GenericCommands
 {

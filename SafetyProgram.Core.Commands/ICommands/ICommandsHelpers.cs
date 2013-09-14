@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace SafetyProgram.Core.Commands.ICommands
 {
     internal static class ICommandsHelpers

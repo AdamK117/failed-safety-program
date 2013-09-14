@@ -1,5 +1,4 @@
-﻿using System.Windows.Input;
-
+﻿
 namespace SafetyProgram.Base
 {
     /// <summary>

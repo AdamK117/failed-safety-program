@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Forms;
 using System.Windows.Input;
-using SafetyProgram.Base.Interfaces;
 
 namespace SafetyProgram.Base.GenericCommands
 {
