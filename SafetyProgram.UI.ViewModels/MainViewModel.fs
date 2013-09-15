@@ -5,6 +5,7 @@ open System.ComponentModel
 open SafetyProgram.Core
 open Fluent
 open SafetyProgram.UI.Views.MainViews
+open Microsoft.FSharp.Control
 
 // Defines a standard implementation of a <code>IMainViewModel</code>
 type MainViewModel(model : IApplicationKernel, ribbon, documentViewFactory) as this = 
@@ -22,6 +23,8 @@ type MainViewModel(model : IApplicationKernel, ribbon, documentViewFactory) as t
             propertyChangedEvent.Trigger(
                 this, 
                 new PropertyChangedEventArgs("ContentView")))    
+
+    // MEMBERS
     
     // Viewmodel implementation
     interface IMainViewModel with

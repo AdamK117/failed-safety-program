@@ -77,10 +77,6 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -120,6 +116,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,6 +131,10 @@
     <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.csproj">
       <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
       <Name>SafetyProgram.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UI\SafetyProgram.UI.fsproj">
+      <Project>{d3bd9bae-dbf1-44b3-ab6c-53279266c792}</Project>
+      <Name>SafetyProgram.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

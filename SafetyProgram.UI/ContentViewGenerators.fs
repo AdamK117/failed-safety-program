@@ -6,15 +6,16 @@ open Fluent
 open SafetyProgram.Base
 open SafetyProgram.Core.Commands.SelectionLogic
 open SafetyProgram.Core.Models
-open SafetyProgram.UI.Views.ModelViews.ContentViews.DocumentObjects.ChemicalTables.Default
-open SafetyProgram.UI.Views.ModelViews.Documents.Default
-open TEMP.ViewModels
 open System.Windows.Controls
+open SafetyProgram.UI.ViewModels
+open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
+open SafetyProgram.UI.Views.ModelViews.DocumentViews
+
 
 let getDocumentObjectViews configuration commandInvoker selectionManager (documentObject : IDocumentObject) : Control = 
     match documentObject.Identifier with
         | ModelIdentifiers.CHEMICAL_TABLE_IDENTIFIER ->
-            new ChemicalTableView(
+            new DefaultChemicalTableView(
                 new ChemicalTableViewModel(
                     documentObject :?> IChemicalTable) :> IChemicalTableViewModel) :> Control
         | _ -> raise(new NotImplementedException())

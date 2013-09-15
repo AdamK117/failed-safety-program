@@ -6,9 +6,9 @@ open Fluent
 open SafetyProgram.Base
 open SafetyProgram.Core.Commands.SelectionLogic
 open SafetyProgram.Core.Models
-open SafetyProgram.UI.Views.ModelViews.RibbonTabViews.DocumentObjects.ChemicalTables
-open SafetyProgram.UI.Views.ModelViews.RibbonTabViews.Documents
-open TEMP.ViewModels
+open SafetyProgram.UI.ViewModels
+open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
+open SafetyProgram.UI.Views.ModelViews.DocumentViews
 
 let getDocumentRibbonTabs commandInvoker document = 
     [new InsertRibbonTabView(
@@ -19,7 +19,7 @@ let getDocumentRibbonTabs commandInvoker document =
 let getDocumentObjectRibbonTabs (documentObject : IDocumentObject) applicationConfiguration commandInvoker selectionManager = 
     match documentObject.Identifier with
         | ModelIdentifiers.CHEMICAL_TABLE_IDENTIFIER ->
-            new ChemicalTableRibbonView(
+            new ChemicalTableContextualRibbonTab(
                 new ChemicalTableRibbonTabViewModel(
                     documentObject :?> IChemicalTable,
                     applicationConfiguration,
