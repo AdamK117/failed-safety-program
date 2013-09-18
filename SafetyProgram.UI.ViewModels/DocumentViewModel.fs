@@ -3,33 +3,35 @@
 open System.ComponentModel
 open System.Collections.ObjectModel
 open SafetyProgram.Core.Models
-open SafetyProgram.Base
 open System.Windows.Controls
 open SafetyProgram.UI.Views.ModelViews.DocumentViews
 
-type DocumentViewModel(model : IDocument, documentObjectViewFactory : IDocumentObject->Control) as this = 
+type DocumentViewModel(model : Document, provider : IEvent<Document>, documentObjectViewFactory : DocumentObject->Control) as this = 
     let mutable format = model.Format
-
-    //TODO: LINKED COLLECTION
-    let documentObjects = new LinkedReadOnlyObservableCollection<_,_>(model.Content, fun model->documentObjectViewFactory(model))
-
+    let mutable documentObjectViews = model.Content |> Seq.map documentObjectViewFactory
     let propertyChangedEvent = new Event<_,_>()
 
     do
-        model.FormatChanged.Add(fun e ->
-            format<-e.NewProperty
-            propertyChangedEvent.Trigger(
-                this,
-                new PropertyChangedEventArgs("Format")))
+        provider.Add(fun newDocument -> 
+                        if newDocument.Format <> format then
+                            format<-newDocument.Format
+                            propertyChangedEvent.Trigger(
+                                this,
+                                new PropertyChangedEventArgs("Format"))
+                        else ()
+                        documentObjectViews <- newDocument.Content |> Seq.map documentObjectViewFactory                                                
+                        propertyChangedEvent.Trigger(
+                            this,
+                            new PropertyChangedEventArgs("DocumentObjects")))        
     
     // Define viewmodel links
     interface IDocumentViewModel with
         member this.Format = format
-        member this.DocumentObjects = documentObjects :> ReadOnlyObservableCollection<Control>
+        member this.DocumentObjects = documentObjectViews
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
 
     member this.Format = format
-    member this.DocumentObjects = documentObjects :> ReadOnlyObservableCollection<Control>
+    member this.DocumentObjects = documentObjectViews
     [<CLIEvent>]
     member this.PropertyChanged = propertyChangedEvent.Publish

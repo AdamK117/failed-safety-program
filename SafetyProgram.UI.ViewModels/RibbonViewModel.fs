@@ -1,35 +1,26 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
-open System
 open System.ComponentModel
-open SafetyProgram.Core
 open Fluent
-open System.Collections.ObjectModel
-open SafetyProgram.Core.Commands.ICommands
 open SafetyProgram.Core.Models
 open SafetyProgram.UI.Views.MainViews
 
-type RibbonViewModel(model, configuration, commandInvoker, selectionManager,documentRibbonFactory) =
-    let ribbonTabs = new ObservableCollection<RibbonTabItem>()
-    let commands = new CoreCommands(model, commandInvoker)
-
-    // Handler for document changes
-    let documentChanged newDoc = 
-        ribbonTabs.Clear()
-        if (newDoc <> null) then
-            documentRibbonFactory(newDoc)
-            |> List.iter(fun tab ->
-                ribbonTabs.Add(tab))
+type RibbonViewModel(model : Option<Document>, provider : IEvent<Document>, tabFactory : Document->seq<RibbonTabItem>) as this = 
+    let mutable ribbonTabs = model |> tabFactory
+    let propertyChangedEvent = new Event<_,_>()
     
-    // Add handler, update if necessary.
     do
-        model.DocumentChanged.Add(fun e->
-            documentChanged(e.NewProperty))
-        documentChanged(model.Document)            
+        provider.Add(fun newDocument ->
+                        ribbonTabs <- newDocument |> tabFactory
+                        propertyChangedEvent.Trigger(
+                            this,
+                            new PropertyChangedEventArgs("RibbonTabs")))
 
     interface IRibbonViewModel with
         member this.RibbonTabs = ribbonTabs
-        member this.Commands = commands :> ICoreCommands
+        [<CLIEvent>]
+        member this.PropertyChanged = propertyChangedEvent.Publish
 
     member this.RibbonTabs = ribbonTabs
-    member this.Commands = commands :> ICoreCommands
+    [<CLIEvent>]
+    member this.PropertyChanged = propertyChangedEvent.Publish

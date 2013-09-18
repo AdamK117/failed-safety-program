@@ -71,14 +71,6 @@
       <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
       <Name>SafetyProgram.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.csproj">
-      <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
-      <Name>SafetyProgram.Core.IO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
-      <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>
-      <Name>SafetyProgram.Core.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

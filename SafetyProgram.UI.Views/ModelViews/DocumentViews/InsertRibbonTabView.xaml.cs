@@ -13,6 +13,7 @@ namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
             Helpers.NullCheck(viewModel);
 
             this.DataContext = viewModel;
+
             InitializeComponent();
         }
     }

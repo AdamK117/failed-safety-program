@@ -1,23 +1,18 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Fluent;
-using SafetyProgram.Core.Commands.ICommands;
 
 namespace SafetyProgram.UI.Views.MainViews
 {
     /// <summary>
     /// Defines a viewmodel for the ribbon view.
     /// </summary>
-    public interface IRibbonViewModel
+    public interface IRibbonViewModel : 
+        INotifyPropertyChanged
     {
         /// <summary>
         /// Get the ribbon tabs for this ribbon.
         /// </summary>
-        ObservableCollection<RibbonTabItem> RibbonTabs { get; }
-
-        /// <summary>
-        /// Get the commands available to the ribbon.
-        /// </summary>
-        /// <example>New, Load, Close, SaveAs, etc.</example>
-        ICoreCommands Commands { get; }
+        IEnumerable<RibbonTabItem> RibbonTabs { get; }
     }
 }

@@ -1,7 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using SafetyProgram.Core.Commands.ICommands;
-using SafetyProgram.Core.Models;
+using SafetyProgram.Core;
 
 namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
 {
@@ -19,11 +18,6 @@ namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
         /// <summary>
         /// Get the search result yielded from the search string.
         /// </summary>
-        ObservableCollection<IChemical> SearchResult { get; }
-
-        /// <summary>
-        /// Get a group of commands that act on the chemicaltable.
-        /// </summary>
-        IChemicalTableCommands Commands { get; }
+        IEnumerable<Models.Chemical> SearchResult { get; }
     }
 }

@@ -1,7 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Controls;
-using SafetyProgram.Core.Models;
+using SafetyProgram.Core;
 
 namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
 {
@@ -14,11 +14,11 @@ namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
         /// <summary>
         /// Get the format of the document.
         /// </summary>
-        IFormat Format { get; }
+        Models.Format Format { get; }
 
         /// <summary>
         /// Get the documentobjects in the document.
         /// </summary>
-        ReadOnlyObservableCollection<Control> DocumentObjects { get; }
+        IEnumerable<Control> DocumentObjects { get; }
     }
 }

@@ -124,13 +124,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.csproj">
-      <Project>{6f13ed53-21dd-44e9-a393-fd35117221df}</Project>
+    <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">
+      <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>
       <Name>SafetyProgram.Core.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.csproj">
-      <Project>{eef19944-50c5-4965-bc69-3cd032e33309}</Project>
-      <Name>SafetyProgram.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI\SafetyProgram.UI.fsproj">
       <Project>{d3bd9bae-dbf1-44b3-ab6c-53279266c792}</Project>

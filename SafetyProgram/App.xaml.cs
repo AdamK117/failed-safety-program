@@ -17,6 +17,8 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
 
+            var something = new SafetyProgram.Core.Models.Chemical(null, null);
+
             var applicationKernel = new ApplicationKernel(
                 new ApplicationConfiguration());
 
