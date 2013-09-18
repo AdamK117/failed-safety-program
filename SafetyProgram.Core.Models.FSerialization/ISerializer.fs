@@ -1,4 +1,4 @@
-﻿module ConverterInterface
+﻿module SafetyProgram.Core.Models.FSerialization.ConverterInterface
 
 // Defines an interface for converting from one form to another
 type IConverter<'a, 'b> =
