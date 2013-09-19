@@ -1,4 +1,4 @@
-﻿module SafetyProgram.Core.Models.FSerialization.ChemicalXml
+﻿module SafetyProgram.Core.Models.Serialization.ChemicalXml
 
 open HazardXml
 open ConverterInterface

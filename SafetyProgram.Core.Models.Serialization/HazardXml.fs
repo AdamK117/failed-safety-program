@@ -1,4 +1,4 @@
-﻿module SafetyProgram.Core.Models.FSerialization.HazardXml
+﻿module SafetyProgram.Core.Models.Serialization.HazardXml
 
 open System.Xml.Linq
 open System.Xml

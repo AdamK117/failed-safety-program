@@ -58,16 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRepository.cs" />
-    <Compile Include="Serialization\ILocalStorageConverter.cs" />
     <Compile Include="Services\ICallbackService.cs" />
-    <Compile Include="Serialization\IDeserializer.cs" />
     <Compile Include="Services\IInputService.cs" />
     <Compile Include="Services\IIOService.cs" />
     <Compile Include="Services\InteractiveLocalFileService.cs" />
     <Compile Include="Services\IOutputService.cs" />
-    <Compile Include="Serialization\ISerializer.cs" />
-    <Compile Include="Serialization\IStorageConverter.cs" />
     <Compile Include="Services\LocalFileService.cs" />
     <Compile Include="Services\LocalFileServiceMultiItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

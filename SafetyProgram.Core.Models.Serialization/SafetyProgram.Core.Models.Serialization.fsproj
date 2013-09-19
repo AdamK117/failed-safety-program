@@ -8,9 +8,9 @@
     <ProjectGuid>c15235cf-54ec-467b-9b87-609aaa999cf6</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>SafetyProgram.Core.Models.FSerialization</RootNamespace>
-    <AssemblyName>SafetyProgram.Core.Models.FSerialization</AssemblyName>
+    <AssemblyName>SafetyProgram.Core.Models.Serialization</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <Name>SafetyProgram.Core.Models.FSerialization</Name>
+    <Name>SafetyProgram.Core.Models.Serialization</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,6 +56,7 @@
     <Compile Include="ChemicalXml.fs" />
     <Compile Include="CoshhChemicalXml.fs" />
     <Compile Include="ChemicalTableXml.fs" />
+    <Compile Include="DocumentObjectXml.fs" />
     <Compile Include="DocumentXml.fs" />
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,4 @@
-﻿module SafetyProgram.Core.Models.FSerialization.ChemicalTableXml
+﻿module SafetyProgram.Core.Models.Serialization.ChemicalTableXml
 
 open Helpers
 open CoshhChemicalXml
