@@ -121,10 +121,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fluent\Fluent\Fluent dotNET 4.0.csproj">
-      <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
-      <Name>Fluent dotNET 4.0</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
       <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
       <Name>SafetyProgram.Base</Name>
@@ -132,6 +128,10 @@
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">
       <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>
       <Name>SafetyProgram.Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.ExternalLibraries\Fluent\Fluent\Fluent dotNET 4.0.csproj">
+      <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
+      <Name>Fluent dotNET 4.0</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
