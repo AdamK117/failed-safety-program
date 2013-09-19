@@ -6,19 +6,22 @@ open SafetyProgram.Core.Models
 open System.Xml.Linq
 open System.Xml
 open System
+open DocumentObjectXml
 
-type DocumentXml() = 
-    interface IConverter<Document, XElement> with
-        member this.ConvertTo(data : Document) = 
-            raise (new NotImplementedException())
-        member this.ConvertFrom(data : XElement) = 
-            let format = { Width=0.21m<m>; Height=0.297m<m> }
-            let content = 
-                data.Elements()
-                |> Seq.map (fun _ -> None)
-                |> Some
+let DocumentXml = {
+    ConvertTo = fun data ->
+        new NotImplementedException() |> raise
 
-            if (content <> None) then
-                None
-            else
-                None
+    ConvertFrom = fun (data : XElement) -> 
+        let format = { Width=0.21m<m>; Height=0.297m<m> }
+
+        let content = 
+            data.Elements()
+            |> Seq.map (DocumentObjectXmlConverter.ConvertFrom)
+            |> Some
+
+        if (content <> None) then
+            None
+        else
+            None
+}

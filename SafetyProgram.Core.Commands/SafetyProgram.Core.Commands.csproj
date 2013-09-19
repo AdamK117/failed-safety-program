@@ -86,10 +86,6 @@
     <Compile Include="SelectionLogic\SelectionManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
-      <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
-      <Name>SafetyProgram.Base</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.csproj">
       <Project>{4147da27-504e-49f3-9abd-df49e509b8ae}</Project>
       <Name>SafetyProgram.Core.IO</Name>

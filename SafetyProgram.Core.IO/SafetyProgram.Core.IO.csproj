@@ -67,12 +67,6 @@
     <Compile Include="Services\LocalFileServiceMultiItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.csproj">
-      <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
-      <Name>SafetyProgram.Base</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
