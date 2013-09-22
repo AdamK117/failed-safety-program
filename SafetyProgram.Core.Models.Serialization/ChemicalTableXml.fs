@@ -1,34 +1,29 @@
 ﻿module SafetyProgram.Core.Models.Serialization.ChemicalTableXml
 
-open Helpers
 open CoshhChemicalXml
-open ConverterInterface
 open SafetyProgram.Core.Models
 open System.Xml.Linq
-open System.Xml
 open System
+open Core
 
 let ChemicalTableXmlConverter = {
     ConvertTo = fun data ->
         new NotImplementedException() |> raise
         
     ConvertFrom = fun (data : XElement) ->
-        let header = 
-            match data.Element(xname "header") with
-            | null -> Some <| "Default Header"
-            | headerElement -> Some <| headerElement.Value
+        maybeBuilder {
+            let header = 
+                getElement data "header"
+                >>= getValue
+                |> function
+                    | Some(a) -> a
+                    | None -> "Default Header"
 
-        let chemicals = 
-            let chemicalConverter = CoshhChemicalXmlConverter
-            data.Elements(xname "coshhchemical")
-            |> Seq.map(chemicalConverter.ConvertFrom)
-            |> fun coshhChemicals ->
-                match coshhChemicals |> Seq.exists(fun coshhChemical -> coshhChemical = None) with
-                | true -> None
-                | false -> coshhChemicals |> Seq.map(fun coshhChemical -> coshhChemical.Value) |> Some
+            let! chemicals = 
+                data.Elements(xname "coshhchemical")
+                |> Seq.map(CoshhChemicalXmlConverter.ConvertFrom)
+                |> flattenOptions
 
-        if (header <> None) || (chemicals <> None) then
-            Some <| { Header=header.Value; Chemicals=chemicals.Value; }
-        else
-            None
+            return ChemicalTable({ Header=header; Chemicals=chemicals })
+        }
 }    

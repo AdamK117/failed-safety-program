@@ -42,8 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationKernel.fs" />
+    <Compile Include="NullCheck.fs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj">
+      <Name>SafetyProgram.Core.IO</Name>
+      <Project>{c95d174d-a8aa-455d-ab70-a9bbd0355656}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">
       <Name>SafetyProgram.Core.Models</Name>
       <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>

@@ -44,6 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services.fs" />
+    <Compile Include="LocalSvc.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Core.Models.Serialization\SafetyProgram.Core.Models.Serialization.fsproj">
+      <Name>SafetyProgram.Core.Models.Serialization</Name>
+      <Project>{c15235cf-54ec-467b-9b87-609aaa999cf6}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>

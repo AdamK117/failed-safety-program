@@ -50,8 +50,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers.fs" />
-    <Compile Include="TwoWayConverter.fs" />
+    <Compile Include="Core.fs" />
     <Compile Include="HazardXml.fs" />
     <Compile Include="ChemicalXml.fs" />
     <Compile Include="CoshhChemicalXml.fs" />

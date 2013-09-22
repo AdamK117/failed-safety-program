@@ -1,32 +1,37 @@
 ﻿module SafetyProgram.Core.Models.Serialization.HazardXml
 
+open Core
 open System.Xml.Linq
-open System.Xml
 open System
-open Helpers
 open SafetyProgram.Core.Models
-open ConverterInterface
 
+// Converts hazard records to and from an XML format.
 let HazardXmlConverter =  {
     ConvertTo = fun data ->
         NotImplementedException() |> raise
 
     ConvertFrom = fun (data : XElement)->
-        let warning = 
-            match String.IsNullOrWhiteSpace(data.Value) |> not with
-            | true -> Some(data.Value)
-            | false -> None
-        let signalWord = 
-            match data.Attribute(xname "signalword") with
-            | null -> ""
-            | attr -> attr.Value
-        let symbol = 
-            match data.Attribute(xname "symbol") with
-            | null -> ""
-            | attr -> attr.Value
+        maybeBuilder {
+            let! warning = 
+                let warningContents = data.Value
+                match warningContents|> String.IsNullOrWhiteSpace with
+                | true -> None
+                | false -> Some(warningContents)
 
-        if warning = None then
-            None
-        else
-            Some <| { Warning=warning.Value; SignalWord=signalWord; Symbol=symbol; RiskPhrase=""; }
+            let signalWord = 
+                getAttribute data "signalword"
+                >>= getAttributeValue
+                |> function
+                    | Some(a) -> a
+                    | None -> ""
+
+            let symbol = 
+                getAttribute data "symbol"
+                >>= getAttributeValue
+                |> function
+                    | Some(a) -> a
+                    | None -> ""
+
+            return {Warning = warning; SignalWord = signalWord; Symbol = symbol; RiskPhrase=""; }
+        }
 }

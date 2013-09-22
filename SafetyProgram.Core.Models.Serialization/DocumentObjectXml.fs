@@ -2,8 +2,9 @@
 
 open System.Xml.Linq
 open ChemicalTableXml
-open ConverterInterface
 open System
+open SafetyProgram.Core.Models
+open Core
 
 let DocumentObjectXmlConverter = {
     ConvertTo = fun data ->
