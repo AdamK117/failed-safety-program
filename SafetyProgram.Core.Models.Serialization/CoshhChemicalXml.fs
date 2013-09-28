@@ -18,6 +18,7 @@ let CoshhChemicalXmlConverter = {
                         getElement data "amount" 
                         >>= getValue 
                         >>= parseDecimal
+
                     return!
                         getElement data "unit"
                         >>= getValue

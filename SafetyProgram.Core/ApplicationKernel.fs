@@ -2,6 +2,11 @@
 
 open SafetyProgram.Core.Models
 open SafetyProgram.Core.IO.Services
+open SafetyProgram.Core.IO.LocalSvc
+open SafetyProgram.Core.Models.Serialization.Core
+open SafetyProgram.Core.Models.Serialization.DocumentXml
+open System.Xml.Linq
+open System.IO
 
 // Application state data.
 type KernelData = {
@@ -9,20 +14,31 @@ type KernelData = {
     Configuration : ApplicationConfiguration
 }
 
-type ApplicationKernel = {
-    mutable KernelData : KernelData
-    KernelDataChanged : IEvent<KernelData>
-    IOService : DataService<Document>
-    PerformCommand : KernelData->KernelData->unit
-}
+// Actual application kernel.
+type ApplicationKernel() = 
+    // Creates default document.
+    let documentGenerator = fun () -> 
+        { Content = Seq.empty;
+            Format = { Width=0.21m<m>; Height=0.297m<m> } }
 
-type applicationKernel(config) = 
-    let mutable kernelData = { Document = None; Configuration = config }
-    let ketnelDataChanged = new Event<KernelData>()
-    let service = 
+    // Holder for the current data.
+    let mutable kernelData = { 
+        Document = Some <| documentGenerator();
+        Configuration = { ImplMe = true }
+    }
 
-    member this.KernelData = 
- 
+    // First class event for publishing data changes.
+    let kernelDataChanged = new Event<KernelData>()
 
-    
+    // Default service implementation.
+    let ioService = localSvc<Document> documentGenerator DocumentXml    
 
+    member this.KernelData = kernelData
+
+    member this.KernelDataChanged = kernelDataChanged.Publish
+
+    member this.PerformCommand(command : KernelData->KernelData) =
+        kernelData <- command(kernelData)
+        kernelDataChanged.Trigger(kernelData)
+
+    member this.Service = ioService

@@ -48,12 +48,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainViewModel.fs" />
-    <Compile Include="RibbonViewModel.fs" />
-    <Compile Include="InsertRibbonTabViewModel.fs" />
+    <Compile Include="ViewModelInterface.fs" />
+    <Compile Include="ChemicalTableViewModel.fs" />
     <Compile Include="ChemicalTableContextualRibbonTabViewModel.fs" />
     <Compile Include="DocumentViewModel.fs" />
-    <Compile Include="ChemicalTableViewModel.fs" />
+    <Compile Include="InsertRibbonTabViewModel.fs" />
+    <Compile Include="RibbonViewModel.fs" />
+    <Compile Include="MainViewModel.fs" />
+    <Compile Include="MainUiController.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">

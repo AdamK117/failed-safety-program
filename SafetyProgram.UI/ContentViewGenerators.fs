@@ -10,13 +10,12 @@ open SafetyProgram.UI.Views.ModelViews.DocumentViews
 let documentObjectViewGenerator documentObject documentObjectChangedEvent = 
     match documentObject with
         | ChemicalTable chemicalTable -> new DefaultChemicalTableView(
-                                            new ChemicalTableViewModel(
-                                                chemicalTable, documentObjectChangedEvent)) :> Control
+                                            new ChemicalTableViewModel(chemicalTable)) :> Control
 
-// Generate a view from the supplied document model.
-let documentViews document documentChangedEvent =
-    new DocumentView(
-        new DocumentViewModel(
-            document, documentChangedEvent, documentObjectViewGenerator, documentChangedEvent))
+//// Generate a view from the supplied document model.
+//let documentViews document documentChangedEvent =
+//    new DocumentView(
+//        new DocumentViewModel(
+//            document, documentChangedEvent, documentObjectViewGenerator))
 
 

@@ -19,8 +19,7 @@ let getDocumentRibbonTabs document =
 let getDocumentObjectRibbonTabs (documentObject, documentChangedEvent) = 
     match documentObject with
         | ChemicalTable chemicalTable -> new ChemicalTableContextualRibbonTab(
-                                            new ChemicalTableRibbonTabViewModel(
-                                                chemicalTable, documentChangedEvent))
+                                            new ChemicalTableRibbonTabViewModel(chemicalTable))
 
 
 

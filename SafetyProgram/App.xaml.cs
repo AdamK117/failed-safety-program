@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using SafetyProgram.Core;
-using SafetyProgram.Core.Models;
 using SafetyProgram.UI;
+using SafetyProgram;
 
 namespace SafetyProgram
 {
@@ -17,14 +16,9 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
 
-            var something = new SafetyProgram.Core.Models.Chemical(null, null);
+            var applicationKernel = new Core.ApplicationKernel();
 
-            var applicationKernel = new ApplicationKernel(
-                new ApplicationConfiguration());
-
-            var applicationUi = new MainUiController(applicationKernel);
-
-            applicationUi.View.Show();
+            var uiController = new UI.MainUiController(applicationKernel);
         }
 
         /// <summary>
