@@ -9,32 +9,37 @@ open Microsoft.FSharp.Control
 open SafetyProgram.UI.ViewModels.ViewModelInterface
 
 // Defines a standard implementation of a <code>IMainViewModel</code>
-type MainViewModel(model : KernelData, ribbon, documentViewFactory) = 
-    // Event that's called when property changes.
+type MainViewModel(model : KernelData, ribbon, contentViewFactory) = 
     let propertyChangedEvent = new Event<_,_>()
     let commandRequest = new Event<_>()
 
     let contentViewFactory = function
-        | Some(document) -> document |> documentViewFactory
-        | None -> null
+    | Some(content) -> contentViewFactory content
+    | None -> null
 
-    let mutable currentModel = model 
+    let mutable currentModel = model
 
     // ViewModel impl.
     interface IViewModel<KernelData> with
-        member this.Model = currentModel
+
+        // New model visitors
         member this.PushModel(newModel) =
+            let oldModel = currentModel
             currentModel <- newModel
-            propertyChangedEvent.Trigger(
-                this,
-                new PropertyChangedEventArgs("ContentView"))
+
+            if currentModel.Content <> oldModel.Content then
+                propertyChangedEvent.Trigger(
+                    this,
+                    new PropertyChangedEventArgs("ContentView"))
+
+        // Occurs when a command is requested by the view.
         member this.CommandRequested =
             commandRequest.Publish
 
     // Viewmodel explicit implementation
     interface IMainViewModel with
         member this.RibbonView = ribbon
-        member this.ContentView = contentViewFactory <| currentModel.Document
+        member this.ContentView = contentViewFactory <| currentModel.Content
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
 

@@ -5,25 +5,30 @@ open Fluent
 open SafetyProgram.Core.Models
 open SafetyProgram.UI.Views.MainViews
 open SafetyProgram.UI.ViewModels.ViewModelInterface
+open SafetyProgram.Core
 
 type RibbonViewModel(model, tabFactory) = 
     let mutable currentModel = model
 
-    let ribbonTabGenerator doc =
-        match doc with
-        | Some doc -> doc |> tabFactory
+    let ribbonTabGenerator (content : Option<Document * DataType>) =
+        match content with
+        | Some(content, dataType) -> content|> tabFactory
         | None -> null
 
     let propertyChangedEvent = new Event<_,_>()
     let commandRequest = new Event<_>()
 
-    interface IViewModel<Option<Document>> with
-        member this.Model = currentModel
+    interface IViewModel<Option<Document * DataType>> with
+        // New model visit
         member this.PushModel(newModel) = 
+            let oldModel = currentModel
             currentModel <- newModel
-            propertyChangedEvent.Trigger(
-                this,
-                new PropertyChangedEventArgs("RibbonTabs"))
+
+            if currentModel <> oldModel then
+                propertyChangedEvent.Trigger(
+                    this,
+                    new PropertyChangedEventArgs("RibbonTabs"))            
+
         member this.CommandRequested = 
             commandRequest.Publish
 

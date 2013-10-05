@@ -10,23 +10,22 @@ let ChemicalXmlConverter = {
     ConvertTo = fun data ->
         new NotImplementedException() |> raise
         
-    ConvertFrom = fun (data : XElement) ->
-        maybeBuilder {
-            let! name = 
-                getElement data "name"
-                >>= getValue
+    ConvertFrom = fun (data : XElement) -> maybeBuilder {
+        let! name = 
+            getElement data "name"
+            >>= getValue
 
-            let! hazards = 
-                maybeBuilder {
-                    let! hazardsElement = getElement data "hazards"
-                    return!                            
-                        hazardsElement.Elements(xname "hazard")
-                        |> Seq.map(HazardXmlConverter.ConvertFrom)
-                        |> flattenOptions
-                }
+        let! hazards = 
+            maybeBuilder {
+                let! hazardsElement = getElement data "hazards"
+                return!                            
+                    hazardsElement.Elements(xname "hazard")
+                    |> Seq.map(HazardXmlConverter.ConvertFrom)
+                    |> flattenOptions
+            }
 
-            return { Name = name; Hazards = hazards; }
-        }     
+        return { Name = name; Hazards = hazards; }
+    }     
 }
                         
 
