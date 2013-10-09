@@ -13,7 +13,7 @@ let HazardXmlConverter =  {
     ConvertFrom = fun (data : XElement) -> maybeBuilder {
         let! warning = 
             let warningContents = data.Value
-            match warningContents|> String.IsNullOrWhiteSpace with
+            match warningContents |> String.IsNullOrWhiteSpace with
             | true -> None
             | false -> Some(warningContents)
 

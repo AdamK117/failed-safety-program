@@ -14,7 +14,6 @@ type ChemicalTableRibbonTabViewModel(model) =
     let commandRequest = new Event<_>()
 
     interface IViewModel<ChemicalTable> with
-        member this.Model = model
         member this.PushModel(newModel) = 
             currentModel <- newModel
         member this.CommandRequested = commandRequest.Publish            

@@ -14,9 +14,6 @@ type ChemicalTableViewModel(model) =
     let commandRequest = new Event<_>()    
 
     interface IViewModel<ChemicalTable> with
-        // Gets the model this viewmodel represents.
-        member this.Model = currentModel
-
         // Handles a new model being pushed to this viewmodel.
         member this.PushModel(newModel) = 
             currentModel <- newModel

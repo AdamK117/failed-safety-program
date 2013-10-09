@@ -49,9 +49,6 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluent">
-      <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -107,7 +104,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.ExternalLibraries\Fluent\Fluent\Fluent dotNET 4.0.csproj">
+      <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
+      <Name>Fluent dotNET 4.0</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

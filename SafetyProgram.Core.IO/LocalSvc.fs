@@ -16,14 +16,14 @@ let localSvc<'a> generator (converter : TwoWayConverter<'a, XElement>) = {
     // Load a document from the local filesystem.
     Load = fun path -> async {
         return match File.Exists path with
-        | true ->
-            let fileStream = File.OpenRead path
-            fileStream
-            |> XElement.Load
-            |> converter.ConvertFrom
-            |> Option.bind(fun data ->
-                Some(data, fileStream))
-        | false -> None
+                | true ->
+                    let fileStream = File.OpenRead path
+                    fileStream
+                    |> XElement.Load
+                    |> converter.ConvertFrom
+                    |> Option.bind(fun data ->
+                        Some(data, fileStream))
+                | false -> None
     }
         
 

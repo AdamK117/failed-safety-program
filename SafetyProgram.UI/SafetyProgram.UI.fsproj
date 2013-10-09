@@ -32,9 +32,6 @@
     <DocumentationFile>bin\Release\SafetyProgram.UI.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fluent">
-      <HintPath>..\SafetyProgram.ExternalLibraries\Fluent\Fluent.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
@@ -66,6 +63,11 @@
     <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.fsproj">
       <Name>SafetyProgram.Core</Name>
       <Project>{e6408f8f-b8ba-4c0a-a066-4cc3465f1a88}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.ExternalLibraries\Fluent\Fluent\Fluent dotNET 4.0.csproj">
+      <Name>Fluent dotNET 4.0</Name>
+      <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI.ViewModels\SafetyProgram.UI.ViewModels.fsproj">

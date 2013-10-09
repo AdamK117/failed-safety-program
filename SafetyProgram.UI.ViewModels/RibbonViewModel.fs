@@ -7,7 +7,7 @@ open SafetyProgram.UI.Views.MainViews
 open SafetyProgram.UI.ViewModels.ViewModelInterface
 open SafetyProgram.Core
 
-type RibbonViewModel(model, tabFactory) = 
+type RibbonViewModel(model, tabFactory : Document -> seq<IViewModel<Document> * RibbonTabItem>) = 
     let mutable currentModel = model
 
     let ribbonTabGenerator (content : Option<Document * DataType>) =
@@ -33,7 +33,9 @@ type RibbonViewModel(model, tabFactory) =
             commandRequest.Publish
 
     interface IRibbonViewModel with
-        member this.RibbonTabs = ribbonTabGenerator currentModel
+        member this.RibbonTabs = 
+            ribbonTabGenerator currentModel
+            |> Seq.map snd
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
 

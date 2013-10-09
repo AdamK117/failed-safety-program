@@ -4,15 +4,15 @@ open System.ComponentModel
 open SafetyProgram.Core.Models
 open SafetyProgram.UI.Views.ModelViews.DocumentViews
 open SafetyProgram.UI.ViewModels.ViewModelInterface
+open System.Windows.Controls
 
-type DocumentViewModel(model, documentObjectViewFactory) = 
+type DocumentViewModel(model, documentObjectViewFactory : DocumentObject -> IViewModel<DocumentObject> * Control) = 
     let mutable currentModel = model
     
     let propertyChangedEvent = new Event<_,_>()
     let commandRequest = new Event<_>()
                             
     interface IViewModel<Document> with
-        member this.Model = currentModel
         member this.PushModel(newModel) = 
             if newModel.Format <> currentModel.Format then
                 propertyChangedEvent.Trigger(
@@ -34,6 +34,7 @@ type DocumentViewModel(model, documentObjectViewFactory) =
         member this.DocumentObjects =
             model.Content
             |> Seq.map documentObjectViewFactory
+            |> Seq.map snd
 
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
