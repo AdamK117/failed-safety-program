@@ -36,10 +36,13 @@
     <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj">
@@ -59,6 +62,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InterfaceCommand.fs" />
     <Compile Include="ChemicalTableCommands.fs" />
     <Compile Include="DocumentCommands.fs" />
     <Compile Include="KernelCommands.fs" />

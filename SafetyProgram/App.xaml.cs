@@ -16,9 +16,12 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
 
-            var applicationKernel = new Core.ApplicationKernel();
+            var applicationKernel = Core.defaultKernel;
+            var kernelService = Core.buildKernelService<Core.KernelData>(applicationKernel);
 
-            var uiController = new UI.MainUiController(applicationKernel);
+            var uiController = new UI.MainUiController(kernelService);
+
+            uiController.View.Show();
         }
 
         /// <summary>

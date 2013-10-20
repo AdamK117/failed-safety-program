@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Input;
 using Fluent;
 
 namespace SafetyProgram.UI.Views.MainViews
@@ -14,5 +15,7 @@ namespace SafetyProgram.UI.Views.MainViews
         /// Get the ribbon tabs for this ribbon.
         /// </summary>
         IEnumerable<RibbonTabItem> RibbonTabs { get; }
+
+        ICommand OpenDocument { get; }
     }
 }

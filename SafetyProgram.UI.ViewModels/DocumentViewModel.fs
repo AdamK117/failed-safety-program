@@ -6,20 +6,24 @@ open SafetyProgram.UI.Views.ModelViews.DocumentViews
 open SafetyProgram.UI.ViewModels.ViewModelInterface
 open System.Windows.Controls
 
-type DocumentViewModel(model, documentObjectViewFactory : DocumentObject -> IViewModel<DocumentObject> * Control) = 
-    let mutable currentModel = model
-    
+type DocumentViewModel(model, docObjectUiFactory) = 
+
     let propertyChangedEvent = new Event<_,_>()
     let commandRequest = new Event<_>()
+    
+    let mutable currentModel = model  
                             
     interface IViewModel<Document> with
         member this.PushModel(newModel) = 
-            if newModel.Format <> currentModel.Format then
+            let oldModel = currentModel
+            currentModel <- newModel
+
+            if currentModel.Format <> oldModel.Format then
                 propertyChangedEvent.Trigger(
                     this,
                     new PropertyChangedEventArgs("Format"))
             else ()
-            currentModel <- newModel
+
             propertyChangedEvent.Trigger(
                 this,
                 new PropertyChangedEventArgs("DocumentObjects"))
@@ -33,8 +37,9 @@ type DocumentViewModel(model, documentObjectViewFactory : DocumentObject -> IVie
         
         member this.DocumentObjects =
             model.Content
-            |> Seq.map documentObjectViewFactory
-            |> Seq.map snd
+            |> Seq.map (fun m ->
+                let (v, _) = docObjectUiFactory m
+                v)
 
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
@@ -43,7 +48,9 @@ type DocumentViewModel(model, documentObjectViewFactory : DocumentObject -> IVie
     
     member this.DocumentObjects = 
         model.Content
-        |> Seq.map documentObjectViewFactory
+            |> Seq.map (fun m ->
+                let (v, _) = docObjectUiFactory m
+                v)
 
     [<CLIEvent>]
     member this.PropertyChanged = propertyChangedEvent.Publish

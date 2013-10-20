@@ -82,3 +82,9 @@ let buildKernelService<'a> (init : 'a) =
         KernelDataChanged = kernelDataChanged.Publish
         Modify = fun f -> modifyProc.PostAndAsyncReply(fun replyChannel -> f, replyChannel)
     }
+
+let defaultKernel = {
+        Content = None
+        Service = Local(localSvc<Document> (fun () -> { Content = Seq.empty; Format = { Width = 1m<m>; Height = 1m<m> } }) DocumentXml)
+        Configuration = { ImplMe = false }
+}

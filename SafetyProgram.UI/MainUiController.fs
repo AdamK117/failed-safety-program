@@ -11,15 +11,14 @@ open SafetyProgram.UI.ViewModels
 type MainUiController(kernelService : DataService<KernelData>) = 
     let currentData = Async.RunSynchronously <| kernelService.Current()
 
-    let ribbonTabViewFac document = 
-        
+    let ribbonVm = new RibbonViewModel(currentData.Content, docRibbonTabUiFactory)
 
     let theView = new DefaultMainView(
                     new MainViewModel(
                         currentData,
                         new DefaultRibbonView(
                             new RibbonViewModel(
-                                currentData.Content,?)),
-                        ?))
-                                
-    member this.a = true
+                                currentData.Content, docRibbonTabUiFactory)),
+                        docUiFactory))
+
+    member x.View = theView :> Window

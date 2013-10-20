@@ -7,11 +7,9 @@ open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
 open SafetyProgram.UI.ViewModels.ViewModelInterface
 
 type ChemicalTableViewModel(model) = 
-
-    let mutable currentModel = model
-
     let propertyChangedEvent = new Event<_,_>()
-    let commandRequest = new Event<_>()    
+    let commandRequest = new Event<_>() 
+    let mutable currentModel = model       
 
     interface IViewModel<ChemicalTable> with
         // Handles a new model being pushed to this viewmodel.

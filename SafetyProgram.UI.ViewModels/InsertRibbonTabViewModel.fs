@@ -3,7 +3,6 @@
 open SafetyProgram.UI.Views.ModelViews.DocumentViews
 
 type InsertRibbonTabViewModel() = 
-    
     interface IInsertRibbonTabViewModel
 
 

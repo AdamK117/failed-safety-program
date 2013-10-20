@@ -5,13 +5,13 @@ open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
 open SafetyProgram.UI.ViewModels.ViewModelInterface
 
 type ChemicalTableRibbonTabViewModel(model) = 
-    let mutable currentModel = model
-
-    let mutable search = ""
-    let searchResult = Seq.empty
 
     let propertyChangedEvent = new Event<_,_>()
     let commandRequest = new Event<_>()
+    let mutable currentModel = model
+
+    let mutable search = ""
+    let searchResult = Seq.empty    
 
     interface IViewModel<ChemicalTable> with
         member this.PushModel(newModel) = 

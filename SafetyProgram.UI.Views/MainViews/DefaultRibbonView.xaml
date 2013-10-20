@@ -18,7 +18,7 @@
                         <Fluent:Button Header="Save As PDF" Command="{Binding Commands.Save}" />
                         <Fluent:Button Header="Open" Command="{Binding Commands.Open}" />
                         <Fluent:Button Header="Close" Command="{Binding Commands.Close}" />
-                        <Fluent:Button Header="New" Command="{Binding Commands.New}" />
+                        <Fluent:Button Header="New" Command="{Binding OpenDocument}" />
                         
                         <Fluent:BackstageTabItem Header="Recent" >
                             <Fluent:Button Header="Work In Progress (Show recently opened documents here)" />

@@ -5,17 +5,18 @@ open System.Windows.Controls
 open SafetyProgram.UI.ViewModels
 open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
 open SafetyProgram.UI.Views.ModelViews.DocumentViews
+open SafetyProgram.UI.ViewModels.ViewModelInterface
 
 // Generate a view from the supplied document object model.
-let documentObjectViewGenerator documentObject documentObjectChangedEvent = 
-    match documentObject with
-        | ChemicalTable chemicalTable -> new DefaultChemicalTableView(
-                                            new ChemicalTableViewModel(chemicalTable)) :> Control
+let docObjUiFactory model = 
+    match model with
+        | ChemicalTable(cTable) ->
+            let vm = new ChemicalTableViewModel(cTable)
+            let v = new DefaultChemicalTableView(vm) :> Control
+            (v, vm :> obj)
 
 //// Generate a view from the supplied document model.
-//let documentViews document documentChangedEvent =
-//    new DocumentView(
-//        new DocumentViewModel(
-//            document, documentChangedEvent, documentObjectViewGenerator))
-
-
+let docUiFactory model =
+    let vm = new DocumentViewModel(model, docObjUiFactory)
+    let v = new DocumentView(vm)
+    (v :> Control, vm :> obj)
