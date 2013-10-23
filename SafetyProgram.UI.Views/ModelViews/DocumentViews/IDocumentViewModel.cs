@@ -11,10 +11,9 @@ namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
     public interface IDocumentViewModel : 
         INotifyPropertyChanged
     {
-        /// <summary>
-        /// Get the format of the document.
-        /// </summary>
-        Models.Format Format { get; }
+        decimal Width { get; }
+
+        decimal Height { get; }
 
         /// <summary>
         /// Get the documentobjects in the document.

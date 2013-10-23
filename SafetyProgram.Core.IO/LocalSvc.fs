@@ -10,8 +10,9 @@ open SafetyProgram.Core.Models.Serialization.Core
 let localSvc<'a> generator (converter : TwoWayConverter<'a, XElement>) = {
 
     // Create a new document.
-    New = fun () ->
-        async { return Some(generator()), None }
+    New = fun () -> async { 
+        return Some(generator()), None 
+    }
 
     // Load a document from the local filesystem.
     Load = fun path -> async {

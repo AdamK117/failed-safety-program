@@ -10,22 +10,7 @@ open SafetyProgram.UI.Views.MainViews
 open Microsoft.FSharp.Control
 open SafetyProgram.UI.ViewModels.ViewModelInterface
 open System.Windows.Input
-
-type NewDocument(tun) = 
-
-    let canExecuteChangedEvent = new Event<_,_>()
-
-    interface ICommand with
-        member this.CanExecute(param) =
-            false
-
-        member this.Execute(param) =
-            let newDocFunc oldDoc = 
-                None
-            tun newDocFunc
-
-        [<CLIEvent>]
-        member this.CanExecuteChanged = canExecuteChangedEvent.Publish
+open NewDocumentCommand
 
 // Defines a standard implementation of a <code>IMainViewModel</code>
 type MainViewModel(model : KernelData, ribbon, modelUiFactory) = 

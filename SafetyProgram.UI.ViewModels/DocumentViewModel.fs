@@ -33,7 +33,8 @@ type DocumentViewModel(model, docObjectUiFactory) =
     
     // Define viewmodel links
     interface IDocumentViewModel with
-        member this.Format = currentModel.Format
+        member this.Width = currentModel.Format.Width / 0.01m<m>
+        member this.Height = currentModel.Format.Height / 0.001m<m>
         
         member this.DocumentObjects =
             model.Content

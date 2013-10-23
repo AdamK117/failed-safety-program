@@ -62,7 +62,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InterfaceCommand.fs" />
     <Compile Include="ChemicalTableCommands.fs" />
     <Compile Include="DocumentCommands.fs" />
     <Compile Include="KernelCommands.fs" />

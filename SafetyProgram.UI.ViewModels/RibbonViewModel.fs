@@ -7,24 +7,9 @@ open SafetyProgram.UI.Views.MainViews
 open SafetyProgram.UI.ViewModels.ViewModelInterface
 open SafetyProgram.Core
 open System.Windows.Input
+open NewDocumentCommand
 
-type NewDocument(tun) = 
-
-    let canExecuteChangedEvent = new Event<_,_>()
-
-    interface ICommand with
-        member this.CanExecute(param) =
-            false
-
-        member this.Execute(param) =
-            let newDocFunc oldDoc = 
-                None
-            tun newDocFunc
-
-        [<CLIEvent>]
-        member this.CanExecuteChanged = canExecuteChangedEvent.Publish
-
-type RibbonViewModel(model, tabFactory : Document -> seq<RibbonTabItem * IViewModel<Document>>) as this = 
+type RibbonViewModel(model : KernelData, tabFactory : Document -> seq<RibbonTabItem * IViewModel<Document>>) as this = 
 
     let propertyChangedEvent = new Event<_,_>()
     let commandRequest = new Event<_>()
@@ -41,7 +26,7 @@ type RibbonViewModel(model, tabFactory : Document -> seq<RibbonTabItem * IViewMo
             let oldModel = currentModel
             currentModel <- newModel
 
-            if currentModel <> oldModel then
+            if currentModel.Content <> oldModel.Content then
                 propertyChangedEvent.Trigger(
                     this,
                     new PropertyChangedEventArgs("RibbonTabs"))            
@@ -51,7 +36,7 @@ type RibbonViewModel(model, tabFactory : Document -> seq<RibbonTabItem * IViewMo
 
     interface IRibbonViewModel with
         member this.RibbonTabs = 
-            ribbonTabGenerator currentModel
+            ribbonTabGenerator currentModel.Content
             |> Seq.map fst
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
@@ -61,7 +46,7 @@ type RibbonViewModel(model, tabFactory : Document -> seq<RibbonTabItem * IViewMo
                 commandRequest.Trigger(f)
             new NewDocument(tun) :> ICommand
 
-    member this.RibbonTabs = ribbonTabGenerator currentModel
+    member this.RibbonTabs = ribbonTabGenerator currentModel.Content
     [<CLIEvent>]
     member this.PropertyChanged = propertyChangedEvent.Publish
 

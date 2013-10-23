@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              >
     <ScrollViewer x:Name="DocumentWrapper" Focusable="False">
-        <StackPanel x:Name="DocumentHolder" Width="{Binding Format.Width}" Background="White">
+        <StackPanel x:Name="DocumentHolder" Width="{Binding Width}" Background="White">
             <ItemsControl ItemsSource="{Binding DocumentObjects}" />            
         </StackPanel>
     </ScrollViewer>
