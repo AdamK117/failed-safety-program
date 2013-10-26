@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using SafetyProgram.Core;
+using System.Collections.Generic;
 using System.ComponentModel;
-using SafetyProgram.Core;
 
 namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
 {

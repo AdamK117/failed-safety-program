@@ -1,30 +1,23 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
-open System
-open System.ComponentModel
 open SafetyProgram.Core
-open SafetyProgram.Core.Models
-open System.Windows.Controls
-open Fluent
 open SafetyProgram.UI.Views.MainViews
-open Microsoft.FSharp.Control
-open SafetyProgram.UI.ViewModels.ViewModelInterface
 open System.Windows.Input
 open NewDocumentCommand
+open SafetyProgram.UI.ViewModels.Core
 
 // Defines a standard implementation of a <code>IMainViewModel</code>
-type MainViewModel(model : KernelData, ribbon, modelUiFactory) = 
+type MainViewModel(model, ribbon, modelUiFactory) = 
+
+    let mutable currentModel = model
 
     let propertyChangedEvent = new Event<_,_>()
     let commandRequest = new Event<_>()
 
-    let generateDocumentMvvm m = 
-        m
-        |> Option.bind (fun (m, _) -> 
-            let (v, vm) = modelUiFactory m
-            Some(m, v, vm))
-
-    let mutable currentModel = model
+    let generateDocumentMvvm = 
+        Option.bind (fun (m, _) -> 
+            let v, vm = modelUiFactory m
+            Some(m, v, vm))    
 
     // ViewModel impl.
     interface IViewModel<KernelData> with
@@ -35,9 +28,7 @@ type MainViewModel(model : KernelData, ribbon, modelUiFactory) =
             currentModel <- newModel
 
             if currentModel.Content <> oldModel.Content then
-                propertyChangedEvent.Trigger(
-                    this,
-                    new PropertyChangedEventArgs("ContentView"))
+                raisePropChanged propertyChangedEvent this "ContentView"
 
         // Occurs when a command is requested by the view.
         member this.CommandRequested =
@@ -46,22 +37,22 @@ type MainViewModel(model : KernelData, ribbon, modelUiFactory) =
     // Viewmodel explicit implementation
     interface IMainViewModel with
         member this.RibbonView = ribbon
+
         member this.ContentView = 
-            generateDocumentMvvm currentModel.Content
-            |> function
-                | Some(_, v, _) -> v
-                | None -> null
+            match generateDocumentMvvm currentModel.Content with
+            | Some(_, v, _) -> v
+            | None -> null
 
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
 
-    // Implicit implementation
+    // Implicit
     member this.RibbonView = ribbon
-    member this.ContentView =
-        generateDocumentMvvm currentModel.Content
-            |> function
-                | Some(_, v, _) -> v
-                | None -> null
+
+    member this.ContentView = 
+        match generateDocumentMvvm currentModel.Content with
+        | Some(_, v, _) -> v
+        | None -> null
 
     [<CLIEvent>]
     member this.PropertyChanged = propertyChangedEvent.Publish

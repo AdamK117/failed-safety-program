@@ -7,7 +7,7 @@ open SafetyProgram.UI.ContentViewGenerators
 open SafetyProgram.UI.RibbonViewGenerators
 open SafetyProgram.UI.Views.MainViews
 open SafetyProgram.UI.ViewModels
-open SafetyProgram.UI.ViewModels.ViewModelInterface
+open SafetyProgram.UI.ViewModels.Core
 
 type MainUiController(kernelService : DataService<KernelData>) = 
     let currentData = Async.RunSynchronously <| kernelService.Current()

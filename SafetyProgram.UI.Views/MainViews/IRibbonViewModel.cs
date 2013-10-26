@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Fluent;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
-using Fluent;
 
 namespace SafetyProgram.UI.Views.MainViews
 {

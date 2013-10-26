@@ -2,7 +2,7 @@
 
 open SafetyProgram.Core.Models
 open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
-open SafetyProgram.UI.ViewModels.ViewModelInterface
+open SafetyProgram.UI.ViewModels.Core
 
 type ChemicalTableRibbonTabViewModel(model) = 
 

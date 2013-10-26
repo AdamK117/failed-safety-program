@@ -1,26 +1,22 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
-open System.ComponentModel
-open System.Collections.ObjectModel
 open SafetyProgram.Core.Models
 open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
-open SafetyProgram.UI.ViewModels.ViewModelInterface
+open SafetyProgram.UI.ViewModels.Core
 
 type ChemicalTableViewModel(model) = 
+    
+    let mutable currentModel = model   
+
     let propertyChangedEvent = new Event<_,_>()
-    let commandRequest = new Event<_>() 
-    let mutable currentModel = model       
+    let commandRequest = new Event<_>()         
 
     interface IViewModel<ChemicalTable> with
         // Handles a new model being pushed to this viewmodel.
         member this.PushModel(newModel) = 
             currentModel <- newModel
-            propertyChangedEvent.Trigger(
-                this,
-                new PropertyChangedEventArgs("Header"))
-            propertyChangedEvent.Trigger(
-                this,
-                new PropertyChangedEventArgs("Chemicals"))
+            raisePropChanged propertyChangedEvent this "Header"
+            raisePropChanged propertyChangedEvent this "Chemicals"
 
         // Occurs when a command is requested by a view.
         member this.CommandRequested = commandRequest.Publish

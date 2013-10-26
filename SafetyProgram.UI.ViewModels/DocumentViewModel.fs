@@ -1,10 +1,8 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
-open System.ComponentModel
 open SafetyProgram.Core.Models
 open SafetyProgram.UI.Views.ModelViews.DocumentViews
-open SafetyProgram.UI.ViewModels.ViewModelInterface
-open System.Windows.Controls
+open SafetyProgram.UI.ViewModels.Core
 
 type DocumentViewModel(model, docObjectUiFactory) = 
 
@@ -19,14 +17,10 @@ type DocumentViewModel(model, docObjectUiFactory) =
             currentModel <- newModel
 
             if currentModel.Format <> oldModel.Format then
-                propertyChangedEvent.Trigger(
-                    this,
-                    new PropertyChangedEventArgs("Format"))
+                raisePropChanged propertyChangedEvent this "Format"
             else ()
 
-            propertyChangedEvent.Trigger(
-                this,
-                new PropertyChangedEventArgs("DocumentObjects"))
+            raisePropChanged propertyChangedEvent this "DocumentObjects"
             
         member this.CommandRequested =   
             commandRequest.Publish   

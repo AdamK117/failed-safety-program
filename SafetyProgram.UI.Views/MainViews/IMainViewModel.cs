@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
+﻿using Fluent;
+using System.ComponentModel;
 using System.Windows.Controls;
-using Fluent;
 
 namespace SafetyProgram.UI.Views.MainViews
 {
