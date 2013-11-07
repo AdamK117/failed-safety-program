@@ -83,6 +83,15 @@ let buildKernelService<'a> (init : 'a) =
         Modify = fun f -> modifyProc.PostAndAsyncReply(fun replyChannel -> f, replyChannel)
     }
 
+let generateSubService service f g = {
+    Current = fun () -> async {
+        let! a = service.Current()
+        return f a
+    }
+    KernelDataChanged = service.KernelDataChanged |> Event.map f
+    Modify = fun h -> service.Modify(g h)
+}
+
 // Default kernel state.
 let defaultKernel = {
         Content = None
