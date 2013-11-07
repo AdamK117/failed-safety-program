@@ -7,29 +7,30 @@ open System.Windows.Input
 open NewDocumentCommand
 open SafetyProgram.UI.ViewModels.Core
 
-type RibbonViewModel(model, tabFactory) = 
-
-    let mutable currentModel = model
-
-    let propertyChangedEvent = new Event<_,_>()
-    let commandRequest = new Event<_>()    
+type RibbonViewModel(svc, tabFactory) as this = 
 
     let ribbonTabGenerator (mo : Option<Document * DataType>) =
         match mo with
         | Some(m, _) -> tabFactory m
         | None -> Seq.empty
 
-    // Explicit KernelData viewmodel impl.
-    interface IViewModel<KernelData> with
+    let tabViewGenerator = ribbonTabGenerator >> Seq.map fst
 
-        member this.PushModel(newModel) = 
+    let propertyChangedEvent = new Event<_,_>() 
+
+    let mutable currentModel =
+        svc.Current()
+        |> Async.RunSynchronously
+
+    let mutable ribbonTabs = tabViewGenerator currentModel.Content
+
+    do
+        svc.KernelDataChanged.Add(fun newModel ->
             let oldModel = currentModel
             currentModel <- newModel
 
             if currentModel.Content <> oldModel.Content then
-                raisePropChanged propertyChangedEvent this "RibbonTabs"           
-
-        member this.CommandRequested = commandRequest.Publish
+                raisePropChanged propertyChangedEvent this "RibbonTabs")
 
     interface IRibbonViewModel with
         member this.RibbonTabs = 
@@ -39,16 +40,11 @@ type RibbonViewModel(model, tabFactory) =
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
 
-        member this.OpenDocument = 
-            let tun f = 
-                commandRequest.Trigger(f)
-            new NewDocument(tun) :> ICommand
+        member this.OpenDocument = new NewDocument(svc) :> ICommand
 
+    // Expliit interface impl
     member this.RibbonTabs = ribbonTabGenerator currentModel.Content
     [<CLIEvent>]
     member this.PropertyChanged = propertyChangedEvent.Publish
 
-    member this.OpenDocument = 
-        let tun f = 
-            commandRequest.Trigger(f)
-        new NewDocument(tun) :> ICommand
+    member this.OpenDocument = new NewDocument(svc) :> ICommand

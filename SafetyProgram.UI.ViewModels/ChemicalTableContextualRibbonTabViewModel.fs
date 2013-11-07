@@ -3,20 +3,20 @@
 open SafetyProgram.Core.Models
 open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
 open SafetyProgram.UI.ViewModels.Core
+open SafetyProgram.Core
 
-type ChemicalTableRibbonTabViewModel(model) = 
+type ChemicalTableRibbonTabViewModel(svc) = 
 
     let propertyChangedEvent = new Event<_,_>()
-    let commandRequest = new Event<_>()
-    let mutable currentModel = model
+
+    let mutable currentModel = svc.Current() |> Async.RunSynchronously
 
     let mutable search = ""
     let searchResult = Seq.empty    
 
-    interface IViewModel<ChemicalTable> with
-        member this.PushModel(newModel) = 
-            currentModel <- newModel
-        member this.CommandRequested = commandRequest.Publish            
+    do 
+        svc.KernelDataChanged.Add(fun newModel ->
+            currentModel <- newModel)        
 
     interface IChemicalTableRibbonViewModel with
         member this.Search 

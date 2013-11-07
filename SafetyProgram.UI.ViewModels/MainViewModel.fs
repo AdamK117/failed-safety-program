@@ -7,57 +7,52 @@ open NewDocumentCommand
 open SafetyProgram.UI.ViewModels.Core
 
 // Defines a standard implementation of a <code>IMainViewModel</code>
-type MainViewModel(model, ribbon, modelUiFactory) = 
-
-    let mutable currentModel = model
+type MainViewModel(svc, ribbonView, modelUiFactory) as this = 
 
     let propertyChangedEvent = new Event<_,_>()
-    let commandRequest = new Event<_>()
 
     let generateDocumentMvvm = 
         Option.bind (fun (m, _) -> 
             let v, vm = modelUiFactory m
             Some(m, v, vm))    
 
-    // ViewModel impl.
-    interface IViewModel<KernelData> with
+    let extractView = function
+        | Some(_, v, _) -> v
+        | None -> null
 
-        // New model visitors
-        member this.PushModel(newModel) =
+    let generateView = generateDocumentMvvm >> extractView
+
+    let mutable currentModel = 
+        svc.Current() 
+        |> Async.RunSynchronously
+
+    let mutable contentView = 
+        currentModel.Content
+        |> generateView
+
+    do
+        svc.KernelDataChanged.Add(fun newModel ->
             let oldModel = currentModel
             currentModel <- newModel
-
             if currentModel.Content <> oldModel.Content then
-                raisePropChanged propertyChangedEvent this "ContentView"
-
-        // Occurs when a command is requested by the view.
-        member this.CommandRequested =
-            commandRequest.Publish
+                contentView <- generateView currentModel.Content
+                raisePropChanged propertyChangedEvent this "ContentView")
 
     // Viewmodel explicit implementation
     interface IMainViewModel with
-        member this.RibbonView = ribbon
+        member this.RibbonView = ribbonView
 
-        member this.ContentView = 
-            match generateDocumentMvvm currentModel.Content with
-            | Some(_, v, _) -> v
-            | None -> null
+        member this.ContentView = contentView
 
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
 
     // Implicit
-    member this.RibbonView = ribbon
+    member this.RibbonView = ribbonView
 
-    member this.ContentView = 
-        match generateDocumentMvvm currentModel.Content with
-        | Some(_, v, _) -> v
-        | None -> null
+    member this.ContentView = contentView
 
     [<CLIEvent>]
     member this.PropertyChanged = propertyChangedEvent.Publish
 
-    member this.OpenDocument = 
-        let tun f = 
-            commandRequest.Trigger(f)
-        new NewDocument(tun) :> ICommand
+    member this.OpenDocument = new NewDocument(svc) :> ICommand

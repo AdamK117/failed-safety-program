@@ -12,5 +12,3 @@ let addChemical chemicalTable chemical =
 
 let removeChemical chemicalTable chemical =
     new NotImplementedException() |> raise
-    
-

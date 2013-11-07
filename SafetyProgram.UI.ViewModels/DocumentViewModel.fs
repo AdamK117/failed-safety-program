@@ -2,17 +2,19 @@
 
 open SafetyProgram.Core.Models
 open SafetyProgram.UI.Views.ModelViews.DocumentViews
+open SafetyProgram.Core
 open SafetyProgram.UI.ViewModels.Core
 
-type DocumentViewModel(model, docObjectUiFactory) = 
+type DocumentViewModel(svc, docObjectUiFactory) as this = 
 
     let propertyChangedEvent = new Event<_,_>()
-    let commandRequest = new Event<_>()
     
-    let mutable currentModel = model  
-                            
-    interface IViewModel<Document> with
-        member this.PushModel(newModel) = 
+    let mutable currentModel = 
+        svc.Current()
+        |> Async.RunSynchronously 
+
+    do 
+        svc.KernelDataChanged.Add(fun newModel ->
             let oldModel = currentModel
             currentModel <- newModel
 
@@ -20,10 +22,7 @@ type DocumentViewModel(model, docObjectUiFactory) =
                 raisePropChanged propertyChangedEvent this "Format"
             else ()
 
-            raisePropChanged propertyChangedEvent this "DocumentObjects"
-            
-        member this.CommandRequested =   
-            commandRequest.Publish   
+            raisePropChanged propertyChangedEvent this "DocumentObjects")
     
     // Define viewmodel links
     interface IDocumentViewModel with
@@ -31,7 +30,7 @@ type DocumentViewModel(model, docObjectUiFactory) =
         member this.Height = currentModel.Format.Height / 0.001m<m>
         
         member this.DocumentObjects =
-            model.Content
+            currentModel.Content
             |> Seq.map (fun m ->
                 let (v, _) = docObjectUiFactory m
                 v)
@@ -42,10 +41,10 @@ type DocumentViewModel(model, docObjectUiFactory) =
     member this.Format = currentModel.Format
     
     member this.DocumentObjects = 
-        model.Content
-            |> Seq.map (fun m ->
-                let (v, _) = docObjectUiFactory m
-                v)
+        currentModel.Content
+        |> Seq.map (fun m ->
+            let (v, _) = docObjectUiFactory m
+            v)
 
     [<CLIEvent>]
     member this.PropertyChanged = propertyChangedEvent.Publish

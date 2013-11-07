@@ -10,8 +10,9 @@ let docRibbonTabUiFactory _ =
     let v = InsertRibbonTabView(vm)
     Seq.empty
 
-let docObjectRibbonTabFactory = function
+let docObjectRibbonTabFactory service model =
+    match model with
     | ChemicalTable(cTable) ->
-        let vm = new ChemicalTableRibbonTabViewModel(cTable)
+        let vm = new ChemicalTableRibbonTabViewModel(service)
         let v = new ChemicalTableContextualRibbonTab(vm)
         v, vm

@@ -9,28 +9,14 @@ open SafetyProgram.UI.Views.MainViews
 open SafetyProgram.UI.ViewModels
 open SafetyProgram.UI.ViewModels.Core
 
-type MainUiController(kernelService : DataService<KernelData>) = 
-    let currentData = Async.RunSynchronously <| kernelService.Current()
+type MainUiController(svc) = 
+    let currentData = Async.RunSynchronously <| svc.Current()
 
-    let ribbonViewModel = new RibbonViewModel(currentData, docRibbonTabUiFactory)
+    let ribbonViewModel = new RibbonViewModel(svc, docRibbonTabUiFactory)
     let ribbonView = new DefaultRibbonView(ribbonViewModel)
 
-    let mainViewModel = new MainViewModel(currentData, ribbonView, docUiFactory)
+    let curryFac = docUiFactory(generateSubService svc (fun a-> a.Content) (fun f -> fun content -> { content with Content = f content.Content }))
+    let mainViewModel = new MainViewModel(svc, ribbonView, curryFac)
     let mainView = new DefaultMainView(mainViewModel)
-
-    do
-        (ribbonViewModel :> IViewModel<KernelData>).CommandRequested.Add(fun command -> 
-            kernelService.Modify(command)
-            |> Async.RunSynchronously
-            |> ignore)
-
-        (mainViewModel :> IViewModel<KernelData>).CommandRequested.Add(fun command ->
-            kernelService.Modify(command)
-            |> Async.RunSynchronously
-            |> ignore)
-
-        kernelService.KernelDataChanged.Add(fun newData->
-            (mainViewModel :> IViewModel<KernelData>).PushModel(newData)
-            (ribbonViewModel :> IViewModel<KernelData>).PushModel(newData))
 
     member x.View = mainView :> Window
