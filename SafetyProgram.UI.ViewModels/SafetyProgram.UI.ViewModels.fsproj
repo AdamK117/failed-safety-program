@@ -54,6 +54,11 @@
     <Compile Include="MainViewModel.fs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\lib\Fluent\Fluent\Fluent dotNET 4.0.csproj">
+      <Name>Fluent dotNET 4.0</Name>
+      <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj">
       <Name>SafetyProgram.Core.IO</Name>
       <Project>{c95d174d-a8aa-455d-ab70-a9bbd0355656}</Project>
@@ -67,11 +72,6 @@
     <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.fsproj">
       <Name>SafetyProgram.Core</Name>
       <Project>{e6408f8f-b8ba-4c0a-a066-4cc3465f1a88}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.ExternalLibraries\Fluent\Fluent\Fluent dotNET 4.0.csproj">
-      <Name>Fluent dotNET 4.0</Name>
-      <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI.Views\SafetyProgram.UI.Views.csproj">
