@@ -15,7 +15,7 @@ type ChemicalTableRibbonTabViewModel(svc) =
     let searchResult = Seq.empty    
 
     do 
-        svc.KernelDataChanged.Add(fun newModel ->
+        svc.DataChanged.Add(fun newModel ->
             currentModel <- newModel)        
 
     interface IChemicalTableRibbonViewModel with

@@ -11,5 +11,5 @@ type LocalService<'a> = {
 }
 
 // A holder for a dataservice.
-type DataService<'a> =
+type IoService<'a> =
 | Local of LocalService<'a>

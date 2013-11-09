@@ -80,7 +80,7 @@
     <Compile Include="CommandPattern\IInvokedCommand.cs" />
     <Compile Include="Helpers\EventExtensions.cs" />
     <Compile Include="Classes\LinkedReadOnlyObservableCollection.cs" />
-    <Compile Include="Helpers\NullCheck.cs" />
+    <Compile Include="NullCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

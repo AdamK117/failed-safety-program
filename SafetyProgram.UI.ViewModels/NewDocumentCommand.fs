@@ -11,7 +11,7 @@ type NewDocument(svc) =
     let mutable currentModel = svc.Current() |> Async.RunSynchronously
 
     do
-        svc.KernelDataChanged.Add(fun newModel ->
+        svc.DataChanged.Add(fun newModel ->
             currentModel<-newModel)
 
     interface ICommand with

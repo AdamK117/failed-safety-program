@@ -21,7 +21,7 @@ type KernelData = {
     Content : Option<Document * DataType>
 
     // The IO service used by the application.
-    Service : DataService<Document>
+    Service : IoService<Document>
 
     // The configuration used by the application.
     Configuration : ApplicationConfiguration
@@ -34,7 +34,7 @@ type UpdateResult = Ok | Error of string
 type DataService<'a> = {
     Current : unit -> Async<'a>
 
-    KernelDataChanged : IEvent<'a>
+    DataChanged : IEvent<'a>
 
     Modify : ('a -> 'a) -> Async<UpdateResult>
 }
@@ -46,7 +46,7 @@ let buildKernelService<'a> (init : 'a) =
     let current = ref init
 
     // Track kernel data changes.
-    let kernelDataChanged = new Event<'a>()
+    let DataChanged = new Event<'a>()
 
     // Serves incoming requests for the current kernel data.
     let currentData : MailboxProcessor<AsyncReplyChannel<'a>> = 
@@ -68,7 +68,7 @@ let buildKernelService<'a> (init : 'a) =
                     let v = current.Value
                     try
                         current := f v
-                        kernelDataChanged.Trigger current.Value
+                        DataChanged.Trigger current.Value
                         replyChannel.Reply UpdateResult.Ok
                     with
                     | e ->
@@ -79,7 +79,7 @@ let buildKernelService<'a> (init : 'a) =
             loop()
     {
         Current = fun () -> currentData.PostAndAsyncReply id
-        KernelDataChanged = kernelDataChanged.Publish
+        DataChanged = DataChanged.Publish
         Modify = fun f -> modifyProc.PostAndAsyncReply(fun replyChannel -> f, replyChannel)
     }
 
@@ -88,7 +88,7 @@ let generateSubService service f g = {
         let! a = service.Current()
         return f a
     }
-    KernelDataChanged = service.KernelDataChanged |> Event.map f
+    DataChanged = service.DataChanged |> Event.map f
     Modify = fun h -> service.Modify(g h)
 }
 

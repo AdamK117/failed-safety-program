@@ -12,7 +12,7 @@ type ChemicalTableViewModel(svc) as this =
     let mutable currentModel = svc.Current() |> Async.RunSynchronously
 
     do
-        svc.KernelDataChanged.Add(fun newModel ->
+        svc.DataChanged.Add(fun newModel ->
             let oldModel = currentModel
             currentModel <- newModel
             raisePropChanged propertyChangedEvent this "Header"

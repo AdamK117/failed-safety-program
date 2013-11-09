@@ -14,7 +14,7 @@ type DocumentViewModel(svc, docObjectUiFactory) as this =
         |> Async.RunSynchronously 
 
     do 
-        svc.KernelDataChanged.Add(fun newModel ->
+        svc.DataChanged.Add(fun newModel ->
             let oldModel = currentModel
             currentModel <- newModel
 

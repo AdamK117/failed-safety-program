@@ -31,7 +31,7 @@ type MainViewModel(svc, ribbonView, modelUiFactory) as this =
         |> generateView
 
     do
-        svc.KernelDataChanged.Add(fun newModel ->
+        svc.DataChanged.Add(fun newModel ->
             let oldModel = currentModel
             currentModel <- newModel
             if currentModel.Content <> oldModel.Content then

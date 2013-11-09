@@ -25,7 +25,7 @@ type RibbonViewModel(svc, tabFactory) as this =
     let mutable ribbonTabs = tabViewGenerator currentModel.Content
 
     do
-        svc.KernelDataChanged.Add(fun newModel ->
+        svc.DataChanged.Add(fun newModel ->
             let oldModel = currentModel
             currentModel <- newModel
 
