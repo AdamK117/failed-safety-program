@@ -31,6 +31,6 @@ let HazardXmlConverter =  {
                 | Some(a) -> a
                 | None -> ""
 
-        return {Warning = warning; SignalWord = signalWord; Symbol = symbol; RiskPhrase=""; }
+        return { Warning = warning; SignalWord = signalWord; Symbol = symbol; RiskPhrase=""; }
     }
 }

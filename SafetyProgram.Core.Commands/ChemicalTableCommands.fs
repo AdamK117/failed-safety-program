@@ -2,13 +2,19 @@
 
 open System
 open SafetyProgram.Core.Models
+open SafetyProgram.Core.CommandCore
 
-// Add a chemical to the chemicaltable.
-let addChemical chemicalTable chemical = 
-    { chemicalTable 
-        with Chemicals = chemicalTable.Chemicals
-            |> Seq.append([{ Chemical=chemical; Quantity=Grammes(0m<g>)}]) 
-    }
+let addChemical = {
+    CanExecute = fun _ ->
+        true
+    Execute = fun chemTable ->
+        { chemTable
+            with Chemicals = chemicalTable.Chemicals
+                |> Seq.append([{ Chemical=chemical; Quantity=Grammes(0m<g>)}]) 
+        }
+}
 
-let removeChemical chemicalTable chemical =
-    new NotImplementedException() |> raise
+let removeChemical index = {
+    CanExecute = fun chemTable ->
+        Seq
+}

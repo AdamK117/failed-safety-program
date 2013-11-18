@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SafetyProgram.UI.Views</RootNamespace>
     <AssemblyName>SafetyProgram.UI.Views</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,8 +32,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ReactiveUI">
+      <HintPath>..\lib\ReactiveUI.5.2.0\Net45\ReactiveUI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -125,13 +131,17 @@
       <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
       <Name>Fluent dotNET 4.0</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
-      <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
-      <Name>SafetyProgram.Base</Name>
+    <ProjectReference Include="..\SafetyProgram.Base.CSharp\SafetyProgram.Base.CSharp.csproj">
+      <Project>{1dc4d7ea-32b8-40c0-af0d-c6786532216c}</Project>
+      <Name>SafetyProgram.Base.CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">
       <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>
       <Name>SafetyProgram.Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UI.Models\SafetyProgram.UI.Models.fsproj">
+      <Project>{43c1fe2b-efdb-47da-8232-c4dbd9c5ee2e}</Project>
+      <Name>SafetyProgram.UI.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

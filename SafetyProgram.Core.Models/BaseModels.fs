@@ -8,7 +8,7 @@ type Hazard = {
 }
 
 type Chemical = {
-    Name : string;
+    Name : string
     Hazards : seq<Hazard>
 }
 

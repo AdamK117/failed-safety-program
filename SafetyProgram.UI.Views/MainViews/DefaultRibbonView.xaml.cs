@@ -1,5 +1,5 @@
 ﻿using Fluent;
-using SafetyProgram.Base;
+using SafetyProgram.Base.CSharp;
 
 namespace SafetyProgram.UI.Views.MainViews
 {

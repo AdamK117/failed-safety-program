@@ -1,21 +1,16 @@
 ﻿using Fluent;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace SafetyProgram.UI.Views.MainViews
 {
     /// <summary>
     /// Defines a viewmodel for the ribbon view.
     /// </summary>
-    public interface IRibbonViewModel : 
-        INotifyPropertyChanged
+    public interface IRibbonViewModel
     {
         /// <summary>
         /// Get the ribbon tabs for this ribbon.
         /// </summary>
-        IEnumerable<RibbonTabItem> RibbonTabs { get; }
-
-        ICommand OpenDocument { get; }
+        ObservableCollection<RibbonTabItem> RibbonTabs { get; }
     }
 }

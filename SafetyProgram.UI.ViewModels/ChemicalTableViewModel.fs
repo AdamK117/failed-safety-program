@@ -1,32 +1,16 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
-open SafetyProgram.Core.Models
 open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
-open SafetyProgram.UI.ViewModels.Core
-open SafetyProgram.Core
+open SafetyProgram.UI.Models.GuiModels
 
-type ChemicalTableViewModel(svc) as this = 
+type ChemicalTableViewModel(chemicalTable : GuiChemicalTable) = 
 
-    let propertyChangedEvent = new Event<_,_>()     
-
-    let mutable currentModel = svc.Current() |> Async.RunSynchronously
-
-    do
-        svc.DataChanged.Add(fun newModel ->
-            let oldModel = currentModel
-            currentModel <- newModel
-            raisePropChanged propertyChangedEvent this "Header"
-            raisePropChanged propertyChangedEvent this "Chemicals")
+    let propertyChangedEvent = new Event<_,_>()
 
     interface IChemicalTableViewModel with
-        member this.Header = currentModel.Header
-        member this.Chemicals = currentModel.Chemicals
+        member this.Header 
+            with get () = chemicalTable.Header
+        member this.Chemicals
+            with get () = chemicalTable.Chemicals
         [<CLIEvent>]
         member this.PropertyChanged = propertyChangedEvent.Publish
-
-    // Expose implicitly.
-    member this.Header = currentModel.Header
-    member this.Chemicals = currentModel.Chemicals
-    [<CLIEvent>]
-    member this.PropertyChanged = propertyChangedEvent.Publish
-    

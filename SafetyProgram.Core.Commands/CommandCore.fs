@@ -6,4 +6,3 @@ type command<'a> = {
     CanExecute : 'a -> bool
     Execute : 'a -> Option<'a->'a>
 }
-

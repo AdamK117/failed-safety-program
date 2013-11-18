@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using SafetyProgram.UI.Models;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using SafetyProgram.Core;
 
 namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
 {
@@ -18,6 +18,6 @@ namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
         /// <summary>
         /// Get the search result yielded from the search string.
         /// </summary>
-        IEnumerable<Models.Chemical> SearchResult { get; }
+        ObservableCollection<GuiModels.GuiChemical> SearchResult { get; }
     }
 }

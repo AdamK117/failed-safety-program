@@ -1,5 +1,5 @@
-﻿using SafetyProgram.Core;
-using System.Collections.Generic;
+﻿using SafetyProgram.UI.Models;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
@@ -18,6 +18,6 @@ namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
         /// <summary>
         /// Get the chemicals in the chemicaltable.
         /// </summary>
-        IEnumerable<Models.CoshhChemical> Chemicals { get; }
+        ObservableCollection<GuiModels.GuiCoshhChemical> Chemicals { get; }
     }
 }

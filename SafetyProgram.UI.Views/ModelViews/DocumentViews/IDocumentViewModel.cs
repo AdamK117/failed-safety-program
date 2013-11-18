@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
-using SafetyProgram.Core;
+using ReactiveUI;
 
 namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
 {
@@ -18,6 +18,6 @@ namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
         /// <summary>
         /// Get the documentobjects in the document.
         /// </summary>
-        IEnumerable<Control> DocumentObjects { get; }
+        IReactiveDerivedList<Control> DocumentObjects { get; }
     }
 }

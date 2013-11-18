@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls;
-using SafetyProgram.Base;
+using SafetyProgram.Base.CSharp;
 
 namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
 {
