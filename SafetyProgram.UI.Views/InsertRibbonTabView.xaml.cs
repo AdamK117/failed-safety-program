@@ -1,7 +1,7 @@
 ﻿using Fluent;
-using SafetyProgram.Base.CSharp;
+using SafetyProgram.Base.FSharp;
 
-namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
+namespace SafetyProgram.UI.Views
 {
     /// <summary>
     /// Interaction logic for CoshhDocumentRibbonTabView.xaml

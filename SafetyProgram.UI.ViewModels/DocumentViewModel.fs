@@ -1,7 +1,7 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
 open SafetyProgram.UI.Views.ModelViews.DocumentViews
-open SafetyProgram.UI.Models.GuiModels
+open SafetyProgram.UI.Models
 open SafetyProgram.Core.Models
 open System.Windows.Controls
 open ReactiveUI
@@ -15,11 +15,14 @@ type DocumentViewModel(document : GuiDocument, contentGenerator : GuiChemicalTab
     
     interface IDocumentViewModel with
         member this.Width
-            with get() = document.Format.Width / 0.1m<m>
+            with get () = document.Format.Width / 0.1m<m>
+
         member this.Height
-            with get() = document.Format.Height / 0.1m<m>
+            with get () = document.Format.Height / 0.1m<m>
+
         member this.DocumentObjects
-            with get() = documentObjects
+            with get () = documentObjects
+
         [<CLIEvent>]
         member this.PropertyChanged = propertyChanged.Publish
 

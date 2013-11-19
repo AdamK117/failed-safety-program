@@ -1,7 +1,7 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
 open SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
-open SafetyProgram.UI.Models.GuiModels
+open SafetyProgram.UI.Models
 
 type ChemicalTableViewModel(chemicalTable : GuiChemicalTable) = 
 

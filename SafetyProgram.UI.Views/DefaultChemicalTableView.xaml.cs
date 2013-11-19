@@ -1,6 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using SafetyProgram.Base.FSharp;
+using System.Windows.Controls;
 
-namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
+namespace SafetyProgram.UI.Views
 {
     /// <summary>
     /// Interaction logic for ChemicalTableView.xaml
@@ -9,6 +10,8 @@ namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
     {
         public DefaultChemicalTableView(IChemicalTableViewModel viewModel)
         {
+            Helpers.NullCheck(viewModel);
+
             this.DataContext = viewModel;
 
             InitializeComponent();

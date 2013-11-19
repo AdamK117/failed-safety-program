@@ -4,7 +4,7 @@ open CoshhChemicalXml
 open SafetyProgram.Core.Models
 open System.Xml.Linq
 open System
-open Core
+open SafetyProgram.Base.FSharp.Helpers
 
 let ChemicalTableXmlConverter = {
     ConvertTo = fun data ->

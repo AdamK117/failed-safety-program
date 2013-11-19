@@ -42,9 +42,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Kernel.fs" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj">
       <Name>SafetyProgram.Core.IO</Name>
       <Project>{c95d174d-a8aa-455d-ab70-a9bbd0355656}</Project>

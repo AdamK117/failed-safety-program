@@ -43,6 +43,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SafetyProgram.Base.FSharp\SafetyProgram.Base.FSharp.fsproj">
+      <Name>SafetyProgram.Base.FSharp</Name>
+      <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">
       <Name>SafetyProgram.Core.Models</Name>
       <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>
@@ -50,7 +55,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core.fs" />
     <Compile Include="HazardXml.fs" />
     <Compile Include="ChemicalXml.fs" />
     <Compile Include="CoshhChemicalXml.fs" />

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
+namespace SafetyProgram.UI.Views
 {
     /// <summary>
     /// Defines a ViewModel for the chemicaltable view.
@@ -18,6 +18,6 @@ namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
         /// <summary>
         /// Get the chemicals in the chemicaltable.
         /// </summary>
-        ObservableCollection<GuiModels.GuiCoshhChemical> Chemicals { get; }
+        ObservableCollection<GuiCoshhChemical> Chemicals { get; }
     }
 }

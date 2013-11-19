@@ -1,7 +1,7 @@
 ﻿using Fluent;
 using System.Collections.ObjectModel;
 
-namespace SafetyProgram.UI.Views.MainViews
+namespace SafetyProgram.UI.Views
 {
     /// <summary>
     /// Defines a viewmodel for the ribbon view.

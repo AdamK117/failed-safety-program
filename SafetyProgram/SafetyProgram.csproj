@@ -127,10 +127,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.fsproj">
-      <Project>{e6408f8f-b8ba-4c0a-a066-4cc3465f1a88}</Project>
-      <Name>SafetyProgram.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI\SafetyProgram.UI.fsproj">
       <Project>{d3bd9bae-dbf1-44b3-ab6c-53279266c792}</Project>
       <Name>SafetyProgram.UI</Name>

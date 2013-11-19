@@ -3,8 +3,7 @@
 open Services
 open System.Xml.Linq
 open System.IO
-open SafetyProgram.Core.Models.Serialization
-open SafetyProgram.Core.Models.Serialization.Core
+open SafetyProgram.Base.FSharp.Helpers
 
 // A standard implementation of a local file service for XElements.
 let localSvc<'a> generator (converter : TwoWayConverter<'a, XElement>) = {

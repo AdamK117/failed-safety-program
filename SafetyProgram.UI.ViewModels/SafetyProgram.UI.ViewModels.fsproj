@@ -55,6 +55,7 @@
     <Compile Include="InsertRibbonTabViewModel.fs" />
     <Compile Include="ChemicalTableViewModel.fs" />
     <Compile Include="ChemicalTableRibbonViewModel.fs" />
+    <Compile Include="IMainViewModel.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -74,6 +75,11 @@
     <ProjectReference Include="..\lib\Fluent\Fluent\Fluent dotNET 4.0.csproj">
       <Name>Fluent dotNET 4.0</Name>
       <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj">
+      <Name>SafetyProgram.Core.IO</Name>
+      <Project>{c95d174d-a8aa-455d-ab70-a9bbd0355656}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">

@@ -12,4 +12,9 @@ type LocalService<'a> = {
 
 // A holder for a dataservice.
 type IoService<'a> =
-| Local of LocalService<'a>
+| LocalSvc of LocalService<'a>
+
+// Data open in the application (could be local, could be databased).
+type DataType = 
+| LocalFile of FileStream
+| BufferedFile

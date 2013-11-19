@@ -4,7 +4,7 @@ open SafetyProgram.Core.Models
 open System.Xml.Linq
 open System
 open DocumentObjectXml
-open Core
+open SafetyProgram.Base.FSharp.Helpers
 
 let DocumentXml = {
     ConvertTo = fun data ->

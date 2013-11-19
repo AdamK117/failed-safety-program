@@ -1,7 +1,7 @@
-﻿using System.Windows.Controls;
-using SafetyProgram.Base.CSharp;
+﻿using SafetyProgram.Base.FSharp;
+using System.Windows.Controls;
 
-namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
+namespace SafetyProgram.UI.Views
 {
     /// <summary>
     /// Interaction logic for CoshhDocumentView.xaml

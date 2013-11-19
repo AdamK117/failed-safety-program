@@ -38,17 +38,32 @@
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="ReactiveUI">
+      <HintPath>..\lib\ReactiveUI.5.2.0\Net45\ReactiveUI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GuiModels.fs" />
+    <Compile Include="GuiHazard.fs" />
+    <Compile Include="GuiChemical.fs" />
+    <Compile Include="GuiCoshhChemical.fs" />
+    <Compile Include="GuiChemicalTable.fs" />
+    <Compile Include="GuiDocumentObject.fs" />
+    <Compile Include="GuiFormat.fs" />
+    <Compile Include="GuiDocument.fs" />
+    <Compile Include="GuiKernelData.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SafetyProgram.Base.FSharp\SafetyProgram.Base.FSharp.fsproj">
       <Name>SafetyProgram.Base.FSharp</Name>
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj">
+      <Name>SafetyProgram.Core.IO</Name>
+      <Project>{c95d174d-a8aa-455d-ab70-a9bbd0355656}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">

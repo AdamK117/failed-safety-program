@@ -1,7 +1,7 @@
 ﻿using Fluent;
 using System.Windows.Controls;
 
-namespace SafetyProgram.UI.Views.MainViews
+namespace SafetyProgram.UI.Views
 {
     /// <summary>
     /// Defines an interface for the ViewModel of the CoshhWindowView.

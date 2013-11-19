@@ -1,7 +1,7 @@
 ﻿using Fluent;
-using SafetyProgram.Base.CSharp;
+using SafetyProgram.Base.FSharp;
 
-namespace SafetyProgram.UI.Views.MainViews
+namespace SafetyProgram.UI.Views
 {
     public sealed partial class DefaultMainView : RibbonWindow
     {

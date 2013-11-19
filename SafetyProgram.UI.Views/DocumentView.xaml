@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SafetyProgram.UI.Views.ModelViews.DocumentViews.DocumentView"
+﻿<UserControl x:Class="SafetyProgram.UI.Views.DocumentView"
              x:ClassModifier="public"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

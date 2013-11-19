@@ -1,4 +1,4 @@
-﻿namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
+﻿namespace SafetyProgram.UI.Views
 {
     /// <summary>
     /// Defines a ViewModel for an insert ribbon.

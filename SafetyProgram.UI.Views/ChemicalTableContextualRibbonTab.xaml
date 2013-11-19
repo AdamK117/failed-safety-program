@@ -1,4 +1,4 @@
-﻿<Fluent:RibbonTabItem x:Class="SafetyProgram.UI.Views.ModelViews.ChemicalTableViews.ChemicalTableContextualRibbonTab"
+﻿<Fluent:RibbonTabItem x:Class="SafetyProgram.UI.Views.ChemicalTableContextualRibbonTab"
                       x:ClassModifier="public"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

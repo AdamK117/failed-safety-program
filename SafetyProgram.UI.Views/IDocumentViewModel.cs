@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Windows.Controls;
 using ReactiveUI;
 
-namespace SafetyProgram.UI.Views.ModelViews.DocumentViews
+namespace SafetyProgram.UI.Views
 {
     /// <summary>
     /// Defines a viewmodel for a document view.

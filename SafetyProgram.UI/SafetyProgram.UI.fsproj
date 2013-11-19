@@ -63,11 +63,6 @@
       <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.fsproj">
-      <Name>SafetyProgram.Core</Name>
-      <Project>{e6408f8f-b8ba-4c0a-a066-4cc3465f1a88}</Project>
-      <Private>True</Private>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI.ViewModels\SafetyProgram.UI.ViewModels.fsproj">
       <Name>SafetyProgram.UI.ViewModels</Name>
       <Project>{2e9e5ee0-8a6e-45e9-89a8-7517e793c3e4}</Project>

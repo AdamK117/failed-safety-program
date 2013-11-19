@@ -1,4 +1,4 @@
-﻿<Fluent:Ribbon x:Class="SafetyProgram.UI.Views.MainViews.DefaultRibbonView"
+﻿<Fluent:Ribbon x:Class="SafetyProgram.UI.Views.DefaultRibbonView"
                x:ClassModifier="public"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

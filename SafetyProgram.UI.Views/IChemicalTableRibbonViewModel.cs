@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
+namespace SafetyProgram.UI.Views
 {
     /// <summary>
     /// Defines a ViewModel for a cheimcal table ribbon view.
@@ -18,6 +18,6 @@ namespace SafetyProgram.UI.Views.ModelViews.ChemicalTableViews
         /// <summary>
         /// Get the search result yielded from the search string.
         /// </summary>
-        ObservableCollection<GuiModels.GuiChemical> SearchResult { get; }
+        ObservableCollection<GuiChemical> SearchResult { get; }
     }
 }
