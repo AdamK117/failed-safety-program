@@ -35,7 +35,7 @@ type GuiDocument (document) =
 
 module DocumentHelpers = 
 
-    let guiDocumentToDocument (guiDocument : GuiDocument) = {
-        Content = Seq.map DocumentObjectHelpers.guiDocumentObjectToDocumentObject guiDocument.Content
-        Format = guiDocument.Format
-    }
+    let guiDocumentToDocument (guiDocument : GuiDocument) = 
+        let f = DocumentObjectHelpers.guiDocumentObjectToDocumentObject
+        { Content = Seq.map f guiDocument.Content;
+            Format = guiDocument.Format }

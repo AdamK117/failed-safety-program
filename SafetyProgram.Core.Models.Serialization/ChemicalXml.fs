@@ -20,7 +20,7 @@ let ChemicalXmlConverter = {
                 let! hazardsElement = getElement data "hazards"
                 return!                            
                     hazardsElement.Elements(xname "hazard")
-                    |> Seq.map(HazardXmlConverter.ConvertFrom)
+                    |> Seq.map HazardXmlConverter.ConvertFrom
                     |> flattenOptions
             }
 

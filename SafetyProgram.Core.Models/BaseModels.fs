@@ -18,8 +18,8 @@ type Chemical = {
 [<Measure>] type mL
 
 type UsageQuantity = 
-    | Grammes of decimal<g>
-    | Millilitres of decimal<mL>
+| Grammes of decimal<g>
+| Millilitres of decimal<mL>
 
 type CoshhChemical = {
     Chemical : Chemical

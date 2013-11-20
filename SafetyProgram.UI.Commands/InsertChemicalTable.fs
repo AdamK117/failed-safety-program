@@ -3,6 +3,7 @@
 open System.Windows.Input
 open SafetyProgram.UI.Models
 open SafetyProgram.Core.IO.Services
+open SafetyProgram.Core.Models
 open System
 
 type InsertChemicalTable(document : GuiDocument) =
@@ -16,8 +17,10 @@ type InsertChemicalTable(document : GuiDocument) =
             true
 
         // Close the old document, open a new one using the IOService
-        member this.Execute(_) = 
-            ()
+        member this.Execute(_) =
+            let x = { Header = "Untitled Chemical Table"; Chemicals = Seq.empty }
+            let y = new GuiChemicalTable(x)
+            document.Content.Add(GuiChemicalTable(y))
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish

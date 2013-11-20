@@ -49,13 +49,18 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="MainViewModel.fs" />
-    <Compile Include="RibbonViewModel.fs" />
-    <Compile Include="DocumentViewModel.fs" />
-    <Compile Include="InsertRibbonTabViewModel.fs" />
+    <Compile Include="IChemicalTableViewModel.fs" />
     <Compile Include="ChemicalTableViewModel.fs" />
+    <Compile Include="IChemicalTableRibbonViewModel.fs" />
     <Compile Include="ChemicalTableRibbonViewModel.fs" />
+    <Compile Include="IDocumentViewModel.fs" />
+    <Compile Include="DocumentViewModel.fs" />
+    <Compile Include="IInsertRibbonTabViewModel.fs" />
+    <Compile Include="InsertRibbonTabViewModel.fs" />
+    <Compile Include="IRibbonViewModel.fs" />
+    <Compile Include="RibbonViewModel.fs" />
     <Compile Include="IMainViewModel.fs" />
+    <Compile Include="MainViewModel.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -90,11 +95,6 @@
     <ProjectReference Include="..\SafetyProgram.UI.Models\SafetyProgram.UI.Models.fsproj">
       <Name>SafetyProgram.UI.Models</Name>
       <Project>{43c1fe2b-efdb-47da-8232-c4dbd9c5ee2e}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.UI.Views\SafetyProgram.UI.Views.csproj">
-      <Name>SafetyProgram.UI.Views</Name>
-      <Project>{1f897aab-59c3-4e70-ba89-3090311c93e9}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

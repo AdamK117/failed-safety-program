@@ -5,20 +5,18 @@ open SafetyProgram.UI.Models
 open SafetyProgram.Core.IO.Services
 open SafetyProgram.Base.FSharp.Helpers
 
-type NewDocument(kernelData : GuiKernelData) = 
+type NewFile(kernelData : GuiKernelData) = 
 
     let canExecuteChanged = Event<_,_>()
 
     interface ICommand with
 
-        // You can always create a new document
+        // You can always create a new document (at the moment).
         member this.CanExecute(_) = 
             true
 
-        // Close the old document, open a new one using the IOService
+        // Close the old document, open a new one using the IoService.
         member this.Execute(_) = 
-
-            // CLOSE or SAVE document here.
 
             let doc, fs = 
                 match kernelData.Service with
@@ -28,13 +26,15 @@ type NewDocument(kernelData : GuiKernelData) =
 
             let dataType = 
                 match fs with
-                | Some x -> LocalFile x
+                | Some x -> LocalFile(None, Some x)
                 | None -> BufferedFile
 
             match doc with
             | Some x -> 
                 kernelData.Content <- Some (new GuiDocument(x), dataType)
-            | None -> ()
+            | None -> 
+                // New Document was not made (error occured).
+                ()
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish

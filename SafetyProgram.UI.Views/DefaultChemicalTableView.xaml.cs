@@ -1,4 +1,5 @@
 ﻿using SafetyProgram.Base.FSharp;
+using SafetyProgram.UI.ViewModels;
 using System.Windows.Controls;
 
 namespace SafetyProgram.UI.Views

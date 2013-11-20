@@ -1,5 +1,5 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
-open SafetyProgram.UI.Views.ModelViews.DocumentViews
-
-// ??
+type InsertRibbonTabViewModel(model) = 
+    interface IInsertRibbonTabViewModel with
+        member this.Filler = "NYI"

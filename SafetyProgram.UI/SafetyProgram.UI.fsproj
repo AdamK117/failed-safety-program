@@ -45,7 +45,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BootUI.fs" />
+    <Compile Include="UiController.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\lib\Fluent\Fluent\Fluent dotNET 4.0.csproj">
@@ -61,6 +61,11 @@
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">
       <Name>SafetyProgram.Core.Models</Name>
       <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UI.Models\SafetyProgram.UI.Models.fsproj">
+      <Name>SafetyProgram.UI.Models</Name>
+      <Project>{43c1fe2b-efdb-47da-8232-c4dbd9c5ee2e}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI.ViewModels\SafetyProgram.UI.ViewModels.fsproj">

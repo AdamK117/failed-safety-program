@@ -21,14 +21,16 @@ type OpenFile(kernelData : GuiKernelData) =
             // CLOSE OR SAVE HERE
 
             kernelData.Content <- maybeBuilder {
+
+                let dialogOutput = "NYI"
+
                 let! doc, fs = 
                     match kernelData.Service with
                     | LocalSvc s ->
-                        let dialogOutput = "DIALOG PATH HERE"
                         s.Load(dialogOutput)
                         |> Async.RunSynchronously
 
-                return (new GuiDocument(doc), LocalFile(fs))
+                return (new GuiDocument(doc), LocalFile(Some dialogOutput, Some fs))
             }                
 
         [<CLIEvent>]

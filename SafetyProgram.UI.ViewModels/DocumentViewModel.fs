@@ -1,13 +1,12 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
-open SafetyProgram.UI.Views.ModelViews.DocumentViews
 open SafetyProgram.UI.Models
 open SafetyProgram.Core.Models
 open System.Windows.Controls
 open ReactiveUI
 open System
 
-type DocumentViewModel(document : GuiDocument, contentGenerator : GuiChemicalTable -> Control) = 
+type DocumentViewModel(document, contentGenerator) = 
 
     let propertyChanged = new Event<_,_>()
     let converter = Func<_,_>(contentGenerator)

@@ -6,11 +6,12 @@ open System.IO
 open SafetyProgram.Base.FSharp.Helpers
 
 // A standard implementation of a local file service for XElements.
-let localSvc<'a> generator (converter : TwoWayConverter<'a, XElement>) = {
+let localSvc<'a> generator converter = {
 
     // Create a new document.
     New = fun () -> async { 
-        return Some(generator()), None 
+        let x = generator()
+        return Some x, None
     }
 
     // Load a document from the local filesystem.
@@ -31,7 +32,7 @@ let localSvc<'a> generator (converter : TwoWayConverter<'a, XElement>) = {
     Save = fun (path, fileStream, data) -> async {
         let fs = 
             match fileStream with
-            | Some(fs) -> fs
+            | Some fs -> fs
             | None -> 
                 match File.Exists path with
                 | true -> path |> File.OpenRead
@@ -40,11 +41,11 @@ let localSvc<'a> generator (converter : TwoWayConverter<'a, XElement>) = {
         return 
             data
             |> converter.ConvertTo
-            |> Option.bind(fun serializedData ->
+            >>= fun serializedData ->
                 let xDoc = new XDocument(fs)
-                xDoc.Add(serializedData)
-                xDoc.Save(fs)
-                Some(data, fs))
+                xDoc.Add serializedData
+                xDoc.Save fs
+                Some(data, fs)
     }
 }
     

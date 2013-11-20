@@ -14,13 +14,21 @@ type SaveAs(kernelData : GuiKernelData) as this =
 
     interface ICommand with
 
-        // You can always open a new document
+        // You can always save a document.
         member this.CanExecute(_) = 
-            true
+            match kernelData.Content with
+            | Some _ -> true
+            | None -> false
 
         // Close the old document, open a new one using the IOService
         member this.Execute(_) = 
-            ()
+            match kernelData.Service with
+            | LocalSvc x -> 
+                // Dialog
+                let path = "NYI"
+                x.Save(path, null, kernelData.Content)
+                |> Async.RunSynchronously
+                |> ignore
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish

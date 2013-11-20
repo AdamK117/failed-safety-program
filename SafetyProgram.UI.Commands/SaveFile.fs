@@ -23,7 +23,16 @@ type SaveFile(kernelData : GuiKernelData) as this =
         // Save the file using the IO service.
         member this.Execute(_) = 
             match kernelData.Service with
-            | LocalSvc x -> x.Save
+            | LocalSvc x -> 
+                match kernelData.Content with
+                | Some (doc, t) -> 
+                    match t with
+                    | LocalFile (pth, fs) -> 
+                        match pth with
+                        | Some s -> x.Save (s, fs, doc)
+                    | BufferedFile -> ()
+                | None -> ()
+                x.Save("Need Path", None, kernelData.Content)
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish

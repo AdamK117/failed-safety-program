@@ -42,7 +42,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewDocument.fs" />
+    <Compile Include="NewFile.fs" />
     <Compile Include="OpenFile.fs" />
     <Compile Include="CloseFile.fs" />
     <Compile Include="SaveFile.fs" />
@@ -55,8 +55,8 @@
     <Compile Include="DeleteSelected.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Base.FSharp\SafetyProgram.Base.FSharp.fsproj">
-      <Name>SafetyProgram.Base.FSharp</Name>
+    <ProjectReference Include="..\SafetyProgram.Base.FSharp\SafetyProgram.Base.fsproj">
+      <Name>SafetyProgram.Base</Name>
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
       <Private>True</Private>
     </ProjectReference>

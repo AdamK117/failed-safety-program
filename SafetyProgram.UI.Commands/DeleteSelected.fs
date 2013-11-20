@@ -5,7 +5,7 @@ open SafetyProgram.UI.Models
 open SafetyProgram.Core.IO.Services
 open System
 
-type DeleteSelected(document : GuiDocument) =
+type DeleteSelected(selection) =
 
     let canExecuteChanged = Event<_,_>()
 

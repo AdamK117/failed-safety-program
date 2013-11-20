@@ -5,7 +5,7 @@ open SafetyProgram.UI.Models
 open SafetyProgram.Core.IO.Services
 open System
 
-type CopySelected(document : GuiDocument) =
+type CopySelected(selection) =
 
     let canExecuteChanged = Event<_,_>()
 
