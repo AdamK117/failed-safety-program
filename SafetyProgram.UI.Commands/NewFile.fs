@@ -3,7 +3,9 @@
 open System.Windows.Input
 open SafetyProgram.UI.Models
 open SafetyProgram.Core.IO.Services
-open SafetyProgram.Base.FSharp.Helpers
+open SafetyProgram.Base.Helpers
+open SafetyProgram.Base
+open System.Collections.ObjectModel
 
 type NewFile(kernelData : GuiKernelData) = 
 
@@ -31,7 +33,7 @@ type NewFile(kernelData : GuiKernelData) =
 
             match doc with
             | Some x -> 
-                kernelData.Content <- Some (new GuiDocument(x), dataType)
+                kernelData.Content <- Some ({ Content = new GuiDocument(x); DataType = dataType; CommandController = new CommandController(); Selection = new ObservableCollection<obj>()})
             | None -> 
                 // New Document was not made (error occured).
                 ()

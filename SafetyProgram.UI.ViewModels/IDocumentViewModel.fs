@@ -7,7 +7,7 @@ open ReactiveUI
 
 type IDocumentViewModel =
 
-    inherit INotifyPropertyChanged
+    inherit IViewModel
     
     abstract Width : decimal with get
     abstract Height : decimal with get

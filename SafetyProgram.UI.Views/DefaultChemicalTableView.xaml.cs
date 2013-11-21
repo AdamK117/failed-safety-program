@@ -1,4 +1,4 @@
-﻿using SafetyProgram.Base.FSharp;
+﻿using SafetyProgram.Base;
 using SafetyProgram.UI.ViewModels;
 using System.Windows.Controls;
 

@@ -1,5 +1,5 @@
 ﻿using Fluent;
-using SafetyProgram.Base.FSharp;
+using SafetyProgram.Base;
 using SafetyProgram.UI.ViewModels;
 
 namespace SafetyProgram.UI.Views

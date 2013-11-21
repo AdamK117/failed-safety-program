@@ -4,9 +4,9 @@ open SafetyProgram.UI.Models
 open System.Collections.ObjectModel
 open System.ComponentModel
 
-type IChemicalTableRibbonViewModel = 
+type IChemicalTableRibbonTabViewModel = 
     
-    inherit INotifyPropertyChanged
+    inherit IViewModel
 
     abstract Search : string with get, set
     abstract SearchResult : ObservableCollection<string> with get

@@ -1,11 +1,11 @@
 ﻿namespace SafetyProgram.UI.Models
 
 open System.ComponentModel
-open SafetyProgram.Base.FSharp.Helpers
+open SafetyProgram.Base.Helpers
 open SafetyProgram.Core.IO.Services
 open SafetyProgram.Core.Models
 
-type GuiKernelData(vcontent : Option<GuiDocument * DataType>, vservice : IoService<Document>, vconfiguration : ApplicationConfiguration) = 
+type GuiKernelData(vcontent : Option<ContentHolder>, vservice : IoService<Document>, vconfiguration : ApplicationConfiguration) = 
 
     let propertyChangedEvent = new Event<_,_>()
 

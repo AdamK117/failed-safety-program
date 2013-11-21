@@ -71,6 +71,9 @@
     <Compile Include="InsertRibbonTabView.xaml.cs">
       <DependentUpon>InsertRibbonTabView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NoDocumentView.xaml.cs">
+      <DependentUpon>NoDocumentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -119,13 +122,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="NoDocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\lib\Fluent\Fluent\Fluent dotNET 4.0.csproj">
       <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
       <Name>Fluent dotNET 4.0</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Base.FSharp\SafetyProgram.Base.fsproj">
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
       <Name>SafetyProgram.Base</Name>
     </ProjectReference>

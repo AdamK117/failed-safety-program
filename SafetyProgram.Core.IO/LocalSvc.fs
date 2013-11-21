@@ -3,10 +3,10 @@
 open Services
 open System.Xml.Linq
 open System.IO
-open SafetyProgram.Base.FSharp.Helpers
+open SafetyProgram.Base.Helpers
 
 // A standard implementation of a local file service for XElements.
-let localSvc<'a> generator converter = {
+let localSvc<'a> (generator : unit -> 'a) (converter : TwoWayConverter<_,_>) = {
 
     // Create a new document.
     New = fun () -> async { 

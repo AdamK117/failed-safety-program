@@ -3,7 +3,7 @@
 open SafetyProgram.Core.Models
 open System.Collections.ObjectModel
 open System.ComponentModel
-open SafetyProgram.Base.FSharp.Helpers
+open SafetyProgram.Base.Helpers
 
 type GuiChemical(chemical) = 
 
@@ -38,5 +38,5 @@ module ChemicalHelpers =
 
     let guiChemicalToChemical (guiChemical : GuiChemical) = {
         Name = guiChemical.Name
-        Hazards = Seq.map HazardHelpers.guiHazardToModel guiChemical.Hazards    
+        Hazards = Seq.map HazardHelpers.guiHazardToModel guiChemical.Hazards
     }

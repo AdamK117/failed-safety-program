@@ -46,18 +46,19 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GuiHazard.fs" />
-    <Compile Include="GuiChemical.fs" />
-    <Compile Include="GuiCoshhChemical.fs" />
-    <Compile Include="GuiChemicalTable.fs" />
-    <Compile Include="GuiDocumentObject.fs" />
-    <Compile Include="GuiFormat.fs" />
-    <Compile Include="GuiDocument.fs" />
-    <Compile Include="GuiContentHolder.fs" />
-    <Compile Include="GuiKernelData.fs" />
+    <Compile Include="IMutableModel.fs" />
+    <Compile Include="MutableHazard.fs" />
+    <Compile Include="MutableChemical.fs" />
+    <Compile Include="MutableCoshhChemical.fs" />
+    <Compile Include="MutableChemicalTable.fs" />
+    <Compile Include="MutableDocumentObject.fs" />
+    <Compile Include="MutableFormat.fs" />
+    <Compile Include="MutableDocument.fs" />
+    <Compile Include="MutableContentHolder.fs" />
+    <Compile Include="MutableKernelData.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Base.FSharp\SafetyProgram.Base.fsproj">
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
       <Name>SafetyProgram.Base</Name>
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
       <Private>True</Private>

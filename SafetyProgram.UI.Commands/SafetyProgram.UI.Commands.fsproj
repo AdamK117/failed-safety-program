@@ -55,7 +55,7 @@
     <Compile Include="DeleteSelected.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SafetyProgram.Base.FSharp\SafetyProgram.Base.fsproj">
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
       <Name>SafetyProgram.Base</Name>
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
       <Private>True</Private>

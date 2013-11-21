@@ -6,7 +6,7 @@ open System.ComponentModel
 
 type IChemicalTableViewModel =
     
-    inherit INotifyPropertyChanged
+    inherit IViewModel
 
-    abstract Header : string with get
+    abstract Header : string with get, set
     abstract Chemicals : ObservableCollection<GuiCoshhChemical> with get

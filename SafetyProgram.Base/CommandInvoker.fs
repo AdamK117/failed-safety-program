@@ -8,7 +8,7 @@ type ReversibleCommand = {
 }
 
 type ICommandInvoker = 
-    abstract InvokeCommand : ReversibleCommand -> unit
+    abstract invoke : ReversibleCommand -> unit
 
 type ICommandController =
     
@@ -27,36 +27,44 @@ type CommandController () =
     let canUndoChanged = new Event<_>()
     let canRedoChanged = new Event<_>()
 
+    // Hold commands
     let futureCommands = new Stack<_>()
     let pastCommands = new Stack<_>()
 
+    // Predicates for executing a past or future command.
     let canUndo() = pastCommands.Count > 0
     let canRedo() = futureCommands.Count > 0
 
-    let invokeCommand f = 
+    // Invoke a function (not a command)
+    let invoke f = 
         let canUndoBefore = canUndo()
         let canRedoBefore = canRedo()
 
         f()
 
+        // Echo to public event that a change in state has occured.
         let canUndoAfter = canUndo()
         if canUndoAfter <> canUndoBefore then
             canUndoChanged.Trigger canUndoAfter
 
+        // Same as above.
         let canRedoAfter = canRedo()
         if canRedoAfter <> canRedoBefore then
             canRedoChanged.Trigger canRedoAfter
 
+    // Outer interface declaration.
     interface ICommandController with
-        member this.InvokeCommand (cmd) =
+        // Invoke a command.
+        member this.invoke (cmd) =
 
             let f() = 
                 futureCommands.Clear()
                 cmd.Execute()
                 pastCommands.Push cmd
 
-            invokeCommand f
+            invoke f
 
+        // Undo the last invoked command.
         member this.Undo() = 
             
             let f() = 
@@ -64,12 +72,13 @@ type CommandController () =
                 cmd.UnExecute ()
                 futureCommands.Push cmd
 
-            invokeCommand f
+            invoke f
 
         member this.CanUndo() = canUndo()
 
         member this.CanUndoChanged = canUndoChanged.Publish
 
+        // Redo the last undone command.
         member this.Redo() = 
             
             let f() = 
@@ -77,7 +86,7 @@ type CommandController () =
                 cmd.Execute()
                 pastCommands.Push cmd
 
-            invokeCommand f
+            invoke f
 
         member this.CanRedo() = canRedo()
 

@@ -1,4 +1,4 @@
-﻿module SafetyProgram.Base.FSharp.Helpers
+﻿module SafetyProgram.Base.Helpers
 
 open System
 open System.ComponentModel

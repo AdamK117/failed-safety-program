@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using SafetyProgram.UI;
-using SafetyProgram.Core;
+using SafetyProgram.UI.Models;
 
 namespace SafetyProgram
 {
@@ -16,12 +16,9 @@ namespace SafetyProgram
         {
             base.OnStartup(e);
 
-            var applicationKernel = Kernel.defaultKernel;
-            var kernelService = Kernel.buildDataService<Kernel.KernelData>(applicationKernel);
-
-            var uiController = new UI.MainUiController(kernelService);
-
-            uiController.View.Show();
+            GuiKernelData x = UI.Defaults.defaultKernelData;
+            var y = new UiController(x);
+            y.View.Show();
         }
 
         /// <summary>

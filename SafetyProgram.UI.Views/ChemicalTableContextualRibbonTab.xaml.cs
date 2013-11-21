@@ -1,5 +1,5 @@
 ﻿using Fluent;
-using SafetyProgram.Base.FSharp;
+using SafetyProgram.Base;
 using SafetyProgram.UI.ViewModels;
 
 namespace SafetyProgram.UI.Views
@@ -13,7 +13,7 @@ namespace SafetyProgram.UI.Views
         /// Construct an instance of a chemical table contextual ribbon tab view.
         /// </summary>
         /// <param name="viewModel">The underlying viewmodel for this contextual ribbon tab.</param>
-        public ChemicalTableContextualRibbonTab(IChemicalTableRibbonViewModel viewModel)
+        public ChemicalTableContextualRibbonTab(IChemicalTableRibbonTabViewModel viewModel)
         {
             Helpers.NullCheck(viewModel);
 

@@ -3,7 +3,9 @@
 open System.Windows.Input
 open SafetyProgram.UI.Models
 open SafetyProgram.Core.IO.Services
-open SafetyProgram.Base.FSharp.Helpers
+open SafetyProgram.Base.Helpers
+open SafetyProgram.Base
+open System.Collections.ObjectModel
 
 type OpenFile(kernelData : GuiKernelData) =
 
@@ -30,7 +32,7 @@ type OpenFile(kernelData : GuiKernelData) =
                         s.Load(dialogOutput)
                         |> Async.RunSynchronously
 
-                return (new GuiDocument(doc), LocalFile(Some dialogOutput, Some fs))
+                return { Content = new GuiDocument(doc); DataType = LocalFile(Some dialogOutput, Some fs); CommandController = new CommandController(); Selection = new ObservableCollection<obj>()}
             }                
 
         [<CLIEvent>]

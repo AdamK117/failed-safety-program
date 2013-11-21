@@ -1,6 +1,6 @@
 ﻿module SafetyProgram.Core.Models.Serialization.HazardXml
 
-open SafetyProgram.Base.FSharp.Helpers
+open SafetyProgram.Base.Helpers
 open System.Xml.Linq
 open System
 open SafetyProgram.Core.Models

@@ -49,12 +49,15 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Compile Include="IViewModel.fs" />
     <Compile Include="IChemicalTableViewModel.fs" />
     <Compile Include="ChemicalTableViewModel.fs" />
-    <Compile Include="IChemicalTableRibbonViewModel.fs" />
-    <Compile Include="ChemicalTableRibbonViewModel.fs" />
+    <Compile Include="IChemicalTableRibbonTabViewModel.fs" />
+    <Compile Include="ChemicalTableRibbonTabViewModel.fs" />
     <Compile Include="IDocumentViewModel.fs" />
     <Compile Include="DocumentViewModel.fs" />
+    <Compile Include="INoDocumentViewModel.fs" />
+    <Compile Include="NoDocumentViewModel.fs" />
     <Compile Include="IInsertRibbonTabViewModel.fs" />
     <Compile Include="InsertRibbonTabViewModel.fs" />
     <Compile Include="IRibbonViewModel.fs" />
@@ -80,6 +83,11 @@
     <ProjectReference Include="..\lib\Fluent\Fluent\Fluent dotNET 4.0.csproj">
       <Name>Fluent dotNET 4.0</Name>
       <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
+      <Name>SafetyProgram.Base</Name>
+      <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj">

@@ -1,5 +1,7 @@
 ﻿namespace SafetyProgram.UI.ViewModels
 
 type IInsertRibbonTabViewModel =
-    abstract Filler : string
+    
+    inherit IViewModel
 
+    abstract Filler : string

@@ -2,7 +2,7 @@
 
 open SafetyProgram.Core.Models
 open System.ComponentModel
-open SafetyProgram.Base.FSharp.Helpers
+open SafetyProgram.Base.Helpers
 
 type GuiHazard(hazard) = 
 

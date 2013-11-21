@@ -42,6 +42,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -53,9 +54,19 @@
       <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
+      <Name>SafetyProgram.Base</Name>
+      <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj">
       <Name>SafetyProgram.Core.IO</Name>
       <Project>{c95d174d-a8aa-455d-ab70-a9bbd0355656}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.Core.Models.Serialization\SafetyProgram.Core.Models.Serialization.fsproj">
+      <Name>SafetyProgram.Core.Models.Serialization</Name>
+      <Project>{c15235cf-54ec-467b-9b87-609aaa999cf6}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">

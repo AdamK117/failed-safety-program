@@ -3,7 +3,7 @@
 open SafetyProgram.Core.Models
 open System.Collections.ObjectModel
 open System.ComponentModel
-open SafetyProgram.Base.FSharp.Helpers
+open SafetyProgram.Base.Helpers
 
 type GuiChemicalTable(chemicalTable) = 
 
