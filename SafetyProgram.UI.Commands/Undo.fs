@@ -5,26 +5,60 @@ open SafetyProgram.UI.Models
 open SafetyProgram.Core.IO.Services
 open System
 open SafetyProgram.Base
+open SafetyProgram.Base.Helpers
+open FSharpx.Option
 
-type Undo(commandController : ICommandController) as this =
+type Undo(model : GuiKernelData) as this =
 
     let canExecuteChanged = Event<_,_>()
 
-    let handler = commandController.CanUndoChanged.Subscribe(fun _ ->
-        canExecuteChanged.Trigger(this, new EventArgs()))
+    let triggerCanExecuteChanged () = canExecuteChanged.Trigger(this, new EventArgs())
+
+    let attachToCommandController x = maybe {
+        let! y = x
+        let z = y.CommandController.CanRedoChanged.Subscribe(fun _ ->
+            triggerCanExecuteChanged())
+        return z
+    }
+
+    let mutable commandControllerHandler = attachToCommandController model.Content
+
+    let contentHandler = model.ContentChanged.Subscribe(fun _ ->
+        maybe {
+            let! x = commandControllerHandler
+            x.Dispose()
+
+            return ()
+        } |> ignore
+
+        commandControllerHandler <- attachToCommandController model.Content
+        
+        triggerCanExecuteChanged())
 
     interface ICommand with
 
-        // You can always open a new document
-        member this.CanExecute(_) = commandController.CanUndo()
+        // Undo may only be executed if there is content open AND there are commands to undo.
+        member this.CanExecute(_) = 
+            match model.Content with
+            | Some x -> x.CommandController.CanUndo()
+            | None -> false
 
-        // Close the old document, open a new one using the IOService
+        // Perform an undo operation.
         member this.Execute(_) = 
-            commandController.Undo()
+            maybe {
+                let! x = model.Content
+                x.CommandController.Undo()
+                return ()
+            } |> ignore
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish
 
     interface IDisposable with
         member this.Dispose() =
-            handler.Dispose()
+            contentHandler.Dispose()
+            maybe {
+                let! x = commandControllerHandler
+                x.Dispose()
+                return ()
+            } |> ignore

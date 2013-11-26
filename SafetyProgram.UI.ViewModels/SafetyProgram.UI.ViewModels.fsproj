@@ -10,7 +10,7 @@
     <RootNamespace>SafetyProgram.UI.ViewModels</RootNamespace>
     <AssemblyName>SafetyProgram.UI.ViewModels</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
+    <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
     <Name>SafetyProgram.UI.ViewModels</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -58,14 +58,24 @@
     <Compile Include="DocumentViewModel.fs" />
     <Compile Include="INoDocumentViewModel.fs" />
     <Compile Include="NoDocumentViewModel.fs" />
+    <Compile Include="InsertTabCommands.fs" />
     <Compile Include="IInsertRibbonTabViewModel.fs" />
     <Compile Include="InsertRibbonTabViewModel.fs" />
+    <Compile Include="MainCommands.fs" />
     <Compile Include="IRibbonViewModel.fs" />
     <Compile Include="RibbonViewModel.fs" />
     <Compile Include="IMainViewModel.fs" />
     <Compile Include="MainViewModel.fs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Fluent">
+      <HintPath>..\lib\Fluent Ribbon Control Suite 2.0\.NET 4.0\Assembly\Release\Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharpx.Core">
+      <HintPath>..\packages\FSharpx.Core.1.8.41\lib\40\FSharpx.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
@@ -78,13 +88,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\lib\Fluent\Fluent\Fluent dotNET 4.0.csproj">
-      <Name>Fluent dotNET 4.0</Name>
-      <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
-      <Private>True</Private>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
       <Name>SafetyProgram.Base</Name>
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
@@ -98,6 +101,11 @@
     <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">
       <Name>SafetyProgram.Core.Models</Name>
       <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SafetyProgram.UI.Commands\SafetyProgram.UI.Commands.fsproj">
+      <Name>SafetyProgram.UI.Commands</Name>
+      <Project>{f858d3ab-d767-468a-aa7a-eba6adb8f522}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI.Models\SafetyProgram.UI.Models.fsproj">

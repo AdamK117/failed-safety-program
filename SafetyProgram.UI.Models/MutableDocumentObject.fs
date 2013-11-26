@@ -6,17 +6,17 @@ open System.ComponentModel
 open SafetyProgram.Base.Helpers
 
 type GuiDocumentObject = 
-    | GuiChemicalTable of GuiChemicalTable
+    | GuiChemicalTableDocObj of GuiChemicalTable
 
 module DocumentObjectHelpers = 
 
     let guiDocumentObjectFactory docObject = 
         match docObject with
-        | ChemicalTable x -> GuiChemicalTable(new GuiChemicalTable(x)) 
+        | ChemicalTable x -> GuiChemicalTableDocObj(new GuiChemicalTable(x))
 
     let guiDocumentObjectToDocumentObject guiDocObject = 
         match guiDocObject with
-        | GuiChemicalTable x ->
+        | GuiChemicalTableDocObj x ->
             ChemicalTable(
                 {   
                     Header = x.Header

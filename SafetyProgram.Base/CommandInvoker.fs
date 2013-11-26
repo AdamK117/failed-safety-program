@@ -91,4 +91,3 @@ type CommandController () =
         member this.CanRedo() = canRedo()
 
         member this.CanRedoChanged = canRedoChanged.Publish
-

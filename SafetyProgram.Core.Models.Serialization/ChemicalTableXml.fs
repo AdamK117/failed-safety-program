@@ -5,25 +5,22 @@ open SafetyProgram.Core.Models
 open System.Xml.Linq
 open System
 open SafetyProgram.Base.Helpers
+open FSharpx.Choice
 
-let ChemicalTableXmlConverter = {
-    ConvertTo = fun data ->
-        new NotImplementedException() |> raise
-        
-    ConvertFrom = fun (data : XElement) ->
-        maybeBuilder {
-            let header = 
-                getElement data "header"
-                >>= getValue
-                |> function
-                    | Some(a) -> a
-                    | None -> "Default Header"
+let ChemicalTableXmlConverter : TwoWayConverter<ChemicalTable, XElement> = {
+    ConvertTo = fun _ -> new NotImplementedException() |> raise        
+    ConvertFrom = fun data -> choose {
+        let header = 
+            getElement "header" data >>= getValue
+            |> function
+                | Choice1Of2 x -> x
+                | Choice2Of2 _ -> ""
 
-            let! chemicals = 
-                data.Elements(xname "coshhchemical")
-                |> Seq.map(CoshhChemicalXmlConverter.ConvertFrom)
-                |> flattenOptions
+        let! chemicals = 
+            data.Elements(xname "coshhchemical")
+            |> Seq.toList
+            |> mapM CoshhChemicalXmlConverter.ConvertFrom
 
-            return ChemicalTable({ Header=header; Chemicals=chemicals })
-        }
-}    
+        return { Header=header; Chemicals=chemicals }
+    }
+}

@@ -7,6 +7,6 @@ open SafetyProgram.Base
 type ContentHolder = {
     Content : GuiDocument
     DataType : DataType
-    CommandController : CommandController
+    CommandController : ICommandController
     Selection : ObservableCollection<obj>
 }

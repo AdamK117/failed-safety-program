@@ -35,6 +35,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fluent, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Fluent Ribbon Control Suite 2.0\.NET 4.0\Assembly\Release\Fluent.dll</HintPath>
+    </Reference>
     <Reference Include="ReactiveUI">
       <HintPath>..\lib\ReactiveUI.5.2.0\Net45\ReactiveUI.dll</HintPath>
     </Reference>
@@ -128,10 +132,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\lib\Fluent\Fluent\Fluent dotNET 4.0.csproj">
-      <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
-      <Name>Fluent dotNET 4.0</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
       <Name>SafetyProgram.Base</Name>

@@ -9,8 +9,7 @@ type ChemicalTableViewModel(model : GuiChemicalTable) =
     interface IChemicalTableViewModel with
         member this.Header 
             with get () = model.Header
-            and set x = 
-                model.Header <- x
+            and set x = model.Header <- x
 
         member this.Chemicals
             with get () = model.Chemicals            

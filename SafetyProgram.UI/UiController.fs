@@ -27,13 +27,18 @@ type UiController(model : GuiKernelData) =
     // Ribbon tab wireup
     let ribbonTabs doc = 
         match doc with
-        | Some x -> new ObservableCollection<_>()
+        | Some x -> 
+            let insertTabVm = new InsertRibbonTabViewModel(x)
+            let insertTabV = new InsertRibbonTabView(insertTabVm)
+            let y = new ObservableCollection<_>()
+            y.Add(insertTabV :> RibbonTabItem)
+            y
         | None -> new ObservableCollection<_>()
 
     // Selection ribbon tab wireup
     let selectionRibbonTab selection =
         match selection with
-        | GuiChemicalTable m -> 
+        | GuiChemicalTableDocObj m -> 
             let vm = new ChemicalTableRibbonTabViewModel(m)
             let v = new ChemicalTableContextualRibbonTab(vm)
             v :> RibbonTabItem
@@ -49,7 +54,7 @@ type UiController(model : GuiKernelData) =
     // DocumentObject view wireup
     let documentObjectVMM x = 
         match x with
-        | GuiChemicalTable m -> 
+        | GuiChemicalTableDocObj m -> 
             let vm = new ChemicalTableViewModel(m)
             let v = new DefaultChemicalTableView(vm)
             (v :> Control, vm :> IViewModel)

@@ -13,12 +13,12 @@
                 <Fluent:Backstage x:Name="Backstage">
                     <Fluent:BackstageTabControl>
                         <!-- File Menu options-->
-                        <Fluent:Button Header="Save" Command="{Binding Commands.Save}" />
+                        <Fluent:Button Header="Save" Command="{Binding Commands.SaveFile}" />
                         <Fluent:Button Header="Save As" Command="{Binding Commands.SaveAs}" />
-                        <Fluent:Button Header="Save As PDF" Command="{Binding Commands.Save}" />
-                        <Fluent:Button Header="Open" Command="{Binding Commands.Open}" />
-                        <Fluent:Button Header="Close" Command="{Binding Commands.Close}" />
-                        <Fluent:Button Header="New" Command="{Binding OpenDocument}" />
+                        <Fluent:Button Header="Save As PDF" Command="{Binding Commands.SaveFile}" />
+                        <Fluent:Button Header="Open" Command="{Binding Commands.OpenFile}" />
+                        <Fluent:Button Header="Close" Command="{Binding Commands.CloseFile}" />
+                        <Fluent:Button Header="New" Command="{Binding Commands.NewFile}" />
                         
                         <Fluent:BackstageTabItem Header="Recent" >
                             <Fluent:Button Header="Work In Progress (Show recently opened documents here)" />

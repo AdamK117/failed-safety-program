@@ -6,6 +6,8 @@ open SafetyProgram.Core.IO.Services
 open SafetyProgram.Base.Helpers
 open SafetyProgram.Base
 open System.Collections.ObjectModel
+open FSharpx.Option
+open System
 
 type OpenFile(kernelData : GuiKernelData) =
 
@@ -22,17 +24,24 @@ type OpenFile(kernelData : GuiKernelData) =
             
             // CLOSE OR SAVE HERE
 
-            kernelData.Content <- maybeBuilder {
+            kernelData.Content <- maybe {
 
-                let dialogOutput = "NYI"
+                let dialogOutput = @"C:\Temp\CoshhFile.xml"
 
-                let! doc, fs = 
+                let resp = 
                     match kernelData.Service with
                     | LocalSvc s ->
                         s.Load(dialogOutput)
                         |> Async.RunSynchronously
 
-                return { Content = new GuiDocument(doc); DataType = LocalFile(Some dialogOutput, Some fs); CommandController = new CommandController(); Selection = new ObservableCollection<obj>()}
+                let x =
+                    match resp with
+                    | Choice1Of2 (doc, fs) -> new NotImplementedException() |> raise
+                    | Choice2Of2 x -> new NotImplementedException() |> raise
+
+                return! None
+
+                //return { Content = new GuiDocument(doc); DataType = LocalFile(Some dialogOutput, Some fs); CommandController = new CommandController(); Selection = new ObservableCollection<obj>()}
             }                
 
         [<CLIEvent>]

@@ -34,7 +34,14 @@
     <DocumentationFile>bin\Release\SafetyProgram.UI.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fluent">
+      <HintPath>..\lib\Fluent Ribbon Control Suite 2.0\.NET 4.0\Assembly\Release\Fluent.dll</HintPath>
+    </Reference>
     <Reference Include="FSharp.Core, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="FSharpx.Core">
+      <HintPath>..\packages\FSharpx.Core.1.8.41\lib\40\FSharpx.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -49,11 +56,6 @@
     <Compile Include="UiController.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\lib\Fluent\Fluent\Fluent dotNET 4.0.csproj">
-      <Name>Fluent dotNET 4.0</Name>
-      <Project>{4c92fcf4-3561-499f-bc5b-f2f089863047}</Project>
-      <Private>True</Private>
-    </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
       <Name>SafetyProgram.Base</Name>
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>

@@ -17,6 +17,8 @@ namespace SafetyProgram.UI.Views
 
             ribbonTabsCollectionChanged();
 
+            viewModel.PropertyChanged += ((x,y) => ribbonTabsCollectionChanged());
+
             InitializeComponent();
         }
 

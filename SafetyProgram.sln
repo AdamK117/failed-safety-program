@@ -13,9 +13,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafetyProgram", "SafetyProgram\SafetyProgram.csproj", "{BEEA81AD-8CA8-431F-9B62-C7329DDE2021}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafetyProgram.UI.Views", "SafetyProgram.UI.Views\SafetyProgram.UI.Views.csproj", "{1F897AAB-59C3-4E70-BA89-3090311C93E9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4C92FCF4-3561-499F-BC5B-F2F089863047} = {4C92FCF4-3561-499F-BC5B-F2F089863047}
-	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SafetyProgram.UI", "SafetyProgram.UI\SafetyProgram.UI.fsproj", "{D3BD9BAE-DBF1-44B3-AB6C-53279266C792}"
 EndProject
@@ -24,8 +21,6 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SafetyProgram.Core.Models.Serialization", "SafetyProgram.Core.Models.Serialization\SafetyProgram.Core.Models.Serialization.fsproj", "{C15235CF-54EC-467B-9B87-609AAA999CF6}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SafetyProgram.Core.IO", "SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj", "{C95D174D-A8AA-455D-AB70-A9BBD0355656}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent dotNET 4.0", "lib\Fluent\Fluent\Fluent dotNET 4.0.csproj", "{4C92FCF4-3561-499F-BC5B-F2F089863047}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SafetyProgram.UI.Models", "SafetyProgram.UI.Models\SafetyProgram.UI.Models.fsproj", "{43C1FE2B-EFDB-47DA-8232-C4DBD9C5EE2E}"
 EndProject
@@ -140,21 +135,6 @@ Global
 		{C95D174D-A8AA-455D-AB70-A9BBD0355656}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C95D174D-A8AA-455D-AB70-A9BBD0355656}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C95D174D-A8AA-455D-AB70-A9BBD0355656}.Release|x86.ActiveCfg = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.AutomatedRelease|Any CPU.ActiveCfg = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.AutomatedRelease|Any CPU.Build.0 = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.AutomatedRelease|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.AutomatedRelease|Mixed Platforms.Build.0 = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.AutomatedRelease|x86.ActiveCfg = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{4C92FCF4-3561-499F-BC5B-F2F089863047}.Release|x86.ActiveCfg = Release|Any CPU
 		{43C1FE2B-EFDB-47DA-8232-C4DBD9C5EE2E}.AutomatedRelease|Any CPU.ActiveCfg = Release|Any CPU
 		{43C1FE2B-EFDB-47DA-8232-C4DBD9C5EE2E}.AutomatedRelease|Any CPU.Build.0 = Release|Any CPU
 		{43C1FE2B-EFDB-47DA-8232-C4DBD9C5EE2E}.AutomatedRelease|Mixed Platforms.ActiveCfg = Release|Any CPU

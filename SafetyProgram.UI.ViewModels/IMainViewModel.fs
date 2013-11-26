@@ -10,3 +10,4 @@ type IMainViewModel =
 
     abstract RibbonView : Ribbon with get
     abstract ContentView : Control with get
+    abstract Commands : MainCommands with get

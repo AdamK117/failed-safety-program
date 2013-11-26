@@ -38,7 +38,7 @@ type DocumentViewModel(contentGenerator : GuiDocumentObject -> Control * IViewMo
 
     // IMPLICIT IMPL
     member this.Width
-        with get () = model.Format.Width / 0.1m<m>
+        with get () = model.Format.Width / 0.001m<m>
 
     member this.Height
         with get () = model.Format.Height / 0.1m<m>

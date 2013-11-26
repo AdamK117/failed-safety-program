@@ -5,27 +5,22 @@ open SafetyProgram.Core.Models
 open System.Xml.Linq
 open System
 open SafetyProgram.Base.Helpers
+open FSharpx.Choice
 
-let ChemicalXmlConverter = {        
-    ConvertTo = fun data ->
-        new NotImplementedException() |> raise
-        
-    ConvertFrom = fun (data : XElement) -> maybeBuilder {
-        let! name = 
-            getElement data "name"
-            >>= getValue
+let ChemicalXmlConverter : TwoWayConverter<Chemical, XElement> = {        
+    ConvertTo = fun _ -> new NotImplementedException() |> raise        
+    ConvertFrom = fun data -> choose {
+        let! name = getElement "name" data >>= getValue
 
-        let! hazards = 
-            maybeBuilder {
-                let! hazardsElement = getElement data "hazards"
-                return!                            
-                    hazardsElement.Elements(xname "hazard")
-                    |> Seq.map HazardXmlConverter.ConvertFrom
-                    |> flattenOptions
-            }
+        let! hazards = choose {
+            let! x = getElement "hazards" data
+            let hazards =
+                x.Elements(xname "hazard")
+                |> Seq.toList 
+                |> mapM HazardXmlConverter.ConvertFrom
+            return! hazards
+        }
 
         return { Name = name; Hazards = hazards; }
     }     
 }
-                        
-
