@@ -2,7 +2,7 @@
 
 open System.ComponentModel
 open SafetyProgram.Base.Helpers
-open SafetyProgram.Core.IO.Services
+open SafetyProgram.Core.Services
 open SafetyProgram.Core.Models
 
 type GuiKernelData(vcontent : Option<ContentHolder>, vservice : IoService<Document>, vconfiguration : ApplicationConfiguration) = 

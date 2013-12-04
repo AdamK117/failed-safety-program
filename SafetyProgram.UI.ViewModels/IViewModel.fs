@@ -5,5 +5,4 @@ open System
 
 type IViewModel = 
     inherit INotifyPropertyChanged
-    inherit IDisposable  
-
+    inherit IDisposable

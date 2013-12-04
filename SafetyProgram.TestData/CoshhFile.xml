@@ -3,7 +3,7 @@
   <chemicaltable>
     <header>Hazardous chemicals used in this experiment</header>
     <coshhchemical>
-      <amount unit="mgs">20.5</amount>
+      <amount unit="g">20.5</amount>
       <chemical>
         <name>MyRandomChemical</name>
         <hazards>
@@ -12,7 +12,7 @@
       </chemical>
     </coshhchemical>
     <coshhchemical>
-      <amount unit="mgs">20.5</amount>
+      <amount unit="g">20.5</amount>
       <chemical>
         <name>MyRandomChemical</name>
         <hazards>
@@ -21,7 +21,7 @@
       </chemical>
     </coshhchemical>
     <coshhchemical>
-      <amount unit="mgs">20.5</amount>
+      <amount unit="g">20.5</amount>
       <chemical>
         <name>MyRandomChemical</name>
         <hazards>
@@ -30,7 +30,7 @@
       </chemical>
     </coshhchemical>
     <coshhchemical>
-      <amount unit="mgs">20.5</amount>
+      <amount unit="g">20.5</amount>
       <chemical>
         <name>MyRandomChemical</name>
         <hazards>
@@ -42,7 +42,7 @@
   <chemicaltable>
     <header>Hazardous chemicals used in this experiment</header>
     <coshhchemical>
-      <amount unit="mgs">20.5</amount>
+      <amount unit="g">20.5</amount>
       <chemical>
         <name>MyRandomChemical</name>
         <hazards>
@@ -51,7 +51,7 @@
       </chemical>
     </coshhchemical>
     <coshhchemical>
-      <amount unit="mgs">20.5</amount>
+      <amount unit="g">20.5</amount>
       <chemical>
         <name>ayyy</name>
         <hazards>

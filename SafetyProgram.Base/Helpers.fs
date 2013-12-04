@@ -38,9 +38,9 @@ let getAttribute attributeName (element : XElement) =
     | x -> Choice1Of2 x
 
 // Tries to get the value of an XElement.
-let getValue (element : XElement) = Choice2Of2 element.Value
+let getValue (element : XElement) = Choice1Of2 element.Value
 
-let getAttributeValue (element : XAttribute) = Choice2Of2 element.Value
+let getAttributeValue (element : XAttribute) = Choice1Of2 element.Value
 
 // Tries to parse a string to a decimal.
 let parseDecimal x = 

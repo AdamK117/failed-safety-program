@@ -2,15 +2,24 @@
 
 open System.Windows.Input
 open SafetyProgram.UI.Models
-open SafetyProgram.Core.IO.Services
+open SafetyProgram.Core.Services
 open System.Collections.ObjectModel
 open FSharpx
 open SafetyProgram.Base
+open System.Windows.Forms
 open System
 
 type NewFile(kernelData : GuiKernelData) = 
 
     let canExecuteChanged = Event<_,_>()
+
+    let contentCtor model dataType = 
+        Some ({ 
+                Content = new GuiDocument(model); 
+                DataType = dataType; 
+                CommandController = new CommandController(); 
+                Selection = new ObservableCollection<_>()
+        })
 
     interface ICommand with
 
@@ -23,14 +32,12 @@ type NewFile(kernelData : GuiKernelData) =
 
             let x = 
                 match kernelData.Service with
-                | LocalSvc s -> s.New() |> Async.RunSynchronously
+                | LocalSvc s -> s.New() |> Async.RunSynchronously            
 
-            let contentCtor model dataType = Some ({ Content = new GuiDocument(model); DataType = dataType; CommandController = new CommandController(); Selection = new ObservableCollection<_>()})
-
-            kernelData.Content <- match x with
-                                    | Choice1Of3 (doc, fs) -> contentCtor doc (LocalFile(Choice1Of2("a", fs)))
-                                    | Choice2Of3 doc -> contentCtor doc BufferedFile
-                                    | Choice3Of3 err -> new NotImplementedException() |> raise
+            do 
+                match x with
+                | Choice1Of2 y -> kernelData.Content <- contentCtor y BufferedData
+                | Choice2Of2 err -> MessageBox.Show("Cannot create new file. ERROR: " + err) |> ignore
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish

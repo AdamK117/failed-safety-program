@@ -2,7 +2,7 @@
 
 open System.Windows.Input
 open SafetyProgram.UI.Models
-open SafetyProgram.Core.IO.Services
+open SafetyProgram.Core.Services
 open System
 
 type CopySelected(selection) =

@@ -39,9 +39,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Fluent Ribbon Control Suite 2.0\.NET 4.0\Assembly\Release\Fluent.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI">
-      <HintPath>..\lib\ReactiveUI.5.2.0\Net45\ReactiveUI.dll</HintPath>
-    </Reference>
+    <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -135,10 +133,6 @@
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
       <Name>SafetyProgram.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">
-      <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>
-      <Name>SafetyProgram.Core.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI.Models\SafetyProgram.UI.Models.fsproj">
       <Project>{43c1fe2b-efdb-47da-8232-c4dbd9c5ee2e}</Project>

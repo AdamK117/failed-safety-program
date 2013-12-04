@@ -2,9 +2,10 @@
 
 open System.Windows.Input
 open SafetyProgram.UI.Models
-open SafetyProgram.Core.IO.Services
+open SafetyProgram.Core.Services
 open System.ComponentModel
 open System
+open System.Diagnostics
 
 type CloseFile(kernelData : GuiKernelData) as this =
 
@@ -15,18 +16,22 @@ type CloseFile(kernelData : GuiKernelData) as this =
 
     interface ICommand with
 
-        // You can always open a new document
+        // You may only close a document if there is something to close.
         member this.CanExecute(_) = 
             match kernelData.Content with
             | Some _ -> true
             | None -> false
 
         // Close the old document, open a new one using the IOService
-        member this.Execute(_) = 
-            
-            // SAVE OR CLOSE HERE
+        member this.Execute(_) =
 
-            kernelData.Content <- None
+            if kernelData.Content <> None then
+                // Prompt to save
+                kernelData.Content <- None
+            else
+                // Erroneous state, perhaps log
+                Debug.Write 
+                ()
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish

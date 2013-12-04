@@ -13,6 +13,8 @@ type RibbonViewModel(documentTabGenerator : Option<GuiDocument> -> ObservableCol
 
     let commands = new MainCommands(model)
 
+    let a = None >>= (fun a -> Some a)
+
     let getTabs content =
         model.Content
         >>= (fun c -> Some c.Content)

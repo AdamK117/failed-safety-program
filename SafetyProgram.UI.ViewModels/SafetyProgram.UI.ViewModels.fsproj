@@ -10,7 +10,7 @@
     <RootNamespace>SafetyProgram.UI.ViewModels</RootNamespace>
     <AssemblyName>SafetyProgram.UI.ViewModels</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
+    <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
     <Name>SafetyProgram.UI.ViewModels</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -72,35 +72,57 @@
     <Reference Include="Fluent">
       <HintPath>..\lib\Fluent Ribbon Control Suite 2.0\.NET 4.0\Assembly\Release\Fluent.dll</HintPath>
     </Reference>
+    <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="FSharpx.Core">
       <HintPath>..\packages\FSharpx.Core.1.8.41\lib\40\FSharpx.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="ReactiveUI">
-      <HintPath>..\lib\ReactiveUI.5.2.0\Net45\ReactiveUI.dll</HintPath>
+      <HintPath>..\packages\reactiveui-core.5.2.0\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ReactiveUI.Blend">
+      <HintPath>..\packages\reactiveui-platforms.5.2.0\lib\net45\ReactiveUI.Blend.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ReactiveUI.Xaml">
+      <HintPath>..\packages\reactiveui-platforms.5.2.0\lib\net45\ReactiveUI.Xaml.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net45\System.Reactive.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net45\System.Reactive.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net45\System.Reactive.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net45\System.Reactive.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading">
+      <HintPath>..\packages\Rx-XAML.2.1.30214.0\lib\Net45\System.Reactive.Windows.Threading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WindowsBase" />
     <ProjectReference Include="..\SafetyProgram.Base\SafetyProgram.Base.fsproj">
       <Name>SafetyProgram.Base</Name>
       <Project>{02b38c7a-862b-4906-a444-1a42f8d039f1}</Project>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.IO\SafetyProgram.Core.IO.fsproj">
-      <Name>SafetyProgram.Core.IO</Name>
-      <Project>{c95d174d-a8aa-455d-ab70-a9bbd0355656}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\SafetyProgram.Core.Models\SafetyProgram.Core.Models.fsproj">
-      <Name>SafetyProgram.Core.Models</Name>
-      <Project>{e34b1152-d56f-440e-ad78-d525fdae86af}</Project>
+    <ProjectReference Include="..\SafetyProgram.Core\SafetyProgram.Core.fsproj">
+      <Name>SafetyProgram.Core</Name>
+      <Project>{accee851-6146-40c3-8936-ca2d8fa3513a}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\SafetyProgram.UI.Commands\SafetyProgram.UI.Commands.fsproj">

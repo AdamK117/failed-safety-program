@@ -2,7 +2,8 @@
 
 open System.Windows.Input
 open SafetyProgram.UI.Models
-open SafetyProgram.Core.IO.Services
+open SafetyProgram.Core.Services
+open FSharpx.Option
 open System
 
 type SaveFile(kernelData : GuiKernelData) as this =
@@ -14,25 +15,35 @@ type SaveFile(kernelData : GuiKernelData) as this =
 
     interface ICommand with
 
-        // You can only save if there is a file actually open.
+        // A file may only be saved if one is already open.
         member this.CanExecute(_) = 
             match kernelData.Content with
             | Some _ -> true
             | None -> false
 
         // Save the file using the IO service.
-        member this.Execute(_) = ()
-//            match kernelData.Service with
-//            | LocalSvc x -> 
-//                match kernelData.Content with
-//                | Some (doc, t) -> 
-//                    match t with
-//                    | LocalFile (pth, fs) -> 
-//                        match pth with
-//                        | Some s -> x.Save (s, fs, doc)
-//                    | BufferedFile -> ()
-//                | None -> ()
-//                x.Save("Need Path", None, kernelData.Content)
+        member this.Execute(_) =
+
+            let content =
+                match kernelData.Content with
+                | Some x -> x
+                | None -> new NotImplementedException() |> raise
+
+            let model = DocumentHelpers.guiDocumentToDocument content.Content
+
+            let dataType = 
+                match content.DataType with
+                | Local x -> x
+                | BufferedData -> new NotImplementedException() |> raise // Prompt user for save location
+            
+            do
+                match kernelData.Service with
+                | LocalSvc x -> 
+                    x.Save(model, dataType) 
+                    |> Async.RunSynchronously
+                    |> function
+                        | Choice1Of2 x -> new NotImplementedException() |> raise // Reassign datatype et. al.
+                        | Choice2Of2 err -> new NotImplementedException() |> raise // Show saving error message.           
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish

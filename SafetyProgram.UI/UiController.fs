@@ -8,9 +8,8 @@ open SafetyProgram.UI.ViewModels
 open SafetyProgram.UI.Models
 open System.Windows.Controls
 open System.Collections.ObjectModel
-open SafetyProgram.Core.IO.LocalSvc
-open SafetyProgram.Core.IO.Services
-open SafetyProgram.Core.Models.Serialization.DocumentXml
+open SafetyProgram.Core.Services
+open SafetyProgram.Serialization.DocumentXml
 open Fluent
 open System
 

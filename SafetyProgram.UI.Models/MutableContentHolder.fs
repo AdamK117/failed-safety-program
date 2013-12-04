@@ -1,7 +1,7 @@
 ﻿namespace SafetyProgram.UI.Models
 
 open System.Collections.ObjectModel
-open SafetyProgram.Core.IO.Services
+open SafetyProgram.Core.Services
 open SafetyProgram.Base
 
 type ContentHolder = {

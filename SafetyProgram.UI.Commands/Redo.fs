@@ -2,7 +2,7 @@
 
 open System.Windows.Input
 open SafetyProgram.UI.Models
-open SafetyProgram.Core.IO.Services
+open SafetyProgram.Core.Services
 open SafetyProgram.Base
 open SafetyProgram.Base.Helpers
 open System
