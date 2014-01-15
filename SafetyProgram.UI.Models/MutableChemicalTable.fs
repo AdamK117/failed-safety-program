@@ -12,6 +12,9 @@ type GuiChemicalTable(chemicalTable) =
     let mutable header = chemicalTable.Header
     let headerChanged = new Event<_>()
 
+    let mutable selected = false
+    let selectedChanged = Event<_>()
+
     let chemicals = 
         new ObservableCollection<_>(
             chemicalTable.Chemicals
@@ -28,6 +31,13 @@ type GuiChemicalTable(chemicalTable) =
 
     member this.Chemicals
         with get () = chemicals
+
+    member this.Selected 
+        with get () = selected
+        and set x = 
+            selected <- x
+
+    member this.SelectedChanged = selectedChanged.Publish    
 
     interface INotifyPropertyChanged with
         [<CLIEvent>]

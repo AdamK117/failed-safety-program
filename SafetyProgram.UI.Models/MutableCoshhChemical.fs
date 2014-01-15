@@ -14,6 +14,9 @@ type GuiCoshhChemical(coshhChemical) =
     let mutable quantity = coshhChemical.Quantity
     let quantityChanged = new Event<_>()
 
+    let mutable selected = false
+    let selectedChanged = Event<_>()
+
     member this.Chemical
         with get () = chemical
         and set x = 
@@ -31,6 +34,13 @@ type GuiCoshhChemical(coshhChemical) =
             quantityChanged.Trigger quantity
 
     member this.QuantityChanged = quantityChanged.Publish
+
+    member this.Selected 
+        with get () = selected
+        and set x = 
+            selected <- x
+
+    member this.SelectedChanged = selectedChanged.Publish
 
     interface INotifyPropertyChanged with
         [<CLIEvent>]

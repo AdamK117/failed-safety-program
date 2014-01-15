@@ -3,6 +3,8 @@
 open System.Windows.Input
 open SafetyProgram.UI.Models
 open SafetyProgram.Core.Services
+open System.Windows.Forms
+open FSharpx.Option
 open System
 
 type SaveAs(kernelData : GuiKernelData) as this =
@@ -21,14 +23,36 @@ type SaveAs(kernelData : GuiKernelData) as this =
             | None -> false
 
         // Close the old document, open a new one using the IOService
-        member this.Execute(_) = ()
-//            match kernelData.Service with
-//            | LocalSvc x -> 
-//                // Dialog
-//                let path = "NYI"
-//                x.Save(path, null, null)
-//                |> Async.RunSynchronously
-//                |> ignore
+        member this.Execute(_) =
+
+            // Prompt the user for a save path.
+            let getSavePath () = 
+                let savePath = new SaveFileDialog()
+                do
+                    savePath.Filter <- "XML files (*.xml)|*.xml"
+
+                match savePath.ShowDialog() with
+                | DialogResult.OK -> Some savePath.FileName
+                | _ -> None                
+
+            maybe {
+                let! savePath = getSavePath()
+                let dataType = UnlockedFile(savePath)
+
+                let! contentHolder = kernelData.Content
+                let model = DocumentHelpers.guiDocumentToDocument contentHolder.Content            
+
+                do
+                    match kernelData.Service with
+                    | LocalSvc x -> 
+                        x.Save(model, dataType)
+                        |> Async.RunSynchronously
+                        |> function
+                            | Choice1Of2 x ->
+                                let newContentHolder = { contentHolder with DataType = x }
+                                kernelData.Content <- Some newContentHolder
+                            | Choice2Of2 err -> MessageBox.Show("Cannot create new file. ERROR: " + err) |> ignore
+            } |> ignore
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish

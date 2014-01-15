@@ -23,27 +23,24 @@ module Defaults =
 
 type UiController(model : GuiKernelData) = 
 
-    // Ribbon tab wireup
-    let ribbonTabs doc = 
-        match doc with
-        | Some x -> 
-            let insertTabVm = new InsertRibbonTabViewModel(x)
-            let insertTabV = new InsertRibbonTabView(insertTabVm)
-            let y = new ObservableCollection<_>()
-            y.Add(insertTabV :> RibbonTabItem)
-            y
-        | None -> new ObservableCollection<_>()
+    // Selection tabs
+    let selectionTabs = function
+    | GuiChemicalTableDocObj x -> 
+        let vm = new ChemicalTableRibbonTabViewModel(x) :> IChemicalTableRibbonTabViewModel
+        new ChemicalTableContextualRibbonTab(vm) :> RibbonTabItem
 
-    // Selection ribbon tab wireup
-    let selectionRibbonTab selection =
-        match selection with
-        | GuiChemicalTableDocObj m -> 
-            let vm = new ChemicalTableRibbonTabViewModel(m)
-            let v = new ChemicalTableContextualRibbonTab(vm)
-            v :> RibbonTabItem
+    // Ribbon tabs wireup
+    let ribbonTabs = function
+    | Some x -> 
+        let insertTabVm = new InsertRibbonTabViewModel(x)
+        let insertTabV = new InsertRibbonTabView(insertTabVm)
+        let y = new ObservableCollection<_>()
+        y.Add(insertTabV :> RibbonTabItem)
+        y
+    | None -> new ObservableCollection<_>() // No document open
 
     // Ribbon wireup
-    let ribbonViewModel guiKernel = new RibbonViewModel(ribbonTabs, selectionRibbonTab, guiKernel)
+    let ribbonViewModel guiKernel = new RibbonViewModel(ribbonTabs, selectionTabs, guiKernel)
     let ribbonView viewModel = new DefaultRibbonView(viewModel)
     let ribbonVVM x = 
         let vm = ribbonViewModel x

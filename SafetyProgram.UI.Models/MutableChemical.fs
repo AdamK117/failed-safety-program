@@ -18,6 +18,9 @@ type GuiChemical(chemical) =
             |> Seq.map (fun x-> 
                 new GuiHazard(x)))
 
+    let mutable selected = false
+    let selectedChanged = Event<_>()
+
     member this.Name
         with get () = name
         and set x = 
@@ -29,6 +32,13 @@ type GuiChemical(chemical) =
 
     member this.Hazards
         with get () = hazards
+
+    member this.Selected 
+        with get () = selected
+        and set x = 
+            selected <- x
+
+    member this.SelectedChanged = selectedChanged.Publish
 
     interface INotifyPropertyChanged with
         [<CLIEvent>]

@@ -8,5 +8,11 @@ type ContentHolder = {
     Content : GuiDocument
     DataType : DataType
     CommandController : ICommandController
-    Selection : ObservableCollection<obj>
 }
+
+module ContentHolderHelpers =
+    let defaultConstructor model dataType = { 
+        Content = new GuiDocument(model); 
+        DataType = dataType; 
+        CommandController = new CommandController(); 
+    }

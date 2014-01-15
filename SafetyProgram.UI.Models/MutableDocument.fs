@@ -17,8 +17,11 @@ type GuiDocument (document) =
 
     let mutable format = document.Format
     let formatChanged = new Event<_>()
+    let selection = new ObservableCollection<GuiDocumentObject>()
 
     member this.Content = content
+
+    member this.Selection = selection
 
     member this.Format
         with get () = format

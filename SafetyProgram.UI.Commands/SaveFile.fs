@@ -4,13 +4,14 @@ open System.Windows.Input
 open SafetyProgram.UI.Models
 open SafetyProgram.Core.Services
 open FSharpx.Option
+open System.Windows.Forms
 open System
 
 type SaveFile(kernelData : GuiKernelData) as this =
 
     let canExecuteChanged = Event<_,_>()
 
-    let contentChanged = kernelData.ContentChanged.Subscribe(fun _ -> 
+    let contentChangedHandler = kernelData.ContentChanged.Subscribe(fun _ -> 
         canExecuteChanged.Trigger(this, new EventArgs()))
 
     interface ICommand with
@@ -22,32 +23,33 @@ type SaveFile(kernelData : GuiKernelData) as this =
             | None -> false
 
         // Save the file using the IO service.
-        member this.Execute(_) =
+        member this.Execute(_) = 
+            maybe {
+                let! content = kernelData.Content
+                let model = DocumentHelpers.guiDocumentToDocument content.Content
 
-            let content =
-                match kernelData.Content with
-                | Some x -> x
-                | None -> new NotImplementedException() |> raise
+                let dataType = 
+                    match content.DataType with
+                    | Local x -> x
+                    | BufferedData ->
+                            new NotImplementedException() |> raise // Prompt user for save location
 
-            let model = DocumentHelpers.guiDocumentToDocument content.Content
+                do
+                    match kernelData.Service with
+                    | LocalSvc x -> 
+                        x.Save(model, dataType) 
+                        |> Async.RunSynchronously
+                        |> function
+                            | Choice1Of2 x -> 
+                                kernelData.Content <- Some({ content with DataType = x })
+                            | Choice2Of2 err -> MessageBox.Show("Cannot create new file. ERROR: " + err) |> ignore
 
-            let dataType = 
-                match content.DataType with
-                | Local x -> x
-                | BufferedData -> new NotImplementedException() |> raise // Prompt user for save location
-            
-            do
-                match kernelData.Service with
-                | LocalSvc x -> 
-                    x.Save(model, dataType) 
-                    |> Async.RunSynchronously
-                    |> function
-                        | Choice1Of2 x -> new NotImplementedException() |> raise // Reassign datatype et. al.
-                        | Choice2Of2 err -> new NotImplementedException() |> raise // Show saving error message.           
+                return ()
+            } |> ignore
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish
 
     interface IDisposable with
         member this.Dispose() =
-            contentChanged.Dispose()
+            contentChangedHandler.Dispose()

@@ -103,7 +103,8 @@
             x:Name="Chemicals"
             Style="{StaticResource ChemicalListStyle}"
             ItemsSource="{Binding Chemicals}"
-            ContextMenu="{Binding ContextMenu}"      
+            ContextMenu="{Binding ContextMenu}"
+            SelectionChanged="Chemicals_SelectionChanged"
             />
         
         <!--

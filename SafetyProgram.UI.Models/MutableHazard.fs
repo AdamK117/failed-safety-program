@@ -20,6 +20,9 @@ type GuiHazard(hazard) =
     let mutable symbol = hazard.Symbol
     let symbolChanged = Event<_>()
 
+    let mutable selected = false
+    let selectedChanged = Event<_>()
+
     member this.Warning
         with get () = warning
         and set x = 
@@ -55,6 +58,13 @@ type GuiHazard(hazard) =
             riskPhraseChanged.Trigger riskPhrase
 
     member this.RiskPhraseChanged = riskPhraseChanged.Publish
+
+    member this.Selected 
+        with get () = selected
+        and set x = 
+            selected <- x
+
+    member this.SelectedChanged = selectedChanged.Publish
 
     interface INotifyPropertyChanged with
         [<CLIEvent>]

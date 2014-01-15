@@ -6,6 +6,7 @@ open SafetyProgram.Core.Services
 open System.ComponentModel
 open System
 open System.Diagnostics
+open System.Windows.Forms
 
 type CloseFile(kernelData : GuiKernelData) as this =
 
@@ -23,20 +24,30 @@ type CloseFile(kernelData : GuiKernelData) as this =
             | None -> false
 
         // Close the old document, open a new one using the IOService
-        member this.Execute(_) =
+        member this.Execute(commandParam) =
 
             if kernelData.Content <> None then
-                // Prompt to save
-                kernelData.Content <- None
+                let resp = 
+                    MessageBox.Show(
+                        "Do you want to save the changes you made to the current document?",
+                        "SafetyProgram",
+                        MessageBoxButtons.YesNoCancel,
+                        MessageBoxIcon.Warning,
+                        MessageBoxDefaultButton.Button1)
+
+                match resp with
+                | DialogResult.Yes ->
+                    use saveCommand = new SaveFile(kernelData)
+                    (saveCommand :> ICommand).Execute(commandParam)
+                    kernelData.Content <- None
+                | DialogResult.No -> kernelData.Content <- None
+                | DialogResult.Cancel -> ()
+                | _ -> ()
             else
-                // Erroneous state, perhaps log
-                Debug.Write 
                 ()
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish
 
-    interface IDisposable with
-        
-        member this.Dispose() = 
-            handler.Dispose()
+    interface IDisposable with        
+        member this.Dispose() = handler.Dispose()

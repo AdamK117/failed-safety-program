@@ -12,5 +12,6 @@ type MainCommands(model) =
     member this.SaveAs = new SaveAs(model)
 
     interface IDisposable with
+        // TODO: Implement chain disposal.
         member this.Dispose() =
             ()

@@ -8,10 +8,7 @@ open SafetyProgram.Base.Helpers
 open FSharpx.Choice
 
 let DocumentXml : TwoWayConverter<Document, XElement> = {
-    ConvertTo = fun _ -> choose {
-        let a = new XElement(xname "Adam")
-        return a
-    }
+    ConvertTo = fun _ -> new NotImplementedException() |> raise
     ConvertFrom = fun data -> choose {
         let format = { Width=0.21m<m>; Height=0.297m<m> }
 

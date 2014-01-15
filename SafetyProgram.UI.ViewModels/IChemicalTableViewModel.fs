@@ -10,3 +10,4 @@ type IChemicalTableViewModel =
 
     abstract Header : string with get, set
     abstract Chemicals : ObservableCollection<GuiCoshhChemical> with get
+    abstract SelectedChemicals : ObservableCollection<GuiCoshhChemical> with get

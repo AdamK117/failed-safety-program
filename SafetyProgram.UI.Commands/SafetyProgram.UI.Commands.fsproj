@@ -49,11 +49,11 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="NewFile.fs" />
-    <Compile Include="OpenFile.fs" />
-    <Compile Include="CloseFile.fs" />
     <Compile Include="SaveFile.fs" />
     <Compile Include="SaveAs.fs" />
+    <Compile Include="CloseFile.fs" />
+    <Compile Include="NewFile.fs" />
+    <Compile Include="OpenFile.fs" />
     <Compile Include="Redo.fs" />
     <Compile Include="Undo.fs" />
     <Compile Include="InsertChemicalTable.fs" />

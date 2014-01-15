@@ -15,11 +15,17 @@ namespace SafetyProgram.UI.Views
             this.viewModel = viewModel;
             this.DataContext = viewModel;
             viewModel.RibbonTabs.CollectionChanged += RibbonTabs_CollectionChanged;
+            viewModel.SelectionRibbonTabs.CollectionChanged += SelectionRibbonTabs_CollectionChanged;
             viewModel.PropertyChanged += viewModel_PropertyChanged;
 
             ribbonTabsCollectionChanged();
 
             InitializeComponent();
+        }
+
+        void SelectionRibbonTabs_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
 
         void viewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

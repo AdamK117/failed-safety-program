@@ -16,14 +16,6 @@ type OpenFile(kernelData : GuiKernelData) =
 
     let canExecuteChanged = Event<_,_>()
 
-    let contentCtor model dataType = 
-                Some ({ 
-                        Content = new GuiDocument(model); 
-                        DataType = dataType; 
-                        CommandController = new CommandController(); 
-                        Selection = new ObservableCollection<_>()
-                })
-
     interface ICommand with
 
         // You can always open a new document
@@ -31,17 +23,28 @@ type OpenFile(kernelData : GuiKernelData) =
             true
 
         // Close the old document, open a new one using the IOService
-        member this.Execute(_) =
+        member this.Execute(commandParam) =
+
+            // Close the previous document.
+            use closeCommand = new CloseFile(kernelData)
+            if (closeCommand :> ICommand).CanExecute(commandParam) then
+                (closeCommand :> ICommand).Execute(commandParam)
         
             // Get the users selection via a standard dialog.
             let usrSelection = 
                 let files = new OpenFileDialog()
                 do
-                    files.Filter = "XML files (*.xml)|*.xml" |> ignore
+                    files.Filter <- "XML files (*.xml)|*.xml"
 
                 match files.ShowDialog() with
                 | DialogResult.OK -> Some files.FileName
                 | _ -> None
+
+            // Close the previous document.
+            let closeDocument () = 
+                use closeCommand = new CloseFile(kernelData)
+                if (closeCommand :> ICommand).CanExecute(commandParam) then
+                    (closeCommand :> ICommand).Execute(commandParam)
 
             // Service handler (local, db, etc.).
             let performIo pth = 
@@ -51,20 +54,17 @@ type OpenFile(kernelData : GuiKernelData) =
             // Handles service response.
             let responseHandler resp = 
                 match resp with
-                | Choice1Of2 (doc, fileInfo) -> Some(contentCtor doc (fileInfo))
+                | Choice1Of2 (doc, fileInfo) -> Some(Some(ContentHolderHelpers.defaultConstructor doc (fileInfo)))
                 | Choice2Of2 err -> 
                     MessageBox.Show("Error loading file:" + err) |> ignore
                     None
 
-            // Compose the service steps together.
-            let f = performIo >> Async.RunSynchronously >> responseHandler
+            maybe {
+                let f = performIo >> Async.RunSynchronously >> responseHandler
+                let! content = usrSelection >>= f
 
-            do
-                maybe {
-                    // Compose the dialog into the service steps.
-                    let! content = usrSelection >>= f
-                    return kernelData.Content <- content
-                } |> ignore
+                return kernelData.Content <- content
+            } |> ignore
 
         [<CLIEvent>]
         member this.CanExecuteChanged = canExecuteChanged.Publish
