@@ -2,7 +2,7 @@
 
 ## Background
 
-This code accompanys a blog post `TODO`
+This code accompanys a [blog post](http://www.adamkewley.com/programming/2016/08/24/projects-that-break-you.html)
 
 This is an archive of a **failed** C#/F#/WPF application prototype I tried to produce in my spare time in 2012/2013. Because this was my first version controlled project, only some commits will build - I wasn't experienced enough to keep a clean master branch.
 
